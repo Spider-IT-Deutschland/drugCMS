@@ -283,7 +283,7 @@ class Contenido_Navigation {
         $oMyConLink->setClass('main');
         $oMyConLink->setTargetFrame('content');
         $oMyConLink->attachEventDefinition('help_mydrugcms', 'onclick', 'help.setArea("mydrugcms")');
-        $oMyConLink->setLink($sess->url("frameset.php?area=mydrugcms&frame=4"));
+        $oMyConLink->setLink($sess->url("frameset.php?area=mydrugcms&amp;frame=4"));
         $oMyConLink->setContent('<img src="'.$cfg['path']['contenido_fullhtml'].$cfg['path']['images'].'my_drugcms.gif" border="0" alt="My drugCMS" id="imgMydrugCMS" title="My drugCMS">');
         $main->set('s', 'MYDRUGCMS', $oMyConLink->render());
 
@@ -292,7 +292,7 @@ class Contenido_Navigation {
         $oInfoLink->setClass('main');
         $oInfoLink->setTargetFrame('content');
         $oInfoLink->attachEventDefinition('help_info', 'onclick', 'help.setArea("info")');
-        $oInfoLink->setLink($sess->url('frameset.php?area=info&frame=4'));
+        $oInfoLink->setLink($sess->url('frameset.php?area=info&amp;frame=4'));
         $oInfoLink->setContent('<img src="'.$cfg['path']['contenido_fullhtml'].$cfg['path']['images'].'info.gif" border="0" alt="Info" title="Info" id="imgInfo">');
         $main->set('s', 'INFO', $oInfoLink->render());
 
@@ -359,7 +359,7 @@ class Contenido_Navigation {
 		
 		$main->set('s', 'CHOSENUSER', "<b>".i18n("User").":</b> ".$classuser->getRealname($auth->auth["uid"], true));
         $main->set('s', 'SID', $sess->id);
-        $main->set('s', 'MAINLOGINLINK', $sess->url("frameset.php?area=mydrugcms&frame=4"));
+        $main->set('s', 'MAINLOGINLINK', $sess->url("frameset.php?area=mydrugcms&amp;frame=4"));
 
         // additional footer javascript
         $footerJs = '';

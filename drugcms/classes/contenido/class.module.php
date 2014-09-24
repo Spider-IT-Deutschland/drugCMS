@@ -104,9 +104,9 @@ class cApiModule extends Item
      * @var array 
      */
     private $_aModFileEditConf = array(        
-        'use'=>false,
-        'modFolderName'=>'_module'
-    );
+                                        'use' => false,
+                                        'folder_name' => 'modules'
+                                    );
 
     /**
      * Constructor Function
@@ -126,19 +126,23 @@ class cApiModule extends Item
                                          "tplfiles" => $cfgClient[$client]["tpl"]["path"],
                                          "cssfiles" => $cfgClient[$client]["css"]["path"]);
         
-        if(isset($cfg['dceModEdit']) && is_array($cfg['dceModEdit'])) {
+        if ((isset($cfg['dceModEdit'])) && (is_array($cfg['dceModEdit']))) {
             $this->_aModFileEditConf = array_merge($this->_aModFileEditConf, $cfg['dceModEdit']);
-            if(!isset($cfg['dceModEdit']['modPath']) || empty($cfg['dceModEdit']['modPath'])) {
-                $this->_aModFileEditConf['modPath'] = $cfgClient[$client]["path"]["frontend"]
-                        .$this->_aModFileEditConf['modFolderName'];
-            }
         }
         
         $oClient = new cApiClient($client);
-        $aClientProp = $oClient->getPropertiesByType('modfileedit');
-        if(count($aClientProp) > 0) {
+        $aClientProp = $oClient->getPropertiesByType('modules_in_files');
+        if (count($aClientProp)) {
             $this->_aModFileEditConf = array_merge($this->_aModFileEditConf, $aClientProp);
         }           
+        $this->_aModFileEditConf['use'] = in_array($this->_aModFileEditConf['use'], array('true', '1'));
+        if (($this->_aModFileEditConf['use']) && ((!isset($this->_aModFileEditConf['full_path'])) || (empty($this->_aModFileEditConf['full_path'])))) {
+            $this->_aModFileEditConf['full_path'] = $cfgClient[$client]["path"]["frontend"] . 'data/' . $this->_aModFileEditConf['folder_name'];
+            if (!is_dir($this->_aModFileEditConf['full_path'])) {
+                mkdir($this->_aModFileEditConf['full_path'], 0777, true);
+            }
+        }
+        $this->_aModFileEditConf['full_path'] .= ((substr($this->_aModFileEditConf['full_path'], -1) == '/') ? '' : '/');
 
         if ($mId !== false) {
             $this->loadByPrimaryKey($mId);
@@ -367,20 +371,20 @@ class cApiModule extends Item
     public function store($bJustStore = false)
     {
         global $cfg;
-        /* dceModFileEdit (c)2009-2011 www.dceonline.de */
-        if($this->_aModFileEditConf['use'] == true 
-                && ($this->_aModFileEditConf['allModsFromFile'] == true
-                        || in_array($this->get('idmod'), $this->_aModFileEditConf['modsFromFile']))) {
-            $this->modifiedValues['output'] = true;
-            $this->modifiedValues['input'] = true;
-        }
-        /* End dceModFileEdit (c)2009-2011 www.dceonline.de */
+        
         if ($bJustStore) {
             // Just store changes, e.g. if specifying the mod package
             parent::store();
         } else {
             cInclude("includes", "functions.con.php");
 
+            /* dceModFileEdit (c)2009-2011 www.dceonline.de */
+            if ($this->_aModFileEditConf['use']) {
+                $this->modifiedValues['output'] = true;
+                $this->modifiedValues['input'] = true;
+            }
+            /* End dceModFileEdit (c)2009-2011 www.dceonline.de */
+            
             parent::store();
 
             conGenerateCodeForAllArtsUsingMod($this->get("idmod"));
@@ -443,7 +447,7 @@ class cApiModule extends Item
      * @param string $sType Import type, "module" or "package"
      * @return bool Returns true, if file has been parsed
      */
-    private function _parseImportFile($sFile, $sType = "module", $sEncoding = "ISO-8859-1")
+    private function _parseImportFile($sFile, $sType = "module", $sEncoding = 'UTF-8')#"ISO-8859-1")
     {
         global $_mImport;
 
@@ -457,13 +461,12 @@ class cApiModule extends Item
                                             "/module/output"      => "cHandler_ModuleData"));
         } else {
             $aHandler = array("/modulepackage/guid"               => "cHandler_ModuleData",
-                              #"/modulepackage/repository_guid"    => "cHandler_ModuleData",
+                             #"/modulepackage/repository_guid"    => "cHandler_ModuleData",
                               "/modulepackage/module/name"        => "cHandler_ModuleData",
                               "/modulepackage/module/description" => "cHandler_ModuleData",
                               "/modulepackage/module/type"        => "cHandler_ModuleData",
                               "/modulepackage/module/input"       => "cHandler_ModuleData",
-                              "/modulepackage/module/output"      => "cHandler_ModuleData",
-                              "/modulepackage/module/input"       => "cHandler_ModuleData");
+                              "/modulepackage/module/output"      => "cHandler_ModuleData");
 
             // Add file handler (e.g. js, css, templates)
             foreach ($this->_packageStructure As $sFileType => $sFilePath) {
@@ -520,10 +523,8 @@ class cApiModule extends Item
             }
 
             if ($bStore == true) {
-                $this->set('input', str_replace(array('new template', 'new phpmailer'), array('new Template', 'new PHPMailer'), $this->get('input')), false);
-                $this->modifiedValues['input'] = true;
-                $this->set('output', str_replace(array('new template', 'new phpmailer'), array('new Template', 'new PHPMailer'), $this->get('output')), false);
-                $this->modifiedValues['output'] = true;
+                $this->set('input', str_replace(array('new template', 'new phpmailer', 'cInclude(\'classes\', \'class-template.php\')', 'cInclude("classes", "class-template.php")'), array('new Template', 'new PHPMailer', '#cInclude(\'classes\', \'class-template.php\')', '#cInclude("classes", "class-template.php")'), $this->get('input')), false);
+                $this->set('output', str_replace(array('new template', 'new phpmailer', 'cInclude(\'classes\', \'class-template.php\')', 'cInclude("classes", "class-template.php")'), array('new Template', 'new PHPMailer', '#cInclude(\'classes\', \'class-template.php\')', '#cInclude("classes", "class-template.php")'), $this->get('output')), false);
                 $this->store();
             }
             return true;
@@ -540,7 +541,7 @@ class cApiModule extends Item
      */
     public function export($filename, $return = false)
     {
-        $tree  = new XmlTree('1.0', 'ISO-8859-1');
+        $tree  = new XmlTree('1.0', 'UTF-8');#'ISO-8859-1');
         $root =& $tree->addRoot('module');
 
         $root->appendChild("name", htmlspecialchars($this->get("name")));
@@ -732,7 +733,7 @@ class cApiModule extends Item
 
         cInclude("includes", "functions.file.php");
 
-        $oTree = new XmlTree('1.0', 'ISO-8859-1');
+        $oTree = new XmlTree('1.0', 'UTF-8');#'ISO-8859-1');
         $oRoot =& $oTree->addRoot('modulepackage');
 
         $oRoot->appendChild("package_guid", $this->get("package_guid"));
@@ -855,16 +856,17 @@ class cApiModule extends Item
      * @return boolean
      */
     private function _setOutputFromPhpFile () {
-        cInclude('includes', 'functions.upl.php');
         // dceModEdit not enabled or not present
-        if($this->_aModFileEditConf['use'] !== true) return false;
-
-        // modules have to be set in cfg-array with their id
-        if($this->_aModFileEditConf['allModsFromFile'] == true 
-                || in_array($this->get('idmod'), $this->_aModFileEditConf['modsFromFile'])) {
-            $sOutputFile = $this->_aModFileEditConf['modPath']."/".uplCreateFriendlyName($this->get('name'))."/output.php";           
-            return $this->_setFieldFromFile($sOutputFile, 'output');
+        if (!$this->_aModFileEditConf['use']) {
+            return false;
         }
+
+        cInclude('includes', 'functions.upl.php');
+        $sOutputFile = $this->_aModFileEditConf['full_path'] . uplCreateFriendlyName($this->get('name')) . '/' . uplCreateFriendlyName($this->get('name')) . '-output.php';
+        if (!is_file($sOutputFile)) {
+            $sOutputFile = $this->_aModFileEditConf['full_path'] . uplCreateFriendlyName($this->get('name')) . '/output.php';
+        }
+        return $this->_setFieldFromFile($sOutputFile, 'output');
     }
 
     /**
@@ -872,23 +874,30 @@ class cApiModule extends Item
      * 
      * @return boolean
      */
-    private function _setInputFromPhpFile () {        
-        cInclude('includes', 'functions.upl.php');
+    private function _setInputFromPhpFile () {
         // dceModEdit not enabled or not present
-        if($this->_aModFileEditConf['use'] !== true) return false;
-
-        // modules have to be set in cfg-array with their id
-        if($this->_aModFileEditConf['allModsFromFile'] == true 
-                || in_array($this->get('idmod'), $this->_aModFileEditConf['modsFromFile'])) {
-            $sInputFile = $this->_aModFileEditConf['modPath']."/".uplCreateFriendlyName($this->get('name'))."/input.php";
-            return $this->_setFieldFromFile($sInputFile, 'input');
+        if (!$this->_aModFileEditConf['use']) {
+            return false;
         }
+
+        cInclude('includes', 'functions.upl.php');
+        $sInputFile = $this->_aModFileEditConf['full_path'] . uplCreateFriendlyName($this->get('name')) . '/' . uplCreateFriendlyName($this->get('name')) . '-input.php';
+        if (!is_file($sInputFile)) {
+            $sInputFile = $this->_aModFileEditConf['full_path'] . uplCreateFriendlyName($this->get('name')) . '/input.php';
+        }
+        return $this->_setFieldFromFile($sInputFile, 'input');
     }
     
     private function _displayNoteFromFile() {
-        if($this->_bNoted === true) return;
+        if ($this->_bNoted === true) {
+            return;
+        }
+        if ((($_POST['action'] == 'mod_importexport_module') && ($_POST['mode'] == 'export')) || ($_GET['action'] == 'mod_sync_and_delete')) {
+            return;
+        }
+        
         global $frame, $area;
-        if($frame == 4 && $area == 'mod_edit') {
+        if (($frame == 4) && ($area == 'mod_edit')) {
             $oNote = new Contenido_Notification();
             $oNote->displayNotification('warning', i18n("Module uses Output- and/or InputFromFile. Editing and Saving may not be possible in backend."));
             $this->_bNoted = true;
@@ -904,23 +913,25 @@ class cApiModule extends Item
      */
     private function _setFieldFromFile($sFile, $sField) {
 
-        if(is_file($sFile) && is_readable($sFile)) {
+        if ((is_file($sFile)) && (is_readable($sFile))) {
             $iFileSize = (int) filesize($sFile);
-            if($iFileSize > 0 && $fh = fopen($sFile, 'r')) {
+            if (($iFileSize) && ($fh = fopen($sFile, 'r'))) {
                 $this->set($sField, fread($fh, $iFileSize), false);
                 fclose($fh);
-                switch($sField) {
-                    case "output":
-                        $this->_bOutputFromFile = true;
-                        break;
-                    case "input":
-                        $this->_bInputFromFile = true;
-                    default:
-                        break;
-                }
-                $this->_displayNoteFromFile();
-                return true;
+            } else {
+                $this->set($sField, '');
             }
+            switch($sField) {
+                case "output":
+                    $this->_bOutputFromFile = true;
+                    break;
+                case "input":
+                    $this->_bInputFromFile = true;
+                default:
+                    break;
+            }
+            $this->_displayNoteFromFile();
+            return true;
         }        
         return false;
     }
@@ -939,6 +950,15 @@ class cApiModule extends Item
         }
     }
     /* End dceModFileEdit (c)2009-2012 www.dceonline.de */
+    
+    public function getFullPath() {
+        global $cfgClient, $client;
+        
+        if (!$this->_aModFileEditConf['use']) {
+            return false;
+        }
+        return str_replace(dirname($cfgClient[$client]["path"]["frontend"]), '', $this->_aModFileEditConf['full_path']) . uplCreateFriendlyName($this->get('name'));
+    }
 } // end class
 
 class cApiModuleTranslationCollection extends ItemCollection

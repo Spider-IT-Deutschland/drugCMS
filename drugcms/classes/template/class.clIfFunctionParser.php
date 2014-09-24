@@ -46,13 +46,13 @@ class clIfFunctionParser extends clAbstractTemplateParser {
       * Regexp-Pattern für {if(Bedingung)}
       * @var pattern_if
       */
-    var $pattern_if =         "\{if\040*\((.*?)\)\}";
+    var $pattern_if =         "\{if\040*\((.*?)\)\040*\}";
 
      /**
       * Regexp-Pattern für {else if(Bedingung)}
       * @var pattern_elseif
       */
-    var $pattern_elseif =     "\{else if\040*\((.*?)\)\}";
+    var $pattern_elseif =     "\{else if\040*\((.*?)\)\040*\}";
 
      /**
       * Regexp-Pattern für {else}
@@ -67,7 +67,7 @@ class clIfFunctionParser extends clAbstractTemplateParser {
     var $pattern_endif =     "\{\/if\}";
     
      /**
-      * Länge des {if(Bedinung)}-Tags ohne Bedingung
+      * Länge des {if(Bedingung)}-Tags ohne Bedingung
       * @var patternlength_if
       */
     var $patternlength_if =            6;

@@ -176,3 +176,6 @@ INSERT INTO `!PREFIX!_actions` VALUES (804, 403, 'history_truncate', 'history_tr
 INSERT INTO `!PREFIX!_actions` VALUES (805, 70, 'history_truncate', 'history_truncate', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (806, 415, 'edit_sysconf', 'edit_sysconf', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (811, 811, 'do_purge', 'do_purge', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (812, 11, 'mod_export', 'mod_export', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (813, 11, 'mod_sync', 'mod_sync', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (814, 11, 'mod_sync_and_delete', 'mod_sync_and_delete', '', '', 1);

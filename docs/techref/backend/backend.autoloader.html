@@ -61,9 +61,9 @@ needed file if not done before.<br />
 <br />
 <strong>Example:</strong><br />
 Usually you have to ensure that a class file is already loaded by using include/require 
-statements or by using Contenido's cInclude function:</p>
+statements or by using Contenido&#39;s cInclude function:</p>
 <pre>
-cInclude('classes', 'class.article.php');
+cInclude(&#39;classes&#39;, &#39;class.article.php&#39;);
 $oArt = new Article();
 </pre>
 
@@ -82,8 +82,8 @@ of a Contenido installation:</p>
 drugcms/classes/
 </pre>
 <p><strong>NOTE:</strong><br />
-The autoloader doesn't handle loading of files which don't belong to the Contenido package. 
-This means, additional added files (e. g. user defined classes/libraries) aren't 
+The autoloader doesn&#39;t handle loading of files which don&#39;t belong to the Contenido package. 
+This means, additional added files (e. g. user defined classes/libraries) aren&#39;t 
 automatically available for the autoloader. Read the <a href="#autogen_classmap">section</a> below, if you want to 
 provide autoloading of additional class type files.</p>
 </div>
@@ -91,7 +91,7 @@ provide autoloading of additional class type files.</p>
 
 <div class="section">
 <h2><a name="extending_classmap">Extending the class map configuration</a></h2>
-<p>Don't edit the class map configuration manually, the next update could overwrite 
+<p>Don&#39;t edit the class map configuration manually, the next update could overwrite 
 your changes. The autoloading is extendable by adding a additional user defined class map 
 file inside the "includes" folder, which could contain further class map settings or 
 could overwrite settings of main class map file.</p>
@@ -102,16 +102,16 @@ The content of the user defined file should have the following structure:</p>
 <pre>
 &lt;?php
 return array(
-    '{classname_1}' => '{path_to_classfile_1}',
-    '{classname_2}' => '{path_to_classfile_2}',
-    '{classname_3}' => '{path_to_classfile_3}',
+    &#39;{classname_1}&#39; => &#39;{path_to_classfile_1}&#39;,
+    &#39;{classname_2}&#39; => &#39;{path_to_classfile_2}&#39;,
+    &#39;{classname_3}&#39; => &#39;{path_to_classfile_3}&#39;,
 );
 </pre>
 <p>Where {classname_X} is the name of the class/interface and {path_to_classfile_X} is the 
 path (from Contenido installation folder) to the file which contains the implementation of the class/interface.<p>
 
 <p><strong>Example:</strong><br />
-Let's assume that Contenido is installed in folder /var/www/ which contains a 
+Let&#39;s assume that Contenido is installed in folder /var/www/ which contains a 
 additional library "myLib" (full path: /var/www/myLib/) with a class "myFoobarClass" 
 in file "class.myfoobarclass.php" (full path: /var/www/myLib/class.myfoobarclass.php). 
 Then the user defined class map file should contain a entry for this like:</p>
@@ -119,7 +119,7 @@ Then the user defined class map file should contain a entry for this like:</p>
 &lt;?php
 return array(
     ...
-    'myFoobarClass' => 'myLib/class.myfoobarclass.php',
+    &#39;myFoobarClass&#39; => &#39;myLib/class.myfoobarclass.php&#39;,
     ...
 );
 </pre>
@@ -128,7 +128,7 @@ return array(
 
 <div class="section">
 <h2><a name="autogen_classmap">Auto generation of user defined class map configuration</a></h2>
-<p>If you don't want to maintain the user defined class map configuration manually, then 
+<p>If you don&#39;t want to maintain the user defined class map configuration manually, then 
 you may let a copy of the command line script (which is adapted to your requirements)
 <span class="pre">drugcms/tools/create_autoloader_cfg.php</span>
 to do the job.<br />
@@ -141,14 +141,14 @@ Do following steps to achieve this:</p>
         <ul>
             <li>
                 Set setting $context->destinationFile to 
-                <span class="pre">$context->destinationFile = $context->contenidoInstallPath . '/drugcms/includes/config.autoloader.local.php';</span>
-                <strong>NOTE:</strong> Don't use another file name, it's predefined and has to be "config.autoloader.local.php"
+                <span class="pre">$context->destinationFile = $context->contenidoInstallPath . &#39;/drugcms/includes/config.autoloader.local.php&#39;;</span>
+                <strong>NOTE:</strong> Don&#39;t use another file name, it&#39;s predefined and has to be "config.autoloader.local.php"
             </li>
             <li>
                 Define paths which should be parsed recursively, e. g.
 <pre>$context->pathsToParse = array(
-    $context->contenidoInstallPath . '/my_path/',
-    $context->contenidoInstallPath . '/my_other_path/',
+    $context->contenidoInstallPath . &#39;/my_path/&#39;,
+    $context->contenidoInstallPath . &#39;/my_other_path/&#39;,
 );
 </pre>
             </li>
@@ -157,12 +157,12 @@ Do following steps to achieve this:</p>
 <pre>// class type finder options
 $context->options = array(
     // list of directories which are to exclude from parsing (case insensitive)
-    'excludeDirs'       => array('.svn'),
+    &#39;excludeDirs&#39;       => array(&#39;.svn&#39;),
     // list of files which are to exclude from parsing (case insensitive), also possible regex patterns like /^~*.\.php$/
-    'excludeFiles'      => array(),
+    &#39;excludeFiles&#39;      => array(),
     // list of file extensions to parse (case insensitive)
-    'extensionsToParse' => '.php',
-    'enableDebug'       => false,
+    &#39;extensionsToParse&#39; => &#39;.php&#39;,
+    &#39;enableDebug&#39;       => false,
 );
 </pre>
             </li>
@@ -181,9 +181,9 @@ $context->options = array(
 
 <div class="section">
 <h2><a name="extending_contenido_core">Extending Contenido core with autoload mechanism</a></h2>
-<p>By using the Contenido autoloader it's possible to extend/overwrite Contenido core classes 
+<p>By using the Contenido autoloader it&#39;s possible to extend/overwrite Contenido core classes 
     (except classes inside conlib directory) without changing the core files.</p>
-<p>Let's assume, you want to use your own Template class in Modules, but everything should 
+<p>Let&#39;s assume, you want to use your own Template class in Modules, but everything should 
     still be downwards compatible.<br />
 <br />
 Do following steps to achieve this:</p>
@@ -204,7 +204,7 @@ Do following steps to achieve this:</p>
 <p>
 <strong>NOTE:</strong><br />
 There is one main disadvantage by using this way of extending the Contenido core. 
-Each time after an update of your Contenido installation it's strongly recommend 
+Each time after an update of your Contenido installation it&#39;s strongly recommend 
 to check your user defined implementations against changes in original Contenido 
 core files and, if applicable, to adapt your files to those changes.</p>
 </div>

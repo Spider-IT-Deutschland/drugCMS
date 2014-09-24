@@ -208,7 +208,7 @@ if ($idmod > 0 && $perm->have_perm_area_action_item("mod_edit", "mod_edit", $idm
 	    			$oModule->exportPackage($sFileName . ".xml");
 	    		}
 	    		break;
-	    	case "import1":
+	    	case "import":
 		    	if ($_FILES["upload"]["tmp_name"] != "") // file_exists() doesn't work with safe_mode/basedir
 		    	{
 		    		move_uploaded_file($_FILES["upload"]["tmp_name"], $sTmpPackageFile); 
@@ -448,7 +448,7 @@ if ($idmod > 0 && $perm->have_perm_area_action_item("mod_edit", "mod_edit", $idm
 			displayFiles($aFiles, $aData[$sFileType], $oForm, $aFileType["caption"], $aFileType["field"], $sDisabled);
 		}
 			    
-		$oRadImport = new cHTMLRadiobutton("mode", "import1");
+		$oRadImport = new cHTMLRadiobutton("mode", "import");
 		$oRadExport = new cHTMLRadiobutton("mode", "export");
 	
 		$oRadImport->setLabelText(i18n("Import from file"));

@@ -300,5 +300,8 @@ return array(
     'cTableView' => 'drugcms/classes/widgets/class.widgets.views.php',
     'cApiXml2Array' => 'drugcms/classes/xml/class.xml2array.php',
     'QRcode' => 'drugcms/external/phpqrcode/qrlib.php',
-    'Output_Compressor' => 'drugcms/classes/class.output_compressor.php'
+    'Output_Compressor' => 'drugcms/classes/class.output_compressor.php',
+    'EmailAddressValidator' => 'drugcms/external/email_address_validation/EmailAddressValidator.php',
+    'SMTP_validateEmail' => 'drugcms/external/email_address_validation/smtp_validateEmail.class.php',
+    'FormValidation' => 'drugcms/external/class.form.validation.php'
 );

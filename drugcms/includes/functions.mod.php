@@ -68,13 +68,13 @@ function modEditModule($idmod, $name, $description, $input, $output, $template, 
 	}
     
     /* dceModFileEdit (c)2009-2011 www.dceonline.de */
-    if ($cfg['dceModEdit']['use']
-            || $cApiModule->get("name") != stripslashes($name)
-            ||	$cApiModule->get("output") != stripslashes($output)
-            ||	$cApiModule->get("template") != stripslashes($template)
-            ||	$cApiModule->get("description") != stripslashes($description)
-            ||	$cApiModule->get("input") != stripslashes($input)
-            ||	$cApiModule->get("type") != stripslashes($type)) {
+    if ((in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1')))
+            || ($cApiModule->get("name") != stripslashes($name))
+            || ($cApiModule->get("output") != stripslashes($output))
+            || ($cApiModule->get("template") != stripslashes($template))
+            || ($cApiModule->get("description") != stripslashes($description))
+            || ($cApiModule->get("input") != stripslashes($input))
+            || ($cApiModule->get("type") != stripslashes($type))) {
         
         $cApiModule->set("name", $name);
         $cApiModule->set("output", $output);

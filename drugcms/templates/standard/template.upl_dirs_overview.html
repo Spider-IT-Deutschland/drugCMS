@@ -11,39 +11,36 @@
     <script type="text/javascript" src="scripts/messageBox.js.php?contenido={SID}"></script>
     
     <script type="text/javascript">
-      
-      var sid = "{SID}";
-      box = new messageBox("", "", "", 0, 0);
-      function deleteDirectory(path) 
-        {
-          url  = 'main.php?area=upl';
-          url += '&frame=2';
-          url += '&contenido=' + sid;
-          {APPENDPARAMETERS}
-          url += '&path=' + path;
-          url += '&action=upl_delete';
-          window.location.href = url;
+        var sid = "{SID}";
+        box = new messageBox("", "", "", 0, 0);
+        function deleteDirectory(path) {
+            url  = 'main.php?area=upl';
+            url += '&frame=1';
+            url += '&contenido=' + sid;
+            parent.frames.left_top.document.location.href = url;
+            url  = 'main.php?area=upl';
+            url += '&frame=2';
+            url += '&contenido=' + sid;
+            {APPENDPARAMETERS}
+            url += '&path=' + path;
+            url += '&action=upl_delete';
+            window.location.href = url;
         }
-        
-      function renameDir (oldname, parent)
-      {
-        var newname;
-        var url;
-       	newname = prompt("{RENAME}",oldname);
-
-			  if (newname)
-			  {
-          url  = 'main.php?area=upl';
-          url += '&action=upl_renamedir';
-          url += '&frame=2';
-          url += '&newname=' + newname;
-          url += '&oldname=' + oldname;
-          url += '&parent=' + parent;
-          url += '&contenido=' + sid;
-          window.location.href = url;		
-			  }
-      }
-
+        function renameDir (oldname, parent) {
+            var newname;
+            var url;
+            newname = prompt("{RENAME}",oldname);
+            if (newname) {
+                url  = 'main.php?area=upl';
+                url += '&action=upl_renamedir';
+                url += '&frame=2';
+                url += '&newname=' + newname;
+                url += '&oldname=' + oldname;
+                url += '&parent=' + parent;
+                url += '&contenido=' + sid;
+                window.location.href = url;		
+            }
+        }
     </script>
 </head>
 <body>
@@ -57,8 +54,8 @@
         <td style="padding-left: {INDENT}px">
             <table style="margin-top:-1px;" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td align="left" valign="top" class="text_medium" nowrap="nowrap">{COLLAPSE}{DIRNAME}</td>
-									<td align="right" nowrap="nowrap">{EDITBUTTON}{DELETEBUTTON}</td>
+                    <td align="left" valign="top" class="text_medium" nowrap="nowrap">{COLLAPSE}{DIRNAME}</td>
+                    <td align="right" nowrap="nowrap">{EDITBUTTON}{DELETEBUTTON}</td>
                 </tr>
             </table>
         </td>

@@ -71,6 +71,12 @@ abstract class SearchBaseAbstract
     protected $client;
 
     /**
+     * Encoding array
+     * @var int
+     */
+    protected $encoding;
+
+    /**
      * Flag to enable debug
      * @var bool
      */
@@ -84,18 +90,19 @@ abstract class SearchBaseAbstract
      */
     protected function __construct($oDB = null, $bDebug = false)
     {
-        global $cfg, $lang, $client;
+        global $cfg, $lang, $client, $encoding;
 
-        $this->cfg    = $cfg;
-        $this->lang   = $lang;
-        $this->client = $client;
+        $this->cfg      = $cfg;
+        $this->lang     = $lang;
+        $this->client   = $client;
+        $this->encoding = $encoding;
 
         $this->setDebug((bool) $bDebug);
 
-        if ($oDB == null) {
-            $this->db = new DB_Contenido();
-        } elseif (is_object($oDB)) {
+        if (is_object($oDB)) {
             $this->db = $oDB;
+        } else {
+            $this->db = new DB_Contenido();
         }
     }
 
@@ -473,20 +480,20 @@ class Index extends SearchBaseAbstract
         // a client and should not be treated in this method.
         // modified 2007-10-01, H. Librenz - added as hotfix for encoding problems (doesn't find any words with
         //                                      umlaut vowels in it since you turn on UTF-8 as language encoding)
-        $sEncoding = getEncodingByLanguage($this->db, $this->lang, $this->cfg);
+        $sEncoding = $this->encoding[$this->lang];#getEncodingByLanguage($this->db, $this->lang, $this->cfg);
 
-        if (strtolower($sEncoding) != 'iso-8859-2') {
+#        if (strtolower($sEncoding) != 'iso-8859-2') {
             $key = htmlentities($key, NULL, $sEncoding);
-        } else {
-            $key = htmlentities_iso88592($key);
-        }
+#        } else {
+#            $key = htmlentities_iso88592($key);
+#        }
 
         $aUmlautMap = array (
-            '&Uuml;'   => 'ue',
+            '&Uuml;'   => 'Ue',
             '&uuml;'   => 'ue',
-            '&Auml;'   => 'ae',
+            '&Auml;'   => 'Ae',
             '&auml;'   => 'ae',
-            '&Ouml;'   => 'oe',
+            '&Ouml;'   => 'Oe',
             '&ouml;'   => 'oe',
             '&szlig;'  => 'ss'
         );
@@ -510,13 +517,13 @@ class Index extends SearchBaseAbstract
      */
     function addSpecialUmlauts($key)
     {
-        $key = htmlentities($key, null, getEncodingByLanguage($this->db, $this->lang, $this->cfg));
+        $key = htmlentities($key, null, $this->encoding[$this->lang]);#getEncodingByLanguage($this->db, $this->lang, $this->cfg));
         $aUmlautMap = array (
-            'ue'    => '&Uuml;',
+            'Ue'    => '&Uuml;',
             'ue'    => '&uuml;',
-            'ae'    => '&Auml;',
+            'Ae'    => '&Auml;',
             'ae'    => '&auml;',
-            'oe'    => '&Ouml;',
+            'Oe'    => '&Ouml;',
             'oe'    => '&ouml;',
             'ss'    => '&szlig;'
         );

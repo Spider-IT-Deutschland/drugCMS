@@ -276,7 +276,7 @@ function capiStrReplaceDiacritics($sString, $sourceEncoding = null, $targetEncod
         $aReplace = array('Ae','Oe','Ue','ae','oe','ue','ss','A','A','A','a','a','a','E','E','E','e','e','e','I','I','I','i','i','i','O','O','O','o','o','o','U','U','U','u','u','u');
     }
     if(function_exists('mb_convert_encoding')) {
-        $sString = mb_convert_encoding($sString, 'UTF-8', 'auto');
+        $sString = mb_convert_encoding($sString, 'UTF-8', 'auto, ISO-8859-1, UTF-8');
     } else {
         $sString = utf8_encode($sString);
     }

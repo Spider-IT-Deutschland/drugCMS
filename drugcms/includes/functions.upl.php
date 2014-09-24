@@ -411,29 +411,29 @@ function uplSyncDirectoryDBFS ($path)
 
 function uplmkdir($path,$name) {
 	
-        global $cfgClient, $client, $action;
-       
-        if (is_dbfs($path))
-        {
-        	$path = str_replace("dbfs:","", $path);
-        	
-        	$fullpath = $path."/".$name."/.";
-        	
-        	$dbfs = new DBFSCollection;
-        	$dbfs->create($fullpath);
-        	return;	
-        }
+    global $cfgClient, $client, $action;
+   
+    if (is_dbfs($path))
+    {
+        $path = str_replace("dbfs:","", $path);
         
-        $name = uplCreateFriendlyName($name);
-        $name = strtr($name, "'", ".");
-        if(file_exists($cfgClient[$client]['upl']['path'].$path.$name)) {
-                $action = "upl_mkdir";
-                return "0702";
-        } else {
-                $oldumask = umask(0);
-                @mkdir($cfgClient[$client]['upl']['path'].$path.$name,0775);
-                umask($oldumask);
-        }
+        $fullpath = $path."/".$name."/.";
+        
+        $dbfs = new DBFSCollection;
+        $dbfs->create($fullpath);
+        return;	
+    }
+    
+    $name = uplCreateFriendlyName($name);
+    $name = strtr($name, "'", ".");
+    if(file_exists($cfgClient[$client]['upl']['path'].$path.$name)) {
+            $action = "upl_mkdir";
+            return "0702";
+    } else {
+            $oldumask = umask(0);
+            @mkdir($cfgClient[$client]['upl']['path'].$path.$name,0775);
+            umask($oldumask);
+    }
 }
 
 function uplRenameDirectory ($oldpath, $newpath, $parent)
@@ -877,6 +877,9 @@ function uplCreateFriendlyName ($filename)
 	} elseif (in_array(' ', $cfg['upl']['allow_additional_chars']) === FALSE) {
 		$filename = str_replace(" ", "_", $filename);
 	}
+    
+    cInclude('includes', 'functions.api.string.php');
+    $filename = capiStrReplaceDiacritics($filename);
 	
 	for ($i=0;$i<strlen($filename);$i++)
 	{

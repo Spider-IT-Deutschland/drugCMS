@@ -623,7 +623,7 @@ else
     ##############################################
 
     /* Check if code is expired, create new code if needed */
-    if ($db->f("createcode") == 0 && $force == 0)
+    if (($db->f("createcode") == 0) && ($force == 0) && (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))))
     {
         $sql = "SELECT code FROM ".$cfg["tab"]["code"]." WHERE idcatart = '".Contenido_Security::toInteger($idcatart)."' AND idlang = '".Contenido_Security::toInteger($lang)."'";
         $db->query($sql);

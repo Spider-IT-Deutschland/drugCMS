@@ -37,23 +37,23 @@ h2 {
 </div>
 <br style="clear:both;" />
 <h2>Introduction</h2>
-In the past, all modifications to Contenido's config.php file were lost
+In the past, all modifications to Contenido&#39;s config.php file were lost
 during an upgrade.<br>
 <br>
 <h2>Where? What? How?<br>
 </h2>
 Contenido now includes a local config file - config.local.php. This
-file isn't overwritten during an upgrade, so you can make your changes
+file isn&#39;t overwritten during an upgrade, so you can make your changes
 there (recommended by now). It is included in the main config.php file.
 Remember that the config.php file is usually the first file included;
-don't do any tricks like database queries there.<br>
+don&#39;t do any tricks like database queries there.<br>
 <br>
 <h2>Frontend config?</h2>
-Yep, that's also possible. Just create a file "config.local.php" in the
+Yep, that&#39;s also possible. Just create a file "config.local.php" in the
 frontend directory. The file will be executed just after the
-front_content.php's init code (so you've got all variables and database
+front_content.php&#39;s init code (so you&#39;ve got all variables and database
 available), but just before the magic starts (like executing the
-content code etc). Note that everything is available from the backend's
+content code etc). Note that everything is available from the backend&#39;s
 config.local.php also.<br>
 <br>
 </body>

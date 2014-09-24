@@ -86,6 +86,59 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
     		}
     	}
     }
+    
+    if ($action == 'mod_export') {
+        # Export the module into files
+        $sDirName   = getEffectiveSetting('modules_in_files', 'folder_name', 'modules');
+        $sFullPath  = getEffectiveSetting('modules_in_files', 'full_path', '');
+        if (strlen($sFullPath) == 0) {
+            $sFullPath  = $cfgClient[$client]['path']['frontend'] . 'data/' . $sDirName . '/' . uplCreateFriendlyName($module->get('name')) . '/';
+        }
+        if (!is_dir($sFullPath)) {
+            mkdir($sFullPath, 0777, true);
+        }
+        $fp = fopen($sFullPath . uplCreateFriendlyName($module->get('name')) . '-input.php', 'w');
+        fwrite($fp, $module->get('input'));
+        fclose($fp);
+        $fp = fopen($sFullPath . uplCreateFriendlyName($module->get('name')) . '-output.php', 'w');
+        fwrite($fp, $module->get('output'));
+        fclose($fp);
+        $module->loadByPrimaryKey($module->get($module->primaryKey));
+    } elseif (($action == 'mod_sync') || ($action == 'mod_sync_and_delete')) {
+        # Synchronize this module from files into the database
+        if ($module->isLoadedFromFile('input')) {
+            $module->set("input", addslashes($module->get('input')));
+        }
+        if ($module->isLoadedFromFile('output')) {
+            $module->set("output", addslashes($module->get('output')));
+        }
+        $module->set("lastmodified", date("Y-m-d H:i:s"));
+        $module->store();
+        
+        if ($action == 'mod_sync_and_delete') {
+            # Delete the module's files and folder
+            $sDirName   = getEffectiveSetting('modules_in_files', 'folder_name', 'modules');
+            $sFullPath  = getEffectiveSetting('modules_in_files', 'full_path', '');
+            if (strlen($sFullPath) == 0) {
+                $sFullPath  = $cfgClient[$client]['path']['frontend'] . 'data/' . $sDirName . '/' . uplCreateFriendlyName($module->get('name')) . '/';
+            }
+            if (is_file($sFullPath . uplCreateFriendlyName($module->get('name')) . '-input.php')) {
+                unlink($sFullPath . uplCreateFriendlyName($module->get('name')) . '-input.php');
+            } elseif (is_file($sFullPath . 'input.php')) {
+                unlink($sFullPath . 'input.php');
+            }
+            if (is_file($sFullPath . uplCreateFriendlyName($module->get('name')) . '-output.php')) {
+                unlink($sFullPath . uplCreateFriendlyName($module->get('name')) . '-output.php');
+            } elseif (is_file($sFullPath . 'output.php')) {
+                unlink($sFullPath . 'output.php');
+            }
+            rmdir($sFullPath);
+            # We must do this because of slashes which cause the module to be set to error state if the script continues
+            header('Location: ' . $sess->url('main.php?area=' . $area . '&frame=' . $frame . '&idmod=' . $idmod));
+            die('<script>document.location.href="' . $sess->url('main.php?area=' . $area . '&frame=' . $frame . '&idmod=' . $idmod));
+        }
+        $module = new cApiModule($module->get("idmod"));
+    }
 
 	$idmod = $module->get("idmod");
 	
@@ -97,9 +150,14 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
 		
 		header("Location: ".$link->getHREF());
 	} else {
-    	$oInUse = new InUseCollection;
-    	list($bInUse, $message) = $oInUse->checkAndMark("idmod", $idmod, true, i18n("Module is in use by %s (%s)"), true, "main.php?area=$area&frame=$frame&idmod=$idmod");
-    	unset ($oInUse);
+        if (($module->isLoadedFromFile('input')) || ($module->isLoadedFromFile('output'))) {
+            $bInUse = true;
+            $message = '';
+        } else {
+            $oInUse = new InUseCollection;
+            list($bInUse, $message) = $oInUse->checkAndMark("idmod", $idmod, true, i18n("Module is in use by %s (%s)"), true, "main.php?area=$area&frame=$frame&idmod=$idmod");
+            unset ($oInUse);
+        }
     	
     	if ($bInUse == true)
     	{
@@ -367,13 +425,19 @@ function insertTab(event, obj) {
 				$page->setReload();
 			}
 		}
-  /* dceModFileEdit (c)2009-2011 www.dceonline.de */
-  if($cfg['dceModEdit']['use']) {
-      $form->add(i18n("Name"), $name->render()." (id: ".$module->get("idmod")." | dir: ".uplCreateFriendlyName($module->get("name")).")");
-  } else {
-		$form->add(i18n("Name"), $name->render());
-  }
-  /* End dceModFileEdit (c)2009-2011 www.dceonline.de */
+        /* dceModFileEdit (c)2009-2011 www.dceonline.de */
+        if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+            if (($module->isLoadedFromFile('input')) || ($module->isLoadedFromFile('output'))) {
+                # Module uses files, offer the syc option
+                $form->add(i18n('Name'), $name->render() . ' <a href="' . $sess->url('main.php?area=mod_edit&frame=4&idmod=' . $module->get('idmod') . '&action=mod_sync') . '" class="modSync">' . i18n("Synchronize") . '</a> <a href="' . $sess->url('main.php?area=mod_edit&frame=4&idmod=' . $module->get('idmod') . '&action=mod_sync_and_delete') . '" class="modSyncAndDelete">' . i18n("Synchronize and delete files") . '</a> (dir: ' . $module->getFullPath() . ')');
+            } else {
+                # Module doesn't use files, offer the export function
+                $form->add(i18n('Name'), $name->render() . ' <a href="' . $sess->url('main.php?area=mod_edit&frame=4&idmod=' . $module->get('idmod') . '&action=mod_export') . '" class="modExportToFile">' . i18n("Export to files") . '</a>');# (dir: ' . $module->getFullPath() . ')');
+            }
+        } else {
+            $form->add(i18n("Name"), $name->render());
+        }
+        /* End dceModFileEdit (c)2009-2011 www.dceonline.de */
 		$form->add(i18n("Type"), $typeselect->render().$custom->render());	
 		$form->add(i18n("Description"), $descr->render());
         		

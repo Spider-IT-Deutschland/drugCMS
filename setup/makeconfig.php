@@ -47,6 +47,7 @@ $tpl->set('s', 'MYSQL_DB', $_SESSION['dbname']);
 $tpl->set('s', 'MYSQL_USER', $_SESSION['dbuser']);
 $tpl->set('s', 'MYSQL_PASS', $_SESSION['dbpass']);
 $tpl->set('s', 'MYSQL_PREFIX', $_SESSION['dbprefix']);
+$tpl->set('s', 'DB_ENCODING', $_SESSION['dbencoding']);
 $tpl->set('s', 'DB_EXTENSION', $_SESSION['dbmode']);
 
 $tpl->set('s', 'START_COMPATIBLE', (($_SESSION['start_compatible']) ? 'true' : 'false'));

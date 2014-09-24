@@ -180,9 +180,9 @@ $(document).ready( function(){
 
 //activate save confirmation on page leave
 if (document.all) {
-	window.onunload = leave_check;
+	//window.onunload = leave_check;
 } else {
-	window.onbeforeunload = leave_check;
+	//window.onbeforeunload = leave_check;
 }
 
 var file_url = "{FILE}"; //Global var which contains url to contenido image browser

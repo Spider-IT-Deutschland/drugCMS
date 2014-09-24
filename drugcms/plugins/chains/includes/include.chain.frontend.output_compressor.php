@@ -54,7 +54,8 @@ function cecOutputCompressor($sCode) {
             # IE conditional comment start tag
             $p2 = strpos($sCode, ']-->', ($p1 + 1));
             $p1 = strpos($sCode, '<!--', ($p2 + 1));
-        } elseif ((substr(str_replace(array("\n", ' '), '', substr($sCode, 0, $p1)), -30) == '<scripttype="text/javascript">') || (substr(str_replace(array("\n", ' '), '', substr($sCode, 0, $p1)), -30) == "<scripttype='text/javascript'>")) {
+# TODO: Better recognition of script blocks
+        } elseif ((substr(str_replace(array("\n", ' '), '', substr($sCode, 0, $p1)), -30) == '<script type="text/javascript">') || (substr(str_replace(array("\n", ' '), '', substr($sCode, 0, $p1)), -30) == "<script type='text/javascript'>")) {
             # HTML comment in Javascript block (e.g. <script type="text/javascript"><!--  --></script>)
             $p1 = strpos($sCode, '<!--', ($p1 + 1));
         } else {
@@ -71,8 +72,8 @@ function cecOutputCompressor($sCode) {
     }
     
     # First find all style and script link tags and script blocks inside IE conditional comments (eg <!--[if IE]>...<![endif]-->)
-    # We can move the complete block to the end of the head section if only link tags are included, otherwise we must move only the links
-    # while rebuilding the IE conditional comments around them
+    # We can move the complete block to the end of the head/body section if only link tags are included, otherwise we must move only
+    # the links while rebuilding the IE conditional comments around them
     $IE = array();
     $IElinks = array();
     $IEscripts = array();
@@ -83,28 +84,29 @@ function cecOutputCompressor($sCode) {
         # First get the exact start comment
         $p2 = strpos($sCode, '>', $p1);
         $c = substr($sCode, $p1, (($p2 - $p1) + 1));
+        if (substr($sCode, ($p2 + 1), 5) == '<!-->') {
+            $c .= '<!-->';
+        }
         $IEtmp = array();
         $p2 = strpos($sCode, 'endif]-->', $p1);
         $tmp = substr($sCode, $p1, (($p2 - $p1) + 9));
-        # Find all style link tags with rel="stylesheet" and type="text/css"
+        # Find all style link tags with rel="stylesheet"
         $p3 = strpos($tmp, '<link');
         while ($p3 !== false) {
             $p4 = strpos($tmp, '>', $p3);
             $tmp2 = substr($tmp, $p3, (($p4 - $p3) + 1));
             if ((strpos(strtolower($tmp2), 'rel="stylesheet"')) || (strpos(strtolower($tmp2), "rel='stylesheet'"))) {
-                if ((strpos(strtolower($tmp2), 'type="text/css"')) || (strpos(strtolower($tmp2), "type='text/css'"))) {
-                    # Extract the path and filename
-                    $url = '';
-                    $p5 = strpos($tmp2, 'href=');
-                    if ($p5 !== false) { # shouldn't happen, an address is needed
-                        $p5 += 6;
-                        $char = substr($tmp2, ($p5 - 1), 1);
-                        $p6 = strpos($tmp2, $char, $p5);
-                        $url = substr($tmp2, $p5, ($p6 - $p5));
-                        # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
-                        $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
-                        $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
-                    }
+                # Extract the path and filename
+                $url = '';
+                $p5 = strpos($tmp2, 'href=');
+                if ($p5 !== false) { # shouldn't happen, an address is needed
+                    $p5 += 6;
+                    $char = substr($tmp2, ($p5 - 1), 1);
+                    $p6 = strpos($tmp2, $char, $p5);
+                    $url = substr($tmp2, $p5, ($p6 - $p5));
+                    # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
+                    $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
+                    $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
                     # Sort into array grouped by media type
                     $p5 = strpos($tmp2, 'media=');
                     if ($p5 !== false) {
@@ -170,15 +172,10 @@ function cecOutputCompressor($sCode) {
                 $IEtmp[] = $tmp2;
             } else {
                 # Script block
-/*
-                $p5 = strpos($sCode, '</head>');
-                if ($p3 < $p5) {
-                    $p4 = strpos($tmp, '</script>', $p3);
-                    $tmp2 = substr($tmp, $p3, (($p4 - $p3) + 9));
-                    $IEscriptblocks[$c][] = $tmp2;
-                    $IEtmp[] = $tmp2;
-                }
-*/
+                $p4 = strpos($tmp, '</script>', $p3);
+                $tmp2 = substr($tmp, $p3, (($p4 - $p3) + 9));
+                $IEscriptblocks[$c][] = $tmp2;
+                $IEtmp[] = $tmp2;
             }
             $p3 = strpos($tmp, '<script', $p4);
         }
@@ -205,7 +202,7 @@ function cecOutputCompressor($sCode) {
             $tmp2 = str_replace(' ', '', $tmp2);
         }
         # Now check the length of the resultung string
-        if (strlen($tmp2) <= (strlen($c) + 12)) { # (start tag + end tag)
+        if (strlen($tmp2) <= (strlen($c) + 16)) { # (start tag + end tag)
             # The block can be taken out from it's original position
             $IE[] = $tmp;
         } else {
@@ -223,39 +220,37 @@ function cecOutputCompressor($sCode) {
         $sCode = str_replace($IE[$i], '', $sCode);
     }
     
-    # Find all link tags with rel="stylesheet" and type="text/css", grouped by their media= parameter ({screen|all|print|...})
+    # Find all link tags with rel="stylesheet", grouped by their media= parameter ({screen|all|print|...})
     $stylesheets = array();
     $p1 = strpos($sCode, '<link');
     while ($p1 !== false) {
         $p2 = strpos($sCode, '>', $p1);
         $tmp = substr($sCode, $p1, (($p2 - $p1) + 1));
         if ((strpos(strtolower($tmp), 'rel="stylesheet"')) || (strpos(strtolower($tmp), "rel='stylesheet'"))) {
-            if ((strpos(strtolower($tmp), 'type="text/css"')) || (strpos(strtolower($tmp), "type='text/css'"))) {
-                # Extract the path and filename
-                $url = '';
-                $p3 = strpos($tmp, 'href=');
-                if ($p3 !== false) { # shouldn't happen, an address is needed
-                    $p3 += 6;
+            # Extract the path and filename
+            $url = '';
+            $p3 = strpos($tmp, 'href=');
+            if ($p3 !== false) { # shouldn't happen, an address is needed
+                $p3 += 6;
+                $char = substr($tmp, ($p3 - 1), 1);
+                $p4 = strpos($tmp, $char, $p3);
+                $url = substr($tmp, $p3, ($p4 - $p3));
+                # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
+                $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
+                $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
+            }
+            # Exclude files with complete URLs or parameters
+            if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
+                # Sort into array grouped by media type
+                $p3 = strpos($tmp, 'media=');
+                if ($p3 !== false) {
+                    $p3 += 7;
                     $char = substr($tmp, ($p3 - 1), 1);
                     $p4 = strpos($tmp, $char, $p3);
-                    $url = substr($tmp, $p3, ($p4 - $p3));
-                    # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
-                    $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
-                    $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
-                }
-                # Exclude files with complete URLs or parameters
-                if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
-                    # Sort into array grouped by media type
-                    $p3 = strpos($tmp, 'media=');
-                    if ($p3 !== false) {
-                        $p3 += 7;
-                        $char = substr($tmp, ($p3 - 1), 1);
-                        $p4 = strpos($tmp, $char, $p3);
-                        $media = substr($tmp, $p3, ($p4 - $p3));
-                        $stylesheets[$media][] = array('url' => $url, 'old' => $tmp);
-                    } else {
-                        $stylesheets['all'][] = array('url' => $url, 'old' => $tmp);
-                    }
+                    $media = substr($tmp, $p3, ($p4 - $p3));
+                    $stylesheets[$media][] = array('url' => $url, 'old' => $tmp);
+                } else {
+                    $stylesheets['all'][] = array('url' => $url, 'old' => $tmp);
                 }
             }
         }
@@ -294,7 +289,7 @@ function cecOutputCompressor($sCode) {
                 if (strlen($sheets[$i]['url'])) {
                     # Find and extract included stylesheet files
                     if (is_file($cfgClient[$client]['path']['frontend'] . $sheets[$i]['url'])) {
-                        $content = file_get_contents($cfgClient[$client]['path']['frontend'] . $sheets[$i]['url']);
+                        $content = @file_get_contents($cfgClient[$client]['path']['frontend'] . $sheets[$i]['url']);
                         if (strrpos($sheets[$i]['url'], '/') > 0) {
                             $path = substr($sheets[$i]['url'], 0, (strrpos($sheets[$i]['url'], '/') + 1));
                         } else {
@@ -371,7 +366,7 @@ function cecOutputCompressor($sCode) {
                     for ($i = 0, $n = count($sheets); $i < $n; $i ++) {
                         if (strlen($sheets[$i]['url'])) {
                             # Find and extract included stylesheet files
-                            $content = file_get_contents($cfgClient[$client]['path']['frontend'] . $sheets[$i]['url']);
+                            $content = @file_get_contents($cfgClient[$client]['path']['frontend'] . $sheets[$i]['url']);
                             if (strrpos($sheets[$i]['url'], '/') > 0) {
                                 $path = substr($sheets[$i]['url'], 0, (strrpos($sheets[$i]['url'], '/') + 1));
                             } else {
@@ -408,9 +403,11 @@ function cecOutputCompressor($sCode) {
                     }
                     # Compress the files into a single one
                     $compressed = Output_Compressor::generate($cfgClient[$client]['path']['frontend'] . 'cache/', $files, 'css', $cfgClient[$client]['path']['htmlpath']);
-                    # Add the compressed file link to the end of the head section
-                    $p1 = strpos($sCode, '</head>');
-                    $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=css" />' . "\n" . substr($sCode, $p1);
+                    if ($compressed) {
+                        # Add the compressed file link to the end of the head section
+                        $p1 = strpos($sCode, '</head>');
+                        $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=css" />' . "\n" . substr($sCode, $p1);
+                    }
                     # Remove the old links for this media type
                     for ($i = 0, $n = count($sheets); $i < $n; $i ++) {
                         if (strlen($sheets[$i]['url'])) {
@@ -421,7 +418,7 @@ function cecOutputCompressor($sCode) {
             }
             # Add the conditional comment end tag to the end of the head section
             $p1 = strpos($sCode, '</head>');
-            $sCode = substr($sCode, 0, $p1) . '<![endif]-->' . "\n" . substr($sCode, $p1);
+            $sCode = substr($sCode, 0, $p1) . ((substr($condition, -5) == '<!-->') ? '<!--' : '') . '<![endif]-->' . "\n" . substr($sCode, $p1);
         }
     }
     unset($IElinks);
@@ -514,12 +511,9 @@ function cecOutputCompressor($sCode) {
             $scripts[] = array('url' => $url, 'compress' => $compress, 'old' => $tmp);
         } else {
             # Script block
-            $p3 = strpos($sCode, '</head>');
-            if ($p1 < $p3) {
-                $p2 = strpos($sCode, '</script>', $p1);
-                $tmp = substr($sCode, $p1, (($p2 - $p1) + 9));
-                $scriptblocks[] = $tmp;
-            }
+            $p2 = strpos($sCode, '</script>', $p1);
+            $tmp = substr($sCode, $p1, (($p2 - $p1) + 9));
+            $scriptblocks[] = $tmp;
             $p1 = strpos($sCode, '<script', $p2);
         }
         $p1 = strpos($sCode, '<script', $p2);
@@ -551,15 +545,15 @@ function cecOutputCompressor($sCode) {
                 if (count($files)) {
                     $compressed = Output_Compressor::generate($cfgClient[$client]['path']['frontend'] . 'cache/', $files, 'js', $cfgClient[$client]['path']['htmlpath']);
                     $tmp = '<script type="text/javascript" src="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=javascript"></script>';
-                    # Add the link to the end of the head section
-                    $p1 = strpos($sCode, '</head>');
+                    # Add the link to the end of the body section
+                    $p1 = strpos($sCode, '</body>');
                     $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
                     $files = array();
                 }
                 # Create the link code
                 $tmp = '<script type="text/javascript" src="' . $scripts[$i]['url'] . '"></script>';
-                # Add the link to the end of the head section
-                $p1 = strpos($sCode, '</head>');
+                # Add the link to the end of the body section
+                $p1 = strpos($sCode, '</body>');
                 $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
             } else {
                 $files[] = $cfgClient[$client]['path']['frontend'] . $scripts[$i]['url'];
@@ -569,8 +563,8 @@ function cecOutputCompressor($sCode) {
             # Compress the files into one single file
             $compressed = Output_Compressor::generate($cfgClient[$client]['path']['frontend'] . 'cache/', $files, 'js', $cfgClient[$client]['path']['htmlpath']);
             $tmp = '<script type="text/javascript" src="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=javascript"></script>';
-            # Add the link to the end of the head section
-            $p1 = strpos($sCode, '</head>');
+            # Add the link to the end of the body section
+            $p1 = strpos($sCode, '</body>');
             $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
         }
     }
@@ -583,7 +577,7 @@ function cecOutputCompressor($sCode) {
     if (count($scriptblocks)) {
         for ($i = 0, $n = count($scriptblocks); $i < $n; $i ++) {
             $sCode = str_replace($scriptblocks[$i], '', $sCode);
-            $p1 = strpos($sCode, '</head>');
+            $p1 = strpos($sCode, '</body>');
             $sCode = substr($sCode, 0, $p1) . $scriptblocks[$i] . "\n" . substr($sCode, $p1);
         }
     }
@@ -592,8 +586,8 @@ function cecOutputCompressor($sCode) {
     # Rebuild the code for the IE-commented script links
     if (count($IEscripts)) {
         foreach ($IEscripts as $condition => $links) {
-            # Add the conditional comment start tag to the end of the head section
-            $p1 = strpos($sCode, '</head>');
+            # Add the conditional comment start tag to the end of the body section
+            $p1 = strpos($sCode, '</body>');
             $sCode = substr($sCode, 0, $p1) . $condition . "\n" . substr($sCode, $p1);
             # Put the links there
             # Call the compressor class and replace the old script links with the single new one
@@ -606,15 +600,15 @@ function cecOutputCompressor($sCode) {
                         if (count($files)) {
                             $compressed = Output_Compressor::generate($cfgClient[$client]['path']['frontend'] . 'cache/', $files, 'js', $cfgClient[$client]['path']['htmlpath']);
                             $tmp = '<script type="text/javascript" src="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=javascript"></script>';
-                            # Add the link to the end of the head section
-                            $p1 = strpos($sCode, '</head>');
+                            # Add the link to the end of the body section
+                            $p1 = strpos($sCode, '</body>');
                             $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
                             $files = array();
                         }
                         # Create the link code
                         $tmp = '<script type="text/javascript" src="' . $links[$i]['url'] . '"></script>';
-                        # Add the link to the end of the head section
-                        $p1 = strpos($sCode, '</head>');
+                        # Add the link to the end of the body section
+                        $p1 = strpos($sCode, '</body>');
                         $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
                     } else {
                         $files[] = $cfgClient[$client]['path']['frontend'] . $links[$i]['url'];
@@ -624,13 +618,13 @@ function cecOutputCompressor($sCode) {
                     # Compress the files into one single file
                     $compressed = Output_Compressor::generate($cfgClient[$client]['path']['frontend'] . 'cache/', $files, 'js', $cfgClient[$client]['path']['htmlpath']);
                     $tmp = '<script type="text/javascript" src="front_content.php?action=get_compressed&amp;f=' . $compressed . '&amp;c=javascript"></script>';
-                    # Add the link to the end of the head section
-                    $p1 = strpos($sCode, '</head>');
+                    # Add the link to the end of the body section
+                    $p1 = strpos($sCode, '</body>');
                     $sCode = substr($sCode, 0, $p1) . $tmp . "\n" . substr($sCode, $p1);
                 }
             }
-            # Add the conditional comment end tag to the end of the head section
-            $p1 = strpos($sCode, '</head>');
+            # Add the conditional comment end tag to the end of the body section
+            $p1 = strpos($sCode, '</body>');
             $sCode = substr($sCode, 0, $p1) . '<![endif]-->' . "\n" . substr($sCode, $p1);
         }
     }
@@ -641,8 +635,8 @@ function cecOutputCompressor($sCode) {
     # Rebuild the code for the IE-commented script blocks
     if (count($IEscriptblocks)) {
         foreach ($IEscriptblocks as $condition => $link) {
-            # Add the conditional comment start tag to the end of the head section
-            $p1 = strpos($sCode, '</head>');
+            # Add the conditional comment start tag to the end of the body section
+            $p1 = strpos($sCode, '</body>');
             $sCode = substr($sCode, 0, $p1) . $condition . "\n" . $link . "\n" . '<![endif]-->' . "\n" . substr($sCode, $p1);
         }
     }
@@ -672,6 +666,31 @@ function cecOutputCompressor($sCode) {
         unset($aCnt);
     }
     
+    # Remove empty conditional comment tags
+    $p1 = strpos($sCode, '<!--[if');
+    while ($p1 !== false) {
+        # First get the exact start comment
+        $p2 = strpos($sCode, '>', $p1);
+        $c = substr($sCode, $p1, (($p2 - $p1) + 1));
+        if (substr($sCode, ($p2 + 1), 5) == '<!-->') {
+            $c .= '<!-->';
+        }
+        $p2 = strpos($sCode, 'endif]-->', $p1);
+        $tmp = substr($sCode, $p1, (($p2 - $p1) + 9));
+        # Remove line breaks and tabs
+        $tmp2 = str_replace(array("\r\n", "\r", "\n", "\t"), '', $tmp);
+        # Remove spaces
+        while (strpos($tmp2, ' ') !== false) {
+            $tmp2 = str_replace(' ', '', $tmp2);
+        }
+        # Now check the length of the resultung string
+        if (strlen($tmp2) <= (strlen($c) + 16)) { # (start tag + end tag)
+            # The block can be taken out from it's original position
+            $sCode = str_replace($tmp, '', $sCode);
+        }
+        $p1 = strpos($sCode, '<!--[if', ($p1 + 1));
+    }
+    
     # Remove blank lines except in <textarea> controls
     $aLines = explode("\n", $sCode);
     $sCode = '';
@@ -691,6 +710,7 @@ function cecOutputCompressor($sCode) {
     
     # Do some more cleanup
     unset($tmp);
+    unset($tmp2);
     unset($char);
     unset($url);
     unset($p1);

@@ -190,6 +190,10 @@ if ((!isset($cfgClient['set'])) || ($cfgClient["set"] != "set")) {
  	rereadClients ();
 }
 
+if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+    $force = true;
+}
+
 # Initialize Contenido_Backend.
 # Load all actions from the DB
 # and check if permission is

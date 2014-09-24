@@ -102,6 +102,8 @@ $contenido_user = '{MYSQL_USER}';
 /* The password to access the database */
 $contenido_password = '{MYSQL_PASS}';
 
+$cfg["database_encoding"] = '{DB_ENCODING}';
+
 $cfg["database_extension"] = '{DB_EXTENSION}';
 
 $cfg["nolock"] = '{NOLOCK}';

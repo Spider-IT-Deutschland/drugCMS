@@ -69,6 +69,11 @@ if ($action == "lang_newlanguage" || $action == "lang_deletelanguage")
 								}
 							}
 							langList.remove(thepos);
+                            if (langList.length == 0) {
+                                var newLang = new Option("' . i18n("-- No Language available --") . '", "", false, false);
+                                var langList = top.header.document.getElementById("cLanguageSelect");
+                                langList.options[langList.length] = newLang;
+                            }
 						  </script>';
         }
         
@@ -83,8 +88,8 @@ if ($action == "lang_newlanguage" || $action == "lang_deletelanguage")
             $newOption = '<script language="javascript">
 							var newLang = new Option("'.i18n("New language").' ('.$new_idlang.')", "'.$new_idlang.'", false, false);
 							var langList = top.header.document.getElementById("cLanguageSelect");
-							langList.options[langList.options.length] = newLang;
-							</script>';
+							langList.options[langList.length] = newLang;
+						  </script>';
             $idlang = $new_idlang;
         }
         
@@ -119,7 +124,7 @@ if ($action == "lang_newlanguage" || $action == "lang_deletelanguage")
 								langList.options[i].innerHTML = \''.$langname.' ('.$idlang.')\';
 							}
 						}
-						</script>';
+					  </script>';
 	}
 	
     if(!$perm->have_perm_area_action($area, $action))
@@ -130,7 +135,7 @@ if ($action == "lang_newlanguage" || $action == "lang_deletelanguage")
     
 		if ( !isset($idlang) && $action != "lang_new")
 		{
-		  $notification->displayNotification("error", "no language id given. Usually, this shouldn't happen, except if you played around with your system. if you didn't play around, please report a bug.");
+		  $notification->displayNotification("error", "no language id given. Usually, this shouldn't happen, except if you played around with your system. if you didn't play around, please <a href=\"forum.drugcms.org\">report a bug</a>.");
 		
 		} else {
 		

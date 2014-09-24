@@ -140,12 +140,21 @@ if ($cfgClient["set"] != "set")
 
 # Check if this request is for a compressed file
 if ($_GET['action'] == 'get_compressed') {
+    
     # Get the calling parameters
     $sFilename      = ((isset($_GET['f'])) ? $_GET['f'] : $_GET['amp;f']);
     $sContentType   = ((isset($_GET['c'])) ? $_GET['c'] : $_GET['amp;c']);
     
-    # Output the file using the class output() function
-    Output_Compressor::output($cfgClient[$client]['path']['frontend'] . 'cache/', $sFilename, $sContentType);
+    # Check if the file was already downloaded
+    $sFileName = substr($sFilename, 0, strrpos($sFilename, '.'));
+    $sFileDateTime = substr($sFileName, -14);
+    if (date('YmdHis', strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE'])) >= $sFileDateTime) {
+        # Return a "304 Not Modified" header
+        header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+    } else {
+        # Output the file using the class output() function
+        Output_Compressor::output($cfgClient[$client]['path']['frontend'] . 'cache/', $sFilename, $sContentType);
+    }
     
     # Don't do anything else
     exit();
@@ -204,6 +213,10 @@ if (!isset($lang)) {
 
 if (!$sess->is_registered("lang") ) $sess->register("lang");
 if (!$sess->is_registered("client") ) $sess->register("client");
+
+if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+    $force = true;
+}
 
 if (isset ($username))
 {
@@ -642,7 +655,7 @@ else
     ##############################################
 
     /* Check if code is expired, create new code if needed */
-    if ($db->f("createcode") == 0 && $force == 0 && $cfg['dceModEdit']['use'] !== true)
+    if (($db->f("createcode") == 0) && ($force == 0) && (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))))
     {
         $sql = "SELECT code FROM ".$cfg["tab"]["code"]." WHERE idcatart = '".Contenido_Security::toInteger($idcatart)."' AND idlang = '".Contenido_Security::toInteger($lang)."'";
         $db->query($sql);

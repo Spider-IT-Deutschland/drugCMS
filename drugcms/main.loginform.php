@@ -102,6 +102,7 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
 <!doctype html>
 <html>
 <head>
+    <meta charset="UTF-8" />
     <base href="<?php echo $cfg['path']['contenido_fullhtml'] ?>" />
     <title>drugCMS Login</title>
     <link rel="stylesheet" type="text/css" href="styles/drugcms.css" />
@@ -243,6 +244,6 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
     }
 </script>
 <!-- <?php echo $cfg['datetag']; ?> -->
-<div style="position: absolute; left: 5px; bottom: 5px; color: #CCC;">&copy; 2013 <a href="http://www.spider-it.de" target="_blank" style="font-weight: bold; color: #CCC;">Spider IT Deutschland</a></div>
+<div style="position: absolute; left: 5px; bottom: 5px; color: #CCC;">&copy; 2013-2014 <a href="http://www.spider-it.de" target="_blank" style="font-weight: bold; color: #CCC;">Spider IT Deutschland</a></div>
 </body>
 </html>

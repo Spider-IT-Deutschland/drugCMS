@@ -41,10 +41,11 @@ class cSetupSystemData extends cSetupMask {
 		cInitializeArrayKey($_SESSION, "dbname", "");
 		cInitializeArrayKey($_SESSION, "dbpass", "");
 		cInitializeArrayKey($_SESSION, "dbprefix", "");
+		cInitializeArrayKey($_SESSION, "dbencoding", "");
 		cInitializeArrayKey($_SESSION, "dbmode", "");
 		
 		if ((file_exists($a_root_path."/drugcms/includes/config.php")) || (file_exists($a_root_path."/contenido/includes/config.php"))) {
-			global $cfg; // Avoiding error message about "prepend3.php" on update from V4.x
+			global $cfg;
 			
 			$contenido_host		= ""; // Just define the variables to avoid warnings in IDE
 			$contenido_user		= "";
@@ -62,6 +63,7 @@ class cSetupSystemData extends cSetupMask {
 							"dbname"    => $contenido_database,
 							"dbpass"    => $contenido_password,
 							"dbprefix"  => $cfg["sql"]["sqlprefix"],
+                            "dbencoding" => $cfg["database_encoding"],
                             "dbmode"    => $cfg["database_extension"]);
 							
 			foreach ($aVars as $aVar => $sValue) {
@@ -114,20 +116,71 @@ class cSetupSystemData extends cSetupMask {
 		
 		$dbprefix = new cHTMLTextbox("dbprefix", $_SESSION["dbprefix"], 10, 30, '', ($_SESSION["setuptype"] != 'setup'));
 		
+        if ($_SESSION["setuptype"] == 'setup') {
+            $dbencoding = new cHTMLSelectElement("dbencoding", 30);
+            $dbencoding->autoFill(array(
+                                        array("big5", "Big5 Traditional Chinese (big5)"),
+                                        array("dec8", "DEC West European (dec8)"),
+                                        array("cp850", "DOS West European (cp850)"),
+                                        array("hp8", "HP West European (hp8)"),
+                                        array("koi8r", "KOI8-R Relcom Russian (koi8r)"),
+                                        array("latin1", "cp1252 West European (latin1)"),
+                                        array("latin2", "ISO 8859-2 Central European (latin2)"),
+                                        array("swe7", "7bit Swedish (swe7)"),
+                                        array("ascii", "US ASCII (ascii)"),
+                                        array("ujis", "EUC-JP Japanese (ujis)"),
+                                        array("sjis", "Shift-JIS Japanese (sjis)"),
+                                        array("hebrew", "ISO 8859-8 Hebrew (hebrew)"),
+                                        array("tis620", "TIS620 Thai (tis620)"),
+                                        array("euckr", "EUC-KR Korean (euckr)"),
+                                        array("koi8u", "KOI8-U Ukrainian (koi8u)"),
+                                        array("gb2312", "GB2312 Simplified Chinese (gb2312)"),
+                                        array("greek", "ISO 8859-7 Greek (greek)"),
+                                        array("cp1250", "Windows Central European (cp1250)"),
+                                        array("gbk", "GBK Simplified Chinese (gbk)"),
+                                        array("latin5", "ISO 8859-9 Turkish (latin5)"),
+                                        array("armscii8", "ARMSCII-8 Armenian (armscii8)"),
+                                        array("utf8", "UTF-8 Unicode (utf8)"),
+                                        array("ucs2", "UCS-2 Unicode (ucs2)"),
+                                        array("cp866", "DOS Russian (cp866)"),
+                                        array("keybcs2", "DOS Kamenicky Czech-Slovak (keybcs2)"),
+                                        array("macce", "Mac Central European (macce)"),
+                                        array("macroman", "Mac West European (macroman)"),
+                                        array("cp852", "DOS Central European (cp852)"),
+                                        array("latin7", "ISO 8859-13 Baltic (latin7)"),
+                                        array("utf8mb4", "UTF-8 Unicode (utf8mb4) (5.5.3+)"),
+                                        array("cp1251", "Windows Cyrillic (cp1251)"),
+                                        array("utf16", "UTF-16 Unicode (utf16) (5.5.3+)"),
+                                        array("cp1256", "Windows Arabic (cp1256)"),
+                                        array("cp1257", "Windows Baltic (cp1257)"),
+                                        array("utf32", "UTF-32 Unicode (utf32) (5.5.3+)"),
+                                        array("binary", "Binary pseudo charset (binary)"),
+                                        array("geostd8", "GEOSTD8 Georgian (geostd8)"),
+                                        array("cp932", "SJIS for Windows Japanese (cp932)"),
+                                        array("eucjpms", "UJIS for Windows Japanese (eucjpms)")
+                                    )
+                                );
+            $dbencoding->setDefault(((strlen($_SESSION["dbencoding"])) ? $_SESSION["dbencoding"] : 'utf8'));
+        } else {
+            $dbencoding = new cHTMLTextbox("dbencoding", $_SESSION["dbencoding"], 30, 255, '', true);
+        }
+        
         if ((strlen($aVars["dbmode"]) == 0) || ($_SESSION["setuptype"] == 'setup')) {
             if ((hasMySQLExtension()) && (hasMySQLiExtension())) {
                 $dbmode = new cHTMLSelectElement("dbmode", 30);
-                $dbmode->autoFill(array(array("mysql", "MySQL"), array("mysqli", "MySQLi")));
+                $dbmode->autoFill(array(array("mysqli", "MySQLi"),
+                                        array("mysql", "MySQL")
+                                       ));
                 if (strlen($_SESSION["dbmode"])) {
                     $dbmode->setDefault($_SESSION["dbmode"]);
                 }
                 $dbmode_hidden = new cHTMLHiddenField("dbmode_text", "");
-            } elseif (hasMySQLExtension()) {
-                $dbmode = new cHTMLTextbox("dbmode_text", "MySQL", 30, 255, '', true);
-                $dbmode_hidden = new cHTMLHiddenField("dbmode", "mysqli");
             } elseif (hasMySQLiExtension()) {
                 $dbmode = new cHTMLTextbox("dbmode_text", "MySQLi", 30, 255, '', true);
                 $dbmode_hidden = new cHTMLHiddenField("dbmode", "mysqli");
+            } elseif (hasMySQLExtension()) {
+                $dbmode = new cHTMLTextbox("dbmode_text", "MySQL", 30, 255, '', true);
+                $dbmode_hidden = new cHTMLHiddenField("dbmode", "mysql");
             }
         } else {
             $dbmode = new cHTMLTextbox("dbmode_text", "MySQL" . substr($_SESSION["dbmode"], 5), 30, 255, '', true);
@@ -137,7 +190,7 @@ class cSetupSystemData extends cSetupMask {
 		$this->_oStepTemplate->set("s", "LABEL_DBHOST", i18n_setup("Database Server (IP or name)"));
 		
 		if ($_SESSION["setuptype"] == "setup") {
-			$this->_oStepTemplate->set("s", "LABEL_DBNAME", i18n_setup("Database Name")."<br>".i18n_setup("(use empty or non-existant database)"));
+			$this->_oStepTemplate->set("s", "LABEL_DBNAME", i18n_setup("Database Name")." ".i18n_setup("(use empty or non-existant database)"));
 		} else {
 			$this->_oStepTemplate->set("s", "LABEL_DBNAME", i18n_setup("Database Name"));
 		}
@@ -145,6 +198,7 @@ class cSetupSystemData extends cSetupMask {
 		$this->_oStepTemplate->set("s", "LABEL_DBUSERNAME", i18n_setup("Database Username"));
 		$this->_oStepTemplate->set("s", "LABEL_DBPASSWORD", i18n_setup("Database Password"));
 		$this->_oStepTemplate->set("s", "LABEL_DBPREFIX", i18n_setup("Table Prefix"));
+		$this->_oStepTemplate->set("s", "LABEL_DBENCODING", i18n_setup("Database Encoding"));
 		$this->_oStepTemplate->set("s", "LABEL_DBMODE", i18n_setup("Access mode"));
 	
 		$this->_oStepTemplate->set("s", "INPUT_DBHOST", $dbhost->render());
@@ -152,6 +206,7 @@ class cSetupSystemData extends cSetupMask {
 		$this->_oStepTemplate->set("s", "INPUT_DBUSERNAME", $dbuser->render());
 		$this->_oStepTemplate->set("s", "INPUT_DBPASSWORD", $dbpass->render().$dbpass_hidden->render());
 		$this->_oStepTemplate->set("s", "INPUT_DBPREFIX", $dbprefix->render());
+		$this->_oStepTemplate->set("s", "INPUT_DBENCODING", $dbencoding->render());
 		$this->_oStepTemplate->set("s", "INPUT_DBMODE", $dbmode->render().$dbmode_hidden->render());
 		
 		$this->setNavigation($previous, $next);

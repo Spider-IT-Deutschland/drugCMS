@@ -29,8 +29,8 @@
  * @con_php_req 5.0
  * @con_notice If you edit this file you must synchronise the files
  * - ./cms/front_content.php
- * - ./contenido/external/backendedit/front_content.php
- * - ./contenido/external/frontend/front_content.php
+ * - ./drugcms/external/backendedit/front_content.php
+ * - ./drugcms/external/frontend/front_content.php
  *
  *
  * @package    Contenido Frontend
@@ -140,12 +140,21 @@ if ($cfgClient["set"] != "set")
 
 # Check if this request is for a compressed file
 if ($_GET['action'] == 'get_compressed') {
+    
     # Get the calling parameters
     $sFilename      = ((isset($_GET['f'])) ? $_GET['f'] : $_GET['amp;f']);
     $sContentType   = ((isset($_GET['c'])) ? $_GET['c'] : $_GET['amp;c']);
     
-    # Output the file using the class output() function
-    Output_Compressor::output($cfgClient[$client]['path']['frontend'] . 'cache/', $sFilename, $sContentType);
+    # Check if the file was already downloaded
+    $sFileName = substr($sFilename, 0, strrpos($sFilename, '.'));
+    $sFileDateTime = substr($sFileName, -14);
+    if (date('YmdHis', strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE'])) >= $sFileDateTime) {
+        # Return a "304 Not Modified" header
+        header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+    } else {
+        # Output the file using the class output() function
+        Output_Compressor::output($cfgClient[$client]['path']['frontend'] . 'cache/', $sFilename, $sContentType);
+    }
     
     # Don't do anything else
     exit();
@@ -204,6 +213,10 @@ if (!isset($lang)) {
 
 if (!$sess->is_registered("lang") ) $sess->register("lang");
 if (!$sess->is_registered("client") ) $sess->register("client");
+
+if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+    $force = true;
+}
 
 if (isset ($username))
 {
@@ -350,6 +363,9 @@ if (!$idcatart)
                     if($error == 1) {
                         die("Fatal error: Could not display error page. Error to display was: 'No start article in this category'");
                     } else {
+                        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+                        header("Status: 404 Not Found");
+                        $_SERVER['REDIRECT_STATUS'] = 404;
                         header($errsite);
 						exit;
                     }
@@ -403,6 +419,9 @@ if (!$idcatart)
                     }
                     else
                     {
+                        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+                        header("Status: 404 Not Found");
+                        $_SERVER['REDIRECT_STATUS'] = 404;
                         header($errsite);
 						exit;
                     }
@@ -437,6 +456,9 @@ $idartlang = getArtLang($idart, $lang);
 
 if ($idartlang === false)
 {
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+    header("Status: 404 Not Found");
+    $_SERVER['REDIRECT_STATUS'] = 404;
     header($errsite);
 	exit;
 }
@@ -461,12 +483,12 @@ if ($cfg["cache"]["disable"] != '1') {
 ##############################################
 
 /**
- * If user has contenido-backend rights.
- * $contenido <==> the cotenido backend session as http global
- * In Backend: e.g. contenido/index.php?contenido=dac651142d6a6076247d3afe58c8f8f2
+ * If user has drugcms-backend rights.
+ * $contenido <==> the drugcms backend session as http global
+ * In Backend: e.g. drugcms/index.php?contenido=dac651142d6a6076247d3afe58c8f8f2
  * Can also be set via front_content.php?contenido=dac651142d6a6076247d3afe58c8f8f2
  *
- * Note: In backend the file contenido/external/backendedit/front_content.php is included!
+ * Note: In backend the file drugcms/external/backendedit/front_content.php is included!
  * The reason is to avoid cross-site scripting errors in the backend, if the backend domain differs from
  * the frontend domain.
  */
@@ -633,7 +655,7 @@ else
     ##############################################
 
     /* Check if code is expired, create new code if needed */
-    if ($db->f("createcode") == 0 && $force == 0 && $cfg['dceModEdit']['use'] !== true)
+    if (($db->f("createcode") == 0) && ($force == 0) && (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))))
     {
         $sql = "SELECT code FROM ".$cfg["tab"]["code"]." WHERE idcatart = '".Contenido_Security::toInteger($idcatart)."' AND idlang = '".Contenido_Security::toInteger($lang)."'";
         $db->query($sql);
@@ -665,6 +687,9 @@ else
                 }
                 else
                 {
+                    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+                    header("Status: 404 Not Found");
+                    $_SERVER['REDIRECT_STATUS'] = 404;
                     header($errsite);
 					exit;
                 }
@@ -782,6 +807,9 @@ else
 
             if (!$allow)
             {
+                header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+                header("Status: 404 Not Found");
+                $_SERVER['REDIRECT_STATUS'] = 404;
                 header($errsite);
 				exit;
             }
@@ -954,10 +982,13 @@ else
         {
             if ($error == 1)
             {
-                echo "Fatal error: Could not display error page. Error to display was: 'No contenido session variable set. Probable error cause: Start article in this category is not set on-line.'";
+                echo "Fatal error: Could not display error page. Error to display was: 'No drugcms session variable set. Probable error cause: Start article in this category is not set on-line.'";
             }
             else
             {
+                header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+                header("Status: 404 Not Found");
+                $_SERVER['REDIRECT_STATUS'] = 404;
                 header($errsite);
 				exit;
             }

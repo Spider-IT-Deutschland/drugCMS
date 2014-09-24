@@ -167,23 +167,23 @@ class MetaTagCreatorHtml5 {
      * @return void
      */
     protected function _addArticleMeta() {
-        global $db, $cfg, $lang, $encoding;
+        global $db, $cfg, $encoding, $lang;
         
         if($this->_aConfig['add_article_meta'] === false) return false;
         $oArticle = new Article($this->_iIdart, $this->_iClient, $this->_iLang);
         $aHeadLines = $this->_checkAndMergeArrays($oArticle->getContent("htmlhead"), $oArticle->getContent("head"));
         $aText = $this->_checkAndMergeArrays($oArticle->getContent("html"), $oArticle->getContent("text"));
-        $sHead = mb_convert_encoding($this->_getFirstArrayValue($aHeadLines), $encoding[$lang], 'auto');
+        $sHead = mb_convert_encoding($this->_getFirstArrayValue($aHeadLines), $encoding[$lang], 'ISO-8859-1,UTF-8,auto');
         #$sText = $this->_getFirstArrayValue($aText);
-        $sText = mb_convert_encoding(html_entity_decode(strip_tags(implode(' ', $aText)), ENT_COMPAT, $encoding[$lang]), $encoding[$lang], 'auto');
+        $sText = html_entity_decode(mb_convert_encoding(strip_tags(str_replace(array('<br />', '<br>', '</p>'), array(' ', ' ', ' </p>'), implode(' ', $aText))), $encoding[$lang], 'ISO-8859-1,UTF-8,auto'), ENT_COMPAT, $encoding[$lang]);
         if(strlen($sHead)) {
             $sHead = substr(str_replace(array("\r\n", "\r", "\n"),' ',strip_tags($sHead)),0,100);
-            $this->_addMeta('description', htmlentities(html_entity_decode($sHead, ENT_COMPAT, $encoding[$lang]), ENT_COMPAT, $encoding[$lang]));
+            $this->_addMeta('description', htmlentities($sHead, ENT_COMPAT, $encoding[$lang], false));
         }
         if(strlen($sHead . $sText)) {
-            $sHead = mb_convert_encoding(html_entity_decode(strip_tags(implode(' ', $aHeadLines)), ENT_COMPAT, $encoding[$lang]), $encoding[$lang], 'auto');
+            $sHead = html_entity_decode(mb_convert_encoding(strip_tags(str_replace(array('<br />', '<br>', '</p>'), array(' ', ' ', ' </p>'), implode(' ', $aHeadLines))), $encoding[$lang], 'ISO-8859-1,UTF-8,auto'), ENT_COMPAT, $encoding[$lang]);
             $sText = keywordDensity($sHead, $sText, $encoding[$lang]);
-            $this->_addMeta('keywords', $sText);
+            $this->_addMeta('keywords', htmlentities($sText, ENT_COMPAT, $encoding[$lang], false));
         }
         $sAuthor = $oArticle->getField('author');
         $sql = 'SELECT realname
@@ -202,7 +202,7 @@ class MetaTagCreatorHtml5 {
             if($this->_isHtml5Ext($aValue['name'])) {
                 $sTmpContent = conGetMetaValue($oArticle->getIdArtLang(), $iIdMeta);
                 if(empty($sTmpContent)) continue;
-                $this->_addMeta($aValue['name'], htmlentities(html_entity_decode($sTmpContent, ENT_COMPAT, $encoding[$lang]), ENT_COMPAT, $encoding[$lang]));
+                $this->_addMeta($aValue['name'], htmlentities($sTmpContent, ENT_COMPAT, $encoding[$lang], false));
             }
         }
         unset($oArticle);

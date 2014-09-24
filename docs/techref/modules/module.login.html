@@ -71,9 +71,9 @@ h2 {
 <br>
 <h2>Introduction</h2>
 The Contenido login mechanism has been made alot easier from Version
-4.4 and upwards. Logins are now directly handled by Contenido's
-frontend, and you only need to pass the parameters "username" and
-"password" to Contenido. Logins are now handled as "pro-active" logins,
+4.4 and upwards. Logins are now directly handled by Contenido&#39;s
+frontend, and you only need to pass the parameters &quot;username&quot; and
+&quot;password&quot; to Contenido. Logins are now handled as &quot;pro-active&quot; logins,
 which means that the methods explained here need to issued before a
 protected category is accessed.<br>
 <h2>Logging in - manually</h2>
@@ -81,32 +81,32 @@ Each frontend login can be triggered manually. In order to test your
 logins, you should insert the following statement into either a layout
 or module:<br>
 <br>
-<pre>echo $auth-&gt;auth["uid"];</pre>
+<pre>echo $auth-&gt;auth[&quot;uid&quot;];</pre>
 This statement shows the current logged in user. For anonymous sessions
-(i.e. nobody is logged in), the "uid" is always "nobody". To test the
-login, create a new user in Contenido's Backend, then call the frontend
+(i.e. nobody is logged in), the &quot;uid&quot; is always &quot;nobody&quot;. To test the
+login, create a new user in Contenido&#39;s Backend, then call the frontend
 like this:<br>
 <br>
 <pre>front_content.php?username=&lt;youruser&gt;&amp;password=&lt;yourpassword&gt;</pre>
-If previously the test statement returned "nobody", it should now
+If previously the test statement returned &quot;nobody&quot;, it should now
 display your user id.<br>
 <br>
 <h2>Logging in - automatically</h2>
 Of course, the method above is pretty uncomfortable for end users. You
-could simply write a module which outputs a login form - it's up to
-you. All you need to do is to pass "username" and "password" - exactly
+could simply write a module which outputs a login form - it&#39;s up to
+you. All you need to do is to pass &quot;username&quot; and &quot;password&quot; - exactly
 as shown above.<br>
 <br>
 <h2>Logging out</h2>
 Of course, your users want to log out if necessary - just pass the
-parameter "logout" with any value to the system. Example:<br>
+parameter &quot;logout&quot; with any value to the system. Example:<br>
 <pre>front_content.php?logout=true</pre><br>
 <h2>How all this interacts with protected folders</h2>
 In the past, a login form was only displayed if a protected category.
 If you are already logged in with the above method, and if you have
 access rights to that category, everything is alright. But if you are
-not logged in or if you don't have access rights, the (pretty old) file
-"front_crcloginform.inc.php" will be called.<br>
+not logged in or if you don&#39;t have access rights, the (pretty old) file
+&quot;front_crcloginform.inc.php&quot; will be called.<br>
 <br>
 If you want to show a custom login form, you can do the following:<br>
 <br>
@@ -136,13 +136,13 @@ The article/category specified has to be public/online.
 <br>
 <br>
 <h2>Creating users</h2>
-Of course, you don't want to create a user in the backend every time.
-You can automate the user creation process using the class "User":<br>
+Of course, you don&#39;t want to create a user in the backend every time.
+You can automate the user creation process using the class &quot;User&quot;:<br>
 <br>
-<pre style="margin-left: 40px;">$myUsers = new Users;	// User Collection<br>$myUser = new User;	// Single user<br><br>$ret = $myUsers-&gt;create("nameofuser");<br><br>/* Note the three equal signs: This checks for the boolean type */<br>if ($ret === false)<br>{<br>  /* User already exists */<br>  die("User already exists");<br>} else {<br>  /* User was successfully created, now we can set the password */<br>  $user-&gt;loadUserByUserID($ret);<br>  $user-&gt;setField("password", md5("theuserspassword"));<br>}</pre>
+<pre style="margin-left: 40px;">$myUsers = new Users;	// User Collection<br>$myUser = new User;	// Single user<br><br>$ret = $myUsers-&gt;create(&quot;nameofuser&quot;);<br><br>/* Note the three equal signs: This checks for the boolean type */<br>if ($ret === false)<br>{<br>  /* User already exists */<br>  die(&quot;User already exists&quot;);<br>} else {<br>  /* User was successfully created, now we can set the password */<br>  $user-&gt;loadUserByUserID($ret);<br>  $user-&gt;setField(&quot;password&quot;, md5(&quot;theuserspassword&quot;));<br>}</pre>
 <br>
 You can also assign custom properties to your users (to attach almost
-every kind of data to a user) by using the methods "setUserProperty"
-and "getUserProperty". See the API documentation for more information.
+every kind of data to a user) by using the methods &quot;setUserProperty&quot;
+and &quot;getUserProperty&quot;. See the API documentation for more information.
 </body>
 </html>

@@ -94,9 +94,9 @@ class Template {
             $this->tags = $tags;
         }
         $this->setEncoding("");
-        if(is_array($parser)) {
+        if (is_array($parser)) {
             $this->array_registeredParsers = $parser;
-        } elseif ((!isset($contenido)) || ($changeview == 'edit') || ($changeview == 'prev')) {
+        } else/*if ((!isset($contenido)) || ($changeview == 'edit') || ($changeview == 'prev'))*/ {
             $this->array_registeredParsers = array(
                                                 new clStrAPIFunctionsParser(),
                                                 new clCounterFunctionParser(),
@@ -194,9 +194,7 @@ class Template {
     public function generate($template, $return = 0, $note = 0) {
         global $cfg, $cCurrentModule;
         
-        if(isset($cCurrentModule) && $cfg['dceModEdit']['use'] 
-            && ($cfg['dceModEdit']['allModsFromFile'] == true
-                    || in_array($cCurrentModule, $cfg['dceModEdit']['modsFromFile']))) {
+        if ((isset($cCurrentModule)) && (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1')))) {
             cInclude('includes', 'functions.upl.php');
             $tmpModule = new cApiModule;
             $tmpModule->loadByPrimaryKey($cCurrentModule);

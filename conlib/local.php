@@ -343,7 +343,7 @@ class Contenido_Frontend_Session extends Session
 
         $this->cookiename = 'sid_' . $load_client . '_' . $load_lang;
 
-        $this->setExpires(time()+3600);
+        $this->setExpires(time() + (60 * $cfg['frontend']['timeout']));
 
         // added 2007-10-11, H. Librenz
         // bugfix (found by dodger77): we need alternative session containers
@@ -366,7 +366,7 @@ class Contenido_Frontend_Session extends Session
 class Contenido_Auth extends Auth
 {
     public $classname      = 'Contenido_Auth';
-    public $lifetime       =  15;
+    public $lifetime       =  60;
     public $database_class = 'DB_Contenido';
     public $database_table = 'con_phplib_auth_user';
 
@@ -496,7 +496,7 @@ class Contenido_Challenge_Auth extends Auth
 class Contenido_Challenge_Crypt_Auth extends Auth
 {
     public $classname      = 'Contenido_Challenge_Crypt_Auth';
-    public $lifetime       =  15;
+    public $lifetime       =  60;
     public $magic          = 'Frrobo123xxica';  ## Challenge seed
     public $database_class = 'DB_Contenido';
     public $database_table = '';
@@ -512,7 +512,7 @@ class Contenido_Challenge_Crypt_Auth extends Auth
         $this->lifetime = $cfg['backend']['timeout'];
 
         if ($this->lifetime == 0) {
-            $this->lifetime = 15;
+            $this->lifetime = 60;
         }
     }
 
@@ -709,7 +709,7 @@ class Contenido_Challenge_Crypt_Auth extends Auth
 class Contenido_Frontend_Challenge_Crypt_Auth extends Auth
 {
     public $classname      = 'Contenido_Frontend_Challenge_Crypt_Auth';
-    public $lifetime       =  15;
+    public $lifetime       =  60;
     public $magic          = 'Frrobo123xxica';  ## Challenge seed
     public $database_class = 'DB_Contenido';
     public $database_table = '';
@@ -725,6 +725,11 @@ class Contenido_Frontend_Challenge_Crypt_Auth extends Auth
         $this->fe_database_table = $cfg['tab']['frontendusers'];
         $this->group_table = $cfg['tab']['groups'];
         $this->member_table = $cfg['tab']['groupmembers'];
+        $this->lifetime = $cfg['frontend']['timeout'];
+
+        if ($this->lifetime == 0) {
+            $this->lifetime = 60;
+        }
     }
 
     public function auth_preauth()

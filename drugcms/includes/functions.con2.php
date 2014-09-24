@@ -273,10 +273,8 @@ function conGenerateCode($idcat, $idart, $lang, $client, $layout = false)
 				$thisContainer = '<?php $cCurrentContainer = '. ((int) $value).'; ?>';
 			}
 			/* dceModFileEdit (c)2009 www.dceonline.de */
-			if($cfg['dceModEdit']['use'] 
-                && ($cfg['dceModEdit']['allModsFromFile'] == true
-                        || in_array((int) $a_d[$value], $cfg['dceModEdit']['modsFromFile']))) {
-       cInclude('classes', 'contenido/class.module.php');
+            if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+                cInclude('classes', 'contenido/class.module.php');
                 $tmpModule = new cApiModule;
                 $tmpModule->loadByPrimaryKey($a_d[$value]);
                 $output = $thisModule.$thisContainer.$tmpModule->get("output");
