@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+    <navigation>
+        <content>
+            <mod_rewrite>
+                <main>SEO-URL</main>
+                <settings>Settings</settings>
+                <expert>Functions</expert>
+                <test>Test</test>
+            </mod_rewrite>
+        </content>
+    </navigation>
+</language>

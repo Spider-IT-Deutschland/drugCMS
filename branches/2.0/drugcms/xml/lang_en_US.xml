@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Contenido XML language file -->
+<language>
+    <navigation>
+        <content>
+            <main><![CDATA[Content]]></main>
+            <article>
+                <main><![CDATA[Articles]]></main>
+                <overview><![CDATA[Overview]]></overview>
+                <editor><![CDATA[Editor]]></editor>
+                <properties><![CDATA[Properties]]></properties>
+                <configuration><![CDATA[Configuration]]></configuration>
+                <preview><![CDATA[Preview]]></preview>
+            </article>
+            <structure>
+            	<main><![CDATA[Category]]></main>
+            	<overview><![CDATA[Overview]]></overview>
+            </structure>
+            <upload>
+            	<main><![CDATA[File Manager]]></main>
+            	<overview><![CDATA[Overview]]></overview>
+            	<edit><![CDATA[Edit]]></edit>
+            	<fileupload><![CDATA[Upload Files]]></fileupload>
+            </upload>
+        </content>
+        <style>
+            <main><![CDATA[Style]]></main>
+            <layouts>
+            	<main><![CDATA[Layouts]]></main>
+            	<edit><![CDATA[Edit]]></edit>
+            	<preview><![CDATA[Preview]]></preview>
+                <history><![CDATA[History]]></history>
+            </layouts>
+            <modules>
+            	<main><![CDATA[Modules]]></main>
+            	<edit><![CDATA[Edit]]></edit>
+            	<history><![CDATA[History]]></history>
+            	<translation><![CDATA[Translation]]></translation>
+            	<package><![CDATA[Package]]></package>
+            </modules>
+            <templates>
+                <main><![CDATA[Templates]]></main>
+                <edit><![CDATA[Edit]]></edit>
+                <conf><![CDATA[Preconfiguration]]></conf>
+                <visual><![CDATA[Visual edit]]></visual>
+            </templates>
+            <styleeditor>
+                <main><![CDATA[CSS Editor]]></main>
+                <file><![CDATA[File]]></file>
+                <history><![CDATA[History]]></history>
+            </styleeditor>
+            <jseditor>
+                <main><![CDATA[Script Editor]]></main>
+                <file><![CDATA[File]]></file>
+                <history><![CDATA[History]]></history>
+            </jseditor>
+            <tpleditor>
+                <main><![CDATA[Module Templates]]></main>
+                <file><![CDATA[File]]></file>
+                <history><![CDATA[History]]></history>
+            </tpleditor>
+        </style>
+        <statistic>
+            <main><![CDATA[Statistics]]></main>
+            <hits><![CDATA[Hits]]></hits>
+        </statistic>
+        <administration>
+            <main><![CDATA[Administration]]></main>
+            <users>
+                <main><![CDATA[Users]]></main>
+                <userproperties><![CDATA[Properties]]></userproperties>
+                <areas><![CDATA[Areas]]></areas>
+                <layout><![CDATA[Layouts]]></layout>
+                <content><![CDATA[Content]]></content>
+                <module><![CDATA[Modules]]></module>
+                <template><![CDATA[Templates]]></template>
+                <structure><![CDATA[Categories]]></structure>
+            </users>
+            <groups>
+                <main><![CDATA[Groups]]></main>
+                <members><![CDATA[Members]]></members>
+                <overview><![CDATA[Properties]]></overview>
+                <areas><![CDATA[Areas]]></areas>
+                <layout><![CDATA[Layouts]]></layout>
+                <content><![CDATA[Content]]></content>
+                <module><![CDATA[Modules]]></module>
+                <template><![CDATA[Templates]]></template>
+                <structure><![CDATA[Categories]]></structure>
+            </groups>
+            <languages><![CDATA[Languages]]></languages>
+            <plugins><![CDATA[Plugins]]></plugins>
+            <clients>
+            	<main><![CDATA[Clients]]></main>
+            	<clientproperties><![CDATA[Properties]]></clientproperties>
+            	<clientartspec><![CDATA[Article specifications]]></clientartspec>
+            	<clientsettings><![CDATA[Client settings]]></clientsettings>
+            </clients>
+            <logs><![CDATA[Logs]]></logs>
+            <debug><![CDATA[Debug]]></debug>
+            <system>
+            	<main><![CDATA[System]]></main>
+             	<syssettings><![CDATA[Expert settings]]></syssettings>
+            	<sysvalues><![CDATA[System variables]]></sysvalues>
+                <configuration><![CDATA[System settings]]></configuration>
+                <purge><![CDATA[Purge]]></purge>
+            	<syserrorreport><![CDATA[Error report]]></syserrorreport>
+            </system>
+            <frontend>
+            	<main><![CDATA[Frontend]]></main>
+            </frontend>
+            <db_backup>
+                <main><![CDATA[DB Backup]]></main>
+            </db_backup>
+        </administration>
+        <mydrugcms>
+            <main><![CDATA[My drugCMS]]></main>
+            <overview><![CDATA[Overview]]></overview>
+            <recentarticles><![CDATA[Recently edited articles]]></recentarticles>
+            <todolist><![CDATA[Reminder List]]></todolist>
+            <settings><![CDATA[Settings]]></settings>
+        </mydrugcms>
+        <extra>
+            <main><![CDATA[Extras]]></main>
+            <newsletter><![CDATA[Newsletter]]></newsletter>
+            <mailing><![CDATA[Mailing]]></mailing>
+            <recipients><![CDATA[Recipients]]></recipients>
+            <recipientgroups><![CDATA[Recipient groups]]></recipientgroups>
+        </extra>
+        <info><![CDATA[Info]]></info>
+        <login><![CDATA[Login]]></login>
+    </navigation>
+</language>

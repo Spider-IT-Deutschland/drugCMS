@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+	<navigation>
+		<content>
+			<linkchecker>
+				<main>Linkchecker</main>
+				<test>Linkanalyse</test>
+				<whitelist>Whitelist</whitelist>
+				<overview>Oversicht</overview>
+			</linkchecker>
+		</content>
+	</navigation>
+</language>

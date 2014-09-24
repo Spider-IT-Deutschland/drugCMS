@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS Linkchecker\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-01-11 11:15+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team <translations@drugcms.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: H:\\frederic.schneider\\\n"
+"X-Poedit-KeywordsList: i18n\n"
+"Language: nl_NL\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: H:\\frederic.schneider\\contenido\\plugins"
+"\\linkchecker\\includes\n"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:196
+msgid "Link analysis from "
+msgstr "Link analyse van "
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:196
+msgid "%Y-%m-%d"
+msgstr "%d-%m-%Y"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:42
+msgid "<strong>No errors</strong> were found."
+msgstr "Er werden <strong>geen fouten</strong> gevonden."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:227
+msgid "Total checked links"
+msgstr "Totaal gecontroleerde Links"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:24
+msgid "idart"
+msgstr "idart"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:30
+msgid "Article"
+msgstr "Artikel"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:26
+msgid "idcat"
+msgstr "idcat"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:31
+msgid "Category"
+msgstr "Categorie"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:47
+msgid "Description"
+msgstr "Omschrijving"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:31
+msgid "Linkerror"
+msgstr "Linkfout"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:40
+msgid "Links to articles"
+msgstr "Links naar artikelen"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:40
+msgid "Links to categories"
+msgstr "Links naar categorie&euml;n"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:51
+msgid "Links to documents and images"
+msgstr "Links naar afbeeldingen en documenten"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:237
+msgid "Links to extern sites and not defined links"
+msgstr "Links naar externe bronnen en niet-toegewezen koppelingen"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:46
+msgid "Wrong links"
+msgstr "Defecte Links"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:271
+msgid "Unknown: articles, documents etc. do not exist."
+msgstr "Unknown: artikelen, documenten et cetera bestaan ​​niet."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:273
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:275
+msgid "Offline: article or category is offline."
+msgstr "Offline: artikel of categorie is offline."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:277
+msgid "dbfs: no matches found in the dbfs database."
+msgstr "dBFS: In de dBFS databank bestaat het doelbestand niet."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:67
+msgid "No errors for this type."
+msgstr "Er werden geen fouten voor deze link type gevonden."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:196
+msgid "%Y-%m-%d, %I:%M%S %p"
+msgstr "%d-%m-%Y, %H:%M:%S"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:40
+msgid "Links at whitelist"
+msgstr "Links op de whitelist"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:41
+msgid "Delete"
+msgstr "Verwijderen"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:42
+msgid "Entry"
+msgstr "Post"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:43
+msgid "URLs"
+msgstr "Links"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:45
+msgid ""
+"This links are on the whitelist. Whitelist-links won't be check at "
+"linkchecker."
+msgstr ""
+"Deze links staan op de whitelist en worden niet door Linkchecker "
+"gecontroleerd."
+
+msgid "View whitelist"
+msgstr "Toon whitelist"

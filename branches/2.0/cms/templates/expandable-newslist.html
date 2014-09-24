@@ -1,0 +1,23 @@
+
+<script type="text/javascript">
+//<![CDATA[
+    var newsObj;
+    function newNewsContent(obj, addr) {
+        newsObj = obj;
+        $.ajax({
+            url: addr,
+            datatype: 'html',
+            type: 'get',
+            success: function(data) { showNewsContent(data); }
+        });
+    }
+    function showNewsContent(data) {
+        cnt = data;
+        document.getElementById(newsObj).innerHTML = cnt;
+    }
+//]]>
+</script>
+<h2>{TITLE}</h2>
+<div class="artikelliste">
+    {LISTE}
+</div>

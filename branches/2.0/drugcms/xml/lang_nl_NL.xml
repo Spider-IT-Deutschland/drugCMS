@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Contenido XML language file -->
+<language>
+    <navigation>
+        <content>
+            <main><![CDATA[Inhoud]]></main>
+            <article>
+                <main><![CDATA[Artikelen]]></main>
+                <overview><![CDATA[Overzicht]]></overview>
+                <editor><![CDATA[Bewerken]]></editor>
+                <properties><![CDATA[Eigenschappen]]></properties>
+                <configuration><![CDATA[Configuratie]]></configuration>
+                <preview><![CDATA[Voorbeeld]]></preview>
+            </article>
+            <structure>
+            	<main><![CDATA[Categorieën]]></main>
+            	<overview><![CDATA[Oversicht]]></overview>
+            </structure>
+            <upload>
+            	<main><![CDATA[Bestandsbeheer]]></main>
+            	<overview><![CDATA[Oversicht]]></overview>
+            	<edit><![CDATA[Bewerken]]></edit>
+            	<fileupload><![CDATA[Bestanden uploaden]]></fileupload>
+            </upload>
+        </content>
+        <style>
+            <main><![CDATA[Opmaak]]></main>
+            <layouts>
+            	<main><![CDATA[Layouts]]></main>
+            	<edit><![CDATA[Bewerken]]></edit>
+            	<preview><![CDATA[Preview]]></preview>
+                <history><![CDATA[History]]></history>
+            </layouts>
+            <modules>
+            	<main><![CDATA[Modules]]></main>
+            	<edit><![CDATA[Bewerken]]></edit>
+            	<history><![CDATA[History]]></history>
+            	<translation><![CDATA[Vertaling]]></translation>
+            	<package><![CDATA[Pakket]]></package>
+            </modules>
+            <templates>
+                <main><![CDATA[Templates]]></main>
+                <edit><![CDATA[Bewerken]]></edit>
+                <conf><![CDATA[Voorconfiguratie]]></conf>
+                <visual><![CDATA[Visual bewerken]]></visual>
+            </templates>
+            <styleeditor>
+                <main><![CDATA[Stijl editor]]></main>
+                <file><![CDATA[Bestand]]></file>
+                <history><![CDATA[History]]></history>
+            </styleeditor>
+            <jseditor>
+                <main><![CDATA[Script editor]]></main>
+                <file><![CDATA[Bestand]]></file>
+                <history><![CDATA[History]]></history>
+            </jseditor>
+            <tpleditor>
+                <main><![CDATA[Module-Templates]]></main>
+                <file><![CDATA[Bestand]]></file>
+                <history><![CDATA[History]]></history>
+            </tpleditor>
+        </style>
+        <statistic>
+            <main><![CDATA[Statistieken]]></main>
+            <hits><![CDATA[Hits]]></hits>
+        </statistic>
+        <administration>
+            <main><![CDATA[Administratie]]></main>
+            <users>
+                <main><![CDATA[Gebruikers]]></main>
+                <userproperties><![CDATA[Eigenschappen]]></userproperties>
+                <areas><![CDATA[Sitegedeelten]]></areas>
+                <layout><![CDATA[Layouts]]></layout>
+                <content><![CDATA[Inhoud]]></content>
+                <module><![CDATA[Modules]]></module>
+                <template><![CDATA[Templates]]></template>
+                <structure><![CDATA[Categorieën]]></structure>
+            </users>
+            <groups>
+                <main><![CDATA[Groepen]]></main>
+                <members><![CDATA[Leden]]></members>
+                <overview><![CDATA[Eigenschappen]]></overview>
+                <areas><![CDATA[Sitegedeelten]]></areas>
+                <layout><![CDATA[Layouts]]></layout>
+                <content><![CDATA[Inhoud]]></content>
+                <module><![CDATA[Modules]]></module>
+                <template><![CDATA[Templates]]></template>
+                <structure><![CDATA[Categorien]]></structure>
+            </groups>
+            <languages><![CDATA[Talen]]></languages>
+            <plugins><![CDATA[Plugins]]></plugins>
+            <clients>
+            	<main><![CDATA[Cliënten]]></main>
+            	<clientproperties><![CDATA[Eigenschappen]]></clientproperties>
+            	<clientartspec><![CDATA[Artikel specificaties]]></clientartspec>
+            	<clientsettings><![CDATA[Cliënt instellingen]]></clientsettings>
+            </clients>
+            <logs><![CDATA[Logbestanden]]></logs>
+            <debug><![CDATA[Debug]]></debug>
+            <system>
+            	<main><![CDATA[Systeem]]></main>
+             	<syssettings><![CDATA[Expert instellingen]]></syssettings>
+            	<sysvalues><![CDATA[Systeem variabelen]]></sysvalues>
+                <configuration><![CDATA[Systeem instellingen]]></configuration>
+                <purge><![CDATA[Schoonmaken]]></purge>
+            	<syserrorreport><![CDATA[Fouten rapport]]></syserrorreport>
+            </system>
+            <frontend>
+            	<main><![CDATA[Frontend]]></main>
+            </frontend>
+            <db_backup>
+                <main><![CDATA[DB Backup]]></main>
+            </db_backup>
+        </administration>
+        <mydrugcms>
+            <main><![CDATA[Mijn drugCMS]]></main>
+            <overview><![CDATA[Overzicht]]></overview>
+            <recentarticles><![CDATA[Recent bewerkte artikelen]]></recentarticles>
+            <todolist><![CDATA[Reminder list]]></todolist>
+            <settings><![CDATA[Instellingen]]></settings>
+        </mydrugcms>
+        <extra>
+            <main><![CDATA[Extras]]></main>
+            <newsletter><![CDATA[Nieuwsbrief]]></newsletter>
+            <mailing><![CDATA[Mailing]]></mailing>
+            <recipients><![CDATA[Leden]]></recipients>
+            <recipientgroups><![CDATA[Leden groepen]]></recipientgroups>
+        </extra>
+        <info><![CDATA[Info]]></info>
+        <login><![CDATA[Inloggen]]></login>
+    </navigation>
+</language>

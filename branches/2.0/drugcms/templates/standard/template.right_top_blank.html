@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>submenu</title>
+    <link rel="stylesheet" type="text/css" href="styles/drugcms.css" />
+</head>
+<body>
+<div id="navcontainer">
+  <div style="float:left;">
+      <img src="images/frame_handle_re.gif" style="border:0px;float:left;" alt="" />
+      <img style="margin:7px 0 0 7px;" id="toggleimage" onclick="parent.parent.frameResize.toggle()" src="images/spacer.gif" alt="" />
+  </div>
+</div>
+<script type="text/javascript">
+	if (parent.parent.frames[0].name != "header")
+    {
+		parent.parent.frameResize.init();    
+	}
+</script>
+</body>
+</html>
