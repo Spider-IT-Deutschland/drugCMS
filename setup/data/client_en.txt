@@ -1,0 +1,2 @@
+client/client1_en.sql
+client/client_mod_translations1_en.csv

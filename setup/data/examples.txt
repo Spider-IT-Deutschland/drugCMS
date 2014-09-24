@@ -1,0 +1,4 @@
+examples/examples_articles1.sql
+examples/examples_categories1.sql
+examples/examples_container1.csv
+examples/examples_misc1.sql

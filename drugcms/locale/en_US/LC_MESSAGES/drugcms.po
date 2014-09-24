@@ -1,0 +1,5506 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-10 15:45+0100\n"
+"PO-Revision-Date: 2013-09-10 15:50+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: i18n\n"
+"X-Poedit-Basepath: W:\\drugCMS_2.0\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: W:\\drugCMS_2.0\n"
+
+#: W:\drugcms_2.0/cms/front_content.php:348
+#: W:\drugcms_2.0/cms/front_content.php:396
+#: W:\drugcms_2.0/drugcms/external/backendedit/front_content.php:331
+#: W:\drugcms_2.0/drugcms/external/backendedit/front_content.php:386
+#: W:\drugcms_2.0/drugcms/external/frontend/front_content.php:348
+#: W:\drugcms_2.0/drugcms/external/frontend/front_content.php:396
+msgid "No start article for this category"
+msgstr "No start article for this category"
+
+#: W:\drugcms_2.0/cms/front_content.php:494
+#: W:\drugcms_2.0/drugcms/external/backendedit/front_content.php:484
+#: W:\drugcms_2.0/drugcms/external/frontend/front_content.php:494
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:59
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:134
+#, php-format
+msgid "Article is in use by %s (%s)"
+msgstr "Article is in use by %s (%s)"
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:70
+msgid ""
+"The setup directory still exists. Please remove the setup directory before "
+"you continue."
+msgstr ""
+"The setup directory still exists. Please remove the setup directory before "
+"you continue."
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:87
+msgid ""
+"The sysadmin and/or the admin account still contains a well-known default "
+"password. Please change immediately after login."
+msgstr ""
+"The sysadmin and/or admin account still contain(s) a well-known default "
+"password. Please change immediately after login."
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:91
+msgid ""
+"Contenido is in maintenance mode. Only sysadmins are allowed to login. "
+"Please try again later."
+msgstr ""
+"drugCMS is in maintenance mode. Only sysadmins are allowed to login. Please "
+"try again later."
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:192
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:397
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:247
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:249
+msgid "Language"
+msgstr "Language"
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:194
+msgid "drugCMS Backend"
+msgstr "drugCMS Backend"
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:196
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:276
+msgid "Login"
+msgstr "Login"
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:203
+msgid "Invalid Login or Password!"
+msgstr "Invalid Login or Password!"
+
+#: W:\drugcms_2.0/drugcms/main.loginform.php:210
+msgid "Password"
+msgstr "Password"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:328
+msgid "Thank you for saving this search from extinction !"
+msgstr "Thank you for saving this search from extinction!"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:490
+msgid "Search results"
+msgstr "Search results"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:491
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:171
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:596
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:387
+#: W:\drugcms_2.0/drugcms/includes/include.con_subnav.php:104
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:77
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:56
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:20
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:102
+msgid "Article"
+msgstr "Article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:492
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:89
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:78
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:746
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:208
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:62
+msgid "Title"
+msgstr "Title"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:493
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:79
+msgid "Changed"
+msgstr "Changed"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:494
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:80
+msgid "Published"
+msgstr "Published"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:495
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:738
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:588
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:155
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:133
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:257
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:81
+msgid "Sort order"
+msgstr "Sort order"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:496
+#: W:\drugcms_2.0/drugcms/includes/include.pretplcfg_edit_form.php:76
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:82
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:283
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:66
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:230
+msgid "Template"
+msgstr "Template"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:497
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:541
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:165
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:83
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:233
+msgid "Actions"
+msgstr "Actions"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:506
+msgid "Missing search value."
+msgstr "Missing search value."
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:507
+#: W:\drugcms_2.0/drugcms/backend_search.php:734
+msgid "No article found."
+msgstr "No article found."
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:632
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:549
+msgid "Flag as normal article"
+msgstr "Flag as normal article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:635
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:547
+msgid "Flag as start article"
+msgstr "Flag as start article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:648
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:239
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:8
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:144
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:593
+msgid "Make offline"
+msgstr "Set offline"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:652
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:242
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:245
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:9
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:140
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:957
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:959
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:601
+msgid "Make online"
+msgstr "Set online"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:658
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:436
+msgid "Unfreeze article"
+msgstr "Unfreeze article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:661
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:439
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:98
+msgid "Freeze article"
+msgstr "Freeze article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:669
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_SWF.php:80
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:55
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:449
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:182
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:523
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_lastarticles.php:183
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:370
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_IMG.php:235
+msgid "None"
+msgstr "None"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:672
+msgid "Reminder"
+msgstr "Reminder"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:674
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:158
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:161
+msgid "Set reminder / add to todo list"
+msgstr "Set reminder / add to to-do list"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:675
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:569
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:145
+msgid "Duplicate article"
+msgstr "Duplicate article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:676
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:472
+msgid "Article properties"
+msgstr "Article properties"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:677
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:110
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:133
+msgid "Configure template"
+msgstr "Configure template"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:678
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:626
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:106
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:149
+msgid "Delete article"
+msgstr "Delete article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:679
+msgid "Do you really want to delete following article"
+msgstr "Do you really want to delete the following article"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:765
+msgid "Search Name"
+msgstr "Search Name"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:767
+msgid "Store"
+msgstr "Store"
+
+#: W:\drugcms_2.0/drugcms/backend_search.php:772
+msgid "Save this Search"
+msgstr "Save this Search"
+
+#: W:\drugcms_2.0/drugcms/plugins/frontendlogic/category/category.php:38
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:154
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:595
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:78
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:76
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:78
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:392
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:77
+#: W:\drugcms_2.0/drugcms/includes/include.note.popup.php:93
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:510
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:63
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:55
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:21
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:166
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:124
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:224
+msgid "Category"
+msgstr "Category"
+
+#: W:\drugcms_2.0/drugcms/plugins/frontendlogic/category/category.php:44
+msgid "Access category"
+msgstr "Access category"
+
+#: W:\drugcms_2.0/drugcms/plugins/frontendusers/valid_from/valid_from.php:8
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:290
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:398
+msgid "Valid from"
+msgstr "Valid from"
+
+#: W:\drugcms_2.0/drugcms/plugins/frontendusers/valid_to/valid_to.php:7
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:307
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:418
+msgid "Valid to"
+msgstr "Valid to"
+
+#: W:\drugcms_2.0/drugcms/cronjobs/send_reminder.php:97
+#, php-format
+msgid ""
+"Hello %s,\n"
+"\n"
+"you've got a new reminder for the client '%s' at\n"
+"%s:\n"
+"\n"
+"%s"
+msgstr ""
+"Hello %s,\n"
+"\n"
+"you've got a new reminder for the client '%s' at\n"
+"%s:\n"
+"\n"
+"%s"
+
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:248
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:10
+msgid "Protect"
+msgstr "Protect"
+
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:251
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:11
+msgid "Remove protection"
+msgstr "Remove protection"
+
+#: W:\drugcms_2.0/drugcms/scripts/HTMLObj.js.php:254
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:12
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:369
+msgid "Choose template"
+msgstr "Choose template"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:13
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:248
+msgid "Overview cannot be displayed"
+msgstr "Overview cannot be displayed"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:14
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:228
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:231
+#: W:\drugcms_2.0/drugcms/classes/class.notification.php:114
+msgid "Error"
+msgstr "Error"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:15
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:274
+msgid "Article can't be displayed"
+msgstr "Article can't be displayed"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:16
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:274
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:305
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:335
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:360
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:379
+msgid "No article was selected"
+msgstr "No article selected"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:17
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:305
+msgid "Template configuration can't be displayed"
+msgstr "Template configuration can't be displayed"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:18
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:257
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:290
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:319
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:335
+msgid "Editor can't be displayed"
+msgstr "Editor can't be displayed"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:19
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:360
+msgid "Preview can't be displayed"
+msgstr "Preview can't be displayed"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:20
+#: W:\drugcms_2.0/drugcms/scripts/messageBox.js.php:78
+msgid "Confirm"
+msgstr "Confirm"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:21
+#: W:\drugcms_2.0/drugcms/scripts/messageBox.js.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:311
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:68
+msgid "Cancel"
+msgstr "Cancel"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:22
+#: W:\drugcms_2.0/drugcms/scripts/messageBox.js.php:80
+msgid "Close window"
+msgstr "Close window"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:23
+#: W:\drugcms_2.0/drugcms/scripts/rights.js.php:67
+#: W:\drugcms_2.0/drugcms/scripts/rights.js.php:70
+#: W:\drugcms_2.0/drugcms/scripts/iZoom.js.php:70
+#: W:\drugcms_2.0/drugcms/scripts/iZoom.js.php:73
+msgid "Click to close"
+msgstr "Click to close"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:24
+msgid "Headline / HTML"
+msgstr "Headline / HTML"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:25
+msgid "Text / HTML"
+msgstr "Text / HTML"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:26
+msgid "Text / Standard"
+msgstr "Text / Standard"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:27
+msgid "Picture"
+msgstr "Picture"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:28
+#: W:\drugcms_2.0/drugcms/includes/rights_lay.inc.php:76
+#: W:\drugcms_2.0/drugcms/includes/include.style_edit_form.php:198
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:156
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:214
+#: W:\drugcms_2.0/drugcms/includes/grouprights_tpl.inc.php:73
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:112
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:81
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:378
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_SIMPLELINK.php:153
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:87
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:164
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:118
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:161
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:132
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:121
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:341
+#: W:\drugcms_2.0/drugcms/includes/grouprights_lay.inc.php:86
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:205
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:155
+#: W:\drugcms_2.0/drugcms/includes/rights_tpl.inc.php:74
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:71
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_IMG.php:278
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:70
+#: W:\drugcms_2.0/drugcms/includes/include.js_edit_form.php:176
+#: W:\drugcms_2.0/drugcms/includes/grouprights_mod.inc.php:74
+#: W:\drugcms_2.0/drugcms/includes/rights_mod.inc.php:76
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mod_edit_form.html:33
+#: W:\drugcms_2.0/drugcms/templates/standard/template.tpl_edit_form.html:29
+#: W:\drugcms_2.0/drugcms/templates/standard/template.lay_edit_form.html:32
+#: W:\drugcms_2.0/drugcms/templates/standard/template.upl_files_overview.html:84
+msgid "Description"
+msgstr "Description"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:29
+msgid "Description / Standard"
+msgstr "Description / Standard"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:30
+msgid "Flash Movie"
+msgstr "Flash Movie"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:31
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_SIMPLELINK.php:150
+msgid "Link"
+msgstr "Link"
+
+#: W:\drugcms_2.0/drugcms/scripts/langref.php:32
+msgid "Frame"
+msgstr "Frame"
+
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:257
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:290
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:319
+msgid "Can't edit articles in foreign languages."
+msgstr "Can't edit articles in inactive or not synchronized languages."
+
+#: W:\drugcms_2.0/drugcms/scripts/articleObject.js.php:379
+msgid "Tab can't be displayed"
+msgstr "Tab can't be displayed"
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:247
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:73
+msgid "Submit"
+msgstr "Submit"
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:251
+msgid "Please enter your login"
+msgstr "Please enter your login"
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:252
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:277
+msgid "Request password?"
+msgstr "Request password?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:292
+#, php-format
+msgid "Password requests are allowed every %s minutes."
+msgstr "Password requests are allowed every %s minutes."
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:300
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:313
+msgid "No matching data found. Please contact your systemadministrator."
+msgstr "No matching data found. Please contact your system administrator."
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:306
+msgid "New password was submitted to your e-mail address."
+msgstr "New password was submitted to your e-mail address."
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:349
+#, php-format
+msgid ""
+"Dear Contenidouser %s,\n"
+"\n"
+"Your password to log in Content Management System Contenido is: %s\n"
+"\n"
+"Best regards\n"
+"\n"
+"Your Contenido sysadmin"
+msgstr ""
+"Dear drugCMS user %s,\n"
+"\n"
+"Your password to log in to the Content Management System drugCMS is: %s\n"
+"\n"
+"Best regards\n"
+"\n"
+"Your drugCMS sysadmin"
+
+#: W:\drugcms_2.0/drugcms/classes/class.request.password.php:365
+msgid "Your new password for Contenido Backend"
+msgstr "Your new password for the drugCMS Backend"
+
+#: W:\drugcms_2.0/drugcms/classes/class.note.php:331
+#: W:\drugcms_2.0/drugcms/classes/class.note.php:334
+msgid "View notes / add note"
+msgstr "View notes / add note"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:413
+msgid "Default Style"
+msgstr "Default Style"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:438
+#: W:\drugcms_2.0/drugcms/templates/standard/template.upl_files_overview.html:82
+msgid "Filename"
+msgstr "Filename"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:441
+#: W:\drugcms_2.0/drugcms/templates/standard/template.upl_files_overview.html:86
+msgid "File size"
+msgstr "File size"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:444
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:136
+msgid "Date created"
+msgstr "Date created"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:447
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:137
+msgid "Date modified"
+msgstr "Date modified"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:465
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:423
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:118
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:118
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:112
+msgid "Ascending"
+msgstr "Ascending"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:468
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:426
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:119
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:118
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:112
+msgid "Descending"
+msgstr "Descending"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:540
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:541
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:690
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:417
+msgid "No files found"
+msgstr "No files found"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:719
+msgid "Directories"
+msgstr "Folders"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:720
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:598
+msgid "General"
+msgstr "General"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:721
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:600
+msgid "Manual"
+msgstr "Manual"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:722
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:17
+msgid "Filter"
+msgstr "Filter"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:724
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:583
+msgid "General Settings"
+msgstr "General settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:725
+msgid "Manual Settings"
+msgstr "Manual settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:726
+msgid "Filter settings"
+msgstr "Filter settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:727
+msgid "File list settings"
+msgstr "File list settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:728
+msgid "File list title"
+msgstr "File list title"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:729
+msgid "File size limit"
+msgstr "File size limit"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:730
+msgid "Creation date limit"
+msgstr "Creation date limit"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:731
+msgid "Modify date limit"
+msgstr "Modify date limit"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:733
+msgid "File list style"
+msgstr "File list style"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:734
+msgid "Source directory"
+msgstr "Source folder"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:735
+msgid "Include subdirectories?"
+msgstr "Include subfolders?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:736
+msgid "Include meta data?"
+msgstr "Include meta data?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:737
+msgid "File list sort"
+msgstr "File list sort"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:739
+msgid "Displayed file extensions"
+msgstr "Displayed file extensions"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:740
+msgid "Ignore selection (use all)"
+msgstr "Ignore selection (use all)"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:741
+msgid "Selection will be ignored!"
+msgstr "Selection will be ignored!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:742
+msgid "Select all entries"
+msgstr "Select all entries"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:743
+msgid "Use manual file list?"
+msgstr "Use manual file list?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:744
+msgid "Directory"
+msgstr "Folder"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:745
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:440
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:442
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:476
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:478
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:185
+msgid "File"
+msgstr "File"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:746
+msgid "Files"
+msgstr "Files"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:747
+msgid "Existing files"
+msgstr "Existing files"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:748
+msgid "Add file"
+msgstr "Add file"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_filelist.php:749
+msgid "File count"
+msgstr "File count"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:199
+#, php-format
+msgid "Alternative path %s does not exist. Version was saved in frondendpath."
+msgstr "Alternative path %s does not exist. Version was saved in frondendpath."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:522
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:380
+msgid "Refresh"
+msgstr "Refresh"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:538
+msgid "Clear layout history"
+msgstr "Clear layout history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:539
+msgid "Do you really want to clear layout history?"
+msgstr "Do you really want to clear layout history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:539
+msgid "Note: This only affects the current layout."
+msgstr "Note: This only affects the current layout."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:542
+msgid "Clear module history"
+msgstr "Clear module history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:543
+msgid "Do you really want to clear module history?"
+msgstr "Do you really want to clear module history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:543
+msgid "Note: This only affects the current module."
+msgstr "Note: This only affects the current module."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:546
+msgid "Clear style history"
+msgstr "Clear style history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:547
+msgid "Do you really want to clear style history?"
+msgstr "Do you really want to clear style history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:547
+msgid "Note: This only affects the current style."
+msgstr "Note: This only affects the current style."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:550
+msgid "Clear Java-Script history"
+msgstr "Clear Javascript history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:551
+msgid "Do you really want to clear Java-Script history?"
+msgstr "Do you really want to clear Javascript history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:551
+msgid "Note: This only affects the current Java-Script."
+msgstr "Note: This only affects the current Javascript."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:554
+msgid "Clear HTML-Template history"
+msgstr "Clear HTML-Template history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:555
+msgid "Do you really want to clear HTML-Template history?"
+msgstr "Do you really want to clear HTML-Template history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:555
+msgid "Note: This only the affects current HTML-Template."
+msgstr "Note: This only the affects current HTML-Template."
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:558
+msgid "Clear history"
+msgstr "Clear history"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:559
+msgid "Do you really want to clear history?"
+msgstr "Do you really want to clear history?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.version.php:559
+msgid "Note: This only affects the current history."
+msgstr "Note: This only affects the current history."
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:103
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:127
+#: W:\drugcms_2.0/drugcms/includes/grouprights_tpl.inc.php:72
+#: W:\drugcms_2.0/drugcms/includes/rights_tpl.inc.php:73
+msgid "Template name"
+msgstr "Template name"
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:109
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:136
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:187
+msgid "No data found!"
+msgstr "No data found!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:161
+msgid "idcat"
+msgstr "idcat"
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:162
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:179
+msgid "idlang"
+msgstr "idlang"
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:163
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:116
+#: W:\drugcms_2.0/drugcms/includes/include.style_edit_form.php:197
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:155
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:156
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:213
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:59
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:372
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:374
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:98
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:189
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:163
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:160
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:131
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:120
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:235
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:253
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:422
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:204
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:152
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:209
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:61
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:174
+#: W:\drugcms_2.0/drugcms/includes/include.js_edit_form.php:175
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mod_edit_form.html:23
+#: W:\drugcms_2.0/drugcms/templates/standard/template.tpl_edit_form.html:19
+#: W:\drugcms_2.0/drugcms/templates/standard/template.lay_edit_form.html:22
+msgid "Name"
+msgstr "Name"
+
+#: W:\drugcms_2.0/drugcms/classes/class.ajax.php:178
+msgid "idart"
+msgstr "idart"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:432
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:437
+msgid "Unable to check for new updates!"
+msgstr "Unable to check for new updates!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:432
+msgid "Could not handle server response!"
+msgstr "Could not handle server response!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:437
+msgid "Could not determine vendor version!"
+msgstr "Could not determine vendor version!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:551
+msgid "Unable to check for updates!"
+msgstr "Unable to check for updates!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:552
+#, php-format
+msgid "Connection to %s failed!"
+msgstr "Connection to %s failed!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:662
+msgid "Disable update notification"
+msgstr "Disable update notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:664
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:676
+msgid "Disable notification"
+msgstr "Disable notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:667
+msgid "Enable update notification (recommended)"
+msgstr "Enable update notification (recommended)"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:669
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:683
+msgid "Enable notification"
+msgstr "Enable notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:674
+msgid "Disable RSS notification"
+msgstr "Disable RSS notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:681
+msgid "Enable RSS notification (recommended)"
+msgstr "Enable RSS notification (recommended)"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:685
+msgid "RSS notification is disabled"
+msgstr "RSS notification is disabled"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:733
+msgid "read more"
+msgstr "read more"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:743
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:752
+msgid "No RSS content available"
+msgstr "No RSS content available"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:750
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:768
+msgid ""
+"Your webserver does not have write permissions for the directory /drugcms/"
+"cache/!"
+msgstr ""
+"Your webserver does not have write permissions for the folder /drugcms/"
+"cache/!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:771
+msgid ""
+"Update notification is disabled! For actual update information, please "
+"activate."
+msgstr ""
+"Update notification is disabled! For actual update information, please "
+"activate."
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:776
+msgid "You have an unknown or unsupported version of drugCMS!"
+msgstr "You have an unknown or unsupported version of drugCMS!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:779
+#, php-format
+msgid ""
+"Your version of drugCMS is deprecated and not longer supported for any "
+"updates. Please update to a higher version! <br /> <a href=\"%s\" class="
+"\"blue\" target=\"_blank\">Download now!</a>"
+msgstr ""
+"Your version of drugCMS is deprecated and no longer supported. Please update "
+"to a newer version! <br /> <a href=\"%s\" class=\"blue\" target=\"_blank"
+"\">Download now!</a>"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:783
+#, php-format
+msgid ""
+"A new version of drugCMS is available! <br /> <a href=\"%s\" class=\"blue\" "
+"target=\"_blank\">Download %s now!</a>"
+msgstr ""
+"A new version of drugCMS is available! <br /> <a href=\"%s\" class=\"blue\" "
+"target=\"_blank\">Download %s now!</a>"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:786
+#, php-format
+msgid ""
+"It seems to be that your version string was manipulated. drugCMS %s does not "
+"exist!"
+msgstr ""
+"It seems like your version string was manipulated. drugCMS %s does not exist!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.update.notifier.php:789
+msgid "Your version of drugCMS is up to date!"
+msgstr "Your version of drugCMS is up to date!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:842
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:867
+#, php-format
+msgid ""
+"Please use at least %d lower and upper case characters in your password!"
+msgstr ""
+"Please use at least %d lower and upper case characters in your password!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:847
+#, php-format
+msgid "Please use at least %d numbers in your password!"
+msgstr "Please use at least %d numbers in your password!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:852
+#, php-format
+msgid "Please use at least %d symbols in your password!"
+msgstr "Please use at least %d symbols in your password!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:857
+#, php-format
+msgid "Password is too short! Please use at least %d signs."
+msgstr "Password is too short! Please use at least %d signs."
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:863
+msgid "Password does not contain enough different characters."
+msgstr "Password does not contain enough different characters."
+
+#: W:\drugcms_2.0/drugcms/classes/class.conuser.php:872
+msgid "Please choose a more secure password!"
+msgstr "Please choose a more secure password!"
+
+#: W:\drugcms_2.0/drugcms/classes/class.notification.php:120
+msgid "Warning"
+msgstr "Warning"
+
+#: W:\drugcms_2.0/drugcms/classes/class.notification.php:126
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:67
+msgid "Info"
+msgstr "Info"
+
+#: W:\drugcms_2.0/drugcms/classes/class.notification.php:133
+msgid "Notification"
+msgstr "Notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.navigation.php:340
+#: W:\drugcms_2.0/drugcms/classes/class.navigation.php:343
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:195
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:402
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:21
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:51
+msgid "Client"
+msgstr "Client"
+
+#: W:\drugcms_2.0/drugcms/classes/class.navigation.php:360
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:25
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:53
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:612
+msgid "User"
+msgstr "User"
+
+#: W:\drugcms_2.0/drugcms/classes/class.navigation.php:435
+msgid "-- No Language available --"
+msgstr "-- No Language available --"
+
+#: W:\drugcms_2.0/drugcms/classes/class.versionFile.php:131
+msgid "Can not open file "
+msgstr "Can't open file "
+
+#: W:\drugcms_2.0/drugcms/classes/class.ui.php:351
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.tableedit.php:188
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.views.php:80
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:142
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:94
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_EASYIMG.php:158
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:102
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:225
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:192
+msgid "Save changes"
+msgstr "Save changes"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:101
+msgid "New"
+msgstr "New"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:102
+msgid "In progress"
+msgstr "In progress"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:103
+msgid "Done"
+msgstr "Done"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:104
+msgid "Waiting for action"
+msgstr "Waiting for action"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:105
+msgid "Deferred"
+msgstr "Deferred"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:113
+msgid "Low"
+msgstr "Low"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:114
+msgid "Medium"
+msgstr "Medium"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:115
+msgid "High"
+msgstr "High"
+
+#: W:\drugcms_2.0/drugcms/classes/class.todo.php:116
+msgid "Immediately"
+msgstr "Immediately"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:353
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:382
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:419
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:447
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:476
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:539
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:1202
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:1245
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:90
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:215
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:244
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:273
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:288
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:304
+msgid "Please choose"
+msgstr "Please choose"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:386
+msgid "Block Style"
+msgstr "Block Style"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:389
+msgid "Blog Style"
+msgstr "Blog Style"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:451
+msgid "Scaled"
+msgstr "Scaled"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:454
+msgid "Cropped"
+msgstr "Cropped"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:480
+msgid "Sort Sequence"
+msgstr "Sort Sequence"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:483
+msgid "Creationdate"
+msgstr "Creation date"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:486
+msgid "Publisheddate"
+msgstr "Published date"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:489
+msgid "Modificationdate"
+msgstr "Modification date"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:578
+msgid "Teasersettings"
+msgstr "Teaser settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:579
+msgid "Teasertitle"
+msgstr "Teaser title"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:580
+msgid "Teaser Startarticle"
+msgstr "Teaser startarticle"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:581
+msgid "Sourcecategory"
+msgstr "Source category"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:582
+msgid "Number of Articles"
+msgstr "Number of articles"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:584
+msgid "Teaser Style"
+msgstr "Teaser style"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:585
+msgid "Advanced Teaser Settings"
+msgstr "Advanced teaser settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:586
+msgid "Teaser Filter"
+msgstr "Teaser filter"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:587
+msgid "Teaser Sort"
+msgstr "Teaser sort"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:589
+msgid "Source Headline"
+msgstr "Source headline"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:590
+msgid "Source Settings"
+msgstr "Source settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:591
+msgid "Source Text"
+msgstr "Source text"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:592
+msgid "Source Image"
+msgstr "Source image"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:593
+msgid "Source Date"
+msgstr "Source date"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:599
+msgid "Advanced"
+msgstr "Advanced"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:601
+msgid "Included Articles"
+msgstr "Included articles"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:602
+msgid "Add Article"
+msgstr "Add Article"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:603
+msgid "Manual Teaser Settings"
+msgstr "Manual Teaser Settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:604
+msgid "Manual Teaser"
+msgstr "Manual Teaser"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:607
+msgid "Size Settings"
+msgstr "Size Settings"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:608
+msgid "Characterlength"
+msgstr "Character length"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:609
+msgid "Imagewidth"
+msgstr "Image width"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:610
+msgid "Imageheight"
+msgstr "Image height"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:611
+msgid "Image Scale"
+msgstr "Image Scale"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_teaser.php:648
+msgid "Add"
+msgstr "Add"
+
+#: W:\drugcms_2.0/drugcms/classes/class.inuse.php:242
+msgid "Click here if you want to override the lock"
+msgstr "Click here if you want to override the lock"
+
+#: W:\drugcms_2.0/drugcms/classes/class.inuse.php:246
+msgid "Do you really want to override the lock?"
+msgstr "Do you really want to override the lock?"
+
+#: W:\drugcms_2.0/drugcms/classes/class.inuse.php:248
+msgid "Override lock"
+msgstr "Override lock"
+
+#: W:\drugcms_2.0/drugcms/classes/class.inuse.php:248
+msgid "Hide notification"
+msgstr "Hide notification"
+
+#: W:\drugcms_2.0/drugcms/classes/class.cms_date.php:212
+msgid "Please Choose Format"
+msgstr "Please Choose Format"
+
+#: W:\drugcms_2.0/drugcms/classes/class.client.php:131
+#: W:\drugcms_2.0/drugcms/classes/contenido/class.client.php:106
+msgid "No client"
+msgstr "No client"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.datawidgets.php:314
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.datawidgets.php:315
+msgid "Clear contents"
+msgstr "Clear contents"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:47
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:51
+msgid "Paging"
+msgstr "Paging"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:85
+msgid "First page"
+msgstr "First page"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:92
+msgid "Previous page"
+msgstr "Previous page"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:106
+#, php-format
+msgid "Page %s"
+msgstr "Page %s"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:122
+msgid "Next page"
+msgstr "Next page"
+
+#: W:\drugcms_2.0/drugcms/classes/widgets/class.widgets.pager.php:132
+msgid "Last page"
+msgstr "Last page"
+
+#: W:\drugcms_2.0/drugcms/classes/template/class.template.php:324
+msgid "\""
+msgstr "&quot;"
+
+#: W:\drugcms_2.0/drugcms/classes/contenido/class.module.php:361
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:56
+msgid "- Unnamed Module -"
+msgstr "- Unnamed Module -"
+
+#: W:\drugcms_2.0/drugcms/classes/contenido/class.module.php:889
+msgid ""
+"Module uses Output- and/or InputFromFile. Editing and Saving may not be "
+"possible in backend."
+msgstr "Module uses files. Saving changes may not be possible in the backend."
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:140
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:111
+msgid "January"
+msgstr "January"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:141
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:114
+msgid "February"
+msgstr "February"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:142
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:117
+msgid "March"
+msgstr "March"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:143
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:120
+msgid "April"
+msgstr "April"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:144
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:123
+msgid "May"
+msgstr "May"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:145
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:126
+msgid "June"
+msgstr "June"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:146
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:129
+msgid "July"
+msgstr "July"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:147
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:132
+msgid "August"
+msgstr "August"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:148
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:135
+msgid "September"
+msgstr "September"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:149
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:138
+msgid "October"
+msgstr "October"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:150
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:141
+msgid "November"
+msgstr "November"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:151
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:144
+msgid "December"
+msgstr "November"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:159
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:166
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:178
+msgid "Sunday"
+msgstr "Sunday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:160
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:160
+msgid "Monday"
+msgstr "Monday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:161
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:163
+msgid "Tuesday"
+msgstr "Tuesday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:162
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:166
+msgid "Wednesday"
+msgstr "Wednesday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:163
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:169
+msgid "Thursday"
+msgstr "Thursday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:164
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:172
+msgid "Friday"
+msgstr "Friday"
+
+#: W:\drugcms_2.0/drugcms/classes/datatypes/class.datatype.datetime.php:165
+msgid "Saturday"
+msgstr "Saturday"
+
+#: W:\drugcms_2.0/drugcms/includes/rights_lay.inc.php:57
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:56
+#: W:\drugcms_2.0/drugcms/includes/include.style_edit_form.php:51
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:55
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:43
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:50
+#: W:\drugcms_2.0/drugcms/includes/grouprights_tpl.inc.php:53
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:42
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:40
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:50
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:70
+#: W:\drugcms_2.0/drugcms/includes/grouprights_members.inc.php:41
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:54
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:37
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:59
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:389
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:536
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:42
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:57
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:52
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:46
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:48
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:56
+#: W:\drugcms_2.0/drugcms/includes/rights_area.inc.php:58
+#: W:\drugcms_2.0/drugcms/includes/grouprights_lay.inc.php:55
+#: W:\drugcms_2.0/drugcms/includes/grouprights_lay.inc.php:74
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:43
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:52
+#: W:\drugcms_2.0/drugcms/includes/grouprights_area.inc.php:65
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:40
+#: W:\drugcms_2.0/drugcms/includes/rights_tpl.inc.php:55
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:1013
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:55
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:49
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:127
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:148
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:764
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:46
+#: W:\drugcms_2.0/drugcms/includes/include.js_edit_form.php:50
+#: W:\drugcms_2.0/drugcms/includes/grouprights_mod.inc.php:54
+#: W:\drugcms_2.0/drugcms/includes/rights_mod.inc.php:55
+msgid "Permission denied"
+msgstr "Permission denied"
+
+#: W:\drugcms_2.0/drugcms/includes/rights_lay.inc.php:75
+#: W:\drugcms_2.0/drugcms/includes/grouprights_lay.inc.php:85
+msgid "Layout name"
+msgstr "Layout name"
+
+#: W:\drugcms_2.0/drugcms/includes/rights_lay.inc.php:100
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:111
+#: W:\drugcms_2.0/drugcms/includes/grouprights_tpl.inc.php:101
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:105
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:112
+#: W:\drugcms_2.0/drugcms/includes/rights_area.inc.php:87
+#: W:\drugcms_2.0/drugcms/includes/grouprights_lay.inc.php:113
+#: W:\drugcms_2.0/drugcms/includes/grouprights_area.inc.php:86
+#: W:\drugcms_2.0/drugcms/includes/rights_tpl.inc.php:100
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:106
+#: W:\drugcms_2.0/drugcms/includes/grouprights_mod.inc.php:99
+#: W:\drugcms_2.0/drugcms/includes/rights_mod.inc.php:99
+msgid "Check all"
+msgstr "Check all"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:76
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_left_top.php:59
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:273
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:992
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:1018
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:157
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:866
+msgid "All"
+msgstr "All"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:77
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_left_top.php:60
+msgid "Frontend only"
+msgstr "Frontend only"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:78
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_left_top.php:61
+msgid "Backend only"
+msgstr "Backend only"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:103
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:178
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:171
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:174
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:616
+msgid "Create user"
+msgstr "Create user"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:115
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:189
+msgid "User name"
+msgstr "User name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:123
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:66
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:193
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:114
+msgid "List options"
+msgstr "List options"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:147
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:125
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:249
+msgid "Items / page"
+msgstr "Items / page"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:151
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:129
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:253
+msgid "Sort by"
+msgstr "Sort by"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:159
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:141
+#: W:\drugcms_2.0/drugcms/includes/include.upl_left_top.php:74
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:265
+msgid "Search for"
+msgstr "Search for"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_left_top.php:164
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:149
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:274
+msgid "Apply"
+msgstr "Apply"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:237
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:212
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:223
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:217
+msgid ""
+"Apply rights for this category to all categories on the same level or above"
+msgstr ""
+"Apply rights for this category to all categories on the same level or above"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:238
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:213
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:224
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:218
+msgid ""
+"Apply rights for this category to all categories below the current category"
+msgstr ""
+"Apply rights for this category to all categories below the current category"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:241
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:215
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:56
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:169
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:227
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:313
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:314
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:644
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:645
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:221
+msgid "Open category"
+msgstr "Open category"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:241
+#: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:215
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:174
+#: W:\drugcms_2.0/drugcms/includes/rights_con.inc.php:227
+#: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:221
+msgid "Close category"
+msgstr "Close category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.style_edit_form.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:197
+#: W:\drugcms_2.0/drugcms/includes/include.js_edit_form.php:159
+msgid "Edit file"
+msgstr "Edit file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.style_edit_form.php:199
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:157
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:215
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:165
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:162
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:122
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:206
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:217
+#: W:\drugcms_2.0/drugcms/includes/include.js_edit_form.php:177
+msgid "Code"
+msgstr "Code"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_menu.php:133
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:395
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:273
+#, php-format
+msgid "Do you really want to delete the user %s?"
+msgstr "Do you really want to delete the user %s?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_menu.php:135
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:397
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:172
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:275
+msgid "Delete user"
+msgstr "Delete user"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_files_overview.php:104
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:111
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_files_overview.php:105
+#: W:\drugcms_2.0/drugcms/includes/include.style_files_overview.php:104
+msgid "is not readable!"
+msgstr "is not readable!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_files_overview.php:131
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_files_overview.php:132
+#: W:\drugcms_2.0/drugcms/includes/include.style_files_overview.php:131
+msgid "Delete File"
+msgstr "Delete File"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_files_overview.php:132
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_files_overview.php:133
+#: W:\drugcms_2.0/drugcms/includes/include.style_files_overview.php:132
+#, php-format
+msgid "Do you really want to delete the following file:<br><br>%s<br>"
+msgstr "Do you really want to delete the following file:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_files_overview.php:155
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:123
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_files_overview.php:156
+#: W:\drugcms_2.0/drugcms/includes/include.style_files_overview.php:155
+msgid "Directory is not existing or readable!"
+msgstr "Folder doesn't exist or is not readable!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_left_top.php:90
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:442
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:181
+msgid "Create group"
+msgstr "Create group"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:64
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:62
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:57
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:51
+msgid "Versioning is not activated"
+msgstr "Versioning is not activated"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:125
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:129
+msgid "Edit JScript"
+msgstr "Edit JScript"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:158
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:166
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:163
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:135
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:123
+msgid "Copy to current"
+msgstr "Copy to current"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:171
+msgid "No jscript history available"
+msgstr "No jscript history available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:177
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:185
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:182
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:150
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:135
+msgid "Version history was cleared"
+msgstr "Version history was cleared"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_history.php:179
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:176
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:184
+msgid "No style history available"
+msgstr "No style history available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_new.php:38
+msgid "New Layout"
+msgstr "New Layout"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_new.php:40
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:48
+#: W:\drugcms_2.0/drugcms/includes/include.lang_left_top.php:82
+#: W:\drugcms_2.0/drugcms/includes/include.js_left_top.php:54
+#: W:\drugcms_2.0/drugcms/includes/include.upl_left_top.php:53
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_left_top.php:54
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:181
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:445
+#: W:\drugcms_2.0/drugcms/includes/include.style_left_top.php:54
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_new.php:41
+msgid "No Client selected"
+msgstr "No client selected"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:53
+msgid "Username can't be empty"
+msgstr "Username can't be empty"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:85
+msgid "User created"
+msgstr "User created"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:106
+msgid "Username already exists"
+msgstr "Username already exists"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:110
+msgid "Unknown error"
+msgstr "Unknown error"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:122
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:62
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:132
+msgid "Passwords don't match"
+msgstr "Passwords don't match"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:144
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:96
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:106
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:209
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:234
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:197
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:353
+msgid "Property"
+msgstr "Property"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:147
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:99
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:98
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:193
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:109
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:210
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:237
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:200
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:354
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:62
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:178
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:18
+msgid "Value"
+msgstr "Value"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:150
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:58
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:59
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:203
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:53
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:54
+msgid "Username"
+msgstr "Username"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:162
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:116
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:190
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:217
+msgid "New password"
+msgstr "New password"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:168
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:117
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:223
+msgid "Confirm new password"
+msgstr "Confirm new password"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:174
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:121
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:230
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:236
+msgid "Phone number"
+msgstr "Phone number"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:186
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:242
+msgid "Street"
+msgstr "Street"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:192
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:248
+msgid "ZIP code"
+msgstr "ZIP code"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:198
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:254
+msgid "City"
+msgstr "City"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:204
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:260
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:250
+msgid "Country"
+msgstr "Country"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:215
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:123
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:129
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:271
+msgid "System administrator"
+msgstr "System administrator"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:233
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:141
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:147
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:289
+msgid "Administrator"
+msgstr "Administrator"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:248
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:156
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:163
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:305
+msgid "Access clients"
+msgstr "Access clients"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:263
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:172
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:322
+msgid "Access languages"
+msgstr "Access languages"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_create.php:269
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:373
+msgid "Use WYSIWYG-Editor"
+msgstr "Use WYSIWYG-Editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:68
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:186
+msgid "Activate language"
+msgstr "Activate language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:72
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:187
+msgid "Deactivate language"
+msgstr "Deactivate language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:77
+#, php-format
+msgid "Do you really want to delete the language %s?"
+msgstr "Do you really want to delete the language %s?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:78
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:190
+msgid "Delete language"
+msgstr "Delete language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:103
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:84
+msgid "New language"
+msgstr "New language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_overview.php:118
+msgid "Language deleted"
+msgstr "Language deleted"
+
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_edit_form.php:185
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:173
+#, php-format
+msgid "Tag '%s' %s has no end tag (start tag is on line %s char %s)"
+msgstr "Tag '%s' %s has no end tag (start tag is on line %s char %s)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:93
+msgid "Versioning activated"
+msgstr "Versioning activated"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:93
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:94
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:95
+msgid "Versioning"
+msgstr "Versioning"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:94
+msgid "Serverpath to version files"
+msgstr "Serverpath to version files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:95
+msgid "Maximum number of stored versions"
+msgstr "Maximum number of stored versions"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:96
+msgid "Check for updates"
+msgstr "Check for updates"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:96
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:97
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:98
+msgid "Update notifier"
+msgstr "Update notifier"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:97
+msgid "Get news from drugcms.org"
+msgstr "Get news from drugcms.org"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:98
+msgid "Update check period (minutes)"
+msgstr "Update check period (minutes)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:99
+msgid "Clickable menu in backend"
+msgstr "Clickable menu in backend"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:99
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:100
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:101
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:102
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:103
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:104
+msgid "Backend"
+msgstr "Backend"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:100
+msgid "Use passwordrequest in Backend"
+msgstr "Use password request in Backend"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:101
+msgid "Activate maintenance mode"
+msgstr "Activate maintenance mode"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:102
+msgid "Use editarea for code highlighting"
+msgstr "Use editarea for code highlighting"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:103
+msgid "Use TinyMce as insight editor"
+msgstr "Use TinyMCE as in-site editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:104
+msgid "Default client (ID)"
+msgstr "Default client (ID)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:105
+msgid "Mailserver host"
+msgstr "Mailserver host"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:105
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:106
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:107
+msgid "Mailserver"
+msgstr "Mailserver"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:106
+msgid "Mailserver sender mail"
+msgstr "Mailserver sender mail"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:107
+msgid "Mailserver sender name"
+msgstr "Mailserver sender name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:109
+msgid "Generate basehref"
+msgstr "Generate basehref"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:109
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:110
+msgid "Development"
+msgstr "Development"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:110
+msgid "Use image magic (if available)"
+msgstr "Use image magic (if available)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:123
+msgid "Update check period must be at least 60 minutes."
+msgstr "Update check period must be at least 60 minutes."
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:133
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:65
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:170
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:335
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:141
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:140
+msgid "Changes saved"
+msgstr "Changes saved"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:142
+msgid "System Configuration"
+msgstr "System Configuration"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_configuration.php:192
+msgid "Access denied"
+msgstr "Access denied"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.mod.php:200
+msgid "Please do not use short open Tags. (Use <?php instead of <?)."
+msgstr "Please do not use short open Tags. (Use <?php instead of <?)."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:87
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_upload.php:67
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:296
+msgid "Directory not writable"
+msgstr "Folder not writable"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:260
+#, php-format
+msgid ""
+"The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+"The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:270
+#, php-format
+msgid "Error while uploading file (%s)."
+msgstr "Error while uploading file (%s)."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:322
+msgid "Errors while uploading file(s). Some or all files were not uploaded."
+msgstr "Errors while uploading file(s). Some or all files were not uploaded."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:405
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:407
+msgid "Use file"
+msgstr "Use file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:453
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:457
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:459
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:190
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:195
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:198
+msgid "Filename / Description"
+msgstr "Filename / Description"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:465
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:469
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:471
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:218
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:223
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:226
+msgid "Size"
+msgstr "Size"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:477
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:481
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:483
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:232
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:237
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:240
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:59
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:82
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:377
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:98
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:185
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:60
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:170
+msgid "Type"
+msgstr "Type"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:490
+msgid "Delete Files"
+msgstr "Delete Files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:490
+msgid "Are you sure you want to delete the selected files?"
+msgstr "Are you sure you want to delete the selected files?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:491
+msgid "Delete selected files"
+msgstr "Delete selected files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:508
+msgid "Flip Selection"
+msgstr "Flip Selection"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:513
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_upload.php:59
+msgid "Path:"
+msgstr "Path:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:528
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:276
+msgid "Files per Page"
+msgstr "Files per Page"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:536
+msgid "Mark"
+msgstr "Mark"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:537
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:286
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:93
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_IMG.php:283
+msgid "Preview"
+msgstr "Preview"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:654
+msgid "Display properties"
+msgstr "Display properties"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:717
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:445
+msgid "Previous Page"
+msgstr "Previous page"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:724
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:452
+msgid "Next Page"
+msgstr "Next page"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:764
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:490
+msgid "Page"
+msgstr "Page"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:790
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:143
+msgid "Delete file"
+msgstr "Delete file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:791
+msgid "Do you really want to delete the following file:<br>"
+msgstr "Do you really want to delete the following file:<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_overview.php:922
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:605
+msgid "Enter new filename"
+msgstr "Enter new filename"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_rights.php:47
+msgid "Invalid plugin"
+msgstr "Invalid plugin"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_rights.php:96
+#, php-format
+msgid "Permissions for plugin '%s'"
+msgstr "Permissions for plugin '%s'"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_rights.php:101
+msgid "(All)"
+msgstr "(All)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_rights.php:109
+msgid "Global rights"
+msgstr "Global rights"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_rights.php:131
+msgid "No items found"
+msgstr "No items found"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_upload.php:51
+msgid "Upload"
+msgstr "Upload"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_files_upload.php:63
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:136
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:144
+msgid "Upload files"
+msgstr "Upload files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:57
+msgid "New Group"
+msgstr "New Group"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:71
+msgid "group created"
+msgstr "Group created"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:76
+msgid "Group couldn't created"
+msgstr "Group couldn't be created"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_create.php:102
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_edit.php:221
+msgid "Group name"
+msgstr "Group name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:241
+msgid "Article specification"
+msgstr "Article specification"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:80
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:127
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:207
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:397
+msgid "Options"
+msgstr "Options"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:90
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:114
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:58
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:71
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:75
+msgid "Edit"
+msgstr "Edit"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:94
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:108
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:81
+msgid "Delete"
+msgstr "Delete"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:131
+msgid "Save"
+msgstr "Save"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:150
+msgid "Make this article specification default"
+msgstr "Make this article specification default"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:154
+msgid "This article specification is default"
+msgstr "This article specification is default"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:163
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:238
+msgid "No article specifications found!"
+msgstr "No article specifications found!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:173
+msgid "Create new article specification"
+msgstr "Create new article specification"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_artspec.php:176
+msgid "Specification name"
+msgstr "Specification name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:204
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:209
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:212
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:84
+msgid "Path"
+msgstr "Path"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:246
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:251
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:254
+msgid "Relevance"
+msgstr "Relevance"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_search_results.php:260
+msgid "Searched for:"
+msgstr "Searched for:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:41
+msgid "New module"
+msgstr "New module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:44
+msgid "Sync module"
+msgstr "Sync module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:69
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:99
+msgid "-- All --"
+msgstr "-- All --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:80
+msgid "Modulname"
+msgstr "Module name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:83
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:399
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:402
+msgid "Input"
+msgstr "Input"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:84
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:400
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:403
+msgid "Output"
+msgstr "Output"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:100
+msgid "-- Without type --"
+msgstr "-- Without type --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:137
+msgid "Type filter"
+msgstr "Type filter"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_new.php:144
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:269
+msgid "Search in"
+msgstr "Search in"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_left_top.php:80
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:189
+msgid "Create language"
+msgstr "Create language"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_members.inc.php:208
+msgid "Manage group members"
+msgstr "Manage group members"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:51
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:78
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:741
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:239
+msgid "No permission"
+msgstr "No permission"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:57
+msgid "<your module description>"
+msgstr "<your module description>"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:57
+msgid "Author: "
+msgstr "Author: "
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:57
+msgid "Version:"
+msgstr "Version:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:81
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:219
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:357
+#, php-format
+msgid "Error while importing XML file: %s"
+msgstr "Error while importing XML file: %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:101
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:398
+#, php-format
+msgid "Module is in use by %s (%s)"
+msgstr "Module is in use by %s (%s)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:124
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:157
+msgid "Edit module"
+msgstr "Edit module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:304
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:306
+msgid "Custom"
+msgstr "Custom"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:332
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:342
+#, php-format
+msgid "Error in module. Error location: %s"
+msgstr "Error in module. Error location: %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:335
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:345
+msgid "Module successfully compiled"
+msgstr "Module successfully compiled"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:410
+msgid ""
+"This module uses variables and/or functions which are probably not available "
+"in this Contenido version. Please make sure that you use up-to-date modules."
+msgstr ""
+"This module uses variables and/or functions which are probably not available "
+"in this drugCMS version. Please make sure that you use up-to-date modules."
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:419
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:454
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:174
+msgid "Import from file"
+msgstr "Import from file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:420
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:455
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:173
+msgid "Export to file"
+msgstr "Export to file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_edit_form.php:437
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:472
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:184
+msgid "Mode"
+msgstr "Mode"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:792
+msgid "OpenOffice.org Presentation"
+msgstr "OpenOffice.org Presentation"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:793
+msgid "OpenOffice.org Presentation Template"
+msgstr "OpenOffice.org Presentation Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:794
+msgid "Microsoft PowerPoint Screen Presentation"
+msgstr "Microsoft PowerPoint Screen Presentation"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:795
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:797
+msgid "Microsoft PowerPoint Presentation Template"
+msgstr "Microsoft PowerPoint Presentation Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:796
+msgid "KDE KPresenter Document"
+msgstr "KDE KPresenter Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:800
+msgid "Microsoft Word Document or regular text file"
+msgstr "Microsoft Word Document or regular text file"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:801
+msgid "Microsoft Word Template"
+msgstr "Microsoft Word Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:802
+msgid "OpenOffice.org Text Document"
+msgstr "OpenOffice.org Text Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:803
+msgid "OpenOffice.org Text Document Template"
+msgstr "OpenOffice.org Text Document Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:804
+msgid "StarOffice 5.0 Text Document"
+msgstr "StarOffice 5.0 Text Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:805
+msgid "KDE KWord Document"
+msgstr "KDE KWord Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:808
+msgid "Microsoft Excel Worksheet"
+msgstr "Microsoft Excel Worksheet"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:809
+msgid "OpenOffice.org Table"
+msgstr "OpenOffice.org Table"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:810
+msgid "OpenOffice.org Table Template"
+msgstr "OpenOffice.org Table Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:811
+msgid "Microsoft Excel File"
+msgstr "Microsoft Excel File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:812
+msgid "Microsoft Excel Template"
+msgstr "Microsoft Excel Template"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:813
+msgid "Comma Seperated Value File"
+msgstr "Comma Seperated Value File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:814
+msgid "KDE KSpread Document"
+msgstr "KDE KSpread Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:815
+msgid "StarOffice 5.0 Table"
+msgstr "StarOffice 5.0 Table"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:818
+msgid "Plain Text"
+msgstr "Plain Text"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:819
+msgid "Rich Text Format"
+msgstr "Rich Text Format"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:822
+msgid "GIF Image"
+msgstr "GIF Image"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:823
+msgid "PNG Image"
+msgstr "PNG Image"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:824
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:825
+msgid "JPEG Image"
+msgstr "JPEG Image"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:826
+msgid "TIFF Image"
+msgstr "TIFF Image"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:827
+msgid "Adobe Photoshop Image"
+msgstr "Adobe Photoshop Image"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:830
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:831
+msgid "Hypertext Markup Language Document"
+msgstr "Hypertext Markup Language Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:832
+msgid "Cascading Style Sheets"
+msgstr "Cascading Style Sheets"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:835
+msgid "LHA Archive"
+msgstr "LHA Archive"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:836
+msgid "RAR Archive"
+msgstr "RAR Archive"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:837
+msgid "ARJ Archive"
+msgstr "ARJ Archive"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:838
+msgid "bz2-compressed File"
+msgstr "bz2-compressed File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:839
+msgid "bzip-compressed File"
+msgstr "bzip-compressed File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:840
+msgid "ZIP Archive"
+msgstr "ZIP Archive"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:841
+msgid "TAR Archive"
+msgstr "TAR Archive"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:842
+msgid "GZ Compressed File"
+msgstr "GZip Compressed File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:845
+msgid "C Program Code"
+msgstr "C Program Code"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:848
+msgid "C++ Program Code"
+msgstr "C++ Program Code"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:850
+msgid "C or C++ Program Header"
+msgstr "C or C++ Program Header"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:853
+msgid "PHP Program Code"
+msgstr "PHP Program Code"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:854
+msgid "PHP Source File"
+msgstr "PHP Source File"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:856
+msgid "Adobe Acrobat Portable Document"
+msgstr "Adobe Acrobat Portable Document"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:859
+msgid "QuickTime Movie"
+msgstr "QuickTime Movie"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:860
+msgid "avi Movie"
+msgstr "AVI Movie"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:862
+msgid "MPEG Movie"
+msgstr "MPEG Movie"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:863
+msgid "Windows Media Video"
+msgstr "Windows Media Video"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.upl.php:865
+msgid "-File"
+msgstr "-File"
+
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:50
+msgid "Select range"
+msgstr "Select range"
+
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:53
+msgid "Language independent"
+msgstr "Language independent"
+
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:79
+msgid "Range"
+msgstr "Range"
+
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:172
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:157
+msgid "No defined properties"
+msgstr "No defined properties"
+
+#: W:\drugcms_2.0/drugcms/includes/include.clientsettings.php:181
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:167
+msgid "Add new variable"
+msgstr "Add new variable"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_sysvalues.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.system_sysvalues.php:123
+msgid "No error log entries found"
+msgstr "No error log entries found"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_sysvalues.php:83
+msgid "No error log file found"
+msgstr "No error log file found"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_sysvalues.php:116
+msgid "No install error log entries found"
+msgstr "No install error log entries found"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_HTML.php:98
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_HTMLHEAD.php:100
+msgid "Save without leaving the editor"
+msgstr "Save without leaving the editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_HTML.php:99
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_HTMLHEAD.php:101
+msgid "Save and close editor"
+msgstr "Save and close editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_visualedit.php:83
+#: W:\drugcms_2.0/drugcms/includes/include.lay_preview.php:39
+msgid "No such layout"
+msgstr "No such layout"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_visualedit.php:146
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:374
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:188
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:656
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:241
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:87
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:92
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:206
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:455
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:309
+msgid "none"
+msgstr "none"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:79
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:87
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:95
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:103
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:112
+msgid "Client "
+msgstr "Client "
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:80
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:128
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:135
+#, php-format
+msgid "The entries of %s table are not deleted!"
+msgstr "The entries of %s table are not deleted!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:88
+#, php-format
+msgid "The %s is not updated!"
+msgstr "The %s is not updated!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:96
+msgid "The cache is not deleted!"
+msgstr "The cache is not deleted!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:104
+msgid "The log is not deleted!"
+msgstr "The log is not deleted!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:113
+msgid "The history is not deleted!"
+msgstr "The history is not deleted!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:143
+msgid "The drugCMS log is not cleaned!"
+msgstr "The drugCMS log is not cleaned!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:150
+msgid "The drugCMS cache is not deleted!"
+msgstr "The drugCMS cache is not deleted!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:157
+msgid "The drugCMS cronjobs are not cleaned!"
+msgstr "The drugCMS cronjobs are not cleaned!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:164
+msgid "Update of sequence table not completed!"
+msgstr "Update of sequence table not completed!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:169
+msgid "The changes were successfully executed."
+msgstr "The changes were successfully executed."
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:171
+msgid "The changes were not all successfully completed."
+msgstr "The changes were not all successfully completed."
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:190
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:214
+msgid "System purge"
+msgstr "System purge"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:191
+msgid "No Client selected!"
+msgstr "No client selected!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:196
+msgid "all clients"
+msgstr "all clients"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:197
+msgid "from list"
+msgstr "from list"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:198
+msgid "Select clients"
+msgstr "Select clients"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:199
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:201
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:209
+#, php-format
+msgid "Reset the table %s"
+msgstr "Reset the table %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:200
+#, php-format
+msgid "Activate the code generation in %s"
+msgstr "Activate the code generation in %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:202
+msgid "Clear client cache"
+msgstr "Clear client cache"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:203
+msgid "Clear client log file"
+msgstr "Clear client log file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:204
+msgid "Clear client history"
+msgstr "Clear client history"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:205
+msgid "Keep last histories"
+msgstr "Keep last histories"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:207
+msgid "drugCMS"
+msgstr "drugCMS"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:208
+msgid "Clear drugCMS log file"
+msgstr "Clear drugCMS log file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:210
+msgid "Clear drugCMS cache"
+msgstr "Clear drugCMS cache"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:211
+msgid "Reset cronjobs"
+msgstr "Reset cronjobs"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:212
+msgid "Update sequence table"
+msgstr "Update sequence table"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:215
+msgid "These changes can not be cancelled."
+msgstr "These changes can not be cancelled."
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:215
+msgid "Do you really want to complete it?"
+msgstr "Do you really want to complete it?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:220
+msgid "No action selected!"
+msgstr "No action selected!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.system_purge.php:222
+msgid "Send"
+msgstr "Send"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group.subnav.php:40
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:183
+msgid "Overview"
+msgstr "Overview"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_SIMPLELINK.php:139
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:142
+#, php-format
+msgid "Edit link for container %s"
+msgstr "Edit link for container %s"
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:275
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:159
+msgid "Article rights"
+msgstr "Article rights"
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:277
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:161
+msgid "Category rights"
+msgstr "Category rights"
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:279
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:163
+msgid "Template rights"
+msgstr "Template rights"
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:281
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:165
+msgid "Plugin/Other rights"
+msgstr "Plugin/Other rights"
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:343
+msgid ""
+"The selected user is a system administrator. A system administrator has all "
+"rights for all clients for all languages and therefore rights can't be "
+"specified in more detail."
+msgstr ""
+"The selected user is a system administrator. A system administrator has all "
+"rights for all clients and all languages and therefore rights can't be "
+"specified in more detail."
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:348
+msgid ""
+"The selected user is assigned to clients as admin, only. An admin has all "
+"rights for a client and therefore rights can't be specified in more detail."
+msgstr ""
+"The selected user is assigned to clients as admin, only. An admin has all "
+"rights for a client and therefore rights can't be specified in more detail."
+
+#: W:\drugcms_2.0/drugcms/includes/rights.inc.php:352
+msgid "Current user doesn't have any rights to any client/language."
+msgstr "Current user doesn't have any rights to any client/language."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:83
+msgid "File name"
+msgstr "File name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:85
+msgid "Replace file"
+msgstr "Replace file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:86
+msgid "Media name"
+msgstr "Media name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:88
+msgid "Keywords"
+msgstr "Keywords"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:89
+msgid "Internal notes"
+msgstr "Internal notes"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:90
+msgid "Copyright"
+msgstr "Copyright"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:91
+msgid "Protection"
+msgstr "Protection"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:92
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:141
+msgid "Time control"
+msgstr "Time control"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:94
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:275
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:245
+msgid "Author"
+msgstr "Author"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:95
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:246
+msgid "Last modified by"
+msgstr "Last modified by"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:192
+msgid "Protected for non-logged in users"
+msgstr "Protected for non-logged in users"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:201
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:144
+msgid "Use time control"
+msgstr "Use time control"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:207
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:33
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:146
+msgid "Start date"
+msgstr "Start date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:211
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:75
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:79
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:37
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:150
+msgid "End date"
+msgstr "End date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_edit.php:305
+#, php-format
+msgid "Could not load file %s"
+msgstr "Could not load file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:175
+msgid "Saterday"
+msgstr "Saturday"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:2172
+#, php-format
+msgid "MySQL Database not reachable for installation %s"
+msgstr "MySQL Database not reachable for installation %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.general.php:2175
+#, php-format
+msgid ""
+"The MySQL Database for the installation %s is not reachable. Please check if "
+"this is a temporary problem or if it is a real fault."
+msgstr ""
+"The MySQL Database for the installation %s is not reachable. Please check if "
+"this is a temporary problem or if it is a real fault."
+
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:179
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_history.php:187
+msgid "No template history available"
+msgstr "No template history available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_EASYIMG.php:146
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_IMG.php:186
+#, php-format
+msgid "Edit image for container %s"
+msgstr "Edit image for container %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_EASYIMG.php:153
+msgid "Upload image"
+msgstr "Upload image"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_EASYIMG.php:157
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:103
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:226
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:193
+msgid "Discard changes"
+msgstr "Discard changes"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:153
+msgid "Failed to delete the following files:"
+msgstr "Failed to delete the following files:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:159
+#, php-format
+msgid "Failed to remove directory %s"
+msgstr "Failed to remove folder %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:172
+msgid "Upload directory"
+msgstr "Upload folder"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:175
+msgid ""
+"The following directories contains invalid characters and were ignored: "
+msgstr "The following folders contains invalid characters and were ignored: "
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:178
+msgid "Please click here in order to rename automatically."
+msgstr "Please click here in order to rename automatically."
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:300
+msgid "Categories"
+msgstr "Categories"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:381
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:528
+msgid "Delete directory"
+msgstr "Delete folder"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:381
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:528
+msgid "Do you really want to delete the following directory:"
+msgstr "Do you really want to delete the following folder:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:386
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:533
+msgid "Directory contains files"
+msgstr "Folder contains files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_dirs_overview.php:435
+msgid "Database Filesystem"
+msgstr "Database Filesystem"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:82
+msgid "Layout is in use, cannot delete"
+msgstr "Layout is in use, cannot delete"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:83
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:226
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:96
+msgid "Click for more information about usage"
+msgstr "Click for more information about usage"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:92
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:147
+msgid "Delete layout"
+msgstr "Delete layout"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:93
+#, php-format
+msgid "Do you really want to delete the following layout:<br><br>%s<br>"
+msgstr "Do you really want to delete the following layout:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:101
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:161
+#: W:\drugcms_2.0/drugcms/templates/standard/template.tpl_edit_form.html:42
+msgid "Layout"
+msgstr "Layout"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_overview.php:118
+#, php-format
+msgid "The layout '%s' is used for following templates"
+msgstr "The layout '%s' is used for following templates"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:135
+msgid "Ignore"
+msgstr "Ignore"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:138
+msgid "Date published"
+msgstr "Date published"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:141
+msgid "Article Search"
+msgstr "Article Search"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:237
+#: W:\drugcms_2.0/drugcms/templates/standard/template.recipient_menu.html:92
+msgid "Search"
+msgstr "Search"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:250
+msgid "Title/Content"
+msgstr "Title/Content"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:255
+msgid "Article ID"
+msgstr "Article ID"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:260
+msgid "Datum"
+msgstr "Date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:265
+msgid "Date from"
+msgstr "Date from"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:270
+msgid "Date to"
+msgstr "Date to"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:291
+msgid "Saved Searches"
+msgstr "Saved Searches"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:302
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_lastarticles.php:137
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:184
+msgid "Recently edited articles"
+msgstr "Recently edited articles"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:306
+msgid "My articles"
+msgstr "My articles"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:311
+msgid "Workflow"
+msgstr "Workflow"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:379
+msgid "Edit Category"
+msgstr "Edit Category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:395
+msgid "Template:"
+msgstr "Template:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:404
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:405
+msgid "Configure Category"
+msgstr "Configure Category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:407
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:408
+msgid "Online / Offline"
+msgstr "Online / Offline"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:410
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:411
+msgid "Lock / Unlock"
+msgstr "Lock / Unlock"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:428
+msgid "close all"
+msgstr "Lock / Unlock"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:428
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:486
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:487
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:488
+#: W:\drugcms_2.0/drugcms/includes/include.con_str_overview.php:662
+#: W:\drugcms_2.0/drugcms/templates/standard/template.stat_overview.html:135
+msgid "Close all categories"
+msgstr "Close all categories"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:429
+msgid "open all"
+msgstr "open all"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:429
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:493
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:494
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:495
+#: W:\drugcms_2.0/drugcms/includes/include.con_str_overview.php:663
+#: W:\drugcms_2.0/drugcms/templates/standard/template.stat_overview.html:137
+msgid "Open all categories"
+msgstr "Open all categories"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:439
+msgid "Synchronize from"
+msgstr "Synchronize from"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:472
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:473
+msgid "Copy to current language"
+msgstr "Copy to current language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:474
+#: W:\drugcms_2.0/drugcms/includes/include.con_left_top.php:475
+msgid "Also copy subcategories"
+msgstr "Also copy subcategories"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:67
+msgid "Changes couldn't saved"
+msgstr "Changes couldn't be saved"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:112
+msgid "Groupname"
+msgstr "Group Name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:208
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:352
+msgid "Area/Type"
+msgstr "Area/Type"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_overview.php:222
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:366
+msgid "User-defined properties"
+msgstr "User-defined properties"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:509
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:211
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:133
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:227
+msgid "Alias"
+msgstr "Alias"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:511
+#, php-format
+msgid ""
+"Do you really want to duplicate the following category:<br><br><b>%s</"
+"b><br><br>Notice: The duplicate process can take up to several minutes, "
+"depending on how many subitems and articles you've got."
+msgstr ""
+"Do you really want to duplicate the following category:<br /><br /><b>%s</"
+"b><br /><br />Notice: The duplicate process can take up to several minutes, "
+"depending on how many subitems and articles it contains."
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:513
+#, php-format
+msgid "Do you really want to delete the following category:<br><br><b>%s</b>"
+msgstr ""
+"Do you really want to delete the following category:<br /><br /><b>%s</b>"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:920
+msgid "Create new category"
+msgstr "Create new category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:949
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:952
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:132
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:112
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:177
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:148
+msgid "Configure category"
+msgstr "Configure category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:963
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:965
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:105
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:124
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:139
+msgid "Protect category"
+msgstr "Configure category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.str_overview.php:993
+#, php-format
+msgid "Cancel moving %s"
+msgstr "Cancel moving %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.style_history.php:126
+msgid "Edit Style"
+msgstr "Edit Style"
+
+#: W:\drugcms_2.0/drugcms/includes/include.js_left_top.php:50
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:206
+msgid "Create script"
+msgstr "Create script"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_left_top.php:112
+msgid "Create directory in"
+msgstr "Create folder in"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:228
+msgid "Module in use, cannot delete"
+msgstr "Module in use, can't be deleted"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:234
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:154
+msgid "Delete module"
+msgstr "Delete module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:235
+#, php-format
+msgid "Do you really want to delete the following module:<br><br>%s<br>"
+msgstr "Do you really want to delete the following module:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_overview.php:302
+#, php-format
+msgid "The module '%s' is used for following templates"
+msgstr "The module '%s' is used for following templates"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.tpl.php:433
+#: W:\drugcms_2.0/drugcms/includes/functions.con.php:1837
+#: W:\drugcms_2.0/drugcms/includes/functions.str.php:1387
+#, php-format
+msgid "%s (Copy)"
+msgstr "%s (Copy)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.html_tpl_left_top.php:50
+msgid "Create module template"
+msgstr "Create module template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:94
+msgid "Edit Module"
+msgstr "Edit Module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:133
+msgid "Code Input"
+msgstr "Edit Module"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:134
+msgid "Code Output"
+msgstr "Code Output"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_history.php:152
+msgid "No module history available"
+msgstr "No module history available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:87
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:186
+msgid "Edit Layout"
+msgstr "Edit Layout"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_history.php:137
+msgid "No layout history available"
+msgstr "No layout history available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:52
+msgid "No client ID passed"
+msgstr "No client ID passed"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:65
+msgid ""
+"Notice: In order to use this client, you must create a new language for it."
+msgstr ""
+"Notice: In order to use this client, you must create a new language for it."
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:69
+#, php-format
+msgid "Please click %shere%s to create a new language."
+msgstr "Please click %shere%s to create a new language."
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:116
+msgid "Couldn't write the file config.php."
+msgstr "Couldn't write the file config.php."
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:126
+#, php-format
+msgid ""
+"The directory %s already exists. The client was created, but you have to "
+"copy the frontend-template yourself"
+msgstr ""
+"The folder %s already exists. The client was created, but you have to copy "
+"the frontend-template yourself"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:145
+msgid ""
+"You changed the client path. You might need to copy the frontend to the new "
+"location"
+msgstr ""
+"You changed the client path. You might need to copy the frontend to the new "
+"location"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:243
+msgid "Client name"
+msgstr "Client name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:259
+msgid "Server path"
+msgstr "Server path"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:275
+msgid "Web address"
+msgstr "Web address"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:284
+msgid "Error page category"
+msgstr "Error page category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:293
+msgid "Error page article"
+msgstr "Error page article"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:304
+msgid "Client logo"
+msgstr "Client logo"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:313
+msgid "HTML"
+msgstr "Client logo"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:313
+msgid "XHTML"
+msgstr "XHTML"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:313
+msgid "HTML5"
+msgstr "HTML5"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:328
+msgid "Generate"
+msgstr "Generate"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_edit.php:339
+msgid "Copy frontend template"
+msgstr "Copy frontend template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:57
+msgid "Old password incorrect"
+msgstr "Old password incorrect"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:77
+msgid "Password changed"
+msgstr "Password changed"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:97
+#, php-format
+msgid "Settings for %s"
+msgstr "Settings for %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:115
+msgid "Old password"
+msgstr "Old password"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:125
+msgid "Use WYSIWYG Editor"
+msgstr "Use WYSIWYG Editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:129
+msgid "The format is equal to PHP's date() function."
+msgstr "The format is equal to PHP's date() function."
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:131
+msgid "Common date formattings"
+msgstr "Common date formattings"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:141
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:254
+msgid "Date/Time format"
+msgstr "Date/Time format"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:142
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:255
+msgid "Date format"
+msgstr "Date format"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_settings.php:143
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:253
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:256
+msgid "Time format"
+msgstr "Time format"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:58
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:53
+msgid "-- All fields --"
+msgstr "-- All fields --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:141
+msgid "Frontend users"
+msgstr "Frontend user"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:148
+msgid "Frontend groups"
+msgstr "Frontend groups"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:228
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_menu.php:139
+msgid "-- All Groups --"
+msgstr "-- All Groups --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.left_top.php:261
+msgid "Show group"
+msgstr "Show group"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:216
+msgid "Close editor"
+msgstr "Close editor"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:217
+msgid "Close editor and save changes"
+msgstr "Close editor and save changes"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:218
+msgid "Do you want to save changes?"
+msgstr "Do you want to save the changes?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:380
+msgid "No template assigned to the category<br>and/or the article"
+msgstr "No template assigned to the category<br />and/or the article"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_editcontent.php:381
+msgid "The code for the following article<br>couldnt be generated:"
+msgstr "The code for the following article<br>couldn't be generated:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.pretplcfg_edit_form.php:101
+#, php-format
+msgid "Module in Container %s"
+msgstr "Module in Container %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.pretplcfg_edit_form.php:150
+msgid "Template preconfiguration"
+msgstr "Template preconfiguration"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:66
+msgid "Use this category"
+msgstr "Use this category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:61
+msgid "Start"
+msgstr "Start"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:284
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:64
+msgid "Created"
+msgstr "Date created"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:65
+msgid "Modified"
+msgstr "Modified"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+msgid "Sort Order"
+msgstr "Sort order"
+
+#: W:\drugcms_2.0/drugcms/includes/include.upl_artlist.php:81
+msgid "Online"
+msgstr "Online"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:50
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:74
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:111
+msgid "-- new user --"
+msgstr "-- new user --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:114
+msgid "Username empty or not set! Please choose one."
+msgstr "Username empty or not set! Please choose one."
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:119
+msgid "Password not set right now!"
+msgstr "Password not set right now!"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:125
+msgid "Could not set new username: Username already exists"
+msgstr "Could not set new username: Username already exists"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:132
+msgid "Could not set new password: Passwords don't match"
+msgstr "Could not set new password: Passwords don't match"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:181
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:176
+msgid "Edit user"
+msgstr "Edit user"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:191
+msgid "New password (again)"
+msgstr "New password (again)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:192
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:245
+msgid "Active"
+msgstr "Active"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:219
+msgid "WARNING"
+msgstr "WARNING"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:219
+#, php-format
+msgid ""
+"The plugin %s delivered an array for the displayed titles, but did not "
+"return an array for the contents."
+msgstr ""
+"The plugin %s delivered an array for the displayed titles, but did not "
+"return an array for the contents."
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.user_edit.php:244
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:458
+msgid "Group membership"
+msgstr "Group membership"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.lang.php:119
+msgid ""
+"Could not set the language-ID in the file 'config.php'. Please set the "
+"language manually."
+msgstr ""
+"Could not set the language-ID in the file 'config.php'. Please set the "
+"language manually."
+
+#: W:\drugcms_2.0/drugcms/includes/functions.lang.php:591
+msgid "Could not delete language"
+msgstr "Could not delete language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.info.php:38
+msgid ""
+"You can find a lot of information and a community forum on the <a href="
+"\"http://www.drugcms.org\" target=\"_blank\">drugCMS Portal</a>"
+msgstr ""
+"You can find a lot of information and a community forum on the <a href="
+"\"http://www.drugcms.org\" target=\"_blank\">drugCMS Portal</a>"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:153
+msgid "External link"
+msgstr "External Link"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:210
+msgid "Internal link"
+msgstr "Internal link"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:240
+msgid "Link to a document"
+msgstr "Link to a document"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:270
+msgid "Link to an image"
+msgstr "Link to an image"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:285
+msgid "Link to an archive"
+msgstr "Link to an archive"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:300
+msgid "Link to a media file"
+msgstr "Link to a media file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:316
+msgid "Link to any file"
+msgstr "Link to any file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:340
+msgid "Upload file"
+msgstr "Upload file"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:345
+msgid "Target frame"
+msgstr "Target frame"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:353
+msgid "Open link in new window"
+msgstr "Open link in new window"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_LINK.php:375
+msgid "Open in new window"
+msgstr "Open in new window"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:44
+msgid "Info about article"
+msgstr "Info about article"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:46
+msgid "Info about directory"
+msgstr "Info about folder"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:285
+msgid "Category is online"
+msgstr "Category is online"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:287
+msgid "Category is offline"
+msgstr "Category is offline"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:478
+msgid "Sum"
+msgstr "Sum"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:989
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:1015
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:50
+msgid "Top 10"
+msgstr "Top 10"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:990
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:1016
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:53
+msgid "Top 20"
+msgstr "Top 20"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:991
+#: W:\drugcms_2.0/drugcms/includes/functions.stat.php:1017
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:56
+msgid "Top 30"
+msgstr "Top 30"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_menu.php:37
+msgid "Current Report"
+msgstr "Current Report"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_menu.php:45
+msgid "Statistics Overview"
+msgstr "Statistics Overview"
+
+# E:\timo\contenido_head\contenido/includes/include.stat_menu.php:43
+#: W:\drugcms_2.0/drugcms/includes/include.stat_menu.php:56
+msgid "Archived Statistics"
+msgstr "Archived statistics"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:139
+msgid "No elements available"
+msgstr "No elements available"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:188
+msgid "Javascript files"
+msgstr "Javascript files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:189
+msgid "Module template files"
+msgstr "Module template files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:190
+msgid "Style files"
+msgstr "Stylesheet files"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:191
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:25
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:282
+msgid "Layouts"
+msgstr "Layouts"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:192
+msgid "Translations"
+msgstr "Translations"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:238
+msgid "Skip"
+msgstr "Skip"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:238
+msgid "Append"
+msgstr "Append"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:238
+msgid "Overwrite"
+msgstr "Overwrite"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:239
+msgid "OK"
+msgstr "OK"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:240
+msgid "Assign"
+msgstr "Assign"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:241
+msgid "Conflict"
+msgstr "Conflict"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:242
+msgid "Ignored"
+msgstr "Ignored"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:243
+msgid "- Select -"
+msgstr "- Select -"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:252
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:361
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:366
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:90
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:137
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+msgid "Status"
+msgstr "Status"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:254
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:29
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:54
+msgid "Action"
+msgstr "Action"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:312
+msgid "Import"
+msgstr "Import"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:361
+msgid "Import was not succesful, please check data and try again"
+msgstr "Import was not succesful, please check data and try again"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:362
+msgid "Retry"
+msgstr "Retry"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:366
+msgid "Import succesfully finished"
+msgstr "Import succesfully finished"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:367
+msgid "Finish"
+msgstr "Finish"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:421
+msgid "Edit package"
+msgstr "Edit package"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_package.php:442
+msgid "Package GUID"
+msgstr "Package GUID"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.con.php:331
+#: W:\drugcms_2.0/drugcms/includes/functions.con.php:518
+msgid "Default title"
+msgstr "Default title"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:46
+msgid "-- New Layout --"
+msgstr "-- New Layout --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:56
+msgid "Layout deleted"
+msgstr "Layout deleted"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:128
+#, php-format
+msgid "Container %s was defined %s times"
+msgstr "Container %s was defined %s times"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:141
+msgid ""
+"The body tag does not exist in the layout. This is a requirement for the in-"
+"site editing."
+msgstr ""
+"Container %s was defined %s timesThe body tag does not exist in the layout. "
+"This is a requirement for the in-site editing."
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:147
+msgid ""
+"The head tag does not exist in the layout. This is a requirement for the in-"
+"site editing."
+msgstr ""
+"The head tag does not exist in the layout. This is a requirement for the in-"
+"site editing."
+
+#: W:\drugcms_2.0/drugcms/includes/include.lay_edit_form.php:202
+msgid "On save, apply default modules to new containers"
+msgstr "On saving, apply default modules to new containers"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:44
+msgid "- New Template -"
+msgstr "- New Template -"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:149
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:165
+msgid "Edit template"
+msgstr "Edit template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:159
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:237
+msgid "Default"
+msgstr "Default"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_edit_form.php:162
+#: W:\drugcms_2.0/drugcms/templates/standard/template.tpl_edit_form.html:55
+msgid "Layout description"
+msgstr "Layout description"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_menu.php:80
+msgid "Delete client"
+msgstr "Delete client"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_menu.php:81
+#, php-format
+msgid "Do you really want to delete the following client:<br><br>%s<br>"
+msgstr "Do you really want to delete the following client:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.client_left_top.php:50
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:243
+msgid "Create client"
+msgstr "Create client"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:47
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:60
+msgid "Full statistics"
+msgstr "Full statistics"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:76
+msgid "Yearly"
+msgstr "Yearly"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:80
+msgid "Current"
+msgstr "Current"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:91
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:401
+msgid "Number of articles"
+msgstr "Number of articles"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:92
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:37
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:496
+msgid "Hits"
+msgstr "Hits"
+
+#: W:\drugcms_2.0/drugcms/includes/include.stat_overview.php:94
+msgid "Hits in this language"
+msgstr "Hits in this language"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights.inc.php:215
+msgid "Current group doesn't have any rights to any client/language."
+msgstr "Current group doesn't have any rights to any client/language."
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:354
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:297
+msgid "not yet published"
+msgstr "not yet published"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:369
+msgid "Article is in use"
+msgstr "Article is in use"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:370
+#, php-format
+msgid "Article in use by %s (%s)"
+msgstr "Article in use by %s (%s)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:446
+msgid "Article is frozen"
+msgstr "Article is frozen"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:449
+msgid "Article is not frozen"
+msgstr "Article is not frozen"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:486
+msgid "Copy article to the current language"
+msgstr "Copy article to the current language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:553
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:350
+msgid "Start article"
+msgstr "Start article"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:555
+msgid "Normal article"
+msgstr "Normal article"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:581
+#, php-format
+msgid "Reminder for Article '%s'"
+msgstr "Reminder for Article '%s'"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:584
+#, php-format
+msgid ""
+"Reminder for Article '%s'\n"
+"Category: %s"
+msgstr ""
+"Reminder for Article '%s'\n"
+"Category: %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:595
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_lastarticles.php:221
+msgid "Article is online"
+msgstr "Article is online"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:603
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_lastarticles.php:224
+msgid "Article is offline"
+msgstr "Article is offline"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:625
+#, php-format
+msgid "Are you sure to delete the following article:<br><br><b>%s</b>"
+msgstr "Are you sure to delete the following article:<br /><br /><b>%s</b>"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:771
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:774
+#, php-format
+msgid "Go to page: %s"
+msgstr "Go to page: %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:777
+msgid "with click select line for further treatment"
+msgstr "with click select line for further treatment"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:832
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:938
+msgid "No articles found"
+msgstr "No articles found"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:838
+msgid "Alphabetical"
+msgstr "Alphabetical"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:839
+msgid "Last change"
+msgstr "Latest change"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:840
+msgid "Published date"
+msgstr "Published date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:841
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:354
+msgid "Sort key"
+msgstr "Sort key"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:860
+msgid "Sort articles:"
+msgstr "Sort articles:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:887
+msgid "Items per page:"
+msgstr "Items per page:"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:988
+#: W:\drugcms_2.0/drugcms/includes/include.con_art_overview.php:989
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:117
+msgid "Create new article"
+msgstr "Create new article"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:99
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:164
+msgid "Delete template"
+msgstr "Delete template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:100
+#, php-format
+msgid "Do you really want to delete the following template:<br><br>%s<br>"
+msgstr ""
+"Do you really want to delete the following template:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:105
+msgid "Template in use, cannot delete"
+msgstr "Template in use, cannot be deleted"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:111
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:167
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:168
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:345
+msgid "Duplicate template"
+msgstr "Duplicate template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_overview.php:128
+#, php-format
+msgid "The template '%s' is used for following categories and articles"
+msgstr "The template '%s' is used for following categories and articles"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms_lastarticles.php:293
+msgid "No article found"
+msgstr "No article found"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:99
+msgid "Make category online"
+msgstr "Set category online"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:100
+msgid "Change template"
+msgstr "Change template"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:101
+msgid "Set start article"
+msgstr "Set start article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:102
+msgid "Make article online"
+msgstr "Make article online"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:103
+msgid "Syncronize Category"
+msgstr "Synchronize Category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:104
+msgid "Syncronize Article"
+msgstr "Synchronize Article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:107
+msgid "Edit template configuration"
+msgstr "Edit template configuration"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:108
+msgid "Duplicate Article"
+msgstr "Duplicate Article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:109
+msgid "Expand boxes"
+msgstr "Expand boxes"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:111
+msgid "Create article"
+msgstr "Create article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:112
+msgid "Configure article"
+msgstr "Configure article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:113
+msgid "Save article"
+msgstr "Save article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:114
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:391
+msgid "Remove assignments"
+msgstr "Remove assignments"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:115
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:117
+msgid "Edit article"
+msgstr "Edit article"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:116
+msgid "Edit article properties"
+msgstr "Edit article properties"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:118
+msgid "Help"
+msgstr "Help"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:120
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:183
+msgid "Rename category"
+msgstr "Rename category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:121
+msgid "New category"
+msgstr "New category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:122
+msgid "Set category on- or offline"
+msgstr "Set category on- or offline"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:123
+msgid "Disable category"
+msgstr "Disable category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:125
+msgid "Frontend access"
+msgstr "Frontend access"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:126
+msgid "Delete category"
+msgstr "Delete category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:127
+msgid "Move category up"
+msgstr "Move category up"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:128
+msgid "Move category down"
+msgstr "Move category down"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:129
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:230
+msgid "Move category"
+msgstr "Move category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:130
+msgid "Create new tree"
+msgstr "Create new tree"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:131
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:242
+msgid "Duplicate category"
+msgstr "Duplicate category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:133
+msgid "Edit category"
+msgstr "Edit category"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:135
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:145
+msgid "Create directory"
+msgstr "Create folder"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:137
+msgid "Delete files"
+msgstr "Delete files"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:138
+msgid "Remove directory"
+msgstr "Remove folder"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:139
+msgid "Rename directory"
+msgstr "Rename folder"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:140
+msgid "Modify file"
+msgstr "Modify file"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:141
+msgid "Rename file"
+msgstr "Rename file"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:142
+msgid "Multidelete Files"
+msgstr "Multidelete Files"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:148
+msgid "Modify layout"
+msgstr "Modify layout"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:149
+msgid "Create layout"
+msgstr "Create layout"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:150
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:155
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:201
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:207
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:213
+msgid "Manage History"
+msgstr "Manage History"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:151
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:156
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:202
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:208
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:214
+msgid "Truncate History"
+msgstr "Truncate History"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:158
+msgid "Create module"
+msgstr "Create module"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:159
+msgid "Import/Export module"
+msgstr "Import/Export module"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:160
+msgid "Translate modules"
+msgstr "Translate module"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:161
+msgid "Translation import/export"
+msgstr "Translation import/export"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:162
+msgid "Import/Export package"
+msgstr "Import/Export package"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:166
+msgid "Create template"
+msgstr "Create template"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:169
+msgid "Visual edit"
+msgstr "Visual edit"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:173
+msgid "Save user area rights"
+msgstr "Save user area permissions"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:175
+msgid "Edit rights"
+msgstr "Edit permissions"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:178
+msgid "Delete group members"
+msgstr "Delete group members"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:179
+msgid "Add group members"
+msgstr "Add group members"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:180
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_edit.php:275
+msgid "Edit group"
+msgstr "Edit group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:182
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_menu.php:196
+msgid "Delete group"
+msgstr "Delete group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:184
+msgid "Show statistics"
+msgstr "Show statistics"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:188
+msgid "Rename language"
+msgstr "Rename language"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:191
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:242
+msgid "Edit language"
+msgstr "Edit language"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:193
+msgid "Linkchecker"
+msgstr "Linkchecker"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:194
+msgid "Linkchecker Whitelist"
+msgstr "Linkchecker Whitelist"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:196
+msgid "Install/Remove plugins"
+msgstr "Install/Remove plugins"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:198
+msgid "Modify CSS"
+msgstr "Modify CSS"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:199
+msgid "Create CSS"
+msgstr "Create stylesheet"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:200
+msgid "Delete CSS"
+msgstr "Delete CSS"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:204
+msgid "Edit script"
+msgstr "Edit script"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:205
+msgid "Delete script"
+msgstr "Delete script"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:210
+msgid "Modify HTML-Template"
+msgstr "Modify HTML-Template"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:211
+msgid "Create HTML-Template"
+msgstr "Create HTML-Template"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:212
+msgid "Delete HTML-Template"
+msgstr "Delete HTML-Template"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:216
+msgid "Edit newsletter"
+msgstr "Edit newsletter"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:217
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:432
+msgid "Create newsletter"
+msgstr "Create newsletter"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:218
+msgid "Delete newsletter"
+msgstr "Delete newsletter"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:219
+msgid "Duplicate newsletter"
+msgstr "Duplicate newsletter"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:220
+msgid "Add newsletter dispatch job"
+msgstr "Add newsletter dispatch job"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:221
+msgid "Change global HTML newsletter settings"
+msgstr "Change global HTML newsletter settings"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:222
+msgid "Send test newsletter (to groups)"
+msgstr "Send test newsletter (to groups)"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:223
+msgid "Delete dispatch job"
+msgstr "Delete dispatch job"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:224
+msgid "Remove recipient from dispatch job"
+msgstr "Remove recipient from dispatch job"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:225
+msgid "Run job"
+msgstr "Run job"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:226
+msgid "View dispatch job details"
+msgstr "View dispatch job details"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:228
+msgid "Edit recipient"
+msgstr "Edit recipient"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:229
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:463
+msgid "Create recipient"
+msgstr "Create recipient"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:230
+msgid "Delete recipient"
+msgstr "Delete recipient"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:231
+msgid "Purge recipients"
+msgstr "Clean up recipients"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:232
+msgid "Import recipients"
+msgstr "Import recipients"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:233
+msgid "Execute recipients import"
+msgstr "Execute recipients import"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:234
+msgid "Delete recipient group"
+msgstr "Delete recipient group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:235
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:475
+msgid "Create recipient group"
+msgstr "Create recipient group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:236
+msgid "Delete recipient from group"
+msgstr "Delete recipient from group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:237
+msgid "Save recipient group"
+msgstr "Save recipient group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:239
+msgid "Edit own My drugCMS settings"
+msgstr "Edit own My drugCMS settings"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:240
+msgid "Delete reminder item"
+msgstr "Delete reminder item"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:241
+msgid "Save todo item"
+msgstr "Save todo item"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:244
+msgid "Edit client"
+msgstr "Edit client"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:245
+msgid "Remove client"
+msgstr "Remove client"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:246
+msgid "Delete clientsetting"
+msgstr "Delete client setting"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:247
+msgid "Edit clientsetting"
+msgstr "Edit client setting"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:248
+msgid "Save clientsetting"
+msgstr "Save client setting"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:249
+msgid "Create/Edit articlespecifications"
+msgstr "Create/Edit article specifications"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:250
+msgid "Delete articlespecifications"
+msgstr "Delete article specifications"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:251
+msgid "Define default articlespecification"
+msgstr "Define default article specification"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:252
+msgid "Edit articlespecifications"
+msgstr "Edit article specifications"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:253
+msgid "Make articlespecifications online"
+msgstr "Make article specifications online"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:255
+msgid "Save frontenduser"
+msgstr "Save frontend user"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:256
+msgid "Create frontenduser"
+msgstr "Create frontend user"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:257
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:263
+msgid "Delete frontenduser"
+msgstr "Delete frontend user"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:258
+msgid "Delete frontendgroup"
+msgstr "Delete frontend group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:259
+msgid "Save frontendgroup"
+msgstr "Save frontend group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:260
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:261
+msgid "Create frontendgroup"
+msgstr "Create frontend group"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:262
+msgid "Add frontendusers"
+msgstr "Add frontend user"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:264
+msgid "Save frontendgroup permissions"
+msgstr "Save frontend group permissions"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:266
+msgid "Delete system property"
+msgstr "Delete system property"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:267
+msgid "Edit system property"
+msgstr "Edit system property"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:268
+msgid "Save system property"
+msgstr "Save system property"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:270
+msgid "Empty log"
+msgstr "Truncate log"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:271
+msgid "Edit Systemconfigration"
+msgstr "Edit System configration"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:272
+msgid "Do system purge"
+msgstr "Do system purge"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:274
+msgid "Show log"
+msgstr "Show log"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:279
+msgid "Delete note"
+msgstr "Delete note"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:280
+msgid "Save note"
+msgstr "Save note"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:282
+msgid "Send mail"
+msgstr "Send mail"
+
+#: W:\drugcms_2.0/drugcms/includes/cfg_language_de.inc.php:283
+msgid "Fake permissions"
+msgstr "Fake permissions"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:75
+msgid "User deleted"
+msgstr "User deleted"
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:144
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:149
+msgid "An error occured while saving user info."
+msgstr "An error occured while saving user info."
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:436
+msgid "This account is currently inactive."
+msgstr "This account is currently inactive."
+
+#: W:\drugcms_2.0/drugcms/includes/include.rights_overview.php:439
+msgid "This account is currently active."
+msgstr "This account is currently active."
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:228
+msgid "Left to right"
+msgstr "Left to right"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:228
+msgid "Right to left"
+msgstr "Right to left"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:244
+msgid "Language name"
+msgstr "Language name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:248
+msgid "Encoding"
+msgstr "Encoding"
+
+#: W:\drugcms_2.0/drugcms/includes/include.lang_edit.php:251
+msgid "Text direction"
+msgstr "Text direction"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:67
+msgid "No Login Information available."
+msgstr "No Login Information available."
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:72
+msgid ""
+"You're logged in with a temporary password. Please change your password."
+msgstr ""
+"You're logged in with a temporary password. Please change your password."
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:80
+msgid "Welcome"
+msgstr "Welcome"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:81
+msgid "Last login"
+msgstr "Last login"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:101
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:138
+#, php-format
+msgid "Client %s (%s) has no languages"
+msgstr "Client %s (%s) has no languages"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:121
+msgid "Change client"
+msgstr "Change client"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:126
+msgid "No clients available!"
+msgstr "No clients available!"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:178
+#, php-format
+msgid "Reminder list: %d Task open"
+msgstr "Reminder list: %d Task open"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:180
+#, php-format
+msgid "Reminder list: %d Tasks open"
+msgstr "Reminder list: %d Tasks open"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:186
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:455
+msgid "Settings"
+msgstr "Settings"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:211
+msgid "Symbol help"
+msgstr "Symbol help"
+
+#: W:\drugcms_2.0/drugcms/includes/main.login.php:214
+msgid "Contenido Manual"
+msgstr "drugCMS Manual"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:43
+msgid "Edit Reminder item"
+msgstr "Edit Reminder item"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:65
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:124
+msgid "Assigned to"
+msgstr "Assigned to"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:68
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:67
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+msgid "Subject"
+msgstr "Subject"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:77
+msgid "E-Mail notification"
+msgstr "E-Mail notification"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:81
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:82
+msgid "Reminder options"
+msgstr "Reminder options"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:100
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:75
+msgid "Reminder date"
+msgstr "Reminder date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:132
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+msgid "Priority"
+msgstr "Priority"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.edit.php:140
+msgid "Progress"
+msgstr "Progress"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_edit.php:56
+msgid "-- new group --"
+msgstr "-- new group --"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_edit.php:121
+msgid "Could not set new group name: Group already exists"
+msgstr "Could not set new group name: Group already exists"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_edit.php:227
+msgid "Default group"
+msgstr "Default group"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_menu.php:178
+#, php-format
+msgid "Do you really want to delete the group %s?"
+msgstr "Do you really want to delete the group %s?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.grouprights_menu.php:197
+#, php-format
+msgid "Do you really want to delete the following group:<br><br>%s<br>"
+msgstr "Do you really want to delete the following group:<br /><br />%s<br />"
+
+#: W:\drugcms_2.0/drugcms/includes/include.note.popup.php:63
+msgid "Add note"
+msgstr "Add note"
+
+#: W:\drugcms_2.0/drugcms/includes/include.note.popup.php:75
+msgid "No category"
+msgstr "No category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.note.popup.php:92
+msgid "Note"
+msgstr "Note"
+
+#: W:\drugcms_2.0/drugcms/includes/include.CMS_IMG.php:275
+msgid "Directory / File"
+msgstr "Folder / File"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:79
+#, php-format
+msgid "Category Template configuration is in use by %s (%s)"
+msgstr "Category Template configuration is in use by %s (%s)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:362
+msgid "Module in container"
+msgstr "Module in container"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:492
+msgid "Categorytemplate configuration"
+msgstr "Category template configuration"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tplcfg_edit_form.php:495
+msgid "Articletemplate configuration"
+msgstr "Article template configuration"
+
+#: W:\drugcms_2.0/drugcms/includes/include.style_left_top.php:50
+msgid "Create style"
+msgstr "Create style"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:138
+#, php-format
+msgid "Translate module '%s'"
+msgstr "Translate module '%s'"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:147
+msgid "Translated Name"
+msgstr "Translated Name"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:157
+msgid "Original module string"
+msgstr "Original module string"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:157
+#, php-format
+msgid "Translation for %s"
+msgstr "Translation for %s"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:165
+msgid ""
+"Hint: Hit ALT+SHIFT+S to save the translated entry and advance to the next "
+"string."
+msgstr ""
+"Hint: Hit ALT+SHIFT+S to save the translated entry and advance to the next "
+"entry."
+
+#: W:\drugcms_2.0/drugcms/includes/include.mod_translate.php:166
+msgid "String list"
+msgstr "String list"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:253
+msgid "Articlelink"
+msgstr "Article link"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:260
+msgid "Select an entry to display link"
+msgstr "Select an entry to display link"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:261
+msgid "Article only"
+msgstr "Article only"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:262
+msgid "Article with Category"
+msgstr "Article with Category"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:263
+msgid "Article with Category and Language"
+msgstr "Article with Category and Language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:264
+msgid "Article with Language"
+msgstr "Article with Language"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:278
+msgid "Author (Creator)"
+msgstr "created by"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:288
+msgid "Author (Modifier)"
+msgstr "modified by"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:289
+msgid "Last modified"
+msgstr "Date modified"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:293
+msgid "Publishing date"
+msgstr "Date published"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:300
+msgid "Publisher"
+msgstr "published by"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:308
+msgid "Redirect"
+msgstr "Redirect"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:324
+msgid "New Window"
+msgstr "New window"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:393
+msgid "Remove multiple category assignments"
+msgstr "Remove multiple category assignments"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:394
+msgid ""
+"Do you really want to remove the assignments to all categories except the "
+"current one?"
+msgstr ""
+"Do you really want to remove the assignments to all categories except the "
+"current one?"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:410
+msgid ""
+"Language parts of the articles are existing in other languages and are "
+"online. To change the category assignment, please set the other articles "
+"offline first."
+msgstr ""
+"Language parts of the articles exist in other languages and are online. To "
+"change the category assignment, please set the other articles offline first."
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:549
+msgid "Choose Startdate"
+msgstr "Choose Startdate"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:550
+msgid "Choose Enddate"
+msgstr "Choose Enddate"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:648
+msgid "Select date"
+msgstr "Select date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.con_edit_form.php:685
+msgid "Summary"
+msgstr "Summary"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:206
+msgid "Please insert filename."
+msgstr "Please insert filename."
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:218
+#, php-format
+msgid "Could not open file %s"
+msgstr "Could not open file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:223
+#, php-format
+msgid "Could not write file %s"
+msgstr "Could not write file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:234
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:338
+#, php-format
+msgid "%s is not writable"
+msgstr "%s is not writable"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:255
+#, php-format
+msgid "Can not open file%s "
+msgstr "Can not open file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:304
+msgid "Unable to change file access permission."
+msgstr "Unable to change file access permission."
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:308
+#, php-format
+msgid "Unable to create file %s"
+msgstr "Unable to create file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:334
+#, php-format
+msgid "Can not rename file %s"
+msgstr "Can not rename file %s"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.file.php:361
+msgid "Wrong filename."
+msgstr "Wrong filename."
+
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:58
+msgid "Add TODO item"
+msgstr "Add To-Do item"
+
+#: W:\drugcms_2.0/drugcms/includes/include.todo.popup.php:80
+msgid "eMail notification"
+msgstr "E-Mail notification"
+
+#: W:\drugcms_2.0/drugcms/includes/include.systemsettings.php:47
+msgid "Please set this property in systemsettings directly"
+msgstr "Please set this property in systemsettings directly"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:128
+msgid "No status type set"
+msgstr "No status type set"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:155
+#, php-format
+msgid "%d %% complete"
+msgstr "%d %% complete"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:196
+msgid "Today"
+msgstr "Today"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:201
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:203
+msgid "Day(s)"
+msgstr "Day(s)"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+msgid "End Date"
+msgstr "End date"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+#, php-format
+msgid "%% complete"
+msgstr "%% complete"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:276
+msgid "Due in"
+msgstr "Due in"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:302
+msgid "Unnamed item"
+msgstr "Unnamed item"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:307
+msgid "No end date set"
+msgstr "No end date set"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:314
+msgid "No status set"
+msgstr "No status set"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:338
+msgid "Delete item"
+msgstr "Delete item"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:345
+msgid "Edit item"
+msgstr "Edit item"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:376
+msgid "Restrict display"
+msgstr "Restrict view"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:386
+msgid "Hide done tasks"
+msgstr "Hide done tasks"
+
+#: W:\drugcms_2.0/drugcms/includes/include.mydrugcms.tasks.php:401
+msgid "No tasks found"
+msgstr "No tasks found"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.lay.php:66
+msgid "-- Unnamed Layout --"
+msgstr "-- Unnamed Layout --"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:55
+msgid "Can't clear install error log : Access is denied!"
+msgstr "Can't clear install error log : Access denied!"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:60
+msgid "error log successfully cleared"
+msgstr "error log successfully cleared"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:278
+msgid "Contenido version"
+msgstr "drugCMS version"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:281
+msgid "Contenido path"
+msgstr "drugCMS path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:283
+msgid "Contenido HTML path"
+msgstr "drugCMS HTML path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:285
+msgid "Contenido full HTML path"
+msgstr "drugCMS full HTML path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:287
+msgid "Contenido frontend path"
+msgstr "drugCMS frontend path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:289
+msgid "Contenido PHPLIB path"
+msgstr "drugCMS PHPLIB path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:291
+msgid "Contenido wysiwyg path"
+msgstr "drugCMS wysiwyg path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:293
+msgid "Contenido wysiwyg HTML path"
+msgstr "drugCMS wysiwyg HTML path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:296
+msgid "Host name"
+msgstr "Host name"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:299
+msgid "Browser path"
+msgstr "Browser path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:321
+msgid "client settings"
+msgstr "client settings"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:322
+msgid "values"
+msgstr "values"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:353
+msgid "language(s)"
+msgstr "language(s)"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:362
+msgid "htmlpath"
+msgstr "HTML path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:366
+msgid "frontendpath"
+msgstr "Frontend path"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:378
+msgid "No permissions!"
+msgstr "No permissions!"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:384
+msgid "Number of installed clients: "
+msgstr "Number of installed clients: "
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:387
+msgid "Client informations"
+msgstr "Client information"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:394
+msgid "Number of users"
+msgstr "Number of user"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:404
+msgid "Server operating system"
+msgstr "Server operating system"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:408
+msgid "PHP database extension"
+msgstr "PHP database extension"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:410
+msgid "Database server version"
+msgstr "Database server version"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:413
+msgid "Installed PHP version"
+msgstr "Installed PHP version"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:418
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:422
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:426
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:447
+msgid "activated"
+msgstr "activated"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:418
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:422
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:426
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:447
+msgid "deactivated"
+msgstr "deactivated"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:439
+msgid "nothing disabled"
+msgstr "nothing disabled"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:440
+msgid "Disabled functions"
+msgstr "Disabled functions"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:443
+msgid "loaded"
+msgstr "loaded"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:443
+msgid "not loaded"
+msgstr "not loaded"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:444
+msgid "Gettext extension"
+msgstr "Gettext extension"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:456
+msgid "Values"
+msgstr "Values"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:473
+msgid "GD library"
+msgstr "GD library"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:636
+msgid "an error occured while sending your bug report! Please try again"
+msgstr "an error occured while sending your bug report! Please try again"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:639
+msgid "bug report forwarded"
+msgstr "bug report forwarded"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:645
+msgid "please fill out all mandatory fields"
+msgstr "please fill out all mandatory fields"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:649
+msgid "please enter a valid E-Mail adress"
+msgstr "please enter a valid e-mail adress"
+
+#: W:\drugcms_2.0/drugcms/includes/functions.system.php:653
+msgid "you must agree the declaration of consent"
+msgstr "you must agree to the declaration of consent"
+
+#: W:\drugcms_2.0/drugcms/includes/include.tpl_new.php:39
+msgid "New template"
+msgstr "New template"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:64
+msgid "Submit query"
+msgstr "Submit query"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:75
+msgid "All users"
+msgstr "All users"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:77
+msgid "All actions"
+msgstr "All actions"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:199
+msgid "Unlimited"
+msgstr "Unlimited"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:200
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:201
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:202
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:203
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:204
+msgid "Entries"
+msgstr "Entries"
+
+#: W:\drugcms_2.0/drugcms/includes/include.logs.php:275
+msgid "No results"
+msgstr "No results"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_menu.php:51
+msgid "Delete frontend group"
+msgstr "Delete frontend group"
+
+#: W:\drugcms_2.0/drugcms/includes/include.frontend.group_menu.php:52
+#, php-format
+msgid "Do you really want to delete the following frontend group:<br><b>%s</b>"
+msgstr ""
+"Do you really want to delete the following frontend group:<br /><b>%s</b>"
+
+#: W:\drugcms_2.0/drugcms/includes/grouprights_mod.inc.php:73
+#: W:\drugcms_2.0/drugcms/includes/rights_mod.inc.php:75
+msgid "Module name"
+msgstr "Module name"
+
+#: W:\drugcms_2.0/docs/techref/plugins/plugin.config.html:86
+msgid "Does something useful"
+msgstr ""
+
+#: W:\drugcms_2.0/docs/techref/plugins/plugin.config.html:106
+#: W:\drugcms_2.0/docs/techref/plugins/plugin.config.html:107
+msgid "TEXT"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:16
+#, fuzzy
+msgid "Your system configuration"
+msgstr "System Configuration"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:21
+msgid "Variable"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:22
+msgid "Local value"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:37
+msgid "drugCMS Error Log"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:50
+#, fuzzy
+msgid "clear error log"
+msgstr "Please enter your login"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:58
+msgid "drugCMS Upgrade Error Log"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.system_variables.html:72
+msgid "clear upgrade error log"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.info.html:20
+msgid "Concept and Implementation"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.info.html:24
+msgid "Germany"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.info.html:25
+msgid "Phone"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.info.html:26
+msgid "Fax"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.recipient_menu.html:88
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:41
+msgid "Limit"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.mydrugcms_lastarticles.html:35
+#, fuzzy
+msgid "Your clients"
+msgstr "No client"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.log_main.html:52
+#, fuzzy
+msgid "Date"
+msgstr "Date to"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.welcome.html:21
+#, fuzzy
+msgid "Available clients"
+msgstr "all clients"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.welcome.html:41
+#, fuzzy
+msgid "Currently"
+msgstr "Current"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.welcome.html:41
+#, fuzzy
+msgid "Users online"
+msgstr "Set online"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.welcome.html:49
+#, fuzzy
+msgid "Contact System Administrators"
+msgstr "System administrator"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:15
+#, fuzzy
+msgid "Table of contents"
+msgstr "Clear contents"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:17
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:53
+msgid "Common"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:19
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:100
+#, fuzzy
+msgid "Content"
+msgstr "Title/Content"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:22
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:255
+#, fuzzy
+msgid "File management"
+msgstr "File name"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:24
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:280
+#, fuzzy
+msgid "Style"
+msgstr "Blog Style"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:26
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:309
+#, fuzzy
+msgid "Modules"
+msgstr "Module name"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:27
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:335
+#, fuzzy
+msgid "Templates"
+msgstr "Template"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:28
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:358
+#, fuzzy
+msgid "CSS editor"
+msgstr "Close editor"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:29
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:376
+msgid "Script editor"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:30
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:394
+#, fuzzy
+msgid "Module Templates"
+msgstr "Module template files"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:32
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:420
+msgid "Extras"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:33
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:422
+#, fuzzy
+msgid "Newsletter"
+msgstr "Edit newsletter"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:34
+#, fuzzy
+msgid "Recipients"
+msgstr "Clean up recipients"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:36
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:494
+#, fuzzy
+msgid "Statistics"
+msgstr "Show statistics"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:39
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:521
+#, fuzzy
+msgid "Administration"
+msgstr "Administrator"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:40
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:523
+#, fuzzy
+msgid "Users"
+msgstr "User"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:41
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:541
+#, fuzzy
+msgid "Groups"
+msgstr "New Group"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:42
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:560
+#, fuzzy
+msgid "Languages"
+msgstr "Language"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:43
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:583
+#, fuzzy
+msgid "Clients"
+msgstr "Client"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:51
+#, fuzzy
+msgid "Table of Contents"
+msgstr "Title/Content"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:63
+msgid "Execute query / Save"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:77
+#, fuzzy
+msgid "Change to My drugCMS (Personal Settings)"
+msgstr "Edit own My drugCMS settings"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:81
+msgid "Information (Impressum)"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:86
+msgid "Logout"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:121
+msgid "Article is start article / is not start article"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:125
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:297
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:323
+#, fuzzy
+msgid "Set template / Add to To-Do list"
+msgstr "Set reminder / add to to-do list"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:129
+#, fuzzy
+msgid "Configure article properties"
+msgstr "Edit article properties"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:137
+msgid "Element is online / offline (change through click)"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:141
+msgid "Element is protected / accessible (change through click)"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:155
+msgid "Lock / unlock folder (change through click)"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:159
+msgid "Set folder offline / online (change through click)"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:189
+#, fuzzy
+msgid "Create category"
+msgstr "Create new category"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:195
+#, fuzzy
+msgid "Set category online / offline"
+msgstr "Set category on- or offline"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:201
+msgid "Category is online and unprotected / protected"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:207
+msgid "Category is offline and unprotected / protected"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:213
+msgid "Category is online, contains an error and is unprotected / protected"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:219
+msgid "Category is offline, contains an error and is unprotected / protected"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:225
+#, fuzzy
+msgid "Move up one category"
+msgstr "Move category"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:236
+#, fuzzy
+msgid "Select move target"
+msgstr "Select range"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:247
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:301
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:327
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:350
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:368
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:386
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:404
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:441
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:479
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:533
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:552
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:575
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:593
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:628
+#, fuzzy
+msgid "Delete / Delete not available"
+msgstr "No elements available"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:262
+#, fuzzy
+msgid "Root upload folder"
+msgstr "Upload file"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:268
+msgid "Regular folder"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:292
+#, fuzzy
+msgid "Layout in use"
+msgstr "Layout name"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:318
+#, fuzzy
+msgid "Module in use"
+msgstr "Module name"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:437
+#, fuzzy
+msgid "Copy newsletter"
+msgstr "Create newsletter"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:449
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:459
+#, fuzzy
+msgid "Recipient"
+msgstr "Edit recipient"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:467
+#, fuzzy
+msgid "Remove recipient"
+msgstr "Remove client"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:471
+#, fuzzy
+msgid "Recipient group"
+msgstr "Save recipient group"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:506
+#, fuzzy
+msgid "Article is online / offline"
+msgstr "Article is offline"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:570
+msgid "Language active / not active"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:620
+#, fuzzy
+msgid "User group"
+msgstr "Create group"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.symbolhelp.html:624
+#, fuzzy
+msgid "Create user group"
+msgstr "Create group"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:157
+#, fuzzy
+msgid "Category is a tree"
+msgstr "Category is online"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.str_overview.html:164
+#, fuzzy
+msgid "Position of category"
+msgstr "Configure category"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:153
+msgid "When expired, move to category"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:155
+#, fuzzy
+msgid "Make online after move"
+msgstr "Set online"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:184
+#, fuzzy
+msgid "Page title"
+msgstr "Teaser title"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.con_edit_form.html:190
+msgid "Meta tags"
+msgstr ""
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.upl_files_overview.html:61
+#, fuzzy
+msgid "Sort files"
+msgstr "Stylesheet files"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.upl_files_overview.html:88
+#, fuzzy
+msgid "Image size"
+msgstr "Image Scale"
+
+#: W:\drugcms_2.0/drugcms/templates/standard/template.rights_inc.html:24
+#, fuzzy
+msgid "Client / Language"
+msgstr "Client name"

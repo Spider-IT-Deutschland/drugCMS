@@ -1,0 +1,159 @@
+
+    <link rel="stylesheet" type="text/css" href="css/photoswipe.css" />
+    <script type="text/javascript" src="js/klass.min.js"></script>
+    <script type="text/javascript" src="js/code.photoswipe.jquery-3.0.5.min.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        // Symbol for the navigation (images or characters)
+        var naviLeftSymbol{INSTANCE} = '<img src="images/SimpleGallery/NaviLeft.png" alt="&lt;" style="margin-top: 1px;" />'; // '&lt;';
+        var naviRightSymbol{INSTANCE} = '<img src="images/SimpleGallery/NaviRight.png" alt="&gt;" style="margin-top: 1px;" />'; // '&gt;';
+        
+        // NO CHANGES BELOW THIS LINE !!!
+        var numImages{INSTANCE} = {NUM_IMAGES};
+        var aImages{INSTANCE} = new Array({IMAGES_ARRAY});
+        var aThumbs{INSTANCE} = new Array();
+            {THUMBS_ARRAY}
+        var iThumbs{INSTANCE} = {THUMBS_PER_ARRAY};
+        var iArrays{INSTANCE} = {THUMB_ARRAYS};
+        var aPopups{INSTANCE} = new Array({POPUPS_ARRAY});
+        var aDescr{INSTANCE} = new Array({DESCR_ARRAY});
+        var usePopup = ((('ontouchstart' in document.documentElement) || (({POPUP_WIDTH} + 30) > $(window).width()) || (({POPUP_HEIGHT} + 30) > $(window).height())) ? false : {USE_POPUP});
+        var useSwipe = ((('ontouchstart' in document.documentElement) || (({POPUP_WIDTH} + 30) > $(window).width()) || (({POPUP_HEIGHT} + 30) > $(window).height())) ? {USE_POPUP} : false);
+        
+        {PRELOAD_IMAGES}
+        function simpleGallery{INSTANCE}ShowImage(No) {
+            for (var i = 0; i < numImages{INSTANCE}; i ++) {
+                if (No == (i + 1)) {
+                    document.getElementById('Gallery{INSTANCE}Image' + No).style.display = 'block';
+                } else {
+                    document.getElementById('Gallery{INSTANCE}Image' + (i + 1)).style.display = 'none';
+                }
+            }
+            if ((usePopup) || (useSwipe)) {
+                document.getElementById('SimpleGallery{INSTANCE}PopupLink').setAttribute('onclick', 'simpleGallery{INSTANCE}ShowImagePopup(' + No + ')');
+                document.getElementById('SimpleGallery{INSTANCE}PopupLinkArea').style.display = ((usePopup) ? 'block' : 'none');
+            }
+            document.getElementById('SimpleGallery{INSTANCE}ImageInfo').innerHTML = No + '/' + numImages{INSTANCE};
+            document.getElementById('SimpleGallery{INSTANCE}ImageDescription').innerHTML = aDescr{INSTANCE}[(No - 1)];
+            document.getElementById('SimpleGallery{INSTANCE}Navigation').innerHTML = '<' + 'a href="javascript:simpleGallery{INSTANCE}ShowImage(' + ((No == 1) ? numImages{INSTANCE} : (No - 1)) + ');"' + '>' + naviLeftSymbol{INSTANCE} + '<' + '/a' + '>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<' + 'a href="javascript:simpleGallery{INSTANCE}ShowImage(' + ((No == numImages{INSTANCE}) ? 1 : (No + 1)) + ');"' + '>' + naviRightSymbol{INSTANCE} + '<' + '/a' + '>';
+                var ImgL = new Image(); ImgL.src = aPopups{INSTANCE}[(No - 1)];
+        }
+        
+        var iCurrent = -1;
+        var iBlock = 0;
+        function simpleGallery{INSTANCE}ShowImagePopup(No) {
+            if (iCurrent == -1) {
+                setTimeout('simpleGallery{INSTANCE}PreloadLargeImages()', 2000);
+            }
+            if (iCurrent != No) {
+                iCurrent = No;
+                simpleGallery{INSTANCE}ShowThumbs(No);
+                document.getElementById('SimpleGallery{INSTANCE}ImageArea').innerHTML = '<'+'img src="' + aPopups{INSTANCE}[(No - 1)] + '" alt="" /' + '>';
+                document.getElementById('SimpleGallery{INSTANCE}DescriptionArea').innerHTML = aDescr{INSTANCE}[(No - 1)];
+                document.getElementById('SimpleGallery{INSTANCE}DarkBackground').style.display = 'block';
+                document.getElementById('SimpleGallery{INSTANCE}ImageWindow').style.display = 'block';
+                document.getElementById('SimpleGallery{INSTANCE}PopupImageNaviLeft').setAttribute('onclick', 'simpleGallery{INSTANCE}ShowImagePopup(' + ((No == 1) ? numImages{INSTANCE} : (No - 1)) + ')');
+                document.getElementById('SimpleGallery{INSTANCE}PopupImageNaviRight').setAttribute('onclick', 'simpleGallery{INSTANCE}ShowImagePopup(' + ((No == numImages{INSTANCE}) ? 1 : (No + 1)) + ')');
+                var ImgL0 = new Image(); ImgL0.src = aPopups{INSTANCE}[((No == 1) ? (numImages{INSTANCE} - 1) : (No - 2))];
+                var ImgL1 = new Image(); ImgL1.src = aPopups{INSTANCE}[((No == numImages{INSTANCE}) ? 1 : No)];
+            }
+        }
+        function simpleGallery{INSTANCE}CloseImagePopup() {
+            document.getElementById('SimpleGallery{INSTANCE}ImageWindow').style.display = 'none';
+            document.getElementById('SimpleGallery{INSTANCE}DarkBackground').style.display = 'none';
+            iCurrent = 0;
+            iBlock = 0;
+        }
+        function simpleGallery{INSTANCE}ShowThumbs(No) {
+            var iThumbsArrayNo = Math.ceil(No / iThumbs{INSTANCE});
+            var sThumbs = '';
+            iBlock = iThumbsArrayNo;
+            for (var i = 0; i < iThumbs{INSTANCE}; i ++) {
+                if (i < aThumbs{INSTANCE}[iThumbsArrayNo].length) {
+                    sThumbs += '<' + 'div style="float: left; margin: 0px 1px; padding: 2px 2px 0px 2px; width: {THUMB_BLOCK_WIDTH}px; height: {THUMB_BLOCK_HEIGHT}px; text-align: center; border: 1px solid #' + (((i + ((iThumbsArrayNo - 1) * iThumbs{INSTANCE}) + 1) == No) ? '000' : 'FFF') + ';"' + '>' + '<' + 'a href="javascript:simpleGallery{INSTANCE}ShowImagePopup(' + (i + ((iThumbsArrayNo - 1) * iThumbs{INSTANCE}) + 1) + ')"' + '>' + '<' + 'img src="' + aThumbs{INSTANCE}[iThumbsArrayNo][i] + '" alt="" onmousemove="simpleGallery{INSTANCE}ShowImagePopup(' + (i + ((iThumbsArrayNo - 1) * iThumbs{INSTANCE}) + 1) + ')" onclick="simpleGallery{INSTANCE}ShowImagePopup(' + (i + ((iThumbsArrayNo - 1) * iThumbs{INSTANCE}) + 1) + ')" style="width: 100px; height: 75px;" /' + '>' + '<' + '/a' + '>' + '<' + 'br /' + '>' + (((i + ((iThumbsArrayNo - 1) * iThumbs{INSTANCE}) + 1) == No) ? '<' + 'span style="line-height: 14px; background-color: #FFF;"' + '>' + '&nbsp;' + No + '/' + numImages{INSTANCE} : '') + '&nbsp;' + '<' + '/span' + '>' + '<' + '/div' + '>';
+                }
+            }
+            document.getElementById('SimpleGallery{INSTANCE}ThumbsAreaThumbs').innerHTML = sThumbs;
+            if (iThumbsArrayNo > 1) {
+                document.getElementById('SimpleGallery{INSTANCE}ThumbsAreaNaviLeft').innerHTML = '<' + 'a href="javascript:simpleGallery{INSTANCE}ShowImagePopup(' + ((iThumbs{INSTANCE} * iThumbsArrayNo) - iThumbs{INSTANCE}) + ')"' + '>' + '<' + 'img src="images/SimpleGallery/NaviLeft.png" alt="" /' + '>' + '<' + '/a' + '>';
+            } else {
+                document.getElementById('SimpleGallery{INSTANCE}ThumbsAreaNaviLeft').innerHTML = '<' + 'img src="images/SimpleGallery/NaviLeftDisabled.png" alt="" /' + '>';
+            }
+            if (iThumbsArrayNo < iArrays{INSTANCE}) {
+                document.getElementById('SimpleGallery{INSTANCE}ThumbsAreaNaviRight').innerHTML = '<' + 'a href="javascript:simpleGallery{INSTANCE}ShowImagePopup(' + ((iThumbs{INSTANCE} * iThumbsArrayNo) + 1) + ')"' + '>' + '<' + 'img src="images/SimpleGallery/NaviRight.png" alt="" /' + '>' + '<' + '/a' + '>';
+            } else {
+                document.getElementById('SimpleGallery{INSTANCE}ThumbsAreaNaviRight').innerHTML = '<' + 'img src="images/SimpleGallery/NaviRightDisabled.png" alt="" /' + '>';
+            }
+        }
+        function simpleGallery{INSTANCE}PreloadLargeImages() {
+            {PRELOAD_THUMB_IMAGES}
+        }
+        $(document).ready(function() {
+            if ((usePopup) || (useSwipe)) {
+                var myPhotoSwipe{INSTANCE} = $("#Gallery{INSTANCE} a").photoSwipe({ enableMouseWheel: false, enableKeyboard: false, allowUserZoom: false });
+            }
+        });
+        $(window).resize(function() {
+            if ((usePopup) || (useSwipe)) {
+                if ((({POPUP_WIDTH} + 30) > $(window).width()) || (({POPUP_HEIGHT} + 30) > $(window).height())) {
+                    usePopup = false;
+                    useSwipe = true;
+                    document.getElementById('SimpleGallery{INSTANCE}PopupLinkArea').style.display = 'none';
+                } else {
+                    usePopup = true;
+                    useSwipe = false;
+                    document.getElementById('SimpleGallery{INSTANCE}PopupLinkArea').style.display = 'block';
+                }
+            }
+        });
+    //]]>
+    </script>
+    <div id="SimpleGallery{INSTANCE}" class="SimpleGallery" style="max-width: {WIDTH}px;">
+        <div style="position: relative;">
+            <div id="SimpleGallery{INSTANCE}PopupLinkArea" style="display: none; position: absolute; width: 100%; height: 100%;">
+                <div id="SimpleGallery{INSTANCE}PopupLink" style="margin: auto; max-width: {IMAGE_WIDTH}px; max-height: {IMAGE_HEIGHT}px; height: 100%; background: url('images/SimpleGallery/ZoomOverlay.png') center center no-repeat; opacity: 0; filter: alpha(opacity=0); transition: opacity 0.3s ease 0s; cursor: pointer;" onmouseover="this.style.opacity=1; this.style.filter='alpha(opacity=70)'; this.style.transition='opacity 0.5s ease 0s';" onmouseout="this.style.opacity=0; this.style.filter='alpha(opacity=0)'; this.style.transition='opacity 0.3s ease 0s';"></div>
+            </div>
+            <div id="SimpleGallery{INSTANCE}Image" class="SimpleGalleryImage" style="margin: auto; max-width: {IMAGE_WIDTH}px; max-height: {IMAGE_HEIGHT}px;">
+                <ul id="Gallery{INSTANCE}" style="margin: 0px; padding: 0px; list-style-type: none;">
+                    {SWIPE}
+                </ul>
+            </div>
+        </div>
+        <div id="SimpleGallery{INSTANCE}ImageInfo" class="SimpleGalleryImageInfo" style="float: left;"></div>
+        <div id="SimpleGallery{INSTANCE}Navigation" class="SimpleGalleryNavigation" style="float: right;"></div>
+        <div id="SimpleGallery{INSTANCE}ImageDescription" class="SimpleGalleryImageDescription" style="margin: 0px 50px 12px 50px; padding-left: 4px; border-left: 1px solid #999;"></div>
+        <div style="clear: both;"></div>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        simpleGallery{INSTANCE}ShowImage(1);
+    //]]>
+    </script>
+    <div id="SimpleGallery{INSTANCE}DarkBackground" onclick="simpleGallery{INSTANCE}CloseImagePopup();" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 200; display: none; background-color: #000; opacity: 0.6; filter: alpha(opacity=60);"></div>
+    <div id="SimpleGallery{INSTANCE}ImageWindow" style="position: fixed; display: none; z-index: 210; left: 50%; top: 50%; width: {POPUP_WIDTH}px; height: {POPUP_HEIGHT}px; margin-left: -{POPUP_HALF_WIDTH}px; margin-top: -{POPUP_HALF_HEIGHT}px; font-family: Arial, Verdana, sans-serif; background-color: #FFF; border: 8px solid #FFF;">
+        <div style="position: absolute; top: -24px; right: -24px;">
+            <img src="images/SimpleGallery/ClosePopup.png" alt="Schlie&szlig;en" onclick="simpleGallery{INSTANCE}CloseImagePopup();" style="cursor: pointer;" />
+        </div>
+        <div style="float: left;">
+            <div>
+                <div style="position: relative; margin-bottom: 8px; width: {POPUP_IMAGE_WIDTH}px; height: {POPUP_IMAGE_HEIGHT}px; background: url('images/SimpleGallery/Loading.gif') center center no-repeat;">
+                    <div style="position: absolute; width: {POPUP_IMAGE_WIDTH}px; height: {POPUP_IMAGE_HEIGHT}px; opacity: 0.5; filter: alpha(opacity=50); transition: opacity 0.3s ease 0s; cursor: pointer;" onmouseover="this.style.opacity=1; this.style.filter='alpha(opacity=70)'; this.style.transition='opacity 0.5s ease 0s';" onmouseout="this.style.opacity=0; this.style.filter='alpha(opacity=0)'; this.style.transition='opacity 0.3s ease 0s';">
+                        <div id="SimpleGallery{INSTANCE}PopupImageNaviLeft" style="position: absolute; left: 0px; width: 50%; height: {POPUP_IMAGE_HEIGHT}px; background: url('images/SimpleGallery/PopupImageNaviLeft.png') center left no-repeat;"></div>
+                        <div id="SimpleGallery{INSTANCE}PopupImageNaviRight" style="position: absolute; right: 0px; width: 50%; height: {POPUP_IMAGE_HEIGHT}px; background: url('images/SimpleGallery/PopupImageNaviRight.png') center right no-repeat;"></div>
+                    </div>
+                    <div id="SimpleGallery{INSTANCE}ImageArea" style="height: {POPUP_IMAGE_HEIGHT}px; background-color: #DDD;"></div>
+                </div>
+                <div id="SimpleGallery{INSTANCE}ThumbsArea" style="width: {POPUP_IMAGE_WIDTH}px; height: 101px; overflow: hidden;">
+                    <div id="SimpleGallery{INSTANCE}ThumbsAreaNaviLeft" style="float: left; padding: 39px 1px; width: 10px; height: 21px; border: 1px solid #CCC;"><img src="images/SimpleGallery/NaviLeftDisabled.png" alt="" /></div>
+                    <div id="SimpleGallery{INSTANCE}ThumbsAreaNaviRight" style="float: right; padding: 39px 1px; width: 10px; height: 21px; border: 1px solid #CCC;"><img src="images/SimpleGallery/NaviRightDisabled.png" alt="" /></div>
+                    <div id="SimpleGallery{INSTANCE}ThumbsAreaThumbs" style="padding: 2px 0px; height: 95px; font-size: 14px; border: 0px solid #CCC; border-width: 1px 0px;"></div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+        <div style="float: right; margin-left: 8px; width: 220px;">
+            <div id="SimpleGallery{INSTANCE}DescriptionArea" class="SimpleGalleryDescriptionArea"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>

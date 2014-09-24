@@ -1,0 +1,11 @@
+INSERT INTO `!PREFIX!_clients` VALUES (1, 'drugCMS Demo', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '<!--{contenido_root}-->/cms/', '<!--{contenido_web}-->/cms/', 4, 4);
+INSERT INTO `!PREFIX!_clients_lang` VALUES (1, 1, 1);
+INSERT INTO `!PREFIX!_lang` VALUES (1, 'english', 1, '48a365b4ce1e322a55ae9017f3daf0c0', '2008-04-14 15:46:39', '2013-10-09 17:42:20', 'utf-8', 'ltr');
+INSERT INTO `!PREFIX!_phplib_auth_user_md5` VALUES ('21232f297a57a5a743894a0e4a801fc3', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin[1]', 'Administrator drugCMS Demo', 'admin_kunde@IhreSite.de', '', '', '', '', '', 1, '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '', 0);
+INSERT INTO `!PREFIX!_properties` VALUES (15, 1, 'clientsetting', '1', 'generator', 'xhtml', 'false', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-18 14:38:22', '2013-09-18 14:38:22', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (16, 1, 'clientsetting', '1', 'generator', 'html5', 'true', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:48:16', '2013-09-18 14:38:22', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (17, 1, 'idlang', '1', 'language', 'code', 'en', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (18, 1, 'idlang', '1', 'country', 'code', 'us', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (19, 1, 'idlang', '1', 'dateformat', 'full', 'm%2Fd%2FY+h%3Ai+a', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (20, 1, 'idlang', '1', 'dateformat', 'date', 'm%2Fd%2FY', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (21, 1, 'idlang', '1', 'dateformat', 'time', 'h%3Ai+a', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');

@@ -1,0 +1,259 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS DB Backup Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-29 11:47+0100\n"
+"PO-Revision-Date: 2014-01-11 20:09+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team <translations@drugcms.org>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: W:\\drugcms_2.0\\drugcms\\plugins\\db_backup\n"
+"X-Poedit-KeywordsList: i18n\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: W:\\drugcms_2.0\\drugcms\\plugins\\db_backup\n"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.left_bottom.php:15
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:84
+msgid "Backup"
+msgstr "Backup"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.left_bottom.php:18
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:108
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:123
+msgid "Restore"
+msgstr "Restore"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:18
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:19
+msgid ""
+"Backup requires a folder named 'backup' in /drugcms/data/ with write "
+"permission for the web server user."
+msgstr ""
+"DB Backup vereist een map met de naam 'backup' in /drugcms/data/ met "
+"schrijfrechten voor de webserver gebruiker"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:20
+msgid "Current settings"
+msgstr "Huidige instellingen"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:21
+msgid "Backup folder"
+msgstr "Backup map"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
+msgid "The backup folder exists"
+msgstr "De backup map bestaat"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
+msgid "The backup folder doesn't exist, please create it"
+msgstr "De backup map bestaat niet, maak hem aub"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:23
+msgid "Folder permissions"
+msgstr "Map rechten"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
+msgid "Write permission granted"
+msgstr "Schrijfrechten beschikbaar"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
+msgid "Write permission denied"
+msgstr "Ontkende schrijftoegang"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:34
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:54
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
+msgid "Please wait"
+msgstr "Even geduld aub"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
+msgid "Current table"
+msgstr "Huidige tabel"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
+msgid "Current row"
+msgstr "Huidige record"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:40
+msgid "Backup created successfully"
+msgstr "Backup succesvol aangemaakt"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:42
+msgid "It took |1 seconds to backup the database"
+msgstr "Het duurde |1 seconden de database te waarborgen"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:44
+msgid "An error occured while creating the backup"
+msgstr "Bij het maken van de backup is een fout opgetreden"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:55
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
+msgid "Processed lines"
+msgstr "Verwerkte lijnen"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:61
+msgid "Backup restored successfully"
+msgstr "Backup succesvol teruggezet"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:63
+msgid "It took |1 seconds to restore the database"
+msgstr "Het duurde |1 seconden om de database te herstellen"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:65
+msgid "An error occured while restoring the backup"
+msgstr "Bij het herstellen van de database is een fout opgetreden"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:72
+msgid "Backup deleted successfully"
+msgstr "De backup is succesvol verwijderd"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:74
+msgid "An error occured while deleting the backup"
+msgstr "Bij het verwijderen va de backup is een fout opgetreden"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:77
+msgid "The backup doesn't exist, maybe it was deleted already"
+msgstr "De backup bestaat niet, het kan zijn dat hij reeds verwijderd werd"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:86
+msgid "Start a new backup"
+msgstr "Maak een nieuwe backup"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:87
+msgid "Created backups"
+msgstr "Gemaakte backups"
+
+#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:102
+msgid "Delete"
+msgstr "Verwijderen"
+
+#~ msgid ""
+#~ "The calculated maximum database size to backup in |1 seconds (PHP "
+#~ "max_execution_time) is |2 MB"
+#~ msgstr ""
+#~ "Die kalkulierte maximale Datenbankgröße um in |1 Sekunden (PHP "
+#~ "max_execution_time) zu sichern ist |2 MB"
+
+#~ msgid "Backup starten"
+#~ msgstr "Backup starten"
+
+#~ msgid ""
+#~ "Das Backup erfordert einen Ordner namens /backup auf der gleichen Ebene "
+#~ "wie /contenido mit den Zugriffsrechten 757.<br>Die Backupfunktion im "
+#~ "linken Menü wird erst freigeschaltet, wenn alle Parameter korrekt sind."
+#~ msgstr ""
+#~ "Das Backup erfordert einen Ordner namens /backup auf der gleichen Ebene "
+#~ "wie /contenido mit den Zugriffsrechten 757.<br>Die Backupfunktion im "
+#~ "linken Menü wird erst freigeschaltet, wenn alle Parameter korrekt sind."
+
+#~ msgid "Der Backup-Ordner ist vorhanden."
+#~ msgstr "Der Backup-Ordner ist vorhanden."
+
+#~ msgid "757 (ok)"
+#~ msgstr "757 (ok)"
+
+#~ msgid "Der Backupordner ist korrekt konfiguriert."
+#~ msgstr "Der Backupordner ist korrekt konfiguriert."
+
+#~ msgid "Bitte Ordner /backup anlegen."
+#~ msgstr "Bitte Ordner /backup anlegen."
+
+#~ msgid "Ordnerrechte"
+#~ msgstr "Ordnerrechte"
+
+#~ msgid "Sicherung Datenbank"
+#~ msgstr "Sicherung Datenbank"
+
+#~ msgid "Max. vorhandene Backups"
+#~ msgstr "Max. vorhandene Backups"
+
+#~ msgid "Dateien"
+#~ msgstr "Dateien"
+
+#~ msgid "GZip-Komprimierung"
+#~ msgstr "GZip-Komprimierung"
+
+#~ msgid "muss auf dem Server erlaubt sein"
+#~ msgstr "muss auf dem Server erlaubt sein"
+
+#~ msgid "Bisheriger verbrauchter Speicherplatz (in MB)"
+#~ msgstr "Bisheriger verbrauchter Speicherplatz (in MB)"
+
+#~ msgid "Erstellung des Backup"
+#~ msgstr "Erstellung des Backup"
+
+#~ msgid ""
+#~ "Bitte haben Sie einen Moment Geduld und warten Sie auf die "
+#~ "Statusnachricht."
+#~ msgstr ""
+#~ "Bitte haben Sie einen Moment Geduld und warten Sie auf die "
+#~ "Statusnachricht."
+
+#~ msgid "Status der Sicherung"
+#~ msgstr "Status der Sicherung"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:196
+#, fuzzy
+#~ msgid "Link analysis from "
+#~ msgstr "Link-Analyse vom "
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:196
+#~ msgid "%Y-%m-%d"
+#~ msgstr "%d.%m.%Y"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:42
+#~ msgid "<strong>No errors</strong> were found."
+#~ msgstr "Es wurden <strong>keine Fehler</strong> gefunden."
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:227
+#, fuzzy
+#~ msgid "Total checked links"
+#~ msgstr "Insgesamt geprüfte Links"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:24
+#~ msgid "idart"
+#~ msgstr "idart"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:30
+#~ msgid "Article"
+#~ msgstr "Artikel"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:26
+#~ msgid "idcat"
+#~ msgstr "idcat"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:31
+#~ msgid "Category"
+#~ msgstr "Kategorie"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:47
+#~ msgid "Description"
+#~ msgstr "Beschreibung"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_tests.php:31
+#~ msgid "Linkerror"
+#~ msgstr "Linkfehler"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:40
+#~ msgid "Links to articles"
+#~ msgstr "Links auf Artikel"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker_whitelist.php:40
+#~ msgid "Links to categories"
+#~ msgstr "Links auf Kategorien"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:51
+#~ msgid "Links to documents and images"
+#~ msgstr "Links auf Bilder und Dokumente"
+
+# H:\frederic.schneider\contenido\plugins\linkchecker\includes/include.linkchecker.php:237
+#, fuzzy
+#~ msgid "Links to extern sites and not defined links"
+#~ msgstr "Links auf externe Quellen und nicht zugewiesene Links"
