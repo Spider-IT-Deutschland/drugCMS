@@ -1,0 +1,17 @@
+INSERT INTO !PREFIX!_clients VALUES (1, 'drugCMS Demo', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '<!--{contenido_root}-->/cms/', '<!--{contenido_web}-->/cms/', 4, 4);
+INSERT INTO `drugcms_clients_lang` VALUES(1, 1, 1);
+INSERT INTO `drugcms_clients_lang` VALUES(2, 1, 2);
+INSERT INTO `drugcms_lang` VALUES(1, 'deutsch', 1, '48a365b4ce1e322a55ae9017f3daf0c0', '2008-04-14 15:46:39', '2008-04-14 15:46:50', 'utf-8', 'ltr');
+INSERT INTO `drugcms_lang` VALUES(2, 'english', 1, '48a365b4ce1e322a55ae9017f3daf0c0', '2008-04-14 15:46:39', '2008-04-14 15:46:50', 'utf-8', 'ltr');
+INSERT INTO `!PREFIX!_properties` VALUES (15, 1, 'clientsetting', '1', 'generator', 'xhtml', 'false', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-18 14:38:22', '2013-09-18 14:38:22', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (16, 1, 'clientsetting', '1', 'generator', 'html5', 'true', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:48:16', '2013-09-18 14:38:22', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (17, 1, 'idlang', '1', 'language', 'code', 'de', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (18, 1, 'idlang', '1', 'country', 'code', 'de', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (19, 1, 'idlang', '1', 'dateformat', 'full', 'd.m.Y+H%3Ai', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (20, 1, 'idlang', '1', 'dateformat', 'date', 'd.m.Y', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (21, 1, 'idlang', '1', 'dateformat', 'time', 'H%3Ai', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (22, 1, 'idlang', '2', 'language', 'code', 'en', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (23, 1, 'idlang', '2', 'country', 'code', 'us', '48a365b4ce1e322a55ae9017f3daf0c0', '2010-05-20 10:00:00', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (24, 1, 'idlang', '2', 'dateformat', 'full', 'm%2Fd%2FY+h%3Ai+a', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (25, 1, 'idlang', '2', 'dateformat', 'date', 'm%2Fd%2FY', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');
+INSERT INTO `!PREFIX!_properties` VALUES (26, 1, 'idlang', '2', 'dateformat', 'time', 'h%3Ai+a', '48a365b4ce1e322a55ae9017f3daf0c0', '2013-09-13 14:47:57', '2013-09-13 14:47:57', '48a365b4ce1e322a55ae9017f3daf0c0');

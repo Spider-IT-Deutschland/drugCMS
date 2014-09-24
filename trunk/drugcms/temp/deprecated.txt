@@ -1,0 +1,2 @@
+This folder is marked as deprecated and will be deleted in next versions of ConLite.
+Please use folders in data-directory instead!

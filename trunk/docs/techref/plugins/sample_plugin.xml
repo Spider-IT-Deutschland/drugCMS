@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin>
+    
+    <general>
+        <name><![CDATA[sitForum]]></name>
+        <description><![CDATA[Frontend user forum with backend management area]]></description>
+        <author><![CDATA[René Mansveld]]></author>
+        <version><![CDATA[1.0.0]]></version>
+        <copyright><![CDATA[Spider IT Deutschland]]></copyright>
+        <mail><![CDATA[Info@Spider-IT.de]]></mail>
+        <website><![CDATA[http://www.Spider-IT.de]]></website>
+    </general>
+    
+    <requirements>
+        <php><![CDATA[5.2.17]]></php>
+        <drugcms><![CDATA[2.0.0]]></drugcms>
+    </requirements>
+    
+    <drugcms>
+        
+        <areas>
+            <area>
+                <parent><![CDATA[]]></parent>
+                <name><![CDATA[sit_forum]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            
+            <area>
+                <parent><![CDATA[sit_forum]]></parent>
+                <name><![CDATA[]]></name>
+                <relevant><![CDATA[]]></relevant>
+                <online><![CDATA[]]></online>
+                <menuless><![CDATA[]]></menuless>
+            </area>
+            
+        </areas>
+        
+        <actions>
+            <action>
+                <area><![CDATA[]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[]]></relevant>
+            </action>
+            
+        </actions>
+        
+        <files>
+            <file>
+                <area><![CDATA[]]></area>
+                <filename><![CDATA[]]></filename>
+                <filetype><![CDATA[]]></filetype>
+            </file>
+            
+        </files>
+        
+        <frame_files>
+            <frame_file>
+                <area><![CDATA[]]></area>
+                <frame_id><![CDATA[]]></frame_id>
+                <filename><![CDATA[]]></filename>
+            </frame_file>
+            
+        </frame_files>
+        
+        <nav_main>
+            <location><![CDATA[]]></location>
+        </nav_main>
+        
+        <nav_subs>
+            <nav_sub>
+                <nav_main><![CDATA[]]></nav_main>
+                <area><![CDATA[]]></area>
+                <level><![CDATA[]]></level>
+                <location><![CDATA[]]></location>
+                <online><![CDATA[]]></online>
+            </nav_sub>
+            
+        </nav_subs>
+        
+    </drugcms>
+</plugin>

@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">    
+    <script type="text/javascript" src="scripts/rowMark.js"></script>
+    <script type="text/javascript" src="scripts/infoBox.js"></script>
+    <script type="text/javascript" src="scripts/messageBox.js.php?contenido={SID}"></script>    
+    <script type="text/javascript">
+        var sid = "{SID}";
+
+        // Create messageBox instance
+        box = new messageBox("", "", "", 0, 0);
+
+        // Function for deleting user
+        function deleteUser(iduser) {
+            url  = 'main.php?area=user';
+            url += '&action=user_delete';
+            url += '&frame=2';
+            url += '&iduser=' + iduser;
+            url += '&contenido=' + sid;
+            window.location.href = url;
+        }
+    </script>
+    <script type="text/javascript">
+        if (parent.parent.frames['left'].frames['left_bottom'].get_registered_parameters) {
+            parent.parent.frames['left'].frames['left_bottom'].location.href = parent.parent.frames['left'].frames['left_bottom'].location.href + parent.parent.frames['left'].frames['left_bottom'].get_registered_parameters()+'&userid={GET_USERID}';
+        } else {
+            parent.parent.frames['left'].frames['left_bottom'].location.href = parent.parent.frames['left'].frames['left_bottom'].location.href+'&userid={GET_USERID}';;
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="styles/drugcms.css">
+    <style type="text/css">
+    #contenido_notification {margin-bottom:5px;}
+    table.content { border:0px; border-left:1px; border-bottom:1px; border-style:solid; }
+    table.content td { border:0px; border-top:1px; border-right:1px; border-style:solid; border-color:{BORDERCOLOR}; }
+    </style>
+</head>
+<body style="margin:10px">
+{NOTIFICATION}
+{FORM}
+<table class="content" style="border-color:{BORDERCOLOR};" cellspacing="0" cellpadding="2" border="0">
+    <!-- BEGIN:BLOCK -->
+    <tr class="text_medium" style="background-color:{BGCOLOR};">
+        <td valign="top" style="border-color:{BORDERCOLOR};">{CATNAME}</td>
+        <td valign="top" style="border-color:{BORDERCOLOR};" align="left">{CATFIELD}</td>
+    </tr>
+    <!-- END:BLOCK -->
+    <tr class="text_medium" style="background-color:#FFFFFF;">
+        <td valign="top" style="border-right:0px; border-color:{BORDERCOLOR};">&nbsp;</td>
+        <td valign="top" style="border-color:{BORDERCOLOR};" align="right">
+            <a href="{CANCELLINK}"><img border="0" src="images/but_cancel.gif" alt="{CANCELTEXT}" title="{CANCELTEXT}"></a><img src="images/spacer.gif" width="20"><input type="image" src="images/but_ok.gif" alt="{SUBMITTEXT}" title="{SUBMITTEXT}" accesskey="s" border="0">
+        </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

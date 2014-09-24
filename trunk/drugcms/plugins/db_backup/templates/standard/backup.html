@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+    <title>Database Backup Plugin</title>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="styles/drugcms.css" />
+</head>
+<body style="margin: 0px 10px;">
+    <div style="width: 560px;">
+        {MESSAGE}
+        <div style="margin-bottom: 10px; font-weight: bold;">{LABEL_BACKUP}</div>
+        <div style="margin-bottom: 20px;"><a href="{LINK_START_BACKUP}" title="{LABEL_START_BACKUP}" target="right_bottom"><img src="images/db_backup_start.png" alt="{LABEL_START_BACKUP}" /></a></div>
+        <div style="margin-bottom: 10px; font-weight: bold;">{LABEL_PREVIOUS_BACKUPS}</div>
+        <!-- BEGIN:BLOCK --><div>
+            <div style="padding: 2px 2px 3px 2px; border-bottom: 1px solid #CCC;">
+                <div style="float: left; margin-right: 10px; width: 30px; text-align: right;">#{NO}</div>
+                <div style="float: left; margin-right: 10px;">{FILENAME}</div>
+                <div style="float: right; margin: -1px 0px 1px 10px;"><a href="{LINK_DELETE}" target="right_bottom">{LABEL_DELETE}</a></div>
+                <div style="float: right;">{FILESIZE} MB</div>
+                <div style="clear: left;"></div>
+            </div>
+            <div style="clear: left;"></div>
+        </div>
+        <!-- END:BLOCK -->
+    </div>
+</body>
+</html>

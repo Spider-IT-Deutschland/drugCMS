@@ -1,0 +1,9 @@
+examples/examples_articles1_de.sql
+examples/examples_categories1_de.sql
+examples/examples_container1_de.csv
+examples/examples_content1_de.sql
+examples/examples_keywords1_de.csv
+examples/examples_keywords2_de.csv
+examples/examples_keywords3_de.csv
+examples/examples_keywords4_de.csv
+examples/examples_keywords5_de.csv

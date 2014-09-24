@@ -1,0 +1,1305 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS Newsletter Plugin\n"
+"POT-Creation-Date: 2013-08-30 16:27+0100\n"
+"PO-Revision-Date: 2013-08-30 16:47+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: i18n\n"
+"X-Poedit-Basepath: Z:\\Internet\\Internet Webs\\__Neue Webseite\\ConLite & "
+"Contenido\\_drugCMS Trunk\\drugcms\\plugins\\newsletter\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: Z:\\Internet\\Internet Webs\\__Neue Webseite\\ConLite "
+"& Contenido\\_drugCMS Trunk\\drugcms\\plugins\\newsletter\n"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:122
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:255
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:85
+#, php-format
+msgid "Newsletter: %s"
+msgstr "Newsletter: %s"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:568
+#, php-format
+msgid ""
+"There was a problem getting the newsletter article using http. Error: %s (%s)"
+msgstr ""
+"There was a problem getting the newsletter article using http. Error: %s (%s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:675
+#, php-format
+msgid "Newsletter to %s could not be sent: No html message available"
+msgstr "Newsletter to %s could not be sent: No html message available"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:767
+#, php-format
+msgid "Newsletter to %s could not be sent: No valid e-mail address"
+msgstr "Newsletter to %s could not be sent: No valid e-mail address"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:823
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:1083
+#, php-format
+msgid "Newsletter to %s could not be sent"
+msgstr "Newsletter to %s could not be sent"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:886
+msgid "Newsletter could not be sent: No html message available"
+msgstr "Newsletter could not be sent: No html message available"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:1019
+#, php-format
+msgid ""
+"Newsletter to %s could not be sent: Recipient has an incompatible or empty "
+"key"
+msgstr ""
+"Newsletter to %s could not be sent: Recipient has an incompatible or empty "
+"key"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:1026
+#, php-format
+msgid "Newsletter to %s could not be sent: No valid e-mail address specified"
+msgstr "Newsletter to %s could not be sent: No valid e-mail address specified"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/classes/class.newsletter.php:1093
+#, php-format
+msgid "No recipient with specified recipient/group id %s/%s found"
+msgstr "No recipient with specified recipient/group id %s/%s found"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:54
+msgid "-- new newsletter --"
+msgstr "-- new newsletter --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:126
+msgid "Newsletter dispatch job has been added for this newsletter"
+msgstr "Newsletter dispatch job has been added for this newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:128
+msgid ""
+"Newsletter dispatch job has been not been added! Please check newsletter "
+"details"
+msgstr ""
+"Newsletter dispatch job has not been added! Please check newsletter details"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:167
+msgid "None"
+msgstr "None"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:175
+msgid "Test newsletter has been sent to:"
+msgstr "Test newsletter has been sent to:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:177
+msgid "Test newsletter has not been sent (partly or completely):"
+msgstr "Test newsletter has not been sent (partly or completely):"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:178
+msgid "Successful:"
+msgstr "Successful:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:179
+msgid "Error messages:"
+msgstr "Error messages:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:242
+msgid "Could not set new newsletter name: name already exists"
+msgstr "Could not set new newsletter name: name already exists"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:301
+msgid ""
+"'Send to recipients in selected groups' has been selected, but no group has "
+"been specified. Selection has been set to 'Send to all recipients'"
+msgstr ""
+"'Send to recipients in selected groups' has been selected, but no group has "
+"been specified. Selection has been set to 'Send to all recipients'"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:376
+msgid "Edit newsletter"
+msgstr "Edit newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:379
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:307
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:54
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:404
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:569
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:816
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:56
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:44
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:268
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_menu.php:53
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:175
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:53
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:55
+msgid "Name"
+msgstr "Name"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:383
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:232
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:339
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:169
+msgid "Text only"
+msgstr "Text only"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:385
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:332
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:171
+msgid "HTML and text"
+msgstr "HTML and text"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:393
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:332
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:339
+msgid "Type"
+msgstr "Type"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:399
+msgid "From (E-Mail)"
+msgstr "From (E-Mail)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:400
+msgid "From (Name)"
+msgstr "From (Name)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:400
+msgid "optional"
+msgstr "optional"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:401
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:137
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:328
+msgid "Subject"
+msgstr "Subject"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:430
+msgid "Note: Hold <Ctrl> to select multiple items."
+msgstr "Note: Hold <Ctrl> to select multiple items."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:465
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:372
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:78
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:357
+msgid "Recipients"
+msgstr "Recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:466
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:350
+msgid "Send newsletter to all recipients"
+msgstr "Send newsletter to all recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:467
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:353
+msgid "Send newsletter to the members of the default group"
+msgstr "Send newsletter to the members of the default group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:468
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:356
+msgid "Send newsletter to the members of the selected group(s):"
+msgstr "Send newsletter to the members of the selected group(s):"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:540
+msgid "Option has to be enabled as client setting - see techref for details"
+msgstr "Option has to be enabled as client setting - see techref for details"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:547
+msgid "Note: Set to 0 to send chunks manually."
+msgstr "Note: Set to 0 to send chunks manually."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:550
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:386
+msgid "Options"
+msgstr "Options"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:551
+msgid "Welcome-Newsletter"
+msgstr "Welcome-Newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:552
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:407
+msgid "Use cronjob"
+msgstr "Use cronjob"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:553
+msgid "Send in blocks:"
+msgstr "Send in blocks:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:554
+msgid "Recipients per block:"
+msgstr "Recipients per block:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:555
+msgid "Delay between blocks:"
+msgstr "Delay between blocks:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:555
+msgid "sec."
+msgstr "sec."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:556
+msgid "Save option settings as default"
+msgstr "Save option settings as default"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:558
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:388
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:491
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:241
+msgid "Author"
+msgstr "Author"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit.php:559
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:242
+msgid "Last modified by"
+msgstr "Last modified by"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:104
+#, php-format
+msgid ""
+"The html newsletter article has been deleted (idart: %s), the html message "
+"is lost"
+msgstr ""
+"The html newsletter article has been deleted (idart: %s), the html message "
+"is lost"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:118
+msgid ""
+"The html newsletter template article has been deleted, it has been restored "
+"using the html message article of this newsletter"
+msgstr ""
+"The html newsletter template article has been deleted, it has been restored "
+"using the html message article of this newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:122
+#, php-format
+msgid "%s (Template restored)"
+msgstr "%s (Template restored)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:136
+#, php-format
+msgid "Edit newsletter message (%s)"
+msgstr "Edit newsletter message (%s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:139
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:150
+msgid "Tag information"
+msgstr "Tag information"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:140
+msgid "Special message tags (will be replaced when sending)"
+msgstr "Special message tags (will be replaced when sending)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:141
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:152
+msgid "Name of the recipient"
+msgstr "Name of the recipient"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:142
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:153
+msgid "Date, when the mail has been sent"
+msgstr "Date, when the mail has been sent"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:143
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:154
+msgid "Time, when the mail has been sent"
+msgstr "Time, when the mail has been sent"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:144
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:155
+msgid "Number of recipients"
+msgstr "Number of recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:146
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:157
+msgid "Link to unsubscribe"
+msgstr "Link to unsubscribe"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:147
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:158
+msgid "Link to pause the subscription"
+msgstr "Link to pause the subscription"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:148
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:159
+msgid "Link to resume the subscription"
+msgstr "Link to resume the subscription"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:151
+msgid "Special message tags (will be replaced when sending, {..} = optional)"
+msgstr "Special message tags (will be replaced when sending, {..} = optional)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:157
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:158
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:159
+msgid "Link text"
+msgstr "Link text"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:164
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:165
+msgid "Additional message tags from recipients plugins:"
+msgstr "Additional message tags from recipients plugins:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:204
+msgid "-- none --"
+msgstr "-- none --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:216
+msgid "HTML Template"
+msgstr "HTML Template"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:216
+msgid ""
+"Note, that changing the template discards the current html message content"
+msgstr ""
+"Note, that changing the template discards the current html message content"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:221
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:226
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:337
+msgid "HTML Message"
+msgstr "HTML Message"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:224
+msgid ""
+"Newsletter type has been set to HTML/text, please remember to select an html "
+"template"
+msgstr ""
+"Newsletter type has been set to HTML/text, please remember to select an html "
+"template"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:226
+msgid "Please choose a template first"
+msgstr "Please choose a template first"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:231
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:344
+msgid "Text Message"
+msgstr "Text Message"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:261
+msgid "HTML newsletter template changed"
+msgstr "HTML newsletter template changed"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_edit_message.php:261
+msgid ""
+"HTML template has been changed. Do you like to save now to apply changes?"
+"<br /><br /><b>Note, that existing HTML newsletter content will get lost!</b>"
+msgstr ""
+"HTML template has been changed. Do you like to save now to apply changes?"
+"<br /><br /><b>Note, that existing HTML newsletter content will get lost!</b>"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:64
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:75
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:88
+msgid "Report:"
+msgstr "Report:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:67
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:78
+#, php-format
+msgid "Sending newsletter ... (chunk %s of %s, recipients: %s, sent: %s)"
+msgstr "Sending newsletter ... (chunk %s of %s, recipients: %s, sent: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:70
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:83
+msgid "Stop sending"
+msgstr "Stop sending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:71
+msgid "Send next chunk"
+msgstr "Send next chunk"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:91
+#, php-format
+msgid "The newsletter has been sent to %s recipients"
+msgstr "The newsletter has been sent to %s recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:149
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:345
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:524
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:767
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:916
+msgid "List options"
+msgstr "List options"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:154
+msgid "-All-"
+msgstr "-All-"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:169
+msgid "Items per page:"
+msgstr "Items per page:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+msgid "Recipient"
+msgstr "Recipient"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:570
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:45
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:176
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:56
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:313
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:316
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:320
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:56
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:406
+msgid "Status"
+msgstr "Status"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+msgid "Sent"
+msgstr "Sent"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:178
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:102
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:619
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:835
+msgid "Actions"
+msgstr "Actions"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:226
+msgid "Delete item"
+msgstr "Delete item"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:233
+msgid "HTML/Text"
+msgstr "HTML/Text"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:242
+msgid "Waiting for sending"
+msgstr "Waiting for sending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:245
+msgid "Sending"
+msgstr "Sending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:248
+msgid "Successful"
+msgstr "Successful"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:251
+#, php-format
+msgid "Error: %s"
+msgstr "Error: %s"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:290
+#, php-format
+msgid "Go to page: %s"
+msgstr "Go to page: %s"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:305
+msgid "Newsletter Dispatch Job"
+msgstr "Newsletter Dispatch Job"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:313
+msgid "Pending"
+msgstr "Pending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:316
+#, php-format
+msgid "Sending (started: %s)"
+msgstr "Sending (started: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:320
+#, php-format
+msgid "Finished (started: %s, finished: %s)"
+msgstr "Finished (started: %s, finished: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:326
+msgid "Statistics"
+msgstr "Statistics"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:326
+#, php-format
+msgid "Planned: %s, Send: %s"
+msgstr "Planned: %s, Send: %s"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:327
+msgid "From"
+msgstr "From"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:365
+msgid "Send newsletter to single recipient:"
+msgstr "Send newsletter to single recipient:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:375
+msgid "Use cronjob: Enabled"
+msgstr "Use cronjob: Enabled"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:377
+msgid "Use cronjob: Not enabled"
+msgstr "Use cronjob: Not enabled"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:381
+#, php-format
+msgid "Dispatch: Enabled (block size: %s, delay: %s sec.)"
+msgstr "Dispatch: Enabled (block size: %s, delay: %s sec.)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:383
+msgid "Dispatch: Disabled"
+msgstr "Dispatch: Disabled"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_details.php:389
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:55
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:405
+msgid "Created"
+msgstr "Created"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:162
+msgid "Delete dispatch job"
+msgstr "Delete dispatch job"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:163
+msgid ""
+"Do you really want to delete the following newsletter dispatch job:<br />"
+msgstr ""
+"Do you really want to delete the following newsletter dispatch job:<br />"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:165
+msgid "Run job"
+msgstr "Run job"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_menu.php:166
+msgid "Do you really want to run the following job:<br />"
+msgstr "Do you really want to run the following job:<br />"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_subnav.php:40
+msgid "View"
+msgstr "View"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_jobs_subnav.php:50
+msgid "Details"
+msgstr "Details"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:60
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:69
+msgid "Dispatch"
+msgstr "Dispatch"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:87
+msgid "Recipient groups"
+msgstr "Recipient groups"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:112
+msgid "Create newsletter"
+msgstr "Create newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:124
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:655
+msgid "Settings"
+msgstr "Settings"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:136
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:138
+msgid "Please select"
+msgstr "Please select"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:204
+msgid "My mail address"
+msgstr "My mail address"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:241
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:627
+msgid "Save"
+msgstr "Save"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:257
+msgid "Enable HTML Newsletter"
+msgstr "Enable HTML Newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:260
+msgid "HTML Template Category:"
+msgstr "HTML Template Category:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:263
+msgid "HTML Newsletter Category:"
+msgstr "HTML Newsletter Category:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:266
+msgid "Send test destination:"
+msgstr "Send test destination:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:286
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:445
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:668
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:848
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:198
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:395
+msgid "-- All --"
+msgstr "-- All --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:295
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:461
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:682
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:861
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:214
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:411
+msgid "Ascending"
+msgstr "Ascending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:295
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:461
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:682
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:861
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:214
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:411
+msgid "Descending"
+msgstr "Descending"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:301
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:469
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:714
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:867
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:220
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:417
+msgid "-- All fields --"
+msgstr "-- All fields --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:307
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:482
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:725
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:878
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:231
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:428
+msgid "Apply"
+msgstr "Apply"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:316
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:495
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:734
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:887
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:236
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:433
+msgid "Items / page"
+msgstr "Items / page"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:320
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:499
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:738
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:891
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:240
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:437
+msgid "Sort by"
+msgstr "Sort by"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:324
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:503
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:742
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:895
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:244
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:441
+msgid "Sort order"
+msgstr "Sort order"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:328
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:507
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:750
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:899
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:248
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:445
+msgid "Search for"
+msgstr "Search for"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:332
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:511
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:754
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:903
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:252
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:449
+msgid "Search in"
+msgstr "Search in"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:571
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:46
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:177
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:71
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:57
+msgid "Confirmed"
+msgstr "Confirmed"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:572
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:47
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:178
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:65
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:58
+msgid "Deactivated"
+msgstr "Deactivated"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:584
+msgid "Create recipient"
+msgstr "Create recipient"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:594
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:334
+msgid "Import recipients"
+msgstr "Import recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:608
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:610
+msgid "Purge recipients"
+msgstr "Purge recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:608
+#, php-format
+msgid ""
+"Do you really want to remove recipients, that have not been confirmed since "
+"%s days and over?"
+msgstr ""
+"Do you really want to remove recipients, that have not been confirmed since "
+"%s days and over?"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:642
+msgid "Purge timeframe"
+msgstr "Purge timeframe"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:643
+msgid "days"
+msgstr "days"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:686
+msgid "-- All groups --"
+msgstr "-- All groups --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:746
+msgid "Show group"
+msgstr "Show group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_left_top.php:828
+msgid "Create group"
+msgstr "Show group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:173
+msgid "Delete newsletter"
+msgstr "Delete newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:174
+msgid "Do you really want to delete the following newsletter:<br />"
+msgstr "Do you really want to delete the following newsletter:<br />"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:176
+msgid "Send test newsletter"
+msgstr "Send test newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:177
+msgid ""
+"Send test newsletter (disabled, check newsletter sender e-mail address and "
+"handler article selection)"
+msgstr ""
+"Send test newsletter (disabled, check newsletter sender e-mail address and "
+"handler article selection)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:178
+msgid "Add newsletter dispatch job"
+msgstr "Add newsletter dispatch job"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:179
+msgid ""
+"Add newsletter dispatch job (disabled, check newsletter sender e-mail "
+"address and handler article selection)"
+msgstr ""
+"Add newsletter dispatch job (disabled, check newsletter sender e-mail "
+"address and handler article selection)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:180
+msgid "Duplicate newsletter"
+msgstr "Duplicate newsletter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:261
+#, php-format
+msgid "Recipient group: %s"
+msgstr "Recipient group: %s"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_menu.php:266
+#, php-format
+msgid "Do you really want to send the newsletter to:<br><strong>%s</strong>"
+msgstr "Do you really want to send the newsletter to:<br /><strong>%s</strong>"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_subnav.php:41
+msgid "Edit"
+msgstr "Edit"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.newsletter_subnav.php:50
+msgid "Edit Message"
+msgstr "Edit Message"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group.subnav.php:40
+msgid "Overview"
+msgstr "Overview"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:51
+msgid "-- new group --"
+msgstr "-- new group --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:87
+msgid "Could not set new group name: Group already exists"
+msgstr "Could not set new group name: Group already exists"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:185
+msgid "Edit group"
+msgstr "Edit group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:188
+msgid "Group name"
+msgstr "Group name"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:192
+msgid "Default group"
+msgstr "Default group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:195
+msgid "Member list options"
+msgstr "Member list options"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:270
+msgid "Check all"
+msgstr "Check all"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:331
+msgid "No recipients are added to this group yet"
+msgstr "No recipients are added to this group yet"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:334
+msgid "No recipients found"
+msgstr "No recipients found"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:379
+msgid "Member navigation"
+msgstr "Member navigation"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:381
+msgid "Recipients in group"
+msgstr "Recipients in group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:392
+msgid "Outsider list options"
+msgstr "Outsider list options"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:550
+msgid "Outsider navigation"
+msgstr "Outsider navigation"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:552
+msgid "Add recipients"
+msgstr "Add recipients"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_edit.php:555
+msgid "Note: Hold &lt;Ctrl&gt; to<br>select multiple items."
+msgstr "Note: Hold &lt;Ctrl&gt; to<br />select multiple items."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_menu.php:134
+msgid "Delete recipient group"
+msgstr "Delete recipient group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients.group_menu.php:135
+msgid ""
+"Do you really want to delete the following newsletter recipient group:<br />"
+msgstr ""
+"Do you really want to delete the following newsletter recipient group:<br />"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:48
+msgid "-- new recipient --"
+msgstr "-- new recipient --"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:63
+#, php-format
+msgid ""
+"%1backslashdollard recipients, which hasn't been confirmed since more than "
+"%2backslashdollard days has been removed."
+msgstr ""
+"%1backslashdollard recipients, which hasn't been confirmed since more than "
+"%2backslashdollard days has been removed."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:65
+#, php-format
+msgid ""
+"There are no recipients, which hasn't been confirmed since more than "
+"%2backslashdollard days has been removed."
+msgstr ""
+"There are no recipients, which hasn't been confirmed since more than "
+"%2backslashdollard days has been removed."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:89
+msgid "Please specify a valid e-mail address"
+msgstr "Please specify a valid e-mail address"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:101
+msgid ""
+"Could not set new e-mail adress: Other recipient with same e-mail address "
+"already exists"
+msgstr ""
+"Could not set new e-mail adress: Other recipient with same e-mail address "
+"already exists"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:159
+msgid "Edit recipient"
+msgstr "Edit recipient"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:179
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:83
+msgid "Message type"
+msgstr "Message type"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:197
+msgid "WARNING"
+msgstr "WARNING"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:197
+#, php-format
+msgid ""
+"The plugin %s delivered an array for the displayed titles, but did not "
+"return an array for the contents."
+msgstr ""
+"The plugin %s delivered an array for the displayed titles, but did not "
+"return an array for the contents."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:218
+msgid "Recipient is not member of any group"
+msgstr "Recipient is not member of any group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:221
+msgid "Groupname"
+msgstr "Groupname"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_edit.php:239
+msgid "Associated Groups"
+msgstr "Associated Groups"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:59
+msgid "Mail"
+msgstr "Mail"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:77
+msgid "Confirmed Date"
+msgstr "Confirmed Date"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:136
+msgid "Group"
+msgstr "Group"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:181
+#, php-format
+msgid "Given column header '%s' unknown, column ignored"
+msgstr "Given column header '%s' unknown, column ignored"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:189
+#, php-format
+msgid "Mandatory column '%s' wasn't found, import stopped"
+msgstr "Mandatory column '%s' wasn't found, import stopped"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:209
+#, php-format
+msgid "Item with empty mail address found, item ignored (name: %s, row: %s)"
+msgstr "Item with empty mail address found, item ignored (name: %s, row: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:213
+#, php-format
+msgid "Mail address '%s' is invalid, item ignored (row: %s)"
+msgstr "Mail address '%s' is invalid, item ignored (row: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:217
+#, php-format
+msgid "Recipient with mail address '%s' already exists, item skipped (row: %s)"
+msgstr ""
+"Recipient with mail address '%s' already exists, item skipped (row: %s)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:246
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:286
+msgid "yes"
+msgstr "yes"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:322
+#, php-format
+msgid ""
+"%d recipients added, %d recipients skipped (email already exists) and %d "
+"invalid recipients/e-mail adresses ignored. Invalid recipients are shown (if "
+"any)."
+msgstr ""
+"%d recipients added, %d recipients skipped (email already exists) and %d "
+"invalid recipients/e-mail adresses ignored. Invalid recipients are shown (if "
+"any)."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:338
+msgid "Tab"
+msgstr "Tab"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:339
+msgid "Semicolon"
+msgstr "Semicolon"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:342
+msgid "Delimiter"
+msgstr "Delimiter"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:346
+msgid "Import information"
+msgstr "Import information"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:348
+msgid "Specify colum types:"
+msgstr "Specify colum types:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:349
+msgid ""
+"<br />The first line must contain the column names; this specifies the "
+"column order.<br />&lt;column name&gt;[delimiter]&lt;column name&gt;..."
+msgstr ""
+"<br />The first line must contain the column names; this specifies the "
+"column order.<br />&lt;column name&gt;[delimiter]&lt;column name&gt;..."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:350
+msgid "Data structure:"
+msgstr "Data structure:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:351
+msgid ""
+"The recipients have to be entered using the following format:<br />&lt;"
+"data&gt;[Delimiter]&lt;data&gt;... - each recipient in a new line."
+msgstr ""
+"The recipients have to be entered using the following format:<br />&lt;"
+"data&gt;[Delimiter]&lt;data&gt;... - each recipient in a new line."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:352
+msgid "Example:"
+msgstr "Example:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:353
+msgid "<br />name;mail;confirmed<br />Smith;jon.smith@example.org;1"
+msgstr "<br />name;mail;confirmed<br />Smith;jon.smith@example.org;1"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:354
+msgid "The following column names will be recognized:"
+msgstr "The following column names will be recognized:"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:136
+#, php-format
+msgid ""
+"%d recipients, with no or incompatible key has been updated. Deactivate "
+"update function."
+msgstr ""
+"%d recipients, with no or incompatible key has been updated. Deactivate "
+"update function."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:192
+msgid "Delete recipient"
+msgstr "Delete recipient"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
+#: Trunk\drugcms\plugins\newsletter/includes/include.recipients_menu.php:193
+msgid "Do you really want to delete the following recipient:<br />"
+msgstr "Do you really want to delete the following recipient:<br />"

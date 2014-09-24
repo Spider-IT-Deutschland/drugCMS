@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+.kontaktformular_bereich {
+    
+}
+.kontaktformular_bereich .kontaktformular {
+    
+}
+.kontaktformular_bereich .kontaktformular .info {
+    padding: 2px 6px 4px 6px;
+    color: #FFF;
+    background-color: #050;
+    border: 6px solid #090;
+    border-radius: 13px;
+}
+.kontaktformular_bereich .kontaktformular .error {
+    padding: 2px 6px 4px 6px;
+    color: #FFF;
+    background-color: #800;
+	border: 6px solid #F00;
+    border-radius: 13px;
+}
+.kontaktformular_bereich .kontaktformular .pflicht {
+    font-size: 0.9em;
+}
+.kontaktformular_bereich .kontaktformular label {
+    display: block;
+    float: left;
+    margin-top: 1px;
+    width: 150px;
+}
+.kontaktformular_bereich .kontaktformular input,
+.kontaktformular_bereich .kontaktformular textarea {
+    margin-bottom: 4px;
+}
+.kontaktformular_bereich .kontaktformular input[type=radio] {
+    margin: 2px 4px 10px 0px;
+}
+.kontaktformular_bereich .kontaktformular input[type=text] {
+    width: 400px;
+}
+.kontaktformular_bereich .kontaktformular textarea {
+    width: 400px;
+    height: 200px;
+}

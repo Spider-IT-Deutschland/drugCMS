@@ -1,0 +1,65 @@
+
+<link rel="stylesheet" type="text/css" href="css/kontakt.css" />
+<div class="kontaktformular_bereich">
+    <div class="kontaktformular">
+        {MESSAGE}
+        <div class="pflicht">* = {PFLICHTFELDER}</div>
+        <form name="kontaktform" id="kontaktform" method="post" action="{FORM_ACTION}">
+            <div>
+                <input type="hidden" name="tmref" value="{NOSPAM}" />
+                <input type="hidden" name="send" value="1" />
+            </div>
+            
+            <div>
+                <label for="Anrede">{ANREDE}: *</label>
+                <input type="radio" name="Anrede" value="{ANREDE_OPTION1}" id="Anrede"{ANREDE_OPTION1_DATEN} /> {ANREDE_OPTION1} &nbsp;
+                <input type="radio" name="Anrede" value="{ANREDE_OPTION2}"{ANREDE_OPTION2_DATEN} /> {ANREDE_OPTION2}
+            </div>
+            
+            <div>
+                <label for="Vorname">{VORNAME}: *</label>
+                <input type="text" name="Vorname" id="Vorname" class="eingabe" maxlength="100" value="{VORNAME_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="Nachname">{NACHNAME}: *</label>
+                <input type="text" name="Nachname" id="Nachname" class="eingabe" maxlength="100" value="{NACHNAME_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="Firma">{FIRMA}:</label>
+                <input type="text" name="Firma" id="Firma" class="eingabe" maxlength="100" value="{FIRMA_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="Strasse">{STRASSE}:</label>
+                <input type="text" name="Strasse" id="Strasse" class="eingabe" maxlength="100" value="{STRASSE_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="PLZORT">{PLZORT}:</label>
+                <input type="text" name="PLZORT" id="PLZORT" class="eingabe" maxlength="100" value="{PLZORT_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="Telefon">{TELEFON}: *</label>
+                <input type="text" name="Telefon" id="Telefon" class="eingabe" maxlength="100" value="{TELEFON_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="EMail">{EMAIL}: *</label>
+                <input type="text" name="EMail" id="EMail" class="eingabe" maxlength="100" value="{EMAIL_DATEN}" />
+            </div>
+            
+            <div>
+                <label for="Anliegen">{ANLIEGEN}: *</label>
+                <textarea name="Anliegen" id="Anliegen" rows="1" cols="1">{ANLIEGEN_DATEN}</textarea>
+            </div>
+            
+            <div>
+                <label>&nbsp;</label>
+                <input type="submit" value="{ABSCHICKEN}" /> &nbsp; <input type="reset" value="{LOESCHEN}" />
+            </div>
+        </form>
+    </div>
+</div>
