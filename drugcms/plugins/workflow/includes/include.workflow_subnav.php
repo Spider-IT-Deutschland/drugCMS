@@ -81,19 +81,19 @@ if (!defined('CON_FRAMEWORK')) {
         $tmp_area = $db->f("name");
         
         # Set template data
-        $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+        $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
         $tpl->set("d", "CLASS",     '');
         $tpl->set("d", "OPTIONS",   '');
         $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$tmp_area&frame=4&idworkflow=$idworkflow").'">'.$caption.'</a>');
         if ($area == $tmp_area)
         {
-            $tpl->set('s', 'DEFAULT', markSubMenuItem($tpl->dyn_cnt,true));
+            $tpl->set('s', 'DEFAULT', markSubMenuItem($tpl->dyn_cnt[0],true));
         }
         $tpl->next();
 
     }
 
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
     $tpl->set('s', 'IDCAT', $idcat);
     $tpl->set('s', 'SESSID', $sess->id);
     $tpl->set('s', 'CLIENT', $client);

@@ -40,7 +40,7 @@ if (isset($_GET['idnewsletter']))
 	# Set template data
 	$sCaption = i18n("Edit", $plugin_name);
 
-	$tpl->set("d", "ID",		'c_'.$tpl->dyn_cnt);
+	$tpl->set("d", "ID",		'c_'.$tpl->dyn_cnt[0]);
 	$tpl->set("d", "CLASS",	 	'');
 	$tpl->set("d", "OPTIONS",   '');
 	$tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=news&frame=4&idnewsletter=$idnewsletter").'">'.$sCaption.'</a>');
@@ -49,13 +49,13 @@ if (isset($_GET['idnewsletter']))
 	# Set template data
 	$sCaption = i18n("Edit Message", $plugin_name);
 
-	$tpl->set("d", "ID",		'c_'.$tpl->dyn_cnt);
+	$tpl->set("d", "ID",		'c_'.$tpl->dyn_cnt[0]);
 	$tpl->set("d", "CLASS",	 	'');
 	$tpl->set("d", "OPTIONS",   '');
 	$tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=news_edit&frame=4&idnewsletter=$idnewsletter").'">'.$sCaption.'</a>');
 	$tpl->next();
 	
-	$tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+	$tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
 	# Generate the third navigation layer
 	$tpl->generate($cfg["path"]["templates"] . $cfg["templates"]["subnav"]);

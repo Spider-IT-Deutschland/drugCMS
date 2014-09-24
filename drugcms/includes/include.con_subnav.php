@@ -96,7 +96,7 @@ if ( isset($_GET['idcat']) && $_GET['idcat'] != 0 ) {
         $tmp_area = $db->f("name");
 
         # Set template data
-        $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+        $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
         $tpl->set("d", "CLASS",     '');
         $tpl->set("d", "OPTIONS",   '');
 		if ($cfg['help'] == true)
@@ -110,7 +110,7 @@ if ( isset($_GET['idcat']) && $_GET['idcat'] != 0 ) {
 
     }
 
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
     $tpl->set('s', 'IDCAT', $idcat);
     $tpl->set('s', 'SESSID', $sess->id);

@@ -607,7 +607,7 @@ if ( $perm->have_perm_area_action($area) ) {
             }
             
 
-            $bgcolor = ( is_int($tpl->dyn_cnt / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+            $bgcolor = ( is_int($tpl->dyn_cnt[0] / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
             $tpl->set('d', 'BGCOLOR', $bgcolor);
             $tpl->set('d', 'BGCOLOR_EDIT', '#F1F1F1');

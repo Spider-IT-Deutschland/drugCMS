@@ -96,7 +96,7 @@ if ( isset($_GET['file']) ) {
         if ($perm->have_perm_area_action($tmp_area))
         {
             # Set template data
-            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
             $tpl->set("d", "CLASS",     '');
             $tpl->set("d", "OPTIONS",   '');
             $tpl->set("d", "CAPTION",   '<a class="white" onclick="'.setHelpContext($sArea).'sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$tmp_area&frame=4".$sAction."&file=$file&tmp_file=$file").'">'.$caption.'</a>');
@@ -105,7 +105,7 @@ if ( isset($_GET['file']) ) {
         }
     }
 
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
     
     if ($_GET['history'] == 'true') {
         $tpl->set('s', 'ACTIVATE_HISTORY', 'setHistory();');

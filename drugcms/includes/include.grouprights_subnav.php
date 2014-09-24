@@ -89,7 +89,7 @@ if ( isset($_GET['groupid']) ) {
         if ($perm->have_perm_area_action($tmp_area))
         {
             # Set template data
-            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
             $tpl->set("d", "CLASS",     '');
             $tpl->set("d", "OPTIONS",   '');
             $tpl->set("d", "CAPTION",   '<a class="white" onclick="'.setHelpContext($tmp_area).'sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$tmp_area&frame=4&groupid=$groupid").'">'.$caption.'</a>');
@@ -123,7 +123,7 @@ if ( isset($_GET['groupid']) ) {
 			    if ($sAreaName !== false)
 			    {
 		            # Set template data
-		            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+		            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
 		            $tpl->set("d", "CLASS",     '');
 		            $tpl->set("d", "OPTIONS",   '');
 		            $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=group_external&frame=4&external_area=$sAreaID&groupid=$groupid").'">'.$sAreaName.'</a>');
@@ -132,7 +132,7 @@ if ( isset($_GET['groupid']) ) {
 		    }
 		}
 	}	
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
     # Generate the third
     # navigation layer

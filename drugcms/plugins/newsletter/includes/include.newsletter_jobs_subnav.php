@@ -41,7 +41,7 @@ if (isset($_GET['idnewsjob']) && (int)$_GET['idnewsjob'] > 0)
     $tmp_area = "foo2";
 
     # Set template data
-    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
     $tpl->set("d", "CLASS",     '');
     $tpl->set("d", "OPTIONS",   '');
     $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=news_jobs&frame=4&idnewsjob=$idnewsjob").'">'.$sCaption.'</a>');
@@ -51,13 +51,13 @@ if (isset($_GET['idnewsjob']) && (int)$_GET['idnewsjob'] > 0)
     $tmp_area = "foo2";
 
     # Set template data
-    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
     $tpl->set("d", "CLASS",     '');
     $tpl->set("d", "OPTIONS",   '');
     $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=news_jobs&action=news_job_details&frame=4&idnewsjob=$idnewsjob").'">'.$sCaption.'</a>');
     $tpl->next();
         
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
     # Generate the third navigation layer
     $tpl->generate($cfg["path"]["templates"] . $cfg["templates"]["subnav"]);
