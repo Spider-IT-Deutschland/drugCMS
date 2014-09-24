@@ -39,7 +39,7 @@ $str = '';
 if ((int) $client > 0) {
     $str = '<div style="height: 2.5em; border: 1px solid #B3B3B3;padding-left:15px;">';
     $str .= '<a style="margin-top:5px;" class="addfunction" target="right_bottom" href="'.$sess->url("main.php?area=mod_edit&frame=4&action=mod_new").'">'.i18n("New module").'</a>';
-    if($cfg['dceModEdit']['use'] == true) {
+    if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
         $str .= '<a style="margin:5px 0 0 10px;" class="syncmod" href="'.$sess->url($sess->self_url()."&syncmod=1").'">';
         $str .= i18n("Sync module").'</a>';
     }
@@ -167,11 +167,13 @@ if ((int) $client > 0) {
         
         /* @var $oModule cApiModule */
         while ($oModule = $oModuleCollection->next()) {
-            if(!$oModule->isLoadedFromFile('output') && !$oModule->isLoadedFromFile('input')) continue;
-            if($oModule->isLoadedFromFile('output')) {
+            if ((!$oModule->isLoadedFromFile('output')) && (!$oModule->isLoadedFromFile('input'))) {
+                continue;
+            }
+            if ($oModule->isLoadedFromFile('output')) {
                 $oModule->set("output", addslashes(stripslashes($oModule->get('output'))));
             }
-            if($oModule->isLoadedFromFile('input')) {
+            if ($oModule->isLoadedFromFile('input')) {
                 $oModule->set("input", addslashes(stripslashes($oModule->get('input'))));
             }
             $oModule->set("lastmodified", date("Y-m-d H:i:s"));

@@ -180,10 +180,10 @@ if ($todoitems->count() == 1) {
   $sTaskTranslation = i18n("Reminder list: %d Tasks open");
 }
 
-$mydrugcms_overview= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms&frame=4") . '">' . i18n("Overview") . '</a>';
-$mydrugcms_lastarticles= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_recent&frame=4") . '">' . i18n("Recently edited articles") . '</a>';
-$mydrugcms_tasks= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_tasks&frame=4") . '">' . sprintf($sTaskTranslation, $todoitems->count()) . '</a>';
-$mydrugcms_settings= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_settings&frame=4") . '">' . i18n("Settings") . '</a>';
+$mydrugcms_overview= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms&amp;frame=4") . '">' . i18n("Overview") . '</a>';
+$mydrugcms_lastarticles= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_recent&amp;frame=4") . '">' . i18n("Recently edited articles") . '</a>';
+$mydrugcms_tasks= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_tasks&amp;frame=4") . '">' . sprintf($sTaskTranslation, $todoitems->count()) . '</a>';
+$mydrugcms_settings= '<a class="blue" href="' . $sess->url("main.php?area=mydrugcms_settings&amp;frame=4") . '">' . i18n("Settings") . '</a>';
 
 $oTpl->set('s', 'MYDRUGCMS_OVERVIEW', $mydrugcms_overview);
 $oTpl->set('s', 'MYDRUGCMS_LASTARTICLES', $mydrugcms_lastarticles);

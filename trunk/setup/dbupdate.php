@@ -51,6 +51,10 @@ if ($currentstep == 0) {
     $currentstep = 1;
 }
 
+if (($_SESSION["setuptype"] == 'setup') && (strlen($_SESSION["dbencoding"])) && ($currentstep == 1)) {
+    $db->query('ALTER DATABASE `' . $_SESSION["dbname"] . '` CHARACTER SET ' . $_SESSION["dbencoding"]);
+}
+
 // Count DB Chunks
 $file = fopen('data/tables.txt', 'r');
 $step = 1;
@@ -68,14 +72,6 @@ while (($data = fgetcsv($file, 4000, ';')) !== false) {
         }
         dbUpgradeTable($db, $_SESSION['dbprefix'].'_'.$data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], '', $drop);
         dbUpdateSequence($_SESSION['dbprefix'].'_sequence', $_SESSION['dbprefix'] . '_' . $data[1], $db);
-        if ($data[1] == 'mod') {
-            $db->query('SELECT nextid FROM ' . $_SESSION['dbprefix'] . '_sequence WHERE (seq_name="' . $_SESSION['dbprefix'] . '_' . $data[1] . '")');
-            $db->next_record();
-            $last_mod = $db->f('nextid');
-            if ($last_mod < 2) {
-                $db->query('UPDATE ' . $_SESSION['dbprefix'] . '_sequence SET nextid = 2 WHERE (seq_name="' . $_SESSION['dbprefix'] . '_' . $data[1] . '")');
-            }
-        }
 
         if ($db->errno != 0) {
             $_SESSION['install_failedupgradetable'] = true;

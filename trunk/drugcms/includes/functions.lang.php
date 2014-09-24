@@ -85,8 +85,9 @@ function langNewLanguage($name, $client) {
     $modified = $created;
 
     // Add new language to database
-    $sql = "INSERT INTO ".$cfg["tab"]["lang"]." (idlang, name, active, encoding, author, created, lastmodified) VALUES ('".Contenido_Security::toInteger($new_idlang)."', '".Contenido_Security::escapeDB($name, $db)."', '0',
-           'iso-8859-1', '".Contenido_Security::escapeDB($author, $db)."', '".Contenido_Security::escapeDB($created, $db)."', '".Contenido_Security::escapeDB($modified, $db)."')";
+    $sql = "INSERT INTO ".$cfg["tab"]["lang"]." (idlang, name, active, encoding, author, created, lastmodified)
+            VALUES ('".Contenido_Security::toInteger($new_idlang)."', '".Contenido_Security::escapeDB($name, $db)."', '0',
+           'utf-8', '".Contenido_Security::escapeDB($author, $db)."', '".Contenido_Security::escapeDB($created, $db)."', '".Contenido_Security::escapeDB($modified, $db)."')";
     $db->query($sql);
     $sql = "INSERT INTO ".$cfg["tab"]["clients_lang"]." (idclientslang, idclient, idlang) VALUES ('".Contenido_Security::toInteger($db->nextid($cfg["tab"]["clients_lang"]))."', '".Contenido_Security::toInteger($client)."',
            '".Contenido_Security::toInteger($new_idlang)."')";

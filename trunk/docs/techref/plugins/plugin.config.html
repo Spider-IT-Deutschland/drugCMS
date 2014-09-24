@@ -69,13 +69,13 @@ h2 {
   </tbody>
 </table>
 <br>
-<h2>The plugin's configuration<br>
+<h2>The plugin&#39;s configuration<br>
 </h2>
 If your plugin has actions which needs to be translatable (of course
 :)), you need a plugin configuration file.<br>
 <br>
 This file<span style="font-weight: bold;"> needs </span>to be placed
-in the "includes"-Directory of your plugin and needs to be named <span
+in the &quot;includes&quot;-Directory of your plugin and needs to be named <span
  style="font-weight: bold;">config.plugin.php</span>.<br>
 <br>
 Example:<br>
@@ -83,37 +83,37 @@ Example:<br>
 &lt;?php<br>
 <br>
 /* Config file for the TEST plugin */<br>
-$lngAct["test_dosomething"] = i18n("Does something useful", "test");<br>
+$lngAct[&quot;test_dosomething&quot;] = i18n(&quot;Does something useful&quot;, &quot;test&quot;);<br>
 <br>
 ?&gt;<br>
 <br>
-Note that the plugin developer doesn't need to take care of the i18n
+Note that the plugin developer doesn&#39;t need to take care of the i18n
 domain binding; all that is done during initialisation.<br>
 <br>
-<h2>Letting Contenido know about foreign "domains"<br>
+<h2>Letting drugCMS know about foreign &quot;domains&quot;<br>
 </h2>
 A "domain" in terms of the GNU gettext library defines in which path a
 specific translation can be found. For plugins, the domain is
-automatically set to the plugin's directory. All you need to do is to
-create a directory structure similar to Contenido's locale directory,
+automatically set to the plugin&#39;s directory. All you need to do is to
+create a directory structure similar to drugCMS&#39;s locale directory,
 and place .po files in it (note: The .po-Files need to be named like
-your plugin's name and plugin directory, e.g. the plugin "test" should
-reside in the directory "test" and the .po-Files have to be named
-"test.po").<br>
+your plugin&#39;s name and plugin directory, e.g. the plugin "test" should
+reside in the directory &quot;test&quot; and the .po-Files have to be named
+&quot;test.po&quot;).<br>
 <h2>Translating plugins<br>
 </h2>
 To create a translated string in the plugin itself, you need to use <span
- style="font-weight: bold;">i18n("TEXT","&lt;DOMAIN&gt;");</span>. In
-the example above, we would write <span style="font-weight: bold;">i18n("TEXT","test");.
+ style="font-weight: bold;">i18n(&quot;TEXT&quot;, &quot;&lt;DOMAIN&gt;&quot;);</span>. In
+the example above, we would write <span style="font-weight: bold;">i18n(&quot;TEXT&quot;, &quot;test&quot;);.
 </span>Note that domain names are case sensitive.
-<h2>Where's the magic?<br>
+<h2>Where&#39;s the magic?<br>
 </h2>
-Originally, the "magic" (including the plugin's configuration and i18n
+Originally, the &quot;magic&quot; (including the plugin&#39;s configuration and i18n
 domain bindings) took place in the file config.php. As config.php is
-included even if we don't have a backend language (in fact, the
+included even if we don&#39;t have a backend language (in fact, the
 information about the backend language is never available in the config
 file), the magic happens in cfg_language_de.inc.php. This is the only
-place where the proper initialisation of the plugin's config.plugin.php
+place where the proper initialisation of the plugin&#39;s config.plugin.php
 file can be guaranteed.<br>
 </body>
 </html>

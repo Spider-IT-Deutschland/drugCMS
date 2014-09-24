@@ -1953,10 +1953,10 @@ abstract class Item extends Contenido_ItemBaseAbstract
 
         foreach ($this->modifiedValues as $key => $bValue) {
             if ($first == true) {
-                $sql .= "`$key` = '" . $this->values[$key] . "'";
+                $sql .= "`$key` = '" . Contenido_Security::escapeDB($this->values[$key], $this->db) . "'";
                 $first = false;
             } else {
-                $sql .= ", `$key` = '" . $this->values[$key] . "'";
+                $sql .= ", `$key` = '" . Contenido_Security::escapeDB($this->values[$key], $this->db) . "'";
             }
         }
 
@@ -2084,17 +2084,6 @@ abstract class Item extends Contenido_ItemBaseAbstract
         $oProperties = $this->_getPropertiesCollectionInstance();
         return $oProperties->delete($idprop);
     }
-
-    /**
-     * Deletes the current item
-     *
-     * @return void
-     */
-    // Method doesn't work, remove in future versions
-    // function delete()
-    // {
-    //    $this->_collectionInstance->delete($item->get($this->primaryKey));
-    //}
 
     /**
      * Define the filter functions used when data is being stored or retrieved

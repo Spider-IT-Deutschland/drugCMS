@@ -100,7 +100,7 @@
                 <div id="setupBody">
                     {CONTENT}
                     <div id="setupFootnote">
-                        &copy; 2013 <a href="http://www.spider-it.de" target="_blank">Spider IT Deutschland</a>
+                        &copy; 2013-2014 <a href="http://www.spider-it.de" target="_blank">Spider IT Deutschland</a>
                     </div>
                 </div>
             </div>

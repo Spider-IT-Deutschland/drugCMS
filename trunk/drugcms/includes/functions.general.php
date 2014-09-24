@@ -572,18 +572,30 @@ function cleanupSessions()
 
 	$col = new InUseCollection;
 
+	/* Expire old backend sessions */
 	$temp = new Contenido_Challenge_Crypt_Auth;
-
-	$maxdate = date("YmdHis", time() - ($temp->lifetime * 60));
-
-	/* Expire old sessions */
-	$sql = "SELECT changed, sid FROM ".$cfg["tab"]["phplib_active_sessions"];
+	$maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
+	$sql = 'SELECT changed, sid
+            FROM ' . $cfg['tab']['phplib_active_sessions'] . '
+            WHERE (name="contenido")';
 	$db->query($sql);
+	while ($db->next_record()) {
+		if ($db->f("changed") < $maxdate) {
+			$sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
+			$db2->query($sql);
+			$col->removeSessionMarks($db->f("sid"));
+		}
+	}
 
-	while ($db->next_record())
-	{
-		if ($db->f("changed") < $maxdate)
-		{
+	/* Expire old frontend sessions */
+	$temp = new Contenido_Frontend_Challenge_Crypt_Auth;
+	$maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
+	$sql = 'SELECT changed, sid
+            FROM ' . $cfg['tab']['phplib_active_sessions'] . '
+            WHERE (name<>"contenido")';
+	$db->query($sql);
+	while ($db->next_record()) {
+		if ($db->f("changed") < $maxdate) {
 			$sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
 			$db2->query($sql);
 			$col->removeSessionMarks($db->f("sid"));
@@ -752,7 +764,15 @@ function getPhpModuleInfo($moduleName)
 
 function isValidMail($sEMail, $bStrict = false)
 {
-	if ($bStrict)
+	# 2014-07-19 Spider IT :: Function now uses the new form validation functions.
+    #                         Strict now means that the email address must exist.
+    $ret = FormValidation::isValidEmailAddress($sEMail);
+    if (($ret) && ($bStrict)) {
+        $ret = FormValidation::isExistingEmailAddress($sEMail);
+    }
+    return $ret;
+/*
+    if ($bStrict)
 	{
 		// HerrB (14.02.2008), code posted by Calvini
 		// See http://www.contenido.org/forum/viewtopic.php?p=106612#106612
@@ -776,6 +796,7 @@ function isValidMail($sEMail, $bStrict = false)
 	} else {
 		return preg_match("/^[0-9a-z]([-_.]*[0-9a-z]*)*@[a-z0-9-]+\.([a-z])/i", $sEMail);
 	}
+*/
 }
 
 function htmldecode($string)
@@ -2364,12 +2385,12 @@ function sendEncodingHeader ($db, $cfg, $lang) {
         {
             if (!in_array($aLanguageEncodings[$lang], $cfg['AvailableCharsets']))
             {
-                header("Content-Type: text/html; charset=ISO-8859-1");      
+                header("Content-Type: text/html; charset=UTF-8");
             } else {
                 header("Content-Type: text/html; charset={$aLanguageEncodings[$lang]}");        
             }
         } else {
-            header("Content-Type: text/html; charset=ISO-8859-1");          
+            header("Content-Type: text/html; charset=UTF-8");          
         }
     
     }

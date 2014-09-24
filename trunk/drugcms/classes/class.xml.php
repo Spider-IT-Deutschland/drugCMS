@@ -212,7 +212,7 @@ class XML_doc {
 
         if (is_array($value)) { return "Has children"; }
 
-        if ($this->sys_encoding != 'UTF-8') {
+        if ((strlen($this->sys_encoding)) && ($this->sys_encoding != 'UTF-8')) {
             return mb_convert_encoding($value, $this->sys_encoding, 'UTF-8');
         } else {
             return $value;

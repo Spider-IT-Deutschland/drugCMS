@@ -84,7 +84,7 @@ abstract class Output_Compressor {
             # Read the input files
             for ($i = 0, $n = count($asFiles); $i < $n; $i ++) {
                 if (file_exists($asFiles[$i])) {
-                    $cnt = file_get_contents($asFiles[$i]);
+                    $cnt = @file_get_contents($asFiles[$i]);
                     
                     # Remove file include commands (those files were added to the array or HTML head section)
                     if (strrpos($asFiles[$i], '/') > 0) {
@@ -189,11 +189,11 @@ abstract class Output_Compressor {
      */
     public function output($sCachePath, $sFilename, $sContentType) {
         header('Content-Type: text/' . $sContentType);
-        if ((strstr($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) && (extension_loaded('zlib')) && (is_file($sCachePath . $sFilename . '.gz')) && (!ini_get('zlib.output_compression'))) {
+        if ((is_file($sCachePath . $sFilename . '.gz')) && (strstr($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) && (extension_loaded('zlib')) && (!ini_get('zlib.output_compression'))) {
             header('Content-Length: ' . filesize($sCachePath . $sFilename . '.gz'));
             header('Content-Encoding: gzip');
             readfile($sCachePath . $sFilename . '.gz');
-        } else {
+        } elseif (is_file($sCachePath . $sFilename)) {
             header('Content-Length: ' . filesize($sCachePath . $sFilename));
             readfile($sCachePath . $sFilename);
         }

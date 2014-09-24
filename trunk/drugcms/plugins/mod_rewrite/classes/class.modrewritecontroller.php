@@ -495,16 +495,17 @@ class ModRewriteController extends ModRewriteBase
 
         if (($idcat == 0) && ($this->_sArtName == null)) {
             # Category couldn't be resolved, maybe an article name is included
-            $idcat = (int) ModRewrite::getCatIdByUrlPath(substr($this->_sPath, 0, (strrpos(substr($this->_sPath, 0, -1), '/') + 1)));
-            if ($idcat == 0) {
-                // category couldn't resolved
-                $this->_bError = true;
-                $idcat = null;
-            } else {
+            $sPath = substr($this->_sPath, 0, (strrpos(substr($this->_sPath, 0, -1), '/') + 1));
+            $idcat = (int) ModRewrite::getCatIdByUrlPath($sPath);
+            if (($idcat > 0) || ($sPath == '/')) {
                 #$this->_sPath = substr($this->_sPath, 0, strrpos($this->_sPath, '/', -1));
                 $this->_sArtName = array_pop($this->_aParts);
                 // unset $this->_sPath if $idcat could set, otherwhise it would be resolved again.
                 unset($this->_sPath);
+            } else {
+                // category couldn't resolved
+                $this->_bError = true;
+                $idcat = null;
             }
         } elseif ($idcat == 0) {
             // category couldn't resolved
@@ -544,11 +545,10 @@ class ModRewriteController extends ModRewriteBase
         $idcat = (isset($idcat) && (int) $idcat > 0) ? $idcat : null;
         $idart = (isset($idart) && (int) $idart > 0) ? $idart : null;
 
-        if ($idcat !== null && $this->_sArtName && $idart == null) {
+        if ($idcat > 0 && $this->_sArtName && $idart == null) {
             // existing idcat with article name and no idart
             $idart = ModRewrite::getArtIdByWebsafeName($this->_sArtName, $idcat, $lang);
         } elseif ($idcat > 0 && $this->_sArtName == null && $idart == null) {
-
             if (parent::getConfig('add_startart_name_to_url') && parent::getConfig('default_startart_name') == '') {
 
                 // existing idcat without article name and idart

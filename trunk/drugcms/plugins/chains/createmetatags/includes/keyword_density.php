@@ -108,7 +108,7 @@ function keywordDensity($sHeadline, $sText, $sEncoding = "UTF-8", $iMinLen = 5) 
         $sLang = '';
     }
     $db->disconnect();
-    include_once(dirname(__FILE__) . '/../classes/class.keywords.php');
+    include_once(dirname(dirname(__FILE__)) . '/classes/class.keywords.php');
     $t2k = new text2keywords(array($sLang));
     $aKeywords = $t2k->GetTags($sAll);
     $aKeywords = array_slice($aKeywords, 0, 15, true);

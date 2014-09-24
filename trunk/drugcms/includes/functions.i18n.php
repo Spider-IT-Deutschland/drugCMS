@@ -72,13 +72,13 @@ function i18n($string, $domain = "drugcms") {
     }
     
     if (extension_loaded("gettext")) {
-        
         if (function_exists("dgettext")) {
             if ($domain != "drugcms") {
-                $translation = dgettext($domain, $string);
-                return ($translation);
+                $translation = str_replace(array('|1', '|2'), array('<', '>'), htmlentities(str_replace(array('<', '>'), array('|1', '|2'), dgettext($domain, $string)), ENT_COMPAT, 'UTF-8', false));
+                return $translation;
             } else {
-                return gettext($string);
+                $translation = gettext($string);
+                return $translation;
             }
         }
     }
@@ -96,16 +96,17 @@ function i18n($string, $domain = "drugcms") {
  * @return string  Returns the translation
  */
 function i18nEmulateGettext($string, $domain = "drugcms") {
-    global $cfg, $i18nLanguage, $transFile, $i18nDomains, $_i18nTranslationCache;
-    if(!is_array($_i18nTranslationCache)) {
+    global $cfg, $i18nLanguage, $transFile, $i18nDomains, $_i18nTranslationCache, $encoding, $lang;
+    
+    if (!is_array($_i18nTranslationCache)) {
         $_i18nTranslationCache = array();
     }
-    if(array_key_exists($string, $_i18nTranslationCache)) {
+    if (array_key_exists($string, $_i18nTranslationCache)) {
         return $_i18nTranslationCache[$string];
     }
     
     // Bad thing, gettext is not available. Let's emulate it
-    if(!isset($i18nDomains[$domain]) || !file_exists($i18nDomains[$domain].$i18nLanguage."/LC_MESSAGES/".$domain.".po")) {
+    if (!isset($i18nDomains[$domain]) || !file_exists($i18nDomains[$domain].$i18nLanguage."/LC_MESSAGES/".$domain.".po")) {
         return $string;
     }
     
@@ -141,15 +142,26 @@ function i18nEmulateGettext($string, $domain = "drugcms") {
     }
     
     $stringStart = strpos($transFile[$domain], '"'.str_replace(Array("\n", "\r", "\t"), Array('\n', '\r', '\t'), $string).'"');
-    if($stringStart === false) {
+    if ($stringStart === false) {
         return $string;
     }
     
     $results = array();
     preg_match("/msgid.*\"(".preg_quote(str_replace(Array("\n", "\r", "\t"), Array('\n', '\r', '\t'), $string),"/").")\"(?:\s*)?\nmsgstr(?:\s*)\"(.*)\"/", $transFile[$domain], $results);
     # Old: preg_match("/msgid.*\"".preg_quote($string,"/")."\".*\nmsgstr(\s*)\"(.*)\"/", $transFile[$domain], $results);
-    if(array_key_exists(1, $results)) {
-        $_i18nTranslationCache[$string] = stripslashes(str_replace(Array('\n', '\r', '\t'), Array("\n", "\r", "\t"), $results[2]));
+    if ((!isset($encoding)) || (!is_array($encoding)) || (count($encoding) == 0)) {
+        // get encodings of all languages
+        $encoding = array();
+        $db = new DB_Contenido();
+        $sql = "SELECT idlang, encoding FROM " . $cfg["tab"]["lang"];
+        $db->query($sql);
+        while ($db->next_record()) {
+            $encoding[$db->f('idlang')] = $db->f('encoding');
+        }
+        $db->disconnect();
+    }
+    if (array_key_exists(1, $results)) {
+        $_i18nTranslationCache[$string] = str_replace(array('|1', '|2'), array('<', '>'), html_entity_decode(htmlentities(str_replace(array('<', '>'), array('|1', '|2'), stripslashes(str_replace(Array('\n', '\r', '\t'), Array("\n", "\r", "\t"), $results[2]))), ENT_COMPAT, 'UTF-8', false), ENT_COMPAT, ((strlen($encoding[$lang])) ? strtoupper($encoding[$lang]) : 'UTF-8')));
         return $_i18nTranslationCache[$string];
     } else {
         return $string;
@@ -268,7 +280,9 @@ function i18nMatchBrowserAccept ($accept)
 
 	/* Whoops, still here? Seems that we didn't find any language. Return
        the default (german, yikes) */
-   return (false);
+    #return false;
+    # 2014-05-24: Now we set "English (United States)" as the default
+    return 'en_US';
 }
 
 /**
@@ -323,7 +337,7 @@ function i18nGetAvailableLanguages ()
 		'sq_AL' => array('Albanian', 'Albania', 'ISO8859-1', 'sq', 'en'), 
 		'sr_SP' => array('Serbian Cyrillic', 'Yugoslavia', 'ISO8859-5', 'sr-cy', 'en'), 
 		'sv_SE' => array('Swedish', 'Sweden', 'ISO8859-1', 'sv', 'se'),
-		'tr_TR' => array('Turkisch', 'Turkey', 'ISO8859-9', 'tr', 'tr') 
+		'tr_TR' => array('Turkish', 'Turkey', 'ISO8859-9', 'tr', 'tr') 
 	);
 
 	return ($aLanguages); 

@@ -163,7 +163,7 @@ pre{
 /* area popup */
 .editarea_popup{
 	border: solid 1px #888888;
-	background-color: #F1F1F1; 
+	background-color: #ECE9D8; 
 	width: 250px; 
 	padding: 4px; 
 	position: absolute;
@@ -260,7 +260,7 @@ div#area_search_replace  #area_search_msg{
 	/*height: 21px; */
 	margin: 0; 
 	padding: 0;
-	background-color: #F1F1F1;
+	background-color: #ECE9D8;
 	text-align: center;
 }
 
@@ -330,7 +330,7 @@ table.statusbar{
 }
 
 .editAreaButtonNormal {
-	border: 1px solid #F1F1F1 !important;
+	border: 1px solid #ECE9D8 !important;
 	cursor: pointer;
 }
 
@@ -425,7 +425,7 @@ table.statusbar{
 #tab_browsing_list a span {
 	display: block; 
 	color: #000; 
-	background: #F1F1F1; 
+	background: #ECE9D8; 
 	border:	1px solid #888; 
 	border-width: 1px 1px 0; 
 	text-align: center; 

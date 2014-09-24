@@ -180,6 +180,54 @@ class Contenido_UrlBuilder_MR extends Contenido_UrlBuilder
             $aParams['lang'] = $aParams['changelang'];
         }
 
+        # 2014-05-06 :: Check if idart, idartlang, or idcatart is set and remove it if it is a start article -->
+        global $cfg;
+        $db = new DB_Contenido();
+        if ((!isset($aParams['lang'])) || (intval($aParams['lang']) <= 0)) {
+            $aParams['lang'] = $GLOBALS['lang'];
+        }
+        if ((isset($aParams['idart'])) && (intval($aParams['idart']) > 0)) {
+            # Get the idartlang
+            $sql = 'SELECT al.idartlang, ca.idcat
+                    FROM ' . $cfg['tab']['art_lang'] . ' AS al INNER JOIN ' . $cfg['tab']['cat_art'] . ' AS ca ON al.idart = ca.idart
+                    WHERE ((al.idart=' . intval($aParams['idart']) . ')
+                       AND (al.idlang=' . $aParams['lang'] . '))';
+            $db->query($sql);
+            if ($db->next_record()) {
+                if (isStartArticle($db->f('idartlang'), $aParams['idcat'], $aParams['lang'])) {
+                    unset($aParams['idart']);
+                }
+            }
+        } elseif ((isset($aParams['idartlang'])) && (intval($aParams['idartlang']) > 0)) {
+            if ((!isset($aParams['idcat'])) || (intval($aParams['idcat']) <= 0)) {
+                $sql = 'SELECT ca.idcat
+                        FROM ' . $cfg['tab']['art_lang'] . ' AS al INNER JOIN ' . $cfg['tab']['cat_art'] . ' AS ca ON al.idart = ca.idart
+                        WHERE ((al.idartlang=' . $aParams['idartlang'] . ')
+                           AND (al.idlang=' . $aParams['lang'] . '))';
+                $db->query($sql);
+                if ($db->next_record()) {
+                    $aParams['idcat'] = $db->f('idcat');
+                }
+            }
+            if (isStartArticle($aParams['idartlang'], $aParams['idcat'], $aParams['lang'])) {
+                unset($aParams['idartlang']);
+            }
+        } elseif ((isset($aParams['idcatart'])) && (intval($aParams['idcatart']) > 0)) {
+            # Get the idartlang
+            $sql = 'SELECT al.idartlang, ca.idcat
+                    FROM ' . $cfg['tab']['art_lang'] . ' AS al INNER JOIN ' . $cfg['tab']['cat_art'] . ' AS ca ON al.idart = ca.idart
+                    WHERE ((ca.idcatart=' . intval($aParams['idcatart']) . ')
+                       AND (al.idlang=' . $aParams['lang'] . '))';
+            $db->query($sql);
+            if ($db->next_record()) {
+                if (isStartArticle($db->f('idartlang'), $db->f('idcat'), $aParams['lang'])) {
+                    unset($aParams['idcatart']);
+                    $aParams['idcat'] = ((intval($aParams['idcat'])) ? $aParams['idcat'] : $db->f('idcat'));
+                }
+            }
+        }
+        # 2014-05-06 :: <-- Check if idart, idartlang, or idcatart is set and remove it if it is a start article
+
         // build the query
         $sQuery = http_build_query($aParams);
 

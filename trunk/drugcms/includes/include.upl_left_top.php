@@ -99,30 +99,29 @@ if ($perm->have_perm_area_action("upl", "upl_mkdir") && (int) $client > 0)
 	###########################
 	# Form for 'New Directory'
 	###########################
-  $inputfield = '<input type="hidden" name="path" value="'.$path.'">
-                 <input type="hidden" name="contenido" value="'.$sess->id.'">
-                 <input type="hidden" name="frame" value="1">
-                 <input type="hidden" name="area" value="'.$area.'">
-                 <input class="text_small" style="vertical-align:middle; width:170px;" type="text" name="foldername" onChange="document.newdir.submit();">';
-  $tpl->set('s', 'ACTION', $inputfield);
-  $sessURL = $sess->url("main.php?area=upl_mkdir&frame=2&appendparameters=$appendparameters");
-  $tpl->set('s', 'TARGET',	'onsubmit="parent.frames[2].location.href=\''.$sess->url("main.php?area=upl&action=upl_mkdir&frame=2&appendparameters=$appendparameters").
-                            '&path=\'+document.newdir.path.value+\'&foldername=\'+document.newdir.foldername.value;"');
-  $tpl->set('s', 'SUBMIT',	'<input type="image" src="'.$cfg["path"]["htmlpath"].'images/submit.gif" style="vertical-align:middle;">');
-  $tpl->set('s', 'CAPTION', i18n("Create directory in"));
-  $tpl->set('s', 'DEBUG', '<script>console.log(document.newdir.path.value)</script>');
-  $tpl->set('s', 'DISPLAY_DIR',	'block');
+    $inputfield = '<input type="hidden" name="path" value="'.$path.'">
+                   <input type="hidden" name="contenido" value="'.$sess->id.'">
+                   <input type="hidden" name="frame" value="1">
+                   <input type="hidden" name="area" value="'.$area.'">
+                   <input class="text_small" style="vertical-align:middle; width:170px;" type="text" name="foldername" onChange="document.newdir.submit();">';
+    $tpl->set('s', 'ACTION', $inputfield);
+    $sessURL = $sess->url("main.php?area=upl_mkdir&frame=2&appendparameters=$appendparameters");
+    $tpl->set('s', 'TARGET', 'onsubmit="parent.frames[2].location.href=\'' . $sess->url("main.php?area=upl&action=upl_mkdir&frame=2&appendparameters=$appendparameters") . '&path=\'+document.newdir.path.value+\'&foldername=\'+document.newdir.foldername.value;"');
+    $tpl->set('s', 'SUBMIT', '<input type="image" src="' . $cfg["path"]["htmlpath"] . 'images/submit.gif" style="vertical-align:middle;">');
+    $tpl->set('s', 'CAPTION', i18n("Create directory in"));
+    $tpl->set('s', 'DEBUG', '<script>console.log(document.newdir.path.value)</script>');
+    $tpl->set('s', 'DISPLAY_DIR',	'block');
 } 
 // No permission with current rights
 else 
 {
-  $tpl->set('s', 'CAPTION',	'');
-  $tpl->set('s', 'CAPTION2',	'');
-  $inputfield = '';
-  $tpl->set('s', 'TARGET',	'');
-  $tpl->set('s', 'SUBMIT',	'');
-  $tpl->set('s', 'ACTION',	'');
-  $tpl->set('s', 'DISPLAY_DIR',	'none');
+    $tpl->set('s', 'CAPTION', '');
+    $tpl->set('s', 'CAPTION2', '');
+    $inputfield = '';
+    $tpl->set('s', 'TARGET', '');
+    $tpl->set('s', 'SUBMIT', '');
+    $tpl->set('s', 'ACTION', '');
+    $tpl->set('s', 'DISPLAY_DIR', 'none');
 }
 
 #############
@@ -133,17 +132,19 @@ if ($searchfor != "")
 	$items = uplSearch($searchfor);
 
     $tmp_mstr = 'conMultiLink(\'%s\', \'%s\', \'%s\', \'%s\')';
-    $mstr = sprintf($tmp_mstr, 
-      'right_bottom', 
-      $sess->url("main.php?area=upl_search_results&frame=4&searchfor=$searchfor&appendparameters=$appendparameters"), 
-      'right_top', 
-      $sess->url("main.php?area=$area&frame=3&appendparameters=$appendparameters"));
+    $mstr = sprintf(
+                $tmp_mstr, 
+                'right_bottom', 
+                $sess->url("main.php?area=upl_search_results&frame=4&searchfor=$searchfor&appendparameters=$appendparameters"), 
+                'right_top', 
+                $sess->url("main.php?area=$area&frame=3&appendparameters=$appendparameters")
+            );
     $refreshMenu = "\n".'if (top.content.left.left_bottom) top.content.left.left_bottom.refreshMenu()';
     $tpl->set('s', 'RESULT', $mstr.$refreshMenu);
 }
 else
 {
-  $tpl->set('s', 'RESULT', '');
+    $tpl->set('s', 'RESULT', '');
 }
 
 # create javascript multilink

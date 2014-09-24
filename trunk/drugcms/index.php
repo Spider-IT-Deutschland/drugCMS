@@ -121,6 +121,9 @@ if (!is_numeric($lang) || $lang == "") {
 	$sess->register("lang");
 }
 
+// send right encoding http header
+sendEncodingHeader($db, $cfg, $lang);
+
 $perm->load_permissions();
 
 if (isset($area))
@@ -128,6 +131,10 @@ if (isset($area))
     $sess_area = $area;
 } else {
     $area = (isset($sess_area)) ? $sess_area : 'login';
+}
+
+if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+    $force = true;
 }
 
 $tpl->reset();

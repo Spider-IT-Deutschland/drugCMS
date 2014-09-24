@@ -36,13 +36,14 @@ global $cfg;
 
 /* Current Version. You shouldn't change this
    value unless you know what you are doing. */
-$cfg['version'] = '2.0.1';
+$cfg['version'] = '2.0.2';
 
 /* SVN Date tag */
 $cfg['datetag'] = '$Date$';
 
-/* Backend timeout */
+/* Timeouts */
 $cfg["backend"]["timeout"] = 60;
+$cfg["frontend"]["timeout"] = 60;
 
 $cfg["develop"]["show_errors"] = false;
 $cfg["develop"]["show_deprecated"] = false;

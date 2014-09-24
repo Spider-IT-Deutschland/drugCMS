@@ -19,7 +19,7 @@
 	
 	// CONFIG
 	$param['cache_duration']= 3600 * 24 * 10;		// 10 days util client cache expires
-	$param['compress'] = false;						// enable the code compression, should be activated but it can be usefull to desactivate it for easier error retrieving (true or false)
+	$param['compress'] = true;						// enable the code compression, should be activated but it can be usefull to deactivate it for easier error retrieving (true or false)
 	$param['debug'] = false;						// Enable this option if you need debuging info
 	$param['use_disk_cache']= true;					// If you enable this option gzip files will be cached on disk.
 	$param['use_gzip']= true;						// Enable gzip compression
