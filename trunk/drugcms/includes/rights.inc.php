@@ -45,9 +45,9 @@ function saverights() {
       $rights_list = array ();
    }
 
-   //search all checks which are not in the new Rights_list for deleting
+   //search all checks which are not in the new $rights_list for deleting
    $arraydel = array_diff(array_keys($rights_list_old), array_keys($rights_list));
-   //search all checks which are not in the Rights_list_old for saving
+   //search all checks which are not in the $rights_list_old for saving
    $arraysave = array_diff(array_keys($rights_list), array_keys($rights_list_old));
 
    if (is_array($arraydel)) {

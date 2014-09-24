@@ -31,7 +31,9 @@ class Contenido_NavMain_Util {
      * @return void
      */
     public static function loopCats(Contenido_Category $oCategory, Contenido_FrontendNavigation $oFrontendNavigation, Template $oTpl, array $aCfg, $iLang, array $aLevelInfo, $iCurrentPageIdcat, array $aDepthInfo = array()) {
-    	$aDepthInfo[0] = isset($aDepthInfo[0]) ? $aDepthInfo[0] + 1 : 1;
+    	$db = new DB_Contenido();
+        
+        $aDepthInfo[0] = isset($aDepthInfo[0]) ? $aDepthInfo[0] + 1 : 1;
     	$aDepthInfo[1] = isset($aDepthInfo[1]) ? $aDepthInfo[1] : 1;
         // display current item
     	$iItemLevel = $oFrontendNavigation->getLevel($oCategory->getIdCat());
@@ -62,11 +64,23 @@ class Contenido_NavMain_Util {
     	$oTpl->set('d', 'css_first_item', ($aLevelInfo[$oCategory->getIdParent()]['first_child_item'] == $oCategory->getIdCat() ? ' first' : ''));
     	$oTpl->set('d', 'css_last_item', ($aLevelInfo[$oCategory->getIdParent()]['last_child_item'] == $oCategory->getIdCat() ? ' last' : ''));
     	$oTpl->set('d', 'css_active_item', ($bMarkActive === true ? ' active' : ''));
-    	try {
-    	   $oTpl->set('d', 'url', Contenido_Url::getInstance()->build($aParams));
-    	} catch (InvalidArgumentException $e) {
-    	    $oTpl->set('d', 'url', '#');
-    	}
+        try {
+            $url = Contenido_Url::getInstance()->build($aParams);
+        } catch (InvalidArgumentException $e) {
+            $url = 'front_content.php?idcat='.$oCategory->getIdCat();
+        }
+        $sql = 'SELECT al.redirect, al.redirect_url, al.external_redirect
+                FROM ' . $aCfg['tab']['cat_lang'] . ' AS cl INNER JOIN ' . $aCfg['tab']['art_lang'] . ' AS al ON cl.startidartlang = al.idartlang AND cl.idlang = al.idlang
+                WHERE ((cl.idcat=' . $oCategory->getIdCat() . ')
+                   AND (cl.idlang=' . $iLang . '))';
+        $db->query($sql);
+        if ($db->next_record()) {
+            $oTpl->set('d', 'url', (($db->f('external_redirect')) ? ((substr($db->f('redirect_url'), 0, 4) == 'http') ? $db->f('redirect_url') : $url) : $url));
+            $oTpl->set('d', 'target', (($db->f('external_redirect')) ? ' target="_blank"' : ''));
+        } else {
+            $oTpl->set('d', 'url', $url);
+            $oTpl->set('d', 'target', '');
+        }
     	$oTpl->next();
     	// continue until max level depth
     	if ($aDepthInfo[1] > $aDepthInfo[0]) {

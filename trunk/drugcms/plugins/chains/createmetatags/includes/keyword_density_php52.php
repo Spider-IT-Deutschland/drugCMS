@@ -80,31 +80,24 @@ function stripCount($singlewordcounter, $maxKeywords = 15) {
  * @return mixed commaseparated string of keywords or false
  */
 function keywordDensity($sHeadline, $sText, $sEncoding = "UTF-8", $iMinLen = 5) {
-    global $aAllWords;
     $sHeadline = strip_tags($sHeadline);
     $sText = strip_tags($sText);
     $sText = html_entity_decode($sText, ENT_QUOTES, $sEncoding);
     
-    $aSingleWordHeadline = str_word_count($sHeadline, 1);
-    // double array for higher valenz of headline
-    $aSingleWordHeadline = array_merge($aSingleWordHeadline,$aSingleWordHeadline);
-    $aSingleWordHeadline = array_count_values($aSingleWordHeadline);
-    
-    $aSingleWordText = str_word_count($sText, 1);
-    $aSingleWordText = array_count_values($aSingleWordText);    
-    
-    $aAllWords = array_merge($aSingleWordHeadline, $aSingleWordText);
-    array_walk($aAllWords, create_function('&$n, $key, $iLen', '
-        global $aAllWords;
-        if(strlen($key) < $iLen || clIsStopWord($key)) {
-            unset($aAllWords[$key]);
-        }'), $iMinLen);
-    arsort($aAllWords, SORT_NUMERIC);
-    $aAllWords = stripCount($aAllWords);
-    if(is_array($aAllWords)) {
-        return implode(', ', $aAllWords);
+    $sAll = ($sHeadline . ' ' . $sHeadline . ' ' . $sText);
+    if (mb_strtoupper($sEncoding) != 'UTF-8') {
+        mb_convert_encoding($sAll, 'UTF-8', $sEncoding);
     }
-    return false;
+    
+    include_once(dirname(__FILE__) . '/../classes/class.keywords.php');
+    $t2k = new text2keywords(array());
+    $aKeywords = $t2k->GetTags($sAll);
+    $aKeywords = array_slice($aKeywords, 0, 15, true);
+    
+    if (mb_strtoupper($sEncoding) != 'UTF-8') {
+        mb_convert_encoding($sAll, $sEncoding, 'UTF-8');
+    }
+    return implode(', ', array_keys($aKeywords));
 }
 
 /**

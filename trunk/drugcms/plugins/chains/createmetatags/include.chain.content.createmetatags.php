@@ -237,13 +237,13 @@ function cecCreateMetatags($metatags) {
                         //Build description metatag from first headline on page
                         $iCheck = CheckIfMetaTagExists($metatags, 'description');
                         $metatags[$iCheck]['name'] = 'description';
-                        $metatags[$iCheck]['content'] = $sHeadline;
+                        $metatags[$iCheck]['content'] = htmlentities(html_entity_decode($sHeadline, ENT_COMPAT, $sEncoding), ENT_COMPAT, $sEncoding);
 
                         break;
                     case 'keywords':
                         $iCheck = CheckIfMetaTagExists($metatags, 'keywords');
                         $metatags[$iCheck]['name'] = 'keywords';
-                        $metatags[$iCheck]['content'] = $sText;
+                        $metatags[$iCheck]['content'] = htmlentities(html_entity_decode($sText, ENT_COMPAT, $sEncoding), ENT_COMPAT, $sEncoding);
 
                         break;
                     case 'revisit-after':

@@ -122,7 +122,9 @@ $oView->prevent_duplicated_content_chk = ($aMrCfg['prevent_duplicated_content'] 
 
 // mr language usage
 $oView->use_language_chk           = ($aMrCfg['use_language'] == 1) ? ' checked="checked"' : '';
+$oView->use_language_id_chk        = ($aMrCfg['use_language_id'] == 1) ? ' checked="checked"' : '';
 $oView->use_language_name_chk      = ($aMrCfg['use_language_name'] == 1) ? ' checked="checked"' : '';
+$oView->use_language_code_chk      = ($aMrCfg['use_language_code'] == 1) ? ' checked="checked"' : '';
 $oView->use_language_name_disabled = ($aMrCfg['use_language'] == 1) ? '' : ' disabled="disabled"';
 
 // mr client usage
@@ -210,7 +212,7 @@ $oView->lng_checkrootdir_info = i18n('The path will be checked, if this option i
 
 $oView->lng_startfromroot = i18n('Should the name of root category be displayed in the URL?', 'mod_rewrite');
 $oView->lng_startfromroot_lbl = i18n('Start from root category', 'mod_rewrite');
-$oView->lng_startfromroot_info = i18n('If enabled, the name of the root category (e. g. "Mainnavigation" in a Contenido default installation), will be preceded to the URL.', 'mod_rewrite');
+$oView->lng_startfromroot_info = i18n('If enabled, the name of the root category (e. g. \'Mainnavigation\' in a Contenido default installation), will be preceded to the URL.', 'mod_rewrite');
 
 $oView->lng_use_client = i18n('Are several clients maintained in one directory?', 'mod_rewrite');
 $oView->lng_use_client_lbl = i18n('Prepend client to the URL', 'mod_rewrite');
@@ -218,7 +220,9 @@ $oView->lng_use_client_name_lbl = i18n('Use client name instead of the id', 'mod
 
 $oView->lng_use_language = i18n('Should the language appear in the URL (required for multi language websites)?', 'mod_rewrite');
 $oView->lng_use_language_lbl = i18n('Prepend language to the URL', 'mod_rewrite');
+$oView->lng_use_language_id_lbl = i18n('Use language id', 'mod_rewrite');
 $oView->lng_use_language_name_lbl = i18n('Use language name instead of the id', 'mod_rewrite');
+$oView->lng_use_language_code_lbl = i18n('Use language code instead of the id', 'mod_rewrite');
 
 $oView->lng_userdefined_separators_header = i18n('Configure your own separators with following 4 settings<br />to control generated URLs to your own taste', 'mod_rewrite');
 $oView->lng_userdefined_separators_example = i18n("www.domain.com/category1-category2.articlename.html\nwww.domain.com/category1/category2-articlename.html\nwww.domain.com/category.name1~category2~articlename.html\nwww.domain.com/category_name1-category2-articlename.foo", 'mod_rewrite');
@@ -239,11 +243,11 @@ $oView->lng_article_word_separator = i18n('Article-word separator (delemiter bet
 $oView->lng_add_startart_name_to_url = i18n('Append article name to URLs', 'mod_rewrite');
 $oView->lng_add_startart_name_to_url_lbl = i18n('Append article name always to URLs (even at URLs to categories)', 'mod_rewrite');
 $oView->lng_default_startart_name = i18n('Default article name without extension', 'mod_rewrite');
-$oView->lng_default_startart_name_info = i18n('e. g. "index" for index.ext<br />In case of selected "Append article name always to URLs" option and a empty field,<br />the name of the start article will be used', 'mod_rewrite');
+$oView->lng_default_startart_name_info = i18n('e. g. \'index\' for index.ext<br />In case of selected \'Append article name always to URLs\' option and a empty field,<br />the name of the start article will be used', 'mod_rewrite');
 
 $oView->lng_file_extension = i18n('File extension at the end of the URL', 'mod_rewrite');
-$oView->lng_file_extension_info = i18n('Specification of file extension with a preceded dot<br />e.g. ".html" for http://host/foo/bar.html', 'mod_rewrite');
-$oView->lng_file_extension_info2 = i18n('It\'s strongly recommended to specify a extension here,<br />if the option "Append article name always to URLs" was not selected.<br /><br />Otherwise URLs to categories and articles would have the same format<br />which may result in unresolvable categories/articles in some cases.', 'mod_rewrite');
+$oView->lng_file_extension_info = i18n('Specification of file extension with a preceded dot<br />e.g. \'.html\' for http://host/foo/bar.html', 'mod_rewrite');
+$oView->lng_file_extension_info2 = i18n('It\'s strongly recommended to specify a extension here,<br />if the option \'Append article name always to URLs\' was not selected.<br /><br />Otherwise URLs to categories and articles would have the same format<br />which may result in unresolvable categories/articles in some cases.', 'mod_rewrite');
 $oView->lng_file_extension_info3 = i18n('It\'s necessary to specify a file extension at the moment, due do existing issues, which are not solved until yet. An not defined extension may result in invalid article detection in some cases.', 'mod_rewrite');
 
 $oView->lng_use_lowercase_uri = i18n('Should the URLs be written in lower case?', 'mod_rewrite');
@@ -266,10 +270,9 @@ $oView->lng_redirect_invalid_article_to_errorsite_info = i18n('The start page wi
 
 $oView->lng_rewrite_urls_at = i18n('Moment of URL generation', 'mod_rewrite');
 $oView->lng_rewrite_urls_at_front_content_output_lbl = i18n('a.) During the output of HTML code of the page', 'mod_rewrite');
-$oView->lng_rewrite_urls_at_front_content_output_info = i18n('Clean-URLs will be generated during page output. Modules/Plugins are able to generate URLs to frontend<br />as usual as in previous Contenido versions using a format like "front_content.php?idcat=1&amp;idart=2".<br />The URLs will be replaced by the plugin to Clean-URLs before sending the HTML output.', 'mod_rewrite');
+$oView->lng_rewrite_urls_at_front_content_output_info = i18n('Clean-URLs will be generated during page output. Modules/Plugins are able to generate URLs to frontend<br />as usual as in previous Contenido versions using a format like \'front_content.php?idcat=1&amp;idart=2\'.<br />The URLs will be replaced by the plugin to Clean-URLs before sending the HTML output.', 'mod_rewrite');
 $oView->lng_rewrite_urls_at_front_content_output_info2 = i18n('Differences to variant b.)', 'mod_rewrite');
-$oView->lng_rewrite_urls_at_front_content_output_info3 = i18n("Still compatible to old modules/plugins, since no changes in codes are required\nAll occurring URLs in HTML code, even those set by wysiwyg, will be switched to Clean-URLs\nAll URLs will usually be collected and converted to Clean-URLs at once.<br />Doing it this way reduces the amount of executed database significantly.", 'mod_rewrite');
-$oView->lng_rewrite_urls_at_front_content_output_info3 = '<li>' . str_replace("\n", '</li><li>', $oView->rewrite_urls_at_front_content_output_info3) . '</li>';
+$oView->lng_rewrite_urls_at_front_content_output_info3 = '<li>' . str_replace("\n", '</li><li>', i18n("Still compatible to old modules/plugins, since no changes in codes are required\nAll occurring URLs in HTML code, even those set by wysiwyg, will be switched to Clean-URLs\nAll URLs will usually be collected and converted to Clean-URLs at once.<br />Doing it this way reduces the amount of executed database significantly.", 'mod_rewrite')) . '</li>';
 
 $oView->lng_rewrite_urls_at_congeneratecode_lbl = i18n('b.) In modules or plugins', 'mod_rewrite');
 $oView->lng_rewrite_urls_at_congeneratecode_info = i18n('By using this option, all Clean-URLs will be generated directly in module or plugins.<br />This means, all areas in modules/plugins, who generate internal URLs to categories/articles, have to be adapted manually.<br />All Clean-URLs have to be generated by using following function:', 'mod_rewrite');

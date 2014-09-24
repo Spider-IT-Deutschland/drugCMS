@@ -261,7 +261,7 @@ class ModRewriteUrlUtil extends ModRewriteBase
      */
     public function toContenidoUrl($url)
     {
-        if (strpos($url, $this->_mrExt) === false) {
+        if ((!strlen($this->_mrExt)) || (strpos($url, $this->_mrExt) === false)) {
             $newUrl = $this->toContenidoUrlPath($url);
         } else {
             // replace category word and article word seperator
@@ -281,7 +281,7 @@ class ModRewriteUrlUtil extends ModRewriteBase
      */
     public function toModRewriteUrl($url)
     {
-        if (strpos($url, $this->_mrExt) === false) {
+        if ((!strlen($this->_mrExt)) || (strpos($url, $this->_mrExt) === false)) {
             $newUrl = $this->toModRewriteUrlPath($url);
         } else {
             // replace category word and article word seperator

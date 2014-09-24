@@ -239,8 +239,8 @@ class Purge {
 	 * @param string $sLogDir
 	 * @return boolean
 	 */
-	public function clearConLog ($sLogDir = 'logs/') {
-		$sLogDir = (trim($sLogDir) == '' || trim($sLogDir) == '/') ? $this->sDefaultLogDir : $sLogDir;
+	public function clearConLog ($sLogDir = 'data/logs/') {
+		$sLogDir = (trim($sLogDir) == '' || trim($sLogDir) == '/') ? 'data/' . $this->sDefaultLogDir : $sLogDir;
 		
 		if (is_dir($sLogDir)) {
 			return $this->emptyFile($sLogDir, $this->aLogFileTypes);
@@ -271,9 +271,9 @@ class Purge {
 	 * @param int $sClientName
 	 * @return boolean
 	 */
-	public function clearConCache ($sCacheDir = 'cache/') {
+	public function clearConCache ($sCacheDir = 'data/cache/') {
 		
-		$sCacheDir = (trim($sCacheDir) == '' || trim($sCacheDir) == '/') ? $this->sDefaultCacheDir : $sCacheDir;
+		$sCacheDir = (trim($sCacheDir) == '' || trim($sCacheDir) == '/') ? 'data/' . $this->sDefaultCacheDir : $sCacheDir;
 		
 		if (is_dir($sCacheDir)) {
 			return ($this->clearDir($sCacheDir, $sCacheDir) ? true : false);	

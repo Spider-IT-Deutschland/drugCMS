@@ -523,11 +523,17 @@ class cTinyMCEEditor extends cWYSIWYGEditor
 						'template_external_list_url' //template plugin
 		);
 		
-		foreach ($aParameters as $sParameter)
-		{
-			if (array_key_exists($sParameter, $this->_aSettings))
-			{
-				$this->setSetting($sParameter, $this->addPath($this->_aSettings[$sParameter]), true);
+		foreach ($aParameters as $sParameter) {
+			if (array_key_exists($sParameter, $this->_aSettings)) {
+                $aTmp = explode(',', $this->_aSettings[$sParameter]);
+                foreach ($aTmp as $iKey => $sValue) {
+                    $aTmp[$iKey] = $this->addPath(trim($sValue));
+                }
+                $sTmp = implode(',', $aTmp);
+				$this->setSetting($sParameter, $sTmp, true);
+                unset($aTmp);
+                unset($sTmp);
+				#$this->setSetting($sParameter, $this->addPath($this->_aSettings[$sParameter]), true);
 			}
 		}
 
