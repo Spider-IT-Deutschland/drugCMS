@@ -122,56 +122,56 @@ if (($action == "do_purge") && (!$perm->have_perm_area_action_anyitem($area, $ac
 	        }
         }        
         
-	        if (isset($_POST['conInuse']) && $_POST['conInuse'] == 1) {
-	            if (!$oPurge->resetConInuse()) {
-	                $bError = true;
-	                $sErrorMsg .= sprintf(i18n("The entries of %s table are not deleted!"), $cfg['tab']['inuse']) . "<br />";
-	            }
-	        }
-	        
-	        if (isset($_POST['conPHPLibActiveSession']) && $_POST['conPHPLibActiveSession'] == 1) {
-	            if (!$oPurge->resetPHPLibActiveSession()) {
-	                $bError = true;
-	                $sErrorMsg .= sprintf(i18n("The entries of %s table are not deleted!"), $cfg['tab']['phplib_active_sessions']) . 
-	                     "<br />";
-	            }
-	        }
-	        
-	        if (isset($_POST['conLog']) && $_POST['conLog'] == 1) {
-	            if (!$oPurge->clearConLog()) {
-	                $bError = true;
-	                $sErrorMsg .= i18n("The drugCMS log is not cleaned!") . "<br />";
-	            }
-	        }
-	        
-	        if (isset($_POST['conCache']) && $_POST['conCache'] == 1) {
-	            if (!$oPurge->clearConCache()) {
-	                $bError = true;
-	                $sErrorMsg .= i18n("The drugCMS cache is not deleted!") . "<br />";
-	            }
-	        }
-	        
-	        if (isset($_POST['conCronjobs']) && $_POST['conCronjobs'] == 1) {
-	            if (!$oPurge->clearConCronjob()) {
-	                $bError = true;
-	                $sErrorMsg .= i18n("The drugCMS cronjobs are not cleaned!") . "<br />";
-	            }
-	        }
+        if (isset($_POST['conInuse']) && $_POST['conInuse'] == 1) {
+            if (!$oPurge->resetConInuse()) {
+                $bError = true;
+                $sErrorMsg .= sprintf(i18n("The entries of %s table are not deleted!"), $cfg['tab']['inuse']) . "<br />";
+            }
+        }
+        
+        if (isset($_POST['conPHPLibActiveSession']) && $_POST['conPHPLibActiveSession'] == 1) {
+            if (!$oPurge->resetPHPLibActiveSession()) {
+                $bError = true;
+                $sErrorMsg .= sprintf(i18n("The entries of %s table are not deleted!"), $cfg['tab']['phplib_active_sessions']) . 
+                     "<br />";
+            }
+        }
+        
+        if (isset($_POST['conLog']) && $_POST['conLog'] == 1) {
+            if (!$oPurge->clearConLog()) {
+                $bError = true;
+                $sErrorMsg .= i18n("The drugCMS log is not cleaned!") . "<br />";
+            }
+        }
+        
+        if (isset($_POST['conCache']) && $_POST['conCache'] == 1) {
+            if (!$oPurge->clearConCache()) {
+                $bError = true;
+                $sErrorMsg .= i18n("The drugCMS cache is not deleted!") . "<br />";
+            }
+        }
+        
+        if (isset($_POST['conCronjobs']) && $_POST['conCronjobs'] == 1) {
+            if (!$oPurge->clearConCronjob()) {
+                $bError = true;
+                $sErrorMsg .= i18n("The drugCMS cronjobs are not cleaned!") . "<br />";
+            }
+        }
          
-         if (isset($_POST['conSequence']) && $_POST['conSequence'] == 1) {
-	            if (!$oPurge->updateConSequence()) {
-	                $bError = true;
-	                $sErrorMsg .= i18n("Update of sequence table not completed!") . "<br />";
-	            }
-	        }
-	        
-	        if ($bError === false) {
-	            $sInfoMsg = $notification->returnNotification("info", i18n("The changes were successfully executed."));
-	        } else {
-	            $sErrorComplete = i18n("The changes were not all successfully completed.") . "<br /><br />" . $sErrorMsg;
-	            $sInfoMsg = $notification->returnNotification("error", $sErrorComplete);
-	        } 
-    	}
+        if (isset($_POST['conSequence']) && $_POST['conSequence'] == 1) {
+            if (!$oPurge->updateConSequence()) {
+                $bError = true;
+                $sErrorMsg .= i18n("Update of sequence table not completed!") . "<br />";
+            }
+        }
+        
+        if ($bError === false) {
+            $sInfoMsg = $notification->returnNotification("info", i18n("The changes were successfully executed."));
+        } else {
+            $sErrorComplete = i18n("The changes were not all successfully completed.") . "<br /><br />" . $sErrorMsg;
+            $sInfoMsg = $notification->returnNotification("error", $sErrorComplete);
+        } 
+    }
     
     $oHtmlSelectHour = new  cHTMLSelectElement ('purge_clients[]', '', 'client_select');
     

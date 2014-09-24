@@ -51,24 +51,45 @@ $oMRController->execute();
 if ($oMRController->errorOccured()) {
 
     // an error occured (idcat and or idart couldn't catched by controller)
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 
     $iRedirToErrPage = ModRewrite::getConfig('redirect_invalid_article_to_errorsite', 0);
     // try to redirect to errorpage if desired
-    if ($iRedirToErrPage == 1 && (int) $client > 0 && (int) $lang > 0) {
-        global $errsite_idcat, $errsite_idart;
+    if (($iRedirToErrPage == 1) && ((int) $client > 0) && ((int) $lang > 0)) {
+        global $errsite_idcat, $errsite_idart, $error;
 
-        if ($cfgClient['set'] != 'set')    {
+        if ($cfgClient['set'] != 'set')   {
             rereadClients();
         }
 
-        // errorpage
-        $aParams = array(
-            'client' => $client, 'idcat' => $errsite_idcat[$client], 'idart' => $errsite_idart[$client],
-            'lang' => $lang, 'error'=> '1'
-        );
-        $errsite = 'Location: ' . Contenido_Url::getInstance()->buildRedirect($aParams);
-        header("HTTP/1.0 404 Not found");
-        mr_header($errsite);
+        $error = 1;
+        $idcat = $errsite_idcat[$client];
+        $idart = $errsite_idart[$client];
+    } elseif (($iRedirToErrPage == 1) && (((int) $client == 0) || ((int) $lang == 0))) {
+        $filename = $_SERVER['DOCUMENT_ROOT'] . '/404.html';
+        if (file_exists($filename)) {
+            readfile($filename);
+        } else {
+            echo '<!DOCTYPE html>
+<html>
+    <head>
+        <title>404 Not Found</title>
+        <meta name="author"         content="drugCMS">                                                                      
+        <meta name="keywords"       content="">                                                                             
+        <meta name="description"    content="The page you requested coud not be found on this server">                      
+        <meta name="robots"         content="noindex,nofollow">                                                             
+        <meta name="revisit-after"  content="0">                                                                            
+        <meta name="generator"      content="drugCMS">                                                                      
+    </head>
+    
+    <body>
+        <h1>404 Not Found</h1>
+        <p>The page you requested coud not be found on this server. Please check and correct the address you entered and try again.</p>
+        <hr>
+        <p style="font-size: small;">' . $_SERVER['SERVER_SOFTWARE'] . ' running on ' . $_SERVER['HTTP_HOST'] . '</p>
+    </body>
+</html>';
+        }
         exit();
     }
 

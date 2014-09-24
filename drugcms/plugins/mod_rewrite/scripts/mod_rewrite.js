@@ -43,7 +43,12 @@ var mrPlugin = {
     initializeSettingsPage: function() {
         $(document).ready(function() {
             $("#mr_use_language").click(function() {
+                $("#mr_use_language_id").attr("disabled", ($(this).attr("checked") ? "" : "disabled"));
                 $("#mr_use_language_name").attr("disabled", ($(this).attr("checked") ? "" : "disabled"));
+                $("#mr_use_language_code").attr("disabled", ($(this).attr("checked") ? "" : "disabled"));
+                if ($(this).attr('checked')) {
+                    $('#mr_use_language_id').attr('checked', ((($('#mr_use_language_name').attr('checked') == false) && ($('#mr_use_language_code').attr('checked') == false)) ? true : false));
+                }
             });
 
             $("#mr_use_client").click(function() {

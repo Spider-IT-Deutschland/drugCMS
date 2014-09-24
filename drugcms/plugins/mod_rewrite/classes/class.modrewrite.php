@@ -767,6 +767,40 @@ class ModRewrite extends ModRewriteBase
 
 
     /**
+     * Returns code of language by id.
+     *
+     * @param   int     $languageId  Language id
+     * @return  string  Lanuage code
+     */
+    public static function getLanguageCode($languageId = 0)
+    {
+        global $cfg, $mr_statics;
+
+        $languageId = (int) $languageId;
+        $key        = 'languagecode_by_id_' . $languageId;
+
+        if (isset($mr_statics[$key])) {
+            return $mr_statics[$key];
+        }
+
+        $sql = 'SELECT value
+                FROM ' . $cfg['tab']['properties'] . '
+                WHERE ((itemtype="idlang")
+                   AND (type="language")
+                   AND (name="code")
+                   AND (itemid=' . $languageId . '))';
+        if ($aData = mr_queryAndNextRecord($sql)) {
+            $languageCode = $aData['value'];
+        } else {
+            $languageCode = '';
+        }
+
+        $mr_statics[$key] = $languageCode;
+        return $languageCode;
+    }
+
+
+    /**
      * Get language id from language name thanks to Nicolas Dickinson for multi
      * Client/Language BugFix
      *
@@ -774,7 +808,7 @@ class ModRewrite extends ModRewriteBase
      * @param  int      $iClientId      Client id
      * @return integer  Language id
      */
-    public static function getLanguageId($sLanguageName = '', $iClientId = 1)
+    public static function getLanguageId($sLanguageName = '', $iClientId = 1, $bUseCode = false)
     {
         global $cfg, $mr_statics;
 
@@ -785,16 +819,31 @@ class ModRewrite extends ModRewriteBase
         if (isset($mr_statics[$key])) {
             return $mr_statics[$key];
         }
-
-        $sql  = "SELECT l.idlang FROM " . $cfg['tab']['lang'] . " as l "
-              . "LEFT JOIN " . $cfg['tab']['clients_lang'] . " AS cl ON l.idlang = cl.idlang "
-              . "WHERE cl.idclient = '". $iClientId . "' AND l.name = '" . urldecode($sLanguageName) . "'";
-        if ($aData = mr_queryAndNextRecord($sql)) {
-            $languageId = $aData['idlang'];
+        
+        if ($bUseCode) {
+            $sql = 'SELECT itemid
+                    FROM ' . $cfg['tab']['properties'] . '
+                    WHERE ((idclient=' . $iClientId . ')
+                       AND (itemtype="idlang")
+                       AND (type="language")
+                       AND (name="code")
+                       AND (value="' . urldecode($sLanguageName) . '"))';
+            if ($aData = mr_queryAndNextRecord($sql)) {
+                $languageId = $aData['itemid'];
+            } else {
+                $languageId = false;
+            }
         } else {
-            $languageId = false;
+            $sql  = "SELECT l.idlang FROM " . $cfg['tab']['lang'] . " as l "
+                  . "LEFT JOIN " . $cfg['tab']['clients_lang'] . " AS cl ON l.idlang = cl.idlang "
+                  . "WHERE cl.idclient = '". $iClientId . "' AND l.name = '" . urldecode($sLanguageName) . "'";
+            if ($aData = mr_queryAndNextRecord($sql)) {
+                $languageId = $aData['idlang'];
+            } else {
+                $languageId = false;
+            }
         }
-
+        
         $mr_statics[$key] = $languageId;
         return $languageId;
     }

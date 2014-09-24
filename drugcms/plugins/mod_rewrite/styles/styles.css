@@ -93,8 +93,9 @@ body.mrPlugin {margin:10px;}
 /** @extends body.mrPlugin */
 body.mrPluginTest {}
 
-.mrPluginTest .headerBox form {float:left; width:35%; background:#e2e2e2; margin:0; padding-top:10px;}
-.mrPluginTest .headerBox fieldset {margin-bottom:10px;}
-.mrPluginTest .headerBox fieldset p {margin:0;}
-.mrPluginTest .headerBox form .chk {width:24%; float:left;}
+.mrPluginTest .bodyBox { float: left; margin: 0px 0px 10px 0px; padding: 4px 6px; border: 1px solid #B3B3B3;}
+/*.mrPluginTest .bodyBox form {float:left; margin: 0px 0px 10px 0px; padding: 4px 6px; width:35%; border: 1px solid #B3B3B3;}*/
+.mrPluginTest .bodyBox fieldset {margin-bottom:10px;}
+.mrPluginTest .bodyBox fieldset p {margin:0;}
+.mrPluginTest .bodyBox form .chk {width:24%; float:left;}
 .mrPluginTest a {font-family:monospace;}

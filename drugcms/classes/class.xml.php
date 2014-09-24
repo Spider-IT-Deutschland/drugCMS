@@ -161,18 +161,18 @@ class XML_doc {
      function valueOf($xpath) {
         global $lang, $cfg;
         
-        if ((strlen($this->sys_encoding) == 0) && (strlen(trim($lang)) > 0)) {
+        if ((strlen($this->sys_encoding) == 0) && (strlen($lang) > 0)) {
             # Get the client encoding
             $db = new DB_Contenido();
             $sql = 'SELECT encoding
                     FROM ' . $cfg['tab']['lang'] . '
                     WHERE (idlang=' . $lang . ')';
-            $db->query($sql);
-            if ($db->next_record()) {
-                $this->sys_encoding = strtoupper($db->f('encoding'));
-            } else {
-                $this->sys_encoding = 'UTF-8';
+            if ($db->query($sql)) {
+                if ($db->next_record()) {
+                    $this->sys_encoding = strtoupper($db->f('encoding'));
+                }
             }
+            $db->disconnect();
         }
 
         if(!isset($this->parsearray) || !is_array($this->parsearray)) { // build tree once

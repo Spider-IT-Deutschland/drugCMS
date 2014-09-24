@@ -327,6 +327,8 @@ class Contenido_UrlBuilder_MR extends Contenido_UrlBuilder
             $idlang      = ($iChangeLang > 0) ? $iChangeLang : $lang;
             if ($this->_aMrCfg['use_language_name'] == 1) {
                 return urlencode(ModRewrite::getLanguageName($idlang));
+            } elseif ($this->_aMrCfg['use_language_code'] == 1) {
+                return urlencode(ModRewrite::getLanguageCode($idlang));
             } else {
                 return $idlang;
             }

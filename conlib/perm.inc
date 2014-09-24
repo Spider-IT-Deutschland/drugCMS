@@ -745,11 +745,11 @@ class Contenido_Perm
 
             // parent_id uses the name not the idarea
             $sql = "SELECT
-                              name
-                           FROM
-                              ".$cfg["tab"]["area"]."
-                           WHERE
-                              idarea='$mainarea'";
+                        name
+                    FROM
+                        ".$cfg["tab"]["area"]."
+                    WHERE
+                        idarea='$mainarea'";
 
             $this->db->query($sql);
             $this->db->next_record();
@@ -757,12 +757,12 @@ class Contenido_Perm
 
             //check which subareas are there and write them in the array
             $sql = "SELECT
-                              idarea
-                           FROM
-                              ".$cfg["tab"]["area"]."
-                           WHERE
-                              parent_id='$name' OR
-                              idarea='$mainarea'";
+                        idarea
+                    FROM
+                        ".$cfg["tab"]["area"]."
+                    WHERE
+                        parent_id='$name' OR
+                        idarea='$mainarea'";
 
             $this->db->query($sql);
             $area_tree[$mainarea] = array ();

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: drugCMS 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-10 15:45+0100\n"
-"PO-Revision-Date: 2014-01-11 10:10+0100\n"
+"PO-Revision-Date: 2014-02-09 11:38+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team\n"
 "Language: de_DE\n"
@@ -1540,8 +1540,8 @@ msgstr "Anwenden"
 msgid ""
 "Apply rights for this category to all categories on the same level or above"
 msgstr ""
-"Rechte dieser Kategorie allen Kategorien auf derselben Ebene oder dar&uuml;"
-"ber zuweisen"
+"Rechte dieser Kategorie allen Kategorien auf derselben Ebene oder darüber "
+"zuweisen"
 
 #: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:238
 #: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:213
@@ -1563,7 +1563,7 @@ msgstr ""
 #: W:\drugcms_2.0/drugcms/includes/functions.stat.php:645
 #: W:\drugcms_2.0/drugcms/includes/rights_str.inc.php:221
 msgid "Open category"
-msgstr "Kategorie &ouml;ffnen"
+msgstr "Kategorie öffnen"
 
 #: W:\drugcms_2.0/drugcms/includes/grouprights_con.inc.php:241
 #: W:\drugcms_2.0/drugcms/includes/grouprights_str.inc.php:215

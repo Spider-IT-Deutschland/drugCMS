@@ -37,24 +37,32 @@ if (!defined('CON_FRAMEWORK')) {
 
 //notice $oTpl is filled and generated in file rights.inc.php this file renders $oTpl to browser
 include_once($cfg['path']['contenido'].'includes/rights.inc.php');
-//set the areas which are in use fore selecting these
 
+//set the areas which are in use for selecting these
 $possible_area = "'".implode("','", $area_tree[$perm->showareas("con")])."'";
-$sql = "SELECT A.idarea, A.idaction, A.idcat, B.name, C.name FROM ".$cfg["tab"]["rights"]." AS A, ".$cfg["tab"]["area"]." AS B, ".$cfg["tab"]["actions"]." AS C WHERE user_id='".Contenido_Security::escapeDB($userid, $db)."' AND idclient='".Contenido_Security::toInteger($rights_client)."' AND A.type = 0 AND idlang='".Contenido_Security::toInteger($rights_lang)."' AND B.idarea IN ($possible_area) AND idcat!='0' AND A.idaction = C.idaction AND A.idarea = C.idarea AND A.idarea = B.idarea";
+$sql = 'SELECT r.idarea, r.idaction, r.idcat, a.name, A.name AS action
+        FROM ' . $cfg['tab']['rights'] . ' AS r INNER JOIN ' . $cfg['tab']['area'] . ' AS a ON r.idarea = a.idarea INNER JOIN ' . $cfg['tab']['actions'] . ' AS A ON r.idaction = A.idaction AND r.idarea = A.idarea
+        WHERE ((r.user_id="' . Contenido_Security::escapeDB($userid, $db) . '")
+           AND (r.idclient=' . Contenido_Security::toInteger($rights_client) . ')
+           AND (r.type=0)
+           AND (r.idlang=' . Contenido_Security::toInteger($rights_lang) . ')
+           AND (a.idarea IN (' . $possible_area . '))' . ((count($aViewRights)) ? '
+           AND (A.name ' . (($_POST['filter_rights'] == 'other') ? 'NOT ' : '') . 'IN ("' . implode('","', $aViewRights) . '"))' : '') . '
+           AND (idcat!=0))';
 $db->query($sql);
-$rights_list_old = array ();
-while ($db->next_record()) { //set a new rights list fore this user
-   $rights_list_old[$db->f(3)."|".$db->f(4)."|".$db->f("idcat")] = "x";
-}
+#echo '<pre>' . str_replace('    ', '', $sql) . "\n" . $db->num_rows() . '</pre>';
 
-if (($perm->have_perm_area_action($area, $action)) && ($action == "user_edit"))
-{
+$rights_list_old = array ();
+while ($db->next_record()) { //set a new rights list for this user
+    $rights_list_old[$db->f('name') . '|' . $db->f('action') . '|' . $db->f('idcat')] = 'x';
+}
+#echo '<pre>'; var_dump($rights_list_old); echo '</pre>';
+#echo '<pre>'; var_dump($aViewRights); echo '</pre>';
+
+if (($perm->have_perm_area_action($area, $action)) && ($action == "user_edit")) {
     saverights();
-} else {
-    if (!$perm->have_perm_area_action($area, $action))
-    {
+} elseif (!$perm->have_perm_area_action($area, $action)) {
     $notification->displayNotification("error", i18n("Permission denied"));
-    }
 }
 
 $sJsBefore = '';

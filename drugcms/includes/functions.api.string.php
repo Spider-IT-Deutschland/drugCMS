@@ -254,7 +254,7 @@ function capiStrTrimSentence ($string, $approxlen, $hard = false)
 
 /**
  * capiStrReplaceDiacritics: Converts diactritics
- * to english characters whenever possible.
+ * to base64 characters whenever possible.
  * 
  * Source and Target-Encoding isn't used anymore, remain for compatibility reasons
  * string is always converted to utf-8
@@ -270,17 +270,18 @@ function capiStrTrimSentence ($string, $approxlen, $hard = false)
  */
 function capiStrReplaceDiacritics($sString, $sourceEncoding = null, $targetEncoding = null) {
     static $aSearch, $aReplace;
+    
     if (!isset($aSearch) || !isset($aReplace)) {
         $aSearch  = array('Ä','Ö','Ü','ä','ö','ü','ß','Á','À','Â','á','à','â','É','È','Ê','é','è','ê','Í','Ì','Î','í','ì','î','Ó','Ò','Ô','ó','ò','ô','Ú','Ù','Û','ú','ù','û');
         $aReplace = array('Ae','Oe','Ue','ae','oe','ue','ss','A','A','A','a','a','a','E','E','E','e','e','e','I','I','I','i','i','i','O','O','O','o','o','o','U','U','U','u','u','u');
     }
-    // always use utf-8
-    if(function_exists("mb_convert_encoding")) {
-        $sString = mb_convert_encoding($sString, "UTF-8");
+    if(function_exists('mb_convert_encoding')) {
+        $sString = mb_convert_encoding($sString, 'UTF-8', 'auto');
     } else {
         $sString = utf8_encode($sString);
     }
-    $sString = str_replace($aSearch, $aReplace, $sString);
+    
+    $sString = str_replace($aSearch, $aReplace, trim($sString));
     
     return $sString;
 }

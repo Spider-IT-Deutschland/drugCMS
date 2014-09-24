@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS Plugin Advanced Mod Rewrite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 10:58+0100\n"
-"PO-Revision-Date: 2014-01-11 14:47+0100\n"
+"POT-Creation-Date: 2014-02-08 18:53+0100\n"
+"PO-Revision-Date: 2014-02-10 10:11+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team <translations@drugcms.org>\n"
 "Language: el_GR\n"
@@ -16,11 +16,8 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: W:\\drugcms_2.0\\drugcms\\plugins\\mod_rewrite\n"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_controller_abstract.php:73
-msgid "More informations"
-msgstr "Meer informatie"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:72
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:72
 msgid ""
 "The root directory has a invalid format, alowed are the chars [a-zA-Z0-9\\-_"
 "\\/\\.]"
@@ -28,12 +25,14 @@ msgstr ""
 "De Rootordner heeft een ongeldig formaat, toegelaten zijn de personages [a-"
 "zA-Z0-9\\-_\\/\\.]"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:79
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:79
 #, php-format
 msgid "The specified directory \"%s\" does not exists"
 msgstr "De map \"%s\" bestaat niet"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:86
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:86
 #, php-format
 msgid ""
 "The specified directory \"%s\" does not exists in DOCUMENT_ROOT \"%s\". this "
@@ -46,24 +45,28 @@ msgstr ""
 "backend DOCUMENT_ROOT. De instelling wordt overgenomen, omdat de controle is "
 "uitgeschakeld."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:189
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:208
 #, php-format
 msgid "Please specify separator (%s) for category"
 msgstr "Geef een separator (%s) voor categorie&euml;n"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:194
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:213
 #, php-format
 msgid "Invalid separator for category, allowed one of following characters: %s"
 msgstr ""
 "Separator voor categorie&euml; is ongeldig, toegestaan is een van de "
 "volgende tekens: %s"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:201
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:220
 #, php-format
 msgid "Please specify separator (%s) for category words"
 msgstr "Geef een separator (%s) voor categorie woorden"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:206
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:225
 #, php-format
 msgid ""
 "Invalid separator for category words, allowed one of following characters: %s"
@@ -71,12 +74,14 @@ msgstr ""
 "Ongeldige separator voor categorie woorden, toegestaan is een van de "
 "volgende tekens: %s"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:213
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:232
 #, php-format
 msgid "Please specify separator (%s) for article"
 msgstr "Gelieve separator (%s) op te geven voor artikel"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:218
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:237
 #, php-format
 msgid ""
 "Invalid separator for article, allowed is one of following characters: %s"
@@ -84,12 +89,14 @@ msgstr ""
 "Separator voor artikel is ongeldig, toegestaan is een van de volgende "
 "tekens: %s"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:225
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:244
 #, php-format
 msgid "Please specify separator (%s) for article words"
 msgstr "Gelieve separator (%s) op te geven voor artikel woorden"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:230
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:249
 #, php-format
 msgid ""
 "Invalid separator for article words, allowed is one of following characters: "
@@ -98,21 +105,25 @@ msgstr ""
 "Separator voor artikel woorden is ongeldig, toegestaan is een van de "
 "volgende tekens: %s"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:237
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:256
 msgid "Separator for category and category words must not be identical"
 msgstr ""
 "Separatoren voor categorie en categorie woorden mogen niet identiek zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:242
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:261
 msgid "Separator for category and article words must not be identical"
 msgstr "Separator voor categorie en artikel woorden mogen niet identiek zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:247
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:266
 msgid "Separator for category-article and article words must not be identical"
 msgstr ""
 "Separator voor categorie-artikel en artikel woorden mogen niet identiek zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:264
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:283
 msgid ""
 "The file extension has a invalid format, allowed are the chars \\.([a-zA-"
 "Z0-9\\-_\\/])"
@@ -120,15 +131,18 @@ msgstr ""
 "De bestandsextensie heeft een ongeldig formaat, toegestaan zijn de tekens \\."
 "([a-zA-Z0-9\\-_\\/])"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:278
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:297
 msgid "Value has to be numeric."
 msgstr "Waarde moet numeriek zijn."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:282
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:301
 msgid "Value has to be between 0 an 100."
 msgstr "Waarde moet liggen tussen 0 een 100."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:299
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:318
 msgid ""
 "The article name has a invalid format, allowed are the chars /^[a-zA-Z0-9\\-_"
 "\\/\\.]*$/"
@@ -136,293 +150,94 @@ msgstr ""
 "Het artikel naam heeft een ongeldig formaat, toegestaan zijn de tekens /^[a-"
 "zA-Z0-9\\-_\\/\\.]*$/"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:362
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:381
 msgid "Please check your input"
 msgstr "Controleer uw invoer"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:370
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:389
 msgid "Configuration has <b>not</b> been saved, because of enabled debugging"
 msgstr ""
 "Configuratie is <b>niet</b> opgeslagen, omdat debugging ingeschakeld is"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:384
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:397
+msgid "Configuration has been saved"
+msgstr "Configuratie is opgeslagen"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_content_controller.php:403
 #, php-format
 msgid "Configuration could not saved. Please check write permissions for %s "
 msgstr ""
 "Configuratie kon niet opgeslagen worden. Controleer schrijfrechten voor %s"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:49
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:42
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:42
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/classes/controller/class.modrewrite_controller_abstract.php:73
+msgid "More informations"
+msgstr "Meer informatie"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:42
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:42
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:49
 msgid "No Client selected"
 msgstr "Geen cli&euml;nt geselecteerd"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:73
-msgid ""
-"Define options to genereate the URLs by using the form below and run the "
-"test."
-msgstr ""
-"Definieer opties om de URL's te genereren via onderstaand formulier en voer "
-"de test uit."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:74
-msgid "Parameter to use"
-msgstr "Te gebruiken parameters"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:75
-msgid "Number of URLs to generate"
-msgstr "Aantal te genereren URL's"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:76
-msgid "Run test"
-msgstr "Test starten"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:78
-msgid ""
-"{pref}<strong>{name}</strong>\n"
-"{pref}Builder in:    {url_in}\n"
-"{pref}Builder out:   {url_out}\n"
-"{pref}<span style=\"color:{color}\">Resolved URL:  {url_res}</span>\n"
-"{pref}Resolved data: {data}"
-msgstr ""
-"{pref}<strong>{name}</strong>\n"
-"{pref}Builder ingang: {url_in}\n"
-"{pref}Builder uitgang: {url_out}\n"
-"{pref}<span style=\"color:{color}\">Opgeloste URL: {url_res}</span>\n"
-"{pref}Opgeloste data: {data}"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:84
-msgid ""
-"Duration of test run: {time} seconds.<br />\n"
-"Number of processed URLs: {num_urls}<br />\n"
-"<span style=\"color:green\">Successful resolved: {num_success}</span><br />\n"
-"<span style=\"color:red\">Errors during resolving: {num_fail}</span></strong>"
-msgstr ""
-"Duur van de test uitvoering: {time} seconden.<br />\n"
-"Aantal behandelde URL's: {num_urls}<br />\n"
-"<span style=\"color:green\">Succesvol opgelost: {num_success}</span><br />\n"
-"<span style=\"color:red\">Fouten bij het oplossen: {num_fail}</span></strong>"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:80
-msgid "Plugin functions"
-msgstr "Plugin funkties"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:82
-msgid "Copy/Download .htaccess template"
-msgstr "Copy / download .htaccess template"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:83
-msgid "Select .htaccess template"
-msgstr ".htaccess template kiezen"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:84
-msgid "Restrictive .htaccess"
-msgstr "Restriktive .htaccess"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:85
-msgid "Simple .htaccess"
-msgstr "Eenvoudige .htaccess"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:86
-msgid ""
-"Contains rules with restrictive settings.<br />\n"
-"All requests pointing to extension avi, css, doc, flv, gif, gzip, ico, jpeg, "
-"jpg, js, mov, <br />\n"
-"mp3, pdf, png, ppt, rar, txt, wav, wmv, xml, zip, will be excluded vom "
-"rewriting.<br />\n"
-"Remaining requests will be rewritten to front_content.php,<br />\n"
-"except requests to 'drugcms/', 'setup/', 'cms/upload', 'cms/front_content."
-"php', etc.<br />\n"
-"Each resource, which has to be excluded from rewriting must be specified "
-"explicitly."
-msgstr ""
-"Bevat regels met beperkende instellingen.<br />\n"
-"Alle aanvragen die naar extensie avi, css, doc, flv, gif, gzip, ico, jpeg, "
-"jpg, js, mov,<br />\n"
-"mp3, pdf, png, ppt, rar, txt, wav, wmv, xml, zip gaan, worden van het "
-"herschrijven uitgesloten.<br />\n"
-"Resterende aanvragen zullen worden herschreven naar front_content.php,<br /"
-">\n"
-"behalve verzoeken tot 'drugcms/', 'setup/', 'cms/upload', 'cms/front_content."
-"php', etc.<br />\n"
-"Elke hulpbron die van herschrijven moet worden uitgesloten moet expliciet "
-"worden vermeld."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:93
-msgid ""
-"Contains a sipmle collection of rules. Each requests pointing to valid "
-"symlinks, folders or<br />\n"
-"files, will be excluded from rewriting. Remaining requests will be rewritten "
-"to front_content.php"
-msgstr ""
-"Bevat een eenvoudige verzameling regels. Elke aanvraag die naar geldige "
-"symlinks, mappen of bestanden<br />\n"
-"wijst, word uit herschrijven uitgesloten. Resterende aanvragen zullen worden "
-"herschreven naar front_content.php"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:96
-msgid "and copy to"
-msgstr "en kopi&euml;ren naar"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:97
-msgid "Contenido installation directory"
-msgstr "de drugCMS installatie map"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:98
-msgid ""
-"Copy the selected .htaccess template into Contenido installation "
-"directory<br />\n"
-"<br />\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;{CONTENIDO_FULL_PATH}.<br />\n"
-"<br />\n"
-"This is the recommended option for a Contenido installation with one or more "
-"clients<br />\n"
-"who are running on the same domain."
-msgstr ""
-"Kopieer de geselecteerde .htaccess sjabloon in de drugCMS installatie "
-"map<br />\n"
-"<br />\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;{CONTENIDO_FULL_PATH}.<br />\n"
-"<br />\n"
-"Dit is de aanbevolen optie voor een drugCMS installatie met een of meer "
-"cli&euml;nten<br />\n"
-"die op hetzelfde domein actief zijn."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:105
-msgid "client directory"
-msgstr "Cli&euml;nt map"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:106
-msgid ""
-"Copy the selected .htaccess template into client's directory<br />\n"
-"<br />\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;{CLIENT_FULL_PATH}.<br />\n"
-"<br />\n"
-"This is the recommended option for a multiple client system<br />\n"
-"where each client has it's own domain/subdomain"
-msgstr ""
-"Kopieer de geselecteerde .htaccess sjabloon naar de cli&euml;nt map<br />\n"
-"<br />\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;{CLIENT_FULL_PATH}.<br />\n"
-"<br />\n"
-"Dit is de aanbevolen optie voor een meervoudige cli&euml;ntsysteem<br />\n"
-"waar elke cli&euml;nt zijn eigen domein / subdomein heeft"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:113
-msgid "or"
-msgstr "of"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:114
-msgid "Download"
-msgstr "Downloaden"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:115
-msgid ""
-"Download selected .htaccess template to copy it to the destination "
-"folder<br />\n"
-"or to take over the settings manually."
-msgstr ""
-"De geselecteerde .htaccess sjabloon downloaden om naar de doelmap te "
-"kopiëren<br />\n"
-"of de instellingen handmatig over te nemen."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:118
-msgid "Reset category-/ and article aliases"
-msgstr "Categorie / artikel aliassen resetten"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:119
-msgid "Reset only empty aliases"
-msgstr "Reset alleen lege aliassen"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:120
-msgid ""
-"Only empty aliases will be reset, existing aliases, e. g. manually set "
-"aliases, will not be changed."
-msgstr ""
-"Alleen lege Categorie / Artikel aliassen zetten.<br />Bestaande aliassen, "
-"bijv. handmatig gezette aliassen, wordenniet  gewijzigd."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:121
-msgid "Reset all aliases"
-msgstr "Alle aliassen resetten"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:122
-msgid ""
-"Reset all category-/article aliases. Existing aliases will be overwritten."
-msgstr ""
-"Alle categorie / article aliassen nieuw zetten.<br />Bestaande aliassen "
-"kunnen worden overschreven."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:123
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:192
-msgid "Note"
-msgstr "Info"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:124
-msgid ""
-"This process could require some time depending on amount of categories/"
-"articles.<br />\n"
-"The aliases will not contain the configured plugin separators, but the "
-"Contenido default separators '/' und '-', e. g. '/category-word/article-"
-"word'.<br />\n"
-"Execution of this function ma be helpful to prepare all or empty aliases for "
-"the usage by the plugin."
-msgstr ""
-"Dit proces kan enige tijd duren, afhankelijk van het aantal categorieën / "
-"producten.<br />\n"
-"De aliassen krijgen niet de boven-geconfigureerde separatoren, maar de "
-"drugCMS-Standardseparatoren '/' en '-', bijvoorbeeld '/category-word/article-"
-"word'.<br />\n"
-"Dit te doen kan nuttig zijn om alle of slechts lege aliassen aan te passen "
-"voor het gebruik met de plugin."
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:128
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:288
-msgid "Discard changes"
-msgstr "Wijzigingen ongedaan maken"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:129
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:289
-msgid "Save changes"
-msgstr "Wijzigingen opslaan"
-
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:183
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:185
 msgid "Version"
 msgstr "Versie"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:184
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:186
 msgid "Author"
 msgstr "Auteur"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:185
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:187
 msgid "E-Mail to author"
 msgstr "E-Mail aan auteur"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:186
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:188
 msgid "Plugin page"
 msgstr "Plugin pagina (de)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:187
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:189
 msgid "Visit plugin page"
 msgstr "Plugin pagina bezoeken (de)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:188
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:190
 msgid "opens page in new window"
 msgstr "pagina opent in een nieuw venster"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:189
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:191
 msgid "Contenido forum"
 msgstr "Contenido forum"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:190
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:192
 msgid "Plugin thread in Contenido forum"
 msgstr "Plugin thread in Contenido forum"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:191
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:193
 msgid "Plugin settings"
 msgstr "Plugin instellingen"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:194
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:194
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:123
+msgid "Note"
+msgstr "Info"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:196
 #, php-format
 msgid ""
 "The .htaccess file could not found either in Contenido installation "
@@ -433,11 +248,13 @@ msgstr ""
 "installatiemap noch in de cli&euml;nt map.<br />Het moet worden opgezet in "
 "het %sfuncties%s gebied, indien nodig."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:197
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:199
 msgid "Enable Advanced Mod Rewrite"
-msgstr "SEO-URL (AMR) aktiveren"
+msgstr "SEO-URL aktiveren"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:199
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:201
 msgid ""
 "Disabling of plugin does not result in disabling mod rewrite module of the "
 "web server - This means,<br /> all defined rules in the .htaccess are still "
@@ -455,11 +272,13 @@ msgstr ""
 "kunnen blijven en word niet verwerkt<br />als de mod_rewrite module "
 "uitgeschakeld is"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:201
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:203
 msgid "Example"
 msgstr "Bijvoorbeeld"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:203
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:205
 msgid ""
 "# enable apache mod rewrite module\n"
 "RewriteEngine on\n"
@@ -473,11 +292,13 @@ msgstr ""
 "# Uitschakelen van de apache mod_rewrite module\n"
 "RewriteEngine off"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:205
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:207
 msgid "Path to .htaccess from DocumentRoot"
 msgstr "Pad naar het .htaccess bestand van de DocumentRoot uitgangspunt"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:206
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:208
 msgid ""
 "Type '/' if the .htaccess file lies inside the wwwroot (DocumentRoot) folder."
 "<br />Type the path to the subfolder fromm wwwroot, if Contenido is "
@@ -489,11 +310,13 @@ msgstr ""
 "submap in de wwwroot is geïnstalleerd<br />(bijvoorbeeld http://domein/"
 "mydrugcms -> pad = '/mydrugcms/')."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:208
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:210
 msgid "Check path to .htaccess"
 msgstr "Pad naar het .htaccess bestand controleren"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:209
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:211
 msgid ""
 "The path will be checked, if this option is enabled.<br />But this could "
 "result in an error in some cases, even if the specified path is valid "
@@ -504,57 +327,78 @@ msgstr ""
 "pad geldig is en<br />het cliënten DocumentRoot verschilt van het drugCMS "
 "backend DocumentRoot."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:211
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:213
 msgid "Should the name of root category be displayed in the URL?"
 msgstr "Moet de naam van de wortel categorie worden getoond in de URL?"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:212
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:214
 msgid "Start from root category"
 msgstr "Start vanaf wortel categorie"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:213
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:215
 msgid ""
-"If enabled, the name of the root category (e. g. \"Mainnavigation\" in a "
+"If enabled, the name of the root category (e. g. 'Mainnavigation' in a "
 "Contenido default installation), will be preceded to the URL."
 msgstr ""
 "Indien ingeschakeld zal de naam van de wortel categorie (bijv. "
-"\"hoofdnavigatie\" in een standaard drugCMS installatie) aan de URL worden "
+"'hoofdnavigatie' in een standaard drugCMS installatie) aan de URL worden "
 "voorafgegaan."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:215
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:217
 msgid "Are several clients maintained in one directory?"
 msgstr "Worden diverse cli&euml;nten onderhouden in een map?"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:216
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:218
 msgid "Prepend client to the URL"
 msgstr "Prepend de cli&euml;nt naar de URL"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:217
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:219
 msgid "Use client name instead of the id"
 msgstr "Gebruik cli&euml;nt naam in plaats van de id"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:219
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:221
 msgid ""
 "Should the language appear in the URL (required for multi language websites)?"
 msgstr "Moet de taal in de URL verschijnen (vereist voor meertalige websites)?"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:220
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:222
 msgid "Prepend language to the URL"
 msgstr "Prepend taal naar de URL"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:221
-msgid "Use language name instead of the id"
-msgstr "Gebruik taal naam in plaats van de id"
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:223
+msgid "Use language id"
+msgstr "Gebruik de id van de taal"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:223
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:224
+msgid "Use language name instead of the id"
+msgstr "Gebruik de naam van de taal"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:225
+msgid "Use language code instead of the id"
+msgstr "Gebruik de code van de taal"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:227
 msgid ""
 "Configure your own separators with following 4 settings<br />to control "
 "generated URLs to your own taste"
 msgstr ""
-"Configureer uw eigen separatoren met de volgende 4 instellingen<br />om "
+"Configureer uw eigen separatoren met de volgende 4 instellingen om "
 "gegenereerde URL's aan uw eigen smaak aan te passen"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:224
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:228
 msgid ""
 "www.domain.com/category1-category2.articlename.html\n"
 "www.domain.com/category1/category2-articlename.html\n"
@@ -566,12 +410,14 @@ msgstr ""
 "www.domain.de/categorie.naam1~categorie2~artikelnaam.html\n"
 "www.domain.de/categorie_naam1-categorie2-artikelnaam.foo"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:225
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:229
 msgid "Category separator has to be different from category-word separator"
 msgstr ""
 "Categorie separator en categorie woord separator moeten verschillend zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:226
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:230
 msgid ""
 "# Example: Category separator (/) and category-word separator (_)\n"
 "category_one/category_two/articlename.html"
@@ -579,12 +425,14 @@ msgstr ""
 "# Bijvoorbeeld: Categorie separator (/) en categorie woord separator (_)\n"
 "categorie_een/categorie_twee/artikelnaam.html"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:227
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:231
 msgid "Category separator has to be different from article-word separator"
 msgstr ""
 "Categorie separator en artikel woord separator moeten verschillend zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:228
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:232
 msgid ""
 "# Example: Category separator (/) and article-word separator (-)\n"
 "category_one/category_two/article-description.html"
@@ -592,14 +440,16 @@ msgstr ""
 "# Bijvoorbeeld: Categorie separator (/) en artikel woord separator (-)\n"
 "categorie_een/categorie_twee/artikel-omschrijving.html"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:229
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:233
 msgid ""
 "Category-article separator has to be different from article-word separator"
 msgstr ""
 "Categorie-artikel separator en artikel woord separator moeten verschillend "
 "zijn"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:230
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:234
 msgid ""
 "# Example: Category-article separator (/) and article-word separator (-)\n"
 "category_one/category_two/article-description.html"
@@ -608,80 +458,93 @@ msgstr ""
 "(-)\n"
 "categorie_een/categorie_twee/artikel-omschrijving.html"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:232
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:236
 msgid "Category separator (delemiter between single categories)"
 msgstr "Categorie separator (separator tussen elke categorie)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:233
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:234
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:237
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:238
 #, php-format
 msgid "(possible values: %s)"
 msgstr "(mogelijke waarden: %s)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:235
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:239
 msgid "Category-word separator (delemiter between category words)"
 msgstr "Categorie woord separator (separator tussen elke categorie woorden)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:236
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:240
 msgid ""
 "Category-article separator (delemiter between category-block and article)"
 msgstr ""
 "Categorie artikel separator (separator tussen categorie afdeling en naam van "
 "het artikel)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:237
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:241
 msgid "Article-word separator (delemiter between article words)"
 msgstr "Artikel woord separator (separator tussen elk artikel woord)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:239
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:243
 msgid "Append article name to URLs"
 msgstr "Artikel naam toevoegen aan URL"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:240
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:244
 msgid "Append article name always to URLs (even at URLs to categories)"
 msgstr ""
 "Naam van het artikel altijd aanvoegen aan de URL's (zelfs met URL's naar "
 "categorieën)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:241
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:245
 msgid "Default article name without extension"
 msgstr "Standaard artikel naam zonder extensie"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:242
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:246
 msgid ""
-"e. g. \"index\" for index.ext<br />In case of selected \"Append article name "
-"always to URLs\" option and a empty field,<br />the name of the start "
-"article will be used"
+"e. g. 'index' for index.ext<br />In case of selected 'Append article name "
+"always to URLs' option and a empty field,<br />the name of the start article "
+"will be used"
 msgstr ""
-"bijvoorbeeld \"index\" voor index.ext.<br />Als de optie \"naam van het "
-"artikel altijd toevoegen aan de URL\" is geactiveerd<br />en het veld leeg "
-"is, de naam van de start artikel gebruiken."
+"bijvoorbeeld 'index' voor index.ext.<br />Als de optie 'naam van het artikel "
+"altijd toevoegen aan de URL' is geactiveerd<br />en het veld leeg is, de "
+"naam van de start artikel gebruiken."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:244
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:248
 msgid "File extension at the end of the URL"
 msgstr "Extensie aan het einde van de URL"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:245
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:249
 msgid ""
-"Specification of file extension with a preceded dot<br />e.g. \".html\" for "
+"Specification of file extension with a preceded dot<br />e.g. '.html' for "
 "http://host/foo/bar.html"
 msgstr ""
-"Vermelding van de extensie met een leidende punt,<br />bijvoorbeeld \".html"
-"\" voor http://host/foo/bar.html"
+"Vermelding van de extensie met een leidende punt,<br />bijvoorbeeld '.html' "
+"voor http://host/foo/bar.html"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:246
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:250
 msgid ""
 "It's strongly recommended to specify a extension here,<br />if the option "
-"\"Append article name always to URLs\" was not selected.<br /><br /"
-">Otherwise URLs to categories and articles would have the same format<br /"
-">which may result in unresolvable categories/articles in some cases."
+"'Append article name always to URLs' was not selected.<br /><br />Otherwise "
+"URLs to categories and articles would have the same format<br />which may "
+"result in unresolvable categories/articles in some cases."
 msgstr ""
-"Het is sterk aanbevolen om een extensie op te geven,<br />als de optie "
-"\"Artikel naam toevoegen aan URL\" geselecteerd is.<br /><br />Anders "
-"krijgen URL's naar categorieën en artikelen het zelfde formaat, wat in <br /"
+"Het is niet meer nodig om een extensie op te geven,<br />als de optie "
+"'Artikel naam toevoegen aan URL' geselecteerd is.<br /><br />Maar URL's "
+"krijgen dann naar categorieën en artikelen het zelfde formaat, wat in <br /"
 ">sommige gevallen tot onoplosbare categorieën / artikelen kan leiden."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:247
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:251
 msgid ""
 "It's necessary to specify a file extension at the moment, due do existing "
 "issues, which are not solved until yet. An not defined extension may result "
@@ -692,23 +555,28 @@ msgstr ""
 "gespecificeerde extensie kan het tot onjuiste identificatie van het artikel "
 "komen."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:249
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:253
 msgid "Should the URLs be written in lower case?"
 msgstr "Moeten de URL's in kleine letters worden geschreven?"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:250
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:254
 msgid "URLs in lower case"
 msgstr "URL's in kleine letters"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:252
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:256
 msgid "Duplicated content"
 msgstr "Duplicated Content"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:253
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:257
 msgid "Prevent duplicated content"
 msgstr "Duplicated Content verhinderen"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:255
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:259
 msgid ""
 "Depending on configuration, pages could be found thru different URLs.<br/"
 ">Enabling of this option prevents this. Examples for duplicated content"
@@ -717,7 +585,8 @@ msgstr ""
 "gevonden.<br />Inschakelen van deze optie voorkomt dit. Voorbeelden van "
 "gedupliceerde inhoud"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:256
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:260
 msgid ""
 "Name of the root category in the URL: Feasible is /maincategory/subcategory/ "
 "and /subcategory/\n"
@@ -729,11 +598,13 @@ msgstr ""
 "Taal in de URL: Haalbaar is /nederlands/categorie/ en /1/category/\n"
 "Cli&euml;nt in de URL: Haalbaar is /client/categorie/ en /1/category/"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:259
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:263
 msgid "Percentage for similar category paths in URLs"
 msgstr "Percentage van soortgelijke categorie paden in URL's"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:260
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:264
 msgid ""
 "This setting refers only to the category path of a URL. If AMR is "
 "configured<br />to prepend e. g. the root category, language and/or client "
@@ -750,7 +621,8 @@ msgstr ""
 "resterende pad (URLpad van de categorie)<br />wordt gecontroleerd op de "
 "gelijkenis."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:261
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:265
 msgid ""
 "100 = exact match with no tolerance\n"
 "85  = paths with little errors will match to similar ones\n"
@@ -760,44 +632,52 @@ msgstr ""
 "85  = paden met kleinere fouten resulteren ook in treffers\n"
 "0   = volledig onjuiste paden resulteren nog steeds in treffers"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:263
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:267
 msgid "Redirect in case of invalid articles"
 msgstr "Doorsturen bij ongeldige artikelen"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:264
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:268
 msgid "Redirect to error page in case of invaid articles"
 msgstr "Doorsturen voor ongeldige verwijzingen naar de foutpagina"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:265
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:269
 msgid "The start page will be displayed if this option is not enabled"
 msgstr "De startpagina wordt weergegeven als deze optie niet is ingeschakeld"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:267
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:271
 msgid "Moment of URL generation"
 msgstr "Tijd om de URL's te genereren"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:268
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:272
 msgid "a.) During the output of HTML code of the page"
 msgstr "a.) Bij de output van de HTML-code van de pagina"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:269
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:273
 msgid ""
 "Clean-URLs will be generated during page output. Modules/Plugins are able to "
 "generate URLs to frontend<br />as usual as in previous Contenido versions "
-"using a format like \"front_content.php?idcat=1&amp;idart=2\".<br />The URLs "
+"using a format like 'front_content.php?idcat=1&amp;idart=2'.<br />The URLs "
 "will be replaced by the plugin to Clean-URLs before sending the HTML output."
 msgstr ""
 "Clean-URL's worden tijdens pagina uitgang gegenereerd. Modules / plugins "
-"kunnen URL's naar frontend<br />zoals gebruikelijk in voorgaande Contenido "
-"versies met een formaat zoals \"front_content.php?idcat=1&idart=2\" uitgeven."
+"kunnen URL's naar frontend<br />zoals gebruikelijk in voorgaande drugCMS "
+"versies met een formaat zoals 'front_content.php?idcat=1&idart=2' uitgeven."
 "<br />De URL's worden door de plugin bij het genereren van de HTML-uitvoer "
 "vervangen."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:270
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:274
 msgid "Differences to variant b.)"
 msgstr "Verschillen met variant b.)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:271
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:275
 msgid ""
 "Still compatible to old modules/plugins, since no changes in codes are "
 "required\n"
@@ -813,11 +693,13 @@ msgstr ""
 "Alle URL's worden verzameld en tegelijk herschreven naar Clean-URL's.<br /"
 ">Hierdoor word het aantal DB queries sterk geminimaliseerd."
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:274
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:277
 msgid "b.) In modules or plugins"
 msgstr "b.) In modules en plugins"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:275
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:278
 msgid ""
 "By using this option, all Clean-URLs will be generated directly in module or "
 "plugins.<br />This means, all areas in modules/plugins, who generate "
@@ -830,7 +712,8 @@ msgstr ""
 "artikelen, handmatig moeten worden aangepast.<Br />Alle Clean-URL's moeten "
 "worden gegenereerd door het gebruik van volgende functie:"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:276
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:279
 msgid ""
 "# structure of a normal url\n"
 "$url = 'front_content.php?idart=123&amp;lang=2&amp;client=1';\n"
@@ -848,11 +731,13 @@ msgstr ""
 "$params = array('idart' => 123, 'lang' => 2, 'client' => 1);\n"
 "$newUrl = Contenido_Url::getInstance()->build($params);"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:277
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:280
 msgid "Differences to variant a.)"
 msgstr "Verschillen met variant a.)"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:278
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:281
 msgid ""
 "The default way to generate URLs to fronend pages\n"
 "Each URL in modules/plugins has to be generated by UrlBuilder\n"
@@ -862,19 +747,23 @@ msgstr ""
 "Elke URL in modules / plugins is te maken door de UrlBuilder\n"
 "Voor elke herschreven URL wordt een database query vereist"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:281
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:284
 msgid "Routing"
 msgstr "Routing"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:282
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:285
 msgid "Routing definitions for incoming URLs"
 msgstr "Routing definities voor inkomende URLs"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:283
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:286
 msgid "Type one routing definition per line as follows:"
 msgstr "Per regel een routing definitie als volgt invoeren:"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:284
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:287
 msgid ""
 "# {incoming_url}>>>{new_url}\n"
 "/incoming_url/name.html>>>new_url/new_name.html\n"
@@ -896,7 +785,8 @@ msgstr ""
 "# Route aanvraag aan wwwroot naar een specifieke pagina\n"
 "/ >>> front_content.php?idart=16"
 
-#: W:\drugcms_2.0\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:285
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:288
 msgid ""
 "The routing does not sends a HTTP header redirection to the destination URL, "
 "the redirection will happen internally by<br />replacing the detected "
@@ -930,3 +820,256 @@ msgstr ""
 "gehecht<br />bijvoorbeeld front_content.php?idcat=23&amp;client=2\n"
 "De bestemmings-URL mag niet met '/' of '/.' beginnen (Fout: /front_content."
 "php, juist: front_content.php)"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:291
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:128
+msgid "Discard changes"
+msgstr "Wijzigingen ongedaan maken"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_content.php:292
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:129
+msgid "Save changes"
+msgstr "Wijzigingen opslaan"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:80
+msgid "Plugin functions"
+msgstr "Plugin funkties"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:82
+msgid "Copy/Download .htaccess template"
+msgstr "Copy / download .htaccess template"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:83
+msgid "Select .htaccess template"
+msgstr ".htaccess template kiezen"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:84
+msgid "Restrictive .htaccess"
+msgstr "Restriktive .htaccess"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:85
+msgid "Simple .htaccess"
+msgstr "Eenvoudige .htaccess"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:86
+msgid ""
+"Contains rules with restrictive settings.<br />\n"
+"All requests pointing to extension avi, css, doc, flv, gif, gzip, ico, jpeg, "
+"jpg, js, mov, <br />\n"
+"mp3, pdf, png, ppt, rar, txt, wav, wmv, xml, zip, will be excluded vom "
+"rewriting.<br />\n"
+"Remaining requests will be rewritten to front_content.php,<br />\n"
+"except requests to 'drugcms/', 'setup/', 'cms/upload', 'cms/front_content."
+"php', etc.<br />\n"
+"Each resource, which has to be excluded from rewriting must be specified "
+"explicitly."
+msgstr ""
+"Bevat regels met beperkende instellingen.<br />\n"
+"Alle aanvragen die naar extensie avi, css, doc, flv, gif, gzip, ico, jpeg, "
+"jpg, js, mov,<br />\n"
+"mp3, pdf, png, ppt, rar, txt, wav, wmv, xml, zip gaan, worden van het "
+"herschrijven uitgesloten.<br />\n"
+"Resterende aanvragen zullen worden herschreven naar front_content.php,<br /"
+">\n"
+"behalve verzoeken tot 'drugcms/', 'setup/', 'cms/upload', 'cms/front_content."
+"php', etc.<br />\n"
+"Elke hulpbron die van herschrijven moet worden uitgesloten moet expliciet "
+"worden vermeld."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:93
+msgid ""
+"Contains a sipmle collection of rules. Each requests pointing to valid "
+"symlinks, folders or<br />\n"
+"files, will be excluded from rewriting. Remaining requests will be rewritten "
+"to front_content.php"
+msgstr ""
+"Bevat een eenvoudige verzameling regels. Elke aanvraag die naar geldige "
+"symlinks, mappen of bestanden<br />\n"
+"wijst, word uit herschrijven uitgesloten. Resterende aanvragen zullen worden "
+"herschreven naar front_content.php"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:96
+msgid "and copy to"
+msgstr "en kopi&euml;ren naar"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:97
+msgid "Contenido installation directory"
+msgstr "de drugCMS installatie map"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:98
+msgid ""
+"Copy the selected .htaccess template into Contenido installation "
+"directory<br />\n"
+"<br />\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;{CONTENIDO_FULL_PATH}.<br />\n"
+"<br />\n"
+"This is the recommended option for a Contenido installation with one or more "
+"clients<br />\n"
+"who are running on the same domain."
+msgstr ""
+"Kopieer de geselecteerde .htaccess sjabloon in de drugCMS installatie "
+"map<br />\n"
+"<br />\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;{CONTENIDO_FULL_PATH}.<br />\n"
+"<br />\n"
+"Dit is de aanbevolen optie voor een drugCMS installatie met een of meer "
+"cli&euml;nten<br />\n"
+"die op hetzelfde domein actief zijn."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:105
+msgid "client directory"
+msgstr "Cli&euml;nt map"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:106
+msgid ""
+"Copy the selected .htaccess template into client's directory<br />\n"
+"<br />\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;{CLIENT_FULL_PATH}.<br />\n"
+"<br />\n"
+"This is the recommended option for a multiple client system<br />\n"
+"where each client has it's own domain/subdomain"
+msgstr ""
+"Kopieer de geselecteerde .htaccess sjabloon naar de cli&euml;nt map<br />\n"
+"<br />\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;{CLIENT_FULL_PATH}.<br />\n"
+"<br />\n"
+"Dit is de aanbevolen optie voor een meervoudige cli&euml;ntsysteem<br />\n"
+"waar elke cli&euml;nt zijn eigen domein / subdomein heeft"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:113
+msgid "or"
+msgstr "of"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:114
+msgid "Download"
+msgstr "Downloaden"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:115
+msgid ""
+"Download selected .htaccess template to copy it to the destination "
+"folder<br />\n"
+"or to take over the settings manually."
+msgstr ""
+"De geselecteerde .htaccess sjabloon downloaden om naar de doelmap te "
+"kopiëren<br />\n"
+"of de instellingen handmatig over te nemen."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:118
+msgid "Reset category-/ and article aliases"
+msgstr "Categorie / artikel aliassen resetten"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:119
+msgid "Reset only empty aliases"
+msgstr "Reset alleen lege aliassen"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:120
+msgid ""
+"Only empty aliases will be reset, existing aliases, e. g. manually set "
+"aliases, will not be changed."
+msgstr ""
+"Alleen lege Categorie / Artikel aliassen zetten.<br />Bestaande aliassen, "
+"bijv. handmatig gezette aliassen, wordenniet  gewijzigd."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:121
+msgid "Reset all aliases"
+msgstr "Alle aliassen resetten"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:122
+msgid ""
+"Reset all category-/article aliases. Existing aliases will be overwritten."
+msgstr ""
+"Alle categorie / article aliassen nieuw zetten.<br />Bestaande aliassen "
+"kunnen worden overschreven."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contentexpert.php:124
+msgid ""
+"This process could require some time depending on amount of categories/"
+"articles.<br />\n"
+"The aliases will not contain the configured plugin separators, but the "
+"Contenido default separators '/' und '-', e. g. '/category-word/article-"
+"word'.<br />\n"
+"Execution of this function ma be helpful to prepare all or empty aliases for "
+"the usage by the plugin."
+msgstr ""
+"Dit proces kan enige tijd duren, afhankelijk van het aantal categorieën / "
+"producten.<br />\n"
+"De aliassen krijgen niet de boven-geconfigureerde separatoren, maar de "
+"drugCMS-Standardseparatoren '/' en '-', bijvoorbeeld '/category-word/article-"
+"word'.<br />\n"
+"Dit te doen kan nuttig zijn om alle of slechts lege aliassen aan te passen "
+"voor het gebruik met de plugin."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:73
+msgid ""
+"Define options to genereate the URLs by using the form below and run the "
+"test."
+msgstr ""
+"Definieer opties om de URL's te genereren via onderstaand formulier en voer "
+"de test uit."
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:74
+msgid "Parameter to use"
+msgstr "Te gebruiken parameters"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:75
+msgid "Number of URLs to generate"
+msgstr "Aantal te genereren URL's"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:76
+msgid "Run test"
+msgstr "Test starten"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:78
+msgid ""
+"{pref}<strong>{name}</strong>\n"
+"{pref}Builder in:    {url_in}\n"
+"{pref}Builder out:   {url_out}\n"
+"{pref}<span style=\"color:{color}\">Resolved URL:  {url_res}</span>\n"
+"{pref}Resolved data: {data}"
+msgstr ""
+"{pref}<strong>{name}</strong>\n"
+"{pref}Builder ingang: {url_in}\n"
+"{pref}Builder uitgang: {url_out}\n"
+"{pref}<span style=\"color:{color}\">Opgeloste URL: {url_res}</span>\n"
+"{pref}Opgeloste data: {data}"
+
+#: Z:\Internet\Internet Webs\__Neue Webseite\ConLite &
+#: Contenido\_drugCMS_2.0.1\drugcms\plugins\mod_rewrite/includes/include.mod_rewrite_contenttest.php:84
+msgid ""
+"Duration of test run: {time} seconds.<br />\n"
+"Number of processed URLs: {num_urls}<br />\n"
+"<span style=\"color:green\">Successful resolved: {num_success}</span><br />\n"
+"<span style=\"color:red\">Errors during resolving: {num_fail}</span></strong>"
+msgstr ""
+"Duur van de test uitvoering: {time} seconden.<br />\n"
+"Aantal behandelde URL's: {num_urls}<br />\n"
+"<span style=\"color:green\">Succesvol opgelost: {num_success}</span><br />\n"
+"<span style=\"color:red\">Fouten bij het oplossen: {num_fail}</span></strong>"

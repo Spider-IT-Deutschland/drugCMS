@@ -125,18 +125,37 @@ class ModRewrite_ContentController extends ModRewrite_ControllerAbstract
             $this->_oView->use_language_name_disabled = '';
             $aMR['mod_rewrite']['use_language']  = 1;
             if (mr_arrayValue($request, 'use_language_name') == 1) {
-                $this->_oView->use_language_name_chk     = ' checked="checked"';
-                $aMR['mod_rewrite']['use_language_name'] = 1;
+                $this->_oView->use_language_id_chk          = '';
+                $this->_oView->use_language_name_chk        = ' checked="checked"';
+                $this->_oView->use_language_code_chk        = '';
+                $aMR['mod_rewrite']['use_language_id']      = 0;
+                $aMR['mod_rewrite']['use_language_name']    = 1;
+                $aMR['mod_rewrite']['use_language_code']    = 0;
+            } elseif (mr_arrayValue($request, 'use_language_name') == 2) {
+                $this->_oView->use_language_id_chk          = '';
+                $this->_oView->use_language_name_chk        = '';
+                $this->_oView->use_language_code_chk        = ' checked="checked"';
+                $aMR['mod_rewrite']['use_language_id']      = 0;
+                $aMR['mod_rewrite']['use_language_name']    = 0;
+                $aMR['mod_rewrite']['use_language_code']    = 1;
             } else {
-                $this->_oView->use_language_name_chk     = '';
-                $aMR['mod_rewrite']['use_language_name'] = 0;
+                $this->_oView->use_language_id_chk          = ' checked="checked"';
+                $this->_oView->use_language_name_chk        = '';
+                $this->_oView->use_language_code_chk        = '';
+                $aMR['mod_rewrite']['use_language_id']      = 1;
+                $aMR['mod_rewrite']['use_language_name']    = 0;
+                $aMR['mod_rewrite']['use_language_code']    = 0;
             }
         } else {
-            $this->_oView->use_language_chk           = '';
-            $this->_oView->use_language_name_chk      = '';
-            $this->_oView->use_language_name_disabled = ' disabled="disabled"';
-            $aMR['mod_rewrite']['use_language']       = 0;
-            $aMR['mod_rewrite']['use_language_name']  = 0;
+            $this->_oView->use_language_chk                 = '';
+            $this->_oView->use_language_id_chk              = '';
+            $this->_oView->use_language_name_chk            = '';
+            $this->_oView->use_language_code_chk            = '';
+            $this->_oView->use_language_name_disabled       = ' disabled="disabled"';
+            $aMR['mod_rewrite']['use_language']             = 0;
+            $aMR['mod_rewrite']['use_language_id']          = 0;
+            $aMR['mod_rewrite']['use_language_name']        = 0;
+            $aMR['mod_rewrite']['use_language_code']        = 0;
         }
 
         // client settings
@@ -268,8 +287,8 @@ class ModRewrite_ContentController extends ModRewrite_ControllerAbstract
             $this->_oView->file_extension = htmlentities($request['file_extension']);
             $aMR['mod_rewrite']['file_extension'] = $request['file_extension'];
         } else {
-            $this->_oView->file_extension = '.html';
-            $aMR['mod_rewrite']['file_extension'] = '.html';
+            $this->_oView->file_extension = '';#'.html';
+            $aMR['mod_rewrite']['file_extension'] = '';#'.html';
         }
 
         // category resolve min percentage
@@ -375,7 +394,7 @@ class ModRewrite_ContentController extends ModRewrite_ControllerAbstract
         $bSeparatorModified = $this->_separatorModified($aMR['mod_rewrite']);
 
         if (mr_setConfiguration($this->_client, $aMR)) {
-            $sMsg = 'Configuration has been saved';
+            $sMsg = i18n('Configuration has been saved', 'mod_rewrite');
             if ($bSeparatorModified) {
                 mr_loadConfiguration($this->_client, true);
             }

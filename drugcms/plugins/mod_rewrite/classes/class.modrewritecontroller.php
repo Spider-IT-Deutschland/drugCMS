@@ -444,7 +444,9 @@ class ModRewriteController extends ModRewriteBase
 
         if (parent::getConfig('use_language_name') == 1) {
             // thanks to Nicolas Dickinson for multi Client/Language BugFix
-            $changelang = ModRewrite::getLanguageId(array_shift($this->_aParts) , $this->_iClientMR);
+            $changelang = ModRewrite::getLanguageId(array_shift($this->_aParts) , $this->_iClientMR, false);
+        } elseif (parent::getConfig('use_language_code') == 1) {
+            $changelang = ModRewrite::getLanguageId(array_shift($this->_aParts) , $this->_iClientMR, true);
         } else {
             $changelang = (int) array_shift($this->_aParts);
         }
@@ -491,7 +493,20 @@ class ModRewriteController extends ModRewriteBase
 
         $idcat = (int) ModRewrite::getCatIdByUrlPath($this->_sPath);
 
-        if ($idcat == 0) {
+        if (($idcat == 0) && ($this->_sArtName == null)) {
+            # Category couldn't be resolved, maybe an article name is included
+            $idcat = (int) ModRewrite::getCatIdByUrlPath(substr($this->_sPath, 0, (strrpos(substr($this->_sPath, 0, -1), '/') + 1)));
+            if ($idcat == 0) {
+                // category couldn't resolved
+                $this->_bError = true;
+                $idcat = null;
+            } else {
+                #$this->_sPath = substr($this->_sPath, 0, strrpos($this->_sPath, '/', -1));
+                $this->_sArtName = array_pop($this->_aParts);
+                // unset $this->_sPath if $idcat could set, otherwhise it would be resolved again.
+                unset($this->_sPath);
+            }
+        } elseif ($idcat == 0) {
             // category couldn't resolved
             $this->_bError = true;
             $idcat = null;
