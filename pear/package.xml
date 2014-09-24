@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <package version="1.0">
   <name>HTML_Common</name>
   <summary>PEAR::HTML_Common is a base class for other HTML classes.</summary>
