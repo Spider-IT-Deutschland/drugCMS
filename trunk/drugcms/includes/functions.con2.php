@@ -549,7 +549,8 @@ function conGenerateCode($idcat, $idart, $lang, $client, $layout = false)
 
 	/* Add meta tags */
 	$code = str_ireplace_once("</head>", $sMetatags."</head>", $code);
-	$code = str_ireplace_once("</html>", "<!--\nThis website is powered by drugCMS, the Content Management System with addictive potential.\nFor more info and download visit www.drugcms.org\n//-->\n</html>", $code);
+	$code = str_ireplace_once("</body>", "<noscript>\n\t<div style=\"text-align: center;\">\n\t\tThis website is powered by drugCMS, the Content Management System with addictive potential.\n\t\tFor more info and download visit <a href=\"http://www.drugcms.org\">www.drugcms.org</a>.\n\t\tdrugCMS is made in germany.\n\t</div>\n</noscript>\n</body>", $code);
+	#$code = str_ireplace_once("</html>", "<!--\nThis website is powered by drugCMS, the Content Management System with addictive potential.\nFor more info and download visit www.drugcms.org\n//-->\n</html>", $code);
 
 	/* write code into the database */
 	$date = date("Y-m-d H:i:s");

@@ -1021,7 +1021,7 @@ function sitSafeStringEscape($string) {
  * Beispiel 1: array('name' => 'xyz', 'email' => 'xyz@abc.de');
  * Beispiel 2: array(array('name' => 'xyz', 'email' => 'xyz@abc.de'), array('name'...
  */
-function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $sport = '', $cc_recipients = '', $bcc_recipients = '') {
+function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $sport = '', $cc_recipients = '', $bcc_recipients = '', $reply_to = '') {
     global $encoding, $lang, $cfg;
     
     # Eingaben ergänzen
@@ -1120,6 +1120,9 @@ function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname
         }
     } elseif (is_array($bcc_recipients)) {
         $oMail->AddBCC($bcc_recipients['email'], ((strlen($bcc_recipients['name'])) ? html_entity_decode($bcc_recipients['name'], ENT_QUOTES, $encoding[$lang]) : $bcc_recipients['email']));
+    }
+    if (strlen($reply_to)) {
+        $oMail->AddReplyTo($reply_to);
     }
     $oMail->Body = $html;
     # Nur-Text-Bereich -->

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Contenido XML language file -->
 <language>
     <navigation>
@@ -6,7 +6,7 @@
             <main><![CDATA[Content]]></main>
             <article>
                 <main><![CDATA[Artikel]]></main>
-                <overview><![CDATA[Übersicht]]></overview>
+                <overview><![CDATA[Ãœbersicht]]></overview>
                 <editor><![CDATA[Editor]]></editor>
                 <properties><![CDATA[Eigenschaften]]></properties>
                 <configuration><![CDATA[Konfiguration]]></configuration>
@@ -14,11 +14,11 @@
             </article>
             <structure>
             	<main><![CDATA[Kategorie]]></main>
-            	<overview><![CDATA[Übersicht]]></overview>
+            	<overview><![CDATA[Ãœbersicht]]></overview>
             </structure>
             <upload>
             	<main><![CDATA[Dateiverwaltung]]></main>
-            	<overview><![CDATA[Übersicht]]></overview>
+            	<overview><![CDATA[Ãœbersicht]]></overview>
             	<edit><![CDATA[Bearbeiten]]></edit>
             	<fileupload><![CDATA[Upload]]></fileupload>
             </upload>
@@ -35,7 +35,7 @@
             	<main><![CDATA[Module]]></main>
             	<edit><![CDATA[Bearbeiten]]></edit>
             	<history><![CDATA[Historie]]></history>
-            	<translation><![CDATA[Übersetzung]]></translation>
+            	<translation><![CDATA[Ãœbersetzung]]></translation>
             	<package><![CDATA[Package]]></package>
             </modules>
             <templates>
@@ -114,7 +114,7 @@
         </administration>
         <mydrugcms>
             <main><![CDATA[My drugCMS]]></main>
-            <overview><![CDATA[Übersicht]]></overview>
+            <overview><![CDATA[Ãœbersicht]]></overview>
             <recentarticles><![CDATA[Zuletzt bearbeitete Artikel]]></recentarticles>
             <todolist><![CDATA[Wiedervorlage]]></todolist>
             <settings><![CDATA[Einstellungen]]></settings>
@@ -123,8 +123,8 @@
             <main><![CDATA[Extras]]></main>
             <newsletter><![CDATA[Newsletter]]></newsletter>
             <mailing><![CDATA[Mailing]]></mailing>
-            <recipients><![CDATA[Empfänger]]></recipients>
-            <recipientgroups><![CDATA[Empfänger-Gruppen]]></recipientgroups>
+            <recipients><![CDATA[EmpfÃ¤nger]]></recipients>
+            <recipientgroups><![CDATA[EmpfÃ¤nger-Gruppen]]></recipientgroups>
         </extra>
         <info><![CDATA[Info]]></info>
         <login><![CDATA[Login]]></login>

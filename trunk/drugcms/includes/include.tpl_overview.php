@@ -62,7 +62,7 @@ while ( $db->next_record() ) {
         $descr = $db->f('description');
         $idtpl = $db->f("idtpl");
 
-        $bgcolor = ( is_int($tpl->dyn_cnt / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+        $bgcolor = ( is_int($tpl->dyn_cnt[0] / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
         $tpl->set('d', 'BGCOLOR', $bgcolor);
 
         # create javascript multilink
@@ -115,7 +115,7 @@ while ( $db->next_record() ) {
            }
 
            $tpl->set('d', 'COPY', $copybutton);
-           $tpl->set('d', 'ID', 'tpl'.$tpl->dyn_cnt);
+           $tpl->set('d', 'ID', 'tpl'.$tpl->dyn_cnt[0]);
 
         $tpl->next();
     }

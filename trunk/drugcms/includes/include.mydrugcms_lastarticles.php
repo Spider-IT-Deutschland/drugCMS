@@ -161,7 +161,7 @@ $debug = false;
                 $category = "&nbsp;";
             }
             
-            $bgcolor = ( is_int($tpl->dyn_cnt / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+            $bgcolor = ( is_int($tpl->dyn_cnt[0] / 2) ) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
             # Backgroundcolor of the table row
             $tpl->set('d', 'BGCOLOR', $bgcolor);

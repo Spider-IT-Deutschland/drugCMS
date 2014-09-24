@@ -212,7 +212,7 @@ $objects = Array ();
 $rootTreeItem->traverse($objects);
 unset ($objects[0]);
 
-$bgcolor = (is_int($tpl->dyn_cnt / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+$bgcolor = (is_int($tpl->dyn_cnt[0] / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
 if ($appendparameters == "filebrowser")
 {
@@ -392,7 +392,7 @@ if (is_array($objects))
 			$deletebutton = "<img style=\"margin-left:10px;\" src=\"".$cfg["path"]["images"]."delete_inact.gif\" border=\"0\" alt=\"".$message."\" title=\"".$message."\">";
 		}
 
-		$bgcolor = (is_int($tpl->dyn_cnt / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+		$bgcolor = (is_int($tpl->dyn_cnt[0] / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
 		$tpl->set('d', 'PATH', $pathstring);
 		$tpl->set('d', 'BGCOLOR', $bgcolor);
@@ -466,7 +466,7 @@ $rootTreeItem->traverse($objects);
 
 unset ($objects[0]);
 
-$bgcolor = (is_int($tpl->dyn_cnt / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+$bgcolor = (is_int($tpl->dyn_cnt[0] / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
 $tmp_mstr = '<a href="javascript:conMultiLink(\'%s\', \'%s\', \'%s\', \'%s\')">%s</a>';
 $mstr = sprintf($tmp_mstr, 'right_top', $sess->url("main.php?area=$area&frame=3&path=$pathstring&appendparameters=$appendparameters"), 
@@ -539,7 +539,7 @@ if (is_array($objects))
 			$deletebutton = "<img style=\"margin-left:10px;\" src=\"".$cfg["path"]["images"]."delete_inact.gif\" border=\"0\" alt=\"".$message."\" title=\"".$message."\">";
 		}
 
-		$bgcolor = (is_int($tpl->dyn_cnt / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
+		$bgcolor = (is_int($tpl->dyn_cnt[0] / 2)) ? $cfg["color"]["table_light"] : $cfg["color"]["table_dark"];
 
 		$tpl->set('d', 'PATH', $pathstring);
 		$tpl->set('d', 'BGCOLOR', $bgcolor);

@@ -97,7 +97,7 @@ if ( isset($_GET['path']) )
         	if ($tmp_area != "upl_edit")
         	{
                 # Set template data
-                $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+                $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
                 $tpl->set("d", "CLASS",     '');
                 $tpl->set("d", "OPTIONS",   '');
                 $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$tmp_area&frame=4&path=$path&appendparameters=$appendparameters").'">'.$caption.'</a>');
@@ -106,7 +106,7 @@ if ( isset($_GET['path']) )
         }
     }
 
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
     # Generate the third
     # navigation layer

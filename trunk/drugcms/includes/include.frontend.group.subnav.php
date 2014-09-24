@@ -41,7 +41,7 @@ if ( isset($_GET['idfrontendgroup']) )
     $tmp_area = "foo2";
 
     # Set template data
-    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+    $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
     $tpl->set("d", "CLASS",     '');
     $tpl->set("d", "OPTIONS",   '');
     $tpl->set("d", "CAPTION",   '<a class="white" onclick="'.setHelpContext($sArea).'sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$area&frame=4&idfrontendgroup=$idfrontendgroup").'">'.$caption.'</a>');
@@ -62,7 +62,7 @@ if ( isset($_GET['idfrontendgroup']) )
 	        	$caption = $class->getFriendlyName();
 	        	
 	        	$tmp_area = "foo2";    	
-	            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+	            $tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
 	            $tpl->set("d", "CLASS",     '');
 	            $tpl->set("d", "OPTIONS",   '');
 	            $tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=frontendgroups_rights&frame=4&useplugin=$plugin&idfrontendgroup=$idfrontendgroup").'">'.$caption.'</a>');
@@ -73,7 +73,7 @@ if ( isset($_GET['idfrontendgroup']) )
     
     
     
-    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+    $tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
     # Generate the third
     # navigation layer

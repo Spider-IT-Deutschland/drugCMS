@@ -41,7 +41,7 @@ if (isset($_GET['idrecipientgroup']) && (int)$_GET['idrecipientgroup'] > 0)
 	$tmp_area = "foo2";
 
 	# Set template data
-	$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+	$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
 	$tpl->set("d", "CLASS",     '');
 	$tpl->set("d", "OPTIONS",   '');
 	$tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=$area&frame=4&idrecipientgroup=$idrecipientgroup").'">'.$caption.'</a>');
@@ -56,7 +56,7 @@ if (isset($_GET['idrecipientgroup']) && (int)$_GET['idrecipientgroup'] > 0)
     
 			$caption   = $class->getFriendlyName();
 			$tmp_area  = "foo2";    	
-			$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt);
+			$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
 			$tpl->set("d", "CLASS",     '');
 			$tpl->set("d", "OPTIONS",   '');
 			$tpl->set("d", "CAPTION",   '<a class="white" onclick="sub.clicked(this)" target="right_bottom" href="'.$sess->url("main.php?area=recipientgroup_rights&frame=4&useplugin=$plugin&idrecipientgroup=$idrecipientgroup").'">'.$caption.'</a>');
@@ -64,7 +64,7 @@ if (isset($_GET['idrecipientgroup']) && (int)$_GET['idrecipientgroup'] > 0)
 		}
 	}
 
-	$tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt * 2) + 2);
+	$tpl->set('s', 'COLSPAN', ($tpl->dyn_cnt[0] * 2) + 2);
 
 	# Generate the third navigation layer
 	$tpl->generate($cfg["path"]["templates"] . $cfg["templates"]["subnav"]);

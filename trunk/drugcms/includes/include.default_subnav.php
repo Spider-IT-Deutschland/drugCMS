@@ -173,7 +173,7 @@ $area = Contenido_Security::escapeDB($area, $db);
 			$sClass = '';
 		
 		/* fill template */
-		$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt );
+		$tpl->set("d", "ID",        'c_'.$tpl->dyn_cnt[0]);
 		$tpl->set("d", "CLASS",     'item '.$sArea );
 		$tpl->set("d", "CAPTION",   '<a class="white'.$sClass.'" onclick="'.setHelpContext($sArea).'sub.clicked(this)" target="right_bottom" href="'.$sLink.'">'.$sCaption.'</a>');
 		$tpl->next();

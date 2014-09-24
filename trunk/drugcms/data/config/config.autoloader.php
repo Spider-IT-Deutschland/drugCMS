@@ -303,5 +303,18 @@ return array(
     'Output_Compressor' => 'drugcms/classes/class.output_compressor.php',
     'EmailAddressValidator' => 'drugcms/external/email_address_validation/EmailAddressValidator.php',
     'SMTP_validateEmail' => 'drugcms/external/email_address_validation/smtp_validateEmail.class.php',
-    'FormValidation' => 'drugcms/external/class.form.validation.php'
+    'FormValidation' => 'drugcms/external/class.form.validation.php',
+    'GraphicsEnvironment' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsObject' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsGroup' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsBoxObject' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsLine' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsRectangle' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsFilledRectangle' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsOval' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsFilledOval' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsPolygon' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsFilledPolygon' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsText' => 'drugcms/classes/graphics/class.graphics.php',
+    'GraphicsTextTTF' => 'drugcms/classes/graphics/class.graphics.php'
 );
