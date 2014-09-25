@@ -16,6 +16,10 @@
         <drugcms><![CDATA[]]></drugcms>
     </requirements>
     
+    <dependencies>
+        <plugin><![CDATA[]]></plugin> <!-- <name> of the plugin (see above), multiple <plugin> entries allowed -->
+    </dependencies>
+    
     <drugcms>
         
         <areas>

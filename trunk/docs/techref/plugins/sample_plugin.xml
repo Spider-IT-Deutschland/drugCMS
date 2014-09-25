@@ -13,8 +13,12 @@
     
     <requirements>
         <php><![CDATA[5.2.17]]></php>
-        <drugcms><![CDATA[2.0.0]]></drugcms>
+        <drugcms><![CDATA[2.1.0]]></drugcms>
     </requirements>
+    
+    <dependencies>
+        <plugin><![CDATA[sitSample]]></plugin> <!-- <name> of the plugin (see above), multiple <plugin> entries allowed -->
+    </dependencies>
     
     <drugcms>
         

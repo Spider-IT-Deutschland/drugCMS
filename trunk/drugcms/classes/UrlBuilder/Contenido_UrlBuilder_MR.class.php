@@ -318,9 +318,18 @@ class Contenido_UrlBuilder_MR extends Contenido_UrlBuilder
                 if (is_array($v)) {
                     // handle query parameter like foobar[0}=a&foobar[1]=b...
                     foreach ($v as $p2 => $v2){
-                        $p2 = urlencode(urldecode($p2));
-                        $v2 = urlencode(urldecode($v2));
-                        $sQuery .= $p . '[' . $p2 . ']=' . $v2 . $this->_sAmp;
+                        if (is_array($v2)) {
+                            // handle query parameter like foobar[0][0]=a&foobar[0][1]=b...
+                            foreach ($v2 as $p3 => $v3) {
+                                $p3 = urlencode(urldecode($p3));
+                                $v3 = urlencode(urldecode($v3));
+                                $sQuery .= $p . '[' . $p2 . '][' . $p3 . ']=' . $v3 . $this->_sAmp;
+                            }
+                        } else {
+                            $p2 = urlencode(urldecode($p2));
+                            $v2 = urlencode(urldecode($v2));
+                            $sQuery .= $p . '[' . $p2 . ']=' . $v2 . $this->_sAmp;
+                        }
                     }
                 } else {
                     $v = urlencode(urldecode($v));

@@ -136,6 +136,31 @@ class FormValidation {
     }
     
     /**
+     * function isValidIBAN()
+     * 
+     * Checks if the IBAN is valid
+     * 
+     * @param string $iban IBAN to validate
+     * 
+     * @return bool Validity of the given IBAN
+     */
+    public static function isValidIBAN($iban) {
+        $iban   = strtoupper(str_replace(' ', '', $iban));
+        $BBAN   = substr($iban, 4);
+        $CTY    = (ord(substr($iban, 0, 1)) - 55) . (ord(substr($iban, 1, 1) - 55);
+        $CHK    = substr($iban, 2, 2);
+        $check  = ($BBAN . $CTY . $CHK);
+        $len    = 0;
+        $run    = '';
+        while (strlen($check)) {
+            $len = (9 - strlen($run));
+            $run = (intval($run . substr($check, 0, $len)) % 97);
+            $check = substr($check, $len);
+        }
+        return ($run == 1);
+    }
+    
+    /**
      * function isValidName()
      * 
      * Checks if the name has a valid format
@@ -188,7 +213,10 @@ class FormValidation {
      * @return bool Validity of the given phone number
      */
     public static function isValidPhoneNumber($phone) {
-        $regex = '/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/';
+        #$regex = '/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/';
+        # Allowed are either +xx xx.. xx.. (xx..) or 0xx.. xx.. (xx..)
+        # Separators can be any of /, (space), - (- not after +xx)
+        $regex = '/^(\+[0-9]{2,3}[\d\s\/\(\)\ ].+[0-9]{2,5}|0[0-9]{2,5})[\d\s\/\(\)\-\ ].+([0-9]{2,10})+$/';
         return preg_match($regex, $phone);
     }
     

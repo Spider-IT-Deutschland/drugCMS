@@ -74,27 +74,28 @@
 
 /**
  * Functions in this file:
- *   debug()
- *   sitArrayToString()
- *   sitCascadedArraySort()
- *   sitConvertCmykJpgToSrgbJpg()
- *   sitDeeperCategoriesArticlesArray()
- *   sitExplodeAssociative()
- *   sitExplodeCascading()
- *   sitExplodeLines()
- *   sitGetBrowserInfo()
- *   sitGetFilesInDirectory()
- *   sitGetImageDescription()
- *   sitGetInternalDescription()
- *   sitGetRemoteContentToFile()
- *   sitGetSubdirs()
- *   sitImgScale()
- *   sitMakeCmsType()
- *   sitMoveAllUploadFiles()
- *   sitSafeStringEscape()
- *   sitSendHtmlMail()
- *   sitSetClientProperty()
- *   sitTeaserText()
+ *  debug()
+ *  fwritecsv()
+ *  sitArrayToString()
+ *  sitCascadedArraySort()
+ *  sitConvertCmykJpgToSrgbJpg()
+ *  sitDeeperCategoriesArticlesArray()
+ *  sitExplodeAssociative()
+ *  sitExplodeCascading()
+ *  sitExplodeLines()
+ *  sitGetBrowserInfo()
+ *  sitGetFilesInDirectory()
+ *  sitGetImageDescription()
+ *  sitGetInternalDescription()
+ *  sitGetRemoteContentToFile()
+ *  sitGetSubdirs()
+ *  sitImgScale()
+ *  sitMakeCmsType()
+ *  sitMoveAllUploadFiles()
+ *  sitSafeStringEscape()
+ *  sitSendHtmlMail()
+ *  sitSetClientProperty()
+ *  sitTeaserText()
  */
 
 if (!defined('CON_FRAMEWORK')) {
@@ -141,6 +142,52 @@ function debug($value, $type = '') {
         }
         echo '</div>';
     }
+}
+
+/**
+ * fwritecsv()
+ * 
+ * Ersatzfunktion für fputcsv ohne die Fehler dessen
+ * 
+ * Parameter:
+ *   $handle - Dateihandler der zu beschreibenden Datei
+ *   $fields - Feldwerte zum schreiben (Array)
+ *   $delimiter - Trennzeichen zwischen den Feldwerten
+ *   $enclosure - Zeichen zum Umschließen von Zeichenfolgen
+ * 
+ * Wie fputcsv() schreibt diese Funktion eine Zeile in eine
+ * bereits geöffnete CSV-Datei, wobei sie allerdings die
+ * Zeichenfolgen (Texte) in $enclosure (meist Anführungszeichen)
+ * einschließt und im Text vorkommenden $enclosure verdoppelt um
+ * Fehler beim Lesen zu verhindern. Zusätzlich werden Zahlen, wenn
+ * $delimiter ein Punkt ist, auch in $enclosue gesetzt um die
+ * Feldgrenzen klar zu definieren.
+ * Der Rückgabewert ist die Anzahl der geschriebenen Zeichen, oder
+ * false wenn ein Fehler aufgetreten ist (z. B. $fields kein Array).
+ */
+function fwritecsv($handle, $fields, $delimiter = ',', $enclosure = '"') {
+    # Check if $fields is an array
+    if (!is_array($fields)) {
+        return false;
+    }
+    # Walk through the data array
+    for ($i = 0, $n = count($fields); $i < $n; $i ++) {
+        # Only 'correct' non-numeric values
+        if (!is_numeric($fields[$i])) {
+            # Duplicate in-value $enclusure's and put the value in $enclosure's
+            $fields[$i] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $fields[$i]) . $enclosure;
+        }
+        # If $delimiter is a dot (.), also correct numeric values
+        if (($delimiter == '.') && (is_numeric($fields[$i]))) {
+            # Put the value in $enclosure's
+            $fields[$i] = $enclosure . $fields[$i] . $enclosure;
+        }
+    }
+    # Combine the data array with $delimiter and write it to the file
+    $line = implode($delimiter, $fields) . "\n";
+    fwrite($handle, $line);
+    # Return the length of the written data
+    return strlen($line);
 }
 
 /**
@@ -662,7 +709,7 @@ function sitImgScale($img, $maxX = 0, $maxY = 0, $crop = false, $expand = false,
     }
     
     # Cache
-    $md5 = capiImgScaleGetMD5CacheFile($img, $maxX, $maxY, $crop, $expand);
+    $md5 = capiImgScaleGetMD5CacheFile($cfgClient[$client]['path']['frontend'] . $img, $maxX, $maxY, $crop, $expand);
     list($oWidth, $oHeight, $oType) = @getimagesize($cfgClient[$client]['path']['frontend'] . $img);
     if (($oType != IMAGETYPE_GIF) && ($oType != IMAGETYPE_JPEG) && ($oType != IMAGETYPE_PNG)) {
         return false;
