@@ -36,7 +36,7 @@ global $cfg;
 
 /* Current Version. You shouldn't change this
    value unless you know what you are doing. */
-$cfg['version'] = '2.0.3.1';
+$cfg['version'] = '2.0.4';
 
 /* SVN Date tag */
 $cfg['datetag'] = '$Date$';

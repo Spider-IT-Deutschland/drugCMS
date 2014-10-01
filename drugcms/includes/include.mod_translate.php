@@ -76,6 +76,7 @@ if ($action == "mod_importexport_translation")
 {
 	if ($mode == "export")
 	{
+        cInclude('includes', 'functions.upl.php');
 		$sFileName = uplCreateFriendlyName(strtolower($module->get("name") . "_" . $langobj->get("name")));
 
 		if ($sFileName != "")
