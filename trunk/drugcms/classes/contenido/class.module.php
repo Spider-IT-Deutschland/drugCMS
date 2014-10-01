@@ -1079,7 +1079,7 @@ class cApiModuleTranslationCollection extends ItemCollection
         $translations = new cApiModuleTranslationCollection;
         $translations->select("idmod = '$idmod' AND idlang='$idlang'");
 
-        $tree  = new XmlTree('1.0', 'ISO-8859-1');
+        $tree  = new XmlTree('1.0', 'UTF-8');
         $root =& $tree->addRoot('module');
 
         $translation =& $root->appendChild('translation');
