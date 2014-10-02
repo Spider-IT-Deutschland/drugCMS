@@ -139,7 +139,7 @@ class Contenido_FrontendNavigation extends Contenido_FrontendNavigation_Base {
 	        // check against fe-auth and against be-access
 	        if ($bUseAuth === true && intval($this->oDb->f('public')) == 0) {
 	            $sPerms = strval($this->oAuth->auth['perm']);
-	            if (strpos($sPerms, 'sysadmin') !== false || strpos($sPerms, 'admin' !== false) ||
+	            if (strpos($sPerms, 'sysadmin') !== false || strpos($sPerms, 'admin') !== false ||
 	                   (strpos($sPerms, 'client['.strval($this->iClient).']') !== false && strpos($sPerms, 'lang['.strval($this->iLang).']') !== false)) {
 	                $this->aCategories[] = (int) $this->oDb->f('idcat');
                     $this->aLevel[(int) $this->oDb->f('idcat')] = (int) $this->oDb->f('level');
