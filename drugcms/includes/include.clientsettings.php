@@ -130,8 +130,13 @@ if ($aItems !== false)
     			$oForm->setVar("idclient", $idclient);
     			$oForm->setVar("idclientslang", $_REQUEST["idclientslang"]);
     			
-    			$oInputboxValue = new cHTMLTextbox ("csvalue", $aValue['value']);
-    			$oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+    			if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password')) {
+                    $oInputboxValue = new cHTMLTextbox ("csvalue", '');
+                    $oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+                } else {
+                    $oInputboxValue = new cHTMLTextbox ("csvalue", $aValue['value']);
+                    $oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+                }
                 
                 $oInputboxName = new cHTMLTextbox ("csname", $aValue['name']);
     			$oInputboxName->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
@@ -152,7 +157,9 @@ if ($aItems !== false)
                 $aValue['type'] = sprintf($sMouseoverTemplate, htmlspecialchars(addslashes($aValue['type']), ENT_QUOTES), $sShort);
             }
             
-            if (strlen($aValue['value']) > 35) {
+            if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password')) {
+                $aValue['value'] = '&bull;&bull;&bull;&bull;&bull;&bull;';
+            } elseif (strlen($aValue['value']) > 35) {
                 $sShort = htmlspecialchars(capiStrTrimHard($aValue['value'], 35));
                 $aValue['value'] = sprintf($sMouseoverTemplate, htmlspecialchars(addslashes($aValue['value']), ENT_QUOTES), $sShort);
             }

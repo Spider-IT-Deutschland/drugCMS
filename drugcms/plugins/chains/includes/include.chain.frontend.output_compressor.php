@@ -635,9 +635,20 @@ function cecOutputCompressor($sCode) {
     # Rebuild the code for the IE-commented script blocks
     if (count($IEscriptblocks)) {
         foreach ($IEscriptblocks as $condition => $link) {
-            # Add the conditional comment start tag to the end of the body section
-            $p1 = strpos($sCode, '</body>');
-            $sCode = substr($sCode, 0, $p1) . $condition . "\n" . $link . "\n" . '<![endif]-->' . "\n" . substr($sCode, $p1);
+            if (is_array($link)) {
+                $p1 = strpos($sCode, '</body>');
+                $sCode = substr($sCode, 0, $p1) . $condition . "\n" . substr($sCode, $p1);
+                foreach ($link as $lnk) {
+                    $p1 = strpos($sCode, '</body>');
+                    $sCode = substr($sCode, 0, $p1) . $lnk . "\n" . substr($sCode, $p1);
+                }
+                $p1 = strpos($sCode, '</body>');
+                $sCode = substr($sCode, 0, $p1) . ((substr($condition, -5) == '<!-->') ? '<!--' : '') . '<![endif]-->' . "\n" . substr($sCode, $p1);
+            } else {
+                # Add the conditional comment tag to the end of the body section
+                $p1 = strpos($sCode, '</body>');
+                $sCode = substr($sCode, 0, $p1) . $condition . "\n" . $link . "\n" . '<![endif]-->' . "\n" . substr($sCode, $p1);
+            }
         }
     }
     unset($IEscriptblocks);

@@ -480,7 +480,8 @@ class Index extends SearchBaseAbstract
         // a client and should not be treated in this method.
         // modified 2007-10-01, H. Librenz - added as hotfix for encoding problems (doesn't find any words with
         //                                      umlaut vowels in it since you turn on UTF-8 as language encoding)
-        $sEncoding = $this->encoding[$this->lang];#getEncodingByLanguage($this->db, $this->lang, $this->cfg);
+        #$sEncoding = $this->encoding[$this->lang];#getEncodingByLanguage($this->db, $this->lang, $this->cfg);
+        $sEncoding = getEncodingByLanguage($this->db, $this->lang, $this->cfg);
 
 #        if (strtolower($sEncoding) != 'iso-8859-2') {
             $key = htmlentities($key, NULL, $sEncoding);
@@ -517,7 +518,8 @@ class Index extends SearchBaseAbstract
      */
     function addSpecialUmlauts($key)
     {
-        $key = htmlentities($key, null, $this->encoding[$this->lang]);#getEncodingByLanguage($this->db, $this->lang, $this->cfg));
+        #$key = htmlentities($key, null, $this->encoding[$this->lang]);#getEncodingByLanguage($this->db, $this->lang, $this->cfg));
+        $key = htmlentities($key, null, getEncodingByLanguage($this->db, $this->lang, $this->cfg));
         $aUmlautMap = array (
             'Ue'    => '&Uuml;',
             'ue'    => '&uuml;',
