@@ -102,8 +102,13 @@ if (is_array($settings))
                 #ignore record
 				
             } else if (($action == "systemsettings_edit_item") && (stripslashes($systype) == $key) && (stripslashes($sysname) == $type)) {
-                $oInputboxValue = new cHTMLTextbox ("sysvalue", $value['value']);
-    			$oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+    			if ((strtolower($value['name']) == 'pass') || (strtolower($value['name']) == 'password')) {
+                    $oInputboxValue = new cHTMLTextbox ("sysvalue", '');
+                    $oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+                } else {
+                    $oInputboxValue = new cHTMLTextbox ("sysvalue", $value['value']);
+                    $oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
+                }
                 
                 $oInputboxName = new cHTMLTextbox ("sysname", $type);
     			$oInputboxName->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
@@ -126,7 +131,9 @@ if (is_array($settings))
                     $type = sprintf($sMouseoverTemplate, htmlspecialchars(addslashes($type), ENT_QUOTES), $sShort);
                 }
                 
-                if (strlen($value['value']) > 35) {
+    			if ((strtolower($value['name']) == 'pass') || (strtolower($value['name']) == 'password')) {
+                    $value['value'] = '&bull;&bull;&bull;&bull;&bull;&bull;';
+                } elseif (strlen($value['value']) > 35) {
                     $sShort = htmlspecialchars(capiStrTrimHard($value['value'], 35));
                     $value['value'] = sprintf($sMouseoverTemplate, htmlspecialchars(addslashes($value['value']), ENT_QUOTES), $sShort);
                 }
