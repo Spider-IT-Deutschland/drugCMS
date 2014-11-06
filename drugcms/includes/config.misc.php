@@ -121,26 +121,18 @@ $cfg['AvailableCharsets'] = array(
 //@ini_set("display_errors",true);
 
 /* Log errors to a file */
-@ini_set("log_errors",true);
+@ini_set('log_errors', true);
 
 /* The file in which we write the error log */
-@ini_set("error_log",$cfg["path"]["contenido"].$cfg['path']['logs']."errorlog.txt");
+@ini_set('error_log', $cfg['path']['contenido'] . $cfg['path']['logs'] . 'errorlog.txt');
 
-/* Report all errors except warnings */
-if($cfg["develop"]["show_errors"] && $_SERVER['SERVER_NAME'] == "localhost") {
-    error_reporting(E_ALL);
+/* Report errors only (system and client settings get respected in /drugcms/includes/startup.php */
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+    error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+} elseif (version_compare(PHP_VERSION, '5.4.0', '<')) {
+    error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE ^ E_DEPRECATED ^ E_USER_DEPRECATED);
 } else {
-    if($cfg["develop"]["show_deprecated"]) {
-        error_reporting (E_ALL ^E_NOTICE);
-    } else {
-        if(version_compare(PHP_VERSION, '5.3.0', '<')) { // remove unknown deprecated for PHP < 5.3
-                error_reporting (E_ALL ^E_NOTICE);
-            } else if(version_compare(PHP_VERSION, '5.4.0', '>=')) {
-                error_reporting (E_ALL ^E_NOTICE ^E_DEPRECATED ^E_USER_DEPRECATED ^E_STRICT);
-            } else {
-                error_reporting (E_ALL ^E_NOTICE ^E_DEPRECATED ^E_USER_DEPRECATED);
-            }
-    }
+    error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE ^ E_DEPRECATED ^ E_USER_DEPRECATED ^ E_STRICT);
 }
 
 

@@ -115,6 +115,14 @@ cInclude('includes', 'functions.general.php');
 cInclude('conlib', 'prepend.php');
 cInclude('includes', 'functions.i18n.php');
 
+// Error reporting - respect system and client settings
+$bErrors = getEffectiveSetting('debug', 'log_errors', 'false');
+if ((strtolower($bErrors) == 'true') || (strtolower($bErrors) == 'full') || (strtolower($bErrors) == 'all') || ($bErrors == 1)) {
+    error_reporting(E_ALL);
+} elseif (strtolower($bErrors) == 'deprecated') {
+    error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+}
+
 
 // Initialization of CEC
 $_cecRegistry = cApiCECRegistry::getInstance();
