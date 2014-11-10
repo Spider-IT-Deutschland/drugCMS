@@ -147,7 +147,7 @@ class FormValidation {
     public static function isValidIBAN($iban) {
         $iban   = strtoupper(str_replace(' ', '', $iban));
         $BBAN   = substr($iban, 4);
-        $CTY    = (ord(substr($iban, 0, 1)) - 55) . (ord(substr($iban, 1, 1) - 55);
+        $CTY    = (ord(substr($iban, 0, 1)) - 55) . (ord(substr($iban, 1, 1)) - 55);
         $CHK    = substr($iban, 2, 2);
         $check  = ($BBAN . $CTY . $CHK);
         $len    = 0;
