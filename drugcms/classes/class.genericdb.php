@@ -1502,9 +1502,10 @@ abstract class ItemCollection extends Contenido_ItemBaseAbstract
             throw new Contenido_ItemException($sMsg);
         }
 
-        if (!is_object($this->_iteratorItem)) {
+# RM 2014-11-10 :: Always use a new _itemClass() to avoid overwriting because of system settings
+#        if (!is_object($this->_iteratorItem)) {
             $this->_iteratorItem = new $this->_itemClass();
-        }
+#        }
 
         if (is_array($mItem)) {
             $this->_iteratorItem->loadByRecordSet($mItem);
