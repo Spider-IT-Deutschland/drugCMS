@@ -39,7 +39,7 @@ abstract class Output_Compressor {
      * @return string - Returns the name of the compressed file in the cache folder
      * @access public
      */
-    public function generate($sCachePath, $asFiles, $sFileExt, $sFrontendPath) {
+    public static function generate($sCachePath, $asFiles, $sFileExt, $sFrontendPath) {
         
         # Check for input files
         if ((!is_array($asFiles)) || (!count($asFiles))) {
@@ -187,7 +187,7 @@ abstract class Output_Compressor {
      * @param string $sFilename - Name of the file to deliver
      * @param string $sContentType - Content-Type of the file (eg 'css', 'html' or 'javascript')
      */
-    public function output($sCachePath, $sFilename, $sContentType) {
+    public static function output($sCachePath, $sFilename, $sContentType) {
         header('Content-Type: text/' . $sContentType);
         if ((is_file($sCachePath . $sFilename . '.gz')) && (strstr($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) && (extension_loaded('zlib')) && (!ini_get('zlib.output_compression'))) {
             header('Content-Length: ' . filesize($sCachePath . $sFilename . '.gz'));
@@ -208,7 +208,7 @@ abstract class Output_Compressor {
      * @return - Returns an array of the matching files found or false
      * @access private
      */
-    private function findMatchingFilenames($sCachePath, $sFileExt, $sFilenamePart) {
+    private static function findMatchingFilenames($sCachePath, $sFileExt, $sFilenamePart) {
         $pattern = '[0123456789]';
         # Find only files with 14 numerical characters in the filename (yyyymmddHHiiss)
         $files = glob($sCachePath . $sFilenamePart . str_repeat($pattern, 14) . '.' . $sFileExt);
