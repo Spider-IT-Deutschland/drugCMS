@@ -2,12 +2,12 @@
 if (!defined('CON_FRAMEWORK')) {
     die('Illegal call');
 }
+
+$plugin_name = "db_backup";
  
 if ((!$perm->have_perm_area_action($plugin_name, $plugin_name)) && (!$cronjob)) {
     exit;
 }
-
-$plugin_name = "db_backup";
 
 plugin_include($plugin_name, 'includes/config.plugin.php');
 
