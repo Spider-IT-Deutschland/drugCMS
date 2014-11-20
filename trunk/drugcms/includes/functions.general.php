@@ -766,6 +766,7 @@ function isValidMail($sEMail, $bStrict = false)
 {
 	# 2014-07-19 Spider IT :: Function now uses the new form validation functions.
     #                         Strict now means that the email address must exist.
+    cInclude('classes', 'class.form.validation.php'); # Needed for some plugins
     $ret = FormValidation::isValidEmailAddress($sEMail);
     if (($ret) && ($bStrict)) {
         $ret = FormValidation::isExistingEmailAddress($sEMail);
