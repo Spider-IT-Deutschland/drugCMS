@@ -806,12 +806,16 @@ class Contenido_UpdateNotifier
         global $db, $cfg, $lang;
         
         if (strlen($this->enc) == 0) {
-            $sql = 'SELECT encoding
-                    FROM ' . $cfg['tab']['lang'] . '
-                    WHERE (idlang=' . $lang . ')';
-            $db->query($sql);
-            $db->next_record();
-            $this->enc = $db->f('encoding');
+            if (intval($lang)) {
+                $sql = 'SELECT encoding
+                        FROM ' . $cfg['tab']['lang'] . '
+                        WHERE (idlang=' . $lang . ')';
+                $db->query($sql);
+                $db->next_record();
+                $this->enc = $db->f('encoding');
+            } else {
+                $this->enc = 'UTF-8';
+            }
         }
         if ((strtoupper($sCode) == 'UTF-8') && (strtoupper($this->enc) != 'UTF-8')) {
             return utf8_decode($sIn);
