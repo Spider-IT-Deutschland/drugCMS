@@ -613,11 +613,11 @@ abstract class DB_Sql_Abstract
         $aResult = array();
         if (is_array($this->Record)) {
             foreach ($this->Record as $key => $value) {
-                if ($fetchMode == self::FETCH_ASSOC && !is_numeric($key)) {
+                if (($fetchMode == self::FETCH_ASSOC) && (!is_numeric($key))) {
                     $aResult[$key] = $value;
-                } elseif ($fetchMode == self::FETCH_NUMERIC && is_numeric($key)) {
+                } elseif (($fetchMode == self::FETCH_NUMERIC) && (is_numeric($key))) {
                     $aResult[$key] = $value;
-                } else {
+                } elseif ($fetchMode == self::FETCH_BOTH) {
                     $aResult[$key] = $value;
                 }
             }
