@@ -91,18 +91,28 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
         # Export the module into files
         $sDirName   = getEffectiveSetting('modules_in_files', 'folder_name', 'modules');
         $sFullPath  = getEffectiveSetting('modules_in_files', 'full_path', '');
-        if (strlen($sFullPath) == 0) {
+        if (strlen($sFullPath)) {
+            $sFullPath .= ((substr($sFullPath, -1) == '/') ? '' . '/') . uplCreateFriendlyName($module->get('name')) . '/';
+        } else {
             $sFullPath  = $cfgClient[$client]['path']['frontend'] . 'data/' . $sDirName . '/' . uplCreateFriendlyName($module->get('name')) . '/';
         }
         if (!is_dir($sFullPath)) {
-            mkdir($sFullPath, 0777, true);
+            if (!mkdir($sFullPath, 0777, true)) {
+                $noti .= i18n("Directory not writable") . ': ' . $sFullPath;
+            } else {
+                chmod($sFullPath, 0777);
+            }
         }
-        $fp = fopen($sFullPath . uplCreateFriendlyName($module->get('name')) . '-input.php', 'w');
-        fwrite($fp, $module->get('input'));
-        fclose($fp);
-        $fp = fopen($sFullPath . uplCreateFriendlyName($module->get('name')) . '-output.php', 'w');
-        fwrite($fp, $module->get('output'));
-        fclose($fp);
+        $sFile = $sFullPath . uplCreateFriendlyName($module->get('name')) . '-input.php';
+        $fp = @fopen($sFile, 'w');
+        @fwrite($fp, $module->get('input'));
+        @fclose($fp);
+        @chmod($sFile, 0777);
+        $sFile = $sFullPath . uplCreateFriendlyName($module->get('name')) . '-output.php';
+        $fp = @fopen($sFile, 'w');
+        @fwrite($fp, $module->get('output'));
+        @fclose($fp);
+        @chmod($sFile, 0777);
         $module->loadByPrimaryKey($module->get($module->primaryKey));
     } elseif (($action == 'mod_sync') || ($action == 'mod_sync_and_delete')) {
         # Synchronize this module from files into the database
