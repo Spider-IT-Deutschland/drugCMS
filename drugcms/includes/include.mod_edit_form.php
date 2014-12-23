@@ -92,7 +92,7 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
         $sDirName   = getEffectiveSetting('modules_in_files', 'folder_name', 'modules');
         $sFullPath  = getEffectiveSetting('modules_in_files', 'full_path', '');
         if (strlen($sFullPath)) {
-            $sFullPath .= ((substr($sFullPath, -1) == '/') ? '' . '/') . uplCreateFriendlyName($module->get('name')) . '/';
+            $sFullPath .= ((substr($sFullPath, -1) == '/') ? '' : '/') . uplCreateFriendlyName($module->get('name')) . '/';
         } else {
             $sFullPath  = $cfgClient[$client]['path']['frontend'] . 'data/' . $sDirName . '/' . uplCreateFriendlyName($module->get('name')) . '/';
         }
