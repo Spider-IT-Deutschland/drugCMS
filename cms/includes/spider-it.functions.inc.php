@@ -33,6 +33,7 @@
  *  modified    2012-12-12
  *  modified    2013-02-18
  *  modified    2014-03-11
+ *  modified    2014-12-18
  *
  *   $Id$:
  * }
@@ -87,6 +88,7 @@
  *  sitGetFilesInDirectory()
  *  sitGetImageDescription()
  *  sitGetInternalDescription()
+ *  sitGetRemoteContent()
  *  sitGetRemoteContentToFile()
  *  sitGetSubdirs()
  *  sitImgScale()
@@ -582,22 +584,23 @@ function sitGetInternalDescription($idupl) {
 }
 
 /**
- * sitGetRemoteContentToFile()
+ * sitGetRemoteContent()
  *
- * Holt entfernten Inhalt ab und speichert diesen lokal
+ * Holt entfernten Inhalt ab
  *
  * Parameter:
  *   $url - Die Adresse von wo der Inhalt geholt werden soll
- *   $file - Die Datei in der gespeichert werden soll (inkl. Pfad)
  *   $errno - Die Fehlernummer (Rückgabe)
  *   $errmsg - Die Fehlerbeschreibung (Rückgabe)
+ *   $login - Login für den entfernten Server (optional)
+ *   $password - Passwort für den entfernten Server (optional)
  *
  * Die Daten (Webseite, Bild, Feed usw) werden per cURL geholt,
  * wobei Weiterleitungen gefolgt werden.
  * Diese Methode ist unabhängig von allow_url_fopen und verarbeitet
  * auch Anfragen per https (SSL).
  */
-function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
+function sitGetRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '') {
     $options = array(
         CURLOPT_RETURNTRANSFER => true,     // return web page
         CURLOPT_HEADER         => false,    // don't return headers
@@ -609,6 +612,9 @@ function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
         CURLOPT_TIMEOUT        => 10,       // timeout on response
         CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
     );
+    if ((strlen($login) > 0) && (strlen($password) > 0)) {
+        $options[CURLOPT_USERPWD] = $login . ':' . $password;
+    }
     
     $ch      = curl_init($url);
     curl_setopt_array($ch, $options);
@@ -619,9 +625,36 @@ function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
     curl_close($ch);
     
     if (($errno == 0) && ($header['http_code'] == 200)) {
+        return $content;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * sitGetRemoteContentToFile()
+ *
+ * Holt entfernten Inhalt ab und speichert diesen lokal
+ *
+ * Parameter:
+ *   $url - Die Adresse von wo der Inhalt geholt werden soll
+ *   $file - Die Datei in der gespeichert werden soll (inkl. Pfad)
+ *   $errno - Die Fehlernummer (Rückgabe)
+ *   $errmsg - Die Fehlerbeschreibung (Rückgabe)
+ *   $login - Login für den entfernten Server (optional)
+ *   $password - Passwort für den entfernten Server (optional)
+ *
+ * Die Daten (Webseite, Bild, Feed usw) werden per cURL geholt,
+ * wobei Weiterleitungen gefolgt werden.
+ * Diese Methode ist unabhängig von allow_url_fopen und verarbeitet
+ * auch Anfragen per https (SSL).
+ */
+function sitGetRemoteContentToFile($url, $file, &$errno, &$errmsg, $login = '', $password = '') {
+    $ret = sitGetRemoteContent($url, $errno, $errmsg, $login, $password);
+    if ($ret !== false) {
         # Content in Datei speichern
         if ($fp = fopen($file, 'w')) {
-            fputs($fp, $content);
+            fputs($fp, $ret);
             fclose($fp);
             return true;
         } else {
