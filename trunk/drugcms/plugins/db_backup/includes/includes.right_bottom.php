@@ -235,52 +235,65 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
             if (!in_array(substr($table, strlen($cfg['sql']['sqlprefix'])), array('_code', '_inuse', '_online_user', '_phplib_active_sessions'))) {
                 # Get the key (first) column in the table (we sort it on this to export
                 # each row just once if we split because of the time management)
-                $db->query('SHOW COLUMNS FROM ' . $table);
+                $db->query('SHOW COLUMNS FROM ' . $table . ' WHERE EXTRA LIKE "%auto_increment%"');
                 $db->next_record();
                 $row = $db->toArray();
-                $key_column = $row[0];
+                $key_column = $db->f(0);
+                if (!strlen($key_column)) {
+                    $db->query('SHOW COLUMNS FROM ' . $table);
+                    $db->next_record();
+                    $row = $db->toArray();
+                    $key_column = $row[0];
+                }
                 # Get the amount of rows in this table
                 $db->query('SELECT COUNT(' . $key_column . ') AS num_rows FROM ' . $table);
                 $db->next_record();
                 $num_rows = $db->f('num_rows');
                 # Query the data
-                $db->query('SELECT * FROM ' . $table . ' ORDER BY ' . $key_column . ' LIMIT ' . $current_row . ', ' . ($num_rows - $current_row));
-                $num_fields = $db->num_fields();
-                while ($db->next_record()) {
-                    $row = $db->toArray();
-                    $return .= "\n";
-                    $return .= 'INSERT INTO `' . $table . '` (';
-                    $keys = array();
-                    foreach ($row as $key => $value) {
-                        if (!is_numeric($key)) {
-                            $keys[] = '`' . $key . '`';
+                $bDone = false;
+                while (!$bDone) {
+                    $db->query('SELECT * FROM ' . $table . ' ORDER BY ' . $key_column . ' LIMIT ' . $current_row . ', ' . ((($num_rows - $current_row) > 5000) ? 5000 : ($num_rows - $current_row)));
+                    $num_fields = $db->num_fields();
+                    while ($db->next_record()) {
+                        $row = $db->toArray();
+                        $return .= "\n";
+                        $return .= 'INSERT INTO `' . $table . '` (';
+                        $keys = array();
+                        foreach ($row as $key => $value) {
+                            if (!is_numeric($key)) {
+                                $keys[] = '`' . $key . '`';
+                            }
                         }
-                    }
-                    $return .= implode(', ', $keys);
-                    $return .= ') VALUES (';
-                    for ($i = 0; $i < $num_fields; $i++) {
-                        if (!isset($row[$i])) {
-                            $return .= 'NULL';
-                        } elseif (is_numeric($row[$i])) {
-                            $return .= $row[$i];
+                        $return .= implode(', ', $keys);
+                        $return .= ') VALUES (';
+                        for ($i = 0; $i < $num_fields; $i++) {
+                            if (!isset($row[$i])) {
+                                $return .= 'NULL';
+                            } elseif (is_numeric($row[$i])) {
+                                $return .= $row[$i];
+                            } else {
+                                $return .= "'" . str_replace(array("'", '\\', "\r", "\n"), array("''", '\\\\', "\\r", "\\n"), $row[$i]) . "'";
+                            }
+                            if ($i < ($num_fields - 1)) {
+                                $return .= ', ';
+                            }
+                        }
+                        $return .= ');';
+                        if ($gz) {
+                            gzwrite($handle, $return);
                         } else {
-                            $return .= "'" . str_replace(array("'", '\\', "\r", "\n"), array("''", '\\\\', "\\r", "\\n"), $row[$i]) . "'";
+                            fwrite($handle, $return);
                         }
-                        if ($i < ($num_fields - 1)) {
-                            $return .= ', ';
+                        $return = '';
+                        $current_row ++;
+                        # Time management
+                        if ((time() - $iStart) >= $iMET) {
+                            $db->disconnect();
+                            return array('table' => $table, 'row' => $current_row);
                         }
                     }
-                    $return .= ');';
-                    if ($gz) {
-                        gzwrite($handle, $return);
-                    } else {
-                        fwrite($handle, $return);
-                    }
-                    $return = '';
-                    $current_row ++;
-                    # Time management
-                    if ((time() - $iStart) >= $iMET) {
-                        return array('table' => $table, 'row' => $current_row);
+                    if ($current_row == $num_rows) {
+                        $bDone = true;
                     }
                 }
                 $current_row = 0; # Reset for the next table
@@ -308,6 +321,7 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
         fwrite($handle, $return . "\n");
         fclose($handle);
     }
+    $db->disconnect();
     return true;
 }
 ?>

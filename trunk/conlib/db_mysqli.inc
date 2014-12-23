@@ -146,6 +146,8 @@ class DB_Sql extends DB_Sql_Abstract
             $this->Database = $aCon['database'];
         }
 
+        mysqli_set_charset($dbh, $aCon['encoding']);
+
         $this->User = $aCon['user'];
 
         return $dbh;

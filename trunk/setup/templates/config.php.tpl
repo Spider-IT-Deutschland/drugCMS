@@ -125,6 +125,7 @@ $cfg['db'] = array(
         'database' => '{MYSQL_DB}',
         'user'     => '{MYSQL_USER}',
         'password' => '{MYSQL_PASS}',
+        'encoding' => '{DB_ENCODING}';
     ),
     'nolock'          => {NOLOCK}, // (bool) Flag to not lock tables
     'sequenceTable'   => '',       // (string) will be set later in startup!
