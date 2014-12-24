@@ -33,6 +33,7 @@
  *  modified    2012-12-12
  *  modified    2013-02-18
  *  modified    2014-03-11
+ *  modified    2014-12-18
  *
  *   $Id$:
  * }
@@ -74,27 +75,29 @@
 
 /**
  * Functions in this file:
- *   debug()
- *   sitArrayToString()
- *   sitCascadedArraySort()
- *   sitConvertCmykJpgToSrgbJpg()
- *   sitDeeperCategoriesArticlesArray()
- *   sitExplodeAssociative()
- *   sitExplodeCascading()
- *   sitExplodeLines()
- *   sitGetBrowserInfo()
- *   sitGetFilesInDirectory()
- *   sitGetImageDescription()
- *   sitGetInternalDescription()
- *   sitGetRemoteContentToFile()
- *   sitGetSubdirs()
- *   sitImgScale()
- *   sitMakeCmsType()
- *   sitMoveAllUploadFiles()
- *   sitSafeStringEscape()
- *   sitSendHtmlMail()
- *   sitSetClientProperty()
- *   sitTeaserText()
+ *  debug()
+ *  fwritecsv()
+ *  sitArrayToString()
+ *  sitCascadedArraySort()
+ *  sitConvertCmykJpgToSrgbJpg()
+ *  sitDeeperCategoriesArticlesArray()
+ *  sitExplodeAssociative()
+ *  sitExplodeCascading()
+ *  sitExplodeLines()
+ *  sitGetBrowserInfo()
+ *  sitGetFilesInDirectory()
+ *  sitGetImageDescription()
+ *  sitGetInternalDescription()
+ *  sitGetRemoteContent()
+ *  sitGetRemoteContentToFile()
+ *  sitGetSubdirs()
+ *  sitImgScale()
+ *  sitMakeCmsType()
+ *  sitMoveAllUploadFiles()
+ *  sitSafeStringEscape()
+ *  sitSendHtmlMail()
+ *  sitSetClientProperty()
+ *  sitTeaserText()
  */
 
 if (!defined('CON_FRAMEWORK')) {
@@ -141,6 +144,52 @@ function debug($value, $type = '') {
         }
         echo '</div>';
     }
+}
+
+/**
+ * fwritecsv()
+ * 
+ * Ersatzfunktion für fputcsv ohne die Fehler dessen
+ * 
+ * Parameter:
+ *   $handle - Dateihandler der zu beschreibenden Datei
+ *   $fields - Feldwerte zum schreiben (Array)
+ *   $delimiter - Trennzeichen zwischen den Feldwerten
+ *   $enclosure - Zeichen zum Umschließen von Zeichenfolgen
+ * 
+ * Wie fputcsv() schreibt diese Funktion eine Zeile in eine
+ * bereits geöffnete CSV-Datei, wobei sie allerdings die
+ * Zeichenfolgen (Texte) in $enclosure (meist Anführungszeichen)
+ * einschließt und im Text vorkommenden $enclosure verdoppelt um
+ * Fehler beim Lesen zu verhindern. Zusätzlich werden Zahlen, wenn
+ * $delimiter ein Punkt ist, auch in $enclosue gesetzt um die
+ * Feldgrenzen klar zu definieren.
+ * Der Rückgabewert ist die Anzahl der geschriebenen Zeichen, oder
+ * false wenn ein Fehler aufgetreten ist (z. B. $fields kein Array).
+ */
+function fwritecsv($handle, $fields, $delimiter = ',', $enclosure = '"') {
+    # Check if $fields is an array
+    if (!is_array($fields)) {
+        return false;
+    }
+    # Walk through the data array
+    for ($i = 0, $n = count($fields); $i < $n; $i ++) {
+        # Only 'correct' non-numeric values
+        if (!is_numeric($fields[$i])) {
+            # Duplicate in-value $enclusure's and put the value in $enclosure's
+            $fields[$i] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $fields[$i]) . $enclosure;
+        }
+        # If $delimiter is a dot (.), also correct numeric values
+        if (($delimiter == '.') && (is_numeric($fields[$i]))) {
+            # Put the value in $enclosure's
+            $fields[$i] = $enclosure . $fields[$i] . $enclosure;
+        }
+    }
+    # Combine the data array with $delimiter and write it to the file
+    $line = implode($delimiter, $fields) . "\n";
+    fwrite($handle, $line);
+    # Return the length of the written data
+    return strlen($line);
 }
 
 /**
@@ -535,22 +584,23 @@ function sitGetInternalDescription($idupl) {
 }
 
 /**
- * sitGetRemoteContentToFile()
+ * sitGetRemoteContent()
  *
- * Holt entfernten Inhalt ab und speichert diesen lokal
+ * Holt entfernten Inhalt ab
  *
  * Parameter:
  *   $url - Die Adresse von wo der Inhalt geholt werden soll
- *   $file - Die Datei in der gespeichert werden soll (inkl. Pfad)
  *   $errno - Die Fehlernummer (Rückgabe)
  *   $errmsg - Die Fehlerbeschreibung (Rückgabe)
+ *   $login - Login für den entfernten Server (optional)
+ *   $password - Passwort für den entfernten Server (optional)
  *
  * Die Daten (Webseite, Bild, Feed usw) werden per cURL geholt,
  * wobei Weiterleitungen gefolgt werden.
  * Diese Methode ist unabhängig von allow_url_fopen und verarbeitet
  * auch Anfragen per https (SSL).
  */
-function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
+function sitGetRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '') {
     $options = array(
         CURLOPT_RETURNTRANSFER => true,     // return web page
         CURLOPT_HEADER         => false,    // don't return headers
@@ -562,6 +612,9 @@ function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
         CURLOPT_TIMEOUT        => 10,       // timeout on response
         CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
     );
+    if ((strlen($login) > 0) && (strlen($password) > 0)) {
+        $options[CURLOPT_USERPWD] = $login . ':' . $password;
+    }
     
     $ch      = curl_init($url);
     curl_setopt_array($ch, $options);
@@ -572,9 +625,36 @@ function sitGetRemoteContentToFile($url, $file, $errno, $errmsg) {
     curl_close($ch);
     
     if (($errno == 0) && ($header['http_code'] == 200)) {
+        return $content;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * sitGetRemoteContentToFile()
+ *
+ * Holt entfernten Inhalt ab und speichert diesen lokal
+ *
+ * Parameter:
+ *   $url - Die Adresse von wo der Inhalt geholt werden soll
+ *   $file - Die Datei in der gespeichert werden soll (inkl. Pfad)
+ *   $errno - Die Fehlernummer (Rückgabe)
+ *   $errmsg - Die Fehlerbeschreibung (Rückgabe)
+ *   $login - Login für den entfernten Server (optional)
+ *   $password - Passwort für den entfernten Server (optional)
+ *
+ * Die Daten (Webseite, Bild, Feed usw) werden per cURL geholt,
+ * wobei Weiterleitungen gefolgt werden.
+ * Diese Methode ist unabhängig von allow_url_fopen und verarbeitet
+ * auch Anfragen per https (SSL).
+ */
+function sitGetRemoteContentToFile($url, $file, &$errno, &$errmsg, $login = '', $password = '') {
+    $ret = sitGetRemoteContent($url, $errno, $errmsg, $login, $password);
+    if ($ret !== false) {
         # Content in Datei speichern
         if ($fp = fopen($file, 'w')) {
-            fputs($fp, $content);
+            fputs($fp, $ret);
             fclose($fp);
             return true;
         } else {
@@ -662,7 +742,7 @@ function sitImgScale($img, $maxX = 0, $maxY = 0, $crop = false, $expand = false,
     }
     
     # Cache
-    $md5 = capiImgScaleGetMD5CacheFile($img, $maxX, $maxY, $crop, $expand);
+    $md5 = capiImgScaleGetMD5CacheFile($cfgClient[$client]['path']['frontend'] . $img, $maxX, $maxY, $crop, $expand);
     list($oWidth, $oHeight, $oType) = @getimagesize($cfgClient[$client]['path']['frontend'] . $img);
     if (($oType != IMAGETYPE_GIF) && ($oType != IMAGETYPE_JPEG) && ($oType != IMAGETYPE_PNG)) {
         return false;
@@ -1021,7 +1101,7 @@ function sitSafeStringEscape($string) {
  * Beispiel 1: array('name' => 'xyz', 'email' => 'xyz@abc.de');
  * Beispiel 2: array(array('name' => 'xyz', 'email' => 'xyz@abc.de'), array('name'...
  */
-function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $sport = '', $cc_recipients = '', $bcc_recipients = '') {
+function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $sport = '', $cc_recipients = '', $bcc_recipients = '', $reply_to = '') {
     global $encoding, $lang, $cfg;
     
     # Eingaben ergänzen
@@ -1120,6 +1200,9 @@ function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname
         }
     } elseif (is_array($bcc_recipients)) {
         $oMail->AddBCC($bcc_recipients['email'], ((strlen($bcc_recipients['name'])) ? html_entity_decode($bcc_recipients['name'], ENT_QUOTES, $encoding[$lang]) : $bcc_recipients['email']));
+    }
+    if (strlen($reply_to)) {
+        $oMail->AddReplyTo($reply_to);
     }
     $oMail->Body = $html;
     # Nur-Text-Bereich -->
