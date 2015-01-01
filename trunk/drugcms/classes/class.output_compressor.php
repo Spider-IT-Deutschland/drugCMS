@@ -94,9 +94,13 @@ abstract class Output_Compressor {
                     }
                     $p1 = strpos(strtolower($cnt), '@import url(');
                     while ($p1 !== false) {
-                        $p2 = strpos($cnt, ');', $p1);
-                        $cnt = substr($cnt, 0, $p1) . substr($cnt, ($p2 + 2));
-                        $p1 = strpos(strtolower($cnt), '@import url(');
+                        if ((substr($cnt, ($p1 + 12), 4) == 'http') || (substr($cnt, ($p1 + 13), 4) == 'http')) {
+                            $p1 = strpos(strtolower($cnt), '@import url(', ($p1 + 12));
+                        } else {
+                            $p2 = strpos($cnt, ');', $p1);
+                            $cnt = substr($cnt, 0, $p1) . substr($cnt, ($p2 + 2));
+                            $p1 = strpos(strtolower($cnt), '@import url(');
+                        }
                     }
                     
                     # Append en extra command end character to javascript files

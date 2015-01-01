@@ -297,21 +297,25 @@ function cecOutputCompressor($sCode) {
                         }
                         $p1 = strpos(strtolower($content), '@import url(');
                         while ($p1 !== false) {
-                            $p2 = strpos($content, ');', $p1);
-                            $url = str_replace(array('"', "'"), '', substr($content, ($p1 + 12), ($p2 - $p1 - 12)));
-                            # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
-                            $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
-                            $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
-                            # Exclude files with complete URLs or parameters
-                            if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
-                                $files[] = $path . $url;
+                            if ((substr($content, ($p1 + 12), 4) == 'http') || (substr($content, ($p1 + 13), 4) == 'http')) {
+                                $p1 = strpos(strtolower($content), '@import url(', ($p1 + 12));
                             } else {
-                                # Files with absolute paths must be placed in the HTML head section
-                                $p1 = strpos($sCode, '</head>');
-                                $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="' . $path . $url . '" />' . "\n" . substr($sCode, $p1);
+                                $p2 = strpos($content, ');', $p1);
+                                $url = str_replace(array('"', "'"), '', substr($content, ($p1 + 12), ($p2 - $p1 - 12)));
+                                # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
+                                $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
+                                $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
+                                # Exclude files with complete URLs or parameters
+                                if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
+                                    $files[] = $path . $url;
+                                } else {
+                                    # Files with absolute paths must be placed in the HTML head section
+                                    $p1 = strpos($sCode, '</head>');
+                                    $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="' . $path . $url . '" />' . "\n" . substr($sCode, $p1);
+                                }
+                                $content = substr($content, 0, $p1) . substr($content, ($p2 + 2));
+                                $p1 = strpos(strtolower($content), '@import url(');
                             }
-                            $content = substr($content, 0, $p1) . substr($content, ($p2 + 2));
-                            $p1 = strpos(strtolower($content), '@import url(');
                         }
                         # Is there any content left in this file?
                         if (strlen(trim(str_replace(array("\r", "\n"), '', $content)))) {
@@ -374,21 +378,25 @@ function cecOutputCompressor($sCode) {
                             }
                             $p1 = strpos(strtolower($content), '@import url(');
                             while ($p1 !== false) {
-                                $p2 = strpos($content, ');', $p1);
-                                $url = str_replace(array('"', "'"), '', substr($content, ($p1 + 12), ($p2 - $p1 - 12)));
-                                # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
-                                $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
-                                $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
-                                # Exclude files with complete URLs or parameters
-                                if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
-                                    $files[] = $path . $url;
+                                if ((substr($content, ($p1 + 12), 4) == 'http') || (substr($content, ($p1 + 13), 4) == 'http')) {
+                                    $p1 = strpos(strtolower($content), '@import url(', ($p1 + 12));
                                 } else {
-                                    # Files with absolute paths must be placed in the HTML head section
-                                    $p1 = strpos($sCode, '</head>');
-                                    $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="' . $path . $url . '" />' . "\n" . substr($sCode, $p1);
+                                    $p2 = strpos($content, ');', $p1);
+                                    $url = str_replace(array('"', "'"), '', substr($content, ($p1 + 12), ($p2 - $p1 - 12)));
+                                    # Clean the url from unnessecary path information (just leave the folder name like "css/xxx.css")
+                                    $url = str_replace($cfgClient[$client]['path']['htmlpath'], '', $url);
+                                    $url = ((substr($url, 0, 1) == '/') ? substr($url, 1) : $url);
+                                    # Exclude files with complete URLs or parameters
+                                    if ((substr($url, 0, 7) != 'http://') && (substr($url, 0, 8) != 'https://') && (strpos($url, '?') === false)) {
+                                        $files[] = $path . $url;
+                                    } else {
+                                        # Files with absolute paths must be placed in the HTML head section
+                                        $p1 = strpos($sCode, '</head>');
+                                        $sCode = substr($sCode, 0, $p1) . '<link rel="stylesheet" type="text/css" media="' . $media . '" href="' . $path . $url . '" />' . "\n" . substr($sCode, $p1);
+                                    }
+                                    $content = substr($content, 0, $p1) . substr($content, ($p2 + 2));
+                                    $p1 = strpos(strtolower($content), '@import url(');
                                 }
-                                $content = substr($content, 0, $p1) . substr($content, ($p2 + 2));
-                                $p1 = strpos(strtolower($content), '@import url(');
                             }
                             # Is there any content left in this file?
                             if (strlen(trim(str_replace(array("\r", "\n"), '', $content)))) {
