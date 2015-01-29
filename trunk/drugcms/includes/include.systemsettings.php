@@ -102,7 +102,7 @@ if (is_array($settings))
                 #ignore record
 				
             } else if (($action == "systemsettings_edit_item") && (stripslashes($systype) == $key) && (stripslashes($sysname) == $type)) {
-    			if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password') || (strpos(strtolower($aValue['name'], '-password-')) !== false) || (strpos(strtolower($aValue['name'], '_password_')) !== false) || (substr(strtolower($aValue['name'], -9)) == '-password') || (substr(strtolower($aValue['name'], -9)) == '_password') || (substr(strtolower($aValue['name'], 0, 9)) == 'password-') || (substr(strtolower($aValue['name'], 0, 9)) == 'password_')) {
+    			if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password') || (strpos(strtolower($aValue['name']), '-password-') !== false) || (strpos(strtolower($aValue['name']), '_password_') !== false) || (substr(strtolower($aValue['name']), -9) == '-password') || (substr(strtolower($aValue['name']), -9) == '_password') || (substr(strtolower($aValue['name']), 0, 9) == 'password-') || (substr(strtolower($aValue['name']), 0, 9) == 'password_')) {
                     $oInputboxValue = new cHTMLTextbox ("sysvalue", '');
                     $oInputboxValue->setStyle("border:1px;border-style:solid;border-color:black;width:200px;");
                 } else {
@@ -131,7 +131,7 @@ if (is_array($settings))
                     $type = sprintf($sMouseoverTemplate, htmlspecialchars(addslashes($type), ENT_QUOTES), $sShort);
                 }
                 
-    			if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password') || (strpos(strtolower($aValue['name'], '-password-')) !== false) || (strpos(strtolower($aValue['name'], '_password_')) !== false) || (substr(strtolower($aValue['name'], -9)) == '-password') || (substr(strtolower($aValue['name'], -9)) == '_password') || (substr(strtolower($aValue['name'], 0, 9)) == 'password-') || (substr(strtolower($aValue['name'], 0, 9)) == 'password_')) {
+    			if ((strtolower($aValue['name']) == 'pass') || (strtolower($aValue['name']) == 'password') || (strpos(strtolower($aValue['name']), '-password-') !== false) || (strpos(strtolower($aValue['name']), '_password_') !== false) || (substr(strtolower($aValue['name']), -9) == '-password') || (substr(strtolower($aValue['name']), -9) == '_password') || (substr(strtolower($aValue['name']), 0, 9) == 'password-') || (substr(strtolower($aValue['name']), 0, 9) == 'password_')) {
                     $value['value'] = '&bull;&bull;&bull;&bull;&bull;&bull;';
                 } elseif (strlen($value['value']) > 35) {
                     $sShort = htmlspecialchars(capiStrTrimHard($value['value'], 35));
