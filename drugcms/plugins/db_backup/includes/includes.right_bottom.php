@@ -208,13 +208,13 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                     # while restoring the database, stopping the restore process
                     $db->query('SHOW CREATE TABLE `' . $table . '`');
                     $db->next_record();
-                    $row2 = $db->toArray();
+                    $row2 = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                     $return .= str_replace('CREATE TABLE `', 'CREATE TABLE IF NOT EXISTS `', $row2[1]) . ";\n";
                 } else {
                     $return .= 'DROP TABLE IF EXISTS `' . $table . '`;' . "\n";
                     $db->query('SHOW CREATE TABLE `' . $table . '`');
                     $db->next_record();
-                    $row2 = $db->toArray();
+                    $row2 = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                     $return .= $row2[1] . ";\n";
                 }
                 # Only backup data which is supposed to be permanent
@@ -237,12 +237,12 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                 # each row just once if we split because of the time management)
                 $db->query('SHOW COLUMNS FROM ' . $table . ' WHERE EXTRA LIKE "%auto_increment%"');
                 $db->next_record();
-                $row = $db->toArray();
+                $row = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                 $key_column = $db->f(0);
                 if (!strlen($key_column)) {
                     $db->query('SHOW COLUMNS FROM ' . $table);
                     $db->next_record();
-                    $row = $db->toArray();
+                    $row = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                     $key_column = $row[0];
                 }
                 # Get the amount of rows in this table
@@ -255,7 +255,7 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                     $db->query('SELECT * FROM ' . $table . ' ORDER BY ' . $key_column . ' LIMIT ' . $current_row . ', ' . ((($num_rows - $current_row) > 5000) ? 5000 : ($num_rows - $current_row)));
                     $num_fields = $db->num_fields();
                     while ($db->next_record()) {
-                        $row = $db->toArray();
+                        $row = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                         $return .= "\n";
                         $return .= 'INSERT INTO `' . $table . '` (';
                         $keys = array();
