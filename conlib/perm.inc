@@ -732,24 +732,22 @@ class Contenido_Perm
 
         global $area_tree, $sess, $perm, $cfg;
 
-        if (!is_object($this->db)) {
-            $this->db = new DB_Contenido;
-        }
+        $this->db = new DB_Contenido;
 
         $mainarea = $this->getIDForArea($mainarea);
 
         //if $area_tree for this area is not register
-        if (!isset ($area_tree[$mainarea]))
+        if ((!isset ($area_tree[$mainarea])) || (strlen($area_tree[$mainarea]) == 0) || ((is_array($area_tree[$mainarea])) && (count($area_tree[$mainarea]) == 0)))
         {
             $sess->register("area_tree");
+            
+            $sql = 'SELECT * FROM ' . $cfg["tab"]["area"];
+            $this->db->query($sql);
 
             // parent_id uses the name not the idarea
-            $sql = "SELECT
-                        name
-                    FROM
-                        ".$cfg["tab"]["area"]."
-                    WHERE
-                        idarea='$mainarea'";
+            $sql = "SELECT name
+                    FROM ".$cfg["tab"]["area"]."
+                    WHERE idarea=$mainarea";
 
             $this->db->query($sql);
             $this->db->next_record();
