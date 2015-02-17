@@ -39,8 +39,15 @@ if (!defined('CON_FRAMEWORK')) {
 include_once($cfg['path']['contenido'].'includes/grouprights.inc.php');
 
 //set the areas which are in use fore selecting these
-$possible_area = "'".implode("','", $area_tree[$perm->showareas("con")])."'";
-$sql = "SELECT A.idarea, A.idaction, A.idcat, B.name, C.name FROM ".$cfg["tab"]["rights"]." AS A, ".$cfg["tab"]["area"]." AS B, ".$cfg["tab"]["actions"]." AS C WHERE user_id='".Contenido_Security::escapeDB($groupid, $db)."' AND idclient='".Contenido_Security::toInteger($rights_client)."' AND A.type = 1 AND idlang='".Contenido_Security::toInteger($rights_lang)."' AND B.idarea IN ($possible_area) AND idcat!='0' AND A.idaction = C.idaction AND A.idarea = C.idarea AND A.idarea = B.idarea";
+$possible_area = '"' . implode('", "', $area_tree[$perm->showareas("con")]) . '"';
+$sql = 'SELECT rights.idarea, rights.idaction, rights.idcat, area.name, actions.name
+        FROM ' . $cfg['tab']['rights'] . ' AS rights INNER JOIN ' . $cfg['tab']['area'] . ' AS area ON rights.idarea = area.idarea INNER JOIN ' . $cfg['tab']['actions'] . ' AS actions ON rights.idaction = actions.idaction AND rights.idarea = actions.idarea
+        WHERE ((rights.user_id="' . Contenido_Security::escapeDB($groupid, $db) . '")
+           AND (rights.idclient=' . Contenido_Security::toInteger($rights_client) . ')
+           AND (rights.type=1)
+           AND (rights.idlang=' . Contenido_Security::toInteger($rights_lang) . ')
+           AND (area.idarea IN (' . $possible_area . '))
+           AND (rights.idcat!=0))';
 $db->query($sql);
 $rights_list_old = array ();
 while ($db->next_record()) { //set a new rights list fore this user
