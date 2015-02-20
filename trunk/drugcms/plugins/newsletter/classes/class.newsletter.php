@@ -324,7 +324,7 @@ class Newsletter extends Item
     protected function _callbackReplaceUrl($sUrl) {
         global $client, $cfgClient;
         $returnUrl = '';
-        print_r($sUrl);
+#print_r($sUrl);
         if($sUrl[1] == "url") {
             if(empty($sUrl[3])) {
                 $returnUrl = $sUrl[1]."(".$sUrl[2];
@@ -550,17 +550,13 @@ class Newsletter extends Item
 
                     $sHTML = $this->_deChunkHTTPBody($sHeader, $sHTML);
 
-                    // If someone likes to use anchors in html newsletters (*sigh*)
-                    // the base href tag has to be removed - that means, we have to fix
-                    // all source paths manually...
-                    if (getEffectiveSetting('newsletter', 'remove_base_tag', "false") == "true") {
-                        // Remove base tag
-                        $sHTML = preg_replace('/<base href=(.*?)>/is', '', $sHTML, 1);
-                        $sHTML = preg_replace_callback('/(url)\((\'|\")?(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)[\'|\"]?\)/', array($this, "_callbackReplaceUrl"), $sHTML);
-                        $sHTML = preg_replace_callback('/\b(src|href|ftp)[ ]*=[ ]*"(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)"/', array($this, "_callbackReplaceUrl"), $sHTML);
-                        // Now replace anchor tags to the newsletter article itself just by the anchor
-                        $sHTML = str_replace($cfgClient[$client]['path']['htmlpath']."front_content.php?idart=".$iIDArt."#", "#", $sHTML);
-                    }
+                    // Remove base tag
+                    $sHTML = preg_replace('/<base href=(.*?)>/is', '', $sHTML, 1);
+                    // Make URLs absolute
+                    $sHTML = preg_replace_callback('/(url)\((\'|\")?(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)[\'|\"]?\)/', array($this, "_callbackReplaceUrl"), $sHTML);
+                    $sHTML = preg_replace_callback('/\b(src|href|ftp)[ ]*=[ ]*"(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)"/', array($this, "_callbackReplaceUrl"), $sHTML);
+                    // Now replace anchor tags to the newsletter article itself just by the anchor
+                    $sHTML = str_replace($cfgClient[$client]['path']['htmlpath']."front_content.php?idart=".$iIDArt."#", "#", $sHTML);
 
                     $sReturn = $sHTML;
                 } else {
@@ -766,7 +762,7 @@ class Newsletter extends Item
         
         // Fix source path
         // TODO: Test any URL specification that may exist under the sun...
-        $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
+        $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
         $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$cfgClient[$client]['path']['htmlpath'].'$1\')', $sMessageHTML);
         $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
         $sMessageHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sMessageHTML);
@@ -793,6 +789,13 @@ class Newsletter extends Item
             $iPort                  = intval(getEffectiveSetting('newsletter', 'port'));
             $sUsername              = getEffectiveSetting('newsletter', 'username');
             $sPassword              = getEffectiveSetting('newsletter', 'password');
+            if (strlen($sMailer) == 0) {
+                $sMailer			= strtolower(getEffectiveSetting('email', 'mailer'));
+                $sHost              = getEffectiveSetting('email', 'host');
+                $iPort              = intval(getEffectiveSetting('email', 'port'));
+                $sUsername          = getEffectiveSetting('email', 'username');
+                $sPassword          = getEffectiveSetting('email', 'password');
+            }
 			if (strlen($sMailer) == 0) {
 				setSystemProperty('newsletter', 'mailer', 'mail');
 				$sMailer		    = 'mail';
@@ -943,7 +946,7 @@ class Newsletter extends Item
         
         // Fix source path
         // TODO: Test any URL specification that may exist under the sun...
-        $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
+        $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
         $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$cfgClient[$client]['path']['htmlpath'].'$1\')', $sMessageHTML);
         $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
         $sMessageHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sMessageHTML);
@@ -1010,6 +1013,21 @@ class Newsletter extends Item
                     $db->next_record();
                     $news_idart = $db->f('idart');
                     $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $client, 'lang' => $lang), true);
+                    # Make sure the URL is absolute
+                    if (substr($link, 0, 4) != 'http') {
+                        if (substr($link, 0, 17) == 'front_content.php') {
+                            $link = $cfgClient[$client]['path']['htmlpath'] . $link;
+                        } elseif (substr($link, 0, 1) == '/') {
+                            if (substr($link, 0, 2) == '//') {
+                                $root = $cfgClient[$client]['path']['htmlpath'];
+                                $link = substr($root, 0, (strpos($root, ':') + 1)) . $link;
+                            } else {
+                                $link = $cfgClient[$client]['path']['htmlpath'] . substr($link, 1);
+                            }
+                        } else {
+                            $link = $cfgClient[$client]['path']['htmlpath'] . $link;
+                        }
+                    }
                     $p1 = strpos($sRcpMsgHTML, '<body');
                     if ($p1 !== false) {
                         $p1 = (strpos($sRcpMsgHTML, '>', $p1) + 1);
@@ -1062,21 +1080,28 @@ class Newsletter extends Item
                     $sUsername              = getEffectiveSetting('newsletter', 'username');
                     $sPassword              = getEffectiveSetting('newsletter', 'password');
                     if (strlen($sMailer) == 0) {
-                        setSystemProperty('newsletter', 'mailer', 'mail');
+                        $sMailer			= strtolower(getEffectiveSetting('email', 'mailer'));
+                        $sHost              = getEffectiveSetting('email', 'host');
+                        $iPort              = intval(getEffectiveSetting('email', 'port'));
+                        $sUsername          = getEffectiveSetting('email', 'username');
+                        $sPassword          = getEffectiveSetting('email', 'password');
+                    }
+                    if (strlen($sMailer) == 0) {
+                        setClientProperty('email', 'mailer', 'mail');
                         $sMailer		    = 'mail';
                     }
                     if (strlen($sHost) == 0) {
-                        setSystemProperty('newsletter', 'host', '');
+                        setClientProperty('email', 'host', '');
                     }
                     if ($iPort == 0) {
-                        setSystemProperty('newsletter', 'port', '25');
+                        setClientProperty('email', 'port', '25');
                         $iPort = 25;
                     }
                     if (strlen($sUsername) == 0) {
-                        setSystemProperty('newsletter', 'username', '');
+                        setClientProperty('email', 'username', '');
                     }
                     if (strlen($sPassword) == 0) {
-                        setSystemProperty('newsletter', 'password', '');
+                        setClientProperty('email', 'password', '');
                     }
                     $oMail->Mailer		    = $sMailer;
                     if ($sMailer == 'smtp') {
