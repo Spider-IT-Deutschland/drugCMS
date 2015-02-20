@@ -269,7 +269,7 @@ class cNewsletterJob extends Item
 
     public function runJob()
     {
-        global $cfg, $recipient;
+        global $cfg, $cfgClient, $client, $recipient;
 
         $iCount = 0;
         if ($this->get("status") == 2) {
@@ -371,7 +371,7 @@ class cNewsletterJob extends Item
                 
                 // Fix source path
                 // TODO: Test any URL specification that may exist under the sun...
-                $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
+                $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
                 $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$cfgClient[$client]['path']['htmlpath'].'$1\')', $sMessageHTML);
                 $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
                 $sMessageHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sMessageHTML);
@@ -465,6 +465,13 @@ class cNewsletterJob extends Item
                     $iPort                  = intval(getEffectiveSetting('newsletter', 'port'));
                     $sUsername              = getEffectiveSetting('newsletter', 'username');
                     $sPassword              = getEffectiveSetting('newsletter', 'password');
+                    if (strlen($sMailer) == 0) {
+                        $sMailer			= strtolower(getEffectiveSetting('email', 'mailer'));
+                        $sHost              = getEffectiveSetting('email', 'host');
+                        $iPort              = intval(getEffectiveSetting('email', 'port'));
+                        $sUsername          = getEffectiveSetting('email', 'username');
+                        $sPassword          = getEffectiveSetting('email', 'password');
+                    }
                     if (strlen($sMailer) == 0) {
                         setSystemProperty('newsletter', 'mailer', 'mail');
                         $sMailer		    = 'mail';
