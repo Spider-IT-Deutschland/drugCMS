@@ -175,7 +175,7 @@ function fwritecsv($handle, $fields, $delimiter = ',', $enclosure = '"') {
     # Walk through the data array
     for ($i = 0, $n = count($fields); $i < $n; $i ++) {
         # Only 'correct' non-numeric values
-        if (!is_numeric($fields[$i])) {
+        if ((!is_numeric($fields[$i])) || (intval(substr(trim($fields[$i]), 0, 1)) == 0)) {
             # Duplicate in-value $enclusure's and put the value in $enclosure's
             $fields[$i] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $fields[$i]) . $enclosure;
         }
@@ -1066,7 +1066,10 @@ function sitSafeStringEscape($string) {
     return $targetString;
 }
 
-/**
+/** DEPRECATED
+ *
+ * BITTE NICHT MEHR VERWENDEN, VERWENDE STATTDESSEN sendHtmlMail() in drugcms/includes/functions.general.php
+ *
  * sitSendHtmlMail()
  *
  * Sendet eine HTML-Mail mit HTML- und Textteil
@@ -1102,136 +1105,13 @@ function sitSafeStringEscape($string) {
  * Beispiel 2: array(array('name' => 'xyz', 'email' => 'xyz@abc.de'), array('name'...
  */
 function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $sport = '', $cc_recipients = '', $bcc_recipients = '', $reply_to = '') {
-    global $encoding, $lang, $cfg;
-    
-    # Eingaben ergänzen
-    if (!is_array($attachments)) {
-        $attachments = array($attachments);
-    }
-    $sname = html_entity_decode(((strlen($sname)) ? $sname : getEffectiveSetting('email', 'sender-name')), ENT_QUOTES, $encoding[$lang]);
-    $smail = html_entity_decode(((strlen($smail)) ? $smail : getEffectiveSetting('email', 'sender-email')), ENT_QUOTES, $encoding[$lang]);
-    if (strlen(trim($sname)) == 0) {
-        $sname = $smail;
-    }
-    $mailer = strtolower(((strlen($mailer)) ? $mailer : getEffectiveSetting('email', 'mailer', 'mail')));
-    if (strlen($mailer) == 0) {
-        $mailer = 'mail';
-    }
-    if (strtolower($mailer) == 'smtp') {
-        $sserver = ((strlen($sserver)) ? $sserver : getEffectiveSetting('email', 'smtp-server'));
-        $slogin = ((strlen($slogin)) ? $slogin : getEffectiveSetting('email', 'smtp-login'));
-        $spass = ((strlen($spass)) ? $spass : getEffectiveSetting('email', 'smtp-password'));
-        if (substr($spass, 0, 3) == '&#x') {
-            $spass = html_entity_decode($spass, ENT_QUOTES, $encoding[$lang]);
-        }
-        $sport = intval(((strlen($sport)) ? $sport : getEffectiveSetting('email', 'smtp-port', 25)));
-        if ($sport == 0) {
-            $sport = 25;
-        }
-    }
-    
-    # Prüfen, ob genügend Angaben vorliegen
-    $bOK = true;
-    if (strlen($html) == 0) {
-        echo '<pre>No message specified</pre>';
-        $bOK = false;
-    }
-    if (strlen($subject) == 0) {
-        echo '<pre>No subject specified</pre>';
-        $bOK = false;
-    }
-    if ((!is_array($recipients)) || ((strlen($recipients['email']) == 0) && (strlen($recipients[0]['email']) == 0))) {
-        echo '<pre>No recipient(s) specified</pre>';
-        $bOK = false;
-    }
-    if (strlen($smail) == 0) {
-        echo '<pre>No sender email address specified</pre>';
-        $bOK = false;
-    }
-    if (($mailer == 'smtp') && ((strlen($sserver) == 0) || (strlen($slogin) == 0) || (strlen($spass) == 0))) {
-        echo '<pre>SMTP set as transport protocol, but no login data specified</pre>';
-        $bOK = false;
-    }
-    if (!$bOK) {
-        return false;
-    }
-    
-    # Mail aufbereiten und versenden
-    $oMail = new PHPMailer();
-    $oLang = new Language();
-    $oLang->loadByPrimaryKey($lang);
-    $oMail->setLanguage($oLang->getProperty('language', 'code'), $cfg['path']['contenido'] . $cfg['path']['external'] . 'PHPMailer/language/');
-    $oMail->CharSet = $encoding[$lang];
-    $oMail->IsHTML(true);
-    $oMail->Mailer = $mailer;
-    if ($mailer == 'smtp') {
-        $oMail->SMTPAuth = true;
-        $oMail->Host     = $sserver;
-        $oMail->Port     = $sport;
-        $oMail->Username = $slogin;
-        $oMail->Password = $spass;
-    }
-    $oMail->Subject = html_entity_decode($subject, ENT_QUOTES, $encoding[$lang]);
-    $oMail->From = $smail;
-    $oMail->FromName = $sname;
-    if (is_array($recipients[0])) {
-        for ($i = 0, $n = count($recipients); $i < $n; $i ++) {
-            if (strlen($recipients[$i]['email'])) {
-                $oMail->AddAddress($recipients[$i]['email'], ((strlen($recipients[$i]['name'])) ? html_entity_decode($recipients[$i]['name'], ENT_QUOTES, $encoding[$lang]) : $recipients[$i]['email']));
-            }
-        }
-    } else {
-        $oMail->AddAddress($recipients['email'], ((strlen($recipients['name'])) ? html_entity_decode($recipients['name'], ENT_QUOTES, $encoding[$lang]) : $recipients['email']));
-    }
-    if (is_array($cc_recipients[0])) {
-        for ($i = 0, $n = count($cc_recipients); $i < $n; $i ++) {
-            if (strlen($cc_recipients[$i]['email'])) {
-                $oMail->AddCC($cc_recipients[$i]['email'], ((strlen($cc_recipients[$i]['name'])) ? html_entity_decode($cc_recipients[$i]['name'], ENT_QUOTES, $encoding[$lang]) : $cc_recipients[$i]['email']));
-            }
-        }
-    } elseif (is_array($cc_recipients)) {
-        $oMail->AddCC($cc_recipients['email'], ((strlen($cc_recipients['name'])) ? html_entity_decode($cc_recipients['name'], ENT_QUOTES, $encoding[$lang]) : $cc_recipients['email']));
-    }
-    if (is_array($bcc_recipients[0])) {
-        for ($i = 0, $n = count($bcc_recipients); $i < $n; $i ++) {
-            if (strlen($bcc_recipients[$i]['email'])) {
-                $oMail->AddBCC($bcc_recipients[$i]['email'], ((strlen($bcc_recipients[$i]['name'])) ? html_entity_decode($bcc_recipients[$i]['name'], ENT_QUOTES, $encoding[$lang]) : $bcc_recipients[$i]['email']));
-            }
-        }
-    } elseif (is_array($bcc_recipients)) {
-        $oMail->AddBCC($bcc_recipients['email'], ((strlen($bcc_recipients['name'])) ? html_entity_decode($bcc_recipients['name'], ENT_QUOTES, $encoding[$lang]) : $bcc_recipients['email']));
-    }
-    if (strlen($reply_to)) {
-        $oMail->AddReplyTo($reply_to);
-    }
-    $oMail->Body = $html;
-    # Nur-Text-Bereich -->
-    $sMsg = substr($html, strpos($html, '<body'));
-    $sMsg = str_replace(array("\n", '</p>', '<br />', '<br>', '</li>'), array('', "</p>\n\n", "\n", "\n", "\n"), $sMsg);
-    $sMsg = trim(strip_tags($sMsg));
-    $sMsg = explode("\n", $sMsg);
-    for ($i = 0, $n = count($sMsg); $i < $n; $i ++) {
-        $sMsg[$i] = trim($sMsg[$i]);
-    }
-    $sMsg = implode("\n", $sMsg);
-    $sMsg = html_entity_decode($sMsg, ENT_QUOTES, $encoding[$lang]);
-    $sMsg = capiStrReplaceDiacritics($sMsg);
-    # <-- Nur-Text-Bereich
-    $oMail->AltBody = $sMsg;
-    for ($i = 0, $n = count($attachments); $i < $n; $i ++) {
-        if (is_file($attachments[$i])) {
-            $oMail->AddAttachment($attachments[$i]);
-        }
-    }
-    $oMail->WordWrap = 76;
-    if ($oMail->Send()) {
-        return true;
-    } else {
-        echo '<pre>' . $oMail->ErrorInfo . '</pre>';
-    }
+    return sendHtmlMail($html, $subject, $recipients, $attachments, $sname, $smail, $mailer, $sserver, $slogin, $spass, $sport, $cc_recipients, $bcc_recipients, $reply_to);
 }
 
-/**
+/** DEPRECATED
+ *
+ * BITTE NICHT MEHR VERWENDEN, VERWENDE STATTDESSEN setClientProperty() in drugcms/includes/functions.general.php
+ *
  * sitSetClientProperty()
  *
  * Speichert eine Mandanteneinstellung
@@ -1245,35 +1125,7 @@ function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname
  * eine gleichnamige vorhandene Einstellung.
  */
 function sitSetClientProperty($type, $name, $value) {	
-	global $client, $cfg;
-    
-	if ((strlen($type)) && (strlen($name))) {
-        $type = sitSafeStringEscape($type);
-        $name = sitSafeStringEscape($name);
-        $value = sitSafeStringEscape($value);
-        $db = new DB_Contenido();
-        $sql = 'SELECT value
-                FROM ' . $cfg['tab']['properties'] . '
-                WHERE ((idclient=' . $client . ')
-                   AND (itemtype="clientsetting")
-                   AND (type="' . $type . '")
-                   AND (name="' . $name . '"))';
-        $db->query($sql);
-        if ($db->next_record()) {
-            $sql = 'UPDATE ' . $cfg['tab']['properties'] . '
-                    SET value = "' . $value . '",
-                        modified = "' . date('Y-m-d H:i:n') . '",
-                        modifiedby = "' . $auth->auth['uid'] . '"
-                    WHERE ((idclient=' . $client . ')
-                       AND (itemtype="clientsetting")
-                       AND (type="' . $type . '")
-                       AND (name="' . $name . '"))';
-        } else {
-            $sql = 'INSERT INTO ' . $cfg['tab']['properties'] . ' (idclient, itemtype, itemid, type, name, value, author, created, modified, modifiedby)
-                    VALUES (' . $client . ', "clientsetting", 1, "' . $type . '", "' . $name . '", "' . $value . '", "' . $auth->auth['uid'] . '", "' . date('Y-m-d H:i:n') . '", "' . date('Y-m-d H:i:n') . '", "' . $auth->auth['uid'] . '")';
-        }
-        $db->query($sql);
-	}
+	setClientProperty($type, $name, $value);
 }
 
 /**

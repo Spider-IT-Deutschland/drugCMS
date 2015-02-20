@@ -903,6 +903,7 @@ function setSystemProperty($type, $name, $value, $idsystemprop = 0)
 	}
 
 	$db_systemprop->query($sql);
+    $db_systemprop->disconnect();
 }
 
 /**
@@ -916,9 +917,11 @@ function deleteSystemProperty($type, $name)
 	global $cfg;
 
 	$db_systemprop = new DB_Contenido;
-
-	$sql = "DELETE FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
+    $type = Contenido_Security::escapeDB($type, $db_systemprop);
+    $name = Contenido_Security::escapeDB($name, $db_systemprop);
+	$sql = "DELETE FROM ".$cfg["tab"]["system_prop"]." WHERE type='".$type."' AND name='".$name."'";
 	$db_systemprop->query($sql);
+    $db_systemprop->disconnect();
 }
 
 /**
@@ -1010,6 +1013,71 @@ function getSystemPropertiesByType($sType)
 
 	return $aResult; 
 } 
+
+/**
+ * Sets a client property entry
+ * 
+ * @param string $type The type of the item
+ * @param string $name The name of the item
+ * @param string $value The value of the item
+ */
+function setClientProperty($type, $name, $value) {	
+	global $client, $cfg, $auth;
+    
+	if ((strlen($type)) && (strlen($name))) {
+        $db_clientprop = new DB_Contenido();
+        $type = Contenido_Security::escapeDB($type, $db_clientprop);
+        $name = Contenido_Security::escapeDB($name, $db_clientprop);
+        $value = Contenido_Security::escapeDB($value, $db_clientprop);
+        $sql = 'SELECT value
+                FROM ' . $cfg['tab']['properties'] . '
+                WHERE ((idclient=' . $client . ')
+                   AND (itemtype="clientsetting")
+                   AND (type="' . $type . '")
+                   AND (name="' . $name . '"))';
+        $db_clientprop->query($sql);
+        if ($db_clientprop->next_record()) {
+            $sql = 'UPDATE ' . $cfg['tab']['properties'] . '
+                    SET value = "' . $value . '",
+                        modified = "' . date('Y-m-d H:i:n') . '",
+                        modifiedby = "' . $auth->auth['uid'] . '"
+                    WHERE ((idclient=' . $client . ')
+                       AND (itemtype="clientsetting")
+                       AND (type="' . $type . '")
+                       AND (name="' . $name . '"))';
+        } else {
+            $sql = 'INSERT INTO ' . $cfg['tab']['properties'] . ' (idclient, itemtype, itemid, type, name, value, author, created, modified, modifiedby)
+                    VALUES (' . $client . ', "clientsetting", 1, "' . $type . '", "' . $name . '", "' . $value . '", "' . $auth->auth['uid'] . '", "' . date('Y-m-d H:i:n') . '", "' . date('Y-m-d H:i:n') . '", "' . $auth->auth['uid'] . '")';
+        }
+        $db_clientprop->query($sql);
+        $db_clientprop->disconnect();
+        return true;
+	} else {
+        return false;
+    }
+}
+
+/**
+ * Remove a client property entry
+ * 
+ * @param string $type The type of the item
+ * @param string $name The name of the item
+ */
+function deleteClientProperty($type, $name) {
+	global $client, $cfg;
+
+	$db_clientprop = new DB_Contenido();
+    $type = Contenido_Security::escapeDB($type, $db_clientprop);
+    $name = Contenido_Security::escapeDB($name, $db_clientprop);
+	$sql = 'DELETE FROM ' . $cfg['tab']['properties'] . '
+            WHERE ((idclient=' . $client . ')
+               AND (itemtype="clientsetting")
+               AND (itemid=1)
+               AND (type="' . $type . '")
+               AND (name="' . $name . '"))';
+	$db_clientprop->query($sql);
+    $db_clientprop->disconnect();
+}
 
 /**
  * Returns the current effective setting for a property.
@@ -2441,4 +2509,166 @@ function IP_match($network, $mask, $ip)
         return false;
     }
 }
+
+/**
+ * function sendHtmlMail()
+ *
+ * Sends an html email with both html and plain text body,
+ * allows to send multiple attachments, uses system and/or
+ * client settings for sender information, sending method and
+ * server/account information, and handles multiple primary,
+ * CC and BCC recipients and a separate reply to address.
+ *
+ * @param string $html The HTML body of the email
+ * @param string $subject The subject of the email
+ * @param array $recipients Array holding either 'name' and 'email' fields,
+ *                          or an array of these (multiple recipients)
+ * @param array $attachments Filename (full path) or array of filenames (optional)
+ * @param string $sname Sender name (optional if specified in system/client settings)
+ * @param string $smail Sender email address (optional if specified in system/client settings)
+ * @param string $mailer Mailer to use, one of 'mail', 'sendmail', 'qmail', 'smtp' (optional, defaults to 'mail')
+ * @param string $sserver Server address for smtp transport (optional)
+ * @param string $slogin Login name for smtp transport (optional)
+ * @param string $spass Password for smtp transport (optional)
+ * @param int $iport Port number for smtp transport (optional)
+ * @param array $cc_recipients Array holding either 'name' and 'email' fields,
+ *                             or an array of these (multiple recipients) (optional)
+ * @param array $bcc_recipients Array holding either 'name' and 'email' fields,
+ *                              or an array of these (multiple recipients) (optional)
+ * @param string $reply_to Email address to send answers to (optional)
+ * @param int $ilang Language number to use (optional, needed for newsletter only)
+ */
+function sendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = '', $smail = '', $mailer = '', $sserver = '', $slogin = '', $spass = '', $iport = 0, $cc_recipients = '', $bcc_recipients = '', $reply_to = '', $ilang = 0) {
+    global $encoding, $lang, $cfg;
+    
+    # Check and complete paramaters
+    if ($ilang == 0) {
+        $ilang = $lang;
+    }
+    if (!is_array($attachments)) {
+        $attachments = array($attachments);
+    }
+    $sname = html_entity_decode(((strlen($sname)) ? $sname : getEffectiveSetting('email', 'sender-name')), ENT_QUOTES, $encoding[$ilang]);
+    $smail = html_entity_decode(((strlen($smail)) ? $smail : getEffectiveSetting('email', 'sender-email')), ENT_QUOTES, $encoding[$ilang]);
+    if (strlen(trim($sname)) == 0) {
+        $sname = $smail;
+    }
+    $mailer = strtolower(((strlen($mailer)) ? $mailer : getEffectiveSetting('email', 'mailer', 'mail')));
+    if (strlen($mailer) == 0) {
+        $mailer = 'mail';
+    }
+    if (strtolower($mailer) == 'smtp') {
+        $sserver = ((strlen($sserver)) ? $sserver : getEffectiveSetting('email', 'smtp-server'));
+        $slogin = ((strlen($slogin)) ? $slogin : getEffectiveSetting('email', 'smtp-login'));
+        $spass = ((strlen($spass)) ? $spass : getEffectiveSetting('email', 'smtp-password'));
+        if (substr($spass, 0, 3) == '&#x') {
+            $spass = html_entity_decode($spass, ENT_QUOTES, $encoding[$ilang]);
+        }
+        $iport = intval((($iport) ? $iport : getEffectiveSetting('email', 'smtp-port', 25)));
+        if ($iport == 0) {
+            $iport = 25;
+        }
+    }
+    
+    # Prüfen, ob genügend Angaben vorliegen
+    $bOK = true;
+    if (strlen($html) == 0) {
+        echo '<pre>No message specified</pre>';
+        $bOK = false;
+    }
+    if (strlen($subject) == 0) {
+        echo '<pre>No subject specified</pre>';
+        $bOK = false;
+    }
+    if ((!is_array($recipients)) || ((strlen($recipients['email']) == 0) && (strlen($recipients[0]['email']) == 0))) {
+        echo '<pre>No recipient(s) specified</pre>';
+        $bOK = false;
+    }
+    if (strlen($smail) == 0) {
+        echo '<pre>No sender email address specified</pre>';
+        $bOK = false;
+    }
+    if (($mailer == 'smtp') && ((strlen($sserver) == 0) || (strlen($slogin) == 0) || (strlen($spass) == 0))) {
+        echo '<pre>SMTP set as transport protocol, but no login data specified</pre>';
+        $bOK = false;
+    }
+    if (!$bOK) {
+        return false;
+    }
+    
+    # Mail aufbereiten und versenden
+    $oMail = new PHPMailer();
+    $oLang = new Language();
+    $oLang->loadByPrimaryKey($ilang);
+    $oMail->setLanguage($oLang->getProperty('language', 'code'), $cfg['path']['contenido'] . $cfg['path']['external'] . 'PHPMailer/language/');
+    $oMail->CharSet = $encoding[$ilang];
+    $oMail->IsHTML(true);
+    $oMail->Mailer = $mailer;
+    if ($mailer == 'smtp') {
+        $oMail->SMTPAuth = true;
+        $oMail->Host     = $sserver;
+        $oMail->Port     = $iport;
+        $oMail->Username = $slogin;
+        $oMail->Password = $spass;
+    }
+    $oMail->Subject = html_entity_decode($subject, ENT_QUOTES, $encoding[$ilang]);
+    $oMail->From = $smail;
+    $oMail->FromName = $sname;
+    if (is_array($recipients[0])) {
+        for ($i = 0, $n = count($recipients); $i < $n; $i ++) {
+            if (strlen($recipients[$i]['email'])) {
+                $oMail->AddAddress($recipients[$i]['email'], ((strlen($recipients[$i]['name'])) ? html_entity_decode($recipients[$i]['name'], ENT_QUOTES, $encoding[$ilang]) : $recipients[$i]['email']));
+            }
+        }
+    } else {
+        $oMail->AddAddress($recipients['email'], ((strlen($recipients['name'])) ? html_entity_decode($recipients['name'], ENT_QUOTES, $encoding[$ilang]) : $recipients['email']));
+    }
+    if (is_array($cc_recipients[0])) {
+        for ($i = 0, $n = count($cc_recipients); $i < $n; $i ++) {
+            if (strlen($cc_recipients[$i]['email'])) {
+                $oMail->AddCC($cc_recipients[$i]['email'], ((strlen($cc_recipients[$i]['name'])) ? html_entity_decode($cc_recipients[$i]['name'], ENT_QUOTES, $encoding[$ilang]) : $cc_recipients[$i]['email']));
+            }
+        }
+    } elseif (is_array($cc_recipients)) {
+        $oMail->AddCC($cc_recipients['email'], ((strlen($cc_recipients['name'])) ? html_entity_decode($cc_recipients['name'], ENT_QUOTES, $encoding[$ilang]) : $cc_recipients['email']));
+    }
+    if (is_array($bcc_recipients[0])) {
+        for ($i = 0, $n = count($bcc_recipients); $i < $n; $i ++) {
+            if (strlen($bcc_recipients[$i]['email'])) {
+                $oMail->AddBCC($bcc_recipients[$i]['email'], ((strlen($bcc_recipients[$i]['name'])) ? html_entity_decode($bcc_recipients[$i]['name'], ENT_QUOTES, $encoding[$ilang]) : $bcc_recipients[$i]['email']));
+            }
+        }
+    } elseif (is_array($bcc_recipients)) {
+        $oMail->AddBCC($bcc_recipients['email'], ((strlen($bcc_recipients['name'])) ? html_entity_decode($bcc_recipients['name'], ENT_QUOTES, $encoding[$ilang]) : $bcc_recipients['email']));
+    }
+    if (strlen($reply_to)) {
+        $oMail->AddReplyTo($reply_to);
+    }
+    $oMail->Body = $html;
+    # Nur-Text-Bereich -->
+    $sMsg = substr($html, strpos($html, '<body'));
+    $sMsg = str_replace(array("\n", '</p>', '<br />', '<br>', '</li>'), array('', "</p>\n\n", "\n", "\n", "\n"), $sMsg);
+    $sMsg = trim(strip_tags($sMsg));
+    $sMsg = explode("\n", $sMsg);
+    for ($i = 0, $n = count($sMsg); $i < $n; $i ++) {
+        $sMsg[$i] = trim($sMsg[$i]);
+    }
+    $sMsg = implode("\n", $sMsg);
+    $sMsg = html_entity_decode($sMsg, ENT_QUOTES, $encoding[$ilang]);
+    $sMsg = capiStrReplaceDiacritics($sMsg);
+    # <-- Nur-Text-Bereich
+    $oMail->AltBody = $sMsg;
+    for ($i = 0, $n = count($attachments); $i < $n; $i ++) {
+        if (is_file($attachments[$i])) {
+            $oMail->AddAttachment($attachments[$i]);
+        }
+    }
+    $oMail->WordWrap = 76;
+    if ($oMail->Send()) {
+        return true;
+    } else {
+        echo '<pre>' . $oMail->ErrorInfo . '</pre>';
+    }
+}
+
 ?>
