@@ -309,10 +309,10 @@ class cNewsletterJob extends Item
             unset ($oLanguage);
 
             if ($sFormatDate == "") {
-                $sFormatDate = "%d.%m.%Y";
+                $sFormatDate = 'Y-m-d';
             }
             if ($sFormatTime == "") {
-                $sFormatTime = "%H:%M";
+                $sFormatTime = 'h:i a';
             }
 
             // Get newsletter data
