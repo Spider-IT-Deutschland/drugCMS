@@ -644,10 +644,10 @@ class Newsletter extends Item
         unset ($oLanguage);
 
         if ($sFormatDate == "") {
-            $sFormatDate = "%d.%m.%Y";
+            $sFormatDate = 'Y-m-d';
         }
         if ($sFormatTime == "") {
-            $sFormatTime = "%H:%M";
+            $sFormatTime = 'h:i a';
         }
 
         // Get newsletter data
@@ -691,8 +691,8 @@ class Newsletter extends Item
         // Replace message tags (text message)
         $this->_replaceTag($sMessageText, false, "name", $sName);
         $this->_replaceTag($sMessageText, false, "number", 1);
-        $this->_replaceTag($sMessageText, false, "date", strftime($sFormatDate));
-        $this->_replaceTag($sMessageText, false, "time", strftime($sFormatTime));
+        $this->_replaceTag($sMessageText, false, "date", date($sFormatDate));
+        $this->_replaceTag($sMessageText, false, "time", date($sFormatTime));
         $this->_replaceTag($sMessageText, false, "unsubscribe", $sPath."unsubscribe=".$sKey);
         $this->_replaceTag($sMessageText, false, "change", $sPath."change=".$sKey);
         $this->_replaceTag($sMessageText, false, "stop", $sPath."stop=".$sKey);
@@ -702,8 +702,8 @@ class Newsletter extends Item
         if ($bIsHTML) {
             $this->_replaceTag($sMessageHTML, true, "name", $sName);
             $this->_replaceTag($sMessageHTML, true, "number", 1);
-            $this->_replaceTag($sMessageHTML, true, "date", strftime($sFormatDate));
-            $this->_replaceTag($sMessageHTML, true, "time", strftime($sFormatTime));
+            $this->_replaceTag($sMessageHTML, true, "date", date($sFormatDate));
+            $this->_replaceTag($sMessageHTML, true, "time", date($sFormatTime));
             $this->_replaceTag($sMessageHTML, true, "unsubscribe", $sPath."unsubscribe=".$sKey);
             $this->_replaceTag($sMessageHTML, true, "change", $sPath."change=".$sKey);
             $this->_replaceTag($sMessageHTML, true, "stop", $sPath."stop=".$sKey);
@@ -870,10 +870,10 @@ class Newsletter extends Item
         unset ($oLanguage);
 
         if ($sFormatDate == "") {
-            $sFormatDate = "%d.%m.%Y";
+            $sFormatDate = 'Y-m-d';
         }
         if ($sFormatTime == "") {
-            $sFormatTime = "%H:%M";
+            $sFormatTime = 'h:i a';
         }
 
         $sPath = $cfgClient[$client]["path"]["htmlpath"]."front_content.php?changelang=".$lang."&idcatart=".$iIDCatArt."&";
@@ -914,13 +914,13 @@ class Newsletter extends Item
 
         // Single replacements
         // Replace message tags (text message)
-        $this->_replaceTag($sMessageText, false, "date", strftime($sFormatDate));
-        $this->_replaceTag($sMessageText, false, "time", strftime($sFormatTime));
+        $this->_replaceTag($sMessageText, false, "date", date($sFormatDate));
+        $this->_replaceTag($sMessageText, false, "time", date($sFormatTime));
 
         // Replace message tags (html message)
         if ($bIsHTML) {
-            $this->_replaceTag($sMessageHTML, true, "date", strftime($sFormatDate));
-            $this->_replaceTag($sMessageHTML, true, "time", strftime($sFormatTime));
+            $this->_replaceTag($sMessageHTML, true, "date", date($sFormatDate));
+            $this->_replaceTag($sMessageHTML, true, "time", date($sFormatTime));
         }
 
         // Enabling plugin interface
