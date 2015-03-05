@@ -355,7 +355,7 @@ class cNewsletterJob extends Item
                 $db->query($sql);
                 $db->next_record();
                 $news_idart = $db->f('idart');
-                $link = Contenido_Url::getInstance()->build(array('idart' => $this->get('idnews'), 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
                 $p1 = strpos($sMessageHTML, '<body');
                 if ($p1 !== false) {
                     $p1 = (strpos($sMessageHTML, '>', $p1) + 1);
