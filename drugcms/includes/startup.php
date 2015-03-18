@@ -18,7 +18,7 @@
  *
  *
  * @package    Contenido Backend includes
- * @version    $Rev$
+ * @version    $Rev: 13 $
  * @author     four for Business AG
  * @copyright  four for business AG <www.4fb.de>
  * @license    http://www.contenido.org/license/LIZENZ.txt
@@ -26,7 +26,7 @@
  * @link       http://www.contenido.org
  * @since      file available since contenido release <= 4.6
  *
- *   $Id$:
+ *   $Id: startup.php 13 2014-11-06 13:23:33Z R.Mansveld@Spider-IT.de $:
  */
 
 
@@ -55,6 +55,25 @@ if (!file_exists(dirname(__FILE__) . '/config.php')) {
     $msg .= "Please make sure that you saved the file in the setup program. If you had to place the file manually on your webserver, make sure that it is placed in your drugcms/includes directory.";
     die($msg);
 }
+
+// fallback to old db-connection settings
+if(!isset($cfg['db']) || !is_array($cfg['db'])) {
+    $cfg['db'] = array(
+        'connection' => array(
+            'host'     => $contenido_host,
+            'database' => $contenido_database,
+            'user'     => $contenido_user,
+            'password' => $contenido_password,
+        ),
+        'nolock'          => false, // (bool) Flag to not lock tables
+        'sequenceTable'   => '',       // (string) will be set later in startup!
+        'haltBehavior'    => 'report', // (string) Feasible values are 'yes', 'no' or 'report'
+        'haltMsgPrefix'   => (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] . ' ' : '',
+        'enableProfiling' => false,    // (bool) Flag to enable profiling
+    );
+}
+// Set default database connection parameter
+$cfg['db']['sequenceTable'] = $cfg['tab']['sequence'];
 
 
 // Include some basic configuration files
@@ -115,6 +134,8 @@ cInclude('includes', 'functions.general.php');
 cInclude('conlib', 'prepend.php');
 cInclude('includes', 'functions.i18n.php');
 
+DB_Contenido::setDefaultConfiguration($cfg['db']);
+
 // Error reporting - respect system and client settings
 $bErrors = getEffectiveSetting('debug', 'log_errors', 'false');
 if ((strtolower($bErrors) == 'true') || (strtolower($bErrors) == 'full') || (strtolower($bErrors) == 'all') || ($bErrors == 1)) {
@@ -127,26 +148,6 @@ if ((strtolower($bErrors) == 'true') || (strtolower($bErrors) == 'full') || (str
 // Initialization of CEC
 $_cecRegistry = cApiCECRegistry::getInstance();
 cInclude('includes', 'config.chains.php');
-
-// fallback to old db-connection settings
-if(!isset($cfg['db']) || !is_array($cfg['db'])) {
-    $cfg['db'] = array(
-    'connection' => array(
-        'host'     => $contenido_host,
-        'database' => $contenido_database,
-        'user'     => $contenido_user,
-        'password' => $contenido_password,
-    ),
-    'nolock'          => false, // (bool) Flag to not lock tables
-    'sequenceTable'   => '',       // (string) will be set later in startup!
-    'haltBehavior'    => 'report', // (string) Feasible values are 'yes', 'no' or 'report'
-    'haltMsgPrefix'   => (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] . ' ' : '',
-    'enableProfiling' => false,    // (bool) Flag to enable profiling
-);
-}
-// Set default database connection parameter
-$cfg['db']['sequenceTable'] = $cfg['tab']['sequence'];
-DB_Contenido::setDefaultConfiguration($cfg['db']);
 
 // @TODO: This should be done by instantiating a DB_Contenido class, creation of DB_Contenido object
 checkMySQLConnectivity();

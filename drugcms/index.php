@@ -28,7 +28,7 @@
  *   modified 2009-10-16, Ortwin Pinke, added rewrite of ampersand in frameset url
  *   modified 2010-05-20, Murat Purc, standardized Contenido startup and security check invocations, see [#CON-307]
  *
- *   $Id$:
+ *   $Id: index.php 266 2013-06-03 07:30:08Z Mansveld $:
  * }}
  * 
  */
@@ -147,6 +147,7 @@ $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico"
 $tpl->generate($cfg['path']['templates'] . $cfg['templates']['frameset']);
 
 $db->disconnect();
+unset($db);
 page_close();
 
 ?>

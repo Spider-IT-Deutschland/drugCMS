@@ -27,7 +27,7 @@
  *   modified 2010-05-20, Murat Purc, standardized Contenido startup and security check invocations, see [#CON-307]
  *   modified 2011-02-08, Dominik Ziegler, removed old PHP compatibility stuff as contenido now requires at least PHP 5
  *
- *   $Id$:
+ *   $Id: main.php 266 2013-06-03 07:30:08Z Mansveld $:
  * }}
  * 
  */
@@ -293,6 +293,7 @@ $oActiveUser->startUsersTracking();
  */
 
 $db->disconnect();
+unset($db);
 page_close();
 
 ?>
