@@ -56,25 +56,6 @@ if (!file_exists(dirname(__FILE__) . '/config.php')) {
     die($msg);
 }
 
-// fallback to old db-connection settings
-if(!isset($cfg['db']) || !is_array($cfg['db'])) {
-    $cfg['db'] = array(
-        'connection' => array(
-            'host'     => $contenido_host,
-            'database' => $contenido_database,
-            'user'     => $contenido_user,
-            'password' => $contenido_password,
-        ),
-        'nolock'          => false, // (bool) Flag to not lock tables
-        'sequenceTable'   => '',       // (string) will be set later in startup!
-        'haltBehavior'    => 'report', // (string) Feasible values are 'yes', 'no' or 'report'
-        'haltMsgPrefix'   => (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] . ' ' : '',
-        'enableProfiling' => false,    // (bool) Flag to enable profiling
-    );
-}
-// Set default database connection parameter
-$cfg['db']['sequenceTable'] = $cfg['tab']['sequence'];
-
 
 // Include some basic configuration files
 include_once(dirname(__FILE__) . '/config.php');
@@ -134,6 +115,25 @@ cInclude('includes', 'functions.general.php');
 cInclude('conlib', 'prepend.php');
 cInclude('includes', 'functions.i18n.php');
 
+
+// fallback to old db-connection settings
+if(!isset($cfg['db']) || !is_array($cfg['db'])) {
+    $cfg['db'] = array(
+        'connection' => array(
+            'host'     => $contenido_host,
+            'database' => $contenido_database,
+            'user'     => $contenido_user,
+            'password' => $contenido_password,
+        ),
+        'nolock'          => false, // (bool) Flag to not lock tables
+        'sequenceTable'   => '',       // (string) will be set later in startup!
+        'haltBehavior'    => 'report', // (string) Feasible values are 'yes', 'no' or 'report'
+        'haltMsgPrefix'   => (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] . ' ' : '',
+        'enableProfiling' => false,    // (bool) Flag to enable profiling
+    );
+}
+// Set default database connection parameter
+$cfg['db']['sequenceTable'] = $cfg['tab']['sequence'];
 DB_Contenido::setDefaultConfiguration($cfg['db']);
 
 // Error reporting - respect system and client settings
