@@ -1,12 +1,12 @@
 drugCMS 2.0.0
 Lizenz:        GNU General Public Licence (GPL)
-Copyright:     (c) 2013-2014, Spider IT Deutschland
-Informationen: http://www.drugcms.org
+Copyright:     (c) 2013-2015, Spider IT Deutschland
+Information:   http://www.drugcms.org
 
 <take care>
 WARNUNG: Versionen, die mit alpha oder beta markiert sind,
 sind definitiv nicht für den produktiven Einsatz gedacht.
-alpha Versionen und SVN Snapshots enthalten nahezu immer Bugs!
+alpha Versionen und GIT Snapshots enthalten nahezu immer Bugs!
 </take care>
 
 Keine Haftung und Gewährleistung für mittelbare und unmittelbare
@@ -14,7 +14,7 @@ Schäden. Weitere Infos finden Sie in der GPL-Lizenz.
 
 <take care>
 WARNING: Please do not use versions marked as alpha or beta
-for productive systems - never. alpha versions or svn snapshots
+for productive systems - never. alpha versions or git snapshots
 contain bugs - in most cases!
 </take care>
 
@@ -32,16 +32,12 @@ Lizenzen von verwendeten Produkten:
   Copyright:   (c) 2003 Kai Blankenhorn
   Information: http://www.bitfolge.de/?l=en&s=pseudocron
   
-- PHPlot
-  Lizenz:      GNU General Public Licence (GPL) and the PHP License
-  Information: http://www.phplot.com/
-  
 - TinyMCE
   Lizenz:      GNU Library General Public Licence (LGPL)
   Information: http://tinymce.moxiecode.com/
   
 - jQuery
-  Lizenz:      Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+  Lizenz:      Dual licensed under the MIT and GPL licenses.
   Information: http://jquery.com/
   
 - The DHTML / JavaScript Calendar 
