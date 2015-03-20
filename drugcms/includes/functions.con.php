@@ -818,6 +818,10 @@ function conDeleteart($idart)
 
     $sql = "DELETE FROM ".$cfg["tab"]["art_lang"]." WHERE idartlang = '".Contenido_Security::toInteger($idartlang)."'";
     $db->query($sql);
+    
+    #delete product information from table meta_tag 
+    $sql = "DELETE FROM ".$cfg["tab"]["meta_tag"]." WHERE idartlang = '".Contenido_Security::toInteger($idartlang)."'";
+    $db->query($sql);
 
     if ($idtplcfg != "0") {
 
