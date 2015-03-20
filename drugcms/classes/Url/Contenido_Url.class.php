@@ -102,6 +102,7 @@ final class Contenido_Url {
      * @return  string   The Url build by UrlBuilder
      */
     public function build($param, $bUseAbsolutePath=false, array $aConfig=array()) {
+        global $client, $lang, $cfg;
 
         if (!is_array($param)) {
             $arr   = $this->parse($param);
@@ -114,6 +115,29 @@ final class Contenido_Url {
             $param['idcat'] = getEffectiveSetting('navigation', 'idcat-home', 1);
         }
 
+        # Check if the url is set to a start article
+        if (($param['idart']) && ($param['idcat'] == 0)) {
+            $db = new DB_Contenido();
+            $sql = 'SELECT DISTINCT ca.idcat, cl.startidartlang
+                    FROM ' . $cfg['tab']['cat_art'] . ' AS ca INNER JOIN ' . $cfg['tab']['cat_lang'] . ' AS cl ON ca.idcat = cl.idcat
+                    WHERE ((ca.idart=' . $param['idart'] . ')
+                       AND (cl.idlang=' . $lang . '))
+                    ORDER BY ca.is_start DESC';
+            $db->query($sql);
+            while ($db->next_record()) {
+                if (($param['idcat'] == 0) || ($db->f('startidartlang') == $param['idart'])) {
+                    $param['idcat'] = $db->f('idcat');
+                }
+            }
+            $db->disconnect();
+        }
+        if (($param['idcat']) && ($param['idart'])) {
+            $oArt = new Article($param['idart'], $client, $lang);
+            if (isStartArticle($oArt->getField('idartlang'), $client, $lang)) {
+                unset($param['idart']);
+            }
+        }
+        
         // execute preprocess hook
         $aHookParams = array(
             'param' => $param, 'bUseAbsolutePath' => $bUseAbsolutePath, 'aConfig' => $aConfig
