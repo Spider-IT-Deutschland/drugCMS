@@ -556,7 +556,9 @@ class Newsletter extends Item
                     $sHTML = preg_replace_callback('/(url)\((\'|\")?(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)[\'|\"]?\)/', array($this, "_callbackReplaceUrl"), $sHTML);
                     $sHTML = preg_replace_callback('/\b(src|href|ftp)[ ]*=[ ]*"(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)"/', array($this, "_callbackReplaceUrl"), $sHTML);
                     // Now replace anchor tags to the newsletter article itself just by the anchor
-                    $sHTML = str_replace($cfgClient[$client]['path']['htmlpath']."front_content.php?idart=".$iIDArt."#", "#", $sHTML);
+                    $sHTML = preg_replace("/(href|src)\=(\"|\')".str_replace('/', '\\/', $cfgClient[$client]['path']['htmlpath'])."front_content.php?idart=".$iIDArt."(.*)#(.*)(\"|\')/","$1="."$2"."#"."$4"."$5", $sHTML);
+                    // Now correct mailto tags
+                    $sHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sHTML);
 
                     $sReturn = $sHTML;
                 } else {

@@ -97,7 +97,9 @@ class cNewsletterJobCollection extends ItemCollection
             $oItem->set("subject", $oNewsletter->get("subject"));
 
             // Precompile messages
-            $sPath = $cfgClient[$client]["path"]["htmlpath"]."front_content.php?changelang=".$lang."&idcatart=".$iIDCatArt."&";
+            #$sPath = $cfgClient[$client]["path"]["htmlpath"]."front_content.php?changelang=".$lang."&idcatart=".$iIDCatArt."&";
+            $sPath = Contenido_Url::getInstance()->build(array('idcatart' => $iIDCatArt, 'client' => $client, 'lang' => $lang), true);
+            $sPath .= ((strpos($sPath, '?') === false) ? '?' : '&');
 
             $sMessageText = $oNewsletter->get("message");
 
@@ -355,7 +357,7 @@ class cNewsletterJob extends Item
                 $db->query($sql);
                 $db->next_record();
                 $news_idart = $db->f('idart');
-                $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $this->get('idclient'), 'lang' => $this->get("idlang"), 'nl' => $this->get('idnewsjob'), 'rcp' => '{RCP}'), true);
                 $p1 = strpos($sMessageHTML, '<body');
                 if ($p1 !== false) {
                     $p1 = (strpos($sMessageHTML, '>', $p1) + 1);
@@ -371,10 +373,15 @@ class cNewsletterJob extends Item
                 
                 // Fix source path
                 // TODO: Test any URL specification that may exist under the sun...
-                $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
-                $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$cfgClient[$client]['path']['htmlpath'].'$1\')', $sMessageHTML);
+                $sMainURL = Contenido_Url::getInstance()->build(array('idcat' => getEffectiveSetting('navigation', 'idcat-home', 1), 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                $sSelfURL = Contenido_Url::getInstance()->build(array('idart' => $this->get("idart"), 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$sMainURL."$3", $sMessageHTML);
+                $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$sMainURL.'$1\')', $sMessageHTML);
                 $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
-                $sMessageHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sMessageHTML);
+                // Now replace anchor tags to the newsletter article itself just by the anchor
+                $sMessageHTML = preg_replace("/(href|src)\=(\"|\')".str_replace('/', '\\/', $sSelfURL)."(.*)#(.*)(\"|\')/", "$1="."$2"."#"."$4"."$5", $sMessageHTML);
+                // Now correct mailto tags
+                $sMessageHTML = str_replace($sMainURL . 'mailto:', 'mailto:', $sMessageHTML);
             }
 
             // Enabling plugin interface
@@ -432,6 +439,7 @@ class cNewsletterJob extends Item
                         $sRcpMsgHTML = str_replace("{KEY}",     $sKey, $sRcpMsgHTML);
                         $sRcpMsgHTML = str_replace("MAIL_MAIL", $sEMail, $sRcpMsgHTML);
                         $sRcpMsgHTML = str_replace("MAIL_NAME", $oLog->get("rcpname"), $sRcpMsgHTML);
+                        $sRcpMsgHTML = str_replace(urlencode('{RCP}'), $sKey, $sRcpMsgHTML);
                     }
 
                     if ($bPluginEnabled) {

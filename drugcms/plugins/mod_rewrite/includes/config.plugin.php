@@ -79,7 +79,7 @@ plugin_include('mod_rewrite', 'includes/functions.mod_rewrite.php');
 
 
 // set debug configuration
-if (isset($contenido)) {
+if (isset($edit)) {
     ModRewriteDebugger::setEnabled(true);
 } else {
     ModRewriteDebugger::setEnabled(false);
@@ -130,7 +130,7 @@ if (ModRewrite::isEnabled()) {
     // Add sync article function to Contenido Extension Chainer
     $_cecRegistry->addChainFunction('Contenido.Article.conSyncArticle_AfterInsert', 'mr_conSyncArticle');
 
-    if (!isset($contenido)) {
+    if (!isset($edit)) {
         // we are not in backend, add cec functions for rewriting
 
         // Add mr related function for hook "after plugins loaded" to Contenido Extension Chainer
