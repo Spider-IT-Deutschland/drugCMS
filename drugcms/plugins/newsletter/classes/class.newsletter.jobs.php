@@ -382,6 +382,9 @@ class cNewsletterJob extends Item
                 $sMessageHTML = preg_replace("/(href|src)\=(\"|\')".str_replace('/', '\\/', $sSelfURL)."(.*)#(.*)(\"|\')/", "$1="."$2"."#"."$4"."$5", $sMessageHTML);
                 // Now correct mailto tags
                 $sMessageHTML = str_replace($sMainURL . 'mailto:', 'mailto:', $sMessageHTML);
+                
+                # Remove the <noscript> info from the newsletter message
+                $sMessageHTML = str_replace(array('This website is powered by drugCMS, the Content Management System with addictive potential.', 'For more info and download visit <a href="http://www.drugcms.org">www.drugcms.org</a>.', 'drugCMS is made in Germany.'), '', $sMessageHTML);
             }
 
             // Enabling plugin interface
