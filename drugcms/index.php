@@ -133,7 +133,7 @@ if (isset($area))
     $area = (isset($sess_area)) ? $sess_area : 'login';
 }
 
-if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
     $force = true;
 }
 
