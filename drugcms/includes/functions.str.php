@@ -400,7 +400,7 @@ function strNewCategory($tmp_parentid, $catname, $remakeTree = true, $catalias =
       }
     }
 
-    # 2015-03-23 René Mansveld :: Auto-generate a start article for the category if requested
+    # 2015-03-23 René Mansveld :: Auto-generate a start article for the category if requested 
     if (in_array(getEffectiveSetting('system', 'auto-generate-start-articles', 'false'), array('true', '1'))) {
         $idart_new = conEditFirstTime($tmp_newid, array($tmp_newid), null, true, null, null, $tmp_lang, htmlspecialchars($catname, ENT_QUOTES), '', null, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $auth->auth['uname'], ((in_array(getEffectiveSetting('system', 'auto-generated-start-articles-online', 'true'), array('true', '1'))) ? 1 : 0), '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, null);
         $oArt = new Article($idart_new, $client, $lang);
