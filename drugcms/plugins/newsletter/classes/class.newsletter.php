@@ -245,7 +245,7 @@ class Newsletter extends Item
             // Extract certain tag
             $sRegExp   = '/\[mail\s*([^]]+)\s*name=(?:"|&quot;)'.$sField.'(?:"|&quot;)\s*(.*?)\s*\]((?:.|\s)+?)\[\/mail\]/i';
             $aMatch    = array();
-            $iMatches  = preg_match($sRegExp, $sCode, $aMatch) ;
+            $iMatches  = preg_match($sRegExp, $sCode, $aMatch);
 
             if ($iMatches > 0) {
                 // $aMatch contains parameter info from left [1] or right [2] to name="field"
@@ -556,7 +556,9 @@ class Newsletter extends Item
                     $sHTML = preg_replace_callback('/(url)\((\'|\")?(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)[\'|\"]?\)/', array($this, "_callbackReplaceUrl"), $sHTML);
                     $sHTML = preg_replace_callback('/\b(src|href|ftp)[ ]*=[ ]*"(http:\/\/|https:\/\/|ftp:\/\/)?([A-Za-z0-9#\.?\-=_&\/]*)"/', array($this, "_callbackReplaceUrl"), $sHTML);
                     // Now replace anchor tags to the newsletter article itself just by the anchor
-                    $sHTML = str_replace($cfgClient[$client]['path']['htmlpath']."front_content.php?idart=".$iIDArt."#", "#", $sHTML);
+                    $sHTML = preg_replace("/(href|src)\=(\"|\')".str_replace('/', '\\/', $cfgClient[$client]['path']['htmlpath'])."front_content.php?idart=".$iIDArt."(.*)#(.*)(\"|\')/","$1="."$2"."#"."$4"."$5", $sHTML);
+                    // Now correct mailto tags
+                    $sHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sHTML);
 
                     $sReturn = $sHTML;
                 } else {
@@ -876,7 +878,9 @@ class Newsletter extends Item
             $sFormatTime = 'h:i a';
         }
 
-        $sPath = $cfgClient[$client]["path"]["htmlpath"]."front_content.php?changelang=".$lang."&idcatart=".$iIDCatArt."&";
+        #$sPath = $cfgClient[$client]["path"]["htmlpath"]."front_content.php?changelang=".$lang."&idcatart=".$iIDCatArt."&";
+        $sPath = Contenido_Url::getInstance()->build(array('idcatart' => $iIDCatArt, 'client' => $client, 'lang' => $lang), true);
+        $sPath .= ((strpos($sPath, '?') === false) ? '?' : '&');
 
         // Get newsletter data
         $sFrom     = $this->get("newsfrom");
@@ -941,16 +945,6 @@ class Newsletter extends Item
             $bPluginEnabled = false;
         }
 
-        // Remove base tag
-        $sMessageHTML = preg_replace('/<base href=(.*?)>/is', '', $sMessageHTML, 1);
-        
-        // Fix source path
-        // TODO: Test any URL specification that may exist under the sun...
-        $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$cfgClient[$client]['path']['htmlpath']."$3", $sMessageHTML);
-        $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$cfgClient[$client]['path']['htmlpath'].'$1\')', $sMessageHTML);
-        $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
-        $sMessageHTML = str_replace($cfgClient[$client]['path']['htmlpath'] . 'mailto:', 'mailto:', $sMessageHTML);
-
         $aRecipients = array();
         if ($iIDNewsGroup !== false) {
             $oGroupMembers = new RecipientGroupMemberCollection;
@@ -1012,31 +1006,34 @@ class Newsletter extends Item
                     $db->query($sql);
                     $db->next_record();
                     $news_idart = $db->f('idart');
-                    $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $client, 'lang' => $lang), true);
-                    # Make sure the URL is absolute
-                    if (substr($link, 0, 4) != 'http') {
-                        if (substr($link, 0, 17) == 'front_content.php') {
-                            $link = $cfgClient[$client]['path']['htmlpath'] . $link;
-                        } elseif (substr($link, 0, 1) == '/') {
-                            if (substr($link, 0, 2) == '//') {
-                                $root = $cfgClient[$client]['path']['htmlpath'];
-                                $link = substr($root, 0, (strpos($root, ':') + 1)) . $link;
-                            } else {
-                                $link = $cfgClient[$client]['path']['htmlpath'] . substr($link, 1);
-                            }
-                        } else {
-                            $link = $cfgClient[$client]['path']['htmlpath'] . $link;
-                        }
-                    }
-                    $p1 = strpos($sRcpMsgHTML, '<body');
+                    $link = Contenido_Url::getInstance()->build(array('idart' => $news_idart, 'client' => $this->get('idclient'), 'lang' => $this->get("idlang"), 'nl' => $this->get('idnewsjob'), 'rcp' => '{RCP}'), true);
+                    $p1 = strpos($sMessageHTML, '<body');
                     if ($p1 !== false) {
-                        $p1 = (strpos($sRcpMsgHTML, '>', $p1) + 1);
+                        $p1 = (strpos($sMessageHTML, '>', $p1) + 1);
                     } else {
                         $p1 = 0;
                     }
                     $sOnlineText = getEffectiveSetting('newsletter-online-text', $this->get("idlang"), 'If the newsletter is not shown properly, please click here to view the online version.');
-                    $sRcpMsgHTML = substr($sRcpMsgHTML, 0, $p1) . '<div style="text-align: center; background-color: #FFF;"><a href="' . $link . '" style="font-weight: bold;">' . $sOnlineText . '</a></div>' . substr($sRcpMsgHTML, $p1);
+                    $sMessageHTML = substr($sMessageHTML, 0, $p1) . '<div style="text-align: center; background-color: #FFF;"><a href="' . $link . '" style="font-weight: bold;">' . $sOnlineText . '</a></div>' . substr($sMessageHTML, $p1);
                     # <-- Link to online article
+                    
+                    // Remove base tag
+                    $sMessageHTML = preg_replace('/<base href=(.*?)>/is', '', $sMessageHTML, 1);
+                    
+                    // Fix source path
+                    // TODO: Test any URL specification that may exist under the sun...
+                    $sMainURL = Contenido_Url::getInstance()->build(array('idcat' => getEffectiveSetting('navigation', 'idcat-home', 1), 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                    $sSelfURL = Contenido_Url::getInstance()->build(array('idart' => $this->get("idart"), 'client' => $this->get('idclient'), 'lang' => $this->get("idlang")), true);
+                    $sMessageHTML = preg_replace("/(href|src)\=(\"|\')([^(http|#)])(\/)?/", "$1="."$2".$sMainURL."$3", $sMessageHTML);
+                    $sMessageHTML = preg_replace('/url\([\"\'](.*)[\"\']\)/', 'url(\''.$sMainURL.'$1\')', $sMessageHTML);
+                    $sMessageHTML = str_replace('/cms//', '/', $sMessageHTML);
+                    // Now replace anchor tags to the newsletter article itself just by the anchor
+                    $sMessageHTML = preg_replace("/(href|src)\=(\"|\')".str_replace('/', '\\/', $sSelfURL)."(.*)#(.*)(\"|\')/", "$1="."$2"."#"."$4"."$5", $sMessageHTML);
+                    // Now correct mailto tags
+                    $sMessageHTML = str_replace($sMainURL . 'mailto:', 'mailto:', $sMessageHTML);
+                    
+                    # Remove the <noscript> info from the newsletter message
+                    $sMessageHTML = str_replace(array('This website is powered by drugCMS, the Content Management System with addictive potential.', 'For more info and download visit <a href="http://www.drugcms.org">www.drugcms.org</a>.', 'drugCMS is made in Germany.'), '', $sMessageHTML);
                 }
 
                 if ($bPluginEnabled) {

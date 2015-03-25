@@ -74,16 +74,16 @@ $cfg['mod_rewrite']['use_client_name'] = 0;
 $cfg['mod_rewrite']['use_lowercase_uri'] = 1;
 
 // file extension for article links
-$cfg['mod_rewrite']['file_extension'] = '.html';
+$cfg['mod_rewrite']['file_extension'] = '';
 
 // The percentage if the category name have to match with database names.
-$cfg['mod_rewrite']['category_resolve_min_percentage'] = '75';
+$cfg['mod_rewrite']['category_resolve_min_percentage'] = '100';
 
 // Add start article name to url (1 = yes, 0 = none)
-$cfg['mod_rewrite']['add_startart_name_to_url'] = 1;
+$cfg['mod_rewrite']['add_startart_name_to_url'] = 0;
 
 // Default start article name to use, depends on active add_startart_name_to_url
-$cfg['mod_rewrite']['default_startart_name'] = 'index';
+$cfg['mod_rewrite']['default_startart_name'] = '';
 
 // Rewrite urls on generating the code for the page. If active, the responsibility will be
 // outsourced to moduleoutputs and you have to adapt the moduleoutputs manually. Each output of
@@ -123,6 +123,6 @@ $cfg['mod_rewrite']['article_word_seperator'] = '-';
 $cfg['mod_rewrite']['routing'] = array();
 
 
-// Redirect invalid articles to errorpage (1 = yes, 0 = none)
-$cfg['mod_rewrite']['redirect_invalid_article_to_errorsite'] = 0;
+// Redirect invalid articles to errorpage (1 = yes, 0 = no)
+$cfg['mod_rewrite']['redirect_invalid_article_to_errorsite'] = 1;
 

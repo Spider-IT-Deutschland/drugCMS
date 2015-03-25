@@ -214,7 +214,7 @@ if (!isset($lang)) {
 if (!$sess->is_registered("lang") ) $sess->register("lang");
 if (!$sess->is_registered("client") ) $sess->register("client");
 
-if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
     $force = true;
 }
 
@@ -442,7 +442,7 @@ else
 }
 
 /* Get idcatart */
-if (0 != $idart && 0 != $idcat)
+if (($idart) && ($idcat) && (!$idcatart))
 {
     $sql = "SELECT idcatart FROM ".$cfg["tab"]["cat_art"]." WHERE idart = '".Contenido_Security::toInteger($idart)."' AND idcat = '".Contenido_Security::toInteger($idcat)."'";
 
@@ -655,7 +655,7 @@ else
     ##############################################
 
     /* Check if code is expired, create new code if needed */
-    if (($db->f("createcode") == 0) && ($force == 0) && (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))))
+    if (($db->f("createcode") == 0) && ($force == 0))
     {
         $sql = "SELECT code FROM ".$cfg["tab"]["code"]." WHERE idcatart = '".Contenido_Security::toInteger($idcatart)."' AND idlang = '".Contenido_Security::toInteger($lang)."'";
         $db->query($sql);
@@ -854,14 +854,7 @@ else
         $sql = "SELECT startidartlang FROM ".$cfg["tab"]["cat_lang"]." WHERE idcat='".Contenido_Security::toInteger($idcat)."' AND idlang = '".Contenido_Security::toInteger($lang)."'";
         $db->query($sql);
         $db->next_record();
-        if ($db->f("idartlang") == $idartlang)
-        {
-            $isstart = 1;
-        }
-        else
-        {
-            $isstart = 0;
-        }
+        $isstart = ($db->f("idartlang") == $idartlang);
     }
 
     ##############################################
@@ -958,6 +951,48 @@ else
                 eval ("?>\n".$code."\n<?php\n");
                 $htmlCode = ob_get_contents();
                 ob_end_clean();
+
+                /*
+                 * 2015-03-21 :: René Mansveld
+                 * Last but not least, replace newsletter tags inf the article if it is a newsletter
+                 * article and a recipient is set ($_GET['rcp']).
+                 */
+                if ((isset($_GET['nl'])) && (isset($_GET['rcp']))) {
+                    if ($idcat == intval(getEffectiveSetting('newsletter', 'html_newsletter_idcat', -1))) {
+                        $sql = 'SELECT idnewsjob, idnews
+                                FROM ' . $cfg['tab']['news_jobs'] . '
+                                WHERE (idnewsjob=' . Contenido_Security::toInteger($_GET['nl']) . ')';
+                        $db->query($sql);
+                        if ($db->next_record()) {
+                            $idnews = $db->f('idnews');
+                            $oNL = new Newsletter($idnews);
+                            $oLanguage = new cApiLanguage($lang);
+                            $sFormatDate = $oLanguage->getProperty("dateformat", "date");
+                            $sFormatTime = $oLanguage->getProperty("dateformat", "time");
+                            unset ($oLanguage);
+                            $oNJ = new cNewsletterJob($db->f('idnewsjob'));
+                            $dNewsDate = strtotime($oNJ->get("newsdate"));
+                            $sPath = Contenido_Url::getInstance()->build(array('idcatart' => $iIDCatArt, 'client' => $client, 'lang' => $lang), true);
+                            $sPath .= ((strpos($sPath, '?') === false) ? '?' : '&');
+                            $oNL->_replaceTag($htmlCode, true, "name", "MAIL_NAME");
+                            $oNL->_replaceTag($htmlCode, true, "number", $oNJ->get("rcpcount"));
+                            $oNL->_replaceTag($htmlCode, true, "date", date($sFormatDate, $dNewsDate));
+                            $oNL->_replaceTag($htmlCode, true, "time", date($sFormatTime, $dNewsDate));
+                            $oNL->_replaceTag($htmlCode, true, "unsubscribe", $sPath."unsubscribe=".$_GET['rcp']);
+                            $oNL->_replaceTag($htmlCode, true, "change", $sPath."change=".$_GET['rcp']);
+                            $oNL->_replaceTag($htmlCode, true, "stop", $sPath."stop=".$_GET['rcp']);
+                            $oNL->_replaceTag($htmlCode, true, "goon", $sPath."goon=".$_GET['rcp']);
+                            $oLogs = new cNewsletterLogCollection();
+                            $oLogs->setWhere('idnewsjob', $db->f('idnewsjob'));
+                            $oLogs->setWhere('rcphash', $_GET['rcp']);
+                            $oLogs->query();
+                            if ($oLog = $oLogs->next()) {
+                                $htmlCode = str_replace("MAIL_MAIL", $oLog->get("rcpemail"), $htmlCode);
+                                $htmlCode = str_replace("MAIL_NAME", $oLog->get("rcpname"), $htmlCode);
+                            }
+                        }
+                    }
+                }
 
                 // process CEC to do some preparations before output
                 $htmlCode = CEC_Hook::executeAndReturn('Contenido.Frontend.HTMLCodeOutput', $htmlCode);

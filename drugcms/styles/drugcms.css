@@ -90,14 +90,14 @@ div.login_title {
 
 /* form on loginpage */
 #lblusername{
-    margin-left: 64px;
+    margin-left: 30px;
 }
 #username{
     margin-left: 13px;
     margin-top:3px;
 }
 #lblpasswd{
-    margin-left: 64px;
+    margin-left: 30px;
 }
 #passwd{
     margin-left: 13px;
@@ -107,7 +107,7 @@ div.login_title {
     margin-top: 3px;
     margin-right: 10px;
     float:right;
-    width: 150px;
+    width: 181px;
     line-height: 25px;
     vertical-align: middle;
 }
