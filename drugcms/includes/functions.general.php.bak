@@ -2671,37 +2671,4 @@ function sendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = 
     }
 }
 
-/**
- * debug()
- *
- * Shows debugging information on the website
- *
- * @param any $value The value to output
- * @param string $type The type of the value (optional)
- * Possible types:
- * '' - Text / Array / Object
- * 'sql' - SQL query
- */
-function debug($value, $type = '') {
-    global $debug;
-    
-    if (($debug) || (in_array(getEffectiveSetting('system', 'debug', 'false'), array('true', '1')))) {
-        $oDbg = DebuggerFactory::getDebugger('visible_adv');
-        switch (strtolower($type)) {
-            case 'sql':
-                $oDbg->add(str_replace(' ', '&nbsp;', htmlentities(str_replace(array(str_repeat(chr(32), 4), chr(9)), '', $value))), 'SQL');
-                break;
-            default:
-                if (is_array($value)) {
-                    $oDbg->add($value, 'Array');
-                } elseif (is_object($value)) {
-                    $oDbg->add($value, 'Object');
-                } else {
-                    $oDbg->add($value, 'String');
-                }
-                break;
-        }
-        $oDbg->showAll();
-    }
-}
 ?>

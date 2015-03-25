@@ -60,13 +60,12 @@ $tpl->reset();
 
 if (isset($_GET["appendparameters"]))
 {
-	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&appendparameters=".$_GET["appendparameters"])));
-	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&changelang=".$_GET['changelang']."&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area&appendparameters=".$_GET["appendparameters"])));
 	$tpl->set('s', 'WIDTH', getEffectiveSetting("backend", "leftframewidth", 245));
 } else {
-    $parms = urldecode($_GET["appendparameters"]);
 	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area")));
-	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area") . $parms));
+	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area")));
 	$tpl->set('s', 'WIDTH', getEffectiveSetting("backend", "leftframewidth", 245));
 }
 
@@ -109,65 +108,16 @@ if ( in_array($area, $menuless_areas) || (isset($menuless) && $menuless == 1)) {
     $menuless = true;
     if (isset($_GET["appendparameters"]))
 	{
-        if ($area == '') {
-            $area = $sess_area;
-        }
-        $appendparameters_tmp = explode('&', $_GET["appendparameters"]);
-        $appendparameters = array();
-        
-        foreach ($appendparameters_tmp as $param) {
-            $param_tmp = explode('=', $param);
-            $appendparameters[$param_tmp[0]] = $param_tmp[1];
-        }
-        
-        if ($appendparameters['idcat'] > 0) {
-            $idcat = $appendparameters['idcat'];
-        }
-        else {
-            $idcat = $_GET['idcat'];
-        }
-        
-        if ($appendparameters['ation'] && $appendparameters['ation'] != '') {
-            $action = $appendparameters['action'];
-        }
-        else {
-            $action = $_GET['action'];
-        }
-        if ($appendparameters['area'] && $appendparameters['area'] != '') {
-            $area = $appendparameters['area'];
-        }
-        else {
-            $area = $_GET['area'];
-        }
-
-        if ($appendparameters['client'] && $appendparameters['client'] != '') {
-            $client = $appendparameters['client'];
-        }
-        else {
-            $client = $_GET['client'];
-        }
-        
-        if ($appendparameters['changeview'] && $appendparameters['changeview'] != '') {
-            $changeview = $appendparameters['changeview'];
-        }
-        elseif ($_GET['changeview'] && $_GET['changeview'] != '') {
-            $changeview = $_GET['changeview'];
-        } else {
-            $changeview = 'edit';
-        }
-        
-		$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=".$area."&frame=1&action=".$action."&changeview=".$changeview."&idcat=".$idcat."&client=".$client."&idart=".$appendparameters['idart'])));
-		$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=".$area."&frame=2&idtpl=1&action=".$action."&changeview=".$changeview."&idcat=".$idcat."&client=".$client."&idart=".$appendparameters['idart'])));
-		$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=".$area."&frame=3&syncoptions=0&idtpl=1&action=".$action."&changeview=".$changeview."&idcat=".$idcat."&client=".$client."&idart=".$appendparameters['idart'])));
-		$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=".$area."&frame=4&action=".$action."&changeview=".$changeview."&idcat=".$idcat."&client=".$client."&idart=".$appendparameters['idart'])));
-        $menuless = false;
+		$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1&appendparameters=".$_GET["appendparameters"])));
+		$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2&appendparameters=".$_GET["appendparameters"])));
+		$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3&appendparameters=".$_GET["appendparameters"])));
+		$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4&appendparameters=".$_GET["appendparameters"])));
 	} else {
 		$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1")));
 		$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2")));
 		$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3")));
 		$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4")));
 	}
-    
 }
 $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico");
 

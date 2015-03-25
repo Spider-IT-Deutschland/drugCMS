@@ -58,8 +58,53 @@ $tpl->reset();
 
 if (isset($_GET["appendparameters"]))
 {
-	$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3&appendparameters=".$_GET["appendparameters"])));
-	$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4&appendparameters=".$_GET["appendparameters"])));
+    $appendparameters_tmp = explode('&', $_GET["appendparameters"]);
+    $appendparameters = array();
+    
+    foreach ($appendparameters_tmp as $param) {
+        $param_tmp = explode('=', $param);
+        $appendparameters[$param_tmp[0]] = $param_tmp[1];
+    }
+    if ($appendparameters['idcat'] > 0) {
+        $idcat = $appendparameters['idcat'];
+    }
+    else {
+        $idcat = $_GET['idcat'];
+    }
+
+    if ($appendparameters['ation'] && $appendparameters['ation'] != '') {
+        $action = $appendparameters['action'];
+    }
+    elseif ($_GET['action']) {
+        $action = $_GET['action'];
+    }
+    else {
+        $action = 'con_editart';
+    }
+    if ($appendparameters['area'] && $appendparameters['area'] != '') {
+        $area = $appendparameters['area'];
+    }
+    elseif ($_GET['area']) {
+        $area = $_GET['area'];
+    }
+    else {
+        $area = 'con_editcontent';
+    }
+    if ($appendparameters['changeview'] && $appendparameters['changeview'] != '') {
+        $changeview = $appendparameters['changeview'];
+    }
+    elseif ($_GET['changeview'] && $_GET['changeview'] != '') {
+        $changeview = $_GET['changeview'];
+    }
+    elseif ($_GET['changeview']) {
+        $changeview = $_GET['changeview'];
+    }
+    else {
+        $changeview = 'edit';
+    }
+    
+	$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=3&changeview=".$changeview."&idcat=".$idcat."&idart=".$appendparameters['idart']."&action=".$action)));
+	$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=".$area."&changelang=".$_GET['changelang']."&changeview=".$changeview."&frame=4&action=".$action."&idcat=".$idcat."&idart=".$appendparameters['idart'])));
 } else {
 	$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3")));
 	$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4")));

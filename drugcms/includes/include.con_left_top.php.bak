@@ -507,24 +507,6 @@ $oTpl->set('s', 'AJAXURL', $cfg['path']['contenido_fullhtml'].'ajaxmain.php');
 # Help
 ##########################################
 $oTpl->set('s', 'HELPSCRIPT', setHelpContext("con"));
-
-#check for get params
-$get_params_string .= '';
-$start_select_cat = '/*';
-$end_select_cat = '*/';
-
-if ($_GET['idart'] && $_GET['idcat'] && $_GET['idartlang']) {
-        $get_params_string .= '&idart=' . $_GET['idart'];
-        $get_params_string .= '&idcat=' . $_GET['idcat'];
-        $get_params_string .= '&idartlang=' . $_GET['idartlang'];
-        $start_select_cat = '';
-        $end_select_cat = '*/';
-}
-
-$oTpl->set('s', 'GET_PARAMS', $get_params_string);
-$oTpl->set('s', 'START_SELECT_CAT', $start_select_cat);
-$oTpl->set('s', 'END_SELECT_CAT', $end_select_cat);
-
 $oTpl->generate($cfg['path']['templates'] . $cfg['templates']['con_left_top']);
 
 ?>
