@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/drugcms.css">
     <script type="text/javascript" src="scripts/browserCheck.js"></script>
     <script type="text/javascript" src="scripts/messageBox.js.php?contenido={SESSID}"></script>
-    <script type="text/javascript" src="scripts/articleObject.js.php?contenido={SESSID}{GET_PARAMS}"></script>
+    <script type="text/javascript" src="scripts/articleObject.js.php?contenido={SESSID}"></script>
     <script type="text/javascript" src="scripts/HTMLObj.js.php?contenido={SESSID}"></script>
     <script type="text/javascript" src="scripts/contenidoConfig.js"></script>
     <script type="text/javascript" src="scripts/cfoldingrow.js"></script> 
@@ -17,8 +17,7 @@
     <script type="text/javascript" src="scripts/jquery/jquery.js"></script>
     
     <script language="javascript">
-    
-    
+
     $(document).ready(function(){
         
         var left_bottom = parent.parent.frames["left"].frames["left_bottom"];
@@ -131,6 +130,7 @@
                 var left_bottom = parent.parent.frames["left"].frames["left_bottom"];
                 var right_bottom = parent.parent.frames["right"].frames["right_bottom"];
                 var right_top = parent.parent.frames["right"].frames["right_top"];
+                
                 if (left_bottom && typeof(left_bottom.irgendwas) == "function") {
                     left_bottom.irgendwas();
                 }
@@ -320,12 +320,6 @@
     //If this frame is reloaded, recall functions in other frames to reinit values
     initData();
 </script>
-{START_SELECT_CAT}
-    <script language="javascript">
-    myobj = new articleObject('left_buttom', 2);
-    parent.parent.frames["left"].frames["left_bottom"].$("#con_str_tree li#root ul li[id^="+myobj.idcat+"-]>div").addClass('active');
-    </script>
-{END_SELECT_CAT}
 
 </body>
 </html>

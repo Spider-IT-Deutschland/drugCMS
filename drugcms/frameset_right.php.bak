@@ -20,8 +20,7 @@
  * @since      file available since contenido release <= 4.6
  * 
  * {@internal 
- *   created  2003-01-20
- *   modified 2008-06-16, Holger Librenz, Hotfix: added check for illegal calling
+ *   created  2003-01-20#
  *   modified 2008-06-25, Timo Trautmann, Contenido Framework Constand added
  *   modified 2008-07-02, Frederic Schneider, new code-header and include security_class
  *   modified 2009-10-16, Ortwin Pinke, added rewrite of ampersand in frameset url
@@ -59,42 +58,17 @@ $tpl->reset();
 
 if (isset($_GET["appendparameters"]))
 {
-    if ($appendparameters['idart'] > 0) {
-        $idart = "&idart=".$appendparameters['idart'];
-    }
-    elseif ($_GET['idart']) {
-        $idart = "&idart=".$_GET['idart'];
-    } else {
-        $append_idart = explode("=", $appendparameters);
-        if (count($append_idart) == 2 && $append_idart[0] == 'idart') {
-            $idart = "&".$appendparameters;
-        }
-    }
-    if ($appendparameters['idcat'] > 0) {
-        $idcat = $appendparameters['idcat'];
-    }
-    else {
-        $idcat = $_GET['idcat'];
-    }
-    if ($appendparameters['idartlang'] > 0) {
-        $idartlang = $appendparameters['idartlang'];
-    }
-    else {
-        $idartlang = $_GET['idartlang'];
-    }
-        
-	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=1&idcat=".$idcat."&idartlang=".$idartlang . $idart)));
-	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=2")));
-	$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
+	$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4&appendparameters=".$_GET["appendparameters"])));
 } else {
-	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1")));
-	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2")));
-	$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
+	$tpl->set('s', 'FRAME[3]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=3")));
+	$tpl->set('s', 'FRAME[4]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=4")));
 }
 
 $tpl->set('s', 'VERSION', $cfg['version']);
 $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico");
-$tpl->generate($cfg['path']['templates'] . $cfg['templates']['frameset_left']);
+
+$tpl->generate($cfg['path']['templates'] . $cfg['templates']['frameset_right']);
 
 page_close();
 

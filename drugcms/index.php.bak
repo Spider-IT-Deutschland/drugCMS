@@ -133,57 +133,18 @@ if (isset($area))
     $area = (isset($sess_area)) ? $sess_area : 'login';
 }
 
-if (in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
+if (!in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) {
     $force = true;
 }
 
 $tpl->reset();
 
 $tpl->set('s', 'HEADER',    str_replace("&", "&amp;", $sess->url('header.php?changelang='.$lang.'&changeclient='.$client)));
-
-if(isset($_GET['idartlang'])){
-    $appendparameters = 'idart=' . $_GET['idart'];
-    foreach ($_GET as $key => $val) {
-        if ($key != 'idart') {
-            $appendparameters .= '&' . $key . '=' . $val;
-        }
-    }
-    
-    if ((isset($_GET['idartlang'])) && (!isset($_GET['idart']) || !isset($_GET['idlang']) || !isset($_GET['idcat']))) {
-        $oArt = new Article(0,0,0,$_GET['idartlang']);
-        $idart = $oArt->getField("idart");
-        $idlang = $oArt->getField("idlang");
-        
-        $oCat = new Contenido_Category_Articles($db, $cfg, $client, $idlang);
-        $idcat = $oCat->getCategoryByArticleId($idart);
-        if ($idlang != $lang) {
-            if (substr_count($_SERVER['REQUEST_URI'], 'changelang') > 0) {
-                header('Location: '. substr_replace($_SERVER['REQUEST_URI'], '', -13, 13) . '&changelang='.$idlang);
-            }
-            else {
-                header('Location: '. $_SERVER['REQUEST_URI'] . '&changelang='.$idlang);
-            }
-        }
-    }
-    else {
-        $idart = $appendparameters['idart'];
-        $idlang = $lang;
-        $idcat = $_GET['idcat'];
-    }
-    
-    $appendparameters = urlencode($appendparameters); 
-    $tpl->set('s', 'CONTENT',   $sess->url('frameset.php?area='.$_GET['area'].'&frame='.$_GET['frame'].'&menuless=1&lang='.$idlang.'&client='.$client.'&idart='.$idart."&idcat=".$idcat."&appendparameters=".$appendparameters));
-}
-else {
-    $tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
-
-}
+$tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
 $tpl->set('s', 'VERSION',	$cfg["version"]);
 $tpl->set('s', 'LOCATION',	$cfg['path']['contenido_fullhtml']);
 $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico");
 $tpl->generate($cfg['path']['templates'] . $cfg['templates']['frameset']);
-    #$tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
-
 
 $db->disconnect();
 unset($db);

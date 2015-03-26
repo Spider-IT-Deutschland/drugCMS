@@ -59,32 +59,8 @@ $tpl->reset();
 
 if (isset($_GET["appendparameters"]))
 {
-    if ($appendparameters['idart'] > 0) {
-        $idart = "&idart=".$appendparameters['idart'];
-    }
-    elseif ($_GET['idart']) {
-        $idart = "&idart=".$_GET['idart'];
-    } else {
-        $append_idart = explode("=", $appendparameters);
-        if (count($append_idart) == 2 && $append_idart[0] == 'idart') {
-            $idart = "&".$appendparameters;
-        }
-    }
-    if ($appendparameters['idcat'] > 0) {
-        $idcat = $appendparameters['idcat'];
-    }
-    else {
-        $idcat = $_GET['idcat'];
-    }
-    if ($appendparameters['idartlang'] > 0) {
-        $idartlang = $appendparameters['idartlang'];
-    }
-    else {
-        $idartlang = $_GET['idartlang'];
-    }
-        
-	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=1&idcat=".$idcat."&idartlang=".$idartlang . $idart)));
-	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=2")));
+	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2&appendparameters=".$_GET["appendparameters"])));
 	$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
 } else {
 	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1")));
