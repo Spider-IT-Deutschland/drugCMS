@@ -104,7 +104,7 @@ if (!defined('CON_FRAMEWORK')) {
     die('Illegal call');
 }
 
-/**
+/** DEPRECATED, NOW IN /drugcms/includes/functions.general.php
  * debug()
  *
  * Zeigt Debugging-Informationen auf der Webseite
@@ -123,7 +123,7 @@ if (!defined('CON_FRAMEWORK')) {
  * 'sql' für SQL-Anweisungen, welche dann individuell
  * aufbereitet werden.
  */
-function debug($value, $type = '') {
+function debug_dep($value, $type = '') {
     global $db, $debug;
     
     if ($debug) {
