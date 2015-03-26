@@ -957,8 +957,9 @@ else
                  * Last but not least, replace newsletter tags inf the article if it is a newsletter
                  * article and a recipient is set ($_GET['rcp']).
                  */
-                if ((isset($_GET['nl'])) && (isset($_GET['rcp']))) {
-                    if ($idcat == intval(getEffectiveSetting('newsletter', 'html_newsletter_idcat', -1))) {
+                if ($idcat == intval(getEffectiveSetting('newsletter', 'html_newsletter_idcat', -1))) {
+                    if ((isset($_GET['nl'])) && (isset($_GET['rcp']))) {
+                        # Regular newsletter job
                         $sql = 'SELECT idnewsjob, idnews
                                 FROM ' . $cfg['tab']['news_jobs'] . '
                                 WHERE (idnewsjob=' . Contenido_Security::toInteger($_GET['nl']) . ')';
@@ -974,7 +975,6 @@ else
                             $dNewsDate = strtotime($oNJ->get("newsdate"));
                             $sPath = Contenido_Url::getInstance()->build(array('idcatart' => $iIDCatArt, 'client' => $client, 'lang' => $lang), true);
                             $sPath .= ((strpos($sPath, '?') === false) ? '?' : '&');
-                            $oNL->_replaceTag($htmlCode, true, "name", "MAIL_NAME");
                             $oNL->_replaceTag($htmlCode, true, "number", $oNJ->get("rcpcount"));
                             $oNL->_replaceTag($htmlCode, true, "date", date($sFormatDate, $dNewsDate));
                             $oNL->_replaceTag($htmlCode, true, "time", date($sFormatTime, $dNewsDate));
@@ -987,10 +987,24 @@ else
                             $oLogs->setWhere('rcphash', $_GET['rcp']);
                             $oLogs->query();
                             if ($oLog = $oLogs->next()) {
-                                $htmlCode = str_replace("MAIL_MAIL", $oLog->get("rcpemail"), $htmlCode);
-                                $htmlCode = str_replace("MAIL_NAME", $oLog->get("rcpname"), $htmlCode);
+                                $oNL->_replaceTag($htmlCode, true, "name", $oLog->get("rcpname"));
+                                $oNL->_replaceTag($htmlCode, true, "email", $oLog->get("rcpemail"));
                             }
+                            unset($oNL);
+                            unset($oLogs);
                         }
+                    } elseif (isset($_GET['rcp'])) {
+                        # Welcome newsletter
+                        $oNL = new Newsletter();
+                        $oNL->_replaceTag($htmlCode, true, "unsubscribe", $sPath."unsubscribe=".$_GET['rcp']);
+                        $oNL->_replaceTag($htmlCode, true, "change", $sPath."change=".$_GET['rcp']);
+                        $oNL->_replaceTag($htmlCode, true, "stop", $sPath."stop=".$_GET['rcp']);
+                        $oNL->_replaceTag($htmlCode, true, "goon", $sPath."goon=".$_GET['rcp']);
+                        $oRcp = new Recipient($_GET['rcp']);
+                        $oNL->_replaceTag($htmlCode, true, "name", $oRcp->get("name"));
+                        $oNL->_replaceTag($htmlCode, true, "email", $oRcp->get("email"));
+                        unset($oNL);
+                        unset($oRcp);
                     }
                 }
 
