@@ -369,7 +369,25 @@ class Contenido_Category_Articles extends Contenido_Category_Base {
     }
 
     public function getCategoryByArticleId($iArticleId) {
-        throw new Exception('Method not implemented yet!');
+        $sql = 'SELECT idcat
+                FROM ' . $this->aCfg['tab']['cat_lang'] . '
+                WHERE (startidartlang=' . $iAricleId . ')';
+        $this->oDb->query($sql);
+        if ($this->oDb->next_record()) {
+            return $this->oDb->f('idcat');
+        } else {
+            $sql = 'SELECT idcat
+                    FROM ' . $this->aCfg['tab']['cat_art'] . '
+                    WHERE (idart=' . $iArticleId . ')
+                    ORDER BY is_start DESC
+                    LIMIT 0, 1';
+            $this->oDb->query($sql);
+            if ($this->oDb->next_record()) {
+                return $this->oDb->f('idcat');
+            } else {
+                return false;
+            }
+        }
     }
 
     // Getter/Setter
