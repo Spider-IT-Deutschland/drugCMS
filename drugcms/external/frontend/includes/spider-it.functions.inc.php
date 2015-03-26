@@ -75,29 +75,29 @@
 
 /**
  * Functions in this file:
- *  debug()
+ *  debug()                             DEPRECATED, NOW IN /drugcms/includes/functions.general.php
  *  fwritecsv()
  *  sitArrayToString()
- *  sitCascadedArraySort()
- *  sitConvertCmykJpgToSrgbJpg()
- *  sitDeeperCategoriesArticlesArray()
- *  sitExplodeAssociative()
- *  sitExplodeCascading()
- *  sitExplodeLines()
- *  sitGetBrowserInfo()
- *  sitGetFilesInDirectory()
- *  sitGetImageDescription()
- *  sitGetInternalDescription()
- *  sitGetRemoteContent()
- *  sitGetRemoteContentToFile()
- *  sitGetSubdirs()
+ *  sitCascadedArraySort()              DEPRECATED, use array_csort() instead
+ *  sitConvertCmykJpgToSrgbJpg()        DEPRECATED, use convertCmykJpgToSrgbJpg() in /drugcms/includes/functions.graphics.php
+ *  sitDeeperCategoriesArticlesArray()  DEPRECATED, use conDeeperCategoriesArticlesArray() in /drugcms/includes/functions.con.php
+ *  sitExplodeAssociative()             DEPRECATED, use explodeAssociative() in /drugcms/includes/functions.general.php
+ *  sitExplodeCascading()               DEPRECATED, use explodeCascading() in /drugcms/includes/functions.general.php
+ *  sitExplodeLines()                   DEPRECATED, use explodeLines() in /drugcms/includes/functions.general.php
+ *  sitGetBrowserInfo()                 DEPRECATED, use getBrowserInfo() in /drugcms/includes/functions.general.php
+ *  sitGetFilesInDirectory()            DEPRECATED, use getFilesInDirectory() in /drugcms/includes/functions.general.php
+ *  sitGetImageDescription()            DEPRECATED, use getImageDescription() in /drugcms/includes/functions.general.php
+ *  sitGetInternalDescription()         DEPRECATED, use getInternalNotice() in /drugcms/includes/functions.general.php
+ *  sitGetRemoteContent()               DEPRECATED, use getRemoteContent() in /drugcms/includes/functions.general.php
+ *  sitGetRemoteContentToFile()         DEPRECATED, use getRemoteContentToFile() in /drugcms/includes/functions.general.php
+ *  sitGetSubdirs()                     DEPRECATED, use getSubdirs() in /drugcms/includes/functions.general.php
  *  sitImgScale()
- *  sitMakeCmsType()
+ *  sitMakeCmsType()                    DEPRECATED, use makeCmsType() in /drugcms/includes/functions.general.php
  *  sitMoveAllUploadFiles()
  *  sitSafeStringEscape()
- *  sitSendHtmlMail()
- *  sitSetClientProperty()
- *  sitTeaserText()
+ *  sitSendHtmlMail()                   DEPRECATED, use sendHtmlMail() in /drugcms/includes/functions.general.php
+ *  sitSetClientProperty()              DEPRECATED, use setClientProperty() in /drugcms/includes/functions.general.php
+ *  sitTeaserText()                     DEPRECATED, use teaserText() in /drugcms/includes/functions.general.php
  */
 
 if (!defined('CON_FRAMEWORK')) {
@@ -225,7 +225,7 @@ function sitArrayToString($array, $depth = 0) {
     return $string;
 }
 
-/**
+/** DEPRECATED, use array_csort() instead
  * sitCascadedArraySort()
  *
  * Sortiert ein kaskadiertes Array nach Spalten
@@ -262,7 +262,7 @@ function sitCascadedArraySort() {
     return $marray;
 }
 
-/**
+/** DEPRECATED, use convertCmykJpgToSrgbJpg() in /drugcms/includes/functions.graphics.php
  * sitConvertCmykJpgToSrgbJpg()
  *
  * Wandelt JPG-Bilder mit CMYK Farbprofil in sRGB Farbprofil um
@@ -275,26 +275,10 @@ function sitCascadedArraySort() {
  * umgewandelt werden. Diese Funktion prüft das Bild und wandelt es ggf. um.
  */
 function sitConvertCmykJpgToSrgbJpg($path) {
-    if ((strtolower(substr($path, -4)) == '.jpg') || (strtolower(substr($path, -5)) == '.jpeg')) {
-        exec('identify -verbose ' . $path . ' >' . $path . '.txt');
-        $tmp = file($path . '.txt');
-        unlink($path . '.txt');
-        for ($i = 0, $n = count($tmp); $i < $n; $i ++) {
-            $a = explode(':', $tmp[$i]);
-            if (trim($a[0]) == 'Colorspace') {
-                if (strpos($a[1], 'RGB') === false) {
-                    # Bild ist in CMYK
-                    exec('convert ' . $path . ' -profile sRGB.icc -colorspace sRGB ' . $path . '.jpg');
-                    unlink($path);
-                    rename($path . '.jpg', $path);
-                }
-                break;
-            }
-        }
-    }
+    convertCmykJpgToSrgbJpg($path);
 }
 
-/**
+/** DEPRECATED, use conDeeperCategoriesArticlesArray() in /drugcms/includes/functions.con.php
  * sitDeeperCategoriesArticlesArray()
  *
  * Listet alle Artikel im angegebenen Baum/Zweig auf
@@ -313,31 +297,10 @@ function sitConvertCmykJpgToSrgbJpg($path) {
  * Rückgabewert ist ein Array mit den idarts der gefundenen Artikel.
  */
 function sitDeeperCategoriesArticlesArray($idcat, $author = '', $ebene0 = false, $anzebenen = 0, $startarticle = false, $offline = false, $aArts = array()) {
-    global $client, $lang;
-    
-    if ($ebene0) {
-        $aList = new ArticleCollection(array('idcat' => intval($idcat), 'start' => $startarticle, 'offline' => $offline));
-        while ($oArt = $aList->nextArticle()) {
-            if (strlen($author)) {
-                # Ist der Artikel von diesem Kunden?
-                if ($oArt->getField('author') == $auth->auth['uname']) {
-                    $aArts[] = $oArt->getField('idart');
-                }
-            } else {
-                $aArts[] = $oArt->getField('idart');
-            }
-        }
-    }
-    if ($anzebenen > (($ebene0) ? 1 : 0)) {
-        $aCats = conDeeperCategoriesArray(intval($idcat));
-        for ($i = 0, $n = count($aCats); $i < $n; $i ++) {
-            $aArts = sitDeeperCategoriesArticlesArray($aCats[$i], $author, true, (($ebene0) ? ($anzebenen - 1) : $anzebenen), $startarticle, $offline, $aArts);
-        }
-    }
-    return $aArts;
+    return conDeeperCategoriesArticlesArray($idcat, $author, $ebene0, $anzebenen, $startarticle, $offline);
 }
 
-/**
+/** DEPRECATED, use explodeAssociative() in /drugcms/includes/functions.general.php
  * sitExplodeAssociative()
  *
  * Zerlegt eine Zeichenfolge in ein assoziatives Array.
@@ -350,16 +313,10 @@ function sitDeeperCategoriesArticlesArray($idcat, $author = '', $ebene0 = false,
  * splittet auf Key und Value.
  */
 function sitExplodeAssociative($delimiters = array(), $string = '') {
-    $tmp = explode($delimiters[0], $string);
-    $ret = array();
-    for ($i = 0, $n = count($tmp); $i < $n; $i ++) {
-        $t = explode($delimiters[1], $tmp[$i]);
-        $ret[$t[0]] = $t[1];
-    }
-    return $ret;
+    return explodeAssociative($delimiters[0], $delimiters[1], $string);
 }
 
-/**
+/** DEPRECATED, use explodeCascading() in /drugcms/includes/functions.general.php
  * sitExplodeCascading()
  *
  * Zerlegt eine Zeichenfolge in ein kaskadiertes Array.
@@ -372,15 +329,10 @@ function sitExplodeAssociative($delimiters = array(), $string = '') {
  * Trennzeichen darin ein Unterarray (mehrere Ebenen).
  */
 function sitExplodeCascading($delimiters = array(), $string = '') {
-    $tmp = explode($delimiters[0], $string);
-    array_shift($delimiters);
-    for ($i = 0, $n = count($tmp); $i < $n; $i ++) {
-        $tmp[$i] = sitMultipleExplode($delimiters, $tmp[$i]);
-    }
-    return $tmp;
+    return explodeCascading($delimiters, $string);
 }
 
-/**
+/** DEPRECATED, use explodeLines() in /drugcms/includes/functions.general.php
  * sitExplodeLines()
  *
  * Zerlegt einen Text in einzelnen Zeilen
@@ -392,10 +344,10 @@ function sitExplodeCascading($delimiters = array(), $string = '') {
  * mit den einzelnen Zeilen.
  */
 function sitExplodeLines($string) {
-    return explode("\n", str_replace("\r\n", "\n", $string));
+    return explodeLines($string);
 }
 
-/**
+/** DEPRECATED, use getBrowserInfo() in /drugcms/includes/functions.general.php
  * sitGetBrowserInfo()
  * 
  * Liefert erweiterte Informationen zum Browser
@@ -406,77 +358,10 @@ function sitExplodeLines($string) {
  * Liefert ein Array mit: UserAgent, BrowserName, BrowserVersion, Plattform.
  */
 function sitGetBrowserInfo() {
-    static $aBrowser;
-    
-    if (!is_array($aBrowser)) {
-        $u_agent    = $_SERVER['HTTP_USER_AGENT'];
-        $bname      = 'Unknown';
-        $platform   = 'Unknown';
-        $version    = '';
-        
-        //First get the platform?
-        if (preg_match('/linux/i', $u_agent)) {
-            $platform = 'linux';
-        } elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
-            $platform = 'mac';
-        } elseif (preg_match('/windows|win32/i', $u_agent)) {
-            $platform = 'windows';
-        }
-        
-        // Next get the name of the useragent (yes, separately, and for good reason)
-        if (preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)) {
-            $bname = 'Internet Explorer';
-            $ub = "MSIE";
-        } elseif(preg_match('/Firefox/i',$u_agent)) {
-            $bname = 'Mozilla Firefox';
-            $ub = "Firefox";
-        } elseif(preg_match('/Chrome/i',$u_agent)) {
-            $bname = 'Google Chrome';
-            $ub = "Chrome";
-        } elseif(preg_match('/Safari/i',$u_agent)) {
-            $bname = 'Apple Safari';
-            $ub = "Safari";
-        } elseif(preg_match('/Opera/i',$u_agent)) {
-            $bname = 'Opera';
-            $ub = "Opera";
-        } elseif(preg_match('/Netscape/i',$u_agent)) {
-            $bname = 'Netscape';
-            $ub = "Netscape";
-        }
-        
-        // finally get the correct version number
-        $known = array('Version', $ub, 'other');
-        $pattern = '#(?<browser>' . join('|', $known) . ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
-        if (!preg_match_all($pattern, $u_agent, $matches)) {
-            // we have no matching number just continue
-        }
-        
-        // see how many we have
-        $i = count($matches['browser']);
-        if ($i != 1) {
-            //we will have two since we are not using 'other' argument yet
-            //see if version is before or after the name
-            if (strripos($u_agent,"Version") < strripos($u_agent,$ub)) {
-                $version= $matches['version'][0];
-            } else {
-                $version= $matches['version'][1];
-            }
-        } else {
-            $version= $matches['version'][0];
-        }
-        
-        // check if we have a number
-        if (($version == null) || ($version == '')) {
-            $version = '?';
-        }
-        
-        $aBrowser = array( 'userAgent' => $u_agent, 'name' => $bname, 'version' => $version, 'platform' => $platform);
-    }
-    
-    return $aBrowser;
+    return getBrowserInfo();
 }
 
-/**
+/** DEPRECATED, use getFilesInDirectory() in /drugcms/includes/functions.general.php
  * sitGetFilesInDirectory()
  *
  * Liest Dateien in ein Verzeichnis
@@ -491,38 +376,10 @@ function sitGetBrowserInfo() {
  * $sort kann 'asc', 'desc', SORT_ASC oder SORT_DESC sein, oder weggelassen werden.
  */
 function sitGetFilesInDirectory($path, $filter = '*', $sort = '') {
-    define('FNM_CASEFOLD', 16);
-    $aFiles = array();
-    if (is_dir($path)) {
-        if (!is_array($filter)) {
-            $filter = array($filter);
-        }
-        if ($oDir = opendir($path)) {
-            while (($sFile = readdir($oDir)) !== false) {
-                if (is_dir($path . $sFile)) {
-                    continue;
-                } else {
-                    for ($i = 0, $n = count($filter); $i < $n; $i ++) {
-                        if (fnmatch($filter[$i], $sFile, FNM_CASEFOLD)) {
-                            $aFiles[] = $sFile;
-                            break;
-                        }
-                    }
-                }
-            }
-            closedir($oDir);
-            if (strlen($sort)) {
-                sort($aFiles, SORT_STRING);
-                if (($sort == 'desc') || ($sort == SORT_DESC)) {
-                    $aFiles = array_reverse($aFiles);
-                }
-            }
-        }
-    }
-    return $aFiles;
+    return getFilesInDirectory($path, $filter, $sort);
 }
 
-/**
+/** DEPRECATED, use getImageDescription() in /drugcms/includes/functions.general.php
  * sitGetImageDescription()
  *
  * Liest die Bildbeschreibung aus der Datenbank
@@ -534,30 +391,10 @@ function sitGetFilesInDirectory($path, $filter = '*', $sort = '') {
  * oder (falls leer) aus der Tabelle ..._upl und liefert diese zurück.
  */
 function sitGetImageDescription($idupl) {
-    global $cfg;
-    
-    $db = new DB_Contenido();
-    $sDesc = '';
-    $sql = 'SELECT description
-            FROM ' . $cfg['tab']['upl_meta'] . '
-            WHERE (idupl=' . $idupl . ')';
-    $db->query($sql);
-    if ($db->next_record()) {
-        $sDesc = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('description')));
-    }
-    if (strlen(trim($sDesc)) == 0) {
-        $sql = 'SELECT description
-                FROM ' . $cfg['tab']['upl'] . '
-                WHERE (idupl=' . $idupl . ')';
-        $db->query($sql);
-        if ($db->next_record()) {
-            $sDesc = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('description')));
-        }
-    }
-    return $sDesc;
+    return getImageDescription($idupl);
 }
 
-/**
+/** DEPRECATED, use getInternalNotice() in /drugcms/includes/functions.general.php
  * sitGetInternalDescription()
  *
  * Liest die interne Notiz aus der Datenbank
@@ -569,21 +406,10 @@ function sitGetImageDescription($idupl) {
  * und liefert diese zurück.
  */
 function sitGetInternalDescription($idupl) {
-    global $cfg;
-    
-    $db = new DB_Contenido();
-    $sNotice = '';
-    $sql = 'SELECT internal_notice
-            FROM ' . $cfg['tab']['upl_meta'] . '
-            WHERE (idupl=' . $idupl . ')';
-    $db->query($sql);
-    if ($db->next_record()) {
-        $sNotice = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('internal_notice')));
-    }
-    return $sNotice;
+    return getInternalNotice($idupl);
 }
 
-/**
+/** DEPRECATED, use getRemoteContent() in /drugcms/includes/functions.general.php
  * sitGetRemoteContent()
  *
  * Holt entfernten Inhalt ab
@@ -601,37 +427,10 @@ function sitGetInternalDescription($idupl) {
  * auch Anfragen per https (SSL).
  */
 function sitGetRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '') {
-    $options = array(
-        CURLOPT_RETURNTRANSFER => true,     // return web page
-        CURLOPT_HEADER         => false,    // don't return headers
-        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
-        CURLOPT_ENCODING       => "",       // handle compressed
-        CURLOPT_USERAGENT      => "spider", // who am i
-        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
-        CURLOPT_CONNECTTIMEOUT => 10,       // timeout on connect
-        CURLOPT_TIMEOUT        => 10,       // timeout on response
-        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
-    );
-    if ((strlen($login) > 0) && (strlen($password) > 0)) {
-        $options[CURLOPT_USERPWD] = $login . ':' . $password;
-    }
-    
-    $ch      = curl_init($url);
-    curl_setopt_array($ch, $options);
-    $content = curl_exec($ch);
-    $errno   = curl_errno($ch);
-    $errmsg  = curl_error($ch);
-    $header  = curl_getinfo($ch);
-    curl_close($ch);
-    
-    if (($errno == 0) && ($header['http_code'] == 200)) {
-        return $content;
-    } else {
-        return false;
-    }
+    return getRemoteContent($url, $errno, $errmsg, $login, $password);
 }
 
-/**
+/** DEPRECATED, use getRemoteContentToFile() in /drugcms/includes/functions.general.php
  * sitGetRemoteContentToFile()
  *
  * Holt entfernten Inhalt ab und speichert diesen lokal
@@ -650,24 +449,10 @@ function sitGetRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '
  * auch Anfragen per https (SSL).
  */
 function sitGetRemoteContentToFile($url, $file, &$errno, &$errmsg, $login = '', $password = '') {
-    $ret = sitGetRemoteContent($url, $errno, $errmsg, $login, $password);
-    if ($ret !== false) {
-        # Content in Datei speichern
-        if ($fp = fopen($file, 'w')) {
-            fputs($fp, $ret);
-            fclose($fp);
-            return true;
-        } else {
-            $errno = -1;
-            $errmsg = 'Can\'t write to file ' . $file;
-            return false;
-        }
-    } else {
-        return false;
-    }
+    return getRemoteContentToFile($url, $file, $errno, $errmsg, $login, $password);
 }
 
-/**
+/** DEPRECATED, use getSubdirs() in /drugcms/includes/functions.general.php
  * sitGetSubdirs()
  *
  * Listet Unterverzeichnisse eines Verzeichnisses
@@ -681,26 +466,7 @@ function sitGetRemoteContentToFile($url, $file, &$errno, &$errmsg, $login = '', 
  * bis zu der angegebenen Anzahl an Ebenen (die Tiefe).
  */
 function sitGetSubdirs($dir, $levels = 1, $__dirs = array()) {
-    $a = array();
-    $dir = $dir . ((substr($dir, -1) == '/') ? '' : '/');
-    $p = opendir($dir);
-    while (($s = readdir($p)) !== false) {
-        if (($s == '.') || ($s == '..')) {
-            continue;
-        }
-        if (is_dir($dir . $s)) {
-            $a[] = $dir . $s . '/';
-        }
-    }
-    closedir($p);
-    sort($a, SORT_STRING);
-    for ($i = 0; $i < count($a); $i ++) {
-        $__dirs[] = $a[$i];
-        if ($levels > 1) {
-            $__dirs = sitGetSubdirs($a[$i], ($levels - 1), $__dirs);
-        }
-    }
-    return $__dirs;
+    return getSubdirs($dir, $levels);
 }
 
 /**
@@ -948,7 +714,7 @@ function sitImgScale($img, $maxX = 0, $maxY = 0, $crop = false, $expand = false,
     return $webFile;
 }
 
-/**
+/** DEPRECATED, use makeCmsType() in /drugcms/includes/functions.general.php
  * sitMakeCmsType()
  * 
  * Erzeugt ein CMS-Feld
@@ -960,31 +726,7 @@ function sitImgScale($img, $maxX = 0, $maxY = 0, $crop = false, $expand = false,
  * Generiert ein Feld eines CMS-Typs
  */
 function sitMakeCmsType($type, $id) {
-    global $db, $client, $lang, $cfg, $cfgClient, $area_tree, $sess, $perm, $area_rights, $item_rights, $_SESSION, $remakeCatTable, $remakeStrTable, $auth, $tpl, $edit, $a_content, $idartlang, $idcat, $idart;
-    
-    $tmp = '';
-    $val = $id;
-    # Den Code fuer das Feld laden
-    $sql = 'SELECT *
-            FROM ' . $cfg["tab"]["type"] . '
-            WHERE (type="' . $type . '")';
-    $db->query($sql);
-    if ($db->next_record()) {
-        $code = $db->f('code');
-        if (!$edit) {
-            $new_code = '$article = new Article($idart, $client, $lang); $tmp = urldecode($article->getContent($type, $id));';
-            $code = str_replace('$tmp = urldecode($a_content["' . $type . '"][$val]);', $new_code, $code);
-            $code = str_replace('$tmp = urldecode($a_content[\'' . $type . '\'][$val]);', $new_code, $code);
-            $new_code = '$article = new Article($idart, $client, $lang); $tmp = $article->getContent($type, $id);';
-            $code = str_replace('$tmp = $a_content["' . $type . '"][$val];', $new_code, $code);
-            $code = str_replace('$tmp = $a_content[\'' . $type . '\'][$val];', $new_code, $code);
-        }
-        eval($code);
-        $tmp = str_replace('\\\\\\', '', $tmp);
-        $tmp = str_replace("\'", "'", $tmp);
-        $tmp = str_replace('border="0" /', 'border="0" style="margin-right: 2px;" /', $tmp);
-    }
-    return $tmp;
+    return makeCmsType($type, $id);
 }
 
 /**
@@ -1066,7 +808,7 @@ function sitSafeStringEscape($string) {
     return $targetString;
 }
 
-/** DEPRECATED
+/** DEPRECATED, use sendHtmlMail() in /drugcms/includes/functions.general.php
  *
  * BITTE NICHT MEHR VERWENDEN, VERWENDE STATTDESSEN sendHtmlMail() in drugcms/includes/functions.general.php
  *
@@ -1108,7 +850,7 @@ function sitSendHtmlMail($html, $subject, $recipients, $attachments = '', $sname
     return sendHtmlMail($html, $subject, $recipients, $attachments, $sname, $smail, $mailer, $sserver, $slogin, $spass, $sport, $cc_recipients, $bcc_recipients, $reply_to);
 }
 
-/** DEPRECATED
+/** DEPRECATED, use setClientProperty() in /drugcms/includes/functions.general.php
  *
  * BITTE NICHT MEHR VERWENDEN, VERWENDE STATTDESSEN setClientProperty() in drugcms/includes/functions.general.php
  *
@@ -1128,7 +870,7 @@ function sitSetClientProperty($type, $name, $value) {
 	setClientProperty($type, $name, $value);
 }
 
-/**
+/** DEPRECATED, use teaserText() in /drugcms/includes/functions.general.php
  * sitTeaserText()
  *
  * Teasert einen Text an
@@ -1144,15 +886,10 @@ function sitSetClientProperty($type, $name, $value) {
  * Zeichen ist), wird ein HTML-Zeichen &hellip; (...) angehängt.
  */
 function sitTeaserText($text, $maxlength) {
-    $sText1 = strip_tags(str_replace(array("\r\n", "\n"), ' ', $text));
-    $sText2 = capiStrTrimAfterWord($sText1, intval($maxlength));
-    if (strlen($sText2) < strlen($sText1)) {
-        $sText2 .= '&hellip;';
-    }
-    return $sText2;
+    return teaserText($text, $maxlength);
 }
 
-/**
+/** DEPRECATED
  * quoteTypeWrap()
  *
  * Hilfsfunktion für sitArrayToString()

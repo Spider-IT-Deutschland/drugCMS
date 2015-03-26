@@ -114,7 +114,7 @@ while ($locale = readdir($handle)) {
 cInclude('includes', 'functions.general.php');
 cInclude('conlib', 'prepend.php');
 cInclude('includes', 'functions.i18n.php');
-
+cInclude('includes', 'functions.graphics.php');
 
 // fallback to old db-connection settings
 if(!isset($cfg['db']) || !is_array($cfg['db'])) {

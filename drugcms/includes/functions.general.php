@@ -762,6 +762,84 @@ function getPhpModuleInfo($moduleName)
 	return $moduleSettings;
 }
 
+/**
+ * getBrowserInfo()
+ * 
+ * Get's extended browser info.
+ * 
+ * @return array Array containing UserAgent, BrowserName, BrowserVersion, and Plattform.
+ */
+function getBrowserInfo() {
+    static $aBrowser;
+    
+    if (!is_array($aBrowser)) {
+        $u_agent    = $_SERVER['HTTP_USER_AGENT'];
+        $bname      = 'Unknown';
+        $platform   = 'Unknown';
+        $version    = '';
+        
+        //First get the platform?
+        if (preg_match('/linux/i', $u_agent)) {
+            $platform = 'linux';
+        } elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+            $platform = 'mac';
+        } elseif (preg_match('/windows|win32/i', $u_agent)) {
+            $platform = 'windows';
+        }
+        
+        // Next get the name of the useragent (yes, separately, and for good reason)
+        if (preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)) {
+            $bname = 'Internet Explorer';
+            $ub = "MSIE";
+        } elseif(preg_match('/Firefox/i',$u_agent)) {
+            $bname = 'Mozilla Firefox';
+            $ub = "Firefox";
+        } elseif(preg_match('/Chrome/i',$u_agent)) {
+            $bname = 'Google Chrome';
+            $ub = "Chrome";
+        } elseif(preg_match('/Safari/i',$u_agent)) {
+            $bname = 'Apple Safari';
+            $ub = "Safari";
+        } elseif(preg_match('/Opera/i',$u_agent)) {
+            $bname = 'Opera';
+            $ub = "Opera";
+        } elseif(preg_match('/Netscape/i',$u_agent)) {
+            $bname = 'Netscape';
+            $ub = "Netscape";
+        }
+        
+        // finally get the correct version number
+        $known = array('Version', $ub, 'other');
+        $pattern = '#(?<browser>' . join('|', $known) . ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+        if (!preg_match_all($pattern, $u_agent, $matches)) {
+            // we have no matching number just continue
+        }
+        
+        // see how many we have
+        $i = count($matches['browser']);
+        if ($i != 1) {
+            //we will have two since we are not using 'other' argument yet
+            //see if version is before or after the name
+            if (strripos($u_agent,"Version") < strripos($u_agent,$ub)) {
+                $version= $matches['version'][0];
+            } else {
+                $version= $matches['version'][1];
+            }
+        } else {
+            $version= $matches['version'][0];
+        }
+        
+        // check if we have a number
+        if (($version == null) || ($version == '')) {
+            $version = '?';
+        }
+        
+        $aBrowser = array( 'userAgent' => $u_agent, 'name' => $bname, 'version' => $version, 'platform' => $platform);
+    }
+    
+    return $aBrowser;
+}
+
 function isValidMail($sEMail, $bStrict = false)
 {
 	# 2014-07-19 Spider IT :: Function now uses the new form validation functions.
@@ -772,32 +850,6 @@ function isValidMail($sEMail, $bStrict = false)
         $ret = FormValidation::isExistingEmailAddress($sEMail);
     }
     return $ret;
-/*
-    if ($bStrict)
-	{
-		// HerrB (14.02.2008), code posted by Calvini
-		// See http://www.contenido.org/forum/viewtopic.php?p=106612#106612
-		// Note, that IDNs are currently only supported if given as punycode
-		
-		// "Strict" just means "95% real-world match",
-		// e.g. a.b@c.de, a-b@c.de, a_b@c.de and some special chars (not \n, ;)
-		
-		// See also http://www.php.net/manual/en/function.eregi.php#52458,
-		// but note http://www.php.net/manual/en/function.eregi.php#55215
-		// or just kill yourself, as being dumb to even try to validate an 
-		// email address: http://www.php.net/manual/en/function.preg-match.php#76615
-		
-		$sLocalChar		= '-a-z0-9_!#\\$&\'\\*\\+\\/=\\?\\^`\\{\\|\\}~'; 
-		$sLocalRegEx	= '['.$sLocalChar.'](\\.*['.$sLocalChar.'])*'; 
-		$sDomainChar	= 'a-z���'; 
-		$sDomainRegEx	= $sDomainRegEx  = '((['.$sDomainChar.']|['.$sDomainChar.']['.$sDomainChar.'0-9-]{0,61}['.$sDomainChar.'0-9])\\.)+';
-		$sTLDChar		= 'a-z';
-		$sTLDRegEx		= '['.$sTLDChar.']{2,}'; 
-		return preg_match('/^' . $sLocalRegEx . '@' . $sDomainRegEx . $sTLDRegEx . '$/i', $sEMail);
-	} else {
-		return preg_match("/^[0-9a-z]([-_.]*[0-9a-z]*)*@[a-z0-9-]+\.([a-z])/i", $sEMail);
-	}
-*/
 }
 
 function htmldecode($string)
@@ -1277,11 +1329,12 @@ function setArtspecDefault($idartspec)
 }
 
 /**
- * Build a Article select Box
+ * Build an Article select Box
  *
- * @param String Name of the SelectBox
- * @param String Value of the SelectBox
- * @return String HTML
+ * @param string $sName Name of the SelectBox
+ * @param int $iIdCat ID of the category to select an article in
+ * @param string $sValue Value of the SelectBox
+ * @return string HTML
  */
 function buildArticleSelect($sName, $iIdCat, $sValue) {
 	global $cfg, $client, $lang, $idcat;
@@ -1317,13 +1370,13 @@ function buildArticleSelect($sName, $iIdCat, $sValue) {
 /**
  * Build a Category / Article select Box
  *
- * @param String Name of the SelectBox
- * @param String Value of the SelectBox
- * @param Integer Value of highest level that should be shown
- * @param String Optional style informations for select
- * @return String HTML
+ * @param string $sName Name of the SelectBox
+ * @param string $sValue Value of the SelectBox
+ * @param Integer $iLevel Value of highest level that should be shown
+ * @param string $sStyle Optional style informations for select
+ * @return string HTML
  */
-function buildCategorySelect($sName, $sValue, $sLevel = 0, $sStyle = "")
+function buildCategorySelect($sName, $sValue, $iLevel = 0, $sStyle = "")
 {
 	global $cfg, $client, $lang, $idcat;
 
@@ -1334,9 +1387,9 @@ function buildCategorySelect($sName, $sValue, $sLevel = 0, $sStyle = "")
 	$html .= '<select id="'.$sName.'" style="'.$sStyle.'" name="'.$sName.'">';
 	$html .= '  <option value="">'.i18n("Please choose").'</option>';
 
-	if ($sLevel > 0)
+	if ($iLevel > 0)
 	{
-		$addString = "AND c.level<$sLevel";
+		$addString = "AND c.level<$iLevel";
 	}
 
 	$sql = "SELECT a.idcat AS idcat, b.name AS name, c.level FROM
@@ -1462,31 +1515,91 @@ function trim_array($array)
 	return $array;
 }
 
+/**
+ * array_csort()
+ *
+ * Sorts a cascaded array by columns
+ *
+ * @param array The array to sort
+ * $paramarray Fieldname, sort type, sort direction (repeated)
+ *   (see array_multisort, php.net/manual/en/function.array-multisort.php)
+ * @return array The sorted multi-dimensional array
+ * Example:
+ *   $x = array_csort($x, 'Name', SORT_STRING, SORT_ASC, 'Firstname', SORT_STRING, SORT_ASC);
+ */
 function array_csort()
-{ //coded by Ichier2003
-	$args = func_get_args();
-	$marray = array_shift($args);
-	$msortline = "return(array_multisort(";
-	$i = 0;
-	foreach ($args as $arg)
-	{
-		$i ++;
-		if (is_string($arg))
-		{
-			foreach ($marray as $row)
-			{
-				$a = strtoupper($row[$arg]);
-				$sortarr[$i][] = $a;
-			}
-		} else
-		{
-			$sortarr[$i] = $arg;
-		}
-		$msortline .= "\$sortarr[".$i."],";
-	}
-	$msortline .= "\$marray));";
-	@ eval ($msortline);
-	return $marray;
+{
+    # originally coded by Ichier2003
+    # optimized by René Mansveld
+    $args = func_get_args();
+    $marray = array_shift($args);
+    if (count($marray)) {
+        $msortline = 'return(array_multisort(';
+        foreach ($args as $arg) {
+            $i ++;
+            if (is_string($arg)) {
+                foreach ($marray as $row) {
+                    $sortarr[$i][] = $row[$arg];
+                }
+            } else {
+                $sortarr[$i] = $arg;
+            }
+            $msortline .= '$sortarr['.$i.'],';
+        }
+        $msortline .= '$marray));';
+        eval($msortline);
+    }
+    return $marray;
+}
+
+/**
+ * explodeAssociative()
+ *
+ * Converts a string to an associative array.
+ *
+ * @param string $delimiter1 Delimiter for building the array
+ * @param string $delimiter2 Delimiter for separating key and value
+ * @param string $string String to convert
+ * @return array The created array
+ */
+function explodeAssociative($delimiter1, $delimiter2, $string) {
+    $tmp = explode($delimiter1, $string);
+    $ret = array();
+    for ($i = 0, $n = count($tmp); $i < $n; $i ++) {
+        $t = explode($delimiter2, $tmp[$i]);
+        $ret[$t[0]] = $t[1];
+    }
+    return $ret;
+}
+
+/**
+ * explodeCascading()
+ *
+ * Converts a string to a multi-dimensional array.
+ *
+ * @param array string $delimiters Array with delimiters to be used in their sequence
+ * @param string $string String to convert
+ * @return array The created array
+ */
+function explodeCascading($delimiters = array(), $string = '') {
+    $tmp = explode($delimiters[0], $string);
+    array_shift($delimiters);
+    for ($i = 0, $n = count($tmp); $i < $n; $i ++) {
+        $tmp[$i] = explodeCascading($delimiters, $tmp[$i]);
+    }
+    return $tmp;
+}
+
+/**
+ * explodeLines()
+ *
+ * Converts a text to an array while splitting on line breaks.
+ *
+ * @param string $string String to convert
+ * @return array The created array
+ */
+function explodeLines($string) {
+    return explode("\n", str_replace(array("\r\n", "\r"), "\n", $string));
 }
 
 /**
@@ -1661,6 +1774,83 @@ function getClientName($idclient)
 	{
 		return false;
 	}
+}
+
+/**
+ * getFilesInDirectory()
+ *
+ * Lists files in the given directory.
+ *
+ * @param string $path Full path to scan
+ * @param $filter Filter (string/array) for selecting files (optional)
+ * @param $sort Sort order (optional)
+ *
+ * Examples for $filter: '*.txt' or array('*.jp*g', '*.gif', '*.png').
+ * Values for $sort: 'asc', 'desc', SORT_ASC, or SORT_DESC.
+ */
+function getFilesInDirectory($path, $filter = '*', $sort = '') {
+    define('FNM_CASEFOLD', 16);
+    $aFiles = array();
+    if (is_dir($path)) {
+        if (!is_array($filter)) {
+            $filter = array($filter);
+        }
+        if ($oDir = opendir($path)) {
+            while (($sFile = readdir($oDir)) !== false) {
+                if (is_dir($path . $sFile)) {
+                    continue;
+                } else {
+                    for ($i = 0, $n = count($filter); $i < $n; $i ++) {
+                        if (fnmatch($filter[$i], $sFile, FNM_CASEFOLD)) {
+                            $aFiles[] = $sFile;
+                            break;
+                        }
+                    }
+                }
+            }
+            closedir($oDir);
+            if (strlen($sort)) {
+                sort($aFiles, SORT_STRING);
+                if (($sort == 'desc') || ($sort == SORT_DESC)) {
+                    $aFiles = array_reverse($aFiles);
+                }
+            }
+        }
+    }
+    return $aFiles;
+}
+
+/**
+ * getSubdirs()
+ *
+ * Lists all directories in the given directory
+ *
+ * @param string $dir Directory to scan
+ * @param int $levels Number of directory levels to list (tree)
+ * @param array $__dirs Internal parameter, do not use!
+ * @return array Array of subdirs
+ */
+function getSubdirs($dir, $levels = 1, $__dirs = array()) {
+    $a = array();
+    $dir = $dir . ((substr($dir, -1) == '/') ? '' : '/');
+    $p = opendir($dir);
+    while (($s = readdir($p)) !== false) {
+        if (($s == '.') || ($s == '..')) {
+            continue;
+        }
+        if (is_dir($dir . $s)) {
+            $a[] = $dir . $s . '/';
+        }
+    }
+    closedir($p);
+    sort($a, SORT_STRING);
+    for ($i = 0; $i < count($a); $i ++) {
+        $__dirs[] = $a[$i];
+        if ($levels > 1) {
+            $__dirs = getSubdirs($a[$i], ($levels - 1), $__dirs);
+        }
+    }
+    return $__dirs;
 }
 
 function scanDirectory($sDirectory, $bRecursive = false)
@@ -2704,4 +2894,201 @@ function debug($value, $type = '') {
         $oDbg->showAll();
     }
 }
+
+/**
+ * getImageDescription()
+ *
+ * Reads the image description from the database.
+ *
+ * @param int $idupl ID of the image record in the database
+ * @return string The image description
+ */
+function getImageDescription($idupl) {
+    global $cfg;
+    
+    $db = new DB_Contenido();
+    $sDesc = '';
+    $sql = 'SELECT description
+            FROM ' . $cfg['tab']['upl_meta'] . '
+            WHERE (idupl=' . $idupl . ')';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $sDesc = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('description')));
+    }
+    if (strlen(trim($sDesc)) == 0) {
+        $sql = 'SELECT description
+                FROM ' . $cfg['tab']['upl'] . '
+                WHERE (idupl=' . $idupl . ')';
+        $db->query($sql);
+        if ($db->next_record()) {
+            $sDesc = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('description')));
+        }
+    }
+    $db->disconnect();
+    return $sDesc;
+}
+
+/**
+ * getInternalNotice()
+ *
+ * Reads the internal notice from the database
+ *
+ * @param int $idupl - ID of the database entry
+ * @return string The internal notice
+ */
+function getInternalNotice($idupl) {
+    global $cfg;
+    
+    $db = new DB_Contenido();
+    $sNotice = '';
+    $sql = 'SELECT internal_notice
+            FROM ' . $cfg['tab']['upl_meta'] . '
+            WHERE (idupl=' . $idupl . ')';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $sNotice = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('internal_notice')));
+    }
+    $db->disconnect();
+    return $sNotice;
+}
+
+/**
+ * getRemoteContent()
+ *
+ * Gets content from another server/domain
+ *
+ * @param string $url The address to get the content from (http/https)
+ * @param int $errno Error number received
+ * @param string $errmsg Error message received
+ * @param string $login Login to the remote server/domain (optional)
+ * @param string $password Password to the remote server/domain (optional)
+ * @return string The remote content
+ */
+function getRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '') {
+    $options = array(
+        CURLOPT_RETURNTRANSFER => true,     // return web page
+        CURLOPT_HEADER         => false,    // don't return headers
+        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+        CURLOPT_ENCODING       => "",       // handle compressed
+        CURLOPT_USERAGENT      => "spider", // who am i
+        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+        CURLOPT_CONNECTTIMEOUT => 10,       // timeout on connect
+        CURLOPT_TIMEOUT        => 10,       // timeout on response
+        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+    );
+    if ((strlen($login) > 0) && (strlen($password) > 0)) {
+        $options[CURLOPT_USERPWD] = $login . ':' . $password;
+    }
+    
+    $ch      = curl_init($url);
+    curl_setopt_array($ch, $options);
+    $content = curl_exec($ch);
+    $errno   = curl_errno($ch);
+    $errmsg  = curl_error($ch);
+    $header  = curl_getinfo($ch);
+    curl_close($ch);
+    
+    if (($errno == 0) && ($header['http_code'] == 200)) {
+        return $content;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * getRemoteContentToFile()
+ *
+ * Gets content from another server/domain and saves it locally
+ *
+ * @param string $url The address to get the content from (http/https)
+ * @param string $file Full path to the file to create/overwrite
+ * @param int $errno Error number received
+ * @param string $errmsg Error message received
+ * @param string $login Login to the remote server/domain (optional)
+ * @param string $password Password to the remote server/domain (optional)
+ * @return bool Success
+ */
+function getRemoteContentToFile($url, $file, &$errno, &$errmsg, $login = '', $password = '') {
+    $ret = getRemoteContent($url, $errno, $errmsg, $login, $password);
+    if ($ret !== false) {
+        # Content in Datei speichern
+        if ($fp = fopen($file, 'w')) {
+            fputs($fp, $ret);
+            fclose($fp);
+            return true;
+        } else {
+            $errno = -1;
+            $errmsg = 'Can\'t write to file ' . $file;
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+/**
+ * makeCmsType()
+ * 
+ * Generates a CMS_ type field
+ * 
+ * @param string $type Type of the field to generate
+ * @param int $id Nummer of the field to generate
+ * @return string Generated code for the CMS_ type field
+ * 
+ * Examples:
+ *   echo makeCmsType('CMS_HTML', 1);
+ *   echo makeCmsType('html', 1);
+ */
+function makeCmsType($type, $id) {
+    global $db, $client, $lang, $cfg, $cfgClient, $area_tree, $sess, $perm, $area_rights, $item_rights, $_SESSION, $remakeCatTable, $remakeStrTable, $auth, $tpl, $edit, $a_content, $idartlang, $idcat, $idart;
+    
+    $type = strtoupper($type);
+    if (substr($type, 4) != 'CMS_') {
+        $type = 'CMS_' . $type;
+    }
+    $tmp = '';
+    $val = $id;
+    # Den Code fuer das Feld laden
+    $sql = 'SELECT *
+            FROM ' . $cfg["tab"]["type"] . '
+            WHERE (type="' . $type . '")';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $code = $db->f('code');
+        if (!$edit) {
+            $new_code = '$article = new Article($idart, $client, $lang); $tmp = urldecode($article->getContent($type, $id));';
+            $code = str_replace('$tmp = urldecode($a_content["' . $type . '"][$val]);', $new_code, $code);
+            $code = str_replace('$tmp = urldecode($a_content[\'' . $type . '\'][$val]);', $new_code, $code);
+            $new_code = '$article = new Article($idart, $client, $lang); $tmp = $article->getContent($type, $id);';
+            $code = str_replace('$tmp = $a_content["' . $type . '"][$val];', $new_code, $code);
+            $code = str_replace('$tmp = $a_content[\'' . $type . '\'][$val];', $new_code, $code);
+        }
+        eval($code);
+        $tmp = str_replace('\\\\\\', '', $tmp);
+        $tmp = str_replace("\'", "'", $tmp);
+        $tmp = str_replace('border="0" /', 'border="0" style="margin-right: 2px;" /', $tmp);
+    }
+    return $tmp;
+}
+
+/**
+ * teaserText()
+ *
+ * Teasers a given text
+ *
+ * @param string $text The text to teaser
+ * @param int $maxlength Max length of the teasered text
+ * @return string The teasered text with &hellip; (...) if shortened
+ *
+ * Text gets shortened without html tags.
+ */
+function teaserText($text, $maxlength) {
+    $sText1 = strip_tags(str_replace(array("\r\n", "\r", "\n"), ' ', $text));
+    $sText2 = capiStrTrimAfterWord($sText1, intval($maxlength));
+    if (strlen($sText2) < strlen($sText1)) {
+        $sText2 .= '&hellip;';
+    }
+    return $sText2;
+}
+
 ?>

@@ -1176,6 +1176,44 @@ function conDeeperCategoriesArray($idcat_start)
 }
 
 /**
+ * conDeeperCategoriesArticlesArray()
+ *
+ * Fetch all articles in the given and deeper categories
+ *
+ * @param int $idcat ID of the topmost category
+ * @param string $author Login of the author to find articles of (optional)
+ * @param bool $firstLevel Show articles in the first (topmost) category (optional)
+ * @param int $numLevels Number of levels to go through (0 = all) (optional)
+ * @param bool $startarticle Include start articles (optional)
+ * @param bool $offline Include offline articles (optional)
+ * @param array $aArts Internal parameter, do not use!
+ * @return array Array with idarts of all fitting articles
+ */
+function conDeeperCategoriesArticlesArray($idcat, $author = '', $firstLevel = false, $numLevels = 0, $startarticle = false, $offline = false, $aArts = array()) {
+    global $client, $lang;
+    
+    if ($firstLevel) {
+        $aList = new ArticleCollection(array('idcat' => intval($idcat), 'start' => $startarticle, 'offline' => $offline));
+        while ($oArt = $aList->nextArticle()) {
+            if (strlen($author)) {
+                if ($oArt->getField('author') == $auth->auth['uname']) {
+                    $aArts[] = $oArt->getField('idart');
+                }
+            } else {
+                $aArts[] = $oArt->getField('idart');
+            }
+        }
+    }
+    if ($numLevels > (($firstLevel) ? 1 : 0)) {
+        $aCats = conDeeperCategoriesArray(intval($idcat));
+        for ($i = 0, $n = count($aCats); $i < $n; $i ++) {
+            $aArts = conDeeperCategoriesArticlesArray($aCats[$i], $author, true, (($firstLevel) ? ($numLevels - 1) : $numLevels), $startarticle, $offline, $aArts);
+        }
+    }
+    return $aArts;
+}
+
+/**
  * Recursive function to create an location string
  *
  * @param int $idcat ID of the starting category
