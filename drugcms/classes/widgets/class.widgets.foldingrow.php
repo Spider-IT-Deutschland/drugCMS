@@ -106,7 +106,7 @@ class cFoldingRow extends cHTML
         
         $user = new cApiUser($auth->auth["uid"]);
 		
-		if ($bExpanded == null) {
+		if ($bExpanded === null) {
 			/* Check for expandstate */
 
 			if (!$user->virgin)

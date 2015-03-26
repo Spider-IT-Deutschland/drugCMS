@@ -70,9 +70,9 @@
 					var settingsLinkRec = document.getElementById('{SETTINGSLINKREC}');
 					var listoptionLinkRec = document.getElementById('{LISTOPTIONLINKREC}');
 					var pagingLinkRec = document.getElementById('{PAGINGLINKREC}');
-          var actionLinkGroup = document.getElementById('{ACTIONLINKGROUP}');
-          var listoptionLinkGroup = document.getElementById('{LISTOPTIONLINKGROUP}');
-          var pagingLinkGroup = document.getElementById('{PAGINGLINKGROUP}');
+                    var actionLinkGroup = document.getElementById('{ACTIONLINKGROUP}');
+                    var listoptionLinkGroup = document.getElementById('{LISTOPTIONLINKGROUP}');
+                    var pagingLinkGroup = document.getElementById('{PAGINGLINKGROUP}');
           
                     if (actionLink) {
                         actionURL = actionLink.href;
@@ -144,15 +144,15 @@
                         pagingLinkGroup.href = "javascript:resizeFrame('{PAGINGLINKGROUP}')";
                     }
           
-  				// for first load set focus to newsletter
-                for(var i=0; i < buttonArray.length; i++) {
-                    if (document.getElementById(buttonArray[i].imgId)) {
-                        toggleContainer(buttonArray[i].imgId);
-                        break;
+                    // for first load set focus to newsletter
+                    for(var i=0; i < buttonArray.length; i++) {
+                        if (document.getElementById(buttonArray[i].imgId)) {
+                            //toggleContainer(buttonArray[i].imgId);
+                            break;
+                        }
                     }
-                }
   				
-  				hoverEffect('{ID_CNEWSLETTER}', 'on');
+                    hoverEffect('{ID_CNEWSLETTER}', 'on');
 				}
 				else if(arg == '{ACTIONLINK}')
 				{

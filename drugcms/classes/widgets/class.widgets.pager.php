@@ -44,11 +44,11 @@ class cObjectPager extends cFoldingRow
     
 	  if($id == '')
 	  {
-		  cFoldingRow::cFoldingRow($uuid, i18n("Paging"));
+		  cFoldingRow::cFoldingRow($uuid, i18n("Paging"), null, true);
 	  }
 	  else
 	  {
-      cFoldingRow::cFoldingRow($uuid, i18n("Paging"), $id);
+		  cFoldingRow::cFoldingRow($uuid, i18n("Paging"), $id, true);
 	  }
 		
 		if (!is_object($link))
