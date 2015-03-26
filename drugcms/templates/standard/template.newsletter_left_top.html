@@ -145,9 +145,9 @@
                     }
           
                     // for first load set focus to newsletter
-                    for(var i=0; i < buttonArray.length; i++) {
+                    for (var i=0; i < buttonArray.length; i++) {
                         if (document.getElementById(buttonArray[i].imgId)) {
-                            //toggleContainer(buttonArray[i].imgId);
+                            toggleContainer(buttonArray[i].imgId);
                             break;
                         }
                     }
@@ -212,28 +212,28 @@
 				window.setTimeout("parent.parent.frameResize.resizeTopLeftFrame(document.getElementById('top_left_container').offsetHeight+1)", 10);
 			}
 			
-      function showSendTestMsg(lngId) 
-      {
-        box.confirm("'.$sSendTestTitle.'", "'.$sSendTestDescr.'", "sendTestNewsletter(\'" + lngId + "\')");
-      }
+          function showSendTestMsg(lngId) 
+          {
+            box.confirm("'.$sSendTestTitle.'", "'.$sSendTestDescr.'", "sendTestNewsletter(\'" + lngId + "\')");
+          }
 
-      function showDelMsg(lngId, strElement) 
-      {
-        box.confirm("'.$sDelTitle.'", "'.$sDelDescr.'<b>" + strElement + "</b>", "deleteNewsletter(\'" + lngId + "\')");
-      }
+          function showDelMsg(lngId, strElement) 
+          {
+            box.confirm("'.$sDelTitle.'", "'.$sDelDescr.'<b>" + strElement + "</b>", "deleteNewsletter(\'" + lngId + "\')");
+          }
 
-	    /* Enabled/Disable group box */
-      function checkSelection(strValue)
-      {
-        if (strValue == "selection") 
-        {
-          document.getElementById("groupselect").disabled = false;
-        } 
-        else 
-        {
-          document.getElementById("groupselect").disabled = true;
-        }
-      }
+            /* Enabled/Disable group box */
+          function checkSelection(strValue)
+          {
+            if (strValue == "selection") 
+            {
+              document.getElementById("groupselect").disabled = false;
+            } 
+            else 
+            {
+              document.getElementById("groupselect").disabled = true;
+            }
+          }
 			
 			function toggleContainer(activeButton)
 			{

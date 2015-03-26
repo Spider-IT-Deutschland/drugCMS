@@ -276,7 +276,7 @@ class UI_Menu
         		if (is_array($this->actions[$key]))
         		{
 
-        			$fullactions = '<table border="0"><tr>';
+        			$fullactions = '<table border="0" cellspacing="0" cellpadding="0"><tr>';
 
         			foreach ($this->actions[$key] as $key => $singleaction)
         			{
