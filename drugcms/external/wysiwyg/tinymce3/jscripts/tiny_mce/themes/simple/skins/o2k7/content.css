@@ -2,6 +2,7 @@ body, td, pre {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px
 
 body {background: #FFF;}
 .mceVisualAid {border: 1px dashed #BBB;}
+a.mceItemAnchor {display:inline-block; width:11px !important; height:11px  !important; background:url(../default/img/items.gif) no-repeat 0 0 !important;}
 
 /* IE */
 
