@@ -920,11 +920,12 @@ else
             $oUrl = Contenido_Url::getInstance();
             if ($oUrl->isIdentifiableFrontContentUrl($redirect_url)) {
                 // perform urlbuilding only for identified internal urls
-                $aUrl = $oUrl->parse($redirect_url);
+                $aRedirUrl = explode('#', $redirect_url);
+                $aUrl = $oUrl->parse($aRedirUrl[0]);
                 if (!isset($aUrl['params']['lang'])) {
                     $aUrl['params']['lang'] = $lang;
                 }
-                $redirect_url = $oUrl->buildRedirect($aUrl['params']);
+                $redirect_url = $oUrl->buildRedirect($aUrl['params']) . ((count($aRedirUrl == 2)) ? '#' . $aRedirUrl[1] : '');
             }
             header("Location: $redirect_url");
             exit;
