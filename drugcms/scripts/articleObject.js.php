@@ -136,9 +136,9 @@ function articleObject(actionFrameName, frameNumber)
 				break;
 			}
 		}
-        echo 'this.idart = '.$_GET["idart"].';';
-        echo 'this.idcat = '.$_GET["idcat"].';';
-        echo 'this.idartlang = '.$_GET["idartlang"].';';
+        if (strlen($_GET['idart'])) echo 'this.idart = '.$_GET["idart"].';';
+        if (strlen($_GET['idcat'])) echo 'this.idcat = '.$_GET["idcat"].';';
+        if (strlen($_GET['idartlang'])) echo 'this.idartlang = '.$_GET["idartlang"].';';
     	echo 'this.customTabs[\''.$sTab.'\'][\'area\'] = "'.$aTmpArray[0].'";'."\n";
 		echo 'this.customTabs[\''.$sTab.'\'][\'action\'] = "'.$aTmpArray[1].'";'."\n";
 		echo 'this.customTabs[\''.$sTab.'\'][\'custom\'] = "'.$aTmpArray[2].'";'."\n";
