@@ -76,7 +76,7 @@
 			<label for="teaser_manual">{LABEL_USE_MANUAL}:</label>
 			<input class="no_width" type="checkbox" name="teaser_manual" id ="teaser_manual" {MANUAL_CHECKED}>
 			
-			<div class="head_sub head_sep">{LABEL_EXISTING_ARTICLES}</div>
+			<div class="head_sub head_sep">{LABEL_EXISTING_ARTICLES} <img style="margin-left: 18px;" id="removeTeaser" src="{CON_PATH}images/delete.gif" alt="" /></div>
 			<select size="4" name="teaser_manual_art" id="teaser_manual_art" class="manual">{MANUAL_OPTIONS}</select>			
 			
 			<div class="head_sub head_sep">{LABEL_ADD_ARTICLE}</div>
@@ -108,6 +108,14 @@
     $(document).ready(function(){
         $.getScript(sPath+'scripts/cmsTeaser.js', function() {
             addTeaserEvents(teaserFrame{ID}, teaserImage{ID}, sPath, sSession, iIdArtLang, '{ID}');
+        });
+        
+        $('#removeTeaser').click(function() {
+            $('#teaser_manual_art option').each(function() {
+                if($(this).attr('selected')) {
+                    $(this).remove();
+                };
+            });
         });
     });
 //]]>

@@ -108,7 +108,7 @@ function cmsFileList_addTabbingEvents(sFrameId) {
         
         if (curAction.attr('class') == 'manual') {
             $(sFrameId).animate({ 
-            height: "450px",
+            height: "470px",
             }, 250 , 'linear', function () {
                 $(sFrameId+" #"+curAction.attr('class')).css('height', '386px');
                 $(sFrameId+" #"+curAction.attr('class')).fadeIn("normal");
