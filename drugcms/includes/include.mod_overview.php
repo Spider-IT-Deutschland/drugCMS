@@ -238,7 +238,7 @@ while ($cApiModule = $cApiModuleCollection->next())
         $mlist->setActions($iMenu, "todo", $todo->render());
         $mlist->setActions($iMenu, "delete", $deletebutton);
         $usesFilesString = i18n("Module uses Output- and/or InputFromFile. Editing and Saving may not be possible in backend.");
-        $mlist->setActions($iMenu, 'usesFiles', ((in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) ? ((($cApiModule->isLoadedFromFile('input')) || ($cApiModule->isLoadedFromFile('output'))) ? '<img src="'.$cfg['path']['images'].'export_to_files.png" border="0" title="'.$usesFilesString.'" alt="'.$usesFilesString.'">' : '<img src="./images/spacer.gif" border="0" width="16">') : ''));
+        $mlist->setActions($iMenu, 'usesFiles', ((in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) ? ((($cApiModule->isLoadedFromFile('input')) || ($cApiModule->isLoadedFromFile('output'))) ? '<img src="'.$cfg['path']['images'].'export_to_files.png" border="0" title="'.$usesFilesString.'" alt="'.$usesFilesString.'">' : '') : ''));
         
         if (isset($_GET['idmod']) && $_GET['idmod'] == $idmod) {
             $mlist->setExtra($iMenu, 'id="marked" ');
