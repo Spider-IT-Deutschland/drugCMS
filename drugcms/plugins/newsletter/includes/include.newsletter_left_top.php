@@ -12,7 +12,7 @@
  *
  * @package    Contenido Backend includes
  * @version    1.0.0
- * @author     Björn Behrens (HerrB)
+ * @author     BjÃ¶rn Behrens (HerrB)
  * @copyright  four for business AG <www.4fb.de>
  * @license    http://www.contenido.org/license/LIZENZ.txt
  * @link       http://www.4fb.de
@@ -20,9 +20,9 @@
  * @since      file available since contenido release <= 4.6
  * 
  * {@internal 
- *   created 2007-01-01, Björn Behrens (HerrB)
+ *   created 2007-01-01, BjÃ¶rn Behrens (HerrB)
  *   modified 2008-06-27, Dominik Ziegler, add security fix
- *   modified 2008-08-03, Björn Behrens (HerrB), complete makeover to fix bugs and reduce memory waste
+ *   modified 2008-08-03, BjÃ¶rn Behrens (HerrB), complete makeover to fix bugs and reduce memory waste
  *
  *   $Id$:
  * }}
@@ -99,7 +99,7 @@ unset($sButtonRow);
 # 1.1 Newsletter: Actions folding row
 ######################################
 $sLink 			= "actionlink"; // ID for HTML element
-$oActionsRow	= new cFoldingRow("28cf9b31-e6d7-4657-a9a7-db31478e7a5c",i18n("Actions", $plugin_name), $sLink);
+$oActionsRow	= new cFoldingRow("28cf9b31-e6d7-4657-a9a7-db31478e7a5c",i18n("Actions", $plugin_name), $sLink, false);
 $oTpl->set('s', 'ACTIONLINK', $sLink);
 
 if ($perm->have_perm_area_action("news", "news_create"))
@@ -121,7 +121,7 @@ if ($perm->have_perm_area_action("news", "news_create"))
 # 1.2 Newsletter: Settings folding row
 ######################################
 $sLink			= "settingslink";
-$oSettingsRow	= new cFoldingRow("d64baf0a-aea9-47b3-8490-54a00fce02b5",i18n("Settings", $plugin_name), $sLink);
+$oSettingsRow	= new cFoldingRow("d64baf0a-aea9-47b3-8490-54a00fce02b5",i18n("Settings", $plugin_name), $sLink, false);
 $oTpl->set('s', 'SETTINGSLINK', $sLink);
 
 // HTML Newsletter: Template and newsletter category
@@ -342,7 +342,7 @@ $sContent .= '</div>'."\n";
 
 // To template
 $sLink				= "listoption";
-$oListOptionsRow	= new cFoldingRow("9d0968be-601d-44f8-a666-99d51c9c777d",i18n("List options", $plugin_name), $sLink);
+$oListOptionsRow	= new cFoldingRow("9d0968be-601d-44f8-a666-99d51c9c777d",i18n("List options", $plugin_name), $sLink, false);
 $oListOptionsRow->setContentData($sContent);
 $oTpl->set('s', 'LISTOPTIONLINK', $sLink);
 
@@ -521,7 +521,7 @@ $sContent .= '</div>'."\n";
 
 // To template
 $sLink				= "listoptiondisp";
-$oListOptionsRow	= new cFoldingRow("dfa6cc00-0acf-11db-9cd8-0800200c9a66",i18n("List options", $plugin_name), $sLink);
+$oListOptionsRow	= new cFoldingRow("dfa6cc00-0acf-11db-9cd8-0800200c9a66",i18n("List options", $plugin_name), $sLink, false);
 $oListOptionsRow->setContentData($sContent);
 $oTpl->set('s', 'LISTOPTIONLINKDISP', $sLink);
 
@@ -616,7 +616,7 @@ $oTpl->set('s', 'VALUE_PURGETIMEFRAME', $iTimeframe);
 
 // To template
 $sLink			= "actionrec";
-$oListActionsRow	= new cFoldingRow("f0d7bf80-e73e-11d9-8cd6-0800200c9a66", i18n("Actions", $plugin_name), $sLink);
+$oListActionsRow	= new cFoldingRow("f0d7bf80-e73e-11d9-8cd6-0800200c9a66", i18n("Actions", $plugin_name), $sLink, false);
 $oListActionsRow->setContentData($sContent);
 $oTpl->set('s', 'ACTIONLINKREC', $sLink);
 
@@ -652,7 +652,7 @@ $sContent .= '</div>'."\n";
 
 // To template
 $sLink			= "settingsrec";
-$oSettingsRow	= new cFoldingRow("5ddbe820-e6f1-11d9-8cd6-0800200c9a69",i18n("Settings", $plugin_name), $sLink);
+$oSettingsRow	= new cFoldingRow("5ddbe820-e6f1-11d9-8cd6-0800200c9a69",i18n("Settings", $plugin_name), $sLink, false);
 $oSettingsRow->setContentData($sContent);
 $oTpl->set('s', 'SETTINGSLINKREC', $sLink);
 
@@ -764,7 +764,7 @@ $sContent .= '</div>'."\n";
 
 // To template
 $sLink				= "listoptionsrec";
-$oListOptionsRow	= new cFoldingRow("5ddbe820-e6f1-11d9-8cd6-0800200c9a66",i18n("List options", $plugin_name), $sLink);
+$oListOptionsRow	= new cFoldingRow("5ddbe820-e6f1-11d9-8cd6-0800200c9a66",i18n("List options", $plugin_name), $sLink, false);
 $oListOptionsRow->setContentData($sContent);
 $oTpl->set('s', 'LISTOPTIONLINKREC', $sLink);
 
@@ -832,7 +832,7 @@ if ($perm->have_perm_area_action("recipientgroups", "recipientgroup_create"))
 $sContent .= '</div>'."\n";
 
 $sLink				= "actiongroup";
-$oListActionsRow	= new cFoldingRow("f0d7bf80-e73e-11d9-8cd6-0800200c9a67",i18n("Actions", $plugin_name), $sLink);
+$oListActionsRow	= new cFoldingRow("f0d7bf80-e73e-11d9-8cd6-0800200c9a67",i18n("Actions", $plugin_name), $sLink, false);
 $oListActionsRow->setContentData($sContent);
 $oTpl->set('s', 'ACTIONLINKGROUP', $sLink);
 
@@ -913,7 +913,7 @@ $sContent .= '</div>'."\n";
 
 // To template
 $sLink 				= "listoptionsgroup";
-$oListOptionsRow	= new cFoldingRow("79efc1fc-111d-11dc-8314-0800200c9a66",i18n("List options", $plugin_name), $sLink);
+$oListOptionsRow	= new cFoldingRow("79efc1fc-111d-11dc-8314-0800200c9a66",i18n("List options", $plugin_name), $sLink, false);
 $oListOptionsRow->setContentData($sContent);
 $oTpl->set('s', 'LISTOPTIONLINKGROUP', $sLink);
 
