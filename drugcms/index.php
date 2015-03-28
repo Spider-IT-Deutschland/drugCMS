@@ -182,8 +182,12 @@ $tpl->set('s', 'VERSION',	$cfg["version"]);
 $tpl->set('s', 'LOCATION',	$cfg['path']['contenido_fullhtml']);
 $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico");
 $tpl->generate($cfg['path']['templates'] . $cfg['templates']['frameset']);
-    #$tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
+#$tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
 
+if (($debug) || (in_array(getEffectiveSetting('system', 'debug', 'false'), array('true', '1')))) {
+    $oDbg = DebuggerFactory::getDebugger('visible_adv');
+    $oDbg->showAll();
+}
 
 $db->disconnect();
 unset($db);

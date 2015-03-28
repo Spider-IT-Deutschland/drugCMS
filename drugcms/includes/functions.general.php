@@ -2891,7 +2891,6 @@ function debug($value, $type = '') {
                 }
                 break;
         }
-        $oDbg->showAll();
     }
 }
 

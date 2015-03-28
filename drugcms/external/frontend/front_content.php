@@ -1072,6 +1072,11 @@ if (isset ($savedlang))
     $lang = $savedlang;
 }
 
+if (($debug) || (in_array(getEffectiveSetting('system', 'debug', 'false'), array('true', '1')))) {
+    $oDbg = DebuggerFactory::getDebugger('visible_adv');
+    $oDbg->showAll();
+}
+
 $db->disconnect();
 page_close();
 ?>

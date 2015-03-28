@@ -292,6 +292,11 @@ $oActiveUser->startUsersTracking();
  * End of the User Tracking
  */
 
+if (($debug) || (in_array(getEffectiveSetting('system', 'debug', 'false'), array('true', '1')))) {
+    $oDbg = DebuggerFactory::getDebugger('visible_adv');
+    $oDbg->showAll();
+}
+
 $db->disconnect();
 unset($db);
 page_close();
