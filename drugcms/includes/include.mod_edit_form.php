@@ -144,8 +144,10 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
             }
             rmdir($sFullPath);
             # We must do this because of slashes which cause the module to be set to error state if the script continues
-            header('Location: ' . $sess->url('main.php?area=' . $area . '&frame=' . $frame . '&idmod=' . $idmod));
-            die('<script>document.location.href="' . $sess->url('main.php?area=' . $area . '&frame=' . $frame . '&idmod=' . $idmod));
+            die('<script type="text/javascript">
+                    parent.parent.frames["left"].frames["left_bottom"].location.reload();
+                    document.location.href = "' . $sess->url('main.php?area=' . $area . '&frame=' . $frame . '&idmod=' . $idmod) . '";
+                </script>');
         }
         $module = new cApiModule($module->get("idmod"));
     }
