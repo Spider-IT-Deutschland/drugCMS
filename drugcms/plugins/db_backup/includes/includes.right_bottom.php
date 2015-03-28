@@ -85,15 +85,7 @@ if ((!$pathfinder) || (!$permissionfinder)) {
             $oTpl->set('s', 'LINK_START_BACKUP', $sess->url('main.php?area=' . $plugin_name . '&amp;frame=4&amp;mode=0&amp;action=1'));
             $oTpl->set('s', 'LABEL_START_BACKUP', i18n("Start a new backup", $plugin_name));
             $oTpl->set('s', 'LABEL_PREVIOUS_BACKUPS', i18n("Created backups", $plugin_name));
-            $aFiles = array();
-            $hDir = opendir($backup_path);
-            while (($sFile = readdir($hDir)) !== false) {
-                if (is_file($backup_path . $sFile)) {
-                    $aFiles[] = $sFile;
-                }
-            }
-            sort($aFiles);
-            $aFiles = array_reverse($aFiles);
+            $aFiles = getFilesInDirectory($backup_path, '*.sql*', SORT_DESC);
             for ($i = 0, $n = count($aFiles); $i < $n; $i ++) {
                 $oTpl->set('d', 'NO', ($i + 1));
                 $oTpl->set('d', 'FILENAME', $aFiles[$i]);
@@ -106,15 +98,7 @@ if ((!$pathfinder) || (!$permissionfinder)) {
             break;
         case 1:
             $oTpl->set('s', 'LABEL_RESTORE', i18n("Restore", $plugin_name));
-            $aFiles = array();
-            $hDir = opendir($backup_path);
-            while (($sFile = readdir($hDir)) !== false) {
-                if (is_file($backup_path . $sFile)) {
-                    $aFiles[] = $sFile;
-                }
-            }
-            sort($aFiles);
-            $aFiles = array_reverse($aFiles);
+            $aFiles = getFilesInDirectory($backup_path, '*.sql*', SORT_DESC);
             for ($i = 0, $n = count($aFiles); $i < $n; $i ++) {
                 $oTpl->set('d', 'NO', ($i + 1));
                 $oTpl->set('d', 'FILENAME', $aFiles[$i]);

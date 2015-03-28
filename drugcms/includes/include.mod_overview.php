@@ -160,103 +160,92 @@ while ($cApiModule = $cApiModuleCollection->next())
 {
     if ($perm->have_perm_item($area, $db->f("idmod")) || $perm->have_perm_area_action("mod_translate", "mod_translation_save") || $perm->have_perm_area_action_item("mod_translate", "mod_translation_save", $cApiModule->get("idmod")))
 	{
-			$idmod = $cApiModule->get("idmod");
-			
-			$link = new cHTMLLink;
-			$link->setMultiLink("mod", "", "mod_edit", "");
-			$link->setCustom("idmod", $cApiModule->get("idmod"));
-			$link->updateAttributes(array ("alt" => $cApiModule->get("description")));
-			$link->updateAttributes(array ("title" => $cApiModule->get("description")));
-			$link->updateAttributes(array ("style" => "margin-left:5px"));
+        $idmod = $cApiModule->get("idmod");
+        
+        $link = new cHTMLLink;
+        $link->setMultiLink("mod", "", "mod_edit", "");
+        $link->setCustom("idmod", $cApiModule->get("idmod"));
+        $link->updateAttributes(array("alt" => $cApiModule->get("description")));
+        $link->updateAttributes(array("title" => $cApiModule->get("description")));
 
-			$sName = $cApiModule->get("name");
+        $sName = $cApiModule->get("name");
 
-			if ($sOptionModuleCheck !== "false" && $sOptionForceCheck !== "false")
-			{
-				// Check module and force check has been enabled - check module (surprisingly...)
-				$inputok = modTestModule($cApiModule->get("input"), $cApiModule->get("idmod")."i", false);
-				$outputok = modTestModule($cApiModule->get("output"), $cApiModule->get("idmod")."o", true);
+        if ($sOptionModuleCheck !== "false" && $sOptionForceCheck !== "false")
+        {
+            // Check module and force check has been enabled - check module (surprisingly...)
+            $inputok = modTestModule($cApiModule->get("input"), $cApiModule->get("idmod")."i", false);
+            $outputok = modTestModule($cApiModule->get("output"), $cApiModule->get("idmod")."o", true);
 
-				if ($inputok && $outputok)		// Everything ok
-				{
-					$colName = $sName;			// The set default color: none :)
-				}
-				else if ($inputok || $outputok)	// Input or output has a problem
-				{
-					$colName = '<font color="#B1AC58">'.$sName.'</font>';
-				}
-				else							// Input >and< output has a problem
-				{
-					$colName = '<font color="red">'.$sName.'</font>';
-				}
-			}
-			else
-			{
-				// Do not check modules (or don't force it) - so, let's take a look into the database 
-				$sModuleError = $cApiModule->get("error");
-				
-				if ($sModuleError == "none")
-				{
-					$colName = $sName;
-				} 
-				else if ($sModuleError == "input" || $sModuleError == "output")
-				{
-					$colName = '<font color="#B1AC58">'.$sName.'</font>';
-				} 
-				else
-				{
-					$colName = '<font color="red">'.$sName.'</font>';
-				}
-			}
-
-			$iMenu ++;
-
-			$mlist->setTitle($iMenu, $colName);
-			if ($perm->have_perm_area_action_item("mod_edit", "mod_edit", $db->f("idmod")) || $perm->have_perm_area_action_item("mod_translate", "mod_translation_save", $cApiModule->get("idmod")))
-			{
-				$mlist->setLink($iMenu, $link);
-			}
-
-			$inUse = $classmodule->moduleInUse($idmod);
-
-			$deletebutton = "";
-			
-			if ($inUse)
-			{
-				$inUseString = i18n("Click for more information about usage");
-				$mlist->setActions($iMenu, 'inuse', '<a href="javascript:;" rel="' . $idmod . '" class="in_used_mod"><img src="'.$cfg['path']['images'].'exclamation.gif" border="0" title="'.$inUseString.'" alt="'.$inUseString.'"></a>');
-				$delDescription = i18n("Module in use, cannot delete");
-				
-			} else {
-                $mlist->setActions($iMenu, 'inuse', '<img src="./images/spacer.gif" border="0" width="16">');
-				if ($perm->have_perm_area_action_item("mod", "mod_delete", $cApiModule->get("idmod")))
-				{
-				$delTitle = i18n("Delete module");
-				$delDescr = sprintf(i18n("Do you really want to delete the following module:<br><br>%s<br>"), $sName);
-
-				$deletebutton = '<a title="'.$delTitle.'" href="javascript://" onclick="box.confirm(\''.$delTitle.'\', \''.$delDescr.'\', \'deleteModule('.$idmod.')\')"><img src="'.$cfg['path']['images'].'delete.gif" border="0" title="'.$delTitle.'" alt="'.$delTitle.'"></a>';				
-				} else {
-					$delDescription = i18n("No permission");	
-				}
-			}
-			
-			if ($deletebutton == "")
-			{
-                //$deletebutton = '<img src="images/spacer.gif" width="16" height="16">';
-				$deletebutton = '<img src="'.$cfg['path']['images'].'delete_inact.gif" border="0" title="'.$delDescription.'" alt="'.$delDescription.'">';	
-			}
-			
-			$todo = new TODOLink("idmod", $db->f("idmod"), "Module: $sName", "");
-			
-			$mlist->setActions($iMenu, "todo", $todo->render());
-			$mlist->setActions($iMenu, "delete", $deletebutton);
+            if ($inputok && $outputok)		// Everything ok
+            {
+                $colName = $sName;			// The set default color: none :)
+            }
+            else if ($inputok || $outputok)	// Input or output has a problem
+            {
+                $colName = '<font color="#B1AC58">'.$sName.'</font>';
+            }
+            else							// Input >and< output has a problem
+            {
+                $colName = '<font color="red">'.$sName.'</font>';
+            }
+        }
+        else
+        {
+            // Do not check modules (or don't force it) - so, let's take a look into the database 
+            $sModuleError = $cApiModule->get("error");
             
-            if (isset($_GET['idmod']) && $_GET['idmod'] == $idmod) {
-                $mlist->setExtra($iMenu, 'id="marked" ');
-            }     
-			//$mlist->setImage($iMenu, "images/but_module.gif");
-			//$mlist->setImage($iMenu, 'images/spacer.gif', 5);
-		}
+            if ($sModuleError == "none")
+            {
+                $colName = $sName;
+            } 
+            else if ($sModuleError == "input" || $sModuleError == "output")
+            {
+                $colName = '<font color="#B1AC58">'.$sName.'</font>';
+            } 
+            else
+            {
+                $colName = '<font color="red">'.$sName.'</font>';
+            }
+        }
+
+        $iMenu ++;
+
+        $mlist->setTitle($iMenu, $colName);
+        if ($perm->have_perm_area_action_item("mod_edit", "mod_edit", $db->f("idmod")) || $perm->have_perm_area_action_item("mod_translate", "mod_translation_save", $cApiModule->get("idmod")))
+        {
+            $mlist->setLink($iMenu, $link);
+        }
+
+        $inUse = $classmodule->moduleInUse($idmod);
+
+        $deletebutton = "";
+        
+        if ($inUse) {
+            $inUseString = i18n("Click for more information about usage");
+            $deletebutton = '<a href="javascript:;" rel="' . $idmod . '" class="in_used_mod"><img src="'.$cfg['path']['images'].'exclamation.gif" border="0" title="'.$inUseString.'" alt="'.$inUseString.'"></a>';
+        } else {
+            if ($perm->have_perm_area_action_item("mod", "mod_delete", $cApiModule->get("idmod"))) {
+                $delTitle = i18n("Delete module");
+                $delDescr = sprintf(i18n("Do you really want to delete the following module:<br><br>%s<br>"), $sName);
+                $deletebutton = '<a title="'.$delTitle.'" href="javascript://" onclick="box.confirm(\''.$delTitle.'\', \''.$delDescr.'\', \'deleteModule('.$idmod.')\')"><img src="'.$cfg['path']['images'].'delete.gif" border="0" title="'.$delTitle.'" alt="'.$delTitle.'"></a>';				
+            } else {
+                $delDescription = i18n("No permission");	
+            }
+        }
+        
+        $todo = new TODOLink("idmod", $db->f("idmod"), "Module: $sName", "");
+        
+        $mlist->setActions($iMenu, "todo", $todo->render());
+        $mlist->setActions($iMenu, "delete", $deletebutton);
+        $usesFilesString = i18n("Module uses Output- and/or InputFromFile. Editing and Saving may not be possible in backend.");
+        $mlist->setActions($iMenu, 'usesFiles', ((in_array(getEffectiveSetting('modules_in_files', 'use', 'false'), array('true', '1'))) ? ((($cApiModule->isLoadedFromFile('input')) || ($cApiModule->isLoadedFromFile('output'))) ? '<img src="'.$cfg['path']['images'].'export_to_files.png" border="0" title="'.$usesFilesString.'" alt="'.$usesFilesString.'">' : '<img src="./images/spacer.gif" border="0" width="16">') : ''));
+        
+        if (isset($_GET['idmod']) && $_GET['idmod'] == $idmod) {
+            $mlist->setExtra($iMenu, 'id="marked" ');
+        }     
+        //$mlist->setImage($iMenu, "images/but_module.gif");
+        //$mlist->setImage($iMenu, 'images/spacer.gif', 5);
+    }
 }
 
 $deleteScript = '    <script type="text/javascript">
@@ -293,14 +282,14 @@ $sShowUsedInfo = '
 	        	$(".in_used_mod").live("click", function() {
 	            	var iId = $(this).attr("rel");
 	            	
-	            	var modName = $(this).parents().filter(\'table:first\').parent().prev().text();
+	            	var modName = $(this).parents().filter(\'table:first\').parent().next().next().text();
 	            	if (iId) {
 	            		$.post(
 	            		   "' . $cfg['path']['contenido_fullhtml'] . 'ajaxmain.php' . '", 
 	      				   { area: "' . $area . '", ajax: "inused_module", id: iId, contenido: sid }, 
 	      				   function(data) {
 	      				   	  var inUseTitle = "' . i18n("The module '%s' is used for following templates") . '";
-          				  	  inUseTitle = inUseTitle.replace(\'%s\', modName);	
+          				  	  inUseTitle = inUseTitle.replace(/%s/, modName);	
 	      					  box.notify(inUseTitle, data);
 	      				   } 
 	      				);
