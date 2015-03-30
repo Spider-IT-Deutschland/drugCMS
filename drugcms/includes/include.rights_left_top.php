@@ -120,8 +120,7 @@ $aSortOrderOptions = array(	"asc" => i18n("Ascending"),
 
 $listOptionId="listoption";
 $tpl->set('s', 'LISTOPLINK', $listOptionId);
-$oListOptionRow = new cFoldingRow(	"5498dbba-ed4a-4618-8e49-3a3635396e22",	i18n("List options"), $listOptionId);
-$oListOptionRow->setExpanded('true');
+$oListOptionRow = new cFoldingRow(	"5498dbba-ed4a-4618-8e49-3a3635396e22",	i18n("List options"), $listOptionId, false);
 $oSelectItemsPerPage = new cHTMLSelectElement("elemperpage");
 $oSelectItemsPerPage->autoFill(array(25 => 25, 50 => 50, 75 => 75, 100 => 100));
 $oSelectItemsPerPage->setDefault($_REQUEST["elemperpage"]);

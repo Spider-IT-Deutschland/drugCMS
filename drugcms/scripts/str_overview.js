@@ -133,7 +133,7 @@ function showNewForm() {
     var oEditLayer = window.document.getElementById('cat_edit');
     var pos = getElementPostion( window.document.getElementById('cat_navbar') );
     var select = window.document.getElementById('new_idcat');
-	window.document.getElementById('new_tree_button').style.color = '#0060B1';
+	window.document.getElementById('new_tree_button').style.color = '#51A737';
 	
     
     oEditLayer.style.left = pos[0]+10;

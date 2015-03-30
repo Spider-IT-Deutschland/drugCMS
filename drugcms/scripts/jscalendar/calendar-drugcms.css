@@ -34,7 +34,7 @@ div.calendar { position: relative; }
 
 .calendar thead .headrow { /* Row <TR> containing navigation buttons */
   background: #cccccc;
-  color: #0060b1;
+  color: #51A737;
 }
 
 .calendar thead .daynames { /* Row <TR> containing the day names */
@@ -53,7 +53,7 @@ div.calendar { position: relative; }
 }
 
 .calendar thead .hilite { /* How do the buttons in header appear when hover hier noch blaue Icons einfügen!*/
-  background-color: #0060b1;
+  background-color: #51A737;
   color: #fff;
   padding: 1px;
 }
@@ -67,7 +67,7 @@ div.calendar { position: relative; }
 
 .calendar tbody .day { /* Cells <TD> containing month days dates */
   width: 2em;
-  color: #0060b1;
+  color: #51A737;
   border: 1px solid #ccc;
   text-align: right;
   padding: 2px 4px 2px 2px;
@@ -107,18 +107,18 @@ div.calendar { position: relative; }
 }
 
 .calendar tbody td.weekend { /* Cells showing weekend days */
-  color: #0060b1;
+  color: #51A737;
   background-color: #f1f1f1;
   border: 1px solid #ccc;
 }
 
 .calendar tbody td.today { /* Cell showing selected date */
-  color: #0060b1;
+  color: #51A737;
   background: #ddecf9;
 }
 
 .calendar tbody td.todayhilite { /* Cell showing selected date */
-  color: #0060b1;
+  color: #51A737;
   background: #aed2f1;
 }
 
@@ -208,7 +208,7 @@ div.calendar { position: relative; }
 .calendar td.time .ampm {
   padding: 0px 3px 0px 4px;
   font-weight: normal;
-  color: #0060b1;
+  color: #51A737;
   background-color: #fff;
 }
 
@@ -223,7 +223,7 @@ div.calendar { position: relative; }
 
 .calendar td.time span.hilite {
   background-color: #ecf1b2;
-  color: #0060b1;
+  color: #51A737;
 }
 
 .calendar td.time span.active {

@@ -42,12 +42,12 @@ function show(id, slink)
     }
 
     $("#"+id).css("display", "block");
-    $("#head_nav1 span a").css("color", "#000000");
+    $("#head_nav1 span a").css("color", "");
     if (slink) {
         if (typeof slink == "object") {
-            $(slink).css("color", "#0060B1");
+            $(slink).css("color", "#51A737");
         } else {
-            $("#"+slink).css("color", "#0060B1");
+            $("#"+slink).css("color", "#51A737");
         }
     }
     active_main = id;

@@ -131,7 +131,7 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
 
 </head>
 <body>
-<div style="border-top: 1px solid #0060b1;"></div>	
+<div style="border-top: 1px solid #51A737;"></div>	
 <div style="height:110px;overflow:hidden;">
     <div id="head">
     	<a id="head_logo" href="http://www.drugcms.org"><img title="drugCMS Portal" alt="drugCMS Portal" src="images/drugCMS-Logo.png" /></a>

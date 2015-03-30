@@ -615,7 +615,7 @@ function uplRender($searchfor, $sortby, $sortmode, $startpage = 1, $thumbnailmod
                                }
                                a.invert_hover:active, a.invert_hover:link, a.invert_hover:visited {
                                    cursor: pointer;
-                                   color: #0060B1;
+                                   color: #51A737;
                                }
                                a.invert_hover:hover {
                                   color: #000000;
