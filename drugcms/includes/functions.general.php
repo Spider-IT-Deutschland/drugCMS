@@ -854,10 +854,15 @@ function isValidMail($sEMail, $bStrict = false)
 
 function htmldecode($string)
 {
-	$trans_tbl = get_html_translation_table(HTML_ENTITIES);
-	$trans_tbl = array_flip($trans_tbl);
-	$ret = strtr($string, $trans_tbl);
-
+    global $encoding, $lang;
+    
+    if (isset($encoding[$lang])) {
+        $ret = html_entity_decode($string, ENT_COMPAT, $encoding[$lang]);
+    } else {
+        $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+        $trans_tbl = array_flip($trans_tbl);
+        $ret = strtr($string, $trans_tbl);
+    }
 	return $ret;
 }
 
