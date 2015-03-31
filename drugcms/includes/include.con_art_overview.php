@@ -524,42 +524,27 @@ if ( is_numeric($idcat) && ($idcat >= 0)) {
 			}
 
 			# Make Startarticle button
-			$imgsrc = "isstart";
-				 
-			if ($is_start == false) {
-				$imgsrc.='0';
-				} else {
-				$imgsrc.='1';
-				}
-				 
+			$imgsrc = "isstart0";
 			if (isArtInMultipleUse($idart)) {
 				$imgsrc.='m';
 			}
-
 			if ((int)$redirect == 1) {
 				$imgsrc.='r';
 			}
-			
 			$imgsrc.='.gif';
-
-			if ( ($perm->have_perm_area_action("con","con_makestart") || $perm->have_perm_area_action_item("con","con_makestart",$idcat)) && $idcat != 0) {
-				if ( $is_start == false) {
-					$tmp_link = '<a href="'.$sess->url("main.php?area=con&amp;idcat=$idcat&amp;action=con_makestart&amp;idcatart=$idcatart&amp;frame=4&is_start=1&amp;next=$next").'" title="'.i18n("Flag as start article").'"><img src="images/'.$imgsrc.'" border="0" title="'.i18n("Flag as start article").'" alt="'.i18n("Flag as start article").'" style="margin-left:3px;"></a>';
-				} else {
-					$tmp_link = '<a href="'.$sess->url("main.php?area=con&amp;idcat=$idcat&amp;action=con_makestart&amp;idcatart=$idcatart&amp;frame=4&amp;is_start=0&amp;next=$next").'" title="'.i18n("Flag as normal article").'"><img src="images/'.$imgsrc.'" border="0" title="'.i18n("Flag as normal article").'" alt="'.i18n("Flag as normal article").'" style="margin-left:3px;"></a>';
-				}
-			} else {
-				if ($is_start == true) {
-					$sTitle = i18n("Start article"); 
-			} else {
-					$sTitle = i18n("Normal article");
-				}
-				
-				$tmp_img = '<img src="images/'.$imgsrc.'" border="0" title="'.$sTitle.'" alt="'.$sTitle.'" style="margin-left:3px;">'; 
-				
-				$tmp_link = $tmp_img;
-			}
-
+			if ((($perm->have_perm_area_action("con","con_makestart")) || ($perm->have_perm_area_action_item("con","con_makestart",$idcat))) && ($idcat != 0)) {
+                if ($is_start) {
+                    $tmp_link = '<a href="'.$sess->url("main.php?area=con&amp;idcat=$idcat&amp;action=con_makestart&amp;idcatart=$idcatart&amp;frame=4&amp;is_start=0&amp;next=$next").'" title="'.i18n("Flag as normal article").'"><img src="images/arrow.gif" alt="&gt;" border="0" style="vertical-align: text-top;"><img src="images/'.$imgsrc.'" border="0" title="'.i18n("Flag as normal article").'" alt="'.i18n("Flag as normal article").'" style="margin-left: 2px;"></a>';
+                } else {
+                    $tmp_link = '<a href="'.$sess->url("main.php?area=con&amp;idcat=$idcat&amp;action=con_makestart&amp;idcatart=$idcatart&amp;frame=4&amp;is_start=0&amp;next=$next").'" title="'.i18n("Flag as normal article").'"><img src="images/'.$imgsrc.'" border="0" title="'.i18n("Flag as normal article").'" alt="'.i18n("Flag as normal article").'" style="margin-left: 7px;"></a>';
+                }
+            } else {
+                if ($is_start) {
+                    $tmp_link = '<img src="images/arrow.gif" alt="&gt;" border="0" style="vertical-align: text-top;"><img src="images/'.$imgsrc.'" border="0" title="'.i18n("Start article").'" alt="'.i18n("Start article").'" style="margin-left: 2px;">';
+                } else {
+                    $tmp_link = '<img src="images/'.$imgsrc.'" border="0" title="'.i18n("Normal article").'" alt="'.i18n("Normal article").'" style="margin-left: 7px;">';
+                }
+            }
 			$tmp_start = $tmp_link;
 
 			# Make copy button
