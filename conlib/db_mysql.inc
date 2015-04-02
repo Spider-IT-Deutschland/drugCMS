@@ -82,7 +82,7 @@ class DB_Sql extends DB_Sql_Abstract
             $this->Database = $aCon['database'];
         }
         
-        mysqli_set_charset($aCon['encoding'], $dbh);
+        mysql_set_charset($aCon['encoding'], $dbh);
 
         $this->User = $aCon['user'];
 
