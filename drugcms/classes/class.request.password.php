@@ -367,6 +367,8 @@ class RequestPassword {
         $oMail->Body = $sMailBody;
         //wrap after 1000 chars
         $oMail->WordWrap = 1000;
+        # Set the encoding
+        $oMail->CharSet = 'UTF-8';
         //activate mail and send it
         $oMail->IsMail();
         $oMail->Send();

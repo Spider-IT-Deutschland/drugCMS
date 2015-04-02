@@ -57,40 +57,21 @@ $tpl = new Template;
 # Content area frameset
 $tpl->reset();
 
-if (isset($_GET["appendparameters"]))
-{
-    if ($appendparameters['idart'] > 0) {
-        $idart = "&idart=".$appendparameters['idart'];
-    }
-    elseif ($_GET['idart']) {
-        $idart = "&idart=".$_GET['idart'];
-    } else {
-        $append_idart = explode("=", $appendparameters);
-        if (count($append_idart) == 2 && $append_idart[0] == 'idart') {
-            $idart = "&".$appendparameters;
-        }
-    }
-    if ($appendparameters['idcat'] > 0) {
-        $idcat = $appendparameters['idcat'];
-    }
-    else {
-        $idcat = $_GET['idcat'];
-    }
-    if ($appendparameters['idartlang'] > 0) {
-        $idartlang = $appendparameters['idartlang'];
-    }
-    else {
-        $idartlang = $_GET['idartlang'];
-    }
-        
-	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=1&idcat=".$idcat."&idartlang=".$idartlang . $idart)));
-	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=2")));
-	$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
+if (isset($_GET['idartlang'])) {
+    $idartlang  = $_GET['idartlang'];
+    $idcat      = $_GET['idcat'];
+    $idart      = $_GET['idart'];
+    $tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=1&idcat=".$idcat."&idartlang=".$idartlang."&idart=".$idart)));
+    $tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=con&frame=2&idcat=".$idcat."&idartlang=".$idartlang."&idart=".$idart)));
+}
+elseif (isset($_GET["appendparameters"])) {
+    $tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1&appendparameters=".$_GET["appendparameters"])));
+    $tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2&appendparameters=".$_GET["appendparameters"])));
 } else {
 	$tpl->set('s', 'FRAME[1]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=1")));
 	$tpl->set('s', 'FRAME[2]', str_replace("&", "&amp;", $sess->url("main.php?area=$area&frame=2")));
-	$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
 }
+$tpl->set('s', 'FRAME[3]', "templates/standard/template.deco.html");
 
 $tpl->set('s', 'VERSION', $cfg['version']);
 $tpl->set('s', 'CONTENIDOPATH', $cfg["path"]["contenido_fullhtml"]."favicon.ico");

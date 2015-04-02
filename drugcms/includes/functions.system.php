@@ -533,7 +533,7 @@ $sRowBgColor2 = $sRowBgColor1 = "#fff";
  */
 function sendBugReport()
 {
-	global $_POST, $notification, $cfg;
+	global $_POST, $notification, $cfg, $encoding, $lang;
 
 	/* will be set to another value than 0 if an error attempts */
 	$mailSendError = 0;
@@ -580,6 +580,7 @@ function sendBugReport()
 
 		/* initialize mail class */
 		$mail = new PHPMailer();
+        $mail->CharSet = ((isset($encoding[$lang])) ? $encoding[$lang] : 'UTF-8');
 
 		/* set sender information */
 		$mail->From = strip_tags($_POST['sender']);

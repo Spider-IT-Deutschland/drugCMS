@@ -141,42 +141,34 @@ $tpl->reset();
 
 $tpl->set('s', 'HEADER',    str_replace("&", "&amp;", $sess->url('header.php?changelang='.$lang.'&changeclient='.$client)));
 
-if(isset($_GET['idartlang'])){
-    $appendparameters = 'idart=' . $_GET['idart'];
-    foreach ($_GET as $key => $val) {
-        if ($key != 'idart') {
-            $appendparameters .= '&' . $key . '=' . $val;
+if (isset($_GET['idartlang'])) {
+    if ((!isset($_GET['idart'])) || !isset($_GET['lang'])) {
+        $oArt = new Article(0, 0, 0, $_GET['idartlang']);
+        $_GET['idart'] = $oArt->getField("idart");
+        $_GET['lang'] = $oArt->getField("idlang");
+    }
+    
+    if ($_GET['lang'] != $lang) {
+        if (substr_count($_SERVER['REQUEST_URI'], 'changelang') > 0) {
+            header('Location: '. str_replace('changelang=' . $_GET['changelang'], 'changelang=' . $_GET['lang'], $_SERVER['REQUEST_URI']));
+            header('Location: '. substr_replace($_SERVER['REQUEST_URI'], '', -13, 13) . '&changelang=' . $_GET['lang']);
+        }
+        else {
+            header('Location: '. $_SERVER['REQUEST_URI'] . '&changelang='.$idlang);
         }
     }
     
-    if ((isset($_GET['idartlang'])) && (!isset($_GET['idart']) || !isset($_GET['idlang']) || !isset($_GET['idcat']))) {
-        $oArt = new Article(0,0,0,$_GET['idartlang']);
-        $idart = $oArt->getField("idart");
-        $idlang = $oArt->getField("idlang");
-        
+    $idart = $_GET['idart'];
+    
+    if (!isset($_GET['idcat'])) {
         $oCat = new Contenido_Category_Articles($db, $cfg, $client, $idlang);
         $idcat = $oCat->getCategoryByArticleId($idart);
-        if ($idlang != $lang) {
-            if (substr_count($_SERVER['REQUEST_URI'], 'changelang') > 0) {
-                header('Location: '. substr_replace($_SERVER['REQUEST_URI'], '', -13, 13) . '&changelang='.$idlang);
-            }
-            else {
-                header('Location: '. $_SERVER['REQUEST_URI'] . '&changelang='.$idlang);
-            }
-        }
-    }
-    else {
-        $idart = $appendparameters['idart'];
-        $idlang = $lang;
-        $idcat = $_GET['idcat'];
     }
     
-    $appendparameters = urlencode($appendparameters); 
-    $tpl->set('s', 'CONTENT',   $sess->url('frameset.php?area='.$_GET['area'].'&frame='.$_GET['frame'].'&menuless=1&lang='.$idlang.'&client='.$client.'&idart='.$idart."&idcat=".$idcat."&appendparameters=".$appendparameters));
+    $tpl->set('s', 'CONTENT',   $sess->url('frameset.php?area=con&lang='.$lang.'&client='.$client.'&idart='.$idart."&idcat=".$idcat.'&idartlang='.$_GET['idartlang']));
 }
 else {
     $tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));
-
 }
 $tpl->set('s', 'VERSION',	$cfg["version"]);
 $tpl->set('s', 'LOCATION',	$cfg['path']['contenido_fullhtml']);

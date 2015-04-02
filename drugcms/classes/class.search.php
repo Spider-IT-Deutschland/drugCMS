@@ -333,7 +333,7 @@ class Index extends SearchBaseAbstract
                         $code = str_ireplace(array('<br>', '<br />'), "\n", $code); // replace HTML line breaks with newlines
                         $code = strip_tags($code); // remove html tags
                         if (strlen($code) > 0) {
-                            $code = html_entity_decode($code);
+                            $code = html_entity_decode($code, ENT_COMPAT, getEncodingByLanguage($this->db, $this->lang, $this->cfg));
                         }
                         $this->_debug('code', $code);
 
@@ -341,7 +341,7 @@ class Index extends SearchBaseAbstract
                         $this->_debug('tmp_keys', $tmp_keys);
 
                         foreach ($tmp_keys as $value) {
-                            $value = strtolower($value); // index terms are stored with lower case
+                            $value = mb_strtolower($value, getEncodingByLanguage($this->db, $this->lang, $this->cfg)); // index terms are stored with lower case
 
                             if (!in_array($value, $this->stopwords)) {
                                 // eliminate stopwords

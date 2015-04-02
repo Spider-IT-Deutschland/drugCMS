@@ -158,7 +158,7 @@ class WorkflowArtAllocation extends Item {
      */		
 	function store()
 	{
-		global $cfg;
+		global $cfg, $encoding, $lang;
 		
 		$sMailhost = getSystemProperty('system', 'mail_host');
         if ($sMailhost == '') {
@@ -167,6 +167,7 @@ class WorkflowArtAllocation extends Item {
 		
 		//modified : 2008-06-25 - use php mailer class instead of mail()
 		$oMail = new PHPMailer();
+        $oMail->CharSet = ((isset($encoding[$lang])) ? $encoding[$lang] : 'UTF-8');
         $oMail->Host = $sMailhost;
         $oMail->IsHTML(0);
 		$oMail->WordWrap = 1000;
@@ -251,7 +252,7 @@ class WorkflowArtAllocation extends Item {
             	
             	if ($email == 1)
             	{
-                	$email = "Hello %s,\n\n".
+                	$email = i18n("Hello %s,\n\n".
                 	         "you are assigned as the next editor for the Article %s.\n\n".
                 	         "More informations:\n".
                 	         "Article: %s\n".
@@ -259,7 +260,7 @@ class WorkflowArtAllocation extends Item {
                 	         "Editor: %s\n".
                 	         "Author: %s\n".
                 	         "Editable from: %s\n".
-                	         "Editable to: %s\n";
+                	         "Editable to: %s\n");
                 	         
                 	$filledMail = sprintf(	$email,
                                 			$curEditor,

@@ -78,6 +78,14 @@
     $("#con_str_tree #root li div").click(function() {
       conInjectData(this.parentNode);
     });
+    
+    $(document).ready(function() {
+        if (obj = $("#con_str_tree #root li div.active")) {
+            setTimeout(function() {
+                conInjectData($("#con_str_tree #root li div.active")[0].parentNode);
+            }, 2000);
+        }
+    });
 	
 	});
     </script>

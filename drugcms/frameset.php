@@ -58,12 +58,17 @@ $tpl = new Template;
 # Content area frameset
 $tpl->reset();
 
-if (isset($_GET["appendparameters"]))
-{
-	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&appendparameters=".$_GET["appendparameters"])));
-	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&changelang=".$_GET['changelang']."&appendparameters=".$_GET["appendparameters"])));
+if (isset($_GET['idartlang'])) {
+	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&idartlang=".$_GET['idartlang'])));
+	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area&idcat=".$_GET['idcat']."&idart=".$_GET['idart']."&idartlang=".$_GET['idartlang']."&changelang=".$_GET['changelang'])));
 	$tpl->set('s', 'WIDTH', getEffectiveSetting("backend", "leftframewidth", 245));
-} else {
+}
+elseif (isset($_GET["appendparameters"])) {
+	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area&&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area&changelang=".$_GET['changelang']."&appendparameters=".$_GET["appendparameters"])));
+	$tpl->set('s', 'WIDTH', getEffectiveSetting("backend", "leftframewidth", 245));
+}
+else {
     $parms = urldecode($_GET["appendparameters"]);
 	$tpl->set('s', 'LEFT', str_replace("&", "&amp;", $sess->url("frameset_left.php?area=$area")));
 	$tpl->set('s', 'RIGHT', str_replace("&", "&amp;", $sess->url("frameset_right.php?area=$area") . $parms));

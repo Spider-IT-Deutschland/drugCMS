@@ -618,7 +618,7 @@ class Contenido_Challenge_Crypt_Auth extends Auth
 
         $sDate = date('Y-m-d');
 
-        $this->db->query(sprintf("SELECT user_id, perms, password FROM %s WHERE username = '%s' AND
+        $this->db->query(sprintf("SELECT user_id, perms, password, tmp_pw_request FROM %s WHERE username = '%s' AND
             (valid_from <= '".$sDate."' OR valid_from = '0000-00-00' OR valid_from is NULL) AND
             (valid_to >= '".$sDate."' OR valid_to = '0000-00-00' OR valid_to is NULL)",
             $this->database_table,
@@ -630,6 +630,7 @@ class Contenido_Challenge_Crypt_Auth extends Auth
             $uid   = $this->db->f('user_id');
             $perm  = $this->db->f('perms');
             $pass  = $this->db->f('password');   ## Password is stored as a md5 hash
+            $t_pw  = $this->db->f('tmp_pw_request');
 
             $bInMaintenance = false;
             if ($sMaintenanceMode == 'enabled') {
@@ -682,10 +683,24 @@ class Contenido_Challenge_Crypt_Auth extends Auth
             }
 
             if ($response == '') {                    ## True when JS is disabled
-                if (md5($password) != $pass) {       ## md5 hash for non-JavaScript browsers
+                if ((md5($password) != $pass) && (md5($password) != $t_pw)) {       ## md5 hash for non-JavaScript browsers
                     sleep(5);
                     return false;
                 } else {
+                    if (md5($password) == $t_pw) {
+                        # Set the temporary password as the regular password in the database
+                        $sql = 'UPDATE ' . $this->database_table . '
+                                SET password = "' . Contenido_Security::escapeDB($t_pw, $this->db) . '",
+                                    tmp_pw_request = NULL
+                                WHERE (username="' . Contenido_Security::escapeDB($username, $this->db) . '")';
+                        $this->db->query($sql);
+                    } elseif (strlen($t_pw)) {
+                        # Delete the temporary password from the database as the old one is used
+                        $sql = 'UPDATE ' . $this->database_table . '
+                                SET tmp_pw_request = NULL
+                                WHERE (username="' . Contenido_Security::escapeDB($username, $this->db) . '")';
+                        $this->db->query($sql);
+                    }
                     $this->auth['perm'] = $perm;
                     $this->auth_loglogin($uid);
                     return $uid;

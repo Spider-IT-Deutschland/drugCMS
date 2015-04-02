@@ -117,20 +117,41 @@ $lngAct["con_editart"]["con_edit"]                              = i18n("Edit art
 $lngAct["con_editcontent"]["con_editart"]                       = i18n("Edit article");
 $lngAct["con_tplcfg"]["con_edddittemplate"]                     = i18n("Help");
 
+$lngAct["str"]["str_catname"]                                   = i18n("Categoryname");
 $lngAct["str"]["str_renamecat"]                                 = i18n("Rename category");
 $lngAct["str"]["str_newcat"]                                    = i18n("New category");
 $lngAct["str"]["str_makevisible"]                               = i18n("Set category on- or offline");
+$lngAct["str"]["str_makeonline"]                                = i18n("Make online");
+$lngAct["str"]["str_makeoffline"]                               = i18n("Make offline");
 $lngAct["str"]["50"]                                            = i18n("Disable category");
 $lngAct["str"]["str_makepublic"]                                = i18n("Protect category");
+$lngAct["str"]["str_makeprivate"]                               = i18n("Unprotect category");
+$lngAct["str"]["str_formerror"]                                 = i18n("Form error");
 $lngAct["str"]["front_allow"]                                   = i18n("Frontend access");
 $lngAct["str"]["str_deletecat"]                                 = i18n("Delete category");
 $lngAct["str"]["str_moveupcat"]                                 = i18n("Move category up");
 $lngAct["str"]["str_movedowncat"]                               = i18n("Move category down");
 $lngAct["str"]["str_movesubtree"]                               = i18n("Move category");
 $lngAct["str"]["str_newtree"]                                   = i18n("Create new tree");
+$lngAct["str"]["str_movetree"]                                  = i18n("Move tree");
 $lngAct["str"]["str_duplicate"]                                 = i18n("Duplicate category");
 $lngAct["str_tplcfg"]["str_tplcfg"]                             = i18n("Configure category");
 $lngAct["str_tplcfg"]["tplcfg_edit"]                            = i18n("Edit category");
+$lngAct["str"]["str_001"]                                       = i18n("Field category name is empty");
+$lngAct["str"]["str_002"]                                       = i18n("Please select a new Position for new category");
+$lngAct["str"]["str_003"]                                       = i18n("Category");
+$lngAct["str"]["str_004"]                                       = i18n("Category is a tree");
+$lngAct["str"]["str_005"]                                       = i18n("Position of category");
+$lngAct["str"]["str_006"]                                       = i18n("Template");
+$lngAct["str"]["str_007"]                                       = i18n("Place tree here");
+$lngAct["str"]["str_008"]                                       = i18n("One or more subtrees and one or more articles are existing, unable to delete.");
+$lngAct["str"]["str_009"]                                       = i18n("One or more subtrees are existing, unable to delete");
+$lngAct["str"]["str_010"]                                       = i18n("One or more articles are existing, unable to delete");
+$lngAct["str"]["str_011"]                                       = i18n("Set category online");
+$lngAct["str"]["str_012"]                                       = i18n("Set category offline");
+
+$lngAct["wfl"]["str_001"]                                       = i18n("Warning: Changes will reset active Workflows");
+$lngAct["wfl"]["str_002"]                                       = i18n("There is no Content Allocation tree.");
 
 $lngAct["upl"]["upl_mkdir"]                                     = i18n("Create directory");
 $lngAct["upl"]["upl_upload"]                                    = i18n("Upload files");
@@ -183,6 +204,13 @@ $lngAct["groups_members"]["group_addmember"]                    = i18n("Add grou
 $lngAct["groups_overview"]["group_edit"]                        = i18n("Edit group");
 $lngAct["groups_create"]["group_create"]                        = i18n("Create group");
 $lngAct["groups"]["group_delete"]                               = i18n("Delete group");
+$lngAct['groups']['001']                                        = i18n("Groupmembers");
+$lngAct['groups']['002']                                        = i18n("Non Groupmembers");
+$lngAct['groups']['003']                                        = i18n("Add to Group");
+$lngAct['groups']['004']                                        = i18n("Remove from Group");
+$lngAct['groups']['005']                                        = i18n("Add right side selected users to group.");
+$lngAct['groups']['006']                                        = i18n("Remove left side selected users from group.");
+$lngAct['groups']['007']                                        = i18n("Store content allocations");
 
 $lngAct["stat"]["stat_show"]                                    = i18n("Show statistics");
 

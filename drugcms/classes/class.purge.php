@@ -402,28 +402,22 @@ class Purge {
      * @return boolean 
      */
     public function updateConSequence() {
-
-        $aDbTables = array();
-        $sSql = 'SHOW TABLES';
-        $this->oDb->query($sSql);
-
+        $sql = 'SELECT seq_name
+                FROM ' . $this->cfg['tab']['sequence'] . '
+                WHERE ((seq_name LIKE "' . $this->cfg['sql']['sqlprefix'] . '_%")
+                   AND (seq_name != "' . $this->cfg['sql']['sqlprefix'] . '_sequence"))
+                ORDER BY seq_name';
+        $this->oDb->query($sql);
         while($this->oDb->next_record()) {
-            $aTmp = $this->oDb->toArray();
-            $aDbTables[] = $aTmp[0];
-        }    
-
-        $iLoop = 0;
-        foreach ($this->cfg['tab'] as $sTable) {
-            if(in_array($sTable, $aDbTables)) {
-                dbUpdateSequence($this->cfg['tab']['sequence'], $sTable, $this->oDb);
-                if($this->oDb->Errno > 0) {
-                    return false;
-                }
-                
-                $iLoop++;
+            $aDbTables[] = $this->oDb->f('seq_name');
+        }
+        for ($i = 0, $n = count($aDbTables); $i < $n; $i ++) {
+            dbUpdateSequence($this->cfg['tab']['sequence'], $aDbTables[$i], $this->oDb);
+            if($this->oDb->Errno > 0) {
+                return false;
             }
         }
-        return ($iLoop == count($aDbTables))?true:false;
+        return true;
     }
 }
 ?>

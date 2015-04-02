@@ -2480,7 +2480,7 @@ function checkMySQLConnectivity() {
 
 function notifyOnError($errortitle, $errormessage)
 {
-	global $cfg;
+	global $cfg, $encoding, $lang;
 
 	if (file_exists($cfg["path"]["contenido"]."logs/notify.txt"))
 	{
@@ -2499,6 +2499,7 @@ function notifyOnError($errortitle, $errormessage)
 			} 
 		
 			$oMail = new PHPMailer();
+            $oMail->CharSet = ((isset($encoding[$lang])) ? $encoding[$lang] : 'UTF-8');
 			$oMail->Host = $sMailhost;
 			$oMail->IsHTML(0);
 			$oMail->WordWrap = 1000;
@@ -3047,7 +3048,7 @@ function makeCmsType($type, $id) {
     global $db, $client, $lang, $cfg, $cfgClient, $area_tree, $sess, $perm, $area_rights, $item_rights, $_SESSION, $remakeCatTable, $remakeStrTable, $auth, $tpl, $edit, $a_content, $idartlang, $idcat, $idart;
     
     $type = strtoupper($type);
-    if (substr($type, 4) != 'CMS_') {
+    if (substr($type, 0, 4) != 'CMS_') {
         $type = 'CMS_' . $type;
     }
     $tmp = '';
