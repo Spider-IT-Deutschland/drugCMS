@@ -475,7 +475,7 @@ If you develop a new program, and you want it to be of the greatest possible use
 
 To do so, attach the following notices to the program. It is safest to attach them to the start of each source file to most effectively convey the exclusion of warranty; and each file should have at least the "copyright" line and a pointer to where the full notice is found.
 
-drugCMS is a Content Management System based on Contenido, running on PHP5. Copyright (C) 2013-2014 Spider IT Deutschland (Contenido Copyright 2003 four for business AG). This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+drugCMS is a Content Management System based on Contenido, running on PHP5. Copyright (C) 2013-2015 Spider IT Deutschland (Contenido Copyright 2003 four for business AG). This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
