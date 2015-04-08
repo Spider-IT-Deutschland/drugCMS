@@ -217,9 +217,9 @@ foreach ($isCurrent as $key => $value)
             $sRowId = $db->f('idart').'-'.$db->f('idartlang').'-'.$db->f('idcat').'-'.$db->f('idcatlang').'-'.$db->f('idcatart').'-'.$db->f('art_lang');
             
             if( $db->f('startidartlang') == $db->f('idartlang') ) {
-			    $makeStartarticle = "<img src=\"images/isstart1.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\">";
+			    $makeStartarticle = "<img src=\"images/arrow.gif\" alt=\"&gt;\" border=\"0\" style=\"vertical-align: text-top;\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 7px;\">";
             } else {
-                $makeStartarticle = "<img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\">";
+                $makeStartarticle = "<img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 2px;\">";
             }
             
             $todoListeSubject = i18n("Reminder");

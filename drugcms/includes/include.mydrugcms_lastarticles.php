@@ -214,7 +214,7 @@ $debug = false;
             $tpl->set('d', 'TPLNAME', $a_tplname);
 
             # Make Startarticle button
-            $tmp_img = (1 == $is_start) ? '<img src="images/isstart1.gif" border="0">' : '<img src="images/isstart0.gif" border="0">';
+            $tmp_img = (1 == $is_start) ? '<img src="images/arrow.gif" alt="&gt;" border="0" style="vertical-align: text-top;"><img src="images/isstart0.gif" border="0" style="margin-left: 2px;">' : '<img src="images/isstart0.gif" border="0" style="margin-left: 7px;">';
             $tpl->set('d', 'START', $tmp_img);
             
             if ( $online ) {
@@ -237,7 +237,7 @@ $debug = false;
 
         # Sortierungs select
         $s_types = array(1 => "Alphabetisch",
-                         2 => "Letze Änderung",
+                         2 => "Letze Ã„nderung",
                          3 => "Erstellungsdatum");
 
         $tpl2 = new Template;
@@ -306,7 +306,7 @@ $debug = false;
 
 		$cat_name = "";
 		
-        # SELF_URL (Variable für das javascript);
+        # SELF_URL (Variable fÃ¼r das javascript);
         $tpl->set('s', 'SELF_URL', $sess->url("main.php?area=con&frame=4&idcat=$idcat"));
 
         # Neuer Artikel link

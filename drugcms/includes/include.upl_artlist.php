@@ -142,9 +142,9 @@ while ($cApiCategoryArticle = $cApiCategoryArticleCollection->next())
 				
 				if ($value == true)
 				{
-					$value = '<img src="images/isstart1.gif">';	
+					$value = '<img src="images/arrow.gif" alt="&gt;" border="0" style="vertical-align: text-top;"><img src="images/isstart0.gif" style="margin-left: 2px;">';	
 				} else {
-					$value = '<img src="images/isstart0.gif">';
+					$value = '<img src="images/isstart0.gif" style="margin-left: 7px;">';
 				}
 				break;
 			case "created":

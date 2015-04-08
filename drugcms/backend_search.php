@@ -626,22 +626,22 @@ if (empty($where) || $iAffectedRows <= 0) {
 	            $iIDTpl = $idtpl;
 	        }
 		    
-		    /* Funktion zum umwandeln in Startartikel/normale Artikel*/
-			if ($perm->have_perm_area_action_item("con", "con_makestart",$idcat) && 0 == 1) {
-			    if( $startidartlang == $idartlang ) {
-			        $sFlagTitle = i18n('Flag as normal article');
-			        $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><a href=\"main.php?area=con&idcat=$idcat&action=con_makestart&idcatart=$idcatart&frame=4&is_start=0&contenido=$sSession\" title=\"{$sFlagTitle}\"><img src=\"images/isstart1.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\"></a></td>";
-			    } else {
-			        $sFlagTitle = i18n('Flag as start article');
-			        $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><a href=\"main.php?area=con&idcat=$idcat&action=con_makestart&idcatart=$idcatart&frame=4&is_start=1&contenido=$sSession\" title=\"{$sFlagTitle}\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\"></a></td>";
-			    }
-			} else {
-			    if( $startidartlang == $idartlang ) {
-			        $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><img src=\"images/isstart1.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\"></td>";
-				} else {
-			    	$makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\"></td>";
-				}
-			}
+            /* Funktion zum umwandeln in Startartikel/normale Artikel*/
+            if ($perm->have_perm_area_action_item("con", "con_makestart",$idcat) && 0 == 1) {
+                if( $startidartlang == $idartlang ) {
+                    $sFlagTitle = i18n('Flag as normal article');
+                    $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><a href=\"main.php?area=con&idcat=$idcat&action=con_makestart&idcatart=$idcatart&frame=4&is_start=0&contenido=$sSession\" title=\"{$sFlagTitle}\"><img src=\"images/arrow.gif\" alt=\"&gt;\" border=\"0\" style=\"vertical-align: text-top;\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 2px;\"></a></td>";
+                } else {
+                    $sFlagTitle = i18n('Flag as start article');
+                    $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><a href=\"main.php?area=con&idcat=$idcat&action=con_makestart&idcatart=$idcatart&frame=4&is_start=1&contenido=$sSession\" title=\"{$sFlagTitle}\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 7px;\"></a></td>";
+                }
+            } else {
+                if( $startidartlang == $idartlang ) {
+                   $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><img src=\"images/arrow.gif\" alt=\"&gt;\" border=\"0\" style=\"vertical-align: text-top;\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 2px;\"></td>";
+                } else {
+                    $makeStartarticle = "<td nowrap=\"nowrap\" class=\"bordercell\"><img src=\"images/isstart0.gif\" border=\"0\" title=\"{$sFlagTitle}\" alt=\"{$sFlagTitle}\" style=\"margin-left: 7px;\"></td>";
+                }
+            }
 			
 		    /* Funktion zum online/offline stellen */
 		    if( $online==1 ) {
