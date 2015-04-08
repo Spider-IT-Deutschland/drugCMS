@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: Contenido ContentAllocation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-18 10:55+0200\n"
-"PO-Revision-Date: 2012-04-28 12:28+0100\n"
-"Last-Translator: Ortwin Pinke <translation@dceonline.de>\n"
+"PO-Revision-Date: 2015-04-08 16:45+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: Ortwin Pinke <o.pinke@php-backoffice.de>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
 "X-Poedit-KeywordsList: i18n\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: includes/config.plugin.php:59
 msgid "Store content allocations"
-msgstr "Speichere Contant Allocation"
+msgstr "Speichere Verschlagwortung"
 
 #: includes/include.contentallocation_article.php:86
 msgid "There is no Content Allocation tree."
-msgstr "Es existiert kein Content Allocation Baum"
+msgstr "Es existiert kein Verschlagwortungsbaum"
 
 #: includes/include.contentallocation_article.php:111
 msgid "Remove all"
@@ -46,10 +46,9 @@ msgstr "Kategorie %s umbenannt!"
 
 #: includes/include.right_bottom.php:90
 msgid "Category successfully deleted!"
-msgstr "Kategorie gel&ouml;scht!"
+msgstr "Kategorie gelöscht!"
 
-#: includes/include.right_bottom.php:119
-#: includes/include.right_bottom.php:142
+#: includes/include.right_bottom.php:119 includes/include.right_bottom.php:142
 msgid "Create new tree"
 msgstr "Neuen Baum erstellen"
 
@@ -92,7 +91,8 @@ msgstr "Kategorie online schalten"
 
 #: classes/class.content_allocation_treeview.php:138
 msgid "One or more subcategories exist, unable to delete"
-msgstr "Es gibt eine oder mehrer Unterkategorien, L&ouml;schen nicht m&ouml;glich"
+msgstr ""
+"Es gibt eine oder mehrer Unterkategorien, L&ouml;schen nicht m&ouml;glich"
 
 #: classes/class.content_allocation_treeview.php:140
 msgid "Delete category"
@@ -110,4 +110,3 @@ msgstr "Kategorie"
 #: classes/class.content_allocation_treeview.php:224
 msgid "Actions"
 msgstr "Aktionen"
-
