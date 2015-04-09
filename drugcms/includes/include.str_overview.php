@@ -140,7 +140,7 @@ function buildCategorySelectRights() {
 			$spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 
-        $sCategoryname = htmlspecialchars($props["name"]);
+        $sCategoryname = $props["name"];
         $sCategoryname = capiStrTrimHard($sCategoryname, 30);
         $oHtmlSelectOption = new cHTMLOptionElement($spaces.">".$sCategoryname, $tmpidcat, false, !$props["perm"]);
         $oHtmlSelect->addOptionElement($j, $oHtmlSelectOption);    
