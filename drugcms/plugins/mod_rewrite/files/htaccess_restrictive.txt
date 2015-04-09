@@ -49,6 +49,7 @@
     RewriteRule ^drugcms/.*$ - [L]
     RewriteRule ^setup/.*$ - [L]
     RewriteRule ^cms/upload/.*$ - [L]
+    RewriteRule ^cms/cache/.*$ - [L]
     RewriteRule ^cms/test/.*$ - [L]
     RewriteRule ^cms/front_content.php.*$ - [L]
 
