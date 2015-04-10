@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS DB Backup Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-29 11:47+0100\n"
-"PO-Revision-Date: 2014-01-11 20:09+0100\n"
+"POT-Creation-Date: 2015-04-10 09:54+0100\n"
+"PO-Revision-Date: 2015-04-10 09:55+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team <translations@drugcms.org>\n"
 "Language: nl_NL\n"
@@ -16,22 +16,22 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: W:\\drugcms_2.0\\drugcms\\plugins\\db_backup\n"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.left_bottom.php:15
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:84
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.left_bottom.php:15
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:84
 msgid "Backup"
 msgstr "Backup"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.left_bottom.php:18
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:108
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:123
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.left_bottom.php:18
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:100
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:107
 msgid "Restore"
 msgstr "Restore"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:18
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:18
 msgid "Configuration"
 msgstr "Configuratie"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:19
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:19
 msgid ""
 "Backup requires a folder named 'backup' in /drugcms/data/ with write "
 "permission for the web server user."
@@ -39,107 +39,102 @@ msgstr ""
 "DB Backup vereist een map met de naam 'backup' in /drugcms/data/ met "
 "schrijfrechten voor de webserver gebruiker"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:20
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:20
 msgid "Current settings"
 msgstr "Huidige instellingen"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:21
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:21
 msgid "Backup folder"
 msgstr "Backup map"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
 msgid "The backup folder exists"
 msgstr "De backup map bestaat"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:22
 msgid "The backup folder doesn't exist, please create it"
 msgstr "De backup map bestaat niet, maak hem aub"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:23
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:23
 msgid "Folder permissions"
 msgstr "Map rechten"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
 msgid "Write permission granted"
 msgstr "Schrijfrechten beschikbaar"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:24
 msgid "Write permission denied"
 msgstr "Ontkende schrijftoegang"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:34
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:54
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:34
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:54
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
 msgid "Please wait"
 msgstr "Even geduld aub"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
 msgid "Current table"
 msgstr "Huidige tabel"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:35
 msgid "Current row"
 msgstr "Huidige record"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:40
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:40
 msgid "Backup created successfully"
 msgstr "Backup succesvol aangemaakt"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:42
-msgid "It took |1 seconds to backup the database"
-msgstr "Het duurde |1 seconden de database te waarborgen"
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:42
+#, php-format
+msgid "It took %s seconds to backup the database"
+msgstr "Het duurde %s seconden de database te waarborgen"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:44
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:44
 msgid "An error occured while creating the backup"
 msgstr "Bij het maken van de backup is een fout opgetreden"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:55
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:55
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:56
 msgid "Processed lines"
 msgstr "Verwerkte lijnen"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:61
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:61
 msgid "Backup restored successfully"
 msgstr "Backup succesvol teruggezet"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:63
-msgid "It took |1 seconds to restore the database"
-msgstr "Het duurde |1 seconden om de database te herstellen"
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:63
+#, php-format
+msgid "It took %s seconds to restore the database"
+msgstr "Het duurde %s seconden om de database te herstellen"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:65
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:65
 msgid "An error occured while restoring the backup"
 msgstr "Bij het herstellen van de database is een fout opgetreden"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:72
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:72
 msgid "Backup deleted successfully"
 msgstr "De backup is succesvol verwijderd"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:74
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:74
 msgid "An error occured while deleting the backup"
 msgstr "Bij het verwijderen va de backup is een fout opgetreden"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:77
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:77
 msgid "The backup doesn't exist, maybe it was deleted already"
 msgstr "De backup bestaat niet, het kan zijn dat hij reeds verwijderd werd"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:86
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:86
 msgid "Start a new backup"
 msgstr "Maak een nieuwe backup"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:87
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:87
 msgid "Created backups"
 msgstr "Gemaakte backups"
 
-#: W:\drugcms_2.0\drugcms\plugins\db_backup/includes/includes.right_bottom.php:102
+#: C:\drugCMS\drugcms\plugins\db_backup/includes/includes.right_bottom.php:94
 msgid "Delete"
 msgstr "Verwijderen"
-
-#~ msgid ""
-#~ "The calculated maximum database size to backup in |1 seconds (PHP "
-#~ "max_execution_time) is |2 MB"
-#~ msgstr ""
-#~ "Die kalkulierte maximale Datenbankgröße um in |1 Sekunden (PHP "
-#~ "max_execution_time) zu sichern ist |2 MB"
 
 #~ msgid "Backup starten"
 #~ msgstr "Backup starten"
@@ -155,9 +150,6 @@ msgstr "Verwijderen"
 
 #~ msgid "Der Backup-Ordner ist vorhanden."
 #~ msgstr "Der Backup-Ordner ist vorhanden."
-
-#~ msgid "757 (ok)"
-#~ msgstr "757 (ok)"
 
 #~ msgid "Der Backupordner ist korrekt konfiguriert."
 #~ msgstr "Der Backupordner ist korrekt konfiguriert."
@@ -257,3 +249,13 @@ msgstr "Verwijderen"
 #, fuzzy
 #~ msgid "Links to extern sites and not defined links"
 #~ msgstr "Links auf externe Quellen und nicht zugewiesene Links"
+
+#~ msgid ""
+#~ "The calculated maximum database size to backup in |1 seconds (PHP "
+#~ "max_execution_time) is |2 MB"
+#~ msgstr ""
+#~ "Die kalkulierte maximale Datenbankgröße um in |1 Sekunden (PHP "
+#~ "max_execution_time) zu sichern ist |2 MB"
+
+#~ msgid "757 (ok)"
+#~ msgstr "757 (ok)"

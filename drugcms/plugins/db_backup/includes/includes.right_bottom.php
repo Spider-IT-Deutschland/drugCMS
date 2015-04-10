@@ -37,9 +37,9 @@ if ((!$pathfinder) || (!$permissionfinder)) {
                 $oTpl->generate($cfg[$plugin_name]['templates']['ajax_backup']);
                 die();
             } elseif ($ret === true) {
-                $sMsg = '<div style="margin-bottom: 2px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #0A0; border: 2px solid #080;">' . i18n("Backup created successfully", $plugin_name) . '</div>';
+                $sMsg = '<div style="margin-bottom: 2px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #62BC47; border: 2px solid #080;">' . i18n("Backup created successfully", $plugin_name) . '</div>';
                 $fExecTime = (microtime(true) - $fStart);
-                $sMsg .= '<div style="margin-bottom: 10px;">' . str_replace('|1', $fExecTime, i18n("It took |1 seconds to backup the database", $plugin_name)) . '</div>';
+                $sMsg .= '<div style="margin-bottom: 10px;">' . sprintf(i18n("It took %s seconds to backup the database", $plugin_name), strval($fExecTime)) . '</div>';
             } else {
                 $sMsg = '<div style="margin: 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #F00; border: 2px solid #D00;">' . i18n("An error occured while creating the backup", $plugin_name) . '</div>';
             }
@@ -58,9 +58,9 @@ if ((!$pathfinder) || (!$permissionfinder)) {
                 die();
             }
             if ($ret === true) {
-                $sMsg = '<div style="margin-bottom: 2px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #0A0; border: 2px solid #080;">' . i18n("Backup restored successfully", $plugin_name) . '</div>';
+                $sMsg = '<div style="margin-bottom: 2px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #62BC47; border: 2px solid #080;">' . i18n("Backup restored successfully", $plugin_name) . '</div>';
                 $fExecTime = (microtime(true) - $fStart);
-                $sMsg .= '<div style="margin-bottom: 10px;">' . str_replace('|1', $fExecTime, i18n("It took |1 seconds to restore the database", $plugin_name)) . '</div>';
+                $sMsg .= '<div style="margin-bottom: 10px;">' . sprintf(i18n("It took %s seconds to restore the database", $plugin_name), strval($fExecTime)) . '</div>';
             } else {
                 $sMsg = '<div style="margin-bottom: 10px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #F00; border: 2px solid #D00;">' . i18n("An error occured while restoring the backup", $plugin_name) . '</div>';
             }
@@ -69,12 +69,12 @@ if ((!$pathfinder) || (!$permissionfinder)) {
             $sFile = $_GET['file'];
             if (is_file($backup_path . $sFile)) {
                 if (@unlink($backup_path . $sFile)) {
-                    $sMsg = '<div style="margin: 0px 0px 10px 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #0A0; border: 2px solid #080;">' . i18n("Backup deleted successfully", $plugin_name) . '</div>';
+                    $sMsg = '<div style="margin: 0px 0px 10px 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #62BC47; border: 2px solid #080;">' . i18n("Backup deleted successfully", $plugin_name) . '</div>';
                 } else {
                     $sMsg = '<div style="margin: 0px 0px 10px 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #F00; border: 2px solid #D00;">' . i18n("An error occured while deleting the backup", $plugin_name) . '</div>';
                 }
             } else {
-                $sMsg = '<div style="margin: 0px 0px 10px 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #0A0; border: 2px solid #080;">' . i18n("The backup doesn't exist, maybe it was deleted already", $plugin_name) . '</div>';
+                $sMsg = '<div style="margin: 0px 0px 10px 0px; padding: 2px 0px 4px 0px; font-weight: bold; text-align: center; color: #FFF; background-color: #62BC47; border: 2px solid #080;">' . i18n("The backup doesn't exist, maybe it was deleted already", $plugin_name) . '</div>';
             }
             break;
     }
@@ -236,9 +236,11 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                 # Query the data
                 $bDone = false;
                 while (!$bDone) {
-                    $db->query('SELECT * FROM ' . $table . ' ORDER BY ' . $key_column . ' LIMIT ' . $current_row . ', ' . ((($num_rows - $current_row) > 5000) ? 5000 : ($num_rows - $current_row)));
+                    $db->query('SELECT * FROM ' . $table . ' ORDER BY ' . $key_column . ' LIMIT ' . $current_row . ', ' . ((($num_rows - $current_row) > 250) ? 250 : ($num_rows - $current_row)));
+                    $num_recs = 0;
                     $num_fields = $db->num_fields();
-                    while ($db->next_record()) {
+                    if ($db->next_record()) {
+                        $num_recs ++;
                         $row = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
                         $return .= "\n";
                         $return .= 'INSERT INTO `' . $table . '` (';
@@ -248,8 +250,8 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                                 $keys[] = '`' . $key . '`';
                             }
                         }
-                        $return .= implode(', ', $keys);
-                        $return .= ') VALUES (';
+                        $return .= implode(', ', $keys) . ') VALUES' . "\n";
+                        $return .= '(';
                         for ($i = 0; $i < $num_fields; $i++) {
                             if (!isset($row[$i])) {
                                 $return .= 'NULL';
@@ -262,7 +264,44 @@ function backup_tables($file, $host, $user, $pass, $name, $current_table = '', $
                                 $return .= ', ';
                             }
                         }
-                        $return .= ');';
+                        $return .= ')';
+                        # Time management
+                        if (((time() - $iStart) >= $iMET) || ($current_row == ($num_rows - 1)) || ($num_recs == 250)) {
+                            $return .= ';' . "\n";
+                        } else {
+                            $return .= ',' . "\n";
+                        }
+                        if ($gz) {
+                            gzwrite($handle, $return);
+                        } else {
+                            fwrite($handle, $return);
+                        }
+                        $return = '';
+                        $current_row ++;
+                    }
+                    while ($db->next_record()) {
+                        $num_recs ++;
+                        $row = $db->toArray(DB_SQL_Abstract::FETCH_BOTH);
+                        $return .= '(';
+                        for ($i = 0; $i < $num_fields; $i++) {
+                            if (!isset($row[$i])) {
+                                $return .= 'NULL';
+                            } elseif (is_numeric($row[$i])) {
+                                $return .= $row[$i];
+                            } else {
+                                $return .= "'" . str_replace(array("'", '\\', "\r", "\n"), array("''", '\\\\', "\\r", "\\n"), $row[$i]) . "'";
+                            }
+                            if ($i < ($num_fields - 1)) {
+                                $return .= ', ';
+                            }
+                        }
+                        $return .= ')';
+                        # Time management
+                        if (((time() - $iStart) >= $iMET) || ($current_row == ($num_rows - 1)) || ($num_recs == 250)) {
+                            $return .= ';' . "\n";
+                        } else {
+                            $return .= ',' . "\n";
+                        }
                         if ($gz) {
                             gzwrite($handle, $return);
                         } else {
