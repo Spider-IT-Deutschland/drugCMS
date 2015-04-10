@@ -45,7 +45,7 @@ function seocheck_installPlugin($db, $cfg) {
             VALUES (' . $id . ', "con", "con_seocheck", 1, 1, 0)';
     $db->query($sql);
     $sql = 'UPDATE ' . $cfg['tab']['sequence'] . '
-            SET last_id = ' . $id . '
+            SET nextid = ' . $id . '
             WHERE (seq_name="' . $cfg['tab']['area'] . '")';
     $db->query($sql);
     
@@ -54,7 +54,7 @@ function seocheck_installPlugin($db, $cfg) {
             VALUES (' . $id . ', ' . $id . ', "seocheck/includes/include.right_bottom.php", "main")';
     $db->query($sql);
     $sql = 'UPDATE ' . $cfg['tab']['sequence'] . '
-            SET last_id = ' . $id . '
+            SET nextid = ' . $id . '
             WHERE (seq_name="' . $cfg['tab']['files'] . '")';
     $db->query($sql);
     
@@ -63,7 +63,7 @@ function seocheck_installPlugin($db, $cfg) {
             VALUES (' . $id . ', ' . $id . ', 4, ' . $id . ')';
     $db->query($sql);
     $sql = 'UPDATE ' . $cfg['tab']['sequence'] . '
-            SET last_id = ' . $id . '
+            SET nextid = ' . $id . '
             WHERE (seq_name="' . $cfg['tab']['framefiles'] . '")';
     $db->query($sql);
     
@@ -72,7 +72,7 @@ function seocheck_installPlugin($db, $cfg) {
             VALUES (' . $id . ', 0, ' . $id . ', 1, "seocheck/xml/;navigation/content/article/seocheck", 1)';
     $db->query($sql);
     $sql = 'UPDATE ' . $cfg['tab']['sequence'] . '
-            SET last_id = ' . $id . '
+            SET nextid = ' . $id . '
             WHERE (seq_name="' . $cfg['tab']['nav_sub'] . '")';
     $db->query($sql);
 }
