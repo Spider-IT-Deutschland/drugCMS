@@ -13,7 +13,7 @@
  * @license    http://www.drugcms.org/license/license.txt
  * @link       http://www.spider-it.de
  * @link       http://www.drugcms.org
- * @since      file available since drugCMS release 2.0.5
+ * @since      file available since drugCMS release 2.0.3
  * 
  *   $Id$:
  */
