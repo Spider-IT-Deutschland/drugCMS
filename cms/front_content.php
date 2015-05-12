@@ -925,7 +925,7 @@ else
                 if (!isset($aUrl['params']['lang'])) {
                     $aUrl['params']['lang'] = $lang;
                 }
-                $redirect_url = $oUrl->buildRedirect($aUrl['params']) . ((count($aRedirUrl == 2)) ? '#' . $aRedirUrl[1] : '');
+                $redirect_url = $oUrl->buildRedirect($aUrl['params']) . (((count($aRedirUrl == 2)) && (strlen($aRedirUrl[1]))) ? '#' . $aRedirUrl[1] : '');
             }
             header("Location: $redirect_url");
             exit;
