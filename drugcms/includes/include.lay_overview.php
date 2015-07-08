@@ -94,13 +94,12 @@ while ($layout = $oLayouts->next()) {
         $delLink  = '<a title="'.$delTitle.'" href="javascript://" onclick="box.confirm(\''.$delTitle.'\', \''.$delDescr.'\', \'deleteLayout('.$idlay.')\')">'
                   . '<img src="'.$cfg['path']['images'].'delete.gif" border="0" title="'.$delTitle.'" alt="'.$delTitle.'"></a>';
         $tpl->set('d', 'DELETE', $delLink);
+        $tpl->set('d', 'TODO', '<img src="images/spacer.gif" width="16">');
     } else {
-        $tpl->set('d', 'DELETE','<img src="'.$cfg['path']['images'].'delete_inact.gif" border="0" title="'.$delDescr.'" alt="'.$delDescr.'">');
+        $tpl->set('d', 'DELETE','');
+        $todo = new TODOLink('idlay', $idlay, i18n("Layout") . ': ' . $name, '');
+        $tpl->set('d', 'TODO', $todo->render());
     }
-
-    $todo = new TODOLink('idlay', $idlay, i18n("Layout") . ': ' . $name, '');
-
-    $tpl->set('d', 'TODO', $todo->render());
 
     if (stripslashes($_REQUEST['idlay']) == $idlay) {
         $tpl->set('d', 'ID', 'marked');

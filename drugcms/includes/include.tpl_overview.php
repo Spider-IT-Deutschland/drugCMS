@@ -100,10 +100,10 @@ while ( $db->next_record() ) {
         		$delDescr = sprintf(i18n("Do you really want to delete the following template:<br><br>%s<br>"),htmlspecialchars($name));
             
                 $tpl->set('d', 'DELETE', '<a title="'.$delTitle.'" href="javascript://" onclick="box.confirm(\''.$delTitle.'\', \''.$delDescr.'\', \'deleteTemplate('.$idtpl.')\')"><img src="'.$cfg['path']['images'].'delete.gif" border="0" title="'.$delTitle.'" alt="'.$delTitle.'"></a>');
-                $tpl->set('d', 'INUSE', '<img src="images/spacer.gif" width="16">');
+                $tpl->set('d', 'INUSE', '');
             } else {
             	$delDescription = i18n("Template in use, cannot delete");
-                $tpl->set('d', 'DELETE','<img src="'.$cfg['path']['images'].'delete_inact.gif" border="0" title="'.$delDescription.'" alt="'.$delDescription.'">');
+                $tpl->set('d', 'DELETE','');
                 $tpl->set('d', 'INUSE', '<a href="javascript:;" rel="' . (int)$db->f("idtpl") . '" class="in_used_tpl"><img src="'.$cfg['path']['images'].'exclamation.gif" border="0" title="'.$inUseString.'" alt="'.$inUseString.'"></a>');
             }
 
