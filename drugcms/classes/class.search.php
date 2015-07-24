@@ -483,6 +483,8 @@ class Index extends SearchBaseAbstract
         #$sEncoding = $this->encoding[$this->lang];#getEncodingByLanguage($this->db, $this->lang, $this->cfg);
         $sEncoding = getEncodingByLanguage($this->db, $this->lang, $this->cfg);
 
+        $key = mb_convert_encoding($key, $sEncoding, 'auto,ISO-8859-1,UTF-8');
+        
 #        if (strtolower($sEncoding) != 'iso-8859-2') {
             $key = htmlentities($key, NULL, $sEncoding);
 #        } else {
@@ -496,14 +498,15 @@ class Index extends SearchBaseAbstract
             '&auml;'   => 'ae',
             '&Ouml;'   => 'Oe',
             '&ouml;'   => 'oe',
-            '&szlig;'  => 'ss'
+            '&szlig;'  => 'ss',
+            '&eacute;' => 'e'
         );
 
         foreach ($aUmlautMap as $sUmlaut => $sMapped) {
             $key = str_replace($sUmlaut, $sMapped, $key);
         }
 
-        $key = html_entity_decode($key);
+        $key = html_entity_decode($key, NULL, $sEncoding);
         $key = str_replace($aSpecialChars, '', $key);
 
         return $key;
@@ -519,7 +522,8 @@ class Index extends SearchBaseAbstract
     function addSpecialUmlauts($key)
     {
         #$key = htmlentities($key, null, $this->encoding[$this->lang]);#getEncodingByLanguage($this->db, $this->lang, $this->cfg));
-        $key = htmlentities($key, null, getEncodingByLanguage($this->db, $this->lang, $this->cfg));
+        $sEncoding = getEncodingByLanguage($this->db, $this->lang, $this->cfg);
+        $key = htmlentities($key, null, $sEncoding);
         $aUmlautMap = array (
             'Ue'    => '&Uuml;',
             'ue'    => '&uuml;',
@@ -527,14 +531,15 @@ class Index extends SearchBaseAbstract
             'ae'    => '&auml;',
             'Oe'    => '&Ouml;',
             'oe'    => '&ouml;',
-            'ss'    => '&szlig;'
+            'ss'    => '&szlig;',
+            'e'     => '&eacute;'
         );
 
         foreach ($aUmlautMap as $sUmlaut => $sMapped) {
             $key = str_replace($sUmlaut, $sMapped, $key);
         }
 
-        $key = html_entity_decode($key);
+        $key = html_entity_decode($key, null, $sEncoding);
         return $key;
     }
 
@@ -848,6 +853,7 @@ class Search extends SearchBaseAbstract
     {
         if (strlen(trim($searchwords)) > 0) {
             $this->search_words = $this->stripWords($searchwords);
+#            $this->search_words = explode(' ', $searchwords);
         } else {
             return false;
         }
@@ -1406,7 +1412,7 @@ class SearchResult extends SearchBaseAbstract
             if (isset($cms_nr) && is_numeric($cms_nr)) {
                 // get content of cms_type[cms_nr]
                 //build consistent escaped string(Timo Trautmann) 2008-04-17
-                $cms_content = htmlentities(html_entity_decode(strip_tags($article->getContent($cms_type, $cms_nr))));
+                $cms_content = htmlentities(html_entity_decode(strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $article->getContent($cms_type, $cms_nr)))));
                 if (count($this->replacement) == 2) {
                     foreach($search_words as $word) {
                         //build consistent escaped string, replace ae ue .. with original html entities (Timo Trautmann) 2008-04-17
@@ -1420,11 +1426,15 @@ class SearchResult extends SearchBaseAbstract
                         }
                     }
                 }
+                $p1 = strpos($cms_content, $this->replacement[0]);
+                if ($p1 > 100) {
+                    $cms_content = '&hellip;' . substr($cms_content, strlen(capiStrTrimAfterWord($cms_content, ($p1 - 20))));
+                }
                 $content[] = htmlspecialchars_decode($cms_content);
             } else {
                 // get content of cms_type[$id], where $id are the cms_type numbers found in search
                 foreach ($id_type as $id) {
-                    $cms_content = strip_tags($article->getContent($cms_type, $id));
+                    $cms_content = strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $article->getContent($cms_type, $id)));
 
                     if (count($this->replacement) == 2) {
                         foreach($search_words as $word) {
@@ -1436,6 +1446,10 @@ class SearchResult extends SearchBaseAbstract
                             }
                         }
                     }
+                    $p1 = strpos($cms_content, $this->replacement[0]);
+                    if ($p1 > 100) {
+                        $cms_content = '&hellip;' . substr($cms_content, strlen(capiStrTrimAfterWord($cms_content, ($p1 - 20))));
+                    }
                     $content[] = $cms_content;
                 }
             }
@@ -1443,12 +1457,12 @@ class SearchResult extends SearchBaseAbstract
         } else {
             // searchword was not found in cms_type
             if (isset($cms_nr) && is_numeric($cms_nr)) {
-                $content[] = strip_tags($article->getContent($cms_type, $cms_nr));
+                $content[] = strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $article->getContent($cms_type, $cms_nr)));
             } else {
                 $art_content = $article->getContent($cms_type);
                 if (count($art_content) > 0) {
                     foreach ($art_content as $val) {
-                        $content[] = strip_tags($val);
+                        $content[] = strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $val));
                     }
                 }
             }
