@@ -758,9 +758,9 @@ function uplGetFileIcon ($file)
         case "cdr":
         case "qxp":
         case "ps": $icon = "design.gif";
-                   break;
+                    break;
         case "css": $icon = "css.gif";
-					
+				    break;
 		default: 
             if (file_exists($cfg['path']['contenido_fullhtml'] . $cfg["path"]["images"]. "filetypes/".getFileExtension($file).".gif")) {
                 $icon = getFileExtension($file).".gif";

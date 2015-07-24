@@ -257,8 +257,8 @@ if (is_array($backend->getFile('main')))
 {
 	foreach ($backend->getFile('main') as $id => $filename)
 	{
-  	include_once($cfg['path']['contenido'].$filename);
-  }
+        include_once($cfg['path']['contenido'].$filename);
+    }
 
 }
 elseif( $frame == 3 )

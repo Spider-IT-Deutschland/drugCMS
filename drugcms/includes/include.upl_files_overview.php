@@ -251,68 +251,223 @@ if ($action == "upl_upload" && $bDirectoryIsWritable == true) {
     //print_r($_FILES);
     $bUplErr = false;
     if (count($_FILES) == 1) {
-        foreach ($_FILES['file']['name'] as $key => $value) {
-            // new error handling
-            $iError = (int) $_FILES['file']['error'][$key];
-            switch($iError) {
-                case 1:
-                    $bUplErr = true;
-                    $sErrorMessage .= $notification->returnNotification("error", sprintf(i18n("The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."), $value));
-                    $sErrorMessage .= '<br />';
-                    break;
-                case 2:
-                case 3:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                    $bUplErr = true;
-                    $sErrorMessage .= $notification->returnNotification("error", sprintf(i18n("Error while uploading file (%s)."), $value));
-                    $sErrorMessage .= '<br />';
-                    break;
-                default:
-                    $bUplErr = false;
-            }
-            if ($_FILES['file']['tmp_name'][$key] != "") {
-                $tmp_name = $_FILES['file']['tmp_name'][$key];
-                $_cecIterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPreprocess");
+        # 2015-07-23 RM :: Handler for mass uploader
+        if (isset($_POST['massuploader'])) {
+            if ($_POST['massuploader'] == 1) {
+                # Files come in one by one, so we only have to handle one file here
+                $iWidth         = intval($_POST['Width']);
+                $iHeight        = intval($_POST['Height']);
+                $bCrop          = (intval($_POST['Crop']) == 1);
+                $bExpand        = (intval($_POST['Expand']) == 1);
+                $bFixed         = (intval($_POST['Fixed']) == 1);
+                $sColor         = urldecode($_POST['Color']);
+                $fGamma         = floatval('1.' . $_POST['Gamma']);
                 
-                if ($_cecIterator->count() > 0) {
+                $sFileName = uplCreateFriendlyName($_FILES['file']['name'][0]);
+                $sPath = str_replace($cfgClient[$client]['path']['frontend'], '', $cfgClient[$client]['upl']['path']) . $path;
+                $tmp_name = $_FILES['file']['tmp_name'][0];
+                if (is_uploaded_file($tmp_name)) {
                     /* Copy file to a temporary location */
-                    move_uploaded_file($tmp_name, $cfg["path"]["contenido"] . $cfg["path"]["temp"].$_FILES['file']['name'][$key]);
-                    $tmp_name = $cfg["path"]["contenido"] . $cfg["path"]["temp"].$_FILES['file']['name'][$key];
+                    move_uploaded_file($tmp_name, $cfg['path']['contenido'] . $cfg['path']['temp'] . $_FILES['file']['name'][0]);
+                    $tmp_name = $cfg['path']['contenido'] . $cfg['path']['temp'] . $_FILES['file']['name'][0];
                     
-                    while ($chainEntry = $_cecIterator->next()) {
-                        if (is_dbfs($path)) {
-                            $sPathPrepend = '';
-                            $sPathApppend = '/';
-                        } else {
-                            $sPathPrepend = $cfgClient[$client]['upl']['path'];
-                            $sPathApppend = '';
-                        }
-                        
-                        $modified = $chainEntry->execute($tmp_name, $sPathPrepend.$path.$sPathApppend.uplCreateFriendlyName($_FILES['file']['name'][$key]));
-                        
-                        if ($modified !== false) {
-                            $tmp_name = $modified;
+                    $_cecIterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPreprocess");
+                    if ($_cecIterator->count() > 0) {
+                        while ($chainEntry = $_cecIterator->next()) {
+                            if (is_dbfs($path)) {
+                                $sPathPrepend = '';
+                                $sPathApppend = '/';
+                            } else {
+                                $sPathPrepend = $cfgClient[$client]['upl']['path'];
+                                $sPathApppend = '';
+                            }
+                            
+                            $modified = $chainEntry->execute($tmp_name, $sPathPrepend . $path . $sPathApppend . uplCreateFriendlyName($_FILES['file']['name'][0]));
+                            
+                            if ($modified !== false) {
+                                rename($modified, $tmp_name);
+                            }
                         }
                     }
-                }
-
-                if(is_dbfs($qpath)) {
-                    $dbfs->writeFromFile($tmp_name, $qpath.uplCreateFriendlyName($_FILES['file']['name'][$key]));
-                    unlink($tmp_name);
-                } else {
-                    if (is_uploaded_file($tmp_name)) {
-                        $final_filename = $cfgClient[$client]['upl']['path'].$path.uplCreateFriendlyName($_FILES['file']['name'][$key]);
-                        move_uploaded_file($tmp_name, $final_filename);
-                        
-                        $iterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPostprocess");
-                        while ($chainEntry = $iterator->next()) {
-                            $chainEntry->execute($final_filename);
+                    
+                    # Is this an image?
+                    if (substr($_FILES['file']['type'][0], 0, 6) == 'image/') {
+                        $sImage = $cfgClient[$client]['upl']['path'] . '_tmp_' . $sFileName;
+                        if (rename($tmp_name, $sImage)) {
+                            # Scale and/or gamma-correct the image
+                            cInclude('includes', 'functions.graphics.php');
+                            $sNewImage = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), $iWidth, $iHeight, $bCrop, $bExpand, $fGamma, 1, true, $bFixed, $sColor);
+                            if (strlen($sNewImage)) {
+                                # Move the new image to the upload directory, overwriting the temporarily saved original file
+                                rename(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sNewImage), $sImage);
+                                # Generate a thumbnail image
+                                $sNewThumb = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), 80, 80, false, false, 1.0, 1, true, false, $sColor);
+                                # Move the new image to it's appropriate position
+                                if (is_dbfs($qpath)) {
+                                    # The database
+                                    $dbfs->writeFromFile(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sImage), $qpath . $sFileName);
+                                    unlink($sImage);
+                                    $sUrl = '';
+                                }
+                                else {
+                                    # The upload directory
+                                    $final_filename = $cfgClient[$client]['path']['frontend'] . $sPath . $sFileName;
+                                    rename(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sImage), $final_filename);
+                                    $sUrl = $cfgClient[$client]['path']['htmlpath'] . $sPath . $sFileName;
+                                    
+                                    $iterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPostprocess");
+                                    while ($chainEntry = $iterator->next()) {
+                                        $chainEntry->execute($final_filename);
+                                    }
+                                }
+                                # Report success
+                                $aResult = array(
+                                    'files' => array(
+                                        0 => array(
+                                            'url' => '',#$sUrl,
+                                            'thumbnailUrl' => $sNewThumb,
+                                            'name' => $sFileName,
+                                            'type' => $_FILES['file']['type'][0],
+                                            'size' => filesize($cfgClient[$client]['path']['frontend'] . $sPath . $sFileName),
+                                            'deleteUrl' => '-'
+                                        )
+                                    )
+                                );
+                            }
+                            else {
+                                $aResult = array(
+                                    'files' => array(
+                                        0 => array(
+                                            'error' => sprintf(i18n("The image file '%s' couldn't be processed, may be corrupted"), $sFileName)
+                                        )
+                                    )
+                                );
+                            }
                         }
+                        else {
+                            $aResult = array(
+                                'files' => array(
+                                    0 => array(
+                                        'error' => sprintf(i18n("Error while uploading file (%s)."), $sFileName)
+                                    )
+                                )
+                            );
+                        }
+                    }
+                    else {
+                        # Not an image, just move the file to it's position
+                        if (is_dbfs($qpath)) {
+                            # The database
+                            $dbfs->writeFromFile($tmp_name, $qpath . $sFileName);
+                            unlink($tmp_name);
+                        }
+                        else {
+                            # The upload directory
+                            $final_filename = $cfgClient[$client]['path']['frontend'] . $sPath . $sFileName;
+                            rename($tmp_name, $final_filename);
+                            
+                            $iterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPostprocess");
+                            while ($chainEntry = $iterator->next()) {
+                                $chainEntry->execute($final_filename);
+                            }
+                        }
+                        $aResult = array(
+                            'files' => array(
+                                0 => array(
+                                    'url' => '',#$cfgClient[$client]['path']['htmlpath'] . $sPath . $sFileName,
+                                    'thumbnailUrl' => uplGetFileIcon($sFileName),
+                                    'name' => $sFileName,
+                                    'type' => $_FILES['file']['type'][0],
+                                    'size' => filesize($cfgClient[$client]['path']['frontend'] . $sPath . $sFileName),
+                                    'deleteUrl' => '-'
+                                )
+                            )
+                        );
+                    }
+                }
+                else {
+                    # Error uploading the file
+                    $aResult = array(
+                        'files' => array(
+                            0 => array(
+                                'error' => sprintf(i18n("The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."), $sFileName)
+                            )
+                        )
+                    );
+                }
+            }
+            else {
+                # We may have multiple files (won't happen as javascript must be enabled in the backend)
+                
+            }
+            ob_end_clean();
+            header('Content-Type: application/json');
+            die(json_encode($aResult));
+        }
+        else {
+            foreach ($_FILES['file']['name'] as $key => $value) {
+                // new error handling
+                $iError = (int) $_FILES['file']['error'][$key];
+                switch($iError) {
+                    case 1:
+                        $bUplErr = true;
+                        $sErrorMessage .= $notification->returnNotification("error", sprintf(i18n("The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."), $value));
+                        $sErrorMessage .= '<br />';
+                        break;
+                    case 2:
+                    case 3:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                        $bUplErr = true;
+                        $sErrorMessage .= $notification->returnNotification("error", sprintf(i18n("Error while uploading file (%s)."), $value));
+                        $sErrorMessage .= '<br />';
+                        break;
+                    default:
+                        $bUplErr = false;
+                }
+                if ($_FILES['file']['tmp_name'][$key] != "") {
+                    $tmp_name = $_FILES['file']['tmp_name'][$key];
+                    $_cecIterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPreprocess");
+                    
+                    if ($_cecIterator->count() > 0) {
+                        /* Copy file to a temporary location */
+                        move_uploaded_file($tmp_name, $cfg["path"]["contenido"] . $cfg["path"]["temp"].$_FILES['file']['name'][$key]);
+                        $tmp_name = $cfg["path"]["contenido"] . $cfg["path"]["temp"].$_FILES['file']['name'][$key];
+                        
+                        while ($chainEntry = $_cecIterator->next()) {
+                            if (is_dbfs($path)) {
+                                $sPathPrepend = '';
+                                $sPathApppend = '/';
+                            } else {
+                                $sPathPrepend = $cfgClient[$client]['upl']['path'];
+                                $sPathApppend = '';
+                            }
+                            
+                            $modified = $chainEntry->execute($tmp_name, $sPathPrepend.$path.$sPathApppend.uplCreateFriendlyName($_FILES['file']['name'][$key]));
+                            
+                            if ($modified !== false) {
+                                $tmp_name = $modified;
+                            }
+                        }
+                    }
+
+                    if(is_dbfs($qpath)) {
+                        $dbfs->writeFromFile($tmp_name, $qpath.uplCreateFriendlyName($_FILES['file']['name'][$key]));
+                        unlink($tmp_name);
                     } else {
-                        rename($tmp_name, $cfgClient[$client]['upl']['path'].$path.uplCreateFriendlyName($_FILES['file']['name'][$key]));
+                        if (is_uploaded_file($tmp_name)) {
+                            $final_filename = $cfgClient[$client]['upl']['path'].$path.uplCreateFriendlyName($_FILES['file']['name'][$key]);
+                            move_uploaded_file($tmp_name, $final_filename);
+                            
+                            $iterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPostprocess");
+                            while ($chainEntry = $iterator->next()) {
+                                $chainEntry->execute($final_filename);
+                            }
+                        } else {
+                            rename($tmp_name, $cfgClient[$client]['upl']['path'].$path.uplCreateFriendlyName($_FILES['file']['name'][$key]));
+                        }
                     }
                 }
             }

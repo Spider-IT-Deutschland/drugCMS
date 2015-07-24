@@ -91,7 +91,7 @@
  *  sitGetRemoteContent()               DEPRECATED, use getRemoteContent() in /drugcms/includes/functions.general.php
  *  sitGetRemoteContentToFile()         DEPRECATED, use getRemoteContentToFile() in /drugcms/includes/functions.general.php
  *  sitGetSubdirs()                     DEPRECATED, use getSubdirs() in /drugcms/includes/functions.general.php
- *  sitImgScale()
+ *  sitImgScale()                       DEPRECATED, use ScaleImage() in /drugcms/includes/functions.graphics.php
  *  sitMakeCmsType()                    DEPRECATED, use makeCmsType() in /drugcms/includes/functions.general.php
  *  sitMoveAllUploadFiles()
  *  sitSafeStringEscape()
@@ -469,7 +469,7 @@ function sitGetSubdirs($dir, $levels = 1, $__dirs = array()) {
     return getSubdirs($dir, $levels);
 }
 
-/**
+/** DEPRECATED, use ScaleImage() in /drugcms/includes/functions.graphics.php
  * sitImgScale()
  *
  * Skaliert oder zoomt ein Bild auch mit Transparenz
@@ -498,220 +498,9 @@ function sitGetSubdirs($dir, $levels = 1, $__dirs = array()) {
  * wird. Ist $fixedBG nicht angegeben, wird weiß (#FFF) angenommen.
  */
 function sitImgScale($img, $maxX = 0, $maxY = 0, $crop = false, $expand = false, $cacheTime = 10, $wantHQ = true, $quality = 75, $keepType = false, $fixedSize = false, $fixedBG = 'FFFFFF', $cropLeft = -1, $cropTop = -1) {
-	global $cfgClient, $client, $lang;
-    
-    $cl = $cropLeft;
-    $ct = $cropTop;
-    
-    if (($maxX <= 0) && ($maxY <= 0)) {
-        return false;
-    }
-    
-    # Cache
-    $md5 = capiImgScaleGetMD5CacheFile($cfgClient[$client]['path']['frontend'] . $img, $maxX, $maxY, $crop, $expand);
-    list($oWidth, $oHeight, $oType) = @getimagesize($cfgClient[$client]['path']['frontend'] . $img);
-    if (($oType != IMAGETYPE_GIF) && ($oType != IMAGETYPE_JPEG) && ($oType != IMAGETYPE_PNG)) {
-        return false;
-    }
-    if ($keeptype) {
-        switch ($oType) {
-            case IMAGETYPE_GIF:
-                $cfileName = $md5 . '.gif';
-                break;
-            case IMAGETYPE_JPEG:
-                $cfileName = $md5 . '.jpg';
-                break;
-            case IMAGETYPE_PNG:
-                $cfileName = $md5 . '.png';
-                break;
-        }
-	} else {
-        $cfileName = $md5 . '.png';
-    }
-    $cacheFile  = $cfgClient[$client]['path']['frontend'] . 'cache/' . $cfileName;
-	$webFile    = $cfgClient[$client]['path']['htmlpath'] . 'cache/' . $cfileName;
-    if (file_exists($cacheFile)) {
-        if ($cacheTime == 0) {
-            # Datei läuft nicht ab, also direkt ausgeben
-            return $webFile;
-        } elseif ((filemtime($cacheFile) + (60 * $cacheTime)) < time()) {
-            # Datei ist abgelaufen
-            unlink($cacheFile);
-        } else {
-            # Datei ist noch nicht abgelaufen
-            return $webFile;
-        }
-    }
-    
-    # Bild neu aufbauen
-    $nLeft      = 0;
-    $nTop       = 0;
-    $nWidth     = 0;
-    $nHeight    = 0;
-    $faktor     = 1;
-    if ($fixedSize) {
-        $iWidth = $maxX;
-        $iHeight = $maxY;
-        # Abmessung und Position in neues Bild berechnen
-        if (($oWidth > $maxX) || ($oHeight > $maxY) || ($expand)) {
-            # Bild ist größer oder soll vergrößert werden
-            if ($crop) {
-                $faktor = max(($maxX / $oWidth), ($maxY / $oHeight));
-            } else {
-                $faktor = min($maxX / $oWidth, $maxY / $oHeight);
-                $cropLeft = 0;
-                $cropTop = 0;
-            }
-            if ($faktor == ($maxX / $oWidth)) {
-                $nLeft = 0;
-                $nWidth = $maxX;
-                $nHeight = ceil($oHeight * $faktor);
-                if ($ct == -1) {
-                    $nTop = floor(($maxY - $nHeight) / 2);
-                }
-            } else {
-                $nTop = 0;
-                $nHeight = $maxY;
-                $nWidth = ceil($oWidth * $faktor);
-                if ($cl == -1) {
-                    $nLeft = floor(($maxX - $nWidth) / 2);
-                }
-            }
-            if ($crop) {
-                if ($cropLeft == -1) {
-                    $cropLeft = 0;
-                } else {
-                    $nLeft = 0;
-                }
-                if ($cropTop == -1) {
-                    $cropTop = 0;
-                } else {
-                    $nTop = 0;
-                }
-            }
-        } else {
-            $nLeft = floor(($maxX - $oWidth) / 2);
-            $nTop = floor(($maxY - $oHeight) / 2);
-            $nWidth = $oWidth;
-            $nHeight = $oHeight;
-        }
-    } else {
-        # Abmessung des neuen Bildes berechnen
-        if (($oWidth > $maxX) || ($oHeight > $maxY) || ($expand)) {
-            if ($crop) {
-                $faktor = max($maxX / $oWidth, $maxY / $oHeight);
-            } else {
-                $faktor = min($maxX / $oWidth, $maxY / $oHeight);
-                $cropLeft = 0;
-                $cropTop = 0;
-            }
-            if ($faktor == ($maxX / $oWidth)) {
-                $nWidth = $maxX;
-                $nHeight = ceil($oHeight * $faktor);
-                $iWidth = $maxX;
-                $iHeight = (($nHeight > $maxY) ? $maxY : $nHeight);
-                if ($ct == -1) {
-                    $nTop = (($nHeight > $maxY) ? floor(($maxY - $nHeight) / 2) : 0);
-                }
-            } else {
-                $nHeight = $maxY;
-                $nWidth = ceil($oWidth * $faktor);
-                $iHeight = $maxY;
-                $iWidth = (($nWidth > $maxX) ? $maxX : $nWidth);
-                if ($cl == -1) {
-                    $nLeft = (($nWidth > $maxX) ? floor(($maxX - $nWidth) / 2) : 0);
-                }
-            }
-            if ($crop) {
-                if ($cropLeft == -1) {
-                    $cropLeft = 0;
-                } else {
-                    $nLeft = 0;
-                }
-                if ($cropTop == -1) {
-                    $cropTop = 0;
-                } else {
-                    $nTop = 0;
-                }
-            }
-        } else {
-            # Bild ist kleiner und soll nicht vergrößert werden
-            $iWidth = $nWidth = $oWidth;
-            $iHeight = $nHeight = $oHeight;
-        }
-    }
-    if ($cropLeft < 0) $cropLeft = 0;
-    if ($cropTop < 0) $cropTop = 0;
-    # Bild einlesen
-    switch ($oType) {
-        case IMAGETYPE_GIF:
-            $image = imagecreatefromgif($img);
-            break;
-        case IMAGETYPE_JPEG:
-            $image = imagecreatefromjpeg($img);
-            break;
-        case IMAGETYPE_PNG:
-            $image = imagecreatefrompng($img);
-            break;
-        default:
-            return false;
-    }
-    # Neues Bild erzeugen und Hintergrundfarbe einstellen
-    $nImage = imagecreatetruecolor($iWidth, $iHeight);
-    if (($oType == IMAGETYPE_GIF) || ($oType == IMAGETYPE_PNG)) {
-        $transIdx = imagecolortransparent($image);
-        if ($transIdx >= 0) {
-            # Es gibt eine transparente Farbe (GIF oder PNG8)
-            $transColor = imagecolorsforindex($image, $transIdx);
-            $transIdx = imagecolorallocate($nImage, $transColor['red'], $transColor['green'], $transColor['blue']);
-            imagefilledRectangle($nImage, 0, 0, $iWidth, $iHeight, $transIdx);
-            imagecolortransparent($nImage, $transIdx);
-        } elseif (($oType == IMAGETYPE_PNG) || (!$keeptype)) {
-            # Ein PNG24 kriegt ein transparenter Hintergrund per Alpha-Kanal,
-            # GIF-Bilder ohne Transparenz werden in PNG24 umgewandelt
-            $oType = IMAGETYPE_PNG;
-            imagealphablending($nImage, false);
-            $oColor = imagecolorallocatealpha($nImage, 0, 0, 0, 127);
-            imagefilledRectangle($nImage, 0, 0, $iWidth, $iHeight, $oColor);
-            imagesavealpha($nImage, true);
-        } else {
-            # Andere GIF-Bilder kriegen eine Hintergrundfarbe
-            $oColor = imagecolorallocate($nImage, hexdec(substr($fixedBG, 0, 2)), hexdec(substr($fixedBG, 2, 2)), hexdec(substr($fixedBG, 4, 2)));
-            imagefilledrectangle($nImage, 0, 0, $iWidth, $iHeight, $oColor);
-        }
-    } else {
-        if ($keepType) {
-            # Andere Bilder (JPG) kriegen eine Hintergrundfarbe
-            $oColor = imagecolorallocate($nImage, hexdec(substr($fixedBG, 0, 2)), hexdec(substr($fixedBG, 2, 2)), hexdec(substr($fixedBG, 4, 2)));
-            imagefilledrectangle($nImage, 0, 0, $iWidth, $iHeight, $oColor);
-        } else {
-            # JPG-Bilder werden in PNG24 umgewandelt
-            $oType = IMAGETYPE_PNG;
-            imagealphablending($nImage, false);
-            $oColor = imagecolorallocatealpha($nImage, 0, 0, 0, 127);
-            imagefilledRectangle($nImage, 0, 0, $iWidth, $iHeight, $oColor);
-            imagesavealpha($nImage, true);
-        }
-    }
-    # Das Originalbild skaliert hinein kopieren
-    imagecopyresampled($nImage, $image, $nLeft, $nTop, floor($cropLeft / $faktor), floor($cropTop / $faktor), ($nWidth + 2), ($nHeight + 2), $oWidth, $oHeight);
-    # Das neue Bild speichern
-    switch ($oType) {
-        case IMAGETYPE_GIF:
-            imagegif($nImage, $cacheFile);
-            break;
-        case IMAGETYPE_JPEG:
-            imagejpeg($nImage, $cacheFile);
-            break;
-        case IMAGETYPE_PNG:
-            imagepng($nImage, $cacheFile);
-            break;
-    }
-    # Aufräumen
-    imagedestroy($image);
-    imagedestroy($nImage);
-    # Pfad zurück liefern
-    return $webFile;
+    cInclude('includes', 'functions.graphics.php');
+    $gamma = 1.0;
+    return ScaleImage($img, $maxX, $maxY, $crop, $expand, $gamma, $cacheTime, $keepType, $fixedSize, $fixedBG, $cropLeft, $cropTop);
 }
 
 /** DEPRECATED, use makeCmsType() in /drugcms/includes/functions.general.php

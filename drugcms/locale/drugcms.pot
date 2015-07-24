@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS 2.0.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-01 23:31+0100\n"
-"PO-Revision-Date: 2015-04-01 23:31+0100\n"
+"POT-Creation-Date: 2015-07-24 11:26+0100\n"
+"PO-Revision-Date: 2015-07-24 11:27+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team\n"
 "MIME-Version: 1.0\n"
@@ -233,6 +233,7 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/templates/standard/template.mydrugcms_lastarticles.html:61
 #: C:\drugCMS/drugcms/includes/include.upl_artlist.php:81
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:79
 msgid "Start"
 msgstr ""
 
@@ -345,7 +346,7 @@ msgstr ""
 #: C:\drugCMS/drugcms/includes/include.con_art_overview.php:83
 #: C:\drugCMS/drugcms/includes/include.frontend.left_top.php:165
 #: C:\drugCMS/drugcms/includes/include.mydrugcms.tasks.php:276
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:541
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:696
 msgid "Actions"
 msgstr ""
 
@@ -713,7 +714,7 @@ msgid "clear upgrade error log"
 msgstr ""
 
 #: C:\drugCMS/drugcms/templates/standard/template.tpl_edit_form.html:42
-#: C:\drugCMS/drugcms/includes/include.lay_overview.php:101
+#: C:\drugCMS/drugcms/includes/include.lay_overview.php:100
 #: C:\drugCMS/drugcms/includes/include.tpl_edit_form.php:161
 msgid "Layout"
 msgstr ""
@@ -1046,7 +1047,7 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/classes/class.cms_filelist.php:540
 #: C:\drugCMS/drugcms/classes/class.cms_filelist.php:541
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:690
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:845
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:417
 msgid "No files found"
 msgstr ""
@@ -1373,6 +1374,7 @@ msgid "View notes / add note"
 msgstr ""
 
 #: C:\drugCMS/drugcms/classes/class.notification.php:114
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:81
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:231
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:234
 #: C:\drugCMS/drugcms/scripts/langref.php:14
@@ -1967,7 +1969,6 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:157
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:165
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:63
 msgid "Upload files"
 msgstr ""
 
@@ -1996,7 +1997,7 @@ msgid "Multidelete Files"
 msgstr ""
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:164
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:790
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:945
 msgid "Delete file"
 msgstr ""
 
@@ -3123,9 +3124,9 @@ msgstr ""
 #: C:\drugCMS/drugcms/includes/include.mod_new.php:82
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:60
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:177
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:477
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:481
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:483
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:632
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:636
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:638
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:232
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:237
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:240
@@ -3136,6 +3137,7 @@ msgstr ""
 #: C:\drugCMS/drugcms/includes/include.client_artspec.php:94
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:79
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:81
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:82
 msgid "Delete"
 msgstr ""
 
@@ -3321,7 +3323,7 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/includes/include.CMS_IMG.php:283
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:93
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:537
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:692
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:286
 msgid "Preview"
 msgstr ""
@@ -4211,7 +4213,7 @@ msgstr ""
 msgid "Do you really want to delete the following layout:<br><br>%s<br>"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.lay_overview.php:118
+#: C:\drugCMS/drugcms/includes/include.lay_overview.php:117
 #, php-format
 msgid "The layout '%s' is used for following templates"
 msgstr ""
@@ -4271,7 +4273,6 @@ msgstr ""
 #: C:\drugCMS/drugcms/includes/include.mod_edit_form.php:101
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:296
 #: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:87
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:67
 msgid "Directory not writable"
 msgstr ""
 
@@ -5188,6 +5189,7 @@ msgid "File name"
 msgstr ""
 
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:84
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:120
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:204
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:209
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:212
@@ -5227,104 +5229,134 @@ msgstr ""
 msgid "Could not load file %s"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:260
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:341
+#, php-format
+msgid "The image file '%s' couldn't be processed, may be corrupted"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:351
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:424
+#, php-format
+msgid "Error while uploading file (%s)."
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:393
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:414
 #, php-format
 msgid ""
 "The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:270
-#, php-format
-msgid "Error while uploading file (%s)."
-msgstr ""
-
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:322
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:477
 msgid "Errors while uploading file(s). Some or all files were not uploaded."
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:405
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:407
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:560
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:562
 msgid "Use file"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:453
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:457
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:459
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:608
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:612
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:614
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:190
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:195
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:198
 msgid "Filename / Description"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:465
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:469
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:471
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:620
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:624
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:626
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:218
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:223
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:226
 msgid "Size"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:490
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:645
 msgid "Delete Files"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:490
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:645
 msgid "Are you sure you want to delete the selected files?"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:491
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:646
 msgid "Delete selected files"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:508
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:663
 msgid "Flip Selection"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:513
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:59
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:668
 msgid "Path:"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:528
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:683
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:276
 msgid "Files per Page"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:536
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:691
 msgid "Mark"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:654
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:809
 msgid "Display properties"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:717
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:872
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:445
 msgid "Previous Page"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:724
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:879
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:452
 msgid "Next Page"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:764
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:919
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:490
 msgid "Page"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:791
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:946
 msgid "Do you really want to delete the following file:<br>"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:922
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:1077
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:605
 msgid "Enter new filename"
 msgstr ""
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:51
-msgid "Upload"
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:74
+msgid "Image scaling pre-settings"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:75
+msgid "Add files"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:76
+msgid "Start upload"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:77
+msgid "Clear list"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:78
+msgid "Processing"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:80
+msgid "Entfernen"
+msgstr ""
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:83
+msgid "Remove"
 msgstr ""
 
 #: C:\drugCMS/drugcms/includes/include.upl_left_top.php:111
@@ -5409,6 +5441,35 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/plugins/frontendlogic/category/category.php:44
 msgid "Access category"
+msgstr ""
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/functions.chains.php:61
+msgid "SEO Check"
+msgstr ""
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:12
+msgid ""
+"In order to use this functionallity, you need to enable the client's cache "
+"folder in it's .htaccess file.<br />Please add the following line to the "
+"'Exclude some files and directories from rewriting' section:<br /"
+">RewriteRule ^cache/.*$ - [L]"
+msgstr ""
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:19
+msgid ""
+"In order to use this functionallity, you need to enable the client's cache "
+"folder in your main .htaccess file.<br />Please add the following line to "
+"the 'Exclude some files and directories from rewriting' section:<br /"
+">RewriteRule ^|1cache/.*$ - [L]"
+msgstr ""
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:29
+msgid ""
+"In order to check this article, it must be online, without any restrictions."
+msgstr ""
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:128
+msgid "Error, no content returned"
 msgstr ""
 
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:251
@@ -5512,6 +5573,30 @@ msgstr ""
 
 #: C:\drugCMS/drugcms/scripts/langref.php:32
 msgid "Frame"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-ui.js:226
+msgid "unknownError"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:96
+msgid "maxNumberOfFiles"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:100
+msgid "acceptFileTypes"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:102
+msgid "maxFileSize"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:105
+msgid "minFileSize"
+msgstr ""
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload.js:741
+msgid "uploadedBytes"
 msgstr ""
 
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:71
