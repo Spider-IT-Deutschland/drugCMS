@@ -53,7 +53,7 @@
                 <div class="row fileupload-buttonbar">
                     <div class="col-lg-7">
                         <!-- The fileinput-button span is used to style the file input field as button -->
-                        <span class="btn btn-success fileinput-button">
+                        <span class="btn btn-success fileinput-button" onclick="$('#Done').css('display','none')">
                             <i class="glyphicon glyphicon-plus"></i>
                             <span>{ADD_FILES}&hellip;</span>
                             <input type="file" name="file[]" multiple>
@@ -67,11 +67,11 @@
                             <input type="file" name="file[]" multiple>
                             <input type="file" name="file[]" multiple>
                         </span>
-                        <button type="submit" class="btn btn-primary start">
+                        <button type="submit" class="btn btn-primary start" onclick="$('#Done').css('display','none')">
                             <i class="glyphicon glyphicon-upload"></i>
                             <span>{START_UPLOAD}</span>
                         </button>
-                        <button type="reset" class="btn btn-warning cancel">
+                        <button type="reset" class="btn btn-warning cancel" onclick="$('#Done').css('display','none')">
                             <i class="glyphicon glyphicon-ban-circle"></i>
                             <span>{CANCEL_UPLOAD}</span>
                         </button>
@@ -84,6 +84,7 @@
 -->
                         <!-- The global file processing state -->
                         <span class="fileupload-process"></span>
+                        <div id="Done" class="fileupload-process btn btn-success" style="display: none; cursor: default;">{DONE}</div>
                     </div>
                     <!-- The global progress state -->
                     <div class="col-lg-5 fileupload-progress fade">
@@ -118,6 +119,21 @@
             $(document).ready(function() {
                 {SET_DEFAULTS}
                 $('#massuploader').val(1);
+                $('#fileupload').bind('fileuploadprogressall', function (e, data) {
+                    if (data['loaded'] == data['total']) {
+                        $('#updateDB').attr('src', $('#updateDB').attr('src'));
+                        setTimeout(function() {
+                            var left_bottom = parent.parent.frames['left'].frames['left_bottom'];
+                            if (left_bottom) {
+                                var href = left_bottom.location.href;
+                                href = href.replace(/&path.*/, '');
+                                left_bottom.location.href = href+'&path={PATH}';
+                                top.content.left.left_top.refresh();
+                            }
+                        }, 10);
+                        $('#Done').css('display', 'block');
+                    }
+                });
             });
         //]]>
         </script>
@@ -243,21 +259,5 @@
         <!--[if (gte IE 8)&(lt IE 10)]>
         <script src="scripts/jquery/cors/jquery.xdr-transport.js"></script>
         <![endif]-->
-        <script type="text/javascript">
-        //<![CDATA[
-            $('#fileupload').bind('fileuploaddone', function (e, data) {
-                $('#updateDB').attr('src', $('#updateDB').attr('src'));
-                setTimeout(function() {
-                    var left_bottom = parent.parent.frames['left'].frames['left_bottom'];
-                    if (left_bottom) {
-                        var href = left_bottom.location.href;
-                        href = href.replace(/&path.*/, '');
-                        left_bottom.location.href = href+'&path={PATH}';
-                        top.content.left.left_top.refresh();
-                    }
-                }, 1000);
-            })
-        //]]>
-        </script>
     </body>
 </html>

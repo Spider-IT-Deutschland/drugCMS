@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-01 23:31+0100\n"
+"POT-Creation-Date: 2015-08-05 10:42+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team <translators@drugcms.org>\n"
@@ -53,7 +53,7 @@ msgstr "Indien verlopen, verplaats naar categorie"
 # e:\timo\contenido431/contenido/templates/standard/template.con_edit_form.html:69
 #: C:\drugCMS/drugcms/templates/standard/template.con_edit_form.html:155
 msgid "Make online after move"
-msgstr "Plaats online na verplaatsen"
+msgstr "Maak online na verplaatsen"
 
 # e:\timo\contenido431/contenido/templates/standard/template.con_edit_form.html:121
 #: C:\drugCMS/drugcms/templates/standard/template.con_edit_form.html:184
@@ -217,7 +217,7 @@ msgstr "Waarde"
 #: C:\drugCMS/drugcms/includes/include.con_editcontent.php:402
 #: C:\drugCMS/drugcms/includes/include.system_purge.php:195
 msgid "Client"
-msgstr "Cli&euml;nt"
+msgstr "Cliënt"
 
 # e:\timo\contenido431/contenido/classes/class.navigation.php:240
 # e:\timo\contenido431/contenido/templates/standard/template.log_main.html:23
@@ -297,11 +297,12 @@ msgstr "Artikel"
 # e:\timo\contenido431/contenido/templates/standard/template.mycontenido_lastarticles.html:29
 #: C:\drugCMS/drugcms/templates/standard/template.mydrugcms_lastarticles.html:35
 msgid "Your clients"
-msgstr "Uw cli&euml;nten"
+msgstr "Uw cliënten"
 
 # e:\timo\contenido431/contenido/templates/standard/template.mycontenido_lastarticles.html:59
 #: C:\drugCMS/drugcms/templates/standard/template.mydrugcms_lastarticles.html:61
 #: C:\drugCMS/drugcms/includes/include.upl_artlist.php:81
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:79
 msgid "Start"
 msgstr "Start"
 
@@ -329,7 +330,7 @@ msgstr "Titel"
 #: C:\drugCMS/drugcms/includes/include.mydrugcms.tasks.php:276
 #: C:\drugCMS/drugcms/includes/include.upl_artlist.php:81
 msgid "Created"
-msgstr "Gemaakt op"
+msgstr "Gemaakt"
 
 # e:\timo\contenido431/contenido/templates/standard/template.mycontenido_lastarticles.html:63
 #: C:\drugCMS/drugcms/templates/standard/template.mydrugcms_lastarticles.html:65
@@ -367,7 +368,7 @@ msgstr "Zoeken"
 # e:\timo\contenido431/contenido/includes/include.client_edit.php:183
 #: C:\drugCMS/drugcms/templates/standard/template.rights_inc.html:24
 msgid "Client / Language"
-msgstr "Cli&euml;nt / Taal"
+msgstr "Cliënt / Taal"
 
 #: C:\drugCMS/drugcms/templates/standard/template.rights_inc.html:30
 msgid "Rights type"
@@ -381,7 +382,7 @@ msgstr "Soort rechten"
 #: C:\drugCMS/drugcms/includes/include.str_overview.php:487
 #: C:\drugCMS/drugcms/includes/include.str_overview.php:488
 msgid "Close all categories"
-msgstr "Sluit alle categorieen"
+msgstr "Sluit alle categorieën"
 
 # e:\timo\contenido431/contenido/includes/include.con_str_overview.php:227
 #: C:\drugCMS/drugcms/templates/standard/template.stat_overview.html:137
@@ -391,7 +392,7 @@ msgstr "Sluit alle categorieen"
 #: C:\drugCMS/drugcms/includes/include.str_overview.php:494
 #: C:\drugCMS/drugcms/includes/include.str_overview.php:495
 msgid "Open all categories"
-msgstr "Open alle categorieëen"
+msgstr "Open alle categorieën"
 
 #: C:\drugCMS/drugcms/templates/standard/template.str_overview.html:133
 #: C:\drugCMS/drugcms/templates/standard/template.str_overview.html:227
@@ -456,7 +457,7 @@ msgstr "Positie van de categorie"
 #: C:\drugCMS/drugcms/includes/include.con_art_overview.php:83
 #: C:\drugCMS/drugcms/includes/include.frontend.left_top.php:165
 #: C:\drugCMS/drugcms/includes/include.mydrugcms.tasks.php:276
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:541
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:696
 msgid "Actions"
 msgstr "Acties"
 
@@ -547,7 +548,7 @@ msgstr "Module templates"
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:32
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:420
 msgid "Extras"
-msgstr "Extras"
+msgstr "Extra's"
 
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:23
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:160
@@ -610,7 +611,7 @@ msgstr "Talen"
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:43
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:583
 msgid "Clients"
-msgstr "Cli&euml;nten"
+msgstr "Cliënten"
 
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:10
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:51
@@ -620,7 +621,7 @@ msgstr "Inhoudsopgave"
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:42
 #: C:\drugCMS/drugcms/templates/standard/template.symbolhelp.html:63
 msgid "Execute query / Save"
-msgstr "Uitvoeren query / bewaar"
+msgstr "Uitvoeren query / opslaan"
 
 # e:\timo\contenido431/contenido/external/wysiwyg/insert_link.php:253
 # e:\timo\contenido431/contenido/external/wysiwyg/spaw/insert_link.php:280
@@ -968,7 +969,7 @@ msgstr "wis upgrade error log"
 
 # e:\timo\contenido431/contenido/templates/standard/template.tpl_edit_form.html:39
 #: C:\drugCMS/drugcms/templates/standard/template.tpl_edit_form.html:42
-#: C:\drugCMS/drugcms/includes/include.lay_overview.php:101
+#: C:\drugCMS/drugcms/includes/include.lay_overview.php:100
 #: C:\drugCMS/drugcms/includes/include.tpl_edit_form.php:161
 msgid "Layout"
 msgstr "Layout"
@@ -1027,16 +1028,14 @@ msgstr "Neem contact op met Systeembeheerder"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:126
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:50
-#, fuzzy
 msgid "Add to group"
-msgstr "Bewerk groep"
+msgstr "Aan groep toevoegen"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:128
 # e:\timo\contenido431/contenido/includes/include.grouprights_menu.php:162
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:51
-#, fuzzy
 msgid "Remove from group"
-msgstr "Verwijder frontend groep"
+msgstr "Van group verwijderen"
 
 # e:\timo\contenido431/contenido/includes/include.client_edit.php:168
 # e:\timo\contenido431/contenido/includes/include.lang_edit.php:82
@@ -1096,14 +1095,12 @@ msgstr "Online zetten"
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:73
 #: C:\drugCMS/drugcms/templates/standard/template.str_overview.html:247
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:120
-#, fuzzy
 msgid "Categoryname"
-msgstr "Categorie"
+msgstr "Categorienaam"
 
 #: C:\drugCMS/drugcms/templates/standard/template.welcome_update.html:2
-#, fuzzy
 msgid "Update Information"
-msgstr "Formaat datum"
+msgstr "Update informatie"
 
 # e:\timo\contenido431/cms/front_content.php:180
 # e:\timo\contenido431/cms/front_content.php:202
@@ -1417,7 +1414,7 @@ msgstr "Aflopend"
 # e:\timo\contenido431/contenido/includes/include.con_art_overview.php:394
 #: C:\drugCMS/drugcms/classes/class.cms_filelist.php:540
 #: C:\drugCMS/drugcms/classes/class.cms_filelist.php:541
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:690
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:845
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:417
 msgid "No files found"
 msgstr "Geen bestanden gevonden"
@@ -1809,6 +1806,7 @@ msgstr "Bekijk notities / notitie aanvoegen"
 
 # e:\timo\contenido431/contenido/scripts/langref.php:14
 #: C:\drugCMS/drugcms/classes/class.notification.php:114
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:81
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:231
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:234
 #: C:\drugCMS/drugcms/scripts/langref.php:14
@@ -2408,14 +2406,12 @@ msgstr "Categorie uitschakelen"
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:100
 # e:\timo\contenido431/contenido/includes/include.str_overview.php:318
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:128
-#, fuzzy
 msgid "Unprotect category"
-msgstr "Beveilig categorie"
+msgstr "Beveiliging der categorie opheffen"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:129
-#, fuzzy
 msgid "Form error"
-msgstr "Onbekende fout"
+msgstr "Formulaar fout"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:101
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:130
@@ -2449,7 +2445,6 @@ msgstr "Maak nieuwe boomstructuur"
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:104
 # e:\timo\contenido431/contenido/templates/standard/template.symbolhelp.html:92
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:136
-#, fuzzy
 msgid "Move tree"
 msgstr "Verplaats categorie"
 
@@ -2461,48 +2456,49 @@ msgstr "Categorie bewerken"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:140
 msgid "Field category name is empty"
-msgstr ""
+msgstr "De kategorienaam is leeg"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:141
 msgid "Please select a new Position for new category"
-msgstr ""
+msgstr "Selekteer een plaats voor de nieuwe kategorie a.u.b."
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:146
 msgid "Place tree here"
-msgstr ""
+msgstr "Boom hierheen verschuiven"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:147
 msgid ""
 "One or more subtrees and one or more articles are existing, unable to delete."
 msgstr ""
+"Er bestaan onderkategorieën en artikelen in deze kategorie, verwijderen niet "
+"mogelijk."
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:148
 msgid "One or more subtrees are existing, unable to delete"
 msgstr ""
+"Er bestaan onderkategorieën in deze kategorie, verwijderen niet mogelijk."
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:149
 msgid "One or more articles are existing, unable to delete"
-msgstr ""
+msgstr "Er bestaan artikelen in deze kategorie, verwijderen niet mogelijk."
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:89
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:150
-#, fuzzy
 msgid "Set category online"
 msgstr "Categorie publiceren"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:98
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:151
-#, fuzzy
 msgid "Set category offline"
-msgstr "Categorie on/offline zetten"
+msgstr "Categorie offline zetten"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:153
 msgid "Warning: Changes will reset active Workflows"
-msgstr ""
+msgstr "Waarschuwing: Veranderingen resetten de aktieve workflows"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:154
 msgid "There is no Content Allocation tree."
-msgstr ""
+msgstr "Er bestaat geen Content Allocation boom."
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:107
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:156
@@ -2513,7 +2509,6 @@ msgstr "Nieuwe map"
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:108
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:157
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:165
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:63
 msgid "Upload files"
 msgstr "Bestanden uploaden"
 
@@ -2550,7 +2545,7 @@ msgstr "Bestanden verwijderen"
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:144
 # e:\timo\contenido431/contenido/includes/include.upl_files_overview.php:235
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:164
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:790
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:945
 msgid "Delete file"
 msgstr "Bestand verwijderen"
 
@@ -2721,40 +2716,36 @@ msgstr "Verwijder groep"
 # e:\timo\contenido431/contenido/includes/grouprights_members.inc.php:155
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:207
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:37
-#, fuzzy
 msgid "Groupmembers"
-msgstr "Groepslid"
+msgstr "Groepsleden"
 
 # e:\timo\contenido431/contenido/includes/grouprights_members.inc.php:155
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:208
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:54
-#, fuzzy
 msgid "Non Groupmembers"
-msgstr "Groepslid"
+msgstr "Niet groepsleden"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:126
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:209
-#, fuzzy
 msgid "Add to Group"
-msgstr "Bewerk groep"
+msgstr "Aan groep toevoegen"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:107
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:210
-#, fuzzy
 msgid "Remove from Group"
-msgstr "Verwijder map"
+msgstr "Van grosp verwijderen"
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:211
 msgid "Add right side selected users to group."
-msgstr ""
+msgstr "Rechts geselekteerde user aan groep toevoegen."
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:212
 msgid "Remove left side selected users from group."
-msgstr ""
+msgstr "Links geselekteerde users van groep verwijderen."
 
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:213
 msgid "Store content allocations"
-msgstr ""
+msgstr "Content allocations opslaan"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:129
 #: C:\drugCMS/drugcms/includes/cfg_language_de.inc.php:215
@@ -4020,9 +4011,9 @@ msgstr "Bereik"
 #: C:\drugCMS/drugcms/includes/include.mod_new.php:82
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:60
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:177
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:477
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:481
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:483
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:632
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:636
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:638
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:232
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:237
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:240
@@ -4034,6 +4025,7 @@ msgstr "Type"
 #: C:\drugCMS/drugcms/includes/include.client_artspec.php:94
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:79
 #: C:\drugCMS/drugcms/includes/include.systemsettings.php:81
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:82
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -4275,7 +4267,7 @@ msgstr "Map / bestand."
 # e:\timo\contenido431/contenido/includes/main.login.php:90
 #: C:\drugCMS/drugcms/includes/include.CMS_IMG.php:283
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:93
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:537
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:692
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:286
 msgid "Preview"
 msgstr "Voorschau"
@@ -5404,7 +5396,7 @@ msgid "Do you really want to delete the following layout:<br><br>%s<br>"
 msgstr ""
 "Weet u zeker dat u de volgende layout wilt verwijderen? :<br><br>%s<br>"
 
-#: C:\drugCMS/drugcms/includes/include.lay_overview.php:118
+#: C:\drugCMS/drugcms/includes/include.lay_overview.php:117
 #, php-format
 msgid "The layout '%s' is used for following templates"
 msgstr "De indeling '%s' wordt gebruikt in de volgende sjablonen"
@@ -5480,7 +5472,6 @@ msgstr "Importeren van het XML-bestand %s mislukt"
 #: C:\drugCMS/drugcms/includes/include.mod_edit_form.php:101
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:296
 #: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:87
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:67
 msgid "Directory not writable"
 msgstr "Map is niet beschrijfbaar"
 
@@ -6623,6 +6614,7 @@ msgid "File name"
 msgstr "Bestandsnaam"
 
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:84
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:121
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:204
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:209
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:212
@@ -6670,7 +6662,19 @@ msgstr "Beschermd voor niet ingelogde gebruikers"
 msgid "Could not load file %s"
 msgstr "Kan bestand %s niet laden"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:260
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:341
+#, php-format
+msgid "The image file '%s' couldn't be processed, may be corrupted"
+msgstr "Het bild file '%s' kon niet verwerkt worden, het kann beschadigt zijn"
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:351
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:424
+#, php-format
+msgid "Error while uploading file (%s)."
+msgstr "Fout tijdens het uploaden van het bestand (%s)."
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:393
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:414
 #, php-format
 msgid ""
 "The uploaded file (%s) exceeds the upload_max_filesize directive in php.ini."
@@ -6678,12 +6682,7 @@ msgstr ""
 "Het geüploade bestand (%s) is groter dan de upload_max_filesize instelling "
 "in php.ini toelaat."
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:270
-#, php-format
-msgid "Error while uploading file (%s)."
-msgstr "Fout tijdens het uploaden van het bestand (%s)."
-
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:322
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:477
 msgid "Errors while uploading file(s). Some or all files were not uploaded."
 msgstr ""
 "Fout bij het uploaden van bestand(en). Ten minste een bestand kan niet "
@@ -6691,8 +6690,8 @@ msgstr ""
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:144
 # e:\timo\contenido431/contenido/includes/include.upl_files_overview.php:235
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:405
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:407
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:560
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:562
 msgid "Use file"
 msgstr "Bestand gebruiken"
 
@@ -6709,18 +6708,18 @@ msgstr "Bestand gebruiken"
 # e:\timo\contenido431/contenido/templates/standard/template.mod_edit_form.html:30
 # e:\timo\contenido431/contenido/templates/standard/template.tpl_edit_form.html:26
 # e:\timo\contenido431/contenido/templates/standard/template.upl_files_overview.html:79
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:453
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:457
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:459
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:608
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:612
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:614
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:190
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:195
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:198
 msgid "Filename / Description"
 msgstr "Bestandsnaam / omschrijving"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:465
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:469
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:471
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:620
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:624
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:626
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:218
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:223
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:226
@@ -6728,74 +6727,106 @@ msgid "Size"
 msgstr "Maat"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:109
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:490
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:645
 msgid "Delete Files"
 msgstr "Bestanden verwijderen"
 
 # e:\timo\contenido431/contenido/includes/include.rights_menu.php:137
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:490
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:645
 msgid "Are you sure you want to delete the selected files?"
 msgstr "Weet u zeker dat u het geselecteerde bestand wilt verwijderen?"
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:109
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:491
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:646
 msgid "Delete selected files"
 msgstr "Geselecteerde bestanden verwijderen"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:508
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:663
 msgid "Flip Selection"
 msgstr "Selectie omkeren"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:513
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:59
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:668
 msgid "Path:"
 msgstr "Pad:"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:528
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:683
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:276
 msgid "Files per Page"
 msgstr "Bestanden per pagina"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:536
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:691
 msgid "Mark"
 msgstr "Mark"
 
 # e:\timo\contenido431/contenido/includes/include.con_art_overview.php:213
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:654
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:809
 msgid "Display properties"
 msgstr "Eigenschappen weergeven"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:717
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:872
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:445
 msgid "Previous Page"
 msgstr "Vorige Pagina"
 
 # e:\timo\contenido431/contenido/includes/include.recipients_menu.php:116
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:724
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:879
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:452
 msgid "Next Page"
 msgstr "Volgende pagina"
 
 # e:\timo\contenido431/contenido/includes/include.recipients_menu.php:116
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:764
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:919
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:490
 msgid "Page"
 msgstr "Pagina"
 
 # e:\timo\contenido431/contenido/includes/include.mod_overview.php:88
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:791
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:946
 msgid "Do you really want to delete the following file:<br>"
 msgstr "Weet u zeker dat u de volgende bestand wilt verwijderen:<br>"
 
-#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:922
+#: C:\drugCMS/drugcms/includes/include.upl_files_overview.php:1077
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:605
 msgid "Enter new filename"
 msgstr "Nieuwe bestandsnaam"
 
+# e:\timo\contenido431/contenido/includes/main.login.php:91
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:74
+msgid "Image scaling pre-settings"
+msgstr "Beeldverwerkings voorinstellingen"
+
 # e:\timo\contenido431/contenido/includes/include.upl_files_overview.php:100
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:51
-msgid "Upload"
-msgstr "Uploaden"
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:75
+msgid "Add files"
+msgstr "Bestanden aanvoegen"
+
+# e:\timo\contenido431/contenido/templates/standard/template.con_edit_form.html:60
+# e:\timo\contenido431/contenido/templates/standard/template.log_main.html:31
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:76
+msgid "Start upload"
+msgstr "Upload starten"
+
+# e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:107
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:77
+msgid "Clear list"
+msgstr "Historie verwijderen"
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:78
+msgid "Processing"
+msgstr "Verwerke"
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:80
+msgid "Entfernen"
+msgstr "Verwijderen"
+
+# e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:162
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:83
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:84
+msgid "Upload done, please check results"
+msgstr "Uploaden is klaar, kijk op de resultaten a.u.b."
 
 # e:\timo\contenido431/contenido/includes/cfg_language_de.inc.php:107
 #: C:\drugCMS/drugcms/includes/include.upl_left_top.php:111
@@ -6907,6 +6938,43 @@ msgstr "Huidige gebruiker heeft geen rechten tot cli&euml;nten/talen"
 #: C:\drugCMS/drugcms/plugins/frontendlogic/category/category.php:44
 msgid "Access category"
 msgstr "Categorie bewerken"
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/functions.chains.php:61
+msgid "SEO Check"
+msgstr "SEO Check"
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:12
+msgid ""
+"In order to use this functionallity, you need to enable the client's cache "
+"folder in it's .htaccess file.<br />Please add the following line to the "
+"'Exclude some files and directories from rewriting' section:<br /"
+">RewriteRule ^cache/.*$ - [L]"
+msgstr ""
+"Om deze functionaliteit te gebruiken, moet u de map van de cliënt cache in "
+"zijn .htaccess bestand vrij schakelen.<br />Voeg de volgende regel toe aan "
+"de 'Exclude some files and directories from rewriting' sectie:<br /"
+">RewriteRule ^cache/.*$ - [L]"
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:19
+msgid ""
+"In order to use this functionallity, you need to enable the client's cache "
+"folder in your main .htaccess file.<br />Please add the following line to "
+"the 'Exclude some files and directories from rewriting' section:<br /"
+">RewriteRule ^|1cache/.*$ - [L]"
+msgstr ""
+"Om deze functionaliteit te gebruiken, moet u de map van de cliënt cache in "
+"uw algemene .htaccess bestand vrij schakelen.<br />Voeg de volgende regel "
+"toe aan de 'Exclude some files and directories from rewriting' sectie:<br /"
+">RewriteRule ^|1cache/.*$ - [L]"
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:29
+msgid ""
+"In order to check this article, it must be online, without any restrictions."
+msgstr "Om dit artikel te testen, moet het zonder beperkingen online zijn."
+
+#: C:\drugCMS/drugcms/plugins/seocheck/includes/include.right_bottom.php:128
+msgid "Error, no content returned"
+msgstr "Error, geen inhoud terug gekregen"
 
 # e:\timo\contenido431/contenido/scripts/langref.php:13
 #: C:\drugCMS/drugcms/scripts/articleObject.js.php:251
@@ -7030,15 +7098,44 @@ msgstr "Flash bestand"
 msgid "Frame"
 msgstr "Frame"
 
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-ui.js:226
+msgid "unknownError"
+msgstr "Onbekende fout"
+
+# e:\timo\contenido431/contenido/includes/include.stat_overview.php:75
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:96
+msgid "maxNumberOfFiles"
+msgstr "Maximale aantal bestanden"
+
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:100
+msgid "acceptFileTypes"
+msgstr "acceptFileTypes"
+
+# e:\timo\contenido431/contenido/includes/include.upl_files_overview.php:28
+# e:\timo\contenido431/contenido/templates/standard/template.upl_files_overview.html:81
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:102
+msgid "maxFileSize"
+msgstr "Maximale bestandsgrootte"
+
+# e:\timo\contenido431/contenido/includes/include.upl_files_overview.php:28
+# e:\timo\contenido431/contenido/templates/standard/template.upl_files_overview.html:81
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload-validate.js:105
+msgid "minFileSize"
+msgstr "Minimale bestandsgrootte"
+
+# e:\timo\contenido431/contenido/includes/include.tpl_new.php:14
+#: C:\drugCMS/drugcms/scripts/jquery/jquery.fileupload.js:741
+msgid "uploadedBytes"
+msgstr "hooggeladen bytes"
+
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:71
 msgid "Add right side selected users to group"
-msgstr ""
+msgstr "Rechts geselekteerde user aan groep toevoegen"
 
 #: C:\drugCMS/drugcms/templates/standard/template.grouprights_memberselect.html:74
 msgid "Remove left side selected users from group"
-msgstr ""
+msgstr "Links geselekteerde users van groep verwijderen"
 
 #: C:\drugCMS/drugcms/templates/standard/template.welcome_update.html:13
-#, fuzzy
 msgid "drugCMS RSS"
-msgstr "drugCMS"
+msgstr "drugCMS RSS"

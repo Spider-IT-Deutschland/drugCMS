@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-24 11:26+0100\n"
-"PO-Revision-Date: 2015-07-24 11:37+0100\n"
+"POT-Creation-Date: 2015-08-05 10:42+0100\n"
+"PO-Revision-Date: 2015-08-05 10:44+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team\n"
 "Language: en_US\n"
@@ -5250,7 +5250,7 @@ msgid "File name"
 msgstr "File name"
 
 #: C:\drugCMS/drugcms/includes/include.upl_edit.php:84
-#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:120
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:121
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:204
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:209
 #: C:\drugCMS/drugcms/includes/include.upl_search_results.php:212
@@ -5420,6 +5420,10 @@ msgstr "Remove"
 #: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:83
 msgid "Remove"
 msgstr "Remove"
+
+#: C:\drugCMS/drugcms/includes/include.upl_files_upload.php:84
+msgid "Upload done, please check results"
+msgstr "Upload is done, please check the results"
 
 #: C:\drugCMS/drugcms/includes/include.upl_left_top.php:111
 msgid "Create directory in"

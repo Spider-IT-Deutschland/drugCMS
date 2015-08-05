@@ -81,6 +81,7 @@ $oTpl->set('s', 'CANCEL', i18n("Entfernen"));
 $oTpl->set('s', 'ERROR', i18n("Error"));
 $oTpl->set('s', 'DELETE', i18n("Delete"));
 $oTpl->set('s', 'REMOVE', i18n("Remove"));
+$oTpl->set('s', 'DONE', i18n("Upload done, please check results"));
 
 $iDefault = intval(getEffectiveSetting('image-upload', 'default', '-1'));
 for ($i = 0; $i < 100; $i ++) {
