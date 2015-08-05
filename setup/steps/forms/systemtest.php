@@ -689,53 +689,53 @@ class cSetupSystemtest extends cSetupMask {
 	
     function doFilesystemTests()	{
         // old logs
-        if($_SESSION["setuptype"] != "setup") {
+        if ($_SESSION["setuptype"] != "setup") {
             // old folders
-            $this->logFilePrediction(	"drugcms/cache/");
-            $this->logFilePrediction(	"drugcms/temp/");
-            $this->logFilePrediction(	"drugcms/logs/errorlog.txt");
-            $this->logFilePrediction(	"drugcms/logs/setuplog.txt");
+            if (file_exists('../drugcms/cache/')) {
+                $this->logFilePrediction("drugcms/cache/");
+                $this->logFilePrediction("drugcms/temp/");
+                $this->logFilePrediction("drugcms/logs/errorlog.txt");
+                $this->logFilePrediction("drugcms/logs/setuplog.txt");
+            }
         }
         
         // cronjobs
-        $this->logFilePrediction(   "drugcms/cronjobs/pseudo-cron.log");
-        $this->logFilePrediction(   "drugcms/cronjobs/session_cleanup.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/send_reminder.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/optimize_database.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/move_old_stats.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/move_articles.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/linkchecker.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/run_newsletter_job.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/setfrontenduserstate.php.job");
-        $this->logFilePrediction(   "drugcms/cronjobs/advance_workflow.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/pseudo-cron.log");
+        $this->logFilePrediction("drugcms/cronjobs/session_cleanup.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/send_reminder.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/optimize_database.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/move_old_stats.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/move_articles.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/linkchecker.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/run_newsletter_job.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/setfrontenduserstate.php.job");
+        $this->logFilePrediction("drugcms/cronjobs/advance_workflow.php.job");
         
         // new folders in data-folder
-        $this->logFilePrediction(	"drugcms/data/cache/");
-        $this->logFilePrediction(	"drugcms/data/temp/");
-        $this->logFilePrediction(	"drugcms/data/config/");
-        $this->logFilePrediction(	"drugcms/data/logs/");
-        $this->logFilePrediction(	"drugcms/data/backup/");
+        $this->logFilePrediction("drugcms/data/cache/");
+        $this->logFilePrediction("drugcms/data/temp/");
+        $this->logFilePrediction("drugcms/data/config/");
+        $this->logFilePrediction("drugcms/data/logs/");
+        $this->logFilePrediction("drugcms/data/backup/");
 									
-        if($_SESSION["setuptype"] == "setup" 
-                || ($_SESSION["setuptype"] == "migration" 
-                        && is_dir("../cms/"))) {
-            $this->logFilePrediction(   "cms/cache/");
-            $this->logFilePrediction(   "cms/css/");
-            $this->logFilePrediction(   "cms/js/");
-            $this->logFilePrediction(   "cms/logs/");
-            $this->logFilePrediction(   "cms/templates/");	
-            $this->logFilePrediction(   "cms/upload/");
-            $this->logFilePrediction(   "cms/version/");
-            $this->logFilePrediction(   "cms/version/css/");
-            $this->logFilePrediction(   "cms/version/js/");
-            $this->logFilePrediction(   "cms/version/layout/");
-            $this->logFilePrediction(   "cms/version/module/");
-            $this->logFilePrediction(   "cms/version/templates/");
-            $this->logFilePrediction(   "cms/config.php");
+        if ((($_SESSION["setuptype"] == "setup") || ($_SESSION["setuptype"] == "migration")) && (is_dir("../cms/"))) {
+            $this->logFilePrediction("cms/cache/");
+            $this->logFilePrediction("cms/css/");
+            $this->logFilePrediction("cms/js/");
+            $this->logFilePrediction("cms/logs/");
+            $this->logFilePrediction("cms/templates/");	
+            $this->logFilePrediction("cms/upload/");
+            $this->logFilePrediction("cms/version/");
+            $this->logFilePrediction("cms/version/css/");
+            $this->logFilePrediction("cms/version/js/");
+            $this->logFilePrediction("cms/version/layout/");
+            $this->logFilePrediction("cms/version/module/");
+            $this->logFilePrediction("cms/version/templates/");
+            $this->logFilePrediction("cms/config.php");
         }
         
         if ($_SESSION["configmode"] == "save") {
-            $this->logFilePrediction(  "drugcms/includes/config.php", C_SEVERITY_ERROR);
+            $this->logFilePrediction("drugcms/includes/config.php", C_SEVERITY_ERROR);
         }
     }
 
