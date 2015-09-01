@@ -168,7 +168,7 @@ function mr_strMoveUpCategory($idcat)
         // get urlname
         $sCatname = ModRewrite::getCatName($idcat, $iIdLang);
         // set new urlname - because original set urlname isn't validated for double entries in same parent category
-        ModRewrite::setCatWebsafeName($sCatname, $idcat, $iIdLang);
+#        ModRewrite::setCatWebsafeName($sCatname, $idcat, $iIdLang);
     }
 
     return $idcat;
@@ -203,7 +203,7 @@ function mr_strMovedownCategory($idcat)
         // get urlname
         $sCatname = ModRewrite::getCatName($idcat, $iIdLang);
         // set new urlname - because original set urlname isn't validated for double entries in same parent category
-        ModRewrite::setCatWebsafeName($sCatname, $idcat, $iIdLang);
+#        ModRewrite::setCatWebsafeName($sCatname, $idcat, $iIdLang);
     }
 
     return $idcat;
