@@ -12,7 +12,7 @@
  *
  * @package    Contenido Backend includes
  * @version    1.0.0
- * @author     Björn Behrens (HerrB)
+ * @author     BjÃ¶rn Behrens (HerrB)
  * @copyright  four for business AG <www.4fb.de>
  * @license    http://www.contenido.org/license/LIZENZ.txt
  * @link       http://www.4fb.de
@@ -20,7 +20,7 @@
  * @since      file available since contenido release <= 4.6
  * 
  * {@internal 
- *   created 2007-01-01, Björn Behrens (HerrB)
+ *   created 2007-01-01, BjÃ¶rn Behrens (HerrB)
  *   modified 2008-06-27, Dominik Ziegler, add security fix
  *
  *   $Id$:
@@ -56,31 +56,31 @@ $aFieldDetails["name"]["mandatory"]			= false;	// true or false
 $aFieldDetails["name"]["type"]				= "string"; // string, boolean or date
 $aFieldDetails["name"]["link"]				= false;	// plugin name for plugins, recipient group id for groups
 $aFieldDetails["name"]["col"]				= -1;		// Stores column index where this field has been found
-$aFields["email"]							= strtolower(i18n("Mail", $plugin_name));
+$aFields["email"]							= mb_strtolower(i18n("Mail", $plugin_name), $encoding[$lang]);
 $aFieldDetails["email"]["fieldtype"]		= "field";
 $aFieldDetails["email"]["mandatory"]		= true;
 $aFieldDetails["email"]["type"]				= "string";
 $aFieldDetails["email"]["link"]				= false;
 $aFieldDetails["email"]["col"]				= -1;
-$aFields["deactivated"]						= strtolower(i18n("Deactivated", $plugin_name));
+$aFields["deactivated"]						= mb_strtolower(i18n("Deactivated", $plugin_name), $encoding[$lang]);
 $aFieldDetails["deactivated"]["fieldtype"]	= "field";
 $aFieldDetails["deactivated"]["mandatory"]	= false;
 $aFieldDetails["deactivated"]["type"]		= "boolean";
 $aFieldDetails["deactivated"]["link"]		= false;
 $aFieldDetails["deactivated"]["col"]		= -1;
-$aFields["confirmed"]						= strtolower(i18n("Confirmed", $plugin_name));
+$aFields["confirmed"]						= mb_strtolower(i18n("Confirmed", $plugin_name), $encoding[$lang]);
 $aFieldDetails["confirmed"]["fieldtype"]	= "field";
 $aFieldDetails["confirmed"]["mandatory"]	= false;
 $aFieldDetails["confirmed"]["type"]			= "boolean";
 $aFieldDetails["confirmed"]["link"]			= false;
 $aFieldDetails["confirmed"]["col"]			= -1;
-$aFields["confirmeddate"]					= strtolower(i18n("Confirmed Date", $plugin_name));
+$aFields["confirmeddate"]					= mb_strtolower(i18n("Confirmed Date", $plugin_name), $encoding[$lang]);
 $aFieldDetails["confirmeddate"]["fieldtype"]= "field";
 $aFieldDetails["confirmeddate"]["mandatory"]= false;
 $aFieldDetails["confirmeddate"]["type"]		= "date";
 $aFieldDetails["confirmeddate"]["link"]		= false;
 $aFieldDetails["confirmeddate"]["col"]		= -1;
-$aFields["news_type"]						= strtolower(i18n("Message type", $plugin_name));
+$aFields["news_type"]						= mb_strtolower(i18n("Message type", $plugin_name), $encoding[$lang]);
 $aFieldDetails["news_type"]["fieldtype"]	= "field";
 $aFieldDetails["news_type"]["mandatory"]	= false;
 $aFieldDetails["news_type"]["type"]			= "boolean";
@@ -176,7 +176,7 @@ if ($action == "recipients_import_exec" && $perm->have_perm_area_action("recipie
 				$aInvalidLines[] = $sLine;
 				
 				foreach ($aParts as $sHeader) {
-					$sKey = array_search(strtolower(htmlentities(trim($sHeader))), $aFields);
+					$sKey = array_search(mb_strtolower(trim($sHeader), $encoding[$lang]), $aFields);
 					if ($sKey === false) {
 						$aMessage[] = sprintf(i18n("Given column header '%s' unknown, column ignored", $plugin_name), $sHeader);
                 	} else {

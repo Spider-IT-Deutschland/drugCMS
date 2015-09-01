@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS Newsletter Plugin\n"
 "POT-Creation-Date: 2013-08-30 15:14+0100\n"
-"PO-Revision-Date: 2013-08-30 16:11+0100\n"
+"PO-Revision-Date: 2015-09-01 13:03+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team\n"
 "Language: de_DE\n"
@@ -1252,7 +1252,7 @@ msgid ""
 "any)."
 msgstr ""
 "%d Empf&auml;nger erg&auml;nzt, %d Empf&auml;nger &uuml;bergangen (Empf&auml;"
-"nger-E-Mail-Adresse wird bereits verwendet) und %d ung&uuml;tige Emf&auml;"
+"nger-E-Mail-Adresse wird bereits verwendet) und %d ung&uuml;tige Empf&auml;"
 "nger/E-Mail-Adressen ignoriert. Ggf. ung&uuml;ltige Empf&auml;nger werden "
 "angezeigt."
 
@@ -1314,7 +1314,8 @@ msgstr "Beispiel:"
 #: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:353
 msgid "<br />name;mail;confirmed<br />Smith;jon.smith@example.org;1"
 msgstr ""
-"<br /><br />name;mail;best&auml;tigt<br />Smith;jon.smith@example.org;1"
+"<br /><br />name;mail;best&auml;tigt;best&auml;tigungsdatum;"
+"nachrichtentyp<br />Smith;jon.smith@example.org;1;2014-12-30;HTML"
 
 #: Z:\Internet\Internet Webs\__Neue Webseite\ConLite & Contenido\_drugCMS
 #: Trunk\drugcms\plugins\newsletter/includes/include.recipients_import.php:354
