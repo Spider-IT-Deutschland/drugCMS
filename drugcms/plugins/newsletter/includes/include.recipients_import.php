@@ -221,7 +221,7 @@ if ($action == "recipients_import_exec" && $perm->have_perm_area_action("recipie
 					unset ($sLine);
 					
 					// Must be $recipient for plugins
-					if ($recipient = $oRecipients->create($sEMail, $sName))
+					if ($recipient = $oRecipients->create($sEMail, $sName, 0, '', 0, false))
 					{
 						$iID = $recipient->get($recipient->primaryKey);
 						$iAdded++;

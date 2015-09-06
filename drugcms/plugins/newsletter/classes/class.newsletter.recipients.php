@@ -66,7 +66,7 @@ class RecipientCollection extends ItemCollection
      * @param string  $sJoinID       Specifies additional recipient group ids to join (optional, e.g. 47,12,...)
      * @param int     $iMessageType  Specifies the message type for the recipient (0 = text, 1 = html)
      */
-    public function create($sEMail, $sName = "", $iConfirmed = 0, $sJoinID = "", $iMessageType = 0)
+    public function create($sEMail, $sName = "", $iConfirmed = 0, $sJoinID = "", $iMessageType = 0, $bAddToDefaultGroup = true)
     {
         global $client, $lang, $auth;
 
@@ -102,18 +102,20 @@ class RecipientCollection extends ItemCollection
 
         $iIDRcp = $oItem->get("idnewsrcp"); // Getting internal id of new recipient
 
-        // Add this recipient to the default recipient group (if available)
-        $oGroups       = new RecipientGroupCollection();
-        $oGroupMembers = new RecipientGroupMemberCollection();
+        if ($bAddToDefaultGroup) {
+            // Add this recipient to the default recipient group (if available)
+            $oGroups       = new RecipientGroupCollection();
+            $oGroupMembers = new RecipientGroupMemberCollection();
 
-        $oGroups->setWhere("idclient", $client);
-        $oGroups->setWhere("idlang", $lang);
-        $oGroups->setWhere("defaultgroup", 1);
-        $oGroups->query();
+            $oGroups->setWhere("idclient", $client);
+            $oGroups->setWhere("idlang", $lang);
+            $oGroups->setWhere("defaultgroup", 1);
+            $oGroups->query();
 
-        while ($oGroup = $oGroups->next()) {
-            $iIDGroup = $oGroup->get("idnewsgroup");
-            $oGroupMembers->create($iIDGroup, $iIDRcp);
+            while ($oGroup = $oGroups->next()) {
+                $iIDGroup = $oGroup->get("idnewsgroup");
+                $oGroupMembers->create($iIDGroup, $iIDRcp);
+            }
         }
 
         // Add to other recipient groups as well? Do so!
