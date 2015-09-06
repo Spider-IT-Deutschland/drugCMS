@@ -250,38 +250,21 @@ function i18nStripAcceptLanguages($accept) {
  */
 function i18nMatchBrowserAccept ($accept)
 {
-	$available_languages = i18nGetAvailableLanguages();
+    require(dirname(__FILE__) . '/include.cultures.php');
 	
-	/* Try to match the whole accept string */
-	foreach ($available_languages as $key => $value)
+    foreach ($aCultureCodes as $key => $value)
 	{
-		list($country, $lang, $encoding, $shortaccept) = $value;
-		
-		if ($accept	== $shortaccept)
+        if ((strpos($accept, '-') !== false) && ($accept == str_replace('_', '-', $key)))
 		{
 			return $key;
 		}
+        elseif ($accept == $value['short'])
+        {
+            return $key;
+        }
 	}
 	
-	/* Whoops, we are still here. Let's match the stripped-down string.
-       Example: de-ch isn't in the list. Cut it down after the "-" to "de"
-       which should be in the list. */
-       
-    $accept = substr($accept,0,2);
-	foreach ($available_languages as $key => $value)
-	{
-		list($country, $lang, $encoding, $shortaccept) = $value;
-		
-		if ($accept	== $shortaccept)
-		{
-			return $key;
-		}
-	}
-
-	/* Whoops, still here? Seems that we didn't find any language. Return
-       the default (german, yikes) */
-    #return false;
-    # 2014-05-24: Now we set "English (United States)" as the default
+	# Whoops, still here? Set "English (United States)" as the default
     return 'en_US';
 }
 

@@ -190,7 +190,18 @@ class cHTMLLanguageSelector {
     
     function __construct() {
         # List all languages for selection
-        $langs = array('de_DE' => 'Deutsch', 'en_US' => "English", 'nl_NL' => 'Nederlands');#, 'el_GR' => 'ελληνικά');
+        #$langs = array('de_DE' => 'Deutsch', 'en_US' => "English", 'nl_NL' => 'Nederlands');#, 'el_GR' => 'ελληνικά');
+        $langs = array();
+        require_once(dirname(dirname(dirname(__FILE__))) . '/drugcms/includes/include.cultures.php');
+#echo '<pre>'; var_dump($aCultureCodes); echo '</pre>';
+        foreach ($aCultureCodes as $sCode => $sCulture) {
+#echo '<pre>' . dirname(dirname(__FILE__)) . '/locale/' . $sCode . '/';
+            if (is_dir(dirname(dirname(__FILE__)) . '/locale/' . $sCode . '/')) {
+#echo ' FOUND';
+                $langs[$sCode] = $sCulture;
+            }
+#echo '</pre>';
+        }
         
         # Preset a language
         if (array_key_exists('language', $_POST)) {
@@ -214,13 +225,13 @@ class cHTMLLanguageSelector {
             $q = floatval(0);
             for ($i = 0, $n = count($aAcceptedLangs); $i < $n; $i ++) {
                 if ($aAcceptedLangs[$i][1] > $q) {
-                    if (array_key_exists($aAcceptedLangs[$i][0], $langs)) {
+                    if ((strpos($aAcceptedLangs[$i][0], '_') !== false) && (array_key_exists($aAcceptedLangs[$i][0], $langs))) {
                         # Preset the exact language and country code
                         $_SESSION['language'] = $aAcceptedLangs[$i][0];
                         $q = $aAcceptedLangs[$i][1];
                     } else {
                         foreach ($langs as $key => $value) {
-                            if (substr($key, 0, strlen($aAcceptedLangs[$i][0])) == $aAcceptedLangs[$i][0]) {
+                            if ($value['short'] == $aAcceptedLangs[$i][0]) {
                                 # Preset just the language code, the country code may be different (e.g. 'de_DE' for 'de' after 'de_CH')
                                 $_SESSION['language'] = $key;
                                 $q = $aAcceptedLangs[$i][1];
@@ -235,14 +246,14 @@ class cHTMLLanguageSelector {
         $langs = $this->array_rand_keys($langs, count($langs));
         foreach ($langs as $entity => $lang) {
             if ($entity == $_SESSION['language']) {
-                $test = new cHTMLLanguageLink($entity, $lang, "setuptype");
+                $test = new cHTMLLanguageLink($entity, $lang['native'], "setuptype");
                 $this->m .= $test->render();
                 break;
             }
         }
         foreach ($langs as $entity => $lang) {
             if ($entity != $_SESSION['language']) {
-                $test = new cHTMLLanguageLink($entity, $lang, "setuptype");
+                $test = new cHTMLLanguageLink($entity, $lang['native'], "setuptype");
                 $this->m .= $test->render();
             }
         }

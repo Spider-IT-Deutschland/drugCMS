@@ -26,6 +26,7 @@
  *   modified 2010-05-20, Murat Purc, removed request check during processing ticket [#CON-307]
  *   modified 2010-05-25, Dominik Ziegler, Remove password and username maxlength definitions at backend login [#CON-314]
  *   modified 2010-05-27, Dominik Ziegler, restored maxlength definition for username at backend login [#CON-314]
+ *   modified 2015-09-06, René Mansveld, preset language according to browser's HTTP_ACCEPT_LANGUAGE and use new $aCultureCodes array
  *
  *   $Id$:
  * }}
@@ -52,9 +53,50 @@ foreach ($aLangs as $sValue)
     } 
 }
 
-if (isset($_POST['belang']) && $_POST['belang'] != '') {
+require(dirname(__FILE__) . '/includes/include.cultures.php');
+if ((isset($_POST['belang'])) && (strlen($_POST['belang']))) {
     $sSelectedLang = $_POST['belang'];
     $GLOBALS['belang'] = $sSelectedLang;
+} else {
+    foreach ($aCultureCodes as $sCode => $sCulture) {
+        if (is_dir(dirname(__FILE__) . '/locale/' . $sCode . '/')) {
+            $langs[$sCode] = $sCulture;
+        }
+    }
+    $aAcceptedLangs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); # de-de,de;q=0.8,en-us;q=0.5,en;q=0.3
+    for ($i = 0, $n = count($aAcceptedLangs); $i < $n; $i ++) {
+        $aAcceptedLangs[$i] = explode(';', $aAcceptedLangs[$i]);
+        $p = strpos($aAcceptedLangs[$i][0], '-');
+        if ($p !== false) {
+            # Convert 'de-de' to 'de_DE'
+            $aAcceptedLangs[$i][0] = strtolower(substr($aAcceptedLangs[$i][0], 0, $p)) . '_' . strtoupper(substr($aAcceptedLangs[$i][0], ($p + 1)));
+        }
+        if (isset($aAcceptedLangs[$i][1])) {
+            $aAcceptedLangs[$i][1] = floatval(substr($aAcceptedLangs[$i][1], 2));
+        }
+        else {
+            $aAcceptedLangs[$i][1] = floatval(1);
+        }
+    }
+    $q = floatval(0);
+    for ($i = 0, $n = count($aAcceptedLangs); $i < $n; $i ++) {
+        if ($aAcceptedLangs[$i][1] > $q) {
+            if ((strpos($aAcceptedLangs[$i][0], '_') !== false) && (array_key_exists($aAcceptedLangs[$i][0], $langs))) {
+                # Preset the exact language and country code
+                $sSelectedLang = $aAcceptedLangs[$i][0];
+                $q = $aAcceptedLangs[$i][1];
+            }
+            else {
+                foreach ($langs as $key => $value) {
+                    if ($value['short'] == $aAcceptedLangs[$i][0]) {
+                        # Preset just the language code, the country code may be different (e.g. 'de_DE' for 'de' after 'de_CH')
+                        $sSelectedLang = $key;
+                        $q = $aAcceptedLangs[$i][1];
+                    }
+                }
+            }
+        }
+    }
 }
 
 $db   = new DB_Contenido();
@@ -99,7 +141,7 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
 }
 
 ?>
-<!doctype html>
+<!doctype HTML>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -119,8 +161,8 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
         function doChallengeResponse() 
         {
             str = document.login.username.value + ":" +
-    MD5(document.login.password.value) + ":" +
-    document.login.challenge.value;
+            MD5(document.login.password.value) + ":" +
+            document.login.challenge.value;
 
             document.login.response.value = MD5(str);
             document.login.password.value = "";
@@ -146,46 +188,38 @@ if (getenv('CONTENIDO_IGNORE_SETUP') != "true")
     				<select id="lang" name="belang" tabindex="3" class="text_medium" onchange="document.login.submit();">
     					<?php
 
-    					$aAvailableLangs = i18nGetAvailableLanguages();
+                        require(dirname(__FILE__) . '/includes/include.cultures.php');
     					
-    					foreach ($aAvailableLangs as $sCode => $aEntry)
+    					foreach ($aCultureCodes as $sCode => $aEntry)
     					{
     						if (isset($cfg["login_languages"]))
     						{
     							if (in_array($sCode, $cfg["login_languages"]))
     							{
-    								list($sLanguage, $sCountry, $sCodeSet, $sAcceptTag) = $aEntry;
-    								
                                     if (isset($sSelectedLang)) {
                                         if ($sSelectedLang == $sCode) {
                                             $sSelected = ' selected="selected"';
                                         } else {
                                             $sSelected = '';
                                         }
-                                    } else if ($sCode == $sEncoding) {
-    									$sSelected = ' selected="selected"';
-    								} else {
+                                    } else {
     									$sSelected = '';
     								}
 
-    								echo '<option value="'.$sCode.'"'.$sSelected.'>'.$sLanguage.' ('.$sCountry.')</option>';
+    							    echo '<option value="'.$sCode.'"'.$sSelected.'>'.$aEntry['native'].'</option>';
     							}
     						} else {
-    							list($sLanguage, $sCountry, $sCodeSet, $sAcceptTag) = $aEntry;
-    							
-                                if ($sSelectedLang) {
+    							if ($sSelectedLang) {
                                     if ($sSelectedLang == $sCode) {
                                         $sSelected = ' selected="selected"';
                                     } else {
                                         $sSelected = '';
                                     }
-                                } else if ($sCode == $sEncoding) {
-    								$sSelected = ' selected="selected"';
-    							} else {
+                                } else {
     								$sSelected = '';
     							}
     							
-    							echo '<option value="'.$sCode.'"'.$sSelected.'>'.$sLanguage.' ('.$sCountry.')</option>';
+    							echo '<option value="'.$sCode.'"'.$sSelected.'>'.$aEntry['native'].'</option>';
     						}
     					}
     					?>
