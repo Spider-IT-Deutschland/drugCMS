@@ -161,7 +161,7 @@ function i18nEmulateGettext($string, $domain = "drugcms") {
         $db->disconnect();
     }
     if (array_key_exists(1, $results)) {
-        $_i18nTranslationCache[$string] = str_replace(array('|1', '|2'), array('<', '>'), html_entity_decode(htmlentities(str_replace(array('<', '>'), array('|1', '|2'), stripslashes(str_replace(Array('\n', '\r', '\t'), Array("\n", "\r", "\t"), $results[2]))), ENT_COMPAT, 'UTF-8', false), ENT_COMPAT, ((strlen($encoding[$lang])) ? strtoupper($encoding[$lang]) : 'UTF-8')));
+        $_i18nTranslationCache[$string] = str_replace(array('|1', '|2'), array('<', '>'), html_entity_decode(htmlentities(str_replace(array('<', '>'), array('|1', '|2'), stripslashes(str_replace(array('\n', '\r', '\t'), array("\n", "\r", "\t"), $results[2]))), ENT_QUOTES, 'UTF-8', true), ENT_QUOTES, ((strlen($encoding[$lang])) ? strtoupper($encoding[$lang]) : 'UTF-8')));
         return $_i18nTranslationCache[$string];
     } else {
         return $string;

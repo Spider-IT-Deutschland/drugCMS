@@ -45,7 +45,7 @@ if (is_array($cfg['plugins']['recipients'])) {
 
 // Check form data
 if ($_REQUEST["selDelimiter"] == "") {
-	$_REQUEST["selDelimiter"] = "tab";
+	$_REQUEST["selDelimiter"] = "semikolon";
 }
 
 $aFields 		= array();
@@ -133,7 +133,7 @@ while ($oRcpGroup = $oRcpGroups->next())
 	// Only PHP5!
 	//$sGroupName = str_replace(str_split(" \t\n\r\0\x0B;"), "", $oRcpGroup->get("groupname"));
 	
-	$aFields[$sField]					= strtolower(htmlentities(trim(i18n("Group", $plugin_name) . "_" . $sGroupName)));
+	$aFields[$sField]					= strtolower(htmlentities(trim(i18n("Group", $plugin_name) . "_" . $sGroupName), ENT_COMPAT, $encoding[$lang]));
 	$aFieldDetails[$sField]["fieldtype"]= "group";
 	$aFieldDetails[$sField]["mandatory"]= false;
 	$aFieldDetails[$sField]["type"]		= "string";
@@ -176,7 +176,7 @@ if ($action == "recipients_import_exec" && $perm->have_perm_area_action("recipie
 				$aInvalidLines[] = $sLine;
 				
 				foreach ($aParts as $sHeader) {
-					$sKey = array_search(mb_strtolower(trim($sHeader), $encoding[$lang]), $aFields);
+					$sKey = array_search(mb_strtolower(trim(htmlentities($sHeader, ENT_COMPAT, $encoding[$lang])), $encoding[$lang]), $aFields);
 					if ($sKey === false) {
 						$aMessage[] = sprintf(i18n("Given column header '%s' unknown, column ignored", $plugin_name), $sHeader);
                 	} else {
@@ -286,7 +286,7 @@ if ($action == "recipients_import_exec" && $perm->have_perm_area_action("recipie
 										if ($sValue == "yes" || $sValue == i18n("yes", $plugin_name) || 
 											$sValue == "true" || (is_numeric($sValue) && $sValue > 0))
 										{
-											$oGroupMembers->create($aDetails["link"], $iID);
+											$oGroupMembers->create(htmlentities($aDetails["link"], ENT_COMPAT, $encoding[$lang]), $iID);
 										}
 										break;
 								}
@@ -335,8 +335,8 @@ $oForm->addHeader(i18n("Import recipients", $plugin_name));
 
 $oSelDelimiter = new cHTMLSelectElement("selDelimiter");
 $aItems = array();
-$aItems[] = array("tab", i18n("Tab", $plugin_name));
 $aItems[] = array("semicolon", i18n("Semicolon", $plugin_name));		
+$aItems[] = array("tab", i18n("Tab", $plugin_name));
 $oSelDelimiter->autoFill($aItems);
 $oSelDelimiter->setDefault($_REQUEST["selDelimiter"]);
 $oForm->add(i18n("Delimiter", $plugin_name), $oSelDelimiter->render());
@@ -352,7 +352,7 @@ $sInfo = '<a href="javascript:fncShowHide(\'idInfoText\');"><strong>'.i18n("Impo
 		 '<br /><br /><strong>'.i18n("Example:", $plugin_name).'</strong>'.
 		 i18n("<br />name;mail;confirmed<br />Smith;jon.smith@example.org;1", $plugin_name).
 		 '<br /><br /><strong>'.i18n("The following column names will be recognized:", $plugin_name).'</strong><br />'.
-		 implode("<br />\n", $aFields);
+		 implode("<br />\n", $aFields) . '</div>';
 		 			  
 $oForm->add(i18n("Recipients", $plugin_name), $oAreaData->render()."<br />".$sInfo);
 unset ($sInfo);
