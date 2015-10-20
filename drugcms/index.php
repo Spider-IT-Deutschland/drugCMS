@@ -146,6 +146,7 @@ if (isset($_GET['idartlang'])) {
         $oArt = new Article(0, 0, 0, $_GET['idartlang']);
         $_GET['idart'] = $oArt->getField("idart");
         $_GET['lang'] = $oArt->getField("idlang");
+        unset($oArt);
     }
     
     if ($_GET['lang'] != $lang) {
@@ -163,9 +164,23 @@ if (isset($_GET['idartlang'])) {
     if (!isset($_GET['idcat'])) {
         $oCat = new Contenido_Category_Articles($db, $cfg, $client, $idlang);
         $idcat = $oCat->getCategoryByArticleId($idart);
+        unset($oCat);
     }
     
     $tpl->set('s', 'CONTENT',   $sess->url('frameset.php?area=con&lang='.$lang.'&client='.$client.'&idart='.$idart."&idcat=".$idcat.'&idartlang='.$_GET['idartlang']));
+}
+elseif (isset($_GET['idart'])) {
+    $idart = intval($_GET['idart']);
+    
+    $oCA = new Contenido_Category_Articles($db, $cfg, $client, $lang);
+    $idcat = $oCA->getCategoryByArticleId($idart);
+    unset($oCA);
+    
+    $oArt = new Article($idart, $client, $lang);
+    $idartlang = $oArt->getField('idartlang');
+    unset($oArt);
+    
+    $tpl->set('s', 'CONTENT',   $sess->url('frameset.php?area=con&lang='.$lang.'&client='.$client.'&idart='.$idart."&idcat=".$idcat.'&idartlang='.$idartlang));
 }
 else {
     $tpl->set('s', 'CONTENT',   str_replace("&", "&amp;", $sess->url('frameset.php?area=mydrugcms&frame=1&menuless=1&changelang='.$changelang.'&lang='.$lang.'&client='.$client)));

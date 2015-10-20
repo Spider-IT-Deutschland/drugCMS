@@ -70,6 +70,14 @@ function hide(id)
 function changeContenidoLanguage(idlang)
 {
     var url = "index.php?contenido="+sid+"&changelang="+idlang;
+    // Check if an article is edited
+    var href = parent.frames.content.frames.right.frames.right_bottom.document.location.href;
+    if (href.indexOf('idart=') > -1) {
+        var tmp = href.substr(href.indexOf('idart='));
+        tmp = tmp.substr(0, tmp.indexOf('&'));
+        var idart = tmp.replace('idart=', '');
+        url += '&idart=' + idart;
+    }
     parent.frames.top.location.href = url;
 }
 
