@@ -195,7 +195,7 @@ if (!$layout->virgin)
 	$ta_description->setStyle("font-family: monospace;width: 100%;");
 	$ta_description->updateAttributes(array("wrap" => "off"));
 	
-	$ta_code = new cHTMLTextarea("code", htmlspecialchars($code), 100,20, 'code');
+	$ta_code = new cHTMLTextarea("code", htmlspecialchars($code, ENT_COMPAT, $encoding[$lang]), 100,20, 'code');
 	$ta_code->setStyle("font-family: monospace;width: 100%;");
 	$ta_code->updateAttributes(array("wrap" => "off"));
 	
@@ -210,14 +210,14 @@ if (!$layout->virgin)
     $tpl->set('s', 'ACTION',    $sess->url("main.php?area=$area&frame=$frame&action=lay_edit"));
     $tpl->set('s', 'IDLAY',     $idlay);
     $tpl->set('s', 'DESCR',     $description);
-    $tpl->set('s', 'CLASS', 'code_sfullwidth');
-    $tpl->set('s', 'NAME',      htmlspecialchars($name));
+    $tpl->set('s', 'CLASS',     'code_sfullwidth');
+    $tpl->set('s', 'NAME',      htmlspecialchars($name, ENT_COMPAT, $encoding[$lang]));
     
     # Set dynamic pointers
-    $tpl->set('d', 'CAPTION', i18n("Code").':');
-    $tpl->set('d', 'VALUE',   htmlspecialchars($code));
-    $tpl->set('d', 'CLASS', 'code_fullwidth');
-    $tpl->set('d', 'NAME',    'code');
+    $tpl->set('d', 'CAPTION',   i18n("Code").':');
+    $tpl->set('d', 'VALUE',     htmlspecialchars($code, ENT_COMPAT, $encoding[$lang]));
+    $tpl->set('d', 'CLASS',     'code_fullwidth');
+    $tpl->set('d', 'NAME',      'code');
     $tpl->next();
     
     $oEditArea = new EditArea('code', 'html', substr(strtolower($belang), 0, 2), true, $cfg);

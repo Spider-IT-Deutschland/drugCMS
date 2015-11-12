@@ -193,12 +193,12 @@ if (($action == "mod_new") && (!$perm->have_perm_area_action_anyitem($area, $act
     	        
        	$form->addHeader(i18n("Edit module"));
                 
-    	$name		= new cHTMLTextbox("name", $module->get("name"),60);
-    	$descr		= new cHTMLTextarea("descr", htmlspecialchars($module->get("description")), 100, 5);
+    	$name		= new cHTMLTextbox("name", htmlspecialchars($module->get("name"), ENT_COMPAT, $encoding[$lang]), 60);
+    	$descr		= new cHTMLTextarea("descr", htmlspecialchars($module->get("description"), ENT_COMPAT, $encoding[$lang]), 100, 5);
     	
     	// Get input and output code; if specified, prepare row fields
-    	$sInputData		= htmlspecialchars($module->get("input"));
-    	$sOutputData	= htmlspecialchars($module->get("output"));
+    	$sInputData		= htmlspecialchars($module->get("input"), ENT_COMPAT, $encoding[$lang]);
+    	$sOutputData	= htmlspecialchars($module->get("output"), ENT_COMPAT, $encoding[$lang]);
     	
     	if ($sOptionDebugRows !== "never")
     	{
