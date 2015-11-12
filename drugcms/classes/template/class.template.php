@@ -93,6 +93,8 @@ class Template {
         $this->setEncoding("");
         if (is_array($parser)) {
             $this->array_registeredParsers = $parser;
+        } elseif ($_REQUEST['action'] == 'htmltpl_edit') {
+            $this->array_registeredParsers = array();
         } else {
             $this->array_registeredParsers = array(
                                                 new clStrAPIFunctionsParser(),
@@ -230,6 +232,18 @@ class Template {
         $this->replacei18n($content, "i18n");
         $this->replacei18n($content, "trans");
         
+        # Extract the parts that may not be parsed
+        $aDontParse = array();
+        $p1 = strpos($content, '<donotparse>');
+        while ($p1 !== false) {
+            $p2 = strpos($content, '</donotparse>', $p1);
+            if ($p2 !== false) {
+                $aDontParse[] = substr($content, ($p1 + strlen('<donotparse>')), ($p2 - ($p1 + strlen('<donotparse>'))));
+                $content = substr($content, 0, $p1) . '{DONOTPARSE_' . (count($aDontParse) - 1) . '}' . substr($content, ($p2 + strlen('</donotparse>')));
+            }
+            $p1 = strpos($content, '<donotparse>');
+        }
+        
         # See if there is an old style dynamic block and rebuild it
         $p1 = strpos($content, $this->tags['start']);
         if ($p1 !== false) {
@@ -242,6 +256,16 @@ class Template {
                 $content = substr($content, 0, $p1) . $cnt . substr($content, ($p2 + strlen($this->tags['end'])));
                 unset($tmp);
                 unset($cnt);
+                # Extract the parts that may not be parsed
+                $p1 = strpos($content, '<donotparse>');
+                while ($p1 !== false) {
+                    $p2 = strpos($content, '</donotparse>', $p1);
+                    if ($p2 !== false) {
+                        $aDontParse[] = substr($content, ($p1 + strlen('<donotparse>')), ($p2 - ($p1 + strlen('<donotparse>'))));
+                        $content = substr($content, 0, $p1) . '{DONOTPARSE_' . (count($aDontParse) - 1) . '}' . substr($content, ($p2 + strlen('</donotparse>')));
+                    }
+                    $p1 = strpos($content, '<donotparse>');
+                }
             }
         }
         if (strlen($this->tags['start1'])) {
@@ -260,12 +284,28 @@ class Template {
                         $content = substr($content, 0, $p1) . $cnt . substr($content, ($p2 + strlen($end)));
                         unset($tmp);
                         unset($cnt);
+                        # Extract the parts that may not be parsed
+                        $p1 = strpos($content, '<donotparse>');
+                        while ($p1 !== false) {
+                            $p2 = strpos($content, '</donotparse>', $p1);
+                            if ($p2 !== false) {
+                                $aDontParse[] = substr($content, ($p1 + strlen('<donotparse>')), ($p2 - ($p1 + strlen('<donotparse>'))));
+                                $content = substr($content, 0, $p1) . '{DONOTPARSE_' . (count($aDontParse) - 1) . '}' . substr($content, ($p2 + strlen('</donotparse>')));
+                            }
+                            $p1 = strpos($content, '<donotparse>');
+                        }
                     }
                 }
             }
         }
         # Rebuild the static part
         $content = str_replace($this->needles, $this->replacements, $content);
+        
+        # Reenter the parts that may not be parsed
+        for ($i = 0, $n = count($aDontParse); $i < $n; $i ++) {
+            $content = str_replace('{DONOTPARSE_' . $i . '}', $aDontParse[$i], $content);
+        }
+        unset($aDontParse);
         
         if ($this->_encoding != "") {
             $content = str_replace("</head>", '<meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'">'."\n".'</head>', $content);

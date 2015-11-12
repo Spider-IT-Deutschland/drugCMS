@@ -135,7 +135,6 @@ if (!$perm->have_perm_area_action($area, $action))
 	   /**
 		* END TRACK VERSION
 		**/
-   	
     	$bEdit = fileEdit($sFilename, $_REQUEST['code'], $path);
 
 	}
@@ -203,8 +202,8 @@ if (!$perm->have_perm_area_action($area, $action))
         $form->setVar("tmp_file", $sTempFilename);
         
         $tb_name = new cHTMLTextbox("file", $sFilename, 60);
-        $ta_code = new cHTMLTextarea("code", htmlspecialchars($sCode), 100, 35, "code");
-        $descr	 = new cHTMLTextarea("description", htmlspecialchars($aFileInfo["description"]), 100, 5);
+        $ta_code = new cHTMLTextarea("code", '<donotparse>' . htmlspecialchars($sCode, ENT_COMPAT, $encoding[$lang]) . '</donotparse>', 100, 35, "code");
+        $descr	 = new cHTMLTextarea("description", htmlspecialchars($aFileInfo["description"], ENT_COMPAT, $encoding[$lang]), 100, 5);
         
         $ta_code->setStyle("font-family: monospace;width: 100%;");
         $descr->setStyle("font-family: monospace;width: 100%;");
