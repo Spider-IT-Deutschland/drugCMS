@@ -386,10 +386,23 @@ function tplPreparseLayout ($idlay)
 				$mode = "optional";
 			}
 			
+            $types = $parser->iNodeAttributes["types"];
+            
+            if ((!strlen($types)) || ($types='*')) {
+                $sql = 'SELECT DISTINCT type
+                        FROM ' . $cfg['tab']['mod'] . '
+                        ORDER BY type';
+                $db->query($sql);
+                while ($db->next_record()) {
+                    $types .= $db->f('type') . ',';
+                }
+                $types = substr($types, 0, -1);
+            }
+            
 			$containerinf[$idlay][$idcontainer]["name"] = $parser->iNodeAttributes["name"];
 			$containerinf[$idlay][$idcontainer]["mode"] = $mode;
 			$containerinf[$idlay][$idcontainer]["default"] = $parser->iNodeAttributes["default"];
-			$containerinf[$idlay][$idcontainer]["types"] = $parser->iNodeAttributes["types"];
+			$containerinf[$idlay][$idcontainer]["types"] = $types;
 			$containerinf[$idlay][$idcontainer]["is_body"] = $bIsBody;
 		}
 	}

@@ -207,7 +207,8 @@ class HtmlParser {
         $ch = $this->currentChar();
         $value = "";
         if ($ch == "\"") {
-            $this->skipInTag (array ( "\"" ));
+            #$this->skipInTag (array ( "\"" ));
+            $this->moveNext();
             $value = $this->skipToInTag (array ( "\"" ));
             $this->skipInTag (array ( "\"" ));
         }
