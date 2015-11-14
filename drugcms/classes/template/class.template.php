@@ -93,7 +93,7 @@ class Template {
         $this->setEncoding("");
         if (is_array($parser)) {
             $this->array_registeredParsers = $parser;
-        } elseif ($_REQUEST['action'] == 'htmltpl_edit') {
+        } elseif (($_REQUEST['action'] == 'htmltpl_edit') || ($_REQUEST['area'] == 'htmltpl_history')) {
             $this->array_registeredParsers = array();
         } else {
             $this->array_registeredParsers = array(

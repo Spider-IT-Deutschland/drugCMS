@@ -18,6 +18,10 @@
  * @link       http://www.4fb.de
  * @link       http://www.contenido.org
  * @since      file available since contenido release >= 5.0
+ *
+ * @modified   2015-11-14 René Mansveld for drugCMS
+ *                        Set EditArea to show HTML (was PHP)
+ *                        and code optimizations
  * 
  * {@internal 
  *   created 2008-08-1
@@ -43,32 +47,35 @@ $oPage->addScript('messageBoxInit', '<script type="text/javascript">box = new me
 $bDeleteFile = false;
 
 if (!$perm->have_perm_area_action($area, 'lay_history_manage')) {
-  $notification->displayNotification("error", i18n("Permission denied"));
-  $oPage->render();
-} else if (!(int) $client > 0) {
-  $oPage->render();
-} else if (getEffectiveSetting('versioning', 'activated', 'false') == 'false') {
-  $notification->displayNotification("warning", i18n("Versioning is not activated"));
-  $oPage->render();
-} else {	
-    if ($_POST["lay_send"] == true && $_POST["layname"]!="" && $_POST["laycode"] !="" && (int) $idlay > 0) { // save button 
-    	$oVersion = new VersionLayout($idlay, $cfg, $cfgClient, $db, $client, $area, $frame);
-    	$sLayoutName = $_POST["layname"];
-    	$sLayoutCode = $_POST["laycode"];
-    	$sLayoutDescription = $_POST["laydesc"];
+    $notification->displayNotification("error", i18n("Permission denied"));
+    $oPage->render();
+}
+elseif ((int) $client <= 0) {
+    $oPage->render();
+}
+elseif (getEffectiveSetting('versioning', 'activated', 'false') == 'false') {
+    $notification->displayNotification("warning", i18n("Versioning is not activated"));
+    $oPage->render();
+}
+else {    
+    if (($_POST["lay_send"]) && (strlen($_POST["layname"])) && (strlen($_POST["laycode"])) && ((int) $idlay)) { // save button 
+        $oVersion = new VersionLayout($idlay, $cfg, $cfgClient, $db, $client, $area, $frame);
+        $sLayoutName = $_POST["layname"];
+        $sLayoutCode = $_POST["laycode"];
+        $sLayoutDescription = $_POST["laydesc"];
 
-    //	save and mak new revision
+        // save and mak new revision
         $oPage->addScript('refresh', $oVersion->renderReloadScript('lay', $idlay, $sess));
-    	layEditLayout($idlay, $sLayoutName, $sLayoutDescription, $sLayoutCode);
-    	unset($oVersion);
+        layEditLayout($idlay, $sLayoutName, $sLayoutDescription, $sLayoutCode);
+        unset($oVersion);
     }
     
     // [action] => history_truncate delete all current modul history
-  	if($_POST["action"] == "history_truncate") {
+    if ($_POST["action"] == "history_truncate") {
         $oVersion = new VersionLayout($idlay, $cfg, $cfgClient, $db, $client, $area, $frame);
-  		$bDeleteFile = $oVersion->deleteFile();
+        $bDeleteFile = $oVersion->deleteFile();
         unset($oVersion);
-  	}
+    }
 
     // Init construct with contenido variables, in class.VersionLayout
     $oVersion = new VersionLayout($idlay, $cfg, $cfgClient, $db, $client, $area, $frame);
@@ -85,35 +92,35 @@ if (!$perm->have_perm_area_action($area, 'lay_history_manage')) {
     // Generate Form
     $oForm = new UI_Table_Form("lay_display");
     $oForm->addHeader(i18n("Edit Layout"));
-    $oForm ->setWidth("100%");
+    $oForm->setWidth("100%");
     $oForm->setVar("area", "lay_history");
     $oForm->setVar("frame", $frame);
     $oForm->setVar("idlay", $idlay);
     $oForm->setVar("lay_send", 1);
 
     // if send form refresh
-    if ($_POST["idlayhistory"] != "") {
+    if (strlen($_POST["idlayhistory"])) {
         $sRevision = $_POST["idlayhistory"];
-    } else {
+    }
+    else {
         $sRevision = $oVersion->getLastRevision();
     }
         
-    if ($sRevision != '' && $_POST["action"] != "history_truncate") {
-    	// File Path	
+    if ((strlen($sRevision)) && ($_POST["action"] != "history_truncate")) {
+        // File Path    
         $sPath = $oVersion->getFilePath() . $sRevision;
-    	
-    	// Read XML Nodes  and get an array 
-    	$aNodes = array();
-    	$aNodes = $oVersion->initXmlReader($sPath);
+        
+        // Read XML Nodes  and get an array 
+        $aNodes = array();
+        $aNodes = $oVersion->initXmlReader($sPath);
 
-    	// Create Textarea and fill it with xml nodes
-    	if (count($aNodes) > 1) { 
-    		//	if choose xml file read value an set it						
-    		$sName = $oVersion->getTextBox("layname", $aNodes["name"], 60);
-    		$sDescription = $oVersion->getTextarea("laydesc", $aNodes["desc"], 100, 10);
-    		$sCode = $oVersion->getTextarea("laycode", $aNodes["code"], 100, 30, "IdLaycode");
-    	
-    	}
+        // Create Textarea and fill it with xml nodes
+        if (count($aNodes) > 1) { 
+            //    if choose xml file read value an set it                        
+            $sName = $oVersion->getTextBox("layname", $aNodes["name"], 60);
+            $sDescription = $oVersion->getTextarea("laydesc", $aNodes["desc"], 100, 10);
+            $sCode = $oVersion->getTextarea("laycode", $aNodes["code"], 100, 30, "IdLaycode");
+        }
     }
 
     // Add new Elements of Form
@@ -124,23 +131,20 @@ if (!$perm->have_perm_area_action($area, 'lay_history_manage')) {
     $oForm->unsetActionButton("submit");
 
     // Render and handle History Area
-    $oEditAreaOutput = new EditArea('IdLaycode', 'php', substr(strtolower($belang), 0, 2), true, $cfg, !$bInUse);
+    $oEditAreaOutput = new EditArea('IdLaycode', 'html', substr(strtolower($belang), 0, 2), true, $cfg, !$bInUse);
     $oPage->addScript('IdLaycode', $oEditAreaOutput->renderScript());
     
-    if($sSelectBox !="") {
-    	$oPage->setContent($sSelectBox . $oForm->render());
-
-    } else {
-    	if($bDeleteFile){
-    		$notification->displayNotification("warning", i18n("Version history was cleared"));
-    	} else {
-    		$notification->displayNotification("warning", i18n("No layout history available"));	
-    	}
-    	
-    }	
+    if (strlen($sSelectBox)) {
+        $oPage->setContent($sSelectBox . $oForm->render());
+    }
+    else {
+        if($bDeleteFile){
+            $notification->displayNotification("warning", i18n("Version history was cleared"));
+        }
+        else {
+            $notification->displayNotification("warning", i18n("No layout history available"));    
+        }
+    }    
     $oPage->render();
-	
-	
 }
-
 ?>

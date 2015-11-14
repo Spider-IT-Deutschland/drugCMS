@@ -162,14 +162,14 @@ if (!$perm->have_perm_area_action($area, 'htmltpl_history_manage'))
     	// Add new Elements of Form
     	$oForm->add(i18n("Name"), $sName);
     	$oForm->add(i18n("Description"), $sDescription);
-    	$oForm->add(i18n("Code"), $sCode);
+    	$oForm->add(i18n("Code"), '<donotparse>' . $sCode . '</donotparse>');
     	$oForm->setActionButton("apply", "images/but_ok.gif", i18n("Copy to current"), "c"/*, "mod_history_takeover"*/); //modified it 
     	$oForm->unsetActionButton("submit");
     	
     	// Render and handle History Area
     	$oPage->setEncoding("utf-8");
     	
-    	$oEditAreaOutput = new EditArea('IdLaycode', 'php', substr(strtolower($belang), 0, 2), true, $cfg, !$bInUse);
+    	$oEditAreaOutput = new EditArea('IdLaycode', 'html', substr(strtolower($belang), 0, 2), true, $cfg, !$bInUse);
     	$oPage->addScript('IdLaycode', $oEditAreaOutput->renderScript());
 
     	if($sSelectBox !="") {
