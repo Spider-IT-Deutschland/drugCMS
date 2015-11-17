@@ -388,7 +388,7 @@ function tplPreparseLayout ($idlay)
 			
             $types = $parser->iNodeAttributes["types"];
             
-            if ((!strlen($types)) || ($types='*')) {
+            if ((!strlen($types)) || ($types == '*')) {
                 $sql = 'SELECT DISTINCT type
                         FROM ' . $cfg['tab']['mod'] . '
                         ORDER BY type';
