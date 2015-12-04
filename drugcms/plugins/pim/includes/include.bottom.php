@@ -229,9 +229,9 @@ switch ($sWhat) {
                         $sErrMsg = '';
                         $aPluginsO = json_decode(getRemoteContent($sUrl, $iErrNo, $sErrMsg, $sLogin, $sPassword), true);
                         foreach ($aPluginsO as $key => $value) {
-                            $aPluginsA[$key . '_' . $itemid] = $value;
-                            $aPluginsA[$key . '_' . $itemid]['Url'] = $sDownloadUrl;
-                            $aPluginsA[$key . '_' . $itemid]['Repo'] = $itemid;
+                            $aPluginsA[$key . '~~' . $itemid] = $value;
+                            $aPluginsA[$key . '~~' . $itemid]['Url'] = $sDownloadUrl;
+                            $aPluginsA[$key . '~~' . $itemid]['Repo'] = $itemid;
                         }
                     }
                     $oTpl->set('s', 'SHOW_REPOSITORY', '');
@@ -301,8 +301,8 @@ switch ($sWhat) {
                     # List available plugins
                     $sClass = 'odd';
                     foreach ($aPluginsA as $key => $value) {
-                        $bAdditional = (strpos($key, '_') !== false);
-                        $key = ((strpos($key, '_') !== false) ? substr($key, 0, strpos($key, '_')) : $key);
+                        $bAdditional = (strpos($key, '~~') !== false);
+                        $key = ((strpos($key, '~~') !== false) ? substr($key, 0, strpos($key, '~~')) : $key);
                         if ((!array_key_exists($key, $aPluginsI)) || (version_compare($value['Version'], $aPluginsI[$key]['Version'], '>'))) {
                             $oTpl->set('d1', 'KEY', $key);
                             $oTpl->set('d1', 'URL', $value['Url']);
@@ -391,7 +391,7 @@ switch ($sWhat) {
                                 $bOK = true;
                                 
                                 # Delete the zip file
-                                unlink($sPath . $sPlugin . '.zip');
+                                #unlink($sPath . $sPlugin . '.zip');
                             }
                             else {
                                 $sContent .= $notification->returnNotification("error", i18n("Failed to download zip file", $plugin_name)) . '</p>';
