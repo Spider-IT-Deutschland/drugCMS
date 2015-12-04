@@ -433,8 +433,14 @@ switch ($sWhat) {
                             # Areas
                             for ($i = 0, $n = count($aInstall['areas']); $i < $n; $i ++) {
                                 $id = $db->nextid($cfg['tab']['area']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
-                                        VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
+                                if (is_numeric($aInstall['areas'][$i]['parent'])) {
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][($aInstall['areas'][$i]['parent'] - 1)]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
+                                }
+                                else {
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
+                                }
                                 $db->query($sql);
                                 $aInstall['areas'][$i]['idarea'] = $id;
                                 $aDescription[] = array('table' => $cfg['tab']['area'], 'id' => $id);
@@ -453,8 +459,21 @@ switch ($sWhat) {
                             # Files
                             for ($i = 0, $n = count($aInstall['files']); $i < $n; $i ++) {
                                 $id = $db->nextid($cfg['tab']['files']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
-                                        VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+                                if (is_numeric($aInstall['files'][$i]['area'])) {
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+                                }
+                                else {
+                                    $sql = 'SELECT idarea
+                                            FROM ' . $cfg['tab']['area'] . '
+                                            WHERE (name="' . $aInstall['files'][$i]['area'] . '")';
+                                    $db->query($sql);
+                                    if ($db->next_record()) {
+                                        $idarea = $db->f('idarea');
+                                    }
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                                            VALUES (' . $id . ', ' . intval($idarea) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+                                }
                                 $db->query($sql);
                                 $aInstall['files'][$i]['idfile'] = $id;
                                 $aDescription[] = array('table' => $cfg['tab']['files'], 'id' => $id);
@@ -463,8 +482,21 @@ switch ($sWhat) {
                             # FrameFiles
                             for ($i = 0, $n = count($aInstall['frame_files']); $i < $n; $i ++) {
                                 $id = $db->nextid($cfg['tab']['framefiles']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
-                                        VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['file']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+                                if (is_numeric($aInstall['frame_files'][$i]['area'])) {
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+                                }
+                                else {
+                                    $sql = 'SELECT idarea
+                                            FROM ' . $cfg['tab']['area'] . '
+                                            WHERE (name="' . $aInstall['frame_files'][$i]['area'] . '")';
+                                    $db->query($sql);
+                                    if ($db->next_record()) {
+                                        $idarea = $db->f('idarea');
+                                    }
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                                            VALUES (' . $id . ', ' . intval($idarea) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+                                }
                                 $db->query($sql);
                                 $aInstall['frame_files'][$i]['idframefile'] = $id;
                                 $aDescription[] = array('table' => $cfg['tab']['framefiles'], 'id' => $id);
@@ -499,6 +531,24 @@ switch ($sWhat) {
                                 $db->query($sql);
                                 $aInstall['nav_subs'][$i]['idframefile'] = $id;
                                 $aDescription[] = array('table' => $cfg['tab']['nav_sub'], 'id' => $id);
+                            }
+                            
+                            # Copy additional system files
+                            $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
+                            if (count($aFoldersAndFiles)) {
+                                $sContent .= '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
+                                foreach ($aFoldersAndFiles as $entry) {
+                                    if (substr($entry, -1) == '/') {
+                                        
+                                        # Entry is a folder, create it
+                                        mkdir($cfg['path']['frontend'] . '/' . $entry, 0644);
+                                    }
+                                    else {
+                                        
+                                        # Entry is a file, copy it
+                                        copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
+                                    }
+                                }
                             }
                             
                             if ($bUpdate) {
@@ -594,16 +644,16 @@ switch ($sWhat) {
                     $aFoldersAndFiles = $oPlugin->getModulesAdditionalFoldersAndFiles();
                     if (count($aFoldersAndFiles)) {
                         $sContent .= '<p>' . i18n("Copying additional files", $plugin_name) . '</p>';
-                        for ($i = 0, $n = count($aFoldersAndFiles); $i < $n; $i ++) {
-                            if (substr($aFoldersAndFiles[$i], -1) == '/') {
+                        foreach ($aFoldersAndFiles as $entry) {
+                            if (substr($entry, -1) == '/') {
                                 
                                 # Entry is a folder, create it
-                                mkdir($cfgClient[$client]['path']['frontend'] . $aFoldersAndFiles[$i], 0644);
+                                mkdir($cfgClient[$client]['path']['frontend'] . $entry, 0644);
                             }
                             else {
                                 
                                 # Entry is a file, copy it
-                                copy($sPath . $aFoldersAndFiles[$i], $cfgClient[$client]['path']['frontend'] . $aFoldersAndFiles[$i]);
+                                copy($sPath . $entry, $cfgClient[$client]['path']['frontend'] . $entry);
                             }
                         }
                     }
@@ -680,22 +730,23 @@ switch ($sWhat) {
                     $aFoldersAndFiles = $oPlugin->getModulesAdditionalFoldersAndFiles();
                     if (count($aFoldersAndFiles)) {
                         $sContent .= '<p>' . i18n("Deleting additional files", $plugin_name) . '</p>';
+                        $aFoldersAndFiles = array_reverse($aFoldersAndFiles);
                         
                         # Get all clients
                         foreach ($cfgClient as $aClient) {
                             if (is_array($aClient)) {
-                                for ($i = count($aFoldersAndFiles); $i >= 0; $i --) {
-                                    if (substr($aFoldersAndFiles[$i], -1) == '/') {
+                                foreach ($aFoldersAndFiles as $entry) {
+                                    if (substr($entry, -1) == '/') {
                                         
                                         # Entry is a folder, delete it if it's empty and not a system folder
-                                        if (!in_array(substr($aFoldersAndFiles[$i], 0, -1), array('cache', 'css', 'images', 'includes', 'js', 'logs', 'templates', 'upload', 'version'))) {
-                                            rmdir($cfgClient[$client]['path']['frontend'] . $aFoldersAndFiles[$i]);
+                                        if (!in_array(substr($entry, 0, -1), array('cache', 'css', 'images', 'includes', 'js', 'logs', 'templates', 'upload', 'version'))) {
+                                            @rmdir($cfgClient[$client]['path']['frontend'] . $entry);
                                         }
                                     }
                                     else {
                                         
                                         # Entry is a file, delete it
-                                        unlink($cfgClient[$client]['path']['frontend'] . $aFoldersAndFiles[$i]);
+                                        unlink($cfgClient[$client]['path']['frontend'] . $entry);
                                     }
                                 }
                             }
@@ -724,6 +775,25 @@ switch ($sWhat) {
                             else {
                                 $sql = 'DROP TABLE `' . str_replace('!PREFIX!', $cfg['sql']['sqlprefix'], $DbTable) . '`';
                                 $db->query($sql);
+                            }
+                        }
+                    }
+                    
+                    # If there are additional folders in the plugin's system folder, delete them in the system's folders
+                    $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
+                    if (count($aFoldersAndFiles)) {
+                        $sContent .= '<p>' . i18n("Deleting additional system files", $plugin_name) . '</p>';
+                        $aFoldersAndFiles = array_reverse($aFoldersAndFiles);
+                        foreach ($aFoldersAndFiles as $entry) {
+                            if (substr($entry, -1) == '/') {
+                                
+                                # Entry is a folder, delete it if it's empty
+                                @rmdir($cfg['path']['frontend'] . '/' . $entry);
+                            }
+                            else {
+                                
+                                # Entry is a file, delete it
+                                unlink($cfg['path']['frontend'] . '/' . $entry);
                             }
                         }
                     }

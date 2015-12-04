@@ -135,6 +135,21 @@ class PluginInfo {
         }
     }
     
+    public function getSystemAdditionalFoldersAndFiles() {
+        global $cfg;
+        
+        $sPath = $cfg['path']['contenido'] . $cfg['path']['plugins'] . $this->name . '/system/';
+        $aFoldersAndFiles = $this->_getFoldersAndFilesRecursively($sPath);
+        for ($i = (count($aFoldersAndFiles) - 1); $i >= 0; $i --) {
+            if (substr($aFoldersAndFiles[$i], -9) == 'index.php') {
+                if (file_get_contents($sPath . $aFoldersAndFiles[$i]) == '<?php die("Illegal Call"); ?>') {
+                    unset($aFoldersAndFiles[$i]);
+                }
+            }
+        }
+        return $aFoldersAndFiles;
+    }
+    
     public function getModules() {
         if ($this->info != '') {
             $aModules = array();
