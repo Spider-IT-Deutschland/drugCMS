@@ -1229,6 +1229,102 @@ function getEffectiveSettingsByType($sType)
 }
 
 /**
+ * Sets a generic property entry
+ * 
+ * @param int $idclient The id of the client (may be 0)
+ * @param string $itemtype The type of the item
+ * @param string $itemid The value of the item
+ * @param string $type The type of the item
+ * @param string $name The name of the item
+ * @param string $value The value of the item
+ */
+function setProperty($idclient, $itemtype, $itemid, $type, $name, $value, $idproperty = 0) {
+	global $cfg;
+	
+    $db = new DB_Contenido();
+    if ($idproperty) {
+        $sql = 'UPDATE `' . $cfg['tab']['properties'] . '`
+                SET `idclient` = ' . intval($idclient) . ',
+                    `itemtype` = "' . urlencode(Contenido_Security::escapeDB($itemtype, $db)) . '",
+                    `itemid` = "' . urlencode(Contenido_Security::escapeDB($itemid, $db)) . '",
+                    `type` = "' . urlencode(Contenido_Security::escapeDB($type, $db)) . '",
+                    `name` = "' . urlencode(Contenido_Security::escapeDB($name, $db)) . '",
+                    `value` = "' . urlencode(Contenido_Security::escapeDB($value, $db)) . '",
+                    `modified` = "' . date('Y-m-d H:i:s') . '",
+                    `modifiedby` = "' . $auth->auth['uid'] . '"
+                WHERE (`idproperty`=' . intval($idproperty) . ')';
+    }
+    else {
+        $sql = 'INSERT INTO `' . $cfg['tab']['properties'] . '` (`idproperty`, `idclient`, `itemtype`, `itemid`, `type`, `name`, `value`, `author`, `created`, `modified`, `modifiedby`)
+                VALUES (' . $db->nextid($cfg['tab']['properties']) . ', ' . intval($idclient) . ', "' . urlencode(Contenido_Security::escapeDB($itemtype, $db)) . '", "' . urlencode(Contenido_Security::escapeDB($itemid, $db)) . '", "' . urlencode(Contenido_Security::escapeDB($type, $db)) . '", "' . urlencode(Contenido_Security::escapeDB($name, $db)) . '", "' . urlencode(Contenido_Security::escapeDB($value, $db)) . '", "' . $auth->auth['uid'] . '", "' . date('Y-m-d H:i:s') . '", "' . date('Y-m-d H:i:s') . '", "' . $auth->auth['uid'] . '")';
+    }
+    return ($db->query($sql));
+}
+
+/**
+ * Gets a generic property entry's value
+ * 
+ * @param int $idclient The id of the client (may be 0)
+ * @param string $itemtype The type of the item
+ * @param string $itemid The value of the item
+ * @param string $type The type of the item
+ * @param string $name The name of the item
+ * @param bool $bGetPropertyId Also get the idproperty of the entrie
+ */
+function getProperty($idclient, $itemtype, $itemid, $type, $name, $bGetPropertyId = false) {
+	global $cfg;
+	
+    $db = new DB_Contenido();
+    $sql = 'SELECT `idproperty`, `value`
+            FROM `' . $cfg['tab']['properties'] . '`
+            WHERE ((`idclient`=' . intval($idclient) . ')
+               AND (`itemtype`="' . urlencode(Contenido_Security::escapeDB($itemtype, $db)) . '")
+               AND (`itemid`="' . urlencode(Contenido_Security::escapeDB($itemid, $db)) . '")
+               AND (`type`="' . urlencode(Contenido_Security::escapeDB($type, $db)) . '")
+               AND (`name`="' . urlencode(Contenido_Security::escapeDB($name, $db)) . '"))';
+    if ($db->query($sql)) {
+        if ($db->next_record()) {
+            if ($bGetPropertyId) {
+                return array('value' => urldecode($db->f('value')), 'idproperty' => $db->f('idproperty'));
+            }
+            else {
+                return urldecode($db->f('value'));
+            }
+        }
+    }
+}
+
+/**
+ * Gets generic properties by itemtype
+ * 
+ * @param string $itemtype The type of the item
+ * @param int $idclient The id of the client (may be 0, or -1 for all)
+ * @param bool $bGetPropertyId Also get the idproperties of the entries
+ */
+function getPropertiesByItemtype($itemtype, $sortby = '', $idclient = -1, $bGetPropertyId = false) {
+	global $cfg;
+	
+    $aProperties = array();
+    $db = new DB_Contenido();
+    $sql = 'SELECT `idproperty`, `itemid`, `type`, `name`, `value`
+            FROM `' . $cfg['tab']['properties'] . '`
+            WHERE (' . ((intval($idclient) == -1) ? '' : '(`idclient`=' . intval($idclient) . ')
+               AND ') . '(`itemtype`="' . urlencode(Contenido_Security::escapeDB($itemtype, $db)) . '"))' . ((strlen($sortby)) ? '
+            ORDER BY `' . $sortby . '`' : '');
+    if ($db->query($sql)) {
+        while ($db->next_record()) {
+            if ($bGetPropertyId) {
+                $aProperties[] = array('itemid' => urldecode($db->f('itemid')), 'type' => urldecode($db->f('type')), 'name' => urldecode($db->f('name')), 'value' => urldecode($db->f('value')), 'idproperty' => $db->f('idproperty'));
+            }
+            else {
+                $aProperties[] = array('itemid' => urldecode($db->f('itemid')), 'type' => urldecode($db->f('type')), 'name' => urldecode($db->f('name')), 'value' => urldecode($db->f('value')));
+            }
+        }
+    }
+    return $aProperties;
+}
+
+/**
  * retrieve list of article specifications for current client and language
  *
  * @return array list of article specifications

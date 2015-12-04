@@ -237,6 +237,8 @@ class DB_Sql extends DB_Sql_Abstract
      */
     public function nextid($seq_name)
     {
+        global $cfg;
+        
         $this->connect();
 
         if ($this->lock($this->Seq_Table)) {
@@ -254,6 +256,9 @@ class DB_Sql extends DB_Sql_Abstract
                 $currentid = $res['nextid'];
             }
             $nextid = $currentid + 1;
+            if (($nextid < 10000) && (in_array($seq_name, array($cfg['tab']['actions'], $cfg['tab']['area'], $cfg['tab']['files'], $cfg['tab']['framefiles'], $cfg['tab']['meta_type'], $cfg['tab']['nav_main'], $cfg['tab']['nav_sub'], $cfg['tab']['type'])))) {
+                $nextid = 10000;
+            }
             $q  = sprintf("UPDATE `%s` SET nextid = '%s' WHERE seq_name = '%s'", $this->Seq_Table, $nextid, $seq_name);
             $id = @mysql_query($q, $this->Link_ID);
             $this->unlock();

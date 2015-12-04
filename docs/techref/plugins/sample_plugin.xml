@@ -2,37 +2,42 @@
 <plugin>
     
     <general>
-        <name><![CDATA[sitForum]]></name>
-        <description><![CDATA[Frontend user forum with backend management area]]></description>
-        <author><![CDATA[René Mansveld]]></author>
-        <version><![CDATA[1.0.0]]></version>
-        <copyright><![CDATA[Spider IT Deutschland]]></copyright>
-        <mail><![CDATA[Info@Spider-IT.de]]></mail>
-        <website><![CDATA[http://www.Spider-IT.de]]></website>
+        <name><![CDATA[]]></name>
+        <descriptions>
+            <!-- multiple <action> entries allowed, an entry with lang="en_US" must be specified -->
+            <description lang="en_US"><![CDATA[]]></description>
+            <description lang="de_DE"><![CDATA[]]></description>
+        </descriptions>
+        <tags>
+            <!-- multiple <tag> entries allowed -->
+            <tag><![CDATA[]]></tag>
+        </tags>
+        <author><![CDATA[]]></author>
+        <version><![CDATA[]]></version>
+        <copyright><![CDATA[]]></copyright>
+        <mail><![CDATA[]]></mail>
+        <website><![CDATA[]]></website>
     </general>
     
     <requirements>
-        <php><![CDATA[5.2.17]]></php>
-        <drugcms><![CDATA[2.1.0]]></drugcms>
+        <php><![CDATA[]]></php>
+        <drugcms><![CDATA[]]></drugcms>
     </requirements>
     
     <dependencies>
-        <plugin><![CDATA[sitSample]]></plugin> <!-- <name> of the plugin (see above), multiple <plugin> entries allowed -->
+        <!-- multiple <plugin> entries allowed -->
+        <plugin>
+            <name><![CDATA[]]></name>
+            <version><![CDATA[]]></version>
+        </plugin>
     </dependencies>
     
-    <drugcms>
+    <drugcms> <!-- this section contains the db table entries -->
         
         <areas>
+            <!-- multiple <area> entries allowed -->
             <area>
                 <parent><![CDATA[]]></parent>
-                <name><![CDATA[sit_forum]]></name>
-                <relevant><![CDATA[1]]></relevant>
-                <online><![CDATA[1]]></online>
-                <menuless><![CDATA[0]]></menuless>
-            </area>
-            
-            <area>
-                <parent><![CDATA[sit_forum]]></parent>
                 <name><![CDATA[]]></name>
                 <relevant><![CDATA[]]></relevant>
                 <online><![CDATA[]]></online>
@@ -42,6 +47,7 @@
         </areas>
         
         <actions>
+            <!-- multiple <action> entries allowed -->
             <action>
                 <area><![CDATA[]]></area>
                 <alt_name><![CDATA[]]></alt_name>
@@ -54,6 +60,7 @@
         </actions>
         
         <files>
+            <!-- multiple <file> entries allowed -->
             <file>
                 <area><![CDATA[]]></area>
                 <filename><![CDATA[]]></filename>
@@ -63,10 +70,11 @@
         </files>
         
         <frame_files>
+            <!-- multiple <frame_file> entries allowed -->
             <frame_file>
                 <area><![CDATA[]]></area>
                 <frame_id><![CDATA[]]></frame_id>
-                <filename><![CDATA[]]></filename>
+                <file><![CDATA[]]></file>
             </frame_file>
             
         </frame_files>
@@ -76,6 +84,7 @@
         </nav_main>
         
         <nav_subs>
+            <!-- multiple <nav_sub> entries allowed -->
             <nav_sub>
                 <nav_main><![CDATA[]]></nav_main>
                 <area><![CDATA[]]></area>
@@ -87,4 +96,18 @@
         </nav_subs>
         
     </drugcms>
+    
+    <modules>
+        <!-- multiple <module> entries allowed -->
+        <module name=""><![CDATA[]]></module>
+    </modules>
+    
+    <!-- Delete the following database tables on deleting the plugin -->
+    <!-- !PREFIX! is the drugcms database prefix set at setup, use an asterisk (*) for multiple chars -->
+    <!-- Example: !PREFIX!_my_plugin_* deletes tables drugcms_my_plugin_test and drugcms_my_plugin_probe -->
+    <dbtables>
+        <!-- multiple <db-delete> entries allowed -->
+        <dbtable><![CDATA[]]></dbtable>
+    </dbtables>
+    
 </plugin>

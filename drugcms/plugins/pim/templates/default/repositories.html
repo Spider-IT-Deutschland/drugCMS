@@ -1,0 +1,126 @@
+
+    <script type="text/javascript">
+    //<![CDATA[
+        function saveChanges(which) {
+            $('#Action').val('Edit');
+            var keys = which.parents('tr').find('.save').attr('data-ids').split('|');
+            $('#AddressKey').val(keys[0]);
+            $('#LoginKey').val(keys[1]);
+            $('#PasswordKey').val(keys[2]);
+            $('#Name').val(which.parents('tr').find('input.name').val());
+            $('#Address').val(which.parents('tr').find('input.address').val());
+            $('#Login').val(which.parents('tr').find('input.login').val());
+            $('#Password').val(which.parents('tr').find('input.password').val());
+            $('#DeleteForm').submit();
+        }
+        $(document).ready(function() {
+            $('.remove').click(function() {
+                $('#Action').val('Delete');
+                $('#DeleteKey').val($(this).attr('data-ids'));
+                $('#AddressKey').val('');
+                $('#LoginKey').val('');
+                $('#PasswordKey').val('');
+                $('#Name').val('');
+                $('#Address').val('');
+                $('#Login').val('');
+                $('#Password').val('');
+                $('#DeleteForm').submit();
+            });
+            $('.edit').click(function() {
+                $(this).parents('tbody').find('span.normal').css('display', '');
+                $(this).parents('tbody').find('span.edit').css('display', '');
+                $(this).parents('tr').find('span.normal').css('display', 'none');
+                $(this).parents('tr').find('span.edit').css('display', 'block');
+            });
+            $('input[type=text]').keypress(function(event) {
+                if (event.which == 13) {
+                    saveChanges($(this));
+                }
+            });
+            $('.save').click(function() {
+                saveChanges($(this));
+            });
+        });
+    //]]>
+    </script>
+    
+    <p><strong>{TEXT_REPOSITORIES}</strong></p>
+    <form id="DeleteForm" method="post" action="{FORM_ACTION}">
+        <div class="hiddens">
+            <input id="Action" type="hidden" name="Action" value="Delete" />
+            <input id="DeleteKey" type="hidden" name="Key" value="" />
+            <input id="Name" type="hidden" name="Name" value="" />
+            <input id="AddressKey" type="hidden" name="AddressKey" value="" />
+            <input id="Address" type="hidden" name="Address" value="" />
+            <input id="LoginKey" type="hidden" name="LoginKey" value="" />
+            <input id="Login" type="hidden" name="Login" value="" />
+            <input id="PasswordKey" type="hidden" name="PasswordKey" value="" />
+            <input id="Password" type="hidden" name="Password" value="" />
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{TEXT_NAME}</th>
+                        <th>{TEXT_ADDRESS}</th>
+                        <th>{TEXT_LOGIN}</th>
+                        <th>{TEXT_PASSWORD}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- The next line prevents the browser from placing login information in the edit fields -->
+                    <tr style="display: none;"><td><input type="text" value="" /><input type="password" value="" /></td></tr>
+                    <tr>
+                        <td class="odd">drugCMS</td>
+                        <td class="odd">http://plugins.drugcms.org/</td>
+                        <td class="odd">&nbsp;</td>
+                        <td class="odd">&nbsp;</td>
+                        <td class="odd"><img src="images/but_todo_off.gif" alt="{TEXT_EDIT_NOT_POSSIBLE}" title="{TEXT_EDIT_NOT_POSSIBLE}" /><img src="images/delete_inact.gif" alt="{TEXT_DELETE_NOT_POSSIBLE}" title="{TEXT_DELETE_NOT_POSSIBLE}" data-ids="{ADDRESS_ID}|{LOGIN_ID}|{PASSWORD_ID}" /></td>
+                    </tr>
+                    <!-- BEGIN:BLOCK --><tr>
+                        <td class="{CLASS}"><span class="normal">{NAME}</span><span class="edit"><input type="text" value="{NAME}" class="small name" /></span></td>
+                        <td class="{CLASS}"><span class="normal">{ADDRESS}</span><span class="edit"><input type="text" value="{ADDRESS}" class="address" /></span></td>
+                        <td class="{CLASS}"><span class="normal">{LOGIN}</span><span class="edit"><input type="text" value="{LOGIN}" class="small login" /></span></td>
+                        <td class="{CLASS}"><span class="normal">{PASSWORD}</span><span class="edit"><input type="password" value="" class="small password" /><img src="images/but_ok.gif" alt="{TEXT_SAVE}" title="{TEXT_SAVE}" data-ids="{ADDRESS_ID}|{LOGIN_ID}|{PASSWORD_ID}" class="save" /></span></td>
+                        <td class="{CLASS}"><img class="edit" src="images/editieren.gif" alt="{TEXT_EDIT}" title="{TEXT_EDIT}" /><img class="remove" src="images/delete.gif" alt="{TEXT_DELETE}" title="{TEXT_DELETE}" data-ids="{ADDRESS_ID}|{LOGIN_ID}|{PASSWORD_ID}" /></td>
+                    </tr>
+                    <!-- END:BLOCK -->
+                </tbody>
+            </table>
+        </div>
+    </form>
+    
+    <form id="InstallForm" method="post" action="{FORM_ACTION}">
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">{TEXT_NEW}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{TEXT_NAME}</td>
+                        <td><input type="text" name="Name" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_ADDRESS}</td>
+                        <td><input type="text" name="Address" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_LOGIN}</td>
+                        <td><input type="text" name="Login" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_PASSWORD}</td>
+                        <td><input type="password" name="Password" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td class="rightalign"><input type="image" src="images/but_ok.gif" alt="{TEXT_SAVE}" title="{TEXT_SAVE}" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>

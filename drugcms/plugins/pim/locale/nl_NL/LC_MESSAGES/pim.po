@@ -1,0 +1,308 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS Plugin Manager\n"
+"POT-Creation-Date: 2015-11-30 19:16+0100\n"
+"PO-Revision-Date: 2015-11-30 19:20+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team <translate@drugcms.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: i18n\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: ../includes/config.plugin.php:35 ../includes/include.top.php:51
+msgid "Plugins"
+msgstr "Plugins"
+
+#: ../includes/config.plugin.php:36 ../includes/include.bottom.php:764
+#: ../includes/include.top.php:57
+msgid "Repositories"
+msgstr "Opslagplaatsen"
+
+#: ../includes/include.bottom.php:89 ../includes/include.bottom.php:519
+#, php-format
+msgid "%s is not writable"
+msgstr "%s is niet beschrijfbaar"
+
+#: ../includes/include.bottom.php:153
+msgid "Installed plugins"
+msgstr "Geïnstalleerde plugins"
+
+#: ../includes/include.bottom.php:154
+msgid "Filter"
+msgstr "Filter"
+
+#: ../includes/include.bottom.php:155
+msgid "(Comma separated list of tags to search for)"
+msgstr "(Door komma's gescheiden lijst van tags om naar te zoeken)"
+
+#: ../includes/include.bottom.php:156
+msgid "Use filter"
+msgstr "Filter gebruiken"
+
+#: ../includes/include.bottom.php:157
+msgid "Clear filter"
+msgstr "Filter verwijderen"
+
+#: ../includes/include.bottom.php:158
+msgid "Available plugins"
+msgstr "Beschikbare plugins"
+
+#: ../includes/include.bottom.php:159
+msgid "Install"
+msgstr "Installeeren"
+
+#: ../includes/include.bottom.php:160
+msgid "Uninstall"
+msgstr "Deinstalleeren"
+
+#: ../includes/include.bottom.php:161
+msgid "Plugin"
+msgstr "Plugin"
+
+#: ../includes/include.bottom.php:162
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../includes/include.bottom.php:163
+msgid "Tags"
+msgstr "Tags"
+
+#: ../includes/include.bottom.php:164
+msgid "Author"
+msgstr "Auteur"
+
+#: ../includes/include.bottom.php:165
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../includes/include.bottom.php:166
+msgid "Version"
+msgstr "Versie"
+
+#: ../includes/include.bottom.php:167
+msgid "Dependencies"
+msgstr "Afhankelijkheden"
+
+#: ../includes/include.bottom.php:168
+msgid "Modules"
+msgstr "Modules"
+
+#: ../includes/include.bottom.php:169
+msgid "Install modules for the current client"
+msgstr "Installeer modules voor de huidige client"
+
+#: ../includes/include.bottom.php:170
+msgid "Repository"
+msgstr "Opslagplaats"
+
+#: ../includes/include.bottom.php:283
+#, php-format
+msgid ""
+"%s can't be uninstalled because of another installed plugin's dependencies"
+msgstr ""
+"%s kan niet worden verwijderd als gevolg van afhankelijkheden van andere "
+"geïnstalleerde plugins"
+
+#: ../includes/include.bottom.php:290
+#, php-format
+msgid "Uninstall %s including it's modules (all clients)"
+msgstr "Desinstalleer %s inclusief zijn modules (alle cliënten)"
+
+#: ../includes/include.bottom.php:290
+#, php-format
+msgid "Uninstall %s"
+msgstr "%s deinstalleeren"
+
+#: ../includes/include.bottom.php:326
+msgid "Missing plugin"
+msgstr "Ontbrekende plugin"
+
+#: ../includes/include.bottom.php:328 ../includes/include.bottom.php:335
+#, php-format
+msgid "Missing or outdated dependencies prevent installation of %s"
+msgstr ""
+"Ontbrekende of verouderde afhankelijkheden verhinderen de installatie van %s"
+
+#: ../includes/include.bottom.php:333
+msgid "Outdated plugin"
+msgstr "Verouderde plugin"
+
+#: ../includes/include.bottom.php:346
+#, php-format
+msgid "Install %s"
+msgstr "%s installeeren"
+
+#: ../includes/include.bottom.php:350
+#, php-format
+msgid "Update %s"
+msgstr "%s updaten"
+
+#: ../includes/include.bottom.php:375
+msgid "Zip file downloaded"
+msgstr "Zip-bestand gedownload"
+
+#: ../includes/include.bottom.php:384
+msgid "Zip file extracted"
+msgstr "Zip-bestand uitgepakt"
+
+#: ../includes/include.bottom.php:392
+msgid "Failed to download zip file"
+msgstr "Zip-bestand downloaden mislukt"
+
+#: ../includes/include.bottom.php:400
+#, php-format
+msgid "Folder %s created"
+msgstr "Map %s gecreëerd"
+
+#: ../includes/include.bottom.php:404
+#, php-format
+msgid "Unable to create folder %s"
+msgstr "Kan map %s niet maken"
+
+#: ../includes/include.bottom.php:425
+msgid "Installing database entries"
+msgstr "Databasegegevens installeren"
+
+#: ../includes/include.bottom.php:500
+#, php-format
+msgid "Registering plugin %s in database"
+msgstr "Registreer plugin %s in de database"
+
+#: ../includes/include.bottom.php:506
+#, php-format
+msgid "Plugin %s successfully installed"
+msgstr "Plugin %s met succes geïnstalleerd"
+
+#: ../includes/include.bottom.php:507 ../includes/include.bottom.php:578
+#: ../includes/include.bottom.php:732
+msgid "(auto redirect in 5 seconds)"
+msgstr "(auto-redirect in 5 seconden)"
+
+#: ../includes/include.bottom.php:511
+#, php-format
+msgid "Unable to install %s, missing install information"
+msgstr "Kan %s niet installeren, installatie informatie ontbreekt"
+
+#: ../includes/include.bottom.php:545
+#, php-format
+msgid "Updating module %s"
+msgstr "Module %s updaten"
+
+#: ../includes/include.bottom.php:552
+#, php-format
+msgid "Installing module %s"
+msgstr "Module %s installeeren"
+
+#: ../includes/include.bottom.php:562
+msgid "Copying additional files"
+msgstr "Extra bestanden kopiëren"
+
+#: ../includes/include.bottom.php:577
+#, php-format
+msgid "Modules of plugin %s successfully installed for client %s"
+msgstr "Modules van de plugin %s succesvol geïnstalleerd voor client %s"
+
+#: ../includes/include.bottom.php:596
+#, php-format
+msgid "Searching for installed modules %s"
+msgstr "Zoeken naar geïnstalleerde modules %s"
+
+#: ../includes/include.bottom.php:606
+#, php-format
+msgid "Deleting module %s"
+msgstr "Verwijderen van module %s"
+
+#: ../includes/include.bottom.php:612
+#, php-format
+msgid "Deleting translation entries for module %s"
+msgstr "Het verwijderen vertalings informaties voor module %s"
+
+#: ../includes/include.bottom.php:616
+#, php-format
+msgid "Deleting accompanying file for module %s from all clients"
+msgstr "Bijgevoegde bestanden voor module %s verwijderen uit alle cliënten"
+
+#: ../includes/include.bottom.php:648
+msgid "Deleting additional files"
+msgstr "Extra bestanden verwijderen"
+
+#: ../includes/include.bottom.php:674
+#, php-format
+msgid "Deleting additional database tables for %s"
+msgstr "Extra database tabellen voor %s verwijderen"
+
+#: ../includes/include.bottom.php:698
+#, php-format
+msgid "Getting the uninstall info for %s"
+msgstr "Ophalen van de uninstall info voor %s"
+
+#: ../includes/include.bottom.php:709
+#, php-format
+msgid "Deleting database records for %s"
+msgstr "Database records voor %s verwijderen"
+
+#: ../includes/include.bottom.php:720
+#, php-format
+msgid "Deleting the uninstall info for %s"
+msgstr "Deïnstallatie informatie voor %s verwijderen"
+
+#: ../includes/include.bottom.php:727
+#, php-format
+msgid "Removing folders and files for %s"
+msgstr "Verwijderen van mappen en bestanden voor %s"
+
+#: ../includes/include.bottom.php:731
+#, php-format
+msgid "Plugin %s successfully uninstalled and removed"
+msgstr "Plugin %s succesvol gedesinstalleerd en verwijderd"
+
+#: ../includes/include.bottom.php:765
+msgid "Name"
+msgstr "Naam"
+
+#: ../includes/include.bottom.php:766
+msgid "Server address"
+msgstr "Server adres"
+
+#: ../includes/include.bottom.php:767
+msgid "Login"
+msgstr "Login"
+
+#: ../includes/include.bottom.php:768
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: ../includes/include.bottom.php:769
+msgid "Edit"
+msgstr "Bewerken"
+
+#: ../includes/include.bottom.php:770
+msgid "Edit not possible"
+msgstr "Bewerken niet mogelijk"
+
+#: ../includes/include.bottom.php:771
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: ../includes/include.bottom.php:772
+msgid "Delete not possible"
+msgstr "Verwijderen niet mogelijk"
+
+#: ../includes/include.bottom.php:773
+msgid "Add a new repository"
+msgstr "Nieuwe opslagplaats aanvoegen"
+
+#: ../includes/include.bottom.php:774
+msgid "Save"
+msgstr "Bewerking opslaan"
+
+#~ msgid "Install plugin"
+#~ msgstr "Plugin installeeren"
+
+#~ msgid "Uninstall plugin"
+#~ msgstr "Plugin deinstalleeren"

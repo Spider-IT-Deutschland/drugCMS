@@ -1,0 +1,117 @@
+
+    <script type="text/javascript">
+    //<![CDATA[
+        $(document).ready(function() {
+            $('.remove').click(function() {
+                $('#RemoveKey').val($(this).attr('data-name'));
+                $('#RemoveForm').submit();
+            });
+            $('.install_mod').click(function() {
+                $('#Action').val('InstallModules');
+                $('#RemoveKey').val($(this).attr('data-name'));
+                $('#RemoveForm').submit();
+            });
+            $('.install').click(function() {
+                $('#InstallKey').val($(this).attr('data-name'));
+                $('#InstallUrl').val($(this).attr('data-url'));
+                $('#InstallForm').submit();
+            });
+            $('#ClearFilter').click(function() {
+                $('#Filter').val('');
+                $('#FilterForm').submit();
+            });
+        });
+    //]]>
+    </script>
+    
+    <p><strong>{TEXT_INSTALLED}</strong></p>
+    <form id="RemoveForm" method="post" action="{FORM_ACTION}">
+        <div class="hiddens">
+            <input type="hidden" name="Filter" value="{FILTER}" />
+            <input id="Action" type="hidden" name="Action" value="Uninstall" />
+            <input id="RemoveKey" type="hidden" name="Key" value="" />
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">{TEXT_NAME}</th>
+                        <th>{TEXT_DESCRIPTION}</th>
+                        <th>{TEXT_TAGS}</th>
+                        <th>{TEXT_AUTHOR}</th>
+                        <th>{TEXT_COPYRIGHT}</th>
+                        <th>{TEXT_VERSION}</th>
+                        <th>{TEXT_DEPENDENCIES}</th>
+                        {if ('{SHOW_MODULES}' == 'true')}<th colspan="2">{TEXT_MODULES}</th>{/if}
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- BEGIN:BLOCK --><tr>
+                        <td class="{CLASS}"><img class="{IMG_CLASS}" data-name="{KEY}" src="images/{IMAGE}.gif" alt="{TEXT_UNINSTALL}" title="{TEXT_UNINSTALL}" /></td>
+                        <td class="{CLASS}">{NAME}</td>
+                        <td class="{CLASS}">{DESCRIPTION}</td>
+                        <td class="{CLASS} pcase">{TAGS}</td>
+                        <td class="{CLASS}">{AUTHOR}</td>
+                        <td class="{CLASS}">{COPYRIGHT}</td>
+                        <td class="{CLASS}">{VERSION}</td>
+                        <td class="{CLASS}">{DEPENDENCIES}</td>
+                        {if ('{SHOW_MODULES}' == 'true')}<td class="{CLASS}">{if ('{INST_MOD}' == 'true')}<img class="install_mod" data-name="{KEY}" src="images/importieren.gif" alt="{TEXT_INSTALL_MODULES}" title="{TEXT_INSTALL_MODULES}" />{/if}</td>
+                        <td class="{CLASS}">{MODULES}</td>{/if}
+                    </tr>
+                    <!-- END:BLOCK -->
+                </tbody>
+            </table>
+        </div>
+    </form>
+    
+    <p><strong>{TEXT_AVAILABLE}</strong></p>
+    <form id="FilterForm" method="post" action="{FORM_ACTION}">
+        <div class="table">
+            <table>
+                <tr>
+                    <th>{TEXT_FILTER}</th>
+                    <td>{TEXT_TAGS}</td>
+                    <td><input id="Filter" type="text" name="Filter" value="{FILTER}" /><input type="image" src="images/submit.gif" alt="{TEXT_DO_FILTER}" title="{TEXT_DO_FILTER}" class="filter" /><img id="ClearFilter" src="images/but_delete.gif" alt="{TEXT_CLEAR_FILTER}" title="{TEXT_CLEAR_FILTER}" /></td>
+                    <td>{TEXT_FILTER_DESCRIPTION}</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <form id="InstallForm" method="post" action="{FORM_ACTION}">
+        <div class="hiddens">
+            <input type="hidden" name="Filter" value="{FILTER}" />
+            <input type="hidden" name="Action" value="Install" />
+            <input id="InstallKey" type="hidden" name="Key" value="" />
+            <input id="InstallUrl" type="hidden" name="Url" value="" />
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">{TEXT_NAME}</th>
+                        <th>{TEXT_DESCRIPTION}</th>
+                        <th>{TEXT_TAGS}</th>
+                        <th>{TEXT_AUTHOR}</th>
+                        <th>{TEXT_COPYRIGHT}</th>
+                        <th>{TEXT_VERSION}</th>
+                        <th>{TEXT_DEPENDENCIES}</th>
+                        {if ('{SHOW_REPOSITORY}' != '')}<th>{TEXT_REPOSITORY}</th>{/if}
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- BEGIN:BLOCK:1 --><tr>
+                        <td class="{CLASS}"><img class="{IMG_CLASS}" data-name="{KEY}" data-url="{URL}" src="images/{IMAGE}.gif" alt="{TEXT_INSTALL}" title="{TEXT_INSTALL}" /></td>
+                        <td class="{CLASS}">{NAME}</td>
+                        <td class="{CLASS}">{DESCRIPTION}</td>
+                        <td class="{CLASS} pcase">{TAGS}</td>
+                        <td class="{CLASS}">{AUTHOR}</td>
+                        <td class="{CLASS}">{COPYRIGHT}</td>
+                        <td class="{CLASS}">{VERSION}</td>
+                        <td class="{CLASS}">{DEPENDENCIES}</td>
+                        {if ('{SHOW_REPOSITORY}' != '')}<td class="{CLASS}">{REPOSITORY}</td>{/if}
+                    </tr>
+                    <!-- END:BLOCK:1 -->
+                </tbody>
+            </table>
+        </div>
+    </form>

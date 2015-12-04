@@ -82,35 +82,6 @@ while (($data = fgetcsv($file, 4000, ';')) !== false) {
     $fullcount++;
 }
 
-// Count DB Chunks (plugins)
-$file = fopen('data/tables_pi.txt', 'r');
-$step = 1;
-while (($data = fgetcsv($file, 4000, ';')) !== false) {
-    if ($count == 50) {
-        $count = 1;
-        $step++;
-    }
-
-    if ($currentstep == $step) {
-        if ($data[7] == '1') {
-            $drop = true;
-        } else {
-            $drop = false;
-        }
-        dbUpgradeTable($db, $_SESSION['dbprefix'].'_'.$data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], '', $drop);
-        dbUpdateSequence($_SESSION['dbprefix'].'_sequence', $_SESSION['dbprefix'] . '_' . $data[1], $db);
-
-        if ($db->errno != 0) {
-            $_SESSION['install_failedupgradetable'] = true;
-        }
-    }
-
-    $count++;
-    $fullcount++;
-}
-
-$pluginChunks = array();
-
 $baseChunks = explode("\n", file_get_contents('data/base.txt'));
 
 $clientChunksDe = explode("\n", file_get_contents('data/client_de.txt'));
@@ -132,26 +103,6 @@ $contentChunksEn = explode("\n", file_get_contents('data/examples_en.txt'));
 $contentChunksDeEn = explode("\n", file_get_contents('data/examples_de_en.txt')); 
 
 $sysadminChunk = explode("\n", file_get_contents('data/sysadmin.txt'));
-
-if ($_SESSION['plugin_newsletter'] == 'true') {
-    $newsletter = explode("\n", file_get_contents('data/plugin_newsletter.txt'));
-    $pluginChunks = array_merge($pluginChunks, $newsletter);
-}
-
-if ($_SESSION['plugin_content_allocation'] == 'true') {
-    $content_allocation = explode("\n", file_get_contents('data/plugin_content_allocation.txt'));
-    $pluginChunks = array_merge($pluginChunks, $content_allocation);
-}
-
-if ($_SESSION['plugin_mod_rewrite'] == 'true') {
-    $mod_rewrite = explode("\n", file_get_contents('data/plugin_mod_rewrite.txt'));
-    $pluginChunks = array_merge($pluginChunks, $mod_rewrite);
-}
-
-if ($_SESSION['plugin_db_backup'] == 'true') {
-    $db_backup = explode("\n", file_get_contents('data/plugin_db_backup.txt'));
-    $pluginChunks = array_merge($pluginChunks, $db_backup);
-}
 
 if ($_SESSION['setuptype'] == 'setup') {
     switch ($_SESSION['clientmode']) {
@@ -182,8 +133,6 @@ if ($_SESSION['setuptype'] == 'upgrade') {
     $upgradeChunks = explode("\n", file_get_contents('data/upgrade.txt'));
     $fullChunks = array_merge($fullChunks, $upgradeChunks);
 }
-
-$fullChunks = array_merge($fullChunks, $pluginChunks);
 
 
 list($root_path, $root_http_path) = getSystemDirectories();

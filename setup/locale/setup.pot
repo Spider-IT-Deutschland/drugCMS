@@ -5,293 +5,226 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: drugCMS 2.0.0\n"
+"Project-Id-Version: drugCMS 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-17 11:08+0100\n"
-"PO-Revision-Date: 2013-09-17 11:08+0100\n"
+"POT-Creation-Date: 2015-12-04 12:01+0100\n"
+"PO-Revision-Date: 2015-12-04 12:01+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
-"Language-Team: drugCMS Team\n"
+"Language-Team: drugCMS Team <translate@drugcms.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: i18n_setup\n"
+"X-Poedit-KeywordsList: i18n_setup;i18n\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: W:\\drugcms_2.0\\setup\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: W:\drugcms_2.0\setup/lib/class.setupmask.php:58
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:44
+#: ../lib/class.setupmask.php:58 ../steps/forms/setupsummary.php:44
 msgid "Setup"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/lib/class.setupmask.php:61
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:47
+#: ../lib/class.setupmask.php:61 ../steps/forms/setupsummary.php:47
 msgid "Upgrade"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/lib/class.setupmask.php:64
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:50
+#: ../lib/class.setupmask.php:64 ../steps/forms/setupsummary.php:50
 msgid "Migration"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/lib/class.setupmask.php:122
+#: ../lib/class.setupmask.php:122
 msgid "The Content Management System with addictive potential"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/languagechooser.php:52
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:35
+#: ../steps/languagechooser.php:52 ../steps/notinstallable.php:35
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/languagechooser.php:53
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:36
+#: ../steps/languagechooser.php:53 ../steps/notinstallable.php:36
 msgid "Welcome to setup!"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/languagechooser.php:54
+#: ../steps/languagechooser.php:54
 msgid "This application will guide you trough the setup process."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/languagechooser.php:55
+#: ../steps/languagechooser.php:55
 msgid ""
 "Please choose your prefered language for the setup (if it's not this one) "
 "and click 'next' to start it."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:37
+#: ../steps/notinstallable.php:37
 msgid "Setup not runnable"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:39
+#: ../steps/notinstallable.php:39
 msgid ""
 "You need to set the PHP configuration directive 'session.use_cookies' to 1 "
 "and enable cookies in your browser. This setup won't work without that."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:41
+#: ../steps/notinstallable.php:41
 msgid ""
 "Couldn't detect neither MySQLi extension nor MySQL extension. You need to "
 "enable one of them in the PHP configuration (see dynamic extensions section "
 "in your php.ini). drugCMS won't work without that."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:43
+#: ../steps/notinstallable.php:43
 #, php-format
 msgid ""
 "Unfortunately your webserver doesn't match the minimum requirement of PHP %s "
 "or higher. Please install PHP %s or higher and then run the setup again."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/notinstallable.php:46
+#: ../steps/notinstallable.php:46
 msgid "Reason unknown"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:23
+#: ../steps/setuptype.php:23
 msgid "Please choose your setup type"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:28
+#: ../steps/setuptype.php:28
 msgid "Install new version"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:34
+#: ../steps/setuptype.php:34
 #, php-format
 msgid "This setup type will install %s."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:34
+#: ../steps/setuptype.php:34
 msgid ""
 "Please choose this type if you want to start with an empty or an example "
 "installation."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:34
+#: ../steps/setuptype.php:34
 msgid "Recommended for new projects."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:37
+#: ../steps/setuptype.php:37
 msgid "Upgrade existing installation"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:43
+#: ../steps/setuptype.php:43
 #, php-format
 msgid ""
 "This setup type will upgrade your existing installation to %s (ConLite 1.0.x "
 "or later/Contenido 4.6.x or later required)."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:43
+#: ../steps/setuptype.php:43
 msgid "Recommended for existing projects."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:46
+#: ../steps/setuptype.php:46
 msgid "Migrate existing installation"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:52
+#: ../steps/setuptype.php:52
 #, php-format
 msgid ""
 "This setup type will help you migrating an existing installation (Version "
 "%s) to another server."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/setuptype.php:52
+#: ../steps/setuptype.php:52
 msgid "Recommended for moving projects across servers."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:36
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:37
-msgid "System Installation"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:38
-msgid "drugCMS will be installed, please wait&hellip;"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:44
-msgid "Setup completed installing. Click next to continue."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:45
-msgid "Setup is installing, please wait&hellip;"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:50
-msgid "Setup completed upgrading. Click next to continue."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:51
-msgid "Setup is upgrading, please wait&hellip;"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:56
-msgid "Setup completed migration. Click next to continue."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/installer.php:57
-msgid "Setup is migrating, please wait&hellip;"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:36
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:37
-msgid "Summary"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:38
-msgid ""
-"Please check your settings and click on the next button to start the "
-"installation"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:56
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:49
-msgid "Save"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:59
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:53
-msgid "Download"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:64
-msgid "Installation type"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database parameters"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database host"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database name"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database username"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database prefix"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:65
-msgid "Database mode"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:69
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:42
-msgid "Client with example modules and example content, german and english"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:70
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:43
-msgid "Client with example modules and example content, german only"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:71
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:44
-msgid "Client with example modules and example content, english only"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:72
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:45
-msgid "Client with example modules, but without example content"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:73
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:46
-msgid "Client without examples"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:74
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:47
-msgid "Don't create client"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:75
-msgid "Client installation"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:81
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:53
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:54
+#: ../steps/forms/additionalplugins.php:54
+#: ../steps/forms/additionalplugins.php:55 ../steps/forms/setupsummary.php:81
 msgid "Additional Plugins"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:101
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:59
-msgid "Newsletter"
+#: ../steps/forms/additionalplugins.php:57
+msgid ""
+"Plugins can be installed after installation under <i>Extras - Plugin "
+"Manager</i>"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:104
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:60
-msgid "Content Allocation"
+#: ../steps/forms/additionalplugins.php:74
+msgid "More information"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:107
-msgid "Mod Rewrite"
+#: ../steps/forms/clientadjust.php:41 ../steps/forms/clientadjust.php:42
+msgid "Client Settings"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/setupsummary.php:110
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:62
-msgid "DB Backup"
+#: ../steps/forms/clientadjust.php:43
+msgid ""
+"Please check the directories identified by the system. If you need to change "
+"a client path, click on the name and enter your new path in the available "
+"input box."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:32
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:33
+#: ../steps/forms/clientadjust.php:84
+#, php-format
+msgid "Old server path for %s (%s)"
+msgstr ""
+
+#: ../steps/forms/clientadjust.php:86
+#, php-format
+msgid "New server path for %s (%s)"
+msgstr ""
+
+#: ../steps/forms/clientadjust.php:96
+#, php-format
+msgid "Old web path for %s (%s)"
+msgstr ""
+
+#: ../steps/forms/clientadjust.php:98
+#, php-format
+msgid "New web path for %s (%s)"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:36 ../steps/forms/clientmode.php:37
+msgid "Example Client"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:38
+msgid ""
+"If you are new to drugCMS, you should create an example client to start "
+"working with."
+msgstr ""
+
+#: ../steps/forms/clientmode.php:42 ../steps/forms/setupsummary.php:69
+msgid "Client with example modules and example content, german and english"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:43 ../steps/forms/setupsummary.php:70
+msgid "Client with example modules and example content, german only"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:44 ../steps/forms/setupsummary.php:71
+msgid "Client with example modules and example content, english only"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:45 ../steps/forms/setupsummary.php:72
+msgid "Client with example modules, but without example content"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:46 ../steps/forms/setupsummary.php:73
+msgid "Client without examples"
+msgstr ""
+
+#: ../steps/forms/clientmode.php:47 ../steps/forms/setupsummary.php:74
+msgid "Don't create client"
+msgstr ""
+
+#: ../steps/forms/configmode.php:28 ../steps/forms/configmode.php:29
 msgid "config.php mode"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:34
+#: ../steps/forms/configmode.php:30
 msgid "Please choose 'save' or 'download'"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/configmode.php:35
+#: ../steps/forms/configmode.php:31
 msgid ""
 "drugCMS requires a configuration file called 'config.php'. This file will be "
 "generated by the setup automatically. If 'save' is activated by default, "
@@ -301,96 +234,174 @@ msgid ""
 "appears at the end of the setup process."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:41
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:42
-msgid "Client Settings"
+#: ../steps/forms/configmode.php:45 ../steps/forms/setupsummary.php:56
+msgid "Save"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:43
+#: ../steps/forms/configmode.php:49 ../steps/forms/setupsummary.php:59
+msgid "Download"
+msgstr ""
+
+#: ../steps/forms/installer.php:36 ../steps/forms/installer.php:37
+msgid "System Installation"
+msgstr ""
+
+#: ../steps/forms/installer.php:38
+msgid "drugCMS will be installed, please wait&hellip;"
+msgstr ""
+
+#: ../steps/forms/installer.php:44
+msgid "Setup completed installing. Click next to continue."
+msgstr ""
+
+#: ../steps/forms/installer.php:45
+msgid "Setup is installing, please wait&hellip;"
+msgstr ""
+
+#: ../steps/forms/installer.php:50
+msgid "Setup completed upgrading. Click next to continue."
+msgstr ""
+
+#: ../steps/forms/installer.php:51
+msgid "Setup is upgrading, please wait&hellip;"
+msgstr ""
+
+#: ../steps/forms/installer.php:56
+msgid "Setup completed migration. Click next to continue."
+msgstr ""
+
+#: ../steps/forms/installer.php:57
+msgid "Setup is migrating, please wait&hellip;"
+msgstr ""
+
+#: ../steps/forms/pathinfo.php:38 ../steps/forms/pathinfo.php:39
+msgid "System folders"
+msgstr ""
+
+#: ../steps/forms/pathinfo.php:40
 msgid ""
-"Please check the directories identified by the system. If you need to change "
-"a client path, click on the name and enter your new path in the available "
-"input box."
+"Please check the paths identified by the system. If you need to change a "
+"path, click on the name and enter the new path in the available input box."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:84
-#, php-format
-msgid "Old server path for %s (%s)"
+#: ../steps/forms/pathinfo.php:56
+msgid "drugCMS Root Path"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:86
-#, php-format
-msgid "New server path for %s (%s)"
+#: ../steps/forms/pathinfo.php:58
+msgid "drugCMS Web Path"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:96
-#, php-format
-msgid "Old web path for %s (%s)"
+#: ../steps/forms/setupresults.php:23 ../steps/forms/setupresults.php:27
+msgid "Results"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/clientadjust.php:98
-#, php-format
-msgid "New web path for %s (%s)"
+#: ../steps/forms/setupresults.php:28
+msgid "drugCMS was installed and configured successfully on your server."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:55
-msgid "Please select Plugins to be installed"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:59
+#: ../steps/forms/setupresults.php:30
 msgid ""
-"Newsletterfunctionality for dispatching text newsletters and HTML-"
-"Newsletters, extensible with professional newsletter extensions. Definition "
-"of newsletter recipients and groups of recipients. Layout design of the HTML-"
-"Newsletters by drugCMS articles."
+"Please use username <strong>sysadmin</strong> and password <strong>sysadmin</"
+"strong> to login into drugCMS's Backend."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:60
+#: ../steps/forms/setupresults.php:34
+msgid "Please choose an item to start working"
+msgstr ""
+
+#: ../steps/forms/setupresults.php:35
 msgid ""
-"For the representation and administration of content, 4fb developed the "
-"Content Allocation and content include technology. This technology "
-"dynamically allows on basis of a Template, to put the content in different "
-"places and in different formats according to several criteria."
+"You can now start using drugCMS. <strong>Please delete the folder named "
+"'setup'!</strong>"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:61
-msgid "AMR"
+#: ../steps/forms/setupresults.php:59
+msgid "Setup Results"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:61
-msgid "Creates so called SEO or Clean URLs for your website in drugCMS"
+#: ../steps/forms/setupresults.php:69
+#, php-format
+msgid ""
+"Errors occured during installation. Please take a look at the file %s "
+"(located in /drugcms/data/logs/) for more information."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:62
-msgid "Database backup and restore functionality in the drugCMS backend"
+#: ../steps/forms/setupsummary.php:36 ../steps/forms/setupsummary.php:37
+msgid "Summary"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:72
-msgid "More information"
+#: ../steps/forms/setupsummary.php:38
+msgid ""
+"Please check your settings and click on the next button to start the "
+"installation"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/additionalplugins.php:77
-msgid "None available"
+#: ../steps/forms/setupsummary.php:64
+msgid "Installation type"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:74
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:75
+#: ../steps/forms/setupsummary.php:65
+msgid "Database parameters"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:65
+msgid "Database host"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:65
+msgid "Database name"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:65
+msgid "Database username"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:65
+msgid "Database prefix"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:65
+msgid "Database mode"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:75
+msgid "Client installation"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:101
+msgid "Newsletter"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:104
+msgid "Content Allocation"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:107
+msgid "Mod Rewrite"
+msgstr ""
+
+#: ../steps/forms/setupsummary.php:110
+msgid "DB Backup"
+msgstr ""
+
+#: ../steps/forms/systemdata.php:76 ../steps/forms/systemdata.php:77
 msgid "Database Parameters"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:79
+#: ../steps/forms/systemdata.php:81
 msgid ""
 "Please enter the required database information. If you are unsure about the "
 "data, ask your provider or administrator."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:79
+#: ../steps/forms/systemdata.php:81
 msgid ""
 "If the database does not exist and your database user has the sufficient "
 "permissions, setup will create the database automatically."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:82
+#: ../steps/forms/systemdata.php:84
 msgid ""
 "Please enter the required database information. If the database data of your "
 "previous installation could have been read, the data will be inserted "
@@ -398,119 +409,101 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:85
+#: ../steps/forms/systemdata.php:87
 msgid ""
 "Please enter the required database information. Make sure you copied the "
 "data from your old installation (e.g. development or staging system) into a "
 "new database. Please enter the parameters of the new database."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:137
+#: ../steps/forms/systemdata.php:190
 msgid "Database Server (IP or name)"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:140
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:142
+#: ../steps/forms/systemdata.php:193 ../steps/forms/systemdata.php:195
 msgid "Database Name"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:140
+#: ../steps/forms/systemdata.php:193
 msgid "(use empty or non-existant database)"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:145
+#: ../steps/forms/systemdata.php:198
 msgid "Database Username"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:146
+#: ../steps/forms/systemdata.php:199
 msgid "Database Password"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:147
+#: ../steps/forms/systemdata.php:200
 msgid "Table Prefix"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:148
+#: ../steps/forms/systemdata.php:201
+msgid "Database Encoding"
+msgstr ""
+
+#: ../steps/forms/systemdata.php:202
 msgid "Access mode"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:166
+#: ../steps/forms/systemdata.php:221
 msgid "You need to enter a database host."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:167
+#: ../steps/forms/systemdata.php:222
 msgid "You need to enter a database name."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemdata.php:168
+#: ../steps/forms/systemdata.php:223
 msgid "You need to enter a database user."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/pathinfo.php:38
-#: W:\drugcms_2.0\setup/steps/forms/pathinfo.php:39
-msgid "System folders"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/pathinfo.php:40
-msgid ""
-"Please check the paths identified by the system. If you need to change a "
-"path, click on the name and enter the new path in the available input box."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/pathinfo.php:56
-msgid "drugCMS Root Path"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/pathinfo.php:58
-msgid "drugCMS Web Path"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:48
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:49
+#: ../steps/forms/systemtest.php:48 ../steps/forms/systemtest.php:49
 msgid "System Test"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:50
+#: ../steps/forms/systemtest.php:50
 msgid "Your system has been tested for compatibility with drugCMS"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:69
+#: ../steps/forms/systemtest.php:69
 msgid "PHP MySQL Extension missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:70
+#: ../steps/forms/systemtest.php:70
 msgid ""
 "drugCMS requires the MySQL or MySQLi extension to access MySQL databases. "
 "Please configure PHP to use either MySQL or MySQLi."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:85
+#: ../steps/forms/systemtest.php:85
 msgid "Information"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:88
+#: ../steps/forms/systemtest.php:88
 msgid "Warning"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:91
+#: ../steps/forms/systemtest.php:91
 msgid "Fatal error"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:102
+#: ../steps/forms/systemtest.php:102
 msgid "No problems detected"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:102
+#: ../steps/forms/systemtest.php:102
 msgid "Setup could not detect any problems with your system environment"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:149
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:177
+#: ../steps/forms/systemtest.php:149 ../steps/forms/systemtest.php:177
 #, php-format
 msgid "An old Version of Plugin %s is installed on your system."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:154
+#: ../steps/forms/systemtest.php:154
 msgid ""
 "Please remove all old plugins before you continue. To transfer old plugin "
 "data, please copy the old plugin data tables into the new plugin data tables "
@@ -519,45 +512,45 @@ msgid ""
 "transfer."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:158
+#: ../steps/forms/systemtest.php:158
 msgid "Old Plugins are still installed"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:178
+#: ../steps/forms/systemtest.php:178
 msgid ""
 "Please remove the old plugin using the (un-)installer delivered with the old "
 "plugin before you continue."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:181
+#: ../steps/forms/systemtest.php:181
 msgid "Old ModRewrite-Plugin is still installed"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:201
+#: ../steps/forms/systemtest.php:201
 msgid "drugCMS demo client requires PHP 5.2 or higher"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:202
+#: ../steps/forms/systemtest.php:202
 msgid ""
 "The drugCMS demo client requires PHP 5.2 or higher. If you want to install "
 "the demo client, please update your PHP version."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:220
+#: ../steps/forms/systemtest.php:220
 msgid "PHP Version lower than 4.1.0"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:221
+#: ../steps/forms/systemtest.php:221
 msgid ""
 "drugCMS requires PHP 4.1.0 or higher as it uses functions first introduced "
 "with PHP 4.1.0. Please update your PHP version."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:225
+#: ../steps/forms/systemtest.php:225
 msgid "PHP Version equal to 4.2.3"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:226
+#: ../steps/forms/systemtest.php:226
 #, php-format
 msgid ""
 "The versions 4.2.2/4.2.3 of PHP can contain critical bugs which make it "
@@ -566,11 +559,11 @@ msgid ""
 "have a look at %s"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:259
+#: ../steps/forms/systemtest.php:259
 msgid "File uploads disabled"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:260
+#: ../steps/forms/systemtest.php:260
 #, php-format
 msgid ""
 "Your PHP version is not configured for file uploads. You can't upload files "
@@ -578,33 +571,33 @@ msgid ""
 "%s for more information"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:269
+#: ../steps/forms/systemtest.php:269
 msgid "PHP setting 'magic_quotes_runtime' is turned on"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:270
+#: ../steps/forms/systemtest.php:270
 msgid ""
 "The PHP setting 'magic_quotes_runtime' is turned on. drugCMS has been "
 "developed to comply with magic_quotes_runtime=Off as this is the PHP default "
 "setting. You have to change this directive to make drugCMS work."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:274
+#: ../steps/forms/systemtest.php:274
 msgid "PHP Setting 'magic_quotes_sybase' is turned on"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:275
+#: ../steps/forms/systemtest.php:275
 msgid ""
 "The PHP Setting 'magic_quotes_sybase' is turned on. drugCMS has been "
 "developed to comply with magic_quotes_sybase=Off as this is the PHP default "
 "setting. You have to change this directive to make drugCMS work."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:283
+#: ../steps/forms/systemtest.php:283
 msgid "PHP maximum execution time is less than 30 seconds"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:284
+#: ../steps/forms/systemtest.php:284
 msgid ""
 "PHP is configured for a maximum execution time of less than 30 seconds. This "
 "could cause problems with slow web servers and/or long operations in the "
@@ -612,11 +605,11 @@ msgid ""
 "60 seconds for medium ones and 30 seconds for fast web servers."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:301
+#: ../steps/forms/systemtest.php:301
 msgid "open_basedir directive set to '.'"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:302
+#: ../steps/forms/systemtest.php:302
 msgid ""
 "The directive open_basedir is set to '.' (e.g. current directory). This "
 "means that drugCMS is unable to access files in a logical upper level in the "
@@ -625,11 +618,11 @@ msgid ""
 "directive, or turn it off completely."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:307
+#: ../steps/forms/systemtest.php:307
 msgid "open_basedir setting might be insufficient"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:308
+#: ../steps/forms/systemtest.php:308
 msgid ""
 "Setup believes that the PHP directive open_basedir is configured sufficient, "
 "however, if you encounter errors like 'open_basedir restriction in effect. "
@@ -637,86 +630,84 @@ msgid ""
 "adjust the open_basedir directive"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:313
+#: ../steps/forms/systemtest.php:313
 msgid "open_basedir directive incompatible"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:314
+#: ../steps/forms/systemtest.php:314
 msgid ""
 "Setup has checked your PHP open_basedir directive and reckons that it is not "
 "sufficient. Please change the directive to include the drugCMS installation "
 "or turn it off completely."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:325
+#: ../steps/forms/systemtest.php:325
 msgid "PHP memory_limit directive too small"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:326
+#: ../steps/forms/systemtest.php:326
 msgid ""
 "The memory_limit directive is set to 32 MB or lower. This might be not "
 "enough for drugCMS to operate correctly. We recommend to disable this "
 "setting completely, as this can cause problems with large drugCMS projects."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:331
+#: ../steps/forms/systemtest.php:331
 msgid "PHP sql.safe_mode turned on"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:332
+#: ../steps/forms/systemtest.php:332
 msgid ""
 "The PHP directive sql.safe_mode is turned on. This causes problems with the "
 "SQL queries issued by drugCMS. Please turn that directive off."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:336
+#: ../steps/forms/systemtest.php:336
 msgid "PHP GD-Extension is not loaded"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:337
+#: ../steps/forms/systemtest.php:337
 msgid ""
 "The PHP GD-Extension is not loaded. Some third-party modules rely on the GD "
 "functionality. If you don't enable the GD extension, you will encounter "
 "problems with modules like galleries."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:341
+#: ../steps/forms/systemtest.php:341
 msgid "PHP PCRE Extension is not loaded"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:342
+#: ../steps/forms/systemtest.php:342
 msgid ""
 "The PHP PCRE Extension is not loaded. drugCMS uses PCRE-functions like "
 "preg_repace and preg_match and won't work without the PCRE Extension."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:346
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:356
+#: ../steps/forms/systemtest.php:346 ../steps/forms/systemtest.php:356
 msgid "PHP XML Extension is not loaded"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:347
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:357
+#: ../steps/forms/systemtest.php:347 ../steps/forms/systemtest.php:357
 msgid ""
 "The PHP XML Extension is not loaded. drugCMS uses XML-functions like "
 "xml_parser_create and won't work without the XML Extension."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:351
+#: ../steps/forms/systemtest.php:351
 msgid "PHP XMLWriter Extension is not loaded"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:352
+#: ../steps/forms/systemtest.php:352
 msgid ""
 "The PHP XMLWriter Extension is not loaded. drugCMS uses XMLWriter and won't "
 "work without the XMLWriter Extension."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:367
+#: ../steps/forms/systemtest.php:367
 msgid "Unable to check for a suitable image resizer"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:368
+#: ../steps/forms/systemtest.php:368
 msgid ""
 "Setup has tried to check for a suitable image resizer (which is, for "
 "example, required for thumbnail creation), but was not able to clearly "
@@ -724,82 +715,82 @@ msgid ""
 "extension or ImageMagick available."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:373
+#: ../steps/forms/systemtest.php:373
 msgid "No suitable image resizer available"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:374
+#: ../steps/forms/systemtest.php:374
 msgid ""
 "Setup checked your image resizing support, however, it was unable to find a "
 "suitable image resizer. Thumbnails won't work correctly or won't be looking "
 "good. Install the GD-Extension or ImageMagick"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:388
+#: ../steps/forms/systemtest.php:388
 msgid "GD-Library GIF read support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:389
+#: ../steps/forms/systemtest.php:389
 msgid ""
 "Your GD version doesn't support reading GIF files. This might cause problems "
 "with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:393
+#: ../steps/forms/systemtest.php:393
 msgid "GD-Library GIF write support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:394
+#: ../steps/forms/systemtest.php:394
 msgid ""
 "Your GD version doesn't support writing GIF files. This might cause problems "
 "with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:398
+#: ../steps/forms/systemtest.php:398
 msgid "GD-Library JPEG read support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:399
+#: ../steps/forms/systemtest.php:399
 msgid ""
 "Your GD version doesn't support reading JPEG files. This might cause "
 "problems with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:403
+#: ../steps/forms/systemtest.php:403
 msgid "GD-Library JPEG write support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:404
+#: ../steps/forms/systemtest.php:404
 msgid ""
 "Your GD version doesn't support writing JPEG files. This might cause "
 "problems with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:408
+#: ../steps/forms/systemtest.php:408
 msgid "GD-Library PNG read support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:409
+#: ../steps/forms/systemtest.php:409
 msgid ""
 "Your GD version doesn't support reading PNG files. This might cause problems "
 "with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:413
+#: ../steps/forms/systemtest.php:413
 msgid "GD-Library PNG write support missing"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:414
+#: ../steps/forms/systemtest.php:414
 msgid ""
 "Your GD version doesn't support writing PNG files. This might cause problems "
 "with some modules."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:431
+#: ../steps/forms/systemtest.php:431
 msgid "MySQL database connect failed"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:432
+#: ../steps/forms/systemtest.php:432
 #, php-format
 msgid ""
 "Setup was unable to connect to the MySQL Server (Server %s, Username %s). "
@@ -807,11 +798,11 @@ msgid ""
 "was: %s"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:472
+#: ../steps/forms/systemtest.php:472
 msgid "MySQL database already exists and seems to be filled"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:473
+#: ../steps/forms/systemtest.php:473
 #, php-format
 msgid ""
 "Setup checked the database %s and found the table %s. It seems that you "
@@ -820,24 +811,22 @@ msgid ""
 "version, choose 'upgrade' as setup type."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:487
+#: ../steps/forms/systemtest.php:487
 msgid "MySQL test table already exists in the database"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:488
+#: ../steps/forms/systemtest.php:488
 #, php-format
 msgid ""
 "Setup checked the database %s and found the test table %s. Please remove it "
 "before continuing."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:499
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:554
+#: ../steps/forms/systemtest.php:499 ../steps/forms/systemtest.php:554
 msgid "Unable to create tables in the selected MySQL database"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:500
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:555
+#: ../steps/forms/systemtest.php:500 ../steps/forms/systemtest.php:555
 #, php-format
 msgid ""
 "Setup tried to create a test table in the database %s and failed. Please "
@@ -845,17 +834,13 @@ msgid ""
 "an administrator to do so."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:512
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:567
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:628
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:676
+#: ../steps/forms/systemtest.php:512 ../steps/forms/systemtest.php:567
+#: ../steps/forms/systemtest.php:628 ../steps/forms/systemtest.php:676
 msgid "Unable to lock tables in the selected MySQL database"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:513
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:568
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:629
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:677
+#: ../steps/forms/systemtest.php:513 ../steps/forms/systemtest.php:568
+#: ../steps/forms/systemtest.php:629 ../steps/forms/systemtest.php:677
 #, php-format
 msgid ""
 "Setup tried to lock a test table in the database %s and failed. You can "
@@ -864,43 +849,40 @@ msgid ""
 "permission to your database user!"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:527
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:582
+#: ../steps/forms/systemtest.php:527 ../steps/forms/systemtest.php:582
 msgid "Unable to remove the test table"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:528
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:583
+#: ../steps/forms/systemtest.php:528 ../steps/forms/systemtest.php:583
 #, php-format
 msgid ""
 "Setup tried to remove the test table %s in the database %s and failed due to "
 "insufficient permissions. Please remove the table %s manually."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:541
+#: ../steps/forms/systemtest.php:541
 msgid "Unable to create the database in the MySQL server"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:542
+#: ../steps/forms/systemtest.php:542
 msgid ""
 "Setup tried to create a test database and failed. Please assign database "
 "creation permissions to the database user you entered, ask an administrator "
 "to do so, or create the database manually."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:598
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:615
+#: ../steps/forms/systemtest.php:598 ../steps/forms/systemtest.php:615
 msgid "No data found for the migration"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:599
+#: ../steps/forms/systemtest.php:599
 #, php-format
 msgid ""
 "Setup tried to locate the data for the migration, however, the database %s "
 "doesn't exist. You need to copy your database first before running setup."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:616
+#: ../steps/forms/systemtest.php:616
 #, php-format
 msgid ""
 "Setup tried to locate the data for the migration, however, the database %s "
@@ -908,19 +890,18 @@ msgid ""
 "setup."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:646
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:663
+#: ../steps/forms/systemtest.php:646 ../steps/forms/systemtest.php:663
 msgid "No data found for the upgrade"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:647
+#: ../steps/forms/systemtest.php:647
 #, php-format
 msgid ""
 "Setup tried to locate the data for the upgrade, however, the database %s "
 "doesn't exist. You need to copy your database first before running setup."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:664
+#: ../steps/forms/systemtest.php:664
 #, php-format
 msgid ""
 "Setup tried to locate the data for the upgrade, however, the database %s "
@@ -928,25 +909,25 @@ msgid ""
 "setup."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:744
+#: ../steps/forms/systemtest.php:744
 #, php-format
 msgid "Can't write %s"
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:745
+#: ../steps/forms/systemtest.php:745
 #, php-format
 msgid ""
 "Setup or drugCMS can't write to the file %s. Please change the file "
 "permissions to correct this problem."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:754
+#: ../steps/forms/systemtest.php:754
 msgid ""
 "Your Server runs Windows. Due to that, Setup can't recommend any file "
 "permissions."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:758
+#: ../steps/forms/systemtest.php:758
 #, php-format
 msgid ""
 "Due to a very restrictive environment, an advise is not possible. Ask your "
@@ -954,7 +935,7 @@ msgid ""
 "environments where ACL (Access Control Lists) are used."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:764
+#: ../steps/forms/systemtest.php:764
 #, php-format
 msgid ""
 "Your web server and the owner of your files are identical. You need to "
@@ -962,7 +943,7 @@ msgid ""
 "file mask to %s or set the owner to allow writing the file."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:770
+#: ../steps/forms/systemtest.php:770
 #, php-format
 msgid ""
 "Your web server's group and the group of your files are identical. You need "
@@ -970,7 +951,7 @@ msgid ""
 "file mask to %s or set the group to allow writing the file."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:776
+#: ../steps/forms/systemtest.php:776
 #, php-format
 msgid ""
 "Your web server is not equal to the file owner, and is not in the "
@@ -980,13 +961,13 @@ msgid ""
 "others to allow writing the file."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:785
+#: ../steps/forms/systemtest.php:785
 msgid ""
 "Your Server runs Windows. Due to that, Setup can't recommend any directory "
 "permissions."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:789
+#: ../steps/forms/systemtest.php:789
 #, php-format
 msgid ""
 "Due to a very restrictive environment, an advise is not possible. Ask your "
@@ -994,7 +975,7 @@ msgid ""
 "especially in environments where ACL (Access Control Lists) are used."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:795
+#: ../steps/forms/systemtest.php:795
 #, php-format
 msgid ""
 "Your web server and the owner of your directory are identical. You need to "
@@ -1002,7 +983,7 @@ msgid ""
 "directory mask to %s or set the owner to allow writing the directory."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:801
+#: ../steps/forms/systemtest.php:801
 #, php-format
 msgid ""
 "Your web server's group and the group of your directory are identical. You "
@@ -1010,7 +991,7 @@ msgid ""
 "the directory mask to %s or set the group to allow writing the directory."
 msgstr ""
 
-#: W:\drugcms_2.0\setup/steps/forms/systemtest.php:807
+#: ../steps/forms/systemtest.php:807
 #, php-format
 msgid ""
 "Your web server is not equal to the directory owner, and is not in the "
@@ -1018,51 +999,4 @@ msgid ""
 "the directory. If you want to install anyways, enable write access for all "
 "others, e.g. using chmod o+rw %s, setting the directory mask to %s or set "
 "the others to allow writing the directory."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:36
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:37
-msgid "Example Client"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/clientmode.php:38
-msgid ""
-"If you are new to drugCMS, you should create an example client to start "
-"working with."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:23
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:27
-msgid "Results"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:28
-msgid "drugCMS was installed and configured successfully on your server."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:30
-msgid ""
-"Please use username <strong>sysadmin</strong> and password <strong>sysadmin</"
-"strong> to login into drugCMS's Backend."
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:34
-msgid "Please choose an item to start working"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:35
-msgid ""
-"You can now start using drugCMS. <strong>Please delete the folder named "
-"'setup'!</strong>"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:59
-msgid "Setup Results"
-msgstr ""
-
-#: W:\drugcms_2.0\setup/steps/forms/setupresults.php:69
-#, php-format
-msgid ""
-"Errors occured during installation. Please take a look at the file %s "
-"(located in /drugcms/data/logs/) for more information."
 msgstr ""

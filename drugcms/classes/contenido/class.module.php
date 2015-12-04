@@ -640,6 +640,8 @@ class cApiModule extends Item
         // Parse file
         if ($this->_parseImportFile($sFile, "package")) {
             // Import data
+            $this->set('package_data', serialize($this->getPackageOverview()));
+            
             // Module
             foreach ($_mImport["module"] as $sKey => $sData) {
                 if ($this->get($sKey) != $sData) {

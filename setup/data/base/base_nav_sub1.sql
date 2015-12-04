@@ -30,7 +30,6 @@ INSERT INTO `!PREFIX!_nav_sub` VALUES (33, 0, 42, 1, 'navigation/mydrugcms/overv
 INSERT INTO `!PREFIX!_nav_sub` VALUES (35, 5, 28, 0, 'navigation/administration/plugins', 0);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (36, 5, 46, 0, 'navigation/administration/clients/main', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (37, 0, 4, 1, 'navigation/content/article/preview', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (38, 3, 50, 1, 'navigation/extra/recipients', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (39, 0, 42, 0, 'navigation/mydrugcms/main', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (40, 0, 52, 1, 'navigation/info', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (41, 0, 61, 1, 'navigation/administration/groups/overview', 1);
@@ -62,7 +61,6 @@ INSERT INTO `!PREFIX!_nav_sub` VALUES (76, 0, 45, 1, 'navigation/mydrugcms/setti
 INSERT INTO `!PREFIX!_nav_sub` VALUES (77, 0, 81, 1, 'navigation/style/modules/translation', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (78, 0, 83, 1, 'navigation/administration/clients/clientsettings', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (79, 0, 6, 1, 'navigation/content/structure/overview', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (81, 3, 86, 1, 'navigation/extra/recipientgroups', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (82, 3, 92, 1, 'navigation/style/modules/package', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (397, 0, 71, 1, 'navigation/style/tpleditor/file', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (398, 0, 32, 1, 'navigation/style/jseditor/file', 1);
@@ -73,10 +71,5 @@ INSERT INTO `!PREFIX!_nav_sub` VALUES (402, 0, 402, 1, 'navigation/style/jsedito
 INSERT INTO `!PREFIX!_nav_sub` VALUES (403, 0, 403, 1, 'navigation/style/tpleditor/history', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (415, 67, 415, 1, 'navigation/administration/system/configuration', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (416, 0, 67, 1, 'navigation/administration/system/syssettings', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (500, 1, 500, 0, 'linkchecker/xml/lang_de_DE.xml;navigation/content/linkchecker/main', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (502, 0, 500, 1, 'linkchecker/xml/lang_de_DE.xml;navigation/content/linkchecker/overview', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (503, 0, 501, 1, 'linkchecker/xml/lang_de_DE.xml;navigation/content/linkchecker/whitelist', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (600, 3, 600, 0, 'workflow/xml/lang_de_DE.xml;navigation/extra/workflow/main', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (601, 0, 601, 1, 'workflow/xml/lang_de_DE.xml;navigation/extra/workflow/settings', 1);
-INSERT INTO `!PREFIX!_nav_sub` VALUES (602, 0, 602, 1, 'workflow/xml/lang_de_DE.xml;navigation/extra/workflow/steps', 1);
 INSERT INTO `!PREFIX!_nav_sub` VALUES (805, 0, 811, 1, 'navigation/administration/system/purge', 1);
+INSERT INTO `!PREFIX!_nav_sub` VALUES (900, 3, 900, 0, 'pim/xml;navigation/extras/pim', 1);

@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+body {
+}
+p {
+    margin: 10px;
+}
+form {
+    margin: 0px 10px 0px 10px;
+    padding-bottom: 10px;
+}
+.table table {
+    margin: 0px;
+    max-width: 100%;
+    border: 1px solid #B3B3B3;
+    border-width: 0px 0px 1px 1px;
+    border-spacing: 0px;
+}
+.table table tr {
+    margin: 0px;
+    line-height: 15px;
+    vertical-align: top;
+    border-style: solid;
+}
+.table table th {
+    margin: 0px;
+    padding: 1px 4px 0px 4px;
+    font-weight: normal;
+    text-align: left;
+    color: #666;
+    background-color: #E2E2E2;
+    border: 1px solid #B3B3B3;
+    border-width: 1px 1px 0px 0px;
+    cursor: default;
+}
+.table table img,
+.table table input[type=image] {
+    margin-left: 3px;
+    vertical-align: text-bottom;
+}
+.table table img:first-child,
+.table table input[type=image]:first-child {
+    margin-left: 0px;
+}
+.table table img.remove,
+.table table img.install,
+.table table img.install_mod,
+.table table img.edit,
+.table table img#ClearFilter {
+    cursor: pointer;
+}
+.table table td {
+    margin: 0px;
+    padding: 1px 4px 0px 4px;
+    font-weight: normal;
+    color: #000;
+    background-color: #FFF;
+    border: 1px solid #B3B3B3;
+    border-width: 1px 1px 0px 0px;
+    cursor: default;
+}
+.table table td.odd {
+    background-color: #FFF;
+}
+.table table td.even {
+    background-color: #ECFFEC;
+}
+.table table td.old {
+    background-color: #FAA;
+}
+.table table td.new {
+    background-color: #9D9;
+}
+.table table td.rightalign {
+    text-align: right;
+}
+.table table td input[type=text],
+.table table td input[type=password] {
+    /*margin-bottom: 1px;*/
+    margin: 0px -2px;
+    padding: 0px 4px;
+    width: 400px;
+    height: 14px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    line-height: 12px;
+    vertical-align: text-bottom;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+}
+.table table td input[type=text].small,
+.table table td input[type=password].small {
+    width: 200px;
+}
+.red {
+    color: #F00;
+}
+.pcase {
+    text-transform: capitalize;
+}
+span.edit {
+    display: none;
+}
+.table table img.save,
+.table table input[type=image].filter,
+.table table input[type=image].save {
+    margin-left: 5px;
+}
+#contenido_notification {
+    margin-left: 10px;
+}

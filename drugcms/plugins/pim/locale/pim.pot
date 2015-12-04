@@ -1,0 +1,299 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: drugCMS Plugin Manager\n"
+"POT-Creation-Date: 2015-11-30 19:16+0100\n"
+"PO-Revision-Date: 2015-11-30 19:16+0100\n"
+"Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
+"Language-Team: drugCMS Team <translate@drugcms.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: i18n\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/config.plugin.php:35 ../includes/include.top.php:51
+msgid "Plugins"
+msgstr ""
+
+#: ../includes/config.plugin.php:36 ../includes/include.bottom.php:764
+#: ../includes/include.top.php:57
+msgid "Repositories"
+msgstr ""
+
+#: ../includes/include.bottom.php:89 ../includes/include.bottom.php:519
+#, php-format
+msgid "%s is not writable"
+msgstr ""
+
+#: ../includes/include.bottom.php:153
+msgid "Installed plugins"
+msgstr ""
+
+#: ../includes/include.bottom.php:154
+msgid "Filter"
+msgstr ""
+
+#: ../includes/include.bottom.php:155
+msgid "(Comma separated list of tags to search for)"
+msgstr ""
+
+#: ../includes/include.bottom.php:156
+msgid "Use filter"
+msgstr ""
+
+#: ../includes/include.bottom.php:157
+msgid "Clear filter"
+msgstr ""
+
+#: ../includes/include.bottom.php:158
+msgid "Available plugins"
+msgstr ""
+
+#: ../includes/include.bottom.php:159
+msgid "Install"
+msgstr ""
+
+#: ../includes/include.bottom.php:160
+msgid "Uninstall"
+msgstr ""
+
+#: ../includes/include.bottom.php:161
+msgid "Plugin"
+msgstr ""
+
+#: ../includes/include.bottom.php:162
+msgid "Description"
+msgstr ""
+
+#: ../includes/include.bottom.php:163
+msgid "Tags"
+msgstr ""
+
+#: ../includes/include.bottom.php:164
+msgid "Author"
+msgstr ""
+
+#: ../includes/include.bottom.php:165
+msgid "Copyright"
+msgstr ""
+
+#: ../includes/include.bottom.php:166
+msgid "Version"
+msgstr ""
+
+#: ../includes/include.bottom.php:167
+msgid "Dependencies"
+msgstr ""
+
+#: ../includes/include.bottom.php:168
+msgid "Modules"
+msgstr ""
+
+#: ../includes/include.bottom.php:169
+msgid "Install modules for the current client"
+msgstr ""
+
+#: ../includes/include.bottom.php:170
+msgid "Repository"
+msgstr ""
+
+#: ../includes/include.bottom.php:283
+#, php-format
+msgid ""
+"%s can't be uninstalled because of another installed plugin's dependencies"
+msgstr ""
+
+#: ../includes/include.bottom.php:290
+#, php-format
+msgid "Uninstall %s including it's modules (all clients)"
+msgstr ""
+
+#: ../includes/include.bottom.php:290
+#, php-format
+msgid "Uninstall %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:326
+msgid "Missing plugin"
+msgstr ""
+
+#: ../includes/include.bottom.php:328 ../includes/include.bottom.php:335
+#, php-format
+msgid "Missing or outdated dependencies prevent installation of %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:333
+msgid "Outdated plugin"
+msgstr ""
+
+#: ../includes/include.bottom.php:346
+#, php-format
+msgid "Install %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:350
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:375
+msgid "Zip file downloaded"
+msgstr ""
+
+#: ../includes/include.bottom.php:384
+msgid "Zip file extracted"
+msgstr ""
+
+#: ../includes/include.bottom.php:392
+msgid "Failed to download zip file"
+msgstr ""
+
+#: ../includes/include.bottom.php:400
+#, php-format
+msgid "Folder %s created"
+msgstr ""
+
+#: ../includes/include.bottom.php:404
+#, php-format
+msgid "Unable to create folder %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:425
+msgid "Installing database entries"
+msgstr ""
+
+#: ../includes/include.bottom.php:500
+#, php-format
+msgid "Registering plugin %s in database"
+msgstr ""
+
+#: ../includes/include.bottom.php:506
+#, php-format
+msgid "Plugin %s successfully installed"
+msgstr ""
+
+#: ../includes/include.bottom.php:507 ../includes/include.bottom.php:578
+#: ../includes/include.bottom.php:732
+msgid "(auto redirect in 5 seconds)"
+msgstr ""
+
+#: ../includes/include.bottom.php:511
+#, php-format
+msgid "Unable to install %s, missing install information"
+msgstr ""
+
+#: ../includes/include.bottom.php:545
+#, php-format
+msgid "Updating module %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:552
+#, php-format
+msgid "Installing module %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:562
+msgid "Copying additional files"
+msgstr ""
+
+#: ../includes/include.bottom.php:577
+#, php-format
+msgid "Modules of plugin %s successfully installed for client %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:596
+#, php-format
+msgid "Searching for installed modules %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:606
+#, php-format
+msgid "Deleting module %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:612
+#, php-format
+msgid "Deleting translation entries for module %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:616
+#, php-format
+msgid "Deleting accompanying file for module %s from all clients"
+msgstr ""
+
+#: ../includes/include.bottom.php:648
+msgid "Deleting additional files"
+msgstr ""
+
+#: ../includes/include.bottom.php:674
+#, php-format
+msgid "Deleting additional database tables for %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:698
+#, php-format
+msgid "Getting the uninstall info for %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:709
+#, php-format
+msgid "Deleting database records for %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:720
+#, php-format
+msgid "Deleting the uninstall info for %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:727
+#, php-format
+msgid "Removing folders and files for %s"
+msgstr ""
+
+#: ../includes/include.bottom.php:731
+#, php-format
+msgid "Plugin %s successfully uninstalled and removed"
+msgstr ""
+
+#: ../includes/include.bottom.php:765
+msgid "Name"
+msgstr ""
+
+#: ../includes/include.bottom.php:766
+msgid "Server address"
+msgstr ""
+
+#: ../includes/include.bottom.php:767
+msgid "Login"
+msgstr ""
+
+#: ../includes/include.bottom.php:768
+msgid "Password"
+msgstr ""
+
+#: ../includes/include.bottom.php:769
+msgid "Edit"
+msgstr ""
+
+#: ../includes/include.bottom.php:770
+msgid "Edit not possible"
+msgstr ""
+
+#: ../includes/include.bottom.php:771
+msgid "Delete"
+msgstr ""
+
+#: ../includes/include.bottom.php:772
+msgid "Delete not possible"
+msgstr ""
+
+#: ../includes/include.bottom.php:773
+msgid "Add a new repository"
+msgstr ""
+
+#: ../includes/include.bottom.php:774
+msgid "Save"
+msgstr ""
