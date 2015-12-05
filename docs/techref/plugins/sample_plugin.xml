@@ -4,7 +4,7 @@
     <general>
         <name><![CDATA[]]></name>
         <descriptions>
-            <!-- multiple <action> entries allowed, an entry with lang="en_US" must be specified -->
+            <!-- multiple <description> entries allowed, an entry with lang="en_US" must be specified -->
             <description lang="en_US"><![CDATA[]]></description>
             <description lang="de_DE"><![CDATA[]]></description>
         </descriptions>

@@ -133,6 +133,7 @@ final class Contenido_Url {
         }
         if (($param['idcat']) && ($param['idart'])) {
             $oArt = new Article($param['idart'], $client, $lang);
+            cInclude('includes', 'functions.con.php');
             if (isStartArticle($oArt->getField('idartlang'), $client, $lang)) {
                 unset($param['idart']);
             }
