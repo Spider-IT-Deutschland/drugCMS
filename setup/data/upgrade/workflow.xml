@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin>
+    
+    <general>
+        <name><![CDATA[Workflow]]></name>
+        <descriptions>
+            <!-- multiple <description> entries allowed, an entry with lang="en_US" must be specified -->
+            <description lang="en_US"><![CDATA[Allows for content to appear in multiple places]]></description>
+            <description lang="de_DE"><![CDATA[Ermöglicht es, Inhalt an mehrere Stellen erscheinen zu lassen]]></description>
+        </descriptions>
+        <tags>
+            <!-- multiple <tag> entries allowed -->
+            <tag><![CDATA[workflow]]></tag>
+        </tags>
+        <author><![CDATA[four for business AG]]></author>
+        <version><![CDATA[1.0.0]]></version>
+        <copyright><![CDATA[four for business AG]]></copyright>
+        <mail><![CDATA[]]></mail>
+        <website><![CDATA[]]></website>
+    </general>
+    
+    <requirements>
+        <php><![CDATA[5.2.17]]></php>
+        <drugcms><![CDATA[2.0.0]]></drugcms>
+    </requirements>
+    
+    <drugcms> <!-- this section contains the db table entries -->
+        
+        <areas>
+            <!-- multiple <area> entries allowed -->
+            <area>
+                <parent><![CDATA[0]]></parent>
+                <name><![CDATA[workflow]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            <area>
+                <parent><![CDATA[1]]></parent>
+                <name><![CDATA[workflow_common]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            <area>
+                <parent><![CDATA[1]]></parent>
+                <name><![CDATA[workflow_steps]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            <area>
+                <parent><![CDATA[1]]></parent>
+                <name><![CDATA[workflow_step_edit]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            <area>
+                <parent><![CDATA[con]]></parent>
+                <name><![CDATA[con_workflow]]></name>
+                <relevant><![CDATA[0]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            
+        </areas>
+        
+        <actions>
+            <!-- multiple <action> entries allowed -->
+            <action>
+                <area><![CDATA[2]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_show]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[2]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_create]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[2]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_save]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[1]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_delete]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_step_edit]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_step_up]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_step_down]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_save_step]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_create_step]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_step_delete]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_user_up]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_user_down]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_create_user]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[3]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_user_delete]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[str]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_cat_assign]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[con]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_do_action]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[str]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_inherit_down]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[5]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_task_user_select]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            <action>
+                <area><![CDATA[5]]></area>
+                <alt_name><![CDATA[]]></alt_name>
+                <name><![CDATA[workflow_do_action]]></name>
+                <code><![CDATA[]]></code>
+                <location><![CDATA[]]></location>
+                <relevant><![CDATA[1]]></relevant>
+            </action>
+            
+        </actions>
+        
+        <files>
+            <!-- multiple <file> entries allowed -->
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_left_top.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_list.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[2]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_edit.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_subnav.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[3]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_steps.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[5]]></area>
+                <filename><![CDATA[workflow/includes/include.workflow_tasks.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            
+        </files>
+        
+        <frame_files>
+            <!-- multiple <frame_file> entries allowed -->
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[1]]></frame_id>
+                <file><![CDATA[1]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[2]]></frame_id>
+                <file><![CDATA[2]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[3]]></frame_id>
+                <file><![CDATA[4]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[2]]></area>
+                <frame_id><![CDATA[4]]></frame_id>
+                <file><![CDATA[3]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[3]]></area>
+                <frame_id><![CDATA[4]]></frame_id>
+                <file><![CDATA[5]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[5]]></area>
+                <frame_id><![CDATA[4]]></frame_id>
+                <file><![CDATA[6]]></file>
+            </frame_file>
+            
+        </frame_files>
+        
+        <nav_subs>
+            <!-- multiple <nav_sub> entries allowed -->
+            <nav_sub>
+                <nav_main><![CDATA[extra]]></nav_main>
+                <area><![CDATA[1]]></area>
+                <level><![CDATA[0]]></level>
+                <location><![CDATA[workflow/xml/lang_de_DE.xml;navigation/extra/workflow/main]]></location>
+                <online><![CDATA[1]]></online>
+            </nav_sub>
+            <nav_sub>
+                <nav_main><![CDATA[0]]></nav_main>
+                <area><![CDATA[2]]></area>
+                <level><![CDATA[1]]></level>
+                <location><![CDATA[workflow/xml/lang_de_DE.xml;navigation/extra/workflow/settings]]></location>
+                <online><![CDATA[1]]></online>
+            </nav_sub>
+            <nav_sub>
+                <nav_main><![CDATA[0]]></nav_main>
+                <area><![CDATA[3]]></area>
+                <level><![CDATA[1]]></level>
+                <location><![CDATA[workflow/xml/lang_de_DE.xml;navigation/extra/workflow/steps]]></location>
+                <online><![CDATA[1]]></online>
+            </nav_sub>
+            
+        </nav_subs>
+        
+    </drugcms>
+    
+    <!-- Delete the following database tables on deleting the plugin -->
+    <!-- !PREFIX! is the drugcms database prefix set at setup, use an asterisk (*) for multiple chars -->
+    <!-- Example: !PREFIX!_my_plugin_* deletes tables drugcms_my_plugin_test and drugcms_my_plugin_probe -->
+    <dbtables>
+        <!-- multiple <db-delete> entries allowed -->
+        <dbtable><![CDATA[!PREFIX!_piwf_*]]></dbtable>
+    </dbtables>
+    
+</plugin>

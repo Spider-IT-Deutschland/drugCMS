@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin>
+    
+    <general>
+        <name><![CDATA[DB Backup]]></name>
+        <descriptions>
+            <!-- multiple <action> entries allowed, an entry with lang="en_US" must be specified -->
+            <description lang="en_US"><![CDATA[Database backup and restore]]></description>
+            <description lang="de_DE"><![CDATA[Datenbank Backup und Wiederherstellung]]></description>
+        </descriptions>
+        <tags>
+            <!-- multiple <tag> entries allowed -->
+            <tag><![CDATA[database]]></tag>
+            <tag><![CDATA[backup]]></tag>
+            <tag><![CDATA[restore]]></tag>
+            <tag><![CDATA[security]]></tag>
+        </tags>
+        <author><![CDATA[René Mansveld]]></author>
+        <version><![CDATA[1.0.0]]></version>
+        <copyright><![CDATA[Spider IT Deutschland]]></copyright>
+        <mail><![CDATA[Info@Spider-IT.de]]></mail>
+        <website><![CDATA[http://www.Spider-IT.de]]></website>
+    </general>
+    
+    <requirements>
+        <php><![CDATA[5.4.0]]></php>
+        <drugcms><![CDATA[2.0.0]]></drugcms>
+    </requirements>
+    
+    <drugcms> <!-- this section contains the db table entries -->
+        
+        <areas>
+            <!-- multiple <area> entries allowed -->
+            <area>
+                <parent><![CDATA[0]]></parent>
+                <name><![CDATA[db_backup]]></name>
+                <relevant><![CDATA[1]]></relevant>
+                <online><![CDATA[1]]></online>
+                <menuless><![CDATA[0]]></menuless>
+            </area>
+            
+        </areas>
+        
+        <files>
+            <!-- multiple <file> entries allowed -->
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[db_backup/includes/includes.left_top.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[db_backup/includes/includes.left_bottom.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[db_backup/includes/includes.right_top.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            <file>
+                <area><![CDATA[1]]></area>
+                <filename><![CDATA[db_backup/includes/includes.right_bottom.php]]></filename>
+                <filetype><![CDATA[main]]></filetype>
+            </file>
+            
+        </files>
+        
+        <frame_files>
+            <!-- multiple <frame_file> entries allowed -->
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[1]]></frame_id>
+                <file><![CDATA[1]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[2]]></frame_id>
+                <file><![CDATA[2]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[3]]></frame_id>
+                <file><![CDATA[3]]></file>
+            </frame_file>
+            <frame_file>
+                <area><![CDATA[1]]></area>
+                <frame_id><![CDATA[4]]></frame_id>
+                <file><![CDATA[4]]></file>
+            </frame_file>
+            
+        </frame_files>
+        
+        <nav_subs>
+            <!-- multiple <nav_sub> entries allowed -->
+            <nav_sub>
+                <nav_main><![CDATA[administration]]></nav_main>
+                <area><![CDATA[1]]></area>
+                <level><![CDATA[0]]></level>
+                <location><![CDATA[navigation/administration/db_backup/main]]></location>
+                <online><![CDATA[1]]></online>
+            </nav_sub>
+            
+        </nav_subs>
+        
+    </drugcms>
+    
+</plugin>

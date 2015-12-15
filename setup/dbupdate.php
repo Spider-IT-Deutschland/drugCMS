@@ -30,6 +30,23 @@ checkAndInclude(C_CONTENIDO_PATH . 'includes/functions.database.php');
 checkAndInclude(C_CONTENIDO_PATH . 'classes/class.version.php');
 checkAndInclude(C_CONTENIDO_PATH . 'classes/class.versionImport.php');
 
+function removeDir($sDir, $leaveDir = false) {
+    if (!$dh = @opendir($sDir)) {
+        return;
+    }
+    while (($obj = readdir($dh)) !== false) {
+        if (($obj == '.') || ($obj == '..')) {
+            continue;
+        }
+        if (!@unlink($sDir . '/' . $obj)) {
+            removeDir($sDir . '/' . $obj);
+        }
+    }
+    closedir($dh);
+    if (!$leaveDir){
+        @rmdir($sDir);
+    }
+}
 
 if ((!hasMySQLExtension()) && (!hasMySQLiExtension())) {
     die("Can't detect MySQLi or MySQL extension");
@@ -188,14 +205,6 @@ if ($currentstep < $totalsteps) {
 
     foreach ($tables as $table) {
         dbUpdateSequence($_SESSION['dbprefix'].'_sequence', $table, $db);
-        if ($table == $_SESSION['dbprefix'] . '_mod') {
-            $db->query('SELECT nextid FROM ' . $_SESSION['dbprefix'] . '_sequence WHERE (seq_name="' . $table . '")');
-            $db->next_record();
-            $last_mod = $db->f('nextid');
-            if ($last_mod < 2) {
-                $db->query('UPDATE ' . $_SESSION['dbprefix'] . '_sequence SET nextid = 2 WHERE (seq_name="' . $table . '")');
-            }
-        }
     }
 
     updateContenidoVersion($db, $_SESSION['dbprefix'].'_system_prop', C_SETUP_VERSION);
@@ -235,6 +244,265 @@ if ($currentstep < $totalsteps) {
     $aNothing = array();
 
     injectSQL($db, $_SESSION['dbprefix'], 'data/indexes.sql', array(), $aNothing);
+
+    if ($_SESSION['setuptype'] == 'upgrade') {
+        /**
+         * For upgrades from pre 2.1.0 we need to upgrade the plugins.
+         * We can check this on the plugins' folders, because they don't have the plugin.xml file.
+         * If so, we need to place the plugin.xml files there and create the _plugins DB entries.
+         * And then, we should delete non-installed plugins, so that they can be installed by PIM.
+         */
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/content_allocation/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/content_allocation/plugin.xml'))) {
+            $sql = 'SELECT idnavs
+                    FROM ' . $_SESSION['dbprefix'] . '_nav_sub
+                    WHERE (location="content_allocation/xml/;navigation/extra/content_allocation/main")';
+            $db->query($sql);
+            if ($db->num_rows()) {
+                # Plugin is installed, upgrade it
+                copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/content_allocation.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/content_allocation/plugin.xml');
+                $aDescription = array();
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 800);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 801);
+                $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+                $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                        VALUES (' . $id . ', "content_allocation", "' . json_encode($aDescription) . '", "content_allocation", 1)';
+                $db->query($sql);
+            }
+            else {
+                # Plugin is not installed, remove it
+                removeDir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/content_allocation/');
+            }
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/db_backup/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/db_backup/plugin.xml'))) {
+            $sql = 'SELECT idnavs
+                    FROM ' . $_SESSION['dbprefix'] . '_nav_sub
+                    WHERE (location="navigation/administration/db_backup/main")';
+            $db->query($sql);
+            if ($db->num_rows()) {
+                # Plugin is installed, upgrade it
+                copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/db_backup.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/db_backup/plugin.xml');
+                $aDescription = array();
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 900);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 901);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 902);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 903);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 904);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 901);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 902);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 903);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 904);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 900);
+                $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+                $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                        VALUES (' . $id . ', "db_backup", "' . json_encode($aDescription) . '", "db_backup", 1)';
+                $db->query($sql);
+            }
+            else {
+                # Plugin is not installed, remove it
+                removeDir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/db_backup/');
+            }
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/linkchecker/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/linkchecker/plugin.xml'))) {
+            copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/linkchecker.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/linkchecker/plugin.xml');
+            $aDescription = array();
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 500);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 501);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 500);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 501);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 500);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 501);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 502);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 503);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 500);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 501);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 503);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 500);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 502);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 503);
+            $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+            $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                    VALUES (' . $id . ', "linkchecker", "' . json_encode($aDescription) . '", "linkchecker", 1)';
+            $db->query($sql);
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/mod_rewrite/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/mod_rewrite/plugin.xml'))) {
+            $sql = 'SELECT idnavs
+                    FROM ' . $_SESSION['dbprefix'] . '_nav_sub
+                    WHERE (location="mod_rewrite/xml/;navigation/content/mod_rewrite/main")';
+            $db->query($sql);
+            if ($db->num_rows()) {
+                # Plugin is installed, upgrade it
+                copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/mod_rewrite.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/mod_rewrite/plugin.xml');
+                $aDescription = array();
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 700);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 701);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 702);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 700);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 701);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 702);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 700);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 701);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 702);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 703);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 700);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 701);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 702);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 703);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 700);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 701);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 702);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 703);
+                $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+                $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                        VALUES (' . $id . ', "mod_rewrite", "' . json_encode($aDescription) . '", "mod_rewrite", 1)';
+                $db->query($sql);
+            }
+            else {
+                # Plugin is not installed, remove it
+                removeDir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/mod_rewrite/');
+            }
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/newsletter/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/newsletter/plugin.xml'))) {
+            $sql = 'SELECT idnavs
+                    FROM ' . $_SESSION['dbprefix'] . '_nav_sub
+                    WHERE (location="navigation/extra/newsletter")';
+            $db->query($sql);
+            if ($db->num_rows()) {
+                # Plugin is installed, upgrade it
+                copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/newsletter.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/newsletter/plugin.xml');
+                $aDescription = array();
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 16);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 17);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 26);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 27);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 50);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 86);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 90);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 91);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 337);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 338);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 339);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 341);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 342);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 343);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 422);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 423);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 424);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 425);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 427);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 428);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 434);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 435);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 436);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 437);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 438);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 439);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 440);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 441);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 442);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 81);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 100);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 101);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 103);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 104);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 107);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 114);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 189);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 190);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 191);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 201);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 202);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 203);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 204);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 205);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 83);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 102);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 103);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 105);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 106);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 109);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 118);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 196);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 197);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 198);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 209);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 210);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 211);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 212);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 213);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 38);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 81);
+                $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 610);
+                $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+                $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                        VALUES (' . $id . ', "newsletter", "' . json_encode($aDescription) . '", "newsletter", 1)';
+                $db->query($sql);
+            }
+            else {
+                # Plugin is not installed, remove it
+                removeDir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/newsletter/');
+            }
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/seocheck/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/seocheck/plugin.xml'))) {
+            copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/seocheck.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/seocheck/plugin.xml');
+            $aDescription = array();
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 1400);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 1400);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 1400);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 1400);
+            $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+            $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                    VALUES (' . $id . ', "seocheck", "' . json_encode($aDescription) . '", "seocheck", 1)';
+            $db->query($sql);
+        }
+        if ((is_dir(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/workflow/')) && (!is_file(str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/workflow/plugin.xml'))) {
+            copy(str_replace('\\', '/', dirname(__FILE__)) . '/data/upgrade/workflow.xml', str_replace('\\', '/', dirname(__FILE__)) . '/' . C_CONTENIDO_PATH . 'plugins/workflow/plugin.xml');
+            $aDescription = array();
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 600);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 601);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 602);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 603);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_area', 'id' => 604);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 600);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 601);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 602);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 603);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 604);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 605);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 606);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 607);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 608);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 609);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 610);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 611);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 612);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 613);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 614);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 615);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 616);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 617);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_actions', 'id' => 618);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 600);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 601);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 602);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 603);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 604);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_files', 'id' => 605);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 600);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 601);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 602);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 603);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 604);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 605);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_frame_files', 'id' => 606);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 600);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 601);
+            $aDescription[] = array('table' => $_SESSION['dbprefix'] . '_nav_sub', 'id' => 602);
+            $id = $db->nextid($_SESSION['dbprefix'] . '_plugins');
+            $sql = 'INSERT INTO ' . $_SESSION['dbprefix'] . '_plugins (idplugin, name, description, path, installed)
+                    VALUES (' . $id . ', "workflow", "' . json_encode($aDescription) . '", "workflow", 1)';
+            $db->query($sql);
+        }
+    }
 
     printf('<script type="text/javascript">parent.document.getElementById("installing").style.visibility="hidden";parent.document.getElementById("installingdone").style.visibility="visible";</script>');
     printf('<script type="text/javascript">parent.document.getElementById("next").style.display="block"; window.setTimeout("nextStep()", 10); function nextStep() { window.location.href="makeconfig.php"; }</script>');
