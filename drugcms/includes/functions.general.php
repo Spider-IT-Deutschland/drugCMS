@@ -3054,6 +3054,78 @@ function getInternalNotice($idupl) {
 }
 
 /**
+ * getMedianame()
+ *
+ * Reads the media name from the database
+ *
+ * @param int $idupl - ID of the database entry
+ * @return string The media name
+ */
+function getMedianame($idupl) {
+    global $cfg;
+    
+    $db = new DB_Contenido();
+    $sMedianame = '';
+    $sql = 'SELECT medianame
+            FROM ' . $cfg['tab']['upl_meta'] . '
+            WHERE (idupl=' . $idupl . ')';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $sMedianame = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('medianame')));
+    }
+    $db->disconnect();
+    return $sMedianame;
+}
+
+/**
+ * getCopyright()
+ *
+ * Reads the copyright from the database
+ *
+ * @param int $idupl - ID of the database entry
+ * @return string The copyright
+ */
+function getCopyright($idupl) {
+    global $cfg;
+    
+    $db = new DB_Contenido();
+    $sCopyright = '';
+    $sql = 'SELECT copyright
+            FROM ' . $cfg['tab']['upl_meta'] . '
+            WHERE (idupl=' . $idupl . ')';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $sCopyright = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('copyright')));
+    }
+    $db->disconnect();
+    return $sCopyright;
+}
+
+/**
+ * getKeywords()
+ *
+ * Reads the keywords from the database
+ *
+ * @param int $idupl - ID of the database entry
+ * @return string The keywords
+ */
+function getKeywords($idupl) {
+    global $cfg;
+    
+    $db = new DB_Contenido();
+    $sKeywords = '';
+    $sql = 'SELECT keywords
+            FROM ' . $cfg['tab']['upl_meta'] . '
+            WHERE (idupl=' . $idupl . ')';
+    $db->query($sql);
+    if ($db->next_record()) {
+        $sKeywords = urldecode(str_replace(array('%0D%0A', '%0D', '%0A'), '<br />', $db->f('keywords')));
+    }
+    $db->disconnect();
+    return $sKeywords;
+}
+
+/**
  * getRemoteContent()
  *
  * Gets content from another server/domain

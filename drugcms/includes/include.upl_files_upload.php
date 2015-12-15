@@ -82,6 +82,11 @@ $oTpl->set('s', 'ERROR', i18n("Error"));
 $oTpl->set('s', 'DELETE', i18n("Delete"));
 $oTpl->set('s', 'REMOVE', i18n("Remove"));
 $oTpl->set('s', 'DONE', i18n("Upload done, please check results"));
+$oTpl->set('s', 'TEXT_MEDIANAME', i18n("Medianame"));
+$oTpl->set('s', 'TEXT_DESCRIPTION', i18n("Description"));
+$oTpl->set('s', 'TEXT_KEYWORDS', i18n("Keywords"));
+$oTpl->set('s', 'TEXT_INTERNAL_NOTE', i18n("Internal notes"));
+$oTpl->set('s', 'TEXT_COPYRIGHT', i18n("Copyright"));
 
 $iDefault = intval(getEffectiveSetting('image-upload', 'default', '-1'));
 for ($i = 0; $i < 100; $i ++) {

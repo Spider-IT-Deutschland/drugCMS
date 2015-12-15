@@ -70,7 +70,7 @@ if ($path && $action != '') {
                          if (left_bottom) {
                              var href = left_bottom.location.href;
                              href = href.replace(/&path.*/, '');
-                             left_bottom.location.href = href+'&path='+'".$path."';
+                             left_bottom.location.href = href+'&path=".$path."';
                              top.content.left.left_top.refresh();
                          }
                      </script>";
@@ -264,8 +264,10 @@ if ($action == "upl_upload" && $bDirectoryIsWritable == true) {
                 $fGamma         = floatval('1.' . $_POST['Gamma']);
                 
                 $sFileName = uplCreateFriendlyName($_FILES['file']['name'][0]);
+                $sFileName = substr($sFileName, 0, strrpos($sFileName, '.')) . strtolower(substr($sFileName, strrpos($sFileName, '.')));
                 $sPath = str_replace($cfgClient[$client]['path']['frontend'], '', $cfgClient[$client]['upl']['path']) . $path;
                 $tmp_name = $_FILES['file']['tmp_name'][0];
+                $iFileSize = filesize($tmp_name);
                 if (is_uploaded_file($tmp_name)) {
                     /* Copy file to a temporary location */
                     move_uploaded_file($tmp_name, $cfg['path']['contenido'] . $cfg['path']['temp'] . $_FILES['file']['name'][0]);
@@ -294,12 +296,62 @@ if ($action == "upl_upload" && $bDirectoryIsWritable == true) {
                     if (substr($_FILES['file']['type'][0], 0, 6) == 'image/') {
                         $sImage = $cfgClient[$client]['upl']['path'] . '_tmp_' . $sFileName;
                         if (rename($tmp_name, $sImage)) {
-                            # Scale and/or gamma-correct the image
-                            cInclude('includes', 'functions.graphics.php');
-                            $sNewImage = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), $iWidth, $iHeight, $bCrop, $bExpand, $fGamma, 1, true, $bFixed, $sColor);
-                            if (strlen($sNewImage)) {
-                                # Move the new image to the upload directory, overwriting the temporarily saved original file
-                                rename(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sNewImage), $sImage);
+                            # Do we have to resample the image?
+                            list($oWidth, $oHeight) = getimagesize($sImage);
+                            if ((($iWidth) && ($iHeight) && (($iWidth < $oWidth) || ($iHeight < $oHeight) || ($bExpand)))
+                             || (($iWidth) && ($iHeight) && (($iWidth != $oWidth) || ($iHeight != $oHeight)) && ($bFixed))
+                             || (($fGamma > 1.0) && ($fGamma <= 1.9))) {
+                                # Scale and/or gamma-correct the image
+                                cInclude('includes', 'functions.graphics.php');
+                                $sNewImage = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), $iWidth, $iHeight, $bCrop, $bExpand, $fGamma, 1, true, $bFixed, $sColor);
+                                if (strlen($sNewImage)) {
+                                    # Move the new image to the upload directory, overwriting the temporarily saved original file
+                                    rename(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sNewImage), $sImage);
+                                    # Generate a thumbnail image
+                                    $sNewThumb = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), 80, 80, false, false, 1.0, 1, true, false, $sColor);
+                                    # Move the new image to it's appropriate position
+                                    if (is_dbfs($qpath)) {
+                                        # The database
+                                        $dbfs->writeFromFile(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sImage), $qpath . $sFileName);
+                                        unlink($sImage);
+                                        $sUrl = '';
+                                    }
+                                    else {
+                                        # The upload directory
+                                        $final_filename = $cfgClient[$client]['path']['frontend'] . $sPath . $sFileName;
+                                        rename(str_replace($cfgClient[$client]['path']['htmlpath'], $cfgClient[$client]['path']['frontend'], $sImage), $final_filename);
+                                        $sUrl = $cfgClient[$client]['path']['htmlpath'] . $sPath . $sFileName;
+                                        
+                                        $iterator = $_cecRegistry->getIterator("Contenido.Upload.UploadPostprocess");
+                                        while ($chainEntry = $iterator->next()) {
+                                            $chainEntry->execute($final_filename);
+                                        }
+                                    }
+                                    # Report success
+                                    $aResult = array(
+                                        'files' => array(
+                                            0 => array(
+                                                'url' => '',#$sUrl,
+                                                'thumbnailUrl' => $sNewThumb,
+                                                'name' => $sFileName,
+                                                'type' => $_FILES['file']['type'][0],
+                                                'size' => filesize($cfgClient[$client]['path']['frontend'] . $sPath . $sFileName),
+                                                'deleteUrl' => '-'
+                                            )
+                                        )
+                                    );
+                                }
+                                else {
+                                    $aResult = array(
+                                        'files' => array(
+                                            0 => array(
+                                                'error' => sprintf(i18n("The image file '%s' couldn't be processed, may be corrupted"), $sFileName)
+                                            )
+                                        )
+                                    );
+                                }
+                            }
+                            else {
                                 # Generate a thumbnail image
                                 $sNewThumb = ScaleImage(str_replace($cfgClient[$client]['path']['frontend'], '', $sImage), 80, 80, false, false, 1.0, 1, true, false, $sColor);
                                 # Move the new image to it's appropriate position
@@ -330,15 +382,6 @@ if ($action == "upl_upload" && $bDirectoryIsWritable == true) {
                                             'type' => $_FILES['file']['type'][0],
                                             'size' => filesize($cfgClient[$client]['path']['frontend'] . $sPath . $sFileName),
                                             'deleteUrl' => '-'
-                                        )
-                                    )
-                                );
-                            }
-                            else {
-                                $aResult = array(
-                                    'files' => array(
-                                        0 => array(
-                                            'error' => sprintf(i18n("The image file '%s' couldn't be processed, may be corrupted"), $sFileName)
                                         )
                                     )
                                 );
@@ -383,6 +426,49 @@ if ($action == "upl_upload" && $bDirectoryIsWritable == true) {
                                 )
                             )
                         );
+                    }
+                    $sMedianame     = $_REQUEST['Medianame'];
+                    $sDescription   = $_REQUEST['Description'];
+                    $sKeywords      = $_REQUEST['Keywords'];
+                    $sInternalNote  = $_REQUEST['InternalNote'];
+                    $sCopyright     = $_REQUEST['Copyright'];
+                    
+                    # Do we already have this file (dirname and filename equal) in the database for this client?
+                    $sql = 'SELECT idupl
+                            FROM ' . $cfg['tab']['upl'] . '
+                            WHERE ((idclient=' . $client . ')
+                               AND (filename="' . $sFileName . '")
+                               AND (dirname="' . $path . '"))';
+                    $db->query($sql);
+                    if ($db->next_record()) {
+                        $iIdUpl = $db->f('idupl');
+                        
+                        # Update the record
+                        $sql = 'UPDATE ' . $cfg['tab']['upl'] . '
+                                SET size = ' . $iFileSize . ',
+                                    description = "' . Contenido_Security::filter($sDescription) . '",
+                                    lastmodified = NOW(),
+                                    modifiedby = "' . $auth->auth['uid'] . '"
+                                WHERE (idupl=' . $iIdUpl . '")';
+                        $db->query($sql);
+                        if (strlen($sMedianame . $sDescription . $sKeywords . $sInternalNote . $sCopyright)) {
+                            
+                            # New info was entered, delete the old if present
+                            $sql = 'DELETE FROM ' . $cfg['tab']['upl_meta'] . '
+                                    WHERE (idupl=' . $iIdUpl . ')';
+                            $db->query($sql);
+                        }
+                    }
+                    else {
+                        $iIdUpl = $db->nextid($cfg['tab']['upl']);
+                        $sql = 'INSERT INTO ' . $cfg['tab']['upl'] . ' (idupl, idclient, filename, dirname, filetype, size, description, status, author, created, lastmodified, modifiedby)
+                                VALUES (' . $iIdUpl . ', ' . $client . ', "' . $sFileName . '", "' . $path . '", "' . substr($sFileName, (strrpos($sFileName, '.') + 1)) . '", ' . $iFileSize . ', "' . Contenido_Security::filter($sDescription) . '", 0, "' . $auth->auth['uid'] . '", NOW(), NOW(), "' . $auth->auth['uid'] . '")';
+                        $db->query($sql);
+                    }
+                    if (strlen($sMedianame . $sDescription . $sKeywords . $sInternalNote . $sCopyright)) {
+                        $sql = 'INSERT INTO ' . $cfg['tab']['upl_meta'] . ' (id_uplmeta, idupl, idlang, medianame, description, keywords, internal_notice, copyright, author, created, modified, modifiedby)
+                                VALUES (' . $db->nextid($cfg['tab']['upl_meta']) . ', ' . $iIdUpl . ', ' . $lang . ', "' . Contenido_Security::filter($sMedianame, $db) . '", "' . Contenido_Security::filter($sDescription, $db) . '", "' . Contenido_Security::filter($sKeywords, $db) . '", "' . Contenido_Security::filter($sInternalNote, $db) . '", "' . Contenido_Security::filter($sCopyright, $db) . '", "' . $auth->auth['uid'] . '", NOW(), NOW(), "' . $auth->auth['uid'] . '")';
+                        $db->query($sql);
                     }
                 }
                 else {
