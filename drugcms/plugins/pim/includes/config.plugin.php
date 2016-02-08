@@ -32,8 +32,8 @@ if (!defined('CON_FRAMEWORK')) {
 $plugin_name = 'pim';
 
 # Set language specific names for rights area
-$lngAct['pim']['plugins']       = i18n("Plugins", $plugin_name);
-$lngAct['pim']['repositories']  = i18n("Repositories", $plugin_name);
+$lngAct[$plugin_name]['plugins']        = i18n("Plugins", $plugin_name);
+$lngAct[$plugin_name]['repositories']   = i18n("Repositories", $plugin_name);
 
 unset($plugin_name);
 ?>

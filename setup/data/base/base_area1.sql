@@ -81,3 +81,5 @@ INSERT INTO `!PREFIX!_area` VALUES (403, 'htmltpl', 'htmltpl_history', 1, 1, 0);
 INSERT INTO `!PREFIX!_area` VALUES (415, 'system', 'system_configuration', 1, 1, 0);
 INSERT INTO `!PREFIX!_area` VALUES (811, 'system', 'system_purge', 1, 1, 0);
 INSERT INTO `!PREFIX!_area` VALUES (900, '0', 'pim', 1, 1, 1);
+INSERT INTO `!PREFIX!_area` VALUES (901, 'pim', 'plugins', 1, 1, 1);
+INSERT INTO `!PREFIX!_area` VALUES (902, 'pim', 'repositories', 1, 1, 1);

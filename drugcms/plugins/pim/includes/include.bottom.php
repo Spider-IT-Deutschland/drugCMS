@@ -12,7 +12,7 @@
  *
  * @package    drugCMS Backend plugins
  * @version    1.0
- * @author     René Mansveld
+ * @author     Ren Mansveld
  * @copyright  Spider IT Deutschland
  * @license    http://www.drugcms.org/license/LICENCE.txt
  * @link       http://www.drugcms.de
@@ -372,7 +372,7 @@ switch ($sWhat) {
                     $sUrl = $_POST['Url'];
                     $sPath = $cfg['path']['contenido'] . $cfg['path']['plugins'] . $sPlugin . '/';
                     $bUpdate = is_dir($sPath);
-                    if (($bUpdate) || (mkdir($sPath, 0644))) {
+                    if (($bUpdate) || (mkdir($sPath, 0750))) {
                         # Download the plugin
                         $bOK = false;
                         if (class_exists('ZipArchive')) {
@@ -398,16 +398,19 @@ switch ($sWhat) {
                             }
                         }
                         if (!$bOK) {
+                            $bOK = true;
                             $aFoldersAndFiles = json_decode(getRemoteContent($sUrl . '?Plugin=' . $sPlugin . '&Action=Files', $iErrNo, $sErrMsg, $sLogin, $sPassword));
                             for ($i = 0, $n = count($aFoldersAndFiles); $i < $n; $i ++) {
                                 if (substr($aFoldersAndFiles[$i], -1) == '/') {
-                                    if (mkdir($sPath . $aFoldersAndFiles[$i], 0644)) {
+                                    if (mkdir($sPath . $aFoldersAndFiles[$i], 0750)) {
                                         $sContent .= '<p>' . sprintf(i18n("Folder %s created", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
                                         flush();
                                     }
                                     else {
                                         $sContent .= $notification->returnNotification("error", sprintf(i18n("Unable to create folder %s", $plugin_name), $aFoldersAndFiles[$i])) . '</p>';
                                         flush();
+                                        $bOK = false;
+                                        break;
                                     }
                                 }
                                 else {
@@ -418,183 +421,187 @@ switch ($sWhat) {
                                     else {
                                         $sContent .= $notification->returnNotification("error", $sErrMsg) . '</p>';
                                         flush();
+                                        $bOK = false;
+                                        break;
                                     }
                                 }
                             }
                         }
-                        
-                        # Install the plugin
-                        $oPlugin = new PluginInfo($sPlugin);
-                        $aInstall = $oPlugin->getInstallInfo();
-                        if ($aInstall !== false) {
-                            $sContent .= '<p>' . i18n("Installing database entries", $plugin_name) . '</p>';
-                            $aDescription = array();
+                        if ($bOK) {
                             
-                            # Areas
-                            for ($i = 0, $n = count($aInstall['areas']); $i < $n; $i ++) {
-                                $id = $db->nextid($cfg['tab']['area']);
-                                if (is_numeric($aInstall['areas'][$i]['parent'])) {
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
-                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][($aInstall['areas'][$i]['parent'] - 1)]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
-                                }
-                                else {
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
-                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
-                                }
-                                $db->query($sql);
-                                $aInstall['areas'][$i]['idarea'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['area'], 'id' => $id);
-                            }
-                            
-                            # Actions
-                            for ($i = 0, $n = count($aInstall['actions']); $i < $n; $i ++) {
-                                $id = $db->nextid($cfg['tab']['actions']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['actions'] . ' (idaction, idarea, alt_name, name, code, location, relevant)
-                                        VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['actions'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['alt_name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['code'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['location'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['relevant'], $db) . '")';
-                                $db->query($sql);
-                                $aInstall['actions'][$i]['idaction'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['actions'], 'id' => $id);
-                            }
-                            
-                            # Files
-                            for ($i = 0, $n = count($aInstall['files']); $i < $n; $i ++) {
-                                $id = $db->nextid($cfg['tab']['files']);
-                                if (is_numeric($aInstall['files'][$i]['area'])) {
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
-                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
-                                }
-                                else {
-                                    $sql = 'SELECT idarea
-                                            FROM ' . $cfg['tab']['area'] . '
-                                            WHERE (name="' . $aInstall['files'][$i]['area'] . '")';
-                                    $db->query($sql);
-                                    if ($db->next_record()) {
-                                        $idarea = $db->f('idarea');
-                                    }
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
-                                            VALUES (' . $id . ', ' . intval($idarea) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
-                                }
-                                $db->query($sql);
-                                $aInstall['files'][$i]['idfile'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['files'], 'id' => $id);
-                            }
-                            
-                            # FrameFiles
-                            for ($i = 0, $n = count($aInstall['frame_files']); $i < $n; $i ++) {
-                                $id = $db->nextid($cfg['tab']['framefiles']);
-                                if (is_numeric($aInstall['frame_files'][$i]['area'])) {
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
-                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
-                                }
-                                else {
-                                    $sql = 'SELECT idarea
-                                            FROM ' . $cfg['tab']['area'] . '
-                                            WHERE (name="' . $aInstall['frame_files'][$i]['area'] . '")';
-                                    $db->query($sql);
-                                    if ($db->next_record()) {
-                                        $idarea = $db->f('idarea');
-                                    }
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
-                                            VALUES (' . $id . ', ' . intval($idarea) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
-                                }
-                                $db->query($sql);
-                                $aInstall['frame_files'][$i]['idframefile'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['framefiles'], 'id' => $id);
-                            }
-                            
-                            # NavMain
-                            if (strlen($aInstall['nav_main'])) {
-                                $id = $db->nextid($cfg['tab']['nav_main']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['nav_main'] . ' (idnavm, location)
-                                        VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['nav_main']['location'], $db) . '")';
-                                $db->query($sql);
-                                $aInstall['nav_main']['idnavm'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['nav_main'], 'id' => $id);
-                            }
-                            
-                            # NavSub
-                            for ($i = 0, $n = count($aInstall['nav_subs']); $i < $n; $i ++) {
-                                $id = $db->nextid($cfg['tab']['nav_sub']);
-                                if (is_numeric($aInstall['nav_subs'][$i]['nav_main'])) {
-                                    $idnavm = intval($aInstall['nav_main']['idnavm']);
-                                }
-                                else {
-                                    $sql = 'SELECT idnavm
-                                            FROM ' . $cfg['tab']['nav_main'] . '
-                                            WHERE (location LIKE "%' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['nav_main'], $db) . '%")';
-                                    $db->query($sql);
-                                    $db->next_record();
-                                    $idnavm = $db->f('idnavm');
-                                }
-                                $sql = 'INSERT INTO ' . $cfg['tab']['nav_sub'] . ' (idnavs, idnavm, idarea, level, location, online)
-                                        VALUES (' . $id . ', ' . $idnavm . ', ' . intval($aInstall['areas'][(intval($aInstall['nav_subs'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['nav_subs'][$i]['level']) . ', "' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['location'], $db) . '", ' . intval($aInstall['nav_subs'][$i]['online']) . ')';
-                                $db->query($sql);
-                                $aInstall['nav_subs'][$i]['idframefile'] = $id;
-                                $aDescription[] = array('table' => $cfg['tab']['nav_sub'], 'id' => $id);
-                            }
-                            
-                            # Copy additional system files
-                            $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
-                            if (count($aFoldersAndFiles)) {
-                                $sContent .= '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
-                                foreach ($aFoldersAndFiles as $entry) {
-                                    if (substr($entry, -1) == '/') {
-                                        
-                                        # Entry is a folder, create it
-                                        mkdir($cfg['path']['frontend'] . '/' . $entry, 0644);
+                            # Install the plugin
+                            $oPlugin = new PluginInfo($sPlugin);
+                            $aInstall = $oPlugin->getInstallInfo();
+                            if ($aInstall !== false) {
+                                $sContent .= '<p>' . i18n("Installing database entries", $plugin_name) . '</p>';
+                                $aDescription = array();
+                                
+                                # Areas
+                                for ($i = 0, $n = count($aInstall['areas']); $i < $n; $i ++) {
+                                    $id = $db->nextid($cfg['tab']['area']);
+                                    if ((is_numeric($aInstall['areas'][$i]['parent'])) && ($aInstall['areas'][$i]['parent'] != 0)) {
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                                                VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][($aInstall['areas'][$i]['parent'] - 1)]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
                                     }
                                     else {
-                                        
-                                        # Entry is a file, copy it
-                                        copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                                                VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
                                     }
+                                    $db->query($sql);
+                                    $aInstall['areas'][$i]['idarea'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['area'], 'id' => $id);
                                 }
-                            }
-                            
-                            if ($bUpdate) {
                                 
-                                # Check if there is install info and get it
-                                $sql = 'SELECT idplugin, description
-                                        FROM ' . $cfg['tab']['plugins'] . '
-                                        WHERE ((name="' . $sPlugin . '")
-                                           AND (path="' . $sPlugin . '"))';
-                                $db->query($sql);
-                                if ($db->next_record()) {
-                                    $idplugin = $db->f('idplugin');
-                                    $aDescription = json_decode($db->f('description'), true);
-                                    
-                                    # Delete the database entries
-                                    foreach ($aDescription as $value) {
-                                        $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name="' . $value['table'] . '")';
+                                # Actions
+                                for ($i = 0, $n = count($aInstall['actions']); $i < $n; $i ++) {
+                                    $id = $db->nextid($cfg['tab']['actions']);
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['actions'] . ' (idaction, idarea, alt_name, name, code, location, relevant)
+                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['actions'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['alt_name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['code'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['location'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['relevant'], $db) . '")';
+                                    $db->query($sql);
+                                    $aInstall['actions'][$i]['idaction'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['actions'], 'id' => $id);
+                                }
+                                
+                                # Files
+                                for ($i = 0, $n = count($aInstall['files']); $i < $n; $i ++) {
+                                    $id = $db->nextid($cfg['tab']['files']);
+                                    if (is_numeric($aInstall['files'][$i]['area'])) {
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                                                VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+                                    }
+                                    else {
+                                        $sql = 'SELECT idarea
+                                                FROM ' . $cfg['tab']['area'] . '
+                                                WHERE (name="' . $aInstall['files'][$i]['area'] . '")';
                                         $db->query($sql);
                                         if ($db->next_record()) {
-                                            $sql = 'DELETE FROM ' . $value['table'] . ' WHERE (' . $db->f(0) .'=' . $value['id'] . ')';
-                                            $db->query($sql);
+                                            $idarea = $db->f('idarea');
+                                        }
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                                                VALUES (' . $id . ', ' . intval($idarea) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+                                    }
+                                    $db->query($sql);
+                                    $aInstall['files'][$i]['idfile'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['files'], 'id' => $id);
+                                }
+                                
+                                # FrameFiles
+                                for ($i = 0, $n = count($aInstall['frame_files']); $i < $n; $i ++) {
+                                    $id = $db->nextid($cfg['tab']['framefiles']);
+                                    if (is_numeric($aInstall['frame_files'][$i]['area'])) {
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                                                VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+                                    }
+                                    else {
+                                        $sql = 'SELECT idarea
+                                                FROM ' . $cfg['tab']['area'] . '
+                                                WHERE (name="' . $aInstall['frame_files'][$i]['area'] . '")';
+                                        $db->query($sql);
+                                        if ($db->next_record()) {
+                                            $idarea = $db->f('idarea');
+                                        }
+                                        $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                                                VALUES (' . $id . ', ' . intval($idarea) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+                                    }
+                                    $db->query($sql);
+                                    $aInstall['frame_files'][$i]['idframefile'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['framefiles'], 'id' => $id);
+                                }
+                                
+                                # NavMain
+                                if (strlen($aInstall['nav_main'])) {
+                                    $id = $db->nextid($cfg['tab']['nav_main']);
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['nav_main'] . ' (idnavm, location)
+                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['nav_main']['location'], $db) . '")';
+                                    $db->query($sql);
+                                    $aInstall['nav_main']['idnavm'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['nav_main'], 'id' => $id);
+                                }
+                                
+                                # NavSub
+                                for ($i = 0, $n = count($aInstall['nav_subs']); $i < $n; $i ++) {
+                                    $id = $db->nextid($cfg['tab']['nav_sub']);
+                                    if (is_numeric($aInstall['nav_subs'][$i]['nav_main'])) {
+                                        $idnavm = intval($aInstall['nav_main']['idnavm']);
+                                    }
+                                    else {
+                                        $sql = 'SELECT idnavm
+                                                FROM ' . $cfg['tab']['nav_main'] . '
+                                                WHERE (location LIKE "%' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['nav_main'], $db) . '%")';
+                                        $db->query($sql);
+                                        $db->next_record();
+                                        $idnavm = $db->f('idnavm');
+                                    }
+                                    $sql = 'INSERT INTO ' . $cfg['tab']['nav_sub'] . ' (idnavs, idnavm, idarea, level, location, online)
+                                            VALUES (' . $id . ', ' . $idnavm . ', ' . intval($aInstall['areas'][(intval($aInstall['nav_subs'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['nav_subs'][$i]['level']) . ', "' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['location'], $db) . '", ' . intval($aInstall['nav_subs'][$i]['online']) . ')';
+                                    $db->query($sql);
+                                    $aInstall['nav_subs'][$i]['idframefile'] = $id;
+                                    $aDescription[] = array('table' => $cfg['tab']['nav_sub'], 'id' => $id);
+                                }
+                                
+                                # Copy additional system files
+                                $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
+                                if (count($aFoldersAndFiles)) {
+                                    $sContent .= '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
+                                    foreach ($aFoldersAndFiles as $entry) {
+                                        if (substr($entry, -1) == '/') {
+                                            
+                                            # Entry is a folder, create it
+                                            mkdir($cfg['path']['frontend'] . '/' . $entry, 0750);
+                                        }
+                                        else {
+                                            
+                                            # Entry is a file, copy it
+                                            copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
                                         }
                                     }
-                                    
-                                    # Delete the record from the _plugins table
-                                    $sql = 'DELETE FROM ' . $cfg['tab']['plugins'] . '
-                                            WHERE (idplugin=' . $idplugin . ')';
-                                    $db->query($sql);
                                 }
+                                
+                                if ($bUpdate) {
+                                    
+                                    # Check if there is install info and get it
+                                    $sql = 'SELECT idplugin, description
+                                            FROM ' . $cfg['tab']['plugins'] . '
+                                            WHERE ((name="' . $sPlugin . '")
+                                               AND (path="' . $sPlugin . '"))';
+                                    $db->query($sql);
+                                    if ($db->next_record()) {
+                                        $idplugin = $db->f('idplugin');
+                                        $aDescription = json_decode($db->f('description'), true);
+                                        
+                                        # Delete the database entries
+                                        foreach ($aDescription as $value) {
+                                            $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name="' . $value['table'] . '")';
+                                            $db->query($sql);
+                                            if ($db->next_record()) {
+                                                $sql = 'DELETE FROM ' . $value['table'] . ' WHERE (' . $db->f(0) .'=' . $value['id'] . ')';
+                                                $db->query($sql);
+                                            }
+                                        }
+                                        
+                                        # Delete the record from the _plugins table
+                                        $sql = 'DELETE FROM ' . $cfg['tab']['plugins'] . '
+                                                WHERE (idplugin=' . $idplugin . ')';
+                                        $db->query($sql);
+                                    }
+                                }
+                                
+                                # Enter plugin into _plugins
+                                $sContent .= '<p>' . sprintf(i18n("Registering plugin %s in database", $plugin_name), $sPlugin) . '</p>';
+                                $id = $db->nextid($cfg['tab']['plugins']);
+                                $sql = 'INSERT INTO ' . $cfg['tab']['plugins'] . ' (idplugin, name, description, path, installed)
+                                        VALUES (' . $id . ', "' . $sPlugin . '", "' . Contenido_Security::escapeDB(json_encode($aDescription), $db) . '", "' . $sPlugin . '", 1)';
+                                $db->query($sql);
+                                
+                                $sContent .= $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully installed", $plugin_name), $sPlugin));
+                                $sContent .= '<p>' . sprintf(i18n("(auto redirect in 5 seconds)", $plugin_name), $sPlugin) . '</p>';
+                                $sContent .= $sReloadScript;
                             }
-                            
-                            # Enter plugin into _plugins
-                            $sContent .= '<p>' . sprintf(i18n("Registering plugin %s in database", $plugin_name), $sPlugin) . '</p>';
-                            $id = $db->nextid($cfg['tab']['plugins']);
-                            $sql = 'INSERT INTO ' . $cfg['tab']['plugins'] . ' (idplugin, name, description, path, installed)
-                                    VALUES (' . $id . ', "' . $sPlugin . '", "' . Contenido_Security::escapeDB(json_encode($aDescription), $db) . '", "' . $sPlugin . '", 1)';
-                            $db->query($sql);
-                            
-                            $sContent .= $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully installed", $plugin_name), $sPlugin));
-                            $sContent .= '<p>' . sprintf(i18n("(auto redirect in 5 seconds)", $plugin_name), $sPlugin) . '</p>';
-                            $sContent .= $sReloadScript;
-                        }
-                        else {
-                            $sContent .= $notification->returnNotification("error", sprintf(i18n("Unable to install %s, missing install information", $plugin_name), $sPlugin));
-                            $sContent .= $sReloadScript;
-                            removeDir($sPath);
+                            else {
+                                $sContent .= $notification->returnNotification("error", sprintf(i18n("Unable to install %s, missing install information", $plugin_name), $sPlugin));
+                                $sContent .= $sReloadScript;
+                                removeDir($sPath);
+                            }
                         }
                     }
                     else {
@@ -648,7 +655,7 @@ switch ($sWhat) {
                             if (substr($entry, -1) == '/') {
                                 
                                 # Entry is a folder, create it
-                                mkdir($cfgClient[$client]['path']['frontend'] . $entry, 0644);
+                                mkdir($cfgClient[$client]['path']['frontend'] . $entry, 0750);
                             }
                             else {
                                 

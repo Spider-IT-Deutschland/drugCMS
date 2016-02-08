@@ -136,5 +136,5 @@ INSERT INTO `!PREFIX!_actions` VALUES (811, 811, 'do_purge', 'do_purge', '', '',
 INSERT INTO `!PREFIX!_actions` VALUES (812, 11, 'mod_export', 'mod_export', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (813, 11, 'mod_sync', 'mod_sync', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (814, 11, 'mod_sync_and_delete', 'mod_sync_and_delete', '', '', 1);
-INSERT INTO `!PREFIX!_actions` VALUES (900, 0, 'plugins', 'plugins', '', '', 1);
-INSERT INTO `!PREFIX!_actions` VALUES (901, 0, 'repositories', 'repositories', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (900, 900, 'plugins', 'plugins', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (901, 900, 'repositories', 'repositories', '', '', 1);
