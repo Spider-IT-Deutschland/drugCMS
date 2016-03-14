@@ -82,13 +82,175 @@ function copyr($src, $dst) {
     }
     closedir($dir);
 }
-
-$sContent = '';
-if (!isWritablePath($cfg['path']['contenido'] . $cfg['path']['plugins'])) {
-    # Error Missing write permission for folder drugcms/plugins
-    $sContent .= $notification->returnNotification("error", sprintf(i18n("%s is not writable"), basename($cfg['path']['contenido']) . '/' . $cfg['path']['plugins'])) . '</p>';
+function installPlugin($sPlugin, $bUpdate) {
+    global $oPlugin, $aDescription, $db, $cfg, $plugin_name;
+    
+    $aInstall = $oPlugin->getInstallInfo();
+    if ($aInstall !== false) {
+        echo '<p>' . i18n("Installing database entries", $plugin_name) . '</p>';
+        flush();
+        $aDescription = array();
+        
+        # Areas
+        for ($i = 0, $n = count($aInstall['areas']); $i < $n; $i ++) {
+            $id = $db->nextid($cfg['tab']['area']);
+            if ((is_numeric($aInstall['areas'][$i]['parent'])) && ($aInstall['areas'][$i]['parent'] != 0)) {
+                $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                        VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][($aInstall['areas'][$i]['parent'] - 1)]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
+            }
+            else {
+                $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
+                        VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
+            }
+            $db->query($sql);
+            $aInstall['areas'][$i]['idarea'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['area'], 'id' => $id);
+        }
+        
+        # Actions
+        for ($i = 0, $n = count($aInstall['actions']); $i < $n; $i ++) {
+            $id = $db->nextid($cfg['tab']['actions']);
+            $sql = 'INSERT INTO ' . $cfg['tab']['actions'] . ' (idaction, idarea, alt_name, name, code, location, relevant)
+                    VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['actions'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['alt_name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['code'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['location'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['relevant'], $db) . '")';
+            $db->query($sql);
+            $aInstall['actions'][$i]['idaction'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['actions'], 'id' => $id);
+        }
+        
+        # Files
+        for ($i = 0, $n = count($aInstall['files']); $i < $n; $i ++) {
+            $id = $db->nextid($cfg['tab']['files']);
+            if (is_numeric($aInstall['files'][$i]['area'])) {
+                $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                        VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+            }
+            else {
+                $sql = 'SELECT idarea
+                        FROM ' . $cfg['tab']['area'] . '
+                        WHERE (name="' . $aInstall['files'][$i]['area'] . '")';
+                $db->query($sql);
+                if ($db->next_record()) {
+                    $idarea = $db->f('idarea');
+                }
+                $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
+                        VALUES (' . $id . ', ' . intval($idarea) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
+            }
+            $db->query($sql);
+            $aInstall['files'][$i]['idfile'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['files'], 'id' => $id);
+        }
+        
+        # FrameFiles
+        for ($i = 0, $n = count($aInstall['frame_files']); $i < $n; $i ++) {
+            $id = $db->nextid($cfg['tab']['framefiles']);
+            if (is_numeric($aInstall['frame_files'][$i]['area'])) {
+                $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                        VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+            }
+            else {
+                $sql = 'SELECT idarea
+                        FROM ' . $cfg['tab']['area'] . '
+                        WHERE (name="' . $aInstall['frame_files'][$i]['area'] . '")';
+                $db->query($sql);
+                if ($db->next_record()) {
+                    $idarea = $db->f('idarea');
+                }
+                $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
+                        VALUES (' . $id . ', ' . intval($idarea) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
+            }
+            $db->query($sql);
+            $aInstall['frame_files'][$i]['idframefile'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['framefiles'], 'id' => $id);
+        }
+        
+        # NavMain
+        if (strlen($aInstall['nav_main'])) {
+            $id = $db->nextid($cfg['tab']['nav_main']);
+            $sql = 'INSERT INTO ' . $cfg['tab']['nav_main'] . ' (idnavm, location)
+                    VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['nav_main']['location'], $db) . '")';
+            $db->query($sql);
+            $aInstall['nav_main']['idnavm'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['nav_main'], 'id' => $id);
+        }
+        
+        # NavSub
+        for ($i = 0, $n = count($aInstall['nav_subs']); $i < $n; $i ++) {
+            $id = $db->nextid($cfg['tab']['nav_sub']);
+            if (is_numeric($aInstall['nav_subs'][$i]['nav_main'])) {
+                $idnavm = intval($aInstall['nav_main']['idnavm']);
+            }
+            else {
+                $sql = 'SELECT idnavm
+                        FROM ' . $cfg['tab']['nav_main'] . '
+                        WHERE (location LIKE "%' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['nav_main'], $db) . '%")';
+                $db->query($sql);
+                $db->next_record();
+                $idnavm = $db->f('idnavm');
+            }
+            $sql = 'INSERT INTO ' . $cfg['tab']['nav_sub'] . ' (idnavs, idnavm, idarea, level, location, online)
+                    VALUES (' . $id . ', ' . $idnavm . ', ' . intval($aInstall['areas'][(intval($aInstall['nav_subs'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['nav_subs'][$i]['level']) . ', "' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['location'], $db) . '", ' . intval($aInstall['nav_subs'][$i]['online']) . ')';
+            $db->query($sql);
+            $aInstall['nav_subs'][$i]['idframefile'] = $id;
+            $aDescription[] = array('table' => $cfg['tab']['nav_sub'], 'id' => $id);
+        }
+        
+        if ($bUpdate) {
+            
+            # Check if there is install info and get it
+            $sql = 'SELECT idplugin, description
+                    FROM ' . $cfg['tab']['plugins'] . '
+                    WHERE ((name="' . $sPlugin . '")
+                       AND (path="' . $sPlugin . '"))';
+            $db->query($sql);
+            if ($db->next_record()) {
+                $idplugin = $db->f('idplugin');
+                $aDescription = json_decode($db->f('description'), true);
+                
+                # Delete the database entries
+                foreach ($aDescription as $value) {
+                    $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name="' . $value['table'] . '")';
+                    $db->query($sql);
+                    if ($db->next_record()) {
+                        $sql = 'DELETE FROM ' . $value['table'] . ' WHERE (' . $db->f(0) .'=' . $value['id'] . ')';
+                        $db->query($sql);
+                    }
+                }
+                
+                # Delete the record from the _plugins table
+                $sql = 'DELETE FROM ' . $cfg['tab']['plugins'] . '
+                        WHERE (idplugin=' . $idplugin . ')';
+                $db->query($sql);
+            }
+        }
+        
+        # Enter plugin into _plugins
+        echo '<p>' . sprintf(i18n("Registering plugin %s in database", $plugin_name), $sPlugin) . '</p>';
+        flush();
+        $id = $db->nextid($cfg['tab']['plugins']);
+        $sql = 'INSERT INTO ' . $cfg['tab']['plugins'] . ' (idplugin, name, description, path, installed)
+                VALUES (' . $id . ', "' . $sPlugin . '", "' . Contenido_Security::escapeDB(json_encode($aDescription), $db) . '", "' . $sPlugin . '", 1)';
+        $db->query($sql);
+        
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
+# Make the pages show faster, even with slow backend internet connections
+@ini_set('zlib.output_compression', 0);
+@ini_set('implicit_flush', 1);
+ob_implicit_flush(1);
+ob_end_flush();
+
+# Output the top HTML first
+$sHTML = file_get_contents($cfg['path']['contenido'] . $cfg['path']['plugins'] . 'pim/templates/default/page.html');
+$p1 = strpos($sHTML, '{CONTENT}');
+echo substr($sHTML, 0, $p1) . $sScrollScript . str_repeat(" ", 256) . "\n";
+flush();
+
+# Include needed files
 plugin_include($plugin_name, 'includes/config.plugin.php');
 plugin_include($plugin_name, 'classes/class.plugininfo.php');
 
@@ -111,43 +273,50 @@ if (strlen($sFilter)) {
 switch ($sWhat) {
     case 'plugins':
         if ($perm->have_perm_area_action($plugin_name, 'plugins')) {
-            $sScrollScript = '<script type="text/javascript">
-                setTimeout(function() {
-                    $("html, body").animate({scrollTop: $(document).height() + "px"}, 2000);
-                }, 100);
-            </script>';
-            $sReloadScript = '<script type="text/javascript">
-                var tmr;
-                tmr = setInterval(function() {
-                    checkLoadInit();
-                }, 1);
-                function checkLoadInit() {
-                    var nav = parent.parent.frames.header.document.getElementById("main_3");
-                    if (nav == null) {
-                        clearInterval(tmr);
-                        tmr = setInterval(function() {
-                            checkLoadReady();
-                        }, 10);
-                    }
-                }
-                function checkLoadReady() {
-                    var nav = parent.parent.frames.header.document.getElementById("main_3");
-                    if (nav != null) {
-                        clearInterval(tmr);
-                        $("#sub_pim", top.frames["header"].document).removeClass("sub").addClass("activemenu");
-                        parent.parent.frames.header.window.show("sub_3", "main_3");
-                        setTimeout(function() {
-                            var menu = parent.parent.frames.header.window.ContenidoRegistry.get("headerMenu");
-                            menu.setActiveSubMenu("sub_3");
-                            menu.setActiveMenu("main_3");
-                        }, 10);
-                    }
-                }
-                parent.parent.frames["header"].document.location.href = parent.parent.frames["header"].document.location.href;
-                setTimeout(function() {
-                    document.location.href = document.location.href' . ((strlen($_REQUEST['Filter'])) ? ' + "&Filter=' . $_REQUEST['Filter'] . '"' : '') . ';
-                }, 5000);
-            </script>';
+            $sScrollScript = '
+<script type="text/javascript">
+//<![CDATA[
+    setTimeout(function() {
+        $("html, body").animate({scrollTop: $(document).height() + "px"}, 2000);
+    }, 100);
+//]]>
+</script>';
+            $sReloadScript = '
+<p>' . i18n("(auto redirect in 5 seconds)", $plugin_name) . '</p>
+<script type="text/javascript">
+//<![CDATA[
+    var tmr;
+    tmr = setInterval(function() {
+        checkLoadInit();
+    }, 1);
+    function checkLoadInit() {
+        var nav = parent.parent.frames.header.document.getElementById("main_3");
+        if (nav == null) {
+            clearInterval(tmr);
+            tmr = setInterval(function() {
+                checkLoadReady();
+            }, 10);
+        }
+    }
+    function checkLoadReady() {
+        var nav = parent.parent.frames.header.document.getElementById("main_3");
+        if (nav != null) {
+            clearInterval(tmr);
+            $("#sub_pim", top.frames["header"].document).removeClass("sub").addClass("activemenu");
+            parent.parent.frames.header.window.show("sub_3", "main_3");
+            setTimeout(function() {
+                var menu = parent.parent.frames.header.window.ContenidoRegistry.get("headerMenu");
+                menu.setActiveSubMenu("sub_3");
+                menu.setActiveMenu("main_3");
+            }, 10);
+        }
+    }
+    parent.parent.frames["header"].document.location.href = parent.parent.frames["header"].document.location.href;
+    setTimeout(function() {
+        document.location.href = document.location.href' . ((strlen($_REQUEST['Filter'])) ? ' + "&Filter=' . $_REQUEST['Filter'] . '"' : '') . ';
+    }, 5000);
+//]]>
+</script>';
 
             switch ($sAction) {
                 case 'List':
@@ -160,7 +329,6 @@ switch ($sWhat) {
                     $oTpl->set('s', 'TEXT_DO_FILTER', i18n("Use filter", $plugin_name));
                     $oTpl->set('s', 'TEXT_CLEAR_FILTER', i18n("Clear filter", $plugin_name));
                     $oTpl->set('s', 'TEXT_AVAILABLE', i18n("Available plugins", $plugin_name));
-                    $oTpl->set('s', 'TEXT_INSTALL', i18n("Install", $plugin_name));
                     $oTpl->set('s', 'TEXT_UNINSTALL', i18n("Uninstall", $plugin_name));
                     $oTpl->set('s', 'TEXT_NAME', i18n("Plugin", $plugin_name));
                     $oTpl->set('s', 'TEXT_DESCRIPTION', i18n("Description", $plugin_name));
@@ -171,7 +339,6 @@ switch ($sWhat) {
                     $oTpl->set('s', 'TEXT_DEPENDENCIES', i18n("Dependencies", $plugin_name));
                     $oTpl->set('s', 'TEXT_MODULES', i18n("Modules", $plugin_name));
                     $oTpl->set('s', 'TEXT_INSTALL_MODULES', i18n("Install modules for the current client", $plugin_name));
-                    $oTpl->set('s', 'TEXT_REPOSITORY', i18n("Repository", $plugin_name));
                     
                     $oTpl->set('s', 'FILTER', $_REQUEST['Filter']);
                     
@@ -187,6 +354,7 @@ switch ($sWhat) {
                         }
                         closedir($dh);
                     }
+                    ksort($aPluginsI, SORT_STRING);
                     
                     # Then get the plugin info's from their plugin.xml files
                     $oLang = new Language();
@@ -200,41 +368,6 @@ switch ($sWhat) {
                             $aPluginsI[$key] = $aInfo;
                         }
                     }
-                    
-                    # Get available plugins from plugins.drugcms.org
-                    #getRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '')
-                    $sUrl = 'http://plugins.drugcms.org/' . ((strlen($sFilter)) ? '?Filter=' . urlencode($sFilter) : '');
-                    $sDownloadUrl = 'http://plugins.drugcms.org/';
-                    $iErrNo = 0;
-                    $sErrMsg = '';
-                    $aPluginsA = json_decode(getRemoteContent($sUrl, $iErrNo, $sErrMsg), true);
-                    foreach ($aPluginsA as $key => $value) {
-                        $aPluginsA[$key]['Url'] = $sDownloadUrl;
-                        $aPluginsA[$key]['Repo'] = 'drugCMS';
-                    }
-                    
-                    # Get available plugins from additionally added repositories
-                    $aReposInfo = getPropertiesByItemtype('plugin_repository', 'itemid');
-                    $aRepos = array();
-                    for ($i = 0, $n = count($aReposInfo); $i < $n; $i ++) {
-                        $aRepos[$aReposInfo[$i]['itemid']][$aReposInfo[$i]['name']] = $aReposInfo[$i]['value'];
-                    }
-                    foreach ($aRepos as $itemid => $server) {
-                        $oTpl->set('s', 'SHOW_REPOSITORY', '1');
-                        $sUrl = $server['host'] . ((strlen($sFilter)) ? '?Filter=' . urlencode($sFilter) : '');
-                        $sDownloadUrl = $server['host'];
-                        $sLogin = $server['login'];
-                        $sPassword = $server['password'];
-                        $iErrNo = 0;
-                        $sErrMsg = '';
-                        $aPluginsO = json_decode(getRemoteContent($sUrl, $iErrNo, $sErrMsg, $sLogin, $sPassword), true);
-                        foreach ($aPluginsO as $key => $value) {
-                            $aPluginsA[$key . '~~' . $itemid] = $value;
-                            $aPluginsA[$key . '~~' . $itemid]['Url'] = $sDownloadUrl;
-                            $aPluginsA[$key . '~~' . $itemid]['Repo'] = $itemid;
-                        }
-                    }
-                    $oTpl->set('s', 'SHOW_REPOSITORY', '');
                     
                     # List installed plugins
                     $sClass = 'odd';
@@ -298,6 +431,60 @@ switch ($sWhat) {
                     }
                     $oTpl->set('s', 'SHOW_MODULES', 'false');
                     
+                    # Generate list template
+                    echo $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/list.html', true);
+                    flush();
+                    $oTpl->reset();
+                    
+                    # Set fixed informations
+                    $oTpl->set('s', 'FORM_ACTION', 'main.php?area=pim&amp;frame=4&amp;contenido=' . $contenido);
+                    $oTpl->set('s', 'TEXT_INSTALL', i18n("Install", $plugin_name));
+                    $oTpl->set('s', 'TEXT_NAME', i18n("Plugin", $plugin_name));
+                    $oTpl->set('s', 'TEXT_DESCRIPTION', i18n("Description", $plugin_name));
+                    $oTpl->set('s', 'TEXT_TAGS', i18n("Tags", $plugin_name));
+                    $oTpl->set('s', 'TEXT_AUTHOR', i18n("Author", $plugin_name));
+                    $oTpl->set('s', 'TEXT_COPYRIGHT', i18n("Copyright", $plugin_name));
+                    $oTpl->set('s', 'TEXT_VERSION', i18n("Version", $plugin_name));
+                    $oTpl->set('s', 'TEXT_DEPENDENCIES', i18n("Dependencies", $plugin_name));
+                    $oTpl->set('s', 'TEXT_MODULES', i18n("Modules", $plugin_name));
+                    $oTpl->set('s', 'TEXT_REPOSITORY', i18n("Repository", $plugin_name));
+                    
+                    $oTpl->set('s', 'FILTER', $_REQUEST['Filter']);
+                    
+                    # Get available plugins from plugins.drugcms.org
+                    $sUrl = 'http://plugins.drugcms.org/' . ((strlen($sFilter)) ? '?Filter=' . urlencode($sFilter) : '');
+                    $sDownloadUrl = 'http://plugins.drugcms.org/';
+                    $iErrNo = 0;
+                    $sErrMsg = '';
+                    $aPluginsA = json_decode(getRemoteContent($sUrl, $iErrNo, $sErrMsg), true);
+                    foreach ($aPluginsA as $key => $value) {
+                        $aPluginsA[$key]['Url'] = $sDownloadUrl;
+                        $aPluginsA[$key]['Repo'] = 'drugCMS';
+                    }
+                    
+                    # Get available plugins from additionally added repositories
+                    $aReposInfo = getPropertiesByItemtype('plugin_repository', 'itemid');
+                    $aRepos = array();
+                    for ($i = 0, $n = count($aReposInfo); $i < $n; $i ++) {
+                        $aRepos[$aReposInfo[$i]['itemid']][$aReposInfo[$i]['name']] = $aReposInfo[$i]['value'];
+                    }
+                    foreach ($aRepos as $itemid => $server) {
+                        $oTpl->set('s', 'SHOW_REPOSITORY', '1');
+                        $sUrl = $server['host'] . ((strlen($sFilter)) ? '?Filter=' . urlencode($sFilter) : '');
+                        $sDownloadUrl = $server['host'];
+                        $sLogin = $server['login'];
+                        $sPassword = $server['password'];
+                        $iErrNo = 0;
+                        $sErrMsg = '';
+                        $aPluginsO = json_decode(getRemoteContent($sUrl, $iErrNo, $sErrMsg, $sLogin, $sPassword), true);
+                        foreach ($aPluginsO as $key => $value) {
+                            $aPluginsA[$key . '~~' . $itemid] = $value;
+                            $aPluginsA[$key . '~~' . $itemid]['Url'] = $sDownloadUrl;
+                            $aPluginsA[$key . '~~' . $itemid]['Repo'] = $itemid;
+                        }
+                    }
+                    $oTpl->set('s', 'SHOW_REPOSITORY', '');
+                    
                     # List available plugins
                     $sClass = 'odd';
                     foreach ($aPluginsA as $key => $value) {
@@ -345,16 +532,36 @@ switch ($sWhat) {
                                 }
                             }
                             $oTpl->set('d1', 'DEPENDENCIES', substr($sDependencies, 0, -2));
-                            if (!array_key_exists($key, $aPluginsI)) {
+                            if ((version_compare($value['Requirements']['php'], phpversion(), '>')) && (version_compare($value['Requirements']['drugcms'], $cfg['version'], '>'))) {
+                                $oTpl->set('d1', 'CLASS', 'old');
+                                $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Old PHP version and old drugCMS version, installation not possible", $plugin_name), $value['Name']));
+                                $oTpl->set('d1', 'IMG_CLASS', 'blocked');
+                                $oTpl->set('d1', 'IMAGE', 'icon_warning');
+                            }
+                            elseif (version_compare($value['Requirements']['php'], phpversion(), '>')) {
+                                $oTpl->set('d1', 'CLASS', 'old');
+                                $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Old PHP version, installation not possible", $plugin_name), $value['Name']));
+                                $oTpl->set('d1', 'IMG_CLASS', 'blocked');
+                                $oTpl->set('d1', 'IMAGE', 'icon_warning');
+                            }
+                            elseif (version_compare($value['Requirements']['drugcms'], $cfg['version'], '>')) {
+                                $oTpl->set('d1', 'CLASS', 'old');
+                                $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Old drugCMS version, installation not possible", $plugin_name), $value['Name']));
+                                $oTpl->set('d1', 'IMG_CLASS', 'blocked');
+                                $oTpl->set('d1', 'IMAGE', 'icon_warning');
+                            }
+                            elseif (!array_key_exists($key, $aPluginsI)) {
                                 $oTpl->set('d1', 'CLASS', $sClass);
                                 $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Install %s", $plugin_name), $value['Name']));
+                                $oTpl->set('d1', 'IMG_CLASS', 'install');
+                                $oTpl->set('d1', 'IMAGE', 'importieren');
                             }
                             elseif (version_compare($value['Version'], $aPluginsI[$key]['Version'], '>')) {
                                 $oTpl->set('d1', 'CLASS', 'new');
                                 $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Update %s", $plugin_name), $value['Name']));
+                                $oTpl->set('d1', 'IMG_CLASS', 'install');
+                                $oTpl->set('d1', 'IMAGE', 'importieren');
                             }
-                            $oTpl->set('d1', 'IMG_CLASS', 'install');
-                            $oTpl->set('d1', 'IMAGE', 'importieren');
                             $oTpl->set('d1', 'REPOSITORY', $value['Repo']);
                             $sClass = (($sClass == 'odd') ? 'even' : 'odd');
                             $oTpl->next(1);
@@ -362,258 +569,324 @@ switch ($sWhat) {
                     }
                     
                     # Generate list template
-                    $sContent .= $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/list.html', true);
+                    echo $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/list_available.html', true);
+                    flush();
                     $oTpl->reset();
                     break;
                 
                 case 'Install':
-                    $sContent .= $sScrollScript;
                     $sPlugin = $_POST['Key'];
                     $sUrl = $_POST['Url'];
                     $sPath = $cfg['path']['contenido'] . $cfg['path']['plugins'] . $sPlugin . '/';
                     $bUpdate = is_dir($sPath);
-                    if (($bUpdate) || (mkdir($sPath, 0750))) {
+                    
+                    # Download the plugin
+                    $bOK = false;
+                    if (intval(getProperty(0, 'system', 'setting', 'ftp', 'use'))) {
+                        $bOK = true;
+                        
+                        # Get the FTP access data
+                        $sFTPServer         = getProperty(0, 'system', 'setting', 'ftp', 'server');
+                        $iFTPPort           = intval(getProperty(0, 'system', 'setting', 'ftp', 'port'));
+                        $iFTPPort           = (($iFTPPort) ? $iFTPPort : 21);
+                        $sFTPUser           = getProperty(0, 'system', 'setting', 'ftp', 'user');
+                        $sFTPPassword       = getProperty(0, 'system', 'setting', 'ftp', 'password');
+                        $sFTPProtocol       = getProperty(0, 'system', 'setting', 'ftp', 'protocol');
+                        $sBackendFTPPath    = getProperty(0, 'system', 'setting', 'ftp', 'backend_path');
+                        $sFrontendFTPPath   = getProperty(0, 'system', 'setting', 'ftp', 'frontend_path');
+                        
+                        # Establish the FTP connection
+                        switch ($sFTPProtocol) {
+                            case 'ftp':
+                                $ftp = new ftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                break;
+                            case 'sftp':
+                                $ftp = new sftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                break;
+                        }
+                        if (!$ftp) {
+                            echo $notification->returnNotification("error", sprintf(i18n("Unable to create a (S)FTP connection to %s", $plugin_name), $sFTPServer));
+                            flush();
+                            $bOK = false;
+                            break;
+                        }
+                        echo '<p>' . i18n("FTP connection established", $plugin_name) . '</p>';
+                        flush();
+                        
+                        # Determin the plugins path under the FTP root path
+                        $sPath = $sBackendFTPPath . $cfg['path']['plugins'] . $sPlugin . '/';
+                        
+                        # Create the folder for the new plugin
+                        if (!$ftp->mkdir($sPath, true)) {
+                            echo $notification->returnNotification("error", sprintf(i18n("Unable to create the plugin's folder", $plugin_name), $sFTPServer));
+                            flush();
+                            $bOK = false;
+                            ftp_close($ftp);
+                            break;
+                        }
+                        
                         # Download the plugin
-                        $bOK = false;
                         if (class_exists('ZipArchive')) {
-                            if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetZip', $sPath . $sPlugin . '.zip', $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
-                                $sContent .= '<p>' . i18n("Zip file downloaded", $plugin_name) . '</p>';
+                            if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetZip', $cfg['path']['contenido'] . 'data/cache/' . $sPlugin . '.zip', $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
+                                echo '<p>' . i18n("Zip file downloaded", $plugin_name) . '</p>';
                                 flush();
                                 
                                 # Extract the zip file to it's folder
                                 $zip = new ZipArchive();
-                                if ($zip->open($sPath . $sPlugin . '.zip')) {
-                                    $zip->extractTo($sPath);
+                                if ($zip->open($cfg['path']['contenido'] . 'data/cache/' . $sPlugin . '.zip')) {
+                                    mkdir($cfg['path']['contenido'] . 'data/cache/' . $sPlugin, 0755, true);
+                                    $zip->extractTo($cfg['path']['contenido'] . 'data/cache/' . $sPlugin);
                                     $zip->close();
                                 }
-                                $sContent .= '<p>' . i18n("Zip file extracted", $plugin_name) . '</p>';
+                                echo '<p>' . i18n("Zip file extracted", $plugin_name) . '</p>';
                                 flush();
                                 $bOK = true;
                                 
                                 # Delete the zip file
-                                #unlink($sPath . $sPlugin . '.zip');
+                                unlink($cfg['path']['contenido'] . 'data/cache/' . $sPlugin . '.zip');
+                                
+                                # Upload all files per FTP
+                                if ($ftp->putAll($cfg['path']['contenido'] . 'data/cache/' . $sPlugin, $sPath)) {
+                                    echo '<p>' . i18n("Files placed per FTP", $plugin_name) . '</p>';
+                                    flush();
+                                }
+                                else {
+                                    echo $notification->returnNotification("error", i18n("Unable to write files per FTP", $plugin_name));
+                                    flush();
+                                    removeDir($cfg['path']['contenido'] . 'data/cache/' . $sPlugin);
+                                    $ftp->rmdir($sPath, true);
+                                    $bOK = false;
+                                    break;
+                                }
                             }
                             else {
-                                $sContent .= $notification->returnNotification("error", i18n("Failed to download zip file", $plugin_name)) . '</p>';
+                                echo $notification->returnNotification("error", i18n("Failed to download zip file", $plugin_name)) . '</p>';
+                                flush();
                             }
                         }
                         if (!$bOK) {
-                            $bOK = true;
+                            # Get the folders and files
                             $aFoldersAndFiles = json_decode(getRemoteContent($sUrl . '?Plugin=' . $sPlugin . '&Action=Files', $iErrNo, $sErrMsg, $sLogin, $sPassword));
+                            $iDone = 0;
                             for ($i = 0, $n = count($aFoldersAndFiles); $i < $n; $i ++) {
                                 if (substr($aFoldersAndFiles[$i], -1) == '/') {
-                                    if (mkdir($sPath . $aFoldersAndFiles[$i], 0750)) {
-                                        $sContent .= '<p>' . sprintf(i18n("Folder %s created", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
+                                    if ($ftp->mkdir($sPath . $aFoldersAndFiles[$i])) {
+                                        echo '<p>' . sprintf(i18n("Folder %s created", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
                                         flush();
                                     }
                                     else {
-                                        $sContent .= $notification->returnNotification("error", sprintf(i18n("Unable to create folder %s", $plugin_name), $aFoldersAndFiles[$i])) . '</p>';
+                                        echo $notification->returnNotification("error", sprintf(i18n("Unable to create folder %s", $plugin_name), $aFoldersAndFiles[$i]));
                                         flush();
                                         $bOK = false;
                                         break;
                                     }
                                 }
                                 else {
-                                    if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetFile&File=' . urlencode($aFoldersAndFiles[$i]), $sPath . $aFoldersAndFiles[$i], $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
-                                        $sContent .= '<p>File ' . $aFoldersAndFiles[$i] . ' downloaded</p>';
+                                    if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetFile&File=' . urlencode($aFoldersAndFiles[$i]), $cfg['path']['contenido'] . 'data/cache/' . basename($aFoldersAndFiles[$i]), $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
+                                        if (!is_file($cfg['path']['contenido'] . 'data/cache/' . basename($aFoldersAndFiles[$i]))) {
+                                            echo $notification->returnNotification("error", sprintf(i18n("Unable to write temporary file %s in the drugCMS backend cache folder (data/cache/)", $plugin_name), $aFoldersAndFiles[$i]));
+                                            flush();
+                                            $bOK = false;
+                                            break;
+                                        }
+                                        if (!$ftp->put($sPath . $aFoldersAndFiles[$i], $cfg['path']['contenido'] . 'data/cache/' . basename($aFoldersAndFiles[$i]))) {
+                                            echo $notification->returnNotification("error", sprintf(i18n("Unable to write file %s per FTP", $plugin_name), $aFoldersAndFiles[$i]));
+                                            flush();
+                                            unlink($cfg['path']['contenido'] . 'data/cache/' . basename($aFoldersAndFiles[$i]));
+                                            $bOK = false;
+                                            break;
+                                        }
+                                        else {
+                                            unlink($cfg['path']['contenido'] . 'data/cache/' . basename($aFoldersAndFiles[$i]));
+                                        }
+                                        echo '<p>' . sprintf(i18n("File %s downloaded", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
                                         flush();
                                     }
                                     else {
-                                        $sContent .= $notification->returnNotification("error", $sErrMsg) . '</p>';
+                                        echo $notification->returnNotification("error", $sErrMsg);
                                         flush();
                                         $bOK = false;
                                         break;
                                     }
                                 }
+                                $iDone ++;
                             }
                         }
-                        if ($bOK) {
+                        if (!$bOK) {
+                            
+                            # Rollback the already done actions (create folders, put files)
+                            echo '<p>' . i18n("Rolling back already transfered folders and files", $plugin_name) . '</p>';
+                            flush();
+                            if (!$ftp->rmdir($sPath, true)) {
+                                echo $notification->returnNotification("error", sprintf(i18n("Unable to remove the folder for %s", $plugin_name), $sPlugin));
+                                flush();
+                            }
+                        }
+                        else {
                             
                             # Install the plugin
                             $oPlugin = new PluginInfo($sPlugin);
-                            $aInstall = $oPlugin->getInstallInfo();
-                            if ($aInstall !== false) {
-                                $sContent .= '<p>' . i18n("Installing database entries", $plugin_name) . '</p>';
-                                $aDescription = array();
-                                
-                                # Areas
-                                for ($i = 0, $n = count($aInstall['areas']); $i < $n; $i ++) {
-                                    $id = $db->nextid($cfg['tab']['area']);
-                                    if ((is_numeric($aInstall['areas'][$i]['parent'])) && ($aInstall['areas'][$i]['parent'] != 0)) {
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
-                                                VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][($aInstall['areas'][$i]['parent'] - 1)]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
-                                    }
-                                    else {
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['area'] . ' (idarea, parent_id, name, relevant, online, menuless)
-                                                VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['parent'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['areas'][$i]['name'], $db) . '", ' . intval($aInstall['areas'][$i]['relevant']) . ', ' . intval($aInstall['areas'][$i]['online']) . ', ' . intval($aInstall['areas'][$i]['menuless']) . ')';
-                                    }
-                                    $db->query($sql);
-                                    $aInstall['areas'][$i]['idarea'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['area'], 'id' => $id);
-                                }
-                                
-                                # Actions
-                                for ($i = 0, $n = count($aInstall['actions']); $i < $n; $i ++) {
-                                    $id = $db->nextid($cfg['tab']['actions']);
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['actions'] . ' (idaction, idarea, alt_name, name, code, location, relevant)
-                                            VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['actions'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['alt_name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['name'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['code'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['location'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['actions'][$i]['relevant'], $db) . '")';
-                                    $db->query($sql);
-                                    $aInstall['actions'][$i]['idaction'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['actions'], 'id' => $id);
-                                }
-                                
-                                # Files
-                                for ($i = 0, $n = count($aInstall['files']); $i < $n; $i ++) {
-                                    $id = $db->nextid($cfg['tab']['files']);
-                                    if (is_numeric($aInstall['files'][$i]['area'])) {
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
-                                                VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['files'][$i]['area']) - 1)]['idarea']) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
-                                    }
-                                    else {
-                                        $sql = 'SELECT idarea
-                                                FROM ' . $cfg['tab']['area'] . '
-                                                WHERE (name="' . $aInstall['files'][$i]['area'] . '")';
-                                        $db->query($sql);
-                                        if ($db->next_record()) {
-                                            $idarea = $db->f('idarea');
-                                        }
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['files'] . ' (idfile, idarea, filename, filetype)
-                                                VALUES (' . $id . ', ' . intval($idarea) . ', "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filename'], $db) . '", "' . Contenido_Security::escapeDB($aInstall['files'][$i]['filetype'], $db) . '")';
-                                    }
-                                    $db->query($sql);
-                                    $aInstall['files'][$i]['idfile'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['files'], 'id' => $id);
-                                }
-                                
-                                # FrameFiles
-                                for ($i = 0, $n = count($aInstall['frame_files']); $i < $n; $i ++) {
-                                    $id = $db->nextid($cfg['tab']['framefiles']);
-                                    if (is_numeric($aInstall['frame_files'][$i]['area'])) {
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
-                                                VALUES (' . $id . ', ' . intval($aInstall['areas'][(intval($aInstall['frame_files'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
-                                    }
-                                    else {
-                                        $sql = 'SELECT idarea
-                                                FROM ' . $cfg['tab']['area'] . '
-                                                WHERE (name="' . $aInstall['frame_files'][$i]['area'] . '")';
-                                        $db->query($sql);
-                                        if ($db->next_record()) {
-                                            $idarea = $db->f('idarea');
-                                        }
-                                        $sql = 'INSERT INTO ' . $cfg['tab']['framefiles'] . ' (idframefile, idarea, idframe, idfile)
-                                                VALUES (' . $id . ', ' . intval($idarea) . ', ' . intval($aInstall['frame_files'][$i]['frame_id']) . ', ' . intval($aInstall['files'][(intval($aInstall['frame_files'][$i]['file']) - 1)]['idfile']) . ')';
-                                    }
-                                    $db->query($sql);
-                                    $aInstall['frame_files'][$i]['idframefile'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['framefiles'], 'id' => $id);
-                                }
-                                
-                                # NavMain
-                                if (strlen($aInstall['nav_main'])) {
-                                    $id = $db->nextid($cfg['tab']['nav_main']);
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['nav_main'] . ' (idnavm, location)
-                                            VALUES (' . $id . ', "' . Contenido_Security::escapeDB($aInstall['nav_main']['location'], $db) . '")';
-                                    $db->query($sql);
-                                    $aInstall['nav_main']['idnavm'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['nav_main'], 'id' => $id);
-                                }
-                                
-                                # NavSub
-                                for ($i = 0, $n = count($aInstall['nav_subs']); $i < $n; $i ++) {
-                                    $id = $db->nextid($cfg['tab']['nav_sub']);
-                                    if (is_numeric($aInstall['nav_subs'][$i]['nav_main'])) {
-                                        $idnavm = intval($aInstall['nav_main']['idnavm']);
-                                    }
-                                    else {
-                                        $sql = 'SELECT idnavm
-                                                FROM ' . $cfg['tab']['nav_main'] . '
-                                                WHERE (location LIKE "%' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['nav_main'], $db) . '%")';
-                                        $db->query($sql);
-                                        $db->next_record();
-                                        $idnavm = $db->f('idnavm');
-                                    }
-                                    $sql = 'INSERT INTO ' . $cfg['tab']['nav_sub'] . ' (idnavs, idnavm, idarea, level, location, online)
-                                            VALUES (' . $id . ', ' . $idnavm . ', ' . intval($aInstall['areas'][(intval($aInstall['nav_subs'][$i]['area']) - 1)]['idarea']) . ', ' . intval($aInstall['nav_subs'][$i]['level']) . ', "' . Contenido_Security::escapeDB($aInstall['nav_subs'][$i]['location'], $db) . '", ' . intval($aInstall['nav_subs'][$i]['online']) . ')';
-                                    $db->query($sql);
-                                    $aInstall['nav_subs'][$i]['idframefile'] = $id;
-                                    $aDescription[] = array('table' => $cfg['tab']['nav_sub'], 'id' => $id);
-                                }
+                            if (installPlugin($sPlugin, $bUpdate)) {
                                 
                                 # Copy additional system files
                                 $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
                                 if (count($aFoldersAndFiles)) {
-                                    $sContent .= '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
+                                    echo '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
+                                    flush();
                                     foreach ($aFoldersAndFiles as $entry) {
                                         if (substr($entry, -1) == '/') {
                                             
                                             # Entry is a folder, create it
-                                            mkdir($cfg['path']['frontend'] . '/' . $entry, 0750);
+                                            $ftp->mkdir($sFrontendFTPPath . '/' . $entry);
                                         }
                                         else {
                                             
                                             # Entry is a file, copy it
-                                            copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
-                                        }
-                                    }
-                                }
-                                
-                                if ($bUpdate) {
-                                    
-                                    # Check if there is install info and get it
-                                    $sql = 'SELECT idplugin, description
-                                            FROM ' . $cfg['tab']['plugins'] . '
-                                            WHERE ((name="' . $sPlugin . '")
-                                               AND (path="' . $sPlugin . '"))';
-                                    $db->query($sql);
-                                    if ($db->next_record()) {
-                                        $idplugin = $db->f('idplugin');
-                                        $aDescription = json_decode($db->f('description'), true);
-                                        
-                                        # Delete the database entries
-                                        foreach ($aDescription as $value) {
-                                            $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name="' . $value['table'] . '")';
-                                            $db->query($sql);
-                                            if ($db->next_record()) {
-                                                $sql = 'DELETE FROM ' . $value['table'] . ' WHERE (' . $db->f(0) .'=' . $value['id'] . ')';
-                                                $db->query($sql);
+                                            if (!$ftp->put($sFrontendFTPPath . $entry, $cfg['path']['contenido'] . 'plugins/' . $sPlugin . '/system/' . $entry)) {
+                                                echo $notification->returnNotification("error", sprintf(i18n("Unable to write file %s per FTP, please copy system files from the plugin's system folder yourself.", $plugin_name), $aFoldersAndFiles[$i]));
+                                                flush();
+                                                $bOK = false;
+                                                break(2);
                                             }
                                         }
-                                        
-                                        # Delete the record from the _plugins table
-                                        $sql = 'DELETE FROM ' . $cfg['tab']['plugins'] . '
-                                                WHERE (idplugin=' . $idplugin . ')';
-                                        $db->query($sql);
                                     }
                                 }
                                 
-                                # Enter plugin into _plugins
-                                $sContent .= '<p>' . sprintf(i18n("Registering plugin %s in database", $plugin_name), $sPlugin) . '</p>';
-                                $id = $db->nextid($cfg['tab']['plugins']);
-                                $sql = 'INSERT INTO ' . $cfg['tab']['plugins'] . ' (idplugin, name, description, path, installed)
-                                        VALUES (' . $id . ', "' . $sPlugin . '", "' . Contenido_Security::escapeDB(json_encode($aDescription), $db) . '", "' . $sPlugin . '", 1)';
-                                $db->query($sql);
-                                
-                                $sContent .= $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully installed", $plugin_name), $sPlugin));
-                                $sContent .= '<p>' . sprintf(i18n("(auto redirect in 5 seconds)", $plugin_name), $sPlugin) . '</p>';
-                                $sContent .= $sReloadScript;
+                                echo $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully installed", $plugin_name), $sPlugin));
+                                echo $sReloadScript;
+                                flush();
                             }
                             else {
-                                $sContent .= $notification->returnNotification("error", sprintf(i18n("Unable to install %s, missing install information", $plugin_name), $sPlugin));
-                                $sContent .= $sReloadScript;
-                                removeDir($sPath);
+                                echo '<p>' . i18n("Rolling back already transfered folders and files", $plugin_name) . '</p>';
+                                flush();
+                                if (!$ftp->rmdir($sPath, true)) {
+                                    echo $notification->returnNotification("error", sprintf(i18n("Unable to remove the folder for %s", $plugin_name), $sPlugin));
+                                }
+                                echo $notification->returnNotification("error", sprintf(i18n("Unable to install %s, missing install information", $plugin_name), $sPlugin));
+                                flush();
                             }
                         }
+                        
+                        # Close the FTP connection
+                        $ftp->quit();
                     }
                     else {
-                        
-                        # Error Missing write permission for folder drugcms/plugins
-                        $sContent .= $notification->returnNotification("error", sprintf(i18n("%s is not writable"), basename($cfg['path']['contenido']) . '/' . $cfg['path']['plugins']));
-                        $sContent .= $sReloadScript;
+                        if (($bUpdate) || (mkdir($sPath, 0750))) {
+                            if (class_exists('ZipArchive')) {
+                                if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetZip', $sPath . $sPlugin . '.zip', $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
+                                    echo '<p>' . i18n("Zip file downloaded", $plugin_name) . '</p>';
+                                    flush();
+                                    
+                                    # Extract the zip file to it's folder
+                                    $zip = new ZipArchive();
+                                    if ($zip->open($sPath . $sPlugin . '.zip')) {
+                                        $zip->extractTo($sPath);
+                                        $zip->close();
+                                    }
+                                    echo '<p>' . i18n("Zip file extracted", $plugin_name) . '</p>';
+                                    flush();
+                                    $bOK = true;
+                                    
+                                    # Delete the zip file
+                                    unlink($sPath . $sPlugin . '.zip');
+                                }
+                                else {
+                                    echo $notification->returnNotification("error", i18n("Failed to download zip file", $plugin_name)) . '</p>';
+                                    flush();
+                                }
+                            }
+                            if (!$bOK) {
+                                $bOK = true;
+                                $aFoldersAndFiles = json_decode(getRemoteContent($sUrl . '?Plugin=' . $sPlugin . '&Action=Files', $iErrNo, $sErrMsg, $sLogin, $sPassword));
+                                for ($i = 0, $n = count($aFoldersAndFiles); $i < $n; $i ++) {
+                                    if (substr($aFoldersAndFiles[$i], -1) == '/') {
+                                        if (mkdir($sPath . $aFoldersAndFiles[$i], 0750)) {
+                                            echo '<p>' . sprintf(i18n("Folder %s created", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
+                                            flush();
+                                        }
+                                        else {
+                                            echo $notification->returnNotification("error", sprintf(i18n("Unable to create folder %s", $plugin_name), $aFoldersAndFiles[$i]));
+                                            flush();
+                                            $bOK = false;
+                                            break;
+                                        }
+                                    }
+                                    else {
+                                        if (getRemoteContentToFile($sUrl . '?Plugin=' . $sPlugin . '&Action=GetFile&File=' . urlencode($aFoldersAndFiles[$i]), $sPath . $aFoldersAndFiles[$i], $iErrNo, $sErrMsg, $sLogin, $sPassword)) {
+                                            echo '<p>' . sprintf(i18n("File %s downloaded", $plugin_name), $aFoldersAndFiles[$i]) . '</p>';
+                                            flush();
+                                        }
+                                        else {
+                                            echo $notification->returnNotification("error", $sErrMsg);
+                                            flush();
+                                            $bOK = false;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if ($bOK) {
+                                
+                                # Check if the plugin.xml file is present (if not, file and folder rights permit PHP to write files)
+                                if (!is_file($sPath . 'plugin.xml')) {
+                                    echo $notification->returnNotification("error", i18n("Plugin manager is not allowed to write files and folders directly, please switch to the Settings tab and enter your data to use FTP instead.", $plugin_name));
+                                    flush();
+                                    $bOK = false;
+                                }
+                            }
+                            if (!(($bOK) || ($bUpdate))) {
+                                
+                                # Delete the created folder, as it would show the non-installed plugin as update
+                                removeDir($sPath);
+                            }
+                            if ($bOK) {
+                                
+                                # Install the plugin
+                                $oPlugin = new PluginInfo($sPlugin);
+                                if (installPlugin($sPlugin, $bUpdate)) {
+                                    
+                                    # Copy additional system files
+                                    $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
+                                    if (count($aFoldersAndFiles)) {
+                                        echo '<p>' . i18n("Copying additional system files", $plugin_name) . '</p>';
+                                        flush();
+                                        foreach ($aFoldersAndFiles as $entry) {
+                                            if (substr($entry, -1) == '/') {
+                                                
+                                                # Entry is a folder, create it
+                                                mkdir($cfg['path']['frontend'] . '/' . $entry, 0750);
+                                            }
+                                            else {
+                                                
+                                                # Entry is a file, copy it
+                                                copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
+                                            }
+                                        }
+                                    }
+                                    
+                                    echo $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully installed", $plugin_name), $sPlugin));
+                                    echo $sReloadScript;
+                                    flush();
+                                }
+                                else {
+                                    echo $notification->returnNotification("error", sprintf(i18n("Unable to install %s, missing install information", $plugin_name), $sPlugin));
+                                    flush();
+                                    removeDir($sPath);
+                                }
+                            }
+                        }
+                        else {
+                            
+                            # Error Missing write permission for folder drugcms/plugins
+                            echo $notification->returnNotification("error", sprintf(i18n("%s is not writable, consider using (S)FTP and enter your connection info under Settings"), basename($cfg['path']['contenido']) . '/' . $cfg['path']['plugins']));
+                            flush();
+                        }
                     }
                     break;
                 
                 case 'InstallModules':
-                    $sContent .= $sScrollScript;
+                    echo $sScrollScript;
+                    flush();
                     
                     $sPlugin = $_POST['Key'];
                     $sPath = $cfg['path']['contenido'] . $cfg['path']['plugins'] . $sPlugin . '/modules/';
@@ -633,14 +906,16 @@ switch ($sWhat) {
                         if ($db->next_record()) {
                             
                             # Update the first found module for this client
-                            $sContent .= '<p>' . sprintf(i18n("Updating module %s", $plugin_name), $mod['Name']) . '</p>';
+                            echo '<p>' . sprintf(i18n("Updating module %s", $plugin_name), $mod['Name']) . '</p>';
+                            flush();
                             $oMod = new cApiModule($db->f('idmod'));
                             $oMod->importPackage($sPath . $mod['File']);
                         }
                         else {
                             
                             # Install the module
-                            $sContent .= '<p>' . sprintf(i18n("Installing module %s", $plugin_name), $mod['Name']) . '</p>';
+                            echo '<p>' . sprintf(i18n("Installing module %s", $plugin_name), $mod['Name']) . '</p>';
+                            flush();
                             $oMC = new cApiModuleCollection();
                             $oMod = $oMC->create($mod['Name']);
                             $oMod->importPackage($sPath . $mod['File']);
@@ -650,29 +925,123 @@ switch ($sWhat) {
                     # If there are additional folders in the plugin's modules folder, copy them to the client's folder
                     $aFoldersAndFiles = $oPlugin->getModulesAdditionalFoldersAndFiles();
                     if (count($aFoldersAndFiles)) {
-                        $sContent .= '<p>' . i18n("Copying additional files", $plugin_name) . '</p>';
-                        foreach ($aFoldersAndFiles as $entry) {
-                            if (substr($entry, -1) == '/') {
-                                
-                                # Entry is a folder, create it
-                                mkdir($cfgClient[$client]['path']['frontend'] . $entry, 0750);
+                        if (intval(getProperty(0, 'system', 'setting', 'ftp', 'use'))) {
+                            $bOK = true;
+                            
+                            # Get the FTP access data
+                            $sFTPServer         = getProperty(0, 'system', 'setting', 'ftp', 'server');
+                            $iFTPPort           = intval(getProperty(0, 'system', 'setting', 'ftp', 'port'));
+                            $iFTPPort           = (($iFTPPort) ? $iFTPPort : 21);
+                            $sFTPUser           = getProperty(0, 'system', 'setting', 'ftp', 'user');
+                            $sFTPPassword       = getProperty(0, 'system', 'setting', 'ftp', 'password');
+                            $sFTPProtocol       = getProperty(0, 'system', 'setting', 'ftp', 'protocol');
+                            $sBackendFTPPath    = getProperty(0, 'system', 'setting', 'ftp', 'backend_path');
+                            $sFrontendFTPPath   = getProperty(0, 'system', 'setting', 'ftp', 'frontend_path');
+                            
+                            # Establish the FTP connection
+                            switch ($sFTPProtocol) {
+                                case 'ftp':
+                                    $ftp = new ftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                    break;
+                                case 'sftp':
+                                    $ftp = new sftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                    break;
                             }
-                            else {
-                                
-                                # Entry is a file, copy it
-                                copy($sPath . $entry, $cfgClient[$client]['path']['frontend'] . $entry);
+                            if (!$ftp) {
+                                echo $notification->returnNotification("error", sprintf(i18n("Unable to create a (S)FTP connection to %s", $plugin_name), $sFTPServer));
+                                flush();
+                                $bOK = false;
+                                break;
+                            }
+                            echo '<p>' . i18n("FTP connection established", $plugin_name) . '</p>';
+                            flush();
+                            
+                            # Determin the client's path under the FTP frontend path
+                            $aPath = explode('/', $cfgClient[$client]['path']['frontend']);
+                            while ((count($aPath)) && (!$ftp->isdir($sFrontendFTPPath . implode('/', $aPath)))) {
+                                array_shift($aPath);
+                            }
+                            $sClientPath = $sFrontendFTPPath . implode('/', $aPath);
+                            
+                            echo '<p>' . i18n("Copying additional files", $plugin_name) . '</p>';
+                            flush();
+                            foreach ($aFoldersAndFiles as $entry) {
+                                if (substr($entry, -1) == '/') {
+                                    
+                                    # Entry is a folder, create it
+                                    $ftp->mkdir($sClientPath . $entry, 0750);
+                                }
+                                else {
+                                    
+                                    # Entry is a file, copy it
+                                    $ftp->put($sClientPath . $entry, $sPath . $entry);
+                                }
+                            }
+                            
+                            # Close the FTP connection
+                            $ftp->quit();
+                        }
+                        else {
+                            echo '<p>' . i18n("Copying additional files", $plugin_name) . '</p>';
+                            flush();
+                            foreach ($aFoldersAndFiles as $entry) {
+                                if (substr($entry, -1) == '/') {
+                                    
+                                    # Entry is a folder, create it
+                                    mkdir($cfgClient[$client]['path']['frontend'] . $entry, 0750);
+                                }
+                                else {
+                                    
+                                    # Entry is a file, copy it
+                                    copy($sPath . $entry, $cfgClient[$client]['path']['frontend'] . $entry);
+                                }
                             }
                         }
                     }
                     
-                    $sContent .= $notification->returnNotification('info', sprintf(i18n("Modules of plugin %s successfully installed for client %s", $plugin_name), $sPlugin, getClientName($client)));
-                    $sContent .= '<p>' . sprintf(i18n("(auto redirect in 5 seconds)", $plugin_name), $sPlugin) . '</p>';
-                    $sContent .= $sReloadScript;
+                    echo $notification->returnNotification('info', sprintf(i18n("Modules of plugin %s successfully installed for client %s", $plugin_name), $sPlugin, getClientName($client)));
+                    echo $sReloadScript;
+                    flush();
                     break;
                 
                 case 'Uninstall':
-                    $sContent .= $sScrollScript;
+                    echo $sScrollScript;
+                    flush();
                     $sPlugin = $_POST['Key'];
+                    
+                    # Establish an (S)FTP connection if nessecary
+                    $bUseFTP = false;
+                    if (intval(getProperty(0, 'system', 'setting', 'ftp', 'use'))) {
+                        $bUseFTP = true;
+                        
+                        # Get the FTP access data
+                        $sFTPServer         = getProperty(0, 'system', 'setting', 'ftp', 'server');
+                        $iFTPPort           = intval(getProperty(0, 'system', 'setting', 'ftp', 'port'));
+                        $iFTPPort           = (($iFTPPort) ? $iFTPPort : 21);
+                        $sFTPUser           = getProperty(0, 'system', 'setting', 'ftp', 'user');
+                        $sFTPPassword       = getProperty(0, 'system', 'setting', 'ftp', 'password');
+                        $sFTPProtocol       = getProperty(0, 'system', 'setting', 'ftp', 'protocol');
+                        $sBackendFTPPath    = getProperty(0, 'system', 'setting', 'ftp', 'backend_path');
+                        $sFrontendFTPPath   = getProperty(0, 'system', 'setting', 'ftp', 'frontend_path');
+                        
+                        # Establish the FTP connection
+                        switch ($sFTPProtocol) {
+                            case 'ftp':
+                                $ftp = new ftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                break;
+                            case 'sftp':
+                                $ftp = new sftp($sFTPServer, $iFTPPort, $sFTPUser, $sFTPPassword, $sFTPPath);
+                                break;
+                        }
+                        if (!$ftp) {
+                            echo $notification->returnNotification("error", sprintf(i18n("Unable to create a (S)FTP connection to %s", $plugin_name), $sFTPServer));
+                            flush();
+                            $bOK = false;
+                            break;
+                        }
+                        echo '<p>' . i18n("FTP connection established", $plugin_name) . '</p>';
+                        flush();
+                    }
                     
                     # Get the modules info from the package files
                     $oPlugin = new PluginInfo($sPlugin);
@@ -684,7 +1053,8 @@ switch ($sWhat) {
                         $sql = 'SELECT idmod
                                 FROM ' . $cfg['tab']['mod'] . '
                                 WHERE (`name`="' . $aModInfo['module'] . '")';
-                        $sContent .= '<p>' . sprintf(i18n("Searching for installed modules %s", $plugin_name), $aModInfo['module']) . '</p>';
+                        echo '<p>' . sprintf(i18n("Searching for installed modules %s", $plugin_name), $aModInfo['module']) . '</p>';
+                        flush();
                         $db->query($sql);
                         while ($db->next_record()) {
                             $aIdMods[] = $db->f('idmod');
@@ -694,38 +1064,73 @@ switch ($sWhat) {
                             # Delete the module from the database (all clients)
                             $sql = 'DELETE FROM ' . $cfg['tab']['mod'] . '
                                     WHERE (idmod IN (' . implode(', ', $aIdMods) . '))';
-                            $sContent .= '<p>' . sprintf(i18n("Deleting module %s", $plugin_name), $aModInfo['module']) . '</p>';
+                            echo '<p>' . sprintf(i18n("Deleting module %s", $plugin_name), $aModInfo['module']) . '</p>';
+                            flush();
                             $db->query($sql);
                             
                             # Delete the module translations from the database (all clients)
+                            echo '<p>' . sprintf(i18n("Deleting translation entries for module %s", $plugin_name), $aModInfo['module']) . '</p>';
+                            flush();
                             $sql = 'DELETE FROM ' . $cfg['tab']['mod_translations'] . '
                                     WHERE (idmod IN (' . implode(', ', $aIdMods) . '))';
-                            $sContent .= '<p>' . sprintf(i18n("Deleting translation entries for module %s", $plugin_name), $aModInfo['module']) . '</p>';
                             $db->query($sql);
                             
                             # Get all clients
-                            $sContent .= '<p>' . sprintf(i18n("Deleting accompanying file for module %s from all clients", $plugin_name), $aModInfo['module']) . '</p>';
+                            echo '<p>' . sprintf(i18n("Deleting accompanying files for module %s from all clients", $plugin_name), $aModInfo['module']) . '</p>';
+                            flush();
                             foreach ($cfgClient as $aClient) {
                                 if (is_array($aClient)) {
-                                    
-                                    # Delete all js files
-                                    foreach ($aModInfo['jsfiles'] as $file) {
-                                        if (is_file($aClient['js']['path'] . $file)) {
-                                            @unlink($aClient['js']['path'] . $file);
+                                    if ($bUseFTP) {
+                                        
+                                        # Determin the client's path under the FTP frontend path
+                                        $aPath = explode('/', $aClient['path']['frontend']);
+                                        while ((count($aPath)) && (!$ftp->isdir($sFrontendFTPPath . implode('/', $aPath)))) {
+                                            array_shift($aPath);
+                                        }
+                                        $sClientPath = $sFrontendFTPPath . implode('/', $aPath);
+                                        
+                                        # Delete all js files
+                                        foreach ($aModInfo['jsfiles'] as $file) {
+                                            if (is_file($aClient['js']['path'] . $file)) {
+                                                $ftp->delete($sClientPath . str_replace($aClient['path']['frontend'], '', $aClient['js']['path']) . $file);
+                                            }
+                                        }
+                                        
+                                        # Delete all tpl files
+                                        foreach ($aModInfo['tplfiles'] as $file) {
+                                            if (is_file($aClient['tpl']['path'] . $file)) {
+                                                $ftp->delete($sClientPath . str_replace($aClient['path']['frontend'], '', $aClient['tpl']['path']) . $file);
+                                            }
+                                        }
+                                        
+                                        # Delete all css files
+                                        foreach ($aModInfo['cssfiles'] as $file) {
+                                            if (is_file($aClient['css']['path'] . $file)) {
+                                                $ftp->delete($sClientPath . str_replace($aClient['path']['frontend'], '', $aClient['css']['path']) . $file);
+                                            }
                                         }
                                     }
-                                    
-                                    # Delete all tpl files
-                                    foreach ($aModInfo['tplfiles'] as $file) {
-                                        if (is_file($aClient['tpl']['path'] . $file)) {
-                                            @unlink($aClient['tpl']['path'] . $file);
+                                    else {
+                                        
+                                        # Delete all js files
+                                        foreach ($aModInfo['jsfiles'] as $file) {
+                                            if (is_file($aClient['js']['path'] . $file)) {
+                                                @unlink($aClient['js']['path'] . $file);
+                                            }
                                         }
-                                    }
-                                    
-                                    # Delete all css files
-                                    foreach ($aModInfo['cssfiles'] as $file) {
-                                        if (is_file($aClient['css']['path'] . $file)) {
-                                            @unlink($aClient['css']['path'] . $file);
+                                        
+                                        # Delete all tpl files
+                                        foreach ($aModInfo['tplfiles'] as $file) {
+                                            if (is_file($aClient['tpl']['path'] . $file)) {
+                                                @unlink($aClient['tpl']['path'] . $file);
+                                            }
+                                        }
+                                        
+                                        # Delete all css files
+                                        foreach ($aModInfo['cssfiles'] as $file) {
+                                            if (is_file($aClient['css']['path'] . $file)) {
+                                                @unlink($aClient['css']['path'] . $file);
+                                            }
                                         }
                                     }
                                 }
@@ -736,24 +1141,44 @@ switch ($sWhat) {
                     # If there are additional folders in the plugin's modules folder, delete them in the client's folders
                     $aFoldersAndFiles = $oPlugin->getModulesAdditionalFoldersAndFiles();
                     if (count($aFoldersAndFiles)) {
-                        $sContent .= '<p>' . i18n("Deleting additional files", $plugin_name) . '</p>';
+                        echo '<p>' . i18n("Deleting additional files", $plugin_name) . '</p>';
+                        flush();
                         $aFoldersAndFiles = array_reverse($aFoldersAndFiles);
                         
                         # Get all clients
                         foreach ($cfgClient as $aClient) {
                             if (is_array($aClient)) {
+                                if ($bUseFTP) {
+                                    
+                                    # Determin the client's path under the FTP frontend path
+                                    $aPath = explode('/', $aClient['path']['frontend']);
+                                    while ((count($aPath)) && (!$ftp->isdir($sFrontendFTPPath . implode('/', $aPath)))) {
+                                        array_shift($aPath);
+                                    }
+                                    $sClientPath = $sFrontendFTPPath . implode('/', $aPath);
+                                }
                                 foreach ($aFoldersAndFiles as $entry) {
                                     if (substr($entry, -1) == '/') {
                                         
                                         # Entry is a folder, delete it if it's empty and not a system folder
                                         if (!in_array(substr($entry, 0, -1), array('cache', 'css', 'images', 'includes', 'js', 'logs', 'templates', 'upload', 'version'))) {
-                                            @rmdir($cfgClient[$client]['path']['frontend'] . $entry);
+                                            if ($bUseFTP) {
+                                                $ftp->rmdir($sClientPath . $entry);
+                                            }
+                                            else {
+                                                @rmdir($cfgClient[$client]['path']['frontend'] . $entry);
+                                            }
                                         }
                                     }
                                     else {
                                         
                                         # Entry is a file, delete it
-                                        unlink($cfgClient[$client]['path']['frontend'] . $entry);
+                                        if ($bUseFTP) {
+                                            $ftp->delete($sClientPath . $entry);
+                                        }
+                                        else {
+                                            unlink($cfgClient[$client]['path']['frontend'] . $entry);
+                                        }
                                     }
                                 }
                             }
@@ -763,7 +1188,8 @@ switch ($sWhat) {
                     # Get additional database tables to delete
                     $aDbTables = $oPlugin->getAdditionalTablesToDelete();
                     if (is_array($aDbTables)) {
-                        $sContent .= '<p>' . sprintf(i18n("Deleting additional database tables for %s", $plugin_name), $sPlugin) . '</p>';
+                        echo '<p>' . sprintf(i18n("Deleting additional database tables for %s", $plugin_name), $sPlugin) . '</p>';
+                        flush();
                         foreach ($aDbTables as $DbTable) {
                             if (strpos($DbTable, '*') !== false) {
                                 $aTables = array();
@@ -775,12 +1201,12 @@ switch ($sWhat) {
                                     $aTables[] = $db->f(0);
                                 }
                                 for ($i = 0, $n = count($aTables); $i < $n; $i ++) {
-                                    $sql = 'DROP TABLE `' . $aTables[$i] . '`';
+                                    $sql = 'DROP TABLE IF EXISTS `' . $aTables[$i] . '`';
                                     $db->query($sql);
                                 }
                             }
                             else {
-                                $sql = 'DROP TABLE `' . str_replace('!PREFIX!', $cfg['sql']['sqlprefix'], $DbTable) . '`';
+                                $sql = 'DROP TABLE IF EXISTS `' . str_replace('!PREFIX!', $cfg['sql']['sqlprefix'], $DbTable) . '`';
                                 $db->query($sql);
                             }
                         }
@@ -789,24 +1215,36 @@ switch ($sWhat) {
                     # If there are additional folders in the plugin's system folder, delete them in the system's folders
                     $aFoldersAndFiles = $oPlugin->getSystemAdditionalFoldersAndFiles();
                     if (count($aFoldersAndFiles)) {
-                        $sContent .= '<p>' . i18n("Deleting additional system files", $plugin_name) . '</p>';
+                        echo '<p>' . i18n("Deleting additional system files", $plugin_name) . '</p>';
+                        flush();
                         $aFoldersAndFiles = array_reverse($aFoldersAndFiles);
                         foreach ($aFoldersAndFiles as $entry) {
                             if (substr($entry, -1) == '/') {
                                 
                                 # Entry is a folder, delete it if it's empty
-                                @rmdir($cfg['path']['frontend'] . '/' . $entry);
+                                if ($bUseFTP) {
+                                    $ftp->rmdir($sBackendFTPPath . $entry);
+                                }
+                                else {
+                                    @rmdir($cfg['path']['frontend'] . '/' . $entry);
+                                }
                             }
                             else {
                                 
                                 # Entry is a file, delete it
-                                unlink($cfg['path']['frontend'] . '/' . $entry);
+                                if ($bUseFTP) {
+                                    $ftp->delete($sBackendFTPPath . $entry);
+                                }
+                                else {
+                                    unlink($cfg['path']['frontend'] . '/' . $entry);
+                                }
                             }
                         }
                     }
                     
                     # Get the uninstall info from the database
-                    $sContent .= '<p>' . sprintf(i18n("Getting the uninstall info for %s", $plugin_name), $sPlugin) . '</p>';
+                    echo '<p>' . sprintf(i18n("Getting the uninstall info for %s", $plugin_name), $sPlugin) . '</p>';
+                    flush();
                     $sql = 'SELECT idplugin, description
                             FROM ' . $cfg['tab']['plugins'] . '
                             WHERE ((name="' . $sPlugin . '")
@@ -817,7 +1255,8 @@ switch ($sWhat) {
                         $aDescription = json_decode($db->f('description'), true);
                         
                         # Delete the database entries
-                        $sContent .= '<p>' . sprintf(i18n("Deleting database records for %s", $plugin_name), $sPlugin) . '</p>';
+                        echo '<p>' . sprintf(i18n("Deleting database records for %s", $plugin_name), $sPlugin) . '</p>';
+                        flush();
                         foreach ($aDescription as $value) {
                             $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name="' . $value['table'] . '")';
                             $db->query($sql);
@@ -828,20 +1267,31 @@ switch ($sWhat) {
                         }
                         
                         # Delete the record from the _plugins table
-                        $sContent .= '<p>' . sprintf(i18n("Deleting the uninstall info for %s", $plugin_name), $sPlugin) . '</p>';
+                        echo '<p>' . sprintf(i18n("Deleting the uninstall info for %s", $plugin_name), $sPlugin) . '</p>';
+                        flush();
                         $sql = 'DELETE FROM ' . $cfg['tab']['plugins'] . '
                                 WHERE (idplugin=' . $idplugin . ')';
                         $db->query($sql);
                     }
                     
                     # Remove the plugin's folder
-                    $sContent .= '<p>' . sprintf(i18n("Removing folders and files for %s", $plugin_name), $sPlugin) . '</p>';
-                    $sPath = $cfg['path']['contenido'] . $cfg['path']['plugins'] . $sPlugin . '/';
-                    removeDir($sPath);
+                    echo '<p>' . sprintf(i18n("Removing folders and files for %s", $plugin_name), $sPlugin) . '</p>';
+                    flush();
+                    if ($bUseFTP) {
+                        $ftp->rmdir($sBackendFTPPath . $cfg['path']['plugins'] . $sPlugin . '/', true);
+                    }
+                    else {
+                        removeDir($cfg['path']['contenido'] . $cfg['path']['plugins'] . $sPlugin . '/');
+                    }
                     
-                    $sContent .= $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully uninstalled and removed", $plugin_name), $sPlugin));
-                    $sContent .= '<p>' . sprintf(i18n("(auto redirect in 5 seconds)", $plugin_name), $sPlugin) . '</p>';
-                    $sContent .= $sReloadScript;
+                    if ($bUseFTP) {
+                        $ftp->quit();
+                        unset($ftp);
+                    }
+                    
+                    echo $notification->returnNotification('info', sprintf(i18n("Plugin %s successfully uninstalled and removed", $plugin_name), $sPlugin));
+                    echo $sReloadScript;
+                    flush();
                     break;
             }
         }
@@ -908,15 +1358,127 @@ switch ($sWhat) {
                 $sClass = (($sClass == 'odd') ? 'even' : 'odd');
             }
             
-            $sContent .= $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/repositories.html', true);
+            echo $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/repositories.html', true);
+            flush();
+            $oTpl->reset();
+        }
+        break;
+    
+    case 'settings':
+        if ($perm->have_perm_area_action($plugin_name, 'settings')) {
+            if (isset($_POST['Save'])) {
+                
+                # Correct path settings
+                $_POST['BackendFTPPath'] = str_replace(array('\\\\', '\\'), '/', $_POST['BackendFTPPath']);
+                if (substr($_POST['BackendFTPPath'], 0, 1) != '/') {
+                    $_POST['BackendFTPPath'] = '/' . $_POST['BackendFTPPath'];
+                }
+                if (substr($_POST['BackendFTPPath'], -1) != '/') {
+                    $_POST['BackendFTPPath'] = $_POST['BackendFTPPath'] . '/';
+                }
+                $_POST['FrontendFTPPath'] = str_replace(array('\\\\', '\\'), '/', $_POST['FrontendFTPPath']);
+                if (substr($_POST['FrontendFTPPath'], 0, 1) != '/') {
+                    $_POST['FrontendFTPPath'] = '/' . $_POST['FrontendFTPPath'];
+                }
+                if (substr($_POST['FrontendFTPPath'], -1) != '/') {
+                    $_POST['FrontendFTPPath'] = $_POST['FrontendFTPPath'] . '/';
+                }
+                
+                # Save the settings
+                setProperty(0, 'system', 'setting', 'ftp', 'use', $_POST['UseFTP'], intval(((isset($_POST['UseFTPKey'])) ? $_POST['UseFTPKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'server', $_POST['FTPServer'], intval(((isset($_POST['FTPServerKey'])) ? $_POST['FTPServerKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'port', $_POST['FTPPort'], intval(((isset($_POST['FTPPortKey'])) ? $_POST['FTPPortKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'user', $_POST['FTPUser'], intval(((isset($_POST['FTPUserKey'])) ? $_POST['FTPUserKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'password', $_POST['FTPPassword'], intval(((isset($_POST['FTPPasswordKey'])) ? $_POST['FTPPasswordKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'protocol', $_POST['FTPProtocol'], intval(((isset($_POST['FTPProtocolKey'])) ? $_POST['FTPProtocolKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'backend_path', $_POST['BackendFTPPath'], intval(((isset($_POST['BackendFTPPathKey'])) ? $_POST['BackendFTPPathKey'] : 0)));
+                setProperty(0, 'system', 'setting', 'ftp', 'frontend_path', $_POST['FrontendFTPPath'], intval(((isset($_POST['FrontendFTPPathKey'])) ? $_POST['FrontendFTPPathKey'] : 0)));
+            }
+            
+            $oTpl->set('s', 'FORM_ACTION', 'main.php?area=pim&amp;what=settings&amp;frame=4&amp;contenido=' . $contenido);
+            
+            # Texts
+            $oTpl->set('s', 'TEXT_SETTINGS', i18n("Settings", $plugin_name));
+            $oTpl->set('s', 'TEXT_USE_FTP', i18n("Use FTP", $plugin_name));
+            $oTpl->set('s', 'TEXT_FTP_SERVER', i18n("FTP Server", $plugin_name));
+            $oTpl->set('s', 'TEXT_FTP_PORT', i18n("FTP Port", $plugin_name));
+            $oTpl->set('s', 'TEXT_FTP_USER', i18n("FTP User", $plugin_name));
+            $oTpl->set('s', 'TEXT_FTP_PASSWORD', i18n("FTP Password", $plugin_name));
+            $oTpl->set('s', 'TEXT_FTP_PROTOCOL', i18n("FTP Protocol", $plugin_name));
+            $oTpl->set('s', 'TEXT_BACKEND_FTP_PATH', i18n("Backend Path per FTP", $plugin_name));
+            $oTpl->set('s', 'TEXT_FRONTEND_FTP_PATH', i18n("Frontend Path per FTP<br />(where the client's folders are in)", $plugin_name));
+            $oTpl->set('s', 'TEXT_SAVE', i18n("Save", $plugin_name));
+            
+            # Get settings
+            $aSettingsInfo = getPropertiesByItemtype('system', 'itemid', 0, true);
+            if (count($aSettingsInfo)) {
+                foreach ($aSettingsInfo as $itemid => $aSetting) {
+                    switch ($aSetting['name']) {
+                        case 'use':
+                            $oTpl->set('s', 'USE_FTP', (($aSetting['value'] == '1') ? ' checked="checked"' : ''));
+                            $oTpl->set('s', 'USE_FTP_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'server':
+                            $oTpl->set('s', 'FTP_SERVER', $aSetting['value']);
+                            $oTpl->set('s', 'FTP_SERVER_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'port':
+                            $oTpl->set('s', 'FTP_PORT', $aSetting['value']);
+                            $oTpl->set('s', 'FTP_PORT_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'user':
+                            $oTpl->set('s', 'FTP_USER', $aSetting['value']);
+                            $oTpl->set('s', 'FTP_USER_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'password':
+                            $oTpl->set('s', 'FTP_PASSWORD', $aSetting['value']);
+                            $oTpl->set('s', 'FTP_PASSWORD_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'protocol':
+                            $oTpl->set('s', 'FTP_PROTOCOL1', (($aSetting['value'] != 'sftp') ? ' checked="checked"' : ''));
+                            $oTpl->set('s', 'FTP_PROTOCOL2', (($aSetting['value'] == 'sftp') ? ' checked="checked"' : ''));
+                            $oTpl->set('s', 'FTP_PROTOCOL_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'backend_path':
+                            $oTpl->set('s', 'BACKEND_FTP_PATH', $aSetting['value']);
+                            $oTpl->set('s', 'BACKEND_FTP_PATH_KEY', $aSetting['idproperty']);
+                            break;
+                        case 'frontend_path':
+                            $oTpl->set('s', 'FRONTEND_FTP_PATH', $aSetting['value']);
+                            $oTpl->set('s', 'FRONTEND_FTP_PATH_KEY', $aSetting['idproperty']);
+                            break;
+                    }
+                }
+            }
+            
+            # Set unset template variables
+            $oTpl->set('s', 'USE_FTP', '');
+            $oTpl->set('s', 'USE_FTP_KEY', '');
+            $oTpl->set('s', 'FTP_SERVER', '');
+            $oTpl->set('s', 'FTP_SERVER_KEY', '');
+            $oTpl->set('s', 'FTP_PORT', '21');
+            $oTpl->set('s', 'FTP_PORT_KEY', '');
+            $oTpl->set('s', 'FTP_USER', '');
+            $oTpl->set('s', 'FTP_USER_KEY', '');
+            $oTpl->set('s', 'FTP_PASSWORD', '');
+            $oTpl->set('s', 'FTP_PASSWORD_KEY', '');
+            $oTpl->set('s', 'FTP_PROTOCOL1', ' checked="checked"');
+            $oTpl->set('s', 'FTP_PROTOCOL2', '');
+            $oTpl->set('s', 'FTP_PROTOCOL_KEY', '');
+            $oTpl->set('s', 'BACKEND_FTP_PATH', '');
+            $oTpl->set('s', 'BACKEND_FTP_PATH_KEY', '');
+            $oTpl->set('s', 'FRONTEND_FTP_PATH', '');
+            $oTpl->set('s', 'FRONTEND_FTP_PATH_KEY', '');
+            
+            echo $oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/settings.html', true);
+            flush();
             $oTpl->reset();
         }
         break;
 }
 
-# Place the content into the main template
-$oTpl->set('s', 'CONTENT', $sContent);
-
-# Generate and send output
-$oTpl->generate($cfg['path']['contenido'] . $cfg['path']['plugins'] . $plugin_name . '/templates/default/page.html');
+echo '
+</body>
+</html>';
+unset($plugin_name);
 ?>

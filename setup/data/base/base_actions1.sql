@@ -138,3 +138,4 @@ INSERT INTO `!PREFIX!_actions` VALUES (813, 11, 'mod_sync', 'mod_sync', '', '', 
 INSERT INTO `!PREFIX!_actions` VALUES (814, 11, 'mod_sync_and_delete', 'mod_sync_and_delete', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (900, 900, 'plugins', 'plugins', '', '', 1);
 INSERT INTO `!PREFIX!_actions` VALUES (901, 900, 'repositories', 'repositories', '', '', 1);
+INSERT INTO `!PREFIX!_actions` VALUES (902, 900, 'settings', 'settings', '', '', 1);

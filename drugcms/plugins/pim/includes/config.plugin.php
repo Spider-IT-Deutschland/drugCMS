@@ -34,6 +34,7 @@ $plugin_name = 'pim';
 # Set language specific names for rights area
 $lngAct[$plugin_name]['plugins']        = i18n("Plugins", $plugin_name);
 $lngAct[$plugin_name]['repositories']   = i18n("Repositories", $plugin_name);
+$lngAct[$plugin_name]['settings']       = i18n("Settings", $plugin_name);
 
 unset($plugin_name);
 ?>

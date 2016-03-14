@@ -57,6 +57,12 @@ if ($perm->have_perm_area_action($plugin_name, 'repositories')) {
             <a' . ((!$perm->have_perm_area_action($plugin_name, 'plugins')) ? ' class="current"' : '') . ' href="main.php?area=pim&amp;what=repositories&amp;frame=4&amp;contenido=' . $contenido . '" target="right_bottom" onclick="sub.clicked(this)">' . i18n("Repositories", $plugin_name) . '</a>
         </li>';
 }
+if ($perm->have_perm_area_action($plugin_name, 'settings')) {
+    $sContent .= '
+        <li id="pim_2" class="item">
+            <a' . ((!$perm->have_perm_area_action($plugin_name, 'plugins')) ? ' class="current"' : '') . ' href="main.php?area=pim&amp;what=settings&amp;frame=4&amp;contenido=' . $contenido . '" target="right_bottom" onclick="sub.clicked(this)">' . i18n("Settings", $plugin_name) . '</a>
+        </li>';
+}
 $sContent .= '
     </ul>
 </div>';

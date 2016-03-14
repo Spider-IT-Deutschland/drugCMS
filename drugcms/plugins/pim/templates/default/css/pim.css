@@ -92,6 +92,9 @@ form {
 .table table td input[type=password].small {
     width: 200px;
 }
+.table table td input[type=checkbox] {
+    margin: 2px 0px;
+}
 .red {
     color: #F00;
 }
@@ -107,5 +110,5 @@ span.edit {
     margin-left: 5px;
 }
 #contenido_notification {
-    margin-left: 10px;
+    margin: 10px;
 }

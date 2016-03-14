@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS Plugin Manager\n"
-"POT-Creation-Date: 2015-12-04 19:11+0100\n"
-"PO-Revision-Date: 2015-12-04 19:13+0100\n"
+"POT-Creation-Date: 2016-03-13 14:45+0100\n"
+"PO-Revision-Date: 2016-03-13 14:49+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team <translate@drugcms.org>\n"
 "Language: en\n"
@@ -18,294 +18,410 @@ msgstr ""
 msgid "Plugins"
 msgstr "Plugins"
 
-#: ../includes/config.plugin.php:36 ../includes/include.bottom.php:870
+#: ../includes/config.plugin.php:36 ../includes/include.bottom.php:1327
 #: ../includes/include.top.php:57
 msgid "Repositories"
 msgstr "Repositories"
 
-#: ../includes/include.bottom.php:89 ../includes/include.bottom.php:603
-#, php-format
-msgid "%s is not writable"
-msgstr "%s is not writable"
+#: ../includes/config.plugin.php:37 ../includes/include.bottom.php:1401
+#: ../includes/include.top.php:63
+msgid "Settings"
+msgstr "Settings"
 
-#: ../includes/include.bottom.php:157
+#: ../includes/include.bottom.php:90
+msgid "Installing database entries"
+msgstr "Installing database entries"
+
+#: ../includes/include.bottom.php:227
+#, php-format
+msgid "Registering plugin %s in database"
+msgstr "Registering plugin %s in database"
+
+#: ../includes/include.bottom.php:285
+msgid "(auto redirect in 5 seconds)"
+msgstr "(auto redirect in 5 seconds)"
+
+#: ../includes/include.bottom.php:326
 msgid "Installed plugins"
 msgstr "Installed plugins"
 
-#: ../includes/include.bottom.php:158
+#: ../includes/include.bottom.php:327
 msgid "Filter"
 msgstr "Filter"
 
-#: ../includes/include.bottom.php:159
+#: ../includes/include.bottom.php:328
 msgid "(Comma separated list of tags to search for)"
 msgstr "(Comma separated list of tags to search for)"
 
-#: ../includes/include.bottom.php:160
+#: ../includes/include.bottom.php:329
 msgid "Use filter"
 msgstr "Use filter"
 
-#: ../includes/include.bottom.php:161
+#: ../includes/include.bottom.php:330
 msgid "Clear filter"
 msgstr "Clear filter"
 
-#: ../includes/include.bottom.php:162
+#: ../includes/include.bottom.php:331
 msgid "Available plugins"
 msgstr "Available plugins"
 
-#: ../includes/include.bottom.php:163
-msgid "Install"
-msgstr "Install"
-
-#: ../includes/include.bottom.php:164
+#: ../includes/include.bottom.php:332
 msgid "Uninstall"
 msgstr "Uninstall"
 
-#: ../includes/include.bottom.php:165
+#: ../includes/include.bottom.php:333 ../includes/include.bottom.php:442
 msgid "Plugin"
 msgstr "Plugin"
 
-#: ../includes/include.bottom.php:166
+#: ../includes/include.bottom.php:334 ../includes/include.bottom.php:443
 msgid "Description"
 msgstr "Description"
 
-#: ../includes/include.bottom.php:167
+#: ../includes/include.bottom.php:335 ../includes/include.bottom.php:444
 msgid "Tags"
 msgstr "Tags"
 
-#: ../includes/include.bottom.php:168
+#: ../includes/include.bottom.php:336 ../includes/include.bottom.php:445
 msgid "Author"
 msgstr "Author"
 
-#: ../includes/include.bottom.php:169
+#: ../includes/include.bottom.php:337 ../includes/include.bottom.php:446
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../includes/include.bottom.php:170
+#: ../includes/include.bottom.php:338 ../includes/include.bottom.php:447
 msgid "Version"
 msgstr "Version"
 
-#: ../includes/include.bottom.php:171
+#: ../includes/include.bottom.php:339 ../includes/include.bottom.php:448
 msgid "Dependencies"
 msgstr "Dependencies"
 
-#: ../includes/include.bottom.php:172
+#: ../includes/include.bottom.php:340 ../includes/include.bottom.php:449
 msgid "Modules"
 msgstr "Modules"
 
-#: ../includes/include.bottom.php:173
+#: ../includes/include.bottom.php:341
 msgid "Install modules for the current client"
 msgstr "Install modules for the current client"
 
-#: ../includes/include.bottom.php:174
-msgid "Repository"
-msgstr "Repository"
-
-#: ../includes/include.bottom.php:287
+#: ../includes/include.bottom.php:420
 #, php-format
 msgid ""
 "%s can't be uninstalled because of another installed plugin's dependencies"
 msgstr ""
 "%s can't be uninstalled because of another installed plugin's dependencies"
 
-#: ../includes/include.bottom.php:294
+#: ../includes/include.bottom.php:427
 #, php-format
 msgid "Uninstall %s including it's modules (all clients)"
 msgstr "Uninstall %s including it's modules (all clients)"
 
-#: ../includes/include.bottom.php:294
+#: ../includes/include.bottom.php:427
 #, php-format
 msgid "Uninstall %s"
 msgstr "Uninstall %s"
 
-#: ../includes/include.bottom.php:330
+#: ../includes/include.bottom.php:441
+msgid "Install"
+msgstr "Install"
+
+#: ../includes/include.bottom.php:450
+msgid "Repository"
+msgstr "Repository"
+
+#: ../includes/include.bottom.php:517
 msgid "Missing plugin"
 msgstr "Missing plugin"
 
-#: ../includes/include.bottom.php:332 ../includes/include.bottom.php:339
+#: ../includes/include.bottom.php:519 ../includes/include.bottom.php:526
 #, php-format
 msgid "Missing or outdated dependencies prevent installation of %s"
 msgstr "Missing or outdated dependencies prevent installation of %s"
 
-#: ../includes/include.bottom.php:337
+#: ../includes/include.bottom.php:524
 msgid "Outdated plugin"
 msgstr "Outdated plugin"
 
-#: ../includes/include.bottom.php:350
+#: ../includes/include.bottom.php:537
+msgid "Old PHP version and old drugCMS version, installation not possible"
+msgstr "Old PHP version and old drugCMS version, installation not possible"
+
+#: ../includes/include.bottom.php:543
+msgid "Old PHP version, installation not possible"
+msgstr "Old PHP version, installation not possible"
+
+#: ../includes/include.bottom.php:549
+msgid "Old drugCMS version, installation not possible"
+msgstr "Old drugCMS version, installation not possible"
+
+#: ../includes/include.bottom.php:555
 #, php-format
 msgid "Install %s"
 msgstr "Install %s"
 
-#: ../includes/include.bottom.php:354
+#: ../includes/include.bottom.php:561
 #, php-format
 msgid "Update %s"
 msgstr "Update %s"
 
-#: ../includes/include.bottom.php:380
+#: ../includes/include.bottom.php:608 ../includes/include.bottom.php:951
+#: ../includes/include.bottom.php:1040
+#, php-format
+msgid "Unable to create a (S)FTP connection to %s"
+msgstr "Unable to create a (S)FTP connection to %s"
+
+#: ../includes/include.bottom.php:613 ../includes/include.bottom.php:956
+#: ../includes/include.bottom.php:1045
+msgid "FTP connection established"
+msgstr "FTP connection established"
+
+#: ../includes/include.bottom.php:621
+msgid "Unable to create the plugin's folder"
+msgstr "Unable to create the plugin's folder"
+
+#: ../includes/include.bottom.php:631 ../includes/include.bottom.php:777
 msgid "Zip file downloaded"
 msgstr "Zip file downloaded"
 
-#: ../includes/include.bottom.php:389
+#: ../includes/include.bottom.php:641 ../includes/include.bottom.php:786
 msgid "Zip file extracted"
 msgstr "Zip file extracted"
 
-#: ../includes/include.bottom.php:397
+#: ../includes/include.bottom.php:650
+msgid "Files placed per FTP"
+msgstr "Files placed per FTP"
+
+#: ../includes/include.bottom.php:654
+msgid "Unable to write files per FTP"
+msgstr "Unable to write files per FTP"
+
+#: ../includes/include.bottom.php:663 ../includes/include.bottom.php:794
 msgid "Failed to download zip file"
 msgstr "Failed to download zip file"
 
-#: ../includes/include.bottom.php:405
+#: ../includes/include.bottom.php:674 ../includes/include.bottom.php:804
 #, php-format
 msgid "Folder %s created"
 msgstr "Folder %s created"
 
-#: ../includes/include.bottom.php:409
+#: ../includes/include.bottom.php:678 ../includes/include.bottom.php:808
 #, php-format
 msgid "Unable to create folder %s"
 msgstr "Unable to create folder %s"
 
-#: ../includes/include.bottom.php:430
-msgid "Installing database entries"
-msgstr "Installing database entries"
+#: ../includes/include.bottom.php:687
+#, php-format
+msgid ""
+"Unable to write temporary file %s in the drugCMS backend cache folder (data/"
+"cache/)"
+msgstr ""
+"Unable to write temporary file %s in the drugCMS backend cache folder (data/"
+"cache/)"
 
-#: ../includes/include.bottom.php:539
+#: ../includes/include.bottom.php:693
+#, php-format
+msgid "Unable to write file %s per FTP"
+msgstr "Unable to write file %s per FTP"
+
+#: ../includes/include.bottom.php:702 ../includes/include.bottom.php:816
+#, php-format
+msgid "File %s downloaded"
+msgstr "File %s downloaded"
+
+#: ../includes/include.bottom.php:718 ../includes/include.bottom.php:760
+msgid "Rolling back already transfered folders and files"
+msgstr "Rolling back already transfered folders and files"
+
+#: ../includes/include.bottom.php:721 ../includes/include.bottom.php:763
+#, php-format
+msgid "Unable to remove the folder for %s"
+msgstr "Unable to remove the folder for %s"
+
+#: ../includes/include.bottom.php:734 ../includes/include.bottom.php:851
 msgid "Copying additional system files"
 msgstr "Copying additional system files"
 
-#: ../includes/include.bottom.php:584
+#: ../includes/include.bottom.php:746
 #, php-format
-msgid "Registering plugin %s in database"
-msgstr "Registering plugin %s in database"
+msgid ""
+"Unable to write file %s per FTP, please copy system files from the plugin's "
+"system folder yourself."
+msgstr ""
+"Unable to write file %s per FTP, please copy system files from the plugin's "
+"system folder yourself."
 
-#: ../includes/include.bottom.php:590
+#: ../includes/include.bottom.php:755 ../includes/include.bottom.php:867
 #, php-format
 msgid "Plugin %s successfully installed"
 msgstr "Plugin %s successfully installed"
 
-#: ../includes/include.bottom.php:591 ../includes/include.bottom.php:662
-#: ../includes/include.bottom.php:836
-msgid "(auto redirect in 5 seconds)"
-msgstr "(auto redirect in 5 seconds)"
-
-#: ../includes/include.bottom.php:595
+#: ../includes/include.bottom.php:765 ../includes/include.bottom.php:872
 #, php-format
 msgid "Unable to install %s, missing install information"
 msgstr "Unable to install %s, missing install information"
 
-#: ../includes/include.bottom.php:629
+#: ../includes/include.bottom.php:832
+msgid ""
+"Plugin manager is not allowed to write files and folders directly, please "
+"switch to the Settings tab and enter your data to use FTP instead."
+msgstr ""
+"Plugin manager is not allowed to write files and folders directly, please "
+"switch to the Settings tab and enter your data to use FTP instead."
+
+#: ../includes/include.bottom.php:881
+#, php-format
+msgid "%s is not writable"
+msgstr "%s is not writable"
+
+#: ../includes/include.bottom.php:909
 #, php-format
 msgid "Updating module %s"
 msgstr "Updating module %s"
 
-#: ../includes/include.bottom.php:636
+#: ../includes/include.bottom.php:917
 #, php-format
 msgid "Installing module %s"
 msgstr "Installing module %s"
 
-#: ../includes/include.bottom.php:646
+#: ../includes/include.bottom.php:966 ../includes/include.bottom.php:985
 msgid "Copying additional files"
 msgstr "Copying additional files"
 
-#: ../includes/include.bottom.php:661
+#: ../includes/include.bottom.php:1002
 #, php-format
 msgid "Modules of plugin %s successfully installed for client %s"
 msgstr "Modules of plugin %s successfully installed for client %s"
 
-#: ../includes/include.bottom.php:680
+#: ../includes/include.bottom.php:1056
 #, php-format
 msgid "Searching for installed modules %s"
 msgstr "Searching for installed modules %s"
 
-#: ../includes/include.bottom.php:690
+#: ../includes/include.bottom.php:1067
 #, php-format
 msgid "Deleting module %s"
 msgstr "Deleting module %s"
 
-#: ../includes/include.bottom.php:696
+#: ../includes/include.bottom.php:1072
 #, php-format
 msgid "Deleting translation entries for module %s"
 msgstr "Deleting translation entries for module %s"
 
-#: ../includes/include.bottom.php:700
+#: ../includes/include.bottom.php:1079
 #, php-format
-msgid "Deleting accompanying file for module %s from all clients"
+msgid "Deleting accompanying files for module %s from all clients"
 msgstr "Deleting accompanying files for module %s from all clients"
 
-#: ../includes/include.bottom.php:732
+#: ../includes/include.bottom.php:1144
 msgid "Deleting additional files"
 msgstr "Deleting additional files"
 
-#: ../includes/include.bottom.php:759
+#: ../includes/include.bottom.php:1191
 #, php-format
 msgid "Deleting additional database tables for %s"
 msgstr "Deleting additional database tables for %s"
 
-#: ../includes/include.bottom.php:785
+#: ../includes/include.bottom.php:1218
 msgid "Deleting additional system files"
 msgstr "Deleting additional system files"
 
-#: ../includes/include.bottom.php:802
+#: ../includes/include.bottom.php:1246
 #, php-format
 msgid "Getting the uninstall info for %s"
 msgstr "Getting the uninstall info for %s"
 
-#: ../includes/include.bottom.php:813
+#: ../includes/include.bottom.php:1258
 #, php-format
 msgid "Deleting database records for %s"
 msgstr "Deleting database records for %s"
 
-#: ../includes/include.bottom.php:824
+#: ../includes/include.bottom.php:1270
 #, php-format
 msgid "Deleting the uninstall info for %s"
 msgstr "Deleting the uninstall info for %s"
 
-#: ../includes/include.bottom.php:831
+#: ../includes/include.bottom.php:1278
 #, php-format
 msgid "Removing folders and files for %s"
 msgstr "Removing folders and files for %s"
 
-#: ../includes/include.bottom.php:835
+#: ../includes/include.bottom.php:1292
 #, php-format
 msgid "Plugin %s successfully uninstalled and removed"
 msgstr "Plugin %s successfully uninstalled and removed"
 
-#: ../includes/include.bottom.php:871
+#: ../includes/include.bottom.php:1328
 msgid "Name"
 msgstr "Name"
 
-#: ../includes/include.bottom.php:872
+#: ../includes/include.bottom.php:1329
 msgid "Server address"
 msgstr "Server address"
 
-#: ../includes/include.bottom.php:873
+#: ../includes/include.bottom.php:1330
 msgid "Login"
 msgstr "Login"
 
-#: ../includes/include.bottom.php:874
+#: ../includes/include.bottom.php:1331
 msgid "Password"
 msgstr "Password"
 
-#: ../includes/include.bottom.php:875
+#: ../includes/include.bottom.php:1332
 msgid "Edit"
 msgstr "Edit"
 
-#: ../includes/include.bottom.php:876
+#: ../includes/include.bottom.php:1333
 msgid "Edit not possible"
 msgstr "Edit not possible"
 
-#: ../includes/include.bottom.php:877
+#: ../includes/include.bottom.php:1334
 msgid "Delete"
 msgstr "Delete"
 
-#: ../includes/include.bottom.php:878
+#: ../includes/include.bottom.php:1335
 msgid "Delete not possible"
 msgstr "Delete not possible"
 
-#: ../includes/include.bottom.php:879
+#: ../includes/include.bottom.php:1336
 msgid "Add a new repository"
 msgstr "Add a new repository"
 
-#: ../includes/include.bottom.php:880
+#: ../includes/include.bottom.php:1337 ../includes/include.bottom.php:1410
 msgid "Save"
 msgstr "Save changes"
+
+#: ../includes/include.bottom.php:1402
+msgid "Use FTP"
+msgstr "Use FTP"
+
+#: ../includes/include.bottom.php:1403
+msgid "FTP Server"
+msgstr "FTP Server"
+
+#: ../includes/include.bottom.php:1404
+msgid "FTP Port"
+msgstr "FTP Port"
+
+#: ../includes/include.bottom.php:1405
+msgid "FTP User"
+msgstr "FTP User"
+
+#: ../includes/include.bottom.php:1406
+msgid "FTP Password"
+msgstr "FTP Password"
+
+#: ../includes/include.bottom.php:1407
+msgid "FTP Protocol"
+msgstr "FTP Protocol"
+
+#: ../includes/include.bottom.php:1408
+msgid "Backend Path per FTP"
+msgstr "Backend Path per FTP"
+
+#: ../includes/include.bottom.php:1409
+msgid "Frontend Path per FTP<br />(where the client's folders are in)"
+msgstr "Frontend Path per FTP<br />(where the client's folders are in)"
 
 #~ msgid "Install plugin"
 #~ msgstr "Install plugin"

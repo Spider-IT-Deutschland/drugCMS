@@ -316,5 +316,8 @@ return array(
     'GraphicsPolygon' => 'drugcms/classes/graphics/class.graphics.php',
     'GraphicsFilledPolygon' => 'drugcms/classes/graphics/class.graphics.php',
     'GraphicsText' => 'drugcms/classes/graphics/class.graphics.php',
-    'GraphicsTextTTF' => 'drugcms/classes/graphics/class.graphics.php'
+    'GraphicsTextTTF' => 'drugcms/classes/graphics/class.graphics.php',
+    'ftp' => 'drugcms/classes/class.ftp.php',
+    'sftp' => 'drugcms/classes/class.sftp.php',
+    'Net_SFTP' => 'drugcms/external/phpseclib1.0.1/SFTP.php'
 );

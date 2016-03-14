@@ -1,0 +1,104 @@
+    
+<script type="text/javascript">
+//<![CDATA[
+(function($) {
+    $(document).ready(function() {
+        var val = $('#UseFTP').attr('checked');
+        $('#UseFTP').click(function() {
+            if ($(this).attr('checked')) {
+                $('#FTPServer').attr('disabled', '');
+                $('#FTPPort').attr('disabled', '');
+                $('#FTPUser').attr('disabled', '');
+                $('#FTPPassword').attr('disabled', '');
+                $('#FTPProtocol1').attr('disabled', '');
+                $('#FTPProtocol2').attr('disabled', '');
+                $('label[for^="FTPProtocol"]').css('color', '');
+                $('#BackendFTPPath').attr('disabled', '');
+                $('#FrontendFTPPath').attr('disabled', '');
+            } else {
+                $('#FTPServer').attr('disabled', 'disabled');
+                $('#FTPPort').attr('disabled', 'disabled');
+                $('#FTPUser').attr('disabled', 'disabled');
+                $('#FTPPassword').attr('disabled', 'disabled');
+                $('#FTPProtocol1').attr('disabled', 'disabled');
+                $('#FTPProtocol2').attr('disabled', 'disabled');
+                $('label[for^="FTPProtocol"]').css('color', '#BBB');
+                $('#BackendFTPPath').attr('disabled', 'disabled');
+                $('#FrontendFTPPath').attr('disabled', 'disabled');
+            }
+        }).trigger('click').attr('checked', val);
+        $('#Submit').click(function() {
+            $('#FTPServer').attr('disabled', '');
+            $('#FTPPort').attr('disabled', '');
+            $('#FTPUser').attr('disabled', '');
+            $('#FTPPassword').attr('disabled', '');
+            $('#FTPProtocol1').attr('disabled', '');
+            $('#FTPProtocol2').attr('disabled', '');
+            $('label[for^="FTPProtocol"]').css('color', '');
+            $('#BackendFTPPath').attr('disabled', '');
+            $('#FrontendFTPPath').attr('disabled', '');
+        });
+    });
+}(jQuery));
+//]]>
+</script>
+    <p><strong>{TEXT_SETTINGS}</strong></p>
+    <form id="DeleteForm" method="post" action="{FORM_ACTION}">
+        <div class="hiddens">
+            <input type="hidden" id="Save" name="Save" value="1" />
+            <input type="hidden" id="UseFTPKey" name="UseFTPKey" value="{USE_FTP_KEY}" />
+            <input type="hidden" id="FTPServerKey" name="FTPServerKey" value="{FTP_SERVER_KEY}" />
+            <input type="hidden" id="FTPPortKey" name="FTPPortKey" value="{FTP_PORT_KEY}" />
+            <input type="hidden" id="FTPUserKey" name="FTPUserKey" value="{FTP_USER_KEY}" />
+            <input type="hidden" id="FTPPasswordKey" name="FTPPasswordKey" value="{FTP_PASSWORD_KEY}" />
+            <input type="hidden" id="FTPProtocolKey" name="FTPProtocolKey" value="{FTP_PROTOCOL_KEY}" />
+            <input type="hidden" id="BackendFTPPathKey" name="BackendFTPPathKey" value="{BACKEND_FTP_PATH_KEY}" />
+            <input type="hidden" id="FrontendFTPPathKey" name="FrontendFTPPathKey" value="{FRONTEND_FTP_PATH_KEY}" />
+        </div>
+        <div class="table">
+            <table>
+                <tbody>
+                    <!-- The next line prevents the browser from placing login information in the edit fields -->
+                    <tr style="display: none;"><td><input type="text" value="" /><input type="password" value="" /></td></tr>
+                    <tr>
+                        <td>{TEXT_USE_FTP}</td>
+                        <td><input type="checkbox" id="UseFTP" name="UseFTP" value="1"{USE_FTP} /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FTP_SERVER}</td>
+                        <td><input type="text" id="FTPServer" name="FTPServer" value="{FTP_SERVER}" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FTP_PORT}</td>
+                        <td><input type="text" id="FTPPort" name="FTPPort" value="{FTP_PORT}" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FTP_USER}</td>
+                        <td><input type="text" id="FTPUser" name="FTPUser" value="{FTP_USER}" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FTP_PASSWORD}</td>
+                        <td><input type="password" id="FTPPassword" name="FTPPassword" value="{FTP_PASSWORD}" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FTP_PROTOCOL}</td>
+                        <td>
+                            <label for="FTPProtocol1"><input type="radio" id="FTPProtocol1" name="FTPProtocol" value="ftp"{FTP_PROTOCOL1} /> FTP</label>
+                            <label for="FTPProtocol2"><input type="radio" id="FTPProtocol2" name="FTPProtocol" value="sftp"{FTP_PROTOCOL2} /> SFTP</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_BACKEND_FTP_PATH}</td>
+                        <td><input type="text" id="BackendFTPPath" name="BackendFTPPath" value="{BACKEND_FTP_PATH}" /></td>
+                    </tr>
+                    <tr>
+                        <td>{TEXT_FRONTEND_FTP_PATH}</td>
+                        <td><input type="text" id="FrontendFTPPath" name="FrontendFTPPath" value="{FRONTEND_FTP_PATH}" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="rightalign"><input type="image" id="Submit" src="images/but_ok.gif" alt="{TEXT_SAVE}" title="{TEXT_SAVE}" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
