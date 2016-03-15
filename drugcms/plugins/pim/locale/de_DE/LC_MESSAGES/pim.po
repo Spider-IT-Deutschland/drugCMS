@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drugCMS Plugin Manager\n"
 "POT-Creation-Date: 2016-03-13 14:45+0100\n"
-"PO-Revision-Date: 2016-03-13 14:47+0100\n"
+"PO-Revision-Date: 2016-03-15 19:01+0100\n"
 "Last-Translator: René Mansveld <R.Mansveld@Spider-IT.de>\n"
 "Language-Team: drugCMS Team <translate@drugcms.org>\n"
 "Language: de\n"
@@ -148,16 +148,16 @@ msgstr "Installiertes Plugin ist veraltet"
 #: ../includes/include.bottom.php:537
 msgid "Old PHP version and old drugCMS version, installation not possible"
 msgstr ""
-"Veraltete PHP-Version und veraltete drugCMS-Version, installation nicht "
+"Veraltete PHP-Version und veraltete drugCMS-Version, Installation nicht "
 "möglich"
 
 #: ../includes/include.bottom.php:543
 msgid "Old PHP version, installation not possible"
-msgstr "Veraltete PHP-Version, installation nicht möglich"
+msgstr "Veraltete PHP-Version, Installation nicht möglich"
 
 #: ../includes/include.bottom.php:549
 msgid "Old drugCMS version, installation not possible"
-msgstr "Veraltete drugCMS-Version, installation nicht möglich"
+msgstr "Veraltete drugCMS-Version, Installation nicht möglich"
 
 #: ../includes/include.bottom.php:555
 #, php-format
