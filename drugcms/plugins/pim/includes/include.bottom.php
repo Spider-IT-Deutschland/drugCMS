@@ -374,7 +374,7 @@ switch ($sWhat) {
                     foreach ($aPluginsI as $key => $value) {
                         if (count($value)) {
                             $oTpl->set('d', 'KEY', $key);
-                            $oTpl->set('d', 'NAME', $value['Name']);
+                            $oTpl->set('d', 'NAME', mb_convert_encoding($value['Name'], $encoding[$lang], 'UTF-8'));
                             $sDescription = '';
                             if (strlen($value['Description'][$sCulture])) {
                                 $sDescription = $value['Description'][$sCulture];
@@ -387,21 +387,21 @@ switch ($sWhat) {
                                     }
                                 }
                             }
-                            $oTpl->set('d', 'DESCRIPTION', ((strlen($sDescription)) ? $sDescription : $value['Description']['en_US']));
-                            $oTpl->set('d', 'TAGS', implode(', ', $value['Tags']));
-                            $oTpl->set('d', 'AUTHOR', $value['Author']);
-                            $oTpl->set('d', 'COPYRIGHT', $value['Copyright']);
+                            $oTpl->set('d', 'DESCRIPTION', mb_convert_encoding(((strlen($sDescription)) ? $sDescription : $value['Description']['en_US']), $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d', 'TAGS', mb_convert_encoding(implode(', ', $value['Tags']), $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d', 'AUTHOR', mb_convert_encoding($value['Author'], $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d', 'COPYRIGHT', mb_convert_encoding($value['Copyright'], $encoding[$lang], 'UTF-8'));
                             $oTpl->set('d', 'VERSION', $value['Version']);
                             $sDependencies = '';
                             for ($i = 0, $n = count($value['Dependencies']); $i < $n; $i ++) {
                                 $sDependencies .= $value['Dependencies'][$i]['Name'] . ' (' . $value['Dependencies'][$i]['Version'] . '), ';
                             }
-                            $oTpl->set('d', 'DEPENDENCIES', substr($sDependencies, 0, -2));
+                            $oTpl->set('d', 'DEPENDENCIES', mb_convert_encoding(substr($sDependencies, 0, -2), $encoding[$lang], 'UTF-8'));
                             $sModules = '';
                             for ($i = 0, $n = count($value['Modules']); $i < $n; $i ++) {
                                 $sModules .= $value['Modules'][$i]['Name'] . ', '; # $value['Modules'][$i]['File']
                             }
-                            $oTpl->set('d', 'MODULES', substr($sModules, 0, -2));
+                            $oTpl->set('d', 'MODULES', mb_convert_encoding(substr($sModules, 0, -2), $encoding[$lang], 'UTF-8'));
                             $oTpl->set('d', 'INST_MOD', ((strlen($sModules)) ? 'true' : 'false'));
                             if (strlen($sModules)) {
                                 $oTpl->set('s', 'SHOW_MODULES', 'true');
@@ -493,7 +493,7 @@ switch ($sWhat) {
                         if ((!array_key_exists($key, $aPluginsI)) || (version_compare($value['Version'], $aPluginsI[$key]['Version'], '>'))) {
                             $oTpl->set('d1', 'KEY', $key);
                             $oTpl->set('d1', 'URL', $value['Url']);
-                            $oTpl->set('d1', 'NAME', $value['Name']);
+                            $oTpl->set('d1', 'NAME', mb_convert_encoding($value['Name'], $encoding[$lang], 'UTF-8'));
                             $sDescription = '';
                             if (strlen($value['Description'][$sCulture])) {
                                 $sDescription = $value['Description'][$sCulture];
@@ -506,11 +506,11 @@ switch ($sWhat) {
                                     }
                                 }
                             }
-                            $oTpl->set('d1', 'DESCRIPTION', ((strlen($sDescription)) ? $sDescription : $value['Description']['en_US']));
-                            $oTpl->set('d1', 'TAGS', implode(', ', $value['Tags']));
-                            $oTpl->set('d1', 'AUTHOR', $value['Author']);
-                            $oTpl->set('d1', 'COPYRIGHT', $value['Copyright']);
-                            $oTpl->set('d1', 'VERSION', $value['Version']);
+                            $oTpl->set('d1', 'DESCRIPTION', mb_convert_encoding(((strlen($sDescription)) ? $sDescription : $value['Description']['en_US']), $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d1', 'TAGS', mb_convert_encoding(implode(', ', $value['Tags']), $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d1', 'AUTHOR', mb_convert_encoding($value['Author'], $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d1', 'COPYRIGHT', mb_convert_encoding($value['Copyright'], $encoding[$lang], 'UTF-8'));
+                            $oTpl->set('d1', 'VERSION', mb_convert_encoding($value['Version'], $encoding[$lang], 'UTF-8'));
                             $sDependencies = '';
                             for ($i = 0, $n = count($value['Dependencies']); $i < $n; $i ++) {
                                 if (!array_key_exists($value['Dependencies'][$i]['Name'], $aPluginsI)) {
@@ -531,7 +531,7 @@ switch ($sWhat) {
                                     $sDependencies .= $value['Dependencies'][$i]['Name'] . ' (' . $value['Dependencies'][$i]['Version'] . '), ';
                                 }
                             }
-                            $oTpl->set('d1', 'DEPENDENCIES', substr($sDependencies, 0, -2));
+                            $oTpl->set('d1', 'DEPENDENCIES', mb_convert_encoding(substr($sDependencies, 0, -2), $encoding[$lang], 'UTF-8'));
                             if ((version_compare($value['Requirements']['php'], phpversion(), '>')) && (version_compare($value['Requirements']['drugcms'], $cfg['version'], '>'))) {
                                 $oTpl->set('d1', 'CLASS', 'old');
                                 $oTpl->set('d1', 'TEXT_INSTALL', sprintf(i18n("Old PHP version and old drugCMS version, installation not possible", $plugin_name), $value['Name']));
@@ -562,7 +562,7 @@ switch ($sWhat) {
                                 $oTpl->set('d1', 'IMG_CLASS', 'install');
                                 $oTpl->set('d1', 'IMAGE', 'importieren');
                             }
-                            $oTpl->set('d1', 'REPOSITORY', $value['Repo']);
+                            $oTpl->set('d1', 'REPOSITORY', mb_check_encoding($value['Repo'], $encoding[$lang], 'UTF-8'));
                             $sClass = (($sClass == 'odd') ? 'even' : 'odd');
                             $oTpl->next(1);
                         }
