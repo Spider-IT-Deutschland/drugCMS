@@ -319,5 +319,6 @@ return array(
     'GraphicsTextTTF' => 'drugcms/classes/graphics/class.graphics.php',
     'ftp' => 'drugcms/classes/class.ftp.php',
     'sftp' => 'drugcms/classes/class.sftp.php',
-    'Net_SFTP' => 'drugcms/external/phpseclib1.0.1/SFTP.php'
+    'Net_SFTP' => 'drugcms/external/phpseclib1.0.1/SFTP.php',
+    'DB' => 'drugcms/classes/Database/DB.php'
 );

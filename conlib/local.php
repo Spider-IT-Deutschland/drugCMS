@@ -37,8 +37,11 @@ if (!defined('CON_FRAMEWORK')) {
     die('Illegal call');
 }
 
-
-class DB_Contenido extends DB_Sql
+/**
+ * DEPRECATED
+ * Use class DB instead (/drugcms/classes/database/DB.php)
+ */
+class DB_Contenido extends DB#_Sql
 {
     /**
      * Constructor of database class.
@@ -56,6 +59,7 @@ class DB_Contenido extends DB_Sql
      *                          - $options['enableProfiling']  (bool)  Optional, flag to enable profiling
      * @return  void
      */
+/*
     public function __construct(array $options = array())
     {
         global $cachemeta;
@@ -72,6 +76,7 @@ class DB_Contenido extends DB_Sql
         // try to use the new connection and get the needed encryption
         //$this->query("SET NAMES 'utf8'");
     }
+*/
 
 
     /**
@@ -79,6 +84,7 @@ class DB_Contenido extends DB_Sql
      *
      * @param  bool
      */
+/*
     public function next_record()
     {
         global $cCurrentModule;
@@ -96,6 +102,7 @@ class DB_Contenido extends DB_Sql
 
         return parent::next_record();
     }
+*/
 
 
     /**
