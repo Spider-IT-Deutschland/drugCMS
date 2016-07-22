@@ -37,6 +37,8 @@ if (!defined('CON_FRAMEWORK')) {
     die('Illegal call');
 }
 
+include_once(dirname(__FILE__) . '/../drugcms/classes/Database/DB.php');
+
 /**
  * DEPRECATED
  * Use class DB instead (/drugcms/classes/database/DB.php)

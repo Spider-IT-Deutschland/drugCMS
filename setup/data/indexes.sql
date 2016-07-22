@@ -89,3 +89,6 @@ ALTER TABLE !PREFIX!_pica_alloc_con ADD PRIMARY KEY ( `idpica_alloc` , `idartlan
 ALTER TABLE !PREFIX!_pica_lang DROP PRIMARY KEY;
 ALTER TABLE !PREFIX!_pica_lang ADD PRIMARY KEY ( `idpica_alloc` , `idlang` );
 DROP TABLE IF EXISTS !PREFIX!_pi_externlinks;
+
+ALTER TABLE !PREFIX!_effective_settings ADD PRIMARY KEY (`setting_id`);
+ALTER TABLE !PREFIX!_effective_settings ADD UNIQUE INDEX setting(`type`, `name`);

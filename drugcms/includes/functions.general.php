@@ -19,7 +19,7 @@
  */
 
 if(!defined('CON_FRAMEWORK')) {
-	die('Illegal call');
+    die('Illegal call');
 }
 
 /**
@@ -37,9 +37,9 @@ if(!defined('CON_FRAMEWORK')) {
  */
 function getAvailableContentTypes($idartlang)
 {
-	global $db, $cfg, $a_content, $a_description;
+    global $db, $cfg, $a_content, $a_description;
 
-	$sql = "SELECT
+    $sql = "SELECT
                 *
             FROM
                 ".$cfg["tab"]["content"]." AS a,
@@ -50,13 +50,13 @@ function getAvailableContentTypes($idartlang)
                 a.idartlang = b.idartlang AND
                 b.idartlang = '".Contenido_Security::toInteger($idartlang)."'";
 
-	$db->query($sql);
+    $db->query($sql);
 
-	while ($db->next_record())
-	{
-		$a_content[$db->f("type")][$db->f("typeid")] = urldecode($db->f("value"));
-		$a_description[$db->f("type")][$db->f("typeid")] = i18n($db->f("description"));
-	}
+    while ($db->next_record())
+    {
+        $a_content[$db->f("type")][$db->f("typeid")] = urldecode($db->f("value"));
+        $a_description[$db->f("type")][$db->f("typeid")] = i18n($db->f("description"));
+    }
 }
 
 /**
@@ -67,13 +67,13 @@ function getAvailableContentTypes($idartlang)
  */
 function isArtInMultipleUse($idart)
 {
-	global $cfg, $client;
+    global $cfg, $client;
 
-	$db = new DB_Contenido;
-	$sql = "SELECT idart FROM ".$cfg["tab"]["cat_art"]." WHERE idart = '".Contenido_Security::toInteger($idart)."'";
-	$db->query($sql);
+    $db = new DB_Contenido;
+    $sql = "SELECT idart FROM ".$cfg["tab"]["cat_art"]." WHERE idart = '".Contenido_Security::toInteger($idart)."'";
+    $db->query($sql);
 
-	return ($db->affected_rows() > 1);
+    return ($db->affected_rows() > 1);
 }
 
 /**
@@ -86,15 +86,15 @@ function isArtInMultipleUse($idart)
 function is_alphanumeric($test, $umlauts = true)
 {
 
-	if ($umlauts == true)
-	{
-		$match = "/^[a-z0-9������� ]+$/i";
-	} else
-	{
-		$match = "/^[a-z0-9 ]+$/i";
-	}
+    if ($umlauts == true)
+    {
+        $match = "/^[a-z0-9??????? ]+$/i";
+    } else
+    {
+        $match = "/^[a-z0-9 ]+$/i";
+    }
 
-	return (preg_match($match, $test));
+    return (preg_match($match, $test));
 }
 
 /**
@@ -105,45 +105,45 @@ function is_alphanumeric($test, $umlauts = true)
  */
 function getCanonicalMonth($month)
 {
-	switch ($month)
-	{
-		case 1 :
-			return (i18n("January"));
-			break;
-		case 2 :
-			return (i18n("February"));
-			break;
-		case 3 :
-			return (i18n("March"));
-			break;
-		case 4 :
-			return (i18n("April"));
-			break;
-		case 5 :
-			return (i18n("May"));
-			break;
-		case 6 :
-			return (i18n("June"));
-			break;
-		case 7 :
-			return (i18n("July"));
-			break;
-		case 8 :
-			return (i18n("August"));
-			break;
-		case 9 :
-			return (i18n("September"));
-			break;
-		case 10 :
-			return (i18n("October"));
-			break;
-		case 11 :
-			return (i18n("November"));
-			break;
-		case 12 :
-			return (i18n("December"));
-			break;
-	}
+    switch ($month)
+    {
+        case 1 :
+            return (i18n("January"));
+            break;
+        case 2 :
+            return (i18n("February"));
+            break;
+        case 3 :
+            return (i18n("March"));
+            break;
+        case 4 :
+            return (i18n("April"));
+            break;
+        case 5 :
+            return (i18n("May"));
+            break;
+        case 6 :
+            return (i18n("June"));
+            break;
+        case 7 :
+            return (i18n("July"));
+            break;
+        case 8 :
+            return (i18n("August"));
+            break;
+        case 9 :
+            return (i18n("September"));
+            break;
+        case 10 :
+            return (i18n("October"));
+            break;
+        case 11 :
+            return (i18n("November"));
+            break;
+        case 12 :
+            return (i18n("December"));
+            break;
+    }
 }
 
 /**
@@ -154,31 +154,31 @@ function getCanonicalMonth($month)
  */
 function getCanonicalDay($iDay)
 {
-	switch ($iDay)
-	{
-		case 1 :
-			return (i18n("Monday"));
-			break;
-		case 2 :
-			return (i18n("Tuesday"));
-			break;
-		case 3 :
-			return (i18n("Wednesday"));
-			break;
-		case 4 :
-			return (i18n("Thursday"));
-			break;
-		case 5 :
-			return (i18n("Friday"));
-			break;
-		case 6 :
-			return (i18n("Saterday"));
-			break;
-		case 0 :
-			return (i18n("Sunday"));
-			break;
-		default: break;	
-	}
+    switch ($iDay)
+    {
+        case 1 :
+            return (i18n("Monday"));
+            break;
+        case 2 :
+            return (i18n("Tuesday"));
+            break;
+        case 3 :
+            return (i18n("Wednesday"));
+            break;
+        case 4 :
+            return (i18n("Thursday"));
+            break;
+        case 5 :
+            return (i18n("Friday"));
+            break;
+        case 6 :
+            return (i18n("Saterday"));
+            break;
+        case 0 :
+            return (i18n("Sunday"));
+            break;
+        default: break;    
+    }
 }
 
 
@@ -190,27 +190,27 @@ function getCanonicalDay($iDay)
  */
 function getIDForArea($area)
 {
-	global $client, $lang, $cfg, $sess;
+    global $client, $lang, $cfg, $sess;
 
-	$db = new DB_Contenido;
+    $db = new DB_Contenido;
 
-	if (!is_numeric($area))
-	{
-		$sql = "SELECT
-		                    idarea
-		                FROM
-		                    ".$cfg["tab"]["area"]."
-		                WHERE
-		                    name = '".Contenido_Security::escapeDB($area, $db)."'";
+    if (!is_numeric($area))
+    {
+        $sql = "SELECT
+                            idarea
+                        FROM
+                            ".$cfg["tab"]["area"]."
+                        WHERE
+                            name = '".Contenido_Security::escapeDB($area, $db)."'";
 
-		$db->query($sql);
-		if ($db->next_record())
-		{
-			$area = $db->f(0);
-		}
-	}
+        $db->query($sql);
+        if ($db->next_record())
+        {
+            $area = $db->f(0);
+        }
+    }
 
-	return $area;
+    return $area;
 }
 
 /**
@@ -221,42 +221,42 @@ function getIDForArea($area)
  */
 function getParentAreaId($area)
 {
-	global $client, $lang, $cfg, $sess;
+    global $client, $lang, $cfg, $sess;
 
-	$db = new DB_Contenido;
+    $db = new DB_Contenido;
 
-	if (is_numeric($area))
-	{
-		$sql = "SELECT
-		                    b.name
-		                FROM
-		                    ".$cfg["tab"]["area"]." AS a,
-		                    ".$cfg["tab"]["area"]." AS b
-		                WHERE
-		                    a.idarea = '".Contenido_Security::toInteger($area)."' AND
-		                    b.name = a.parent_id";
-	} else
-	{
-		$sql = "SELECT
-		                    b.name
-		                FROM
-		                    ".$cfg["tab"]["area"]." AS a,
-		                    ".$cfg["tab"]["area"]." AS b
-		                WHERE
-		                    a.name = '".Contenido_Security::escapeDB($area, $db)."' AND
-		                    b.name = a.parent_id";
+    if (is_numeric($area))
+    {
+        $sql = "SELECT
+                            b.name
+                        FROM
+                            ".$cfg["tab"]["area"]." AS a,
+                            ".$cfg["tab"]["area"]." AS b
+                        WHERE
+                            a.idarea = '".Contenido_Security::toInteger($area)."' AND
+                            b.name = a.parent_id";
+    } else
+    {
+        $sql = "SELECT
+                            b.name
+                        FROM
+                            ".$cfg["tab"]["area"]." AS a,
+                            ".$cfg["tab"]["area"]." AS b
+                        WHERE
+                            a.name = '".Contenido_Security::escapeDB($area, $db)."' AND
+                            b.name = a.parent_id";
 
-	}
-	$db->query($sql);
+    }
+    $db->query($sql);
 
-	if ($db->next_record())
-	{
-		return $db->f(0);
-	} else
-	{
-		return $area;
+    if ($db->next_record())
+    {
+        return $db->f(0);
+    } else
+    {
+        return $area;
 
-	}
+    }
 }
 
 /**
@@ -270,40 +270,40 @@ function getParentAreaId($area)
  */
 function markSubMenuItem($menuitem, $return = false)
 {
-	$str = '<script type="text/javascript">
-	
-			try {
-			/* Check if we are in a dual-frame or a quad-frame */
-			if ( parent.parent.frames[0].name == "header")
-			{
-	    		if ( parent.frames["right_top"].document.getElementById("c_'.$menuitem.'") ) {
-	                menuItem = parent.frames["right_top"].document.getElementById("c_'.$menuitem.'").getElementsByTagName(\'a\')[0];
-	                parent.frames["right_top"].sub.clicked(menuItem);
-	            } 	
-			} else {
-	        /* Check if submenuItem is existing
-	           and mark it */
-			
-				
-	            if ( parent.parent.frames["right"].frames["right_top"].document.getElementById("c_'.$menuitem.'") ) {
-	                menuItem = parent.parent.frames["right"].frames["right_top"].document.getElementById("c_'.$menuitem.'").getElementsByTagName(\'a\')[0];
+    $str = '<script type="text/javascript">
+    
+            try {
+            /* Check if we are in a dual-frame or a quad-frame */
+            if ( parent.parent.frames[0].name == "header")
+            {
+                if ( parent.frames["right_top"].document.getElementById("c_'.$menuitem.'") ) {
+                    menuItem = parent.frames["right_top"].document.getElementById("c_'.$menuitem.'").getElementsByTagName(\'a\')[0];
+                    parent.frames["right_top"].sub.clicked(menuItem);
+                }     
+            } else {
+            /* Check if submenuItem is existing
+               and mark it */
+            
+                
+                if ( parent.parent.frames["right"].frames["right_top"].document.getElementById("c_'.$menuitem.'") ) {
+                    menuItem = parent.parent.frames["right"].frames["right_top"].document.getElementById("c_'.$menuitem.'").getElementsByTagName(\'a\')[0];
                     
-	                parent.parent.frames["right"].frames["right_top"].sub.clicked(menuItem);
-	            } 
-				
-			}
-			} catch (e)
-			{}
-	    </script>';
+                    parent.parent.frames["right"].frames["right_top"].sub.clicked(menuItem);
+                } 
+                
+            }
+            } catch (e)
+            {}
+        </script>';
 
-	if ($return)
-	{
-		return $str;
+    if ($return)
+    {
+        return $str;
 
-	} else
-	{
-		echo $str;
-	}
+    } else
+    {
+        echo $str;
+    }
 }
 
 /**
@@ -316,99 +316,99 @@ function markSubMenuItem($menuitem, $return = false)
  */
 function backToMainArea($send)
 {
-	if ($send)
-	{
-		/* Global vars */
-		global $area, $cfg, $db, $sess, $idart, $idcat, $idartlang, $idcatart, $frame;
+    if ($send)
+    {
+        /* Global vars */
+        global $area, $cfg, $db, $sess, $idart, $idcat, $idartlang, $idcatart, $frame;
 
-		/* Get main area */
-		$sql = "SELECT
-		                    a.name
-		                FROM
-		                    ".$cfg["tab"]["area"]." AS a,
-		                    ".$cfg["tab"]["area"]." AS b
-		                WHERE
-		                    b.name      = '".Contenido_Security::escapeDB($area, $db)."' AND
-		                    b.parent_id = a.name";
+        /* Get main area */
+        $sql = "SELECT
+                            a.name
+                        FROM
+                            ".$cfg["tab"]["area"]." AS a,
+                            ".$cfg["tab"]["area"]." AS b
+                        WHERE
+                            b.name      = '".Contenido_Security::escapeDB($area, $db)."' AND
+                            b.parent_id = a.name";
 
-		$db->query($sql);
-		$db->next_record();
+        $db->query($sql);
+        $db->next_record();
 
-		$parent = $db->f("name");
+        $parent = $db->f("name");
 
-		/* Create url string */
-		$url_str = 'main.php?'.'area='.$parent.'&'.'idcat='.$idcat.'&'.'idart='.$idart.'&'.'idartlang='.$idartlang.'&'.'idcatart='.$idcatart.'&'.'force=1&'.'frame='.$frame;
+        /* Create url string */
+        $url_str = 'main.php?'.'area='.$parent.'&'.'idcat='.$idcat.'&'.'idart='.$idart.'&'.'idartlang='.$idartlang.'&'.'idcatart='.$idcatart.'&'.'force=1&'.'frame='.$frame;
 
-		$url = $sess->url($url_str);
+        $url = $sess->url($url_str);
 
-		/* Redirect */
-		header("location: $url");
-	}
+        /* Redirect */
+        header("location: $url");
+    }
 }
 
 function showLocation($area)
 {
-	global $db;
-	global $cfgPath, $lngArea;
-	global $cfg;
-	global $belang;
+    global $db;
+    global $cfgPath, $lngArea;
+    global $cfg;
+    global $belang;
 
-	//Create new xml Class and load the file
+    //Create new xml Class and load the file
 
-	$xml = new XML_doc;
-	if ($xml->load($cfg['path']['xml'].$cfg['lang'][$belang]) == false)
-	{
-		if ($xml->load($cfg['path']['xml'].'lang_en_US.xml') == false)
-		{
-			die("Unable to load any XML language file");
-		}
-	}
+    $xml = new XML_doc;
+    if ($xml->load($cfg['path']['xml'].$cfg['lang'][$belang]) == false)
+    {
+        if ($xml->load($cfg['path']['xml'].'lang_en_US.xml') == false)
+        {
+            die("Unable to load any XML language file");
+        }
+    }
 
-	$sql = "SELECT location
-	              FROM ".$cfg["tab"]["area"]." as A, ".$cfg["tab"]["nav_sub"]." as B
-	              Where A.name='".Contenido_Security::escapeDB($area, $db)."' AND A.idarea=B.idarea AND A.online='1'";
+    $sql = "SELECT location
+                  FROM ".$cfg["tab"]["area"]." as A, ".$cfg["tab"]["nav_sub"]." as B
+                  Where A.name='".Contenido_Security::escapeDB($area, $db)."' AND A.idarea=B.idarea AND A.online='1'";
 
-	$db->query($sql);
-	if ($db->next_record())
-	{
+    $db->query($sql);
+    if ($db->next_record())
+    {
 
-		echo "<b>".$xml->valueOf($db->f("location"))."</b>";
+        echo "<b>".$xml->valueOf($db->f("location"))."</b>";
 
-	} else
-	{
+    } else
+    {
 
-		$sql = "SELECT parent_id
-		                    FROM ".$cfg["tab"]["area"]."
-		                    WHERE name='".Contenido_Security::escapeDB($area, $db)."' AND online='1'";
-		$db->query($sql);
-		$db->next_record();
-		$parent = $db->f("parent_id");
+        $sql = "SELECT parent_id
+                            FROM ".$cfg["tab"]["area"]."
+                            WHERE name='".Contenido_Security::escapeDB($area, $db)."' AND online='1'";
+        $db->query($sql);
+        $db->next_record();
+        $parent = $db->f("parent_id");
 
-		$sql = "SELECT location
-		                    FROM ".$cfg["tab"]["area"]." as A, ".$cfg["tab"]["nav_sub"]." as B
-		                    Where A.name='".Contenido_Security::escapeDB($parent, $db)."' AND A.idarea = B.idarea AND A.online='1'";
+        $sql = "SELECT location
+                            FROM ".$cfg["tab"]["area"]." as A, ".$cfg["tab"]["nav_sub"]." as B
+                            Where A.name='".Contenido_Security::escapeDB($parent, $db)."' AND A.idarea = B.idarea AND A.online='1'";
 
-		$db->query($sql);
-		$db->next_record();
-		echo "<b>".$xml->valueOf($db->f("location")).$lngArea[$area]."</b>";
+        $db->query($sql);
+        $db->next_record();
+        echo "<b>".$xml->valueOf($db->f("location")).$lngArea[$area]."</b>";
 
-	}
+    }
 }
 
 function showTable($tablename)
 {
-	global $db;
+    global $db;
 
-	$sql = "SELECT * FROM $tablename";
-	$db->query($sql);
-	while ($db->next_record())
-	{
-		while (list ($key, $value) = each($db->Record))
-		{
-			print (is_string($key) ? "<b>$key</b>: $value | " : "");
-		}
-		print ("<br>");
-	}
+    $sql = "SELECT * FROM $tablename";
+    $db->query($sql);
+    while ($db->next_record())
+    {
+        while (list ($key, $value) = each($db->Record))
+        {
+            print (is_string($key) ? "<b>$key</b>: $value | " : "");
+        }
+        print ("<br>");
+    }
 }
 
 /**
@@ -432,28 +432,28 @@ function getLanguagesByClient($client) {
  */
 function getLanguageNamesByClient($client)
 {
-	global $db;
-	global $cfg;
+    global $db;
+    global $cfg;
 
-	$sql = "SELECT
-	                    a.idlang AS idlang,
-	                    b.name AS name
-	                FROM
-	                  ".$cfg["tab"]["clients_lang"]." AS a,
-	                  ".$cfg["tab"]["lang"]." AS b
-	                WHERE
-	                    idclient='".Contenido_Security::toInteger($client)."' AND
-	                    a.idlang = b.idlang
-	                ORDER BY
-	                    idlang ASC";
+    $sql = "SELECT
+                        a.idlang AS idlang,
+                        b.name AS name
+                    FROM
+                      ".$cfg["tab"]["clients_lang"]." AS a,
+                      ".$cfg["tab"]["lang"]." AS b
+                    WHERE
+                        idclient='".Contenido_Security::toInteger($client)."' AND
+                        a.idlang = b.idlang
+                    ORDER BY
+                        idlang ASC";
 
-	$db->query($sql);
-	while ($db->next_record())
-	{
-		$list[$db->f("idlang")] = $db->f("name");
-	}
+    $db->query($sql);
+    while ($db->next_record())
+    {
+        $list[$db->f("idlang")] = $db->f("name");
+    }
 
-	return $list;
+    return $list;
 }
 
 function set_magic_quotes_gpc(&$code) {
@@ -509,55 +509,55 @@ function getAllClientsAndLanguages()
 
 function fakeheader($time)
 {
-	global $con_time0;
-	if (!isset ($con_time0))
-	{
-		$con_time0 = $time;
-	}
+    global $con_time0;
+    if (!isset ($con_time0))
+    {
+        $con_time0 = $time;
+    }
 
-	if ($time >= $con_time0 +1000)
-	{
-		$con_time0 = $time;
-		header('X-pmaPing: Pong');
-	} // end if
+    if ($time >= $con_time0 +1000)
+    {
+        $con_time0 = $time;
+        header('X-pmaPing: Pong');
+    } // end if
 }
 
 function recursive_copy($from_path, $to_path)
 {
-	mkdir($to_path, 0777);
-	$old_path = getcwd();
-	$this_path = getcwd();
+    mkdir($to_path, 0777);
+    $old_path = getcwd();
+    $this_path = getcwd();
 
-	if (is_dir($from_path))
-	{
-		chdir($from_path);
-		$myhandle = opendir('.');
+    if (is_dir($from_path))
+    {
+        chdir($from_path);
+        $myhandle = opendir('.');
 
-		while (($myfile = readdir($myhandle)) !== false)
-		{
-			if (($myfile != ".") && ($myfile != ".."))
-			{
-				if (is_dir($myfile))
-				{
-					recursive_copy($from_path.$myfile."/", $to_path.$myfile."/");
-					chdir($from_path);
-				} else if (file_exists($myfile))
-				{
-					copy($from_path.$myfile, $to_path.$myfile);
-				}
-			}
-		}
-		closedir($myhandle);
-	}
+        while (($myfile = readdir($myhandle)) !== false)
+        {
+            if (($myfile != ".") && ($myfile != ".."))
+            {
+                if (is_dir($myfile))
+                {
+                    recursive_copy($from_path.$myfile."/", $to_path.$myfile."/");
+                    chdir($from_path);
+                } else if (file_exists($myfile))
+                {
+                    copy($from_path.$myfile, $to_path.$myfile);
+                }
+            }
+        }
+        closedir($myhandle);
+    }
 
-	chdir($old_path);
-	return;
+    chdir($old_path);
+    return;
 }
 
 function getmicrotime()
 {
-	list ($usec, $sec) = explode(" ", microtime());
-	return ((float) $usec + (float) $sec);
+    list ($usec, $sec) = explode(" ", microtime());
+    return ((float) $usec + (float) $sec);
 }
 
 /* Small hack to clean up unused sessions.
@@ -565,89 +565,89 @@ function getmicrotime()
    session management, this hack is OK. */
 function cleanupSessions()
 {
-	global $cfg;
+    global $cfg;
 
-	$db = new DB_Contenido;
-	$db2 = new DB_Contenido;
+    $db = new DB_Contenido;
+    $db2 = new DB_Contenido;
 
-	$col = new InUseCollection;
+    $col = new InUseCollection;
 
-	/* Expire old backend sessions */
-	$temp = new Contenido_Challenge_Crypt_Auth;
-	$maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
-	$sql = 'SELECT changed, sid
+    /* Expire old backend sessions */
+    $temp = new Contenido_Challenge_Crypt_Auth;
+    $maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
+    $sql = 'SELECT changed, sid
             FROM ' . $cfg['tab']['phplib_active_sessions'] . '
             WHERE (name="contenido")';
-	$db->query($sql);
-	while ($db->next_record()) {
-		if ($db->f("changed") < $maxdate) {
-			$sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
-			$db2->query($sql);
-			$col->removeSessionMarks($db->f("sid"));
-		}
-	}
+    $db->query($sql);
+    while ($db->next_record()) {
+        if ($db->f("changed") < $maxdate) {
+            $sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
+            $db2->query($sql);
+            $col->removeSessionMarks($db->f("sid"));
+        }
+    }
 
-	/* Expire old frontend sessions */
-	$temp = new Contenido_Frontend_Challenge_Crypt_Auth;
-	$maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
-	$sql = 'SELECT changed, sid
+    /* Expire old frontend sessions */
+    $temp = new Contenido_Frontend_Challenge_Crypt_Auth;
+    $maxdate = date("YmdHis", (time() - ($temp->lifetime * 60)));
+    $sql = 'SELECT changed, sid
             FROM ' . $cfg['tab']['phplib_active_sessions'] . '
             WHERE (name<>"contenido")';
-	$db->query($sql);
-	while ($db->next_record()) {
-		if ($db->f("changed") < $maxdate) {
-			$sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
-			$db2->query($sql);
-			$col->removeSessionMarks($db->f("sid"));
-		}
-	}
+    $db->query($sql);
+    while ($db->next_record()) {
+        if ($db->f("changed") < $maxdate) {
+            $sql = "DELETE FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($db->f("sid"), $db2)."'";
+            $db2->query($sql);
+            $col->removeSessionMarks($db->f("sid"));
+        }
+    }
 
-	/* Expire invalid InUse-Entries */
-	$col->select();
+    /* Expire invalid InUse-Entries */
+    $col->select();
 
-	while ($c = $col->next())
-	{
-		$sql = "SELECT sid FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($c->get("session"), $db2)."'";
-		$db2->query($sql);
-		if (!$db2->next_record())
-		{
-			$col->delete($c->get("idinuse"));
-		}
-	}
+    while ($c = $col->next())
+    {
+        $sql = "SELECT sid FROM ".$cfg["tab"]["phplib_active_sessions"]." WHERE sid = '".Contenido_Security::escapeDB($c->get("session"), $db2)."'";
+        $db2->query($sql);
+        if (!$db2->next_record())
+        {
+            $col->delete($c->get("idinuse"));
+        }
+    }
 }
 
 function isGroup($uid)
 {
-	$users = new User;
+    $users = new User;
 
-	if ($users->loadUserByUserID($uid) == false)
-	{
-		return true;
-	} else
-	{
-		return false;
-	}
+    if ($users->loadUserByUserID($uid) == false)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
 }
 
 function getGroupOrUserName($uid)
 {
-	$users = new User;
+    $users = new User;
 
-	if ($users->loadUserByUserID($uid) === false)
-	{
-		$groups = new Group;
-		/* Yes, it's a group. Let's try to load the group members! */
-		if ($groups->loadGroupByGroupID($uid) === false)
-		{
-			return false;
-		} else
-		{
-			return substr($groups->getField("groupname"), 4);
-		}
-	} else
-	{
-		return $users->getField("realname");
-	}
+    if ($users->loadUserByUserID($uid) === false)
+    {
+        $groups = new Group;
+        /* Yes, it's a group. Let's try to load the group members! */
+        if ($groups->loadGroupByGroupID($uid) === false)
+        {
+            return false;
+        } else
+        {
+            return substr($groups->getField("groupname"), 4);
+        }
+    } else
+    {
+        return $users->getField("realname");
+    }
 }
 
 /**
@@ -707,59 +707,59 @@ function getGroupOrUserName($uid)
  */
 function getPhpModuleInfo($moduleName)
 {
-	$moduleSettings = array();
-	ob_start();
-	phpinfo(INFO_MODULES); // get information vor modules
-	$string = ob_get_contents();
-	ob_end_clean();
+    $moduleSettings = array();
+    ob_start();
+    phpinfo(INFO_MODULES); // get information vor modules
+    $string = ob_get_contents();
+    ob_end_clean();
 
-	$pieces = explode("<h2", $string); // get several modules
+    $pieces = explode("<h2", $string); // get several modules
 
-	foreach ($pieces as $val)
-	{
-		// perform a regular expression match on every module header
-		preg_match("/<a name=\"module_([^<>]*)\">/", $val, $sub_key);
+    foreach ($pieces as $val)
+    {
+        // perform a regular expression match on every module header
+        preg_match("/<a name=\"module_([^<>]*)\">/", $val, $sub_key);
 
-		// perform a regular expression match on tabs with 2 columns
-		preg_match_all("/<tr[^>]*>
-				<td[^>]*>(.*)<\/td>
-				<td[^>]*>(.*)<\/td>/Ux", $val, $sub);
+        // perform a regular expression match on tabs with 2 columns
+        preg_match_all("/<tr[^>]*>
+                <td[^>]*>(.*)<\/td>
+                <td[^>]*>(.*)<\/td>/Ux", $val, $sub);
 
-		// perform a regular expression match on tabs with 3 columns
-		preg_match_all("/<tr[^>]*>
-				<td[^>]*>(.*)<\/td>
-				<td[^>]*>(.*)<\/td>
-				<td[^>]*>(.*)<\/td>/Ux", $val, $sub_ext);
+        // perform a regular expression match on tabs with 3 columns
+        preg_match_all("/<tr[^>]*>
+                <td[^>]*>(.*)<\/td>
+                <td[^>]*>(.*)<\/td>
+                <td[^>]*>(.*)<\/td>/Ux", $val, $sub_ext);
 
-		if (isset ($moduleName)) // if $moduleName is specified
-		{
-			if (extension_loaded($moduleName)) //check if specified extension exists or is loaded
-			{
-				if ($sub_key[1] == $moduleName)
-				{ //create array only for specified $moduleName
-					foreach ($sub[0] as $key => $val)
-					{
-						$moduleSettings[strip_tags($sub[1][$key])] = array (strip_tags($sub[2][$key]));
-					}
-				}
-			} else //specified extension is not loaded or doesn't exists
-				{
-				$moduleSettings['error'] = 'extension is not available';
-			}
-		} else // $moduleName isn't specified => get everything
-			{
-			foreach ($sub[0] as $key => $val)
-			{
-				$moduleSettings[$sub_key[1]][strip_tags($sub[1][$key])] = array (strip_tags($sub[2][$key]));
-			}
+        if (isset ($moduleName)) // if $moduleName is specified
+        {
+            if (extension_loaded($moduleName)) //check if specified extension exists or is loaded
+            {
+                if ($sub_key[1] == $moduleName)
+                { //create array only for specified $moduleName
+                    foreach ($sub[0] as $key => $val)
+                    {
+                        $moduleSettings[strip_tags($sub[1][$key])] = array (strip_tags($sub[2][$key]));
+                    }
+                }
+            } else //specified extension is not loaded or doesn't exists
+                {
+                $moduleSettings['error'] = 'extension is not available';
+            }
+        } else // $moduleName isn't specified => get everything
+            {
+            foreach ($sub[0] as $key => $val)
+            {
+                $moduleSettings[$sub_key[1]][strip_tags($sub[1][$key])] = array (strip_tags($sub[2][$key]));
+            }
 
-			foreach ($sub_ext[0] as $key => $val)
-			{
-				$moduleSettings[$sub_key[1]][strip_tags($sub_ext[1][$key])] = array (strip_tags($sub_ext[2][$key]), strip_tags($sub_ext[3][$key]));
-			}
-		}
-	}
-	return $moduleSettings;
+            foreach ($sub_ext[0] as $key => $val)
+            {
+                $moduleSettings[$sub_key[1]][strip_tags($sub_ext[1][$key])] = array (strip_tags($sub_ext[2][$key]), strip_tags($sub_ext[3][$key]));
+            }
+        }
+    }
+    return $moduleSettings;
 }
 
 /**
@@ -842,7 +842,7 @@ function getBrowserInfo() {
 
 function isValidMail($sEMail, $bStrict = false)
 {
-	# 2014-07-19 Spider IT :: Function now uses the new form validation functions.
+    # 2014-07-19 Spider IT :: Function now uses the new form validation functions.
     #                         Strict now means that the email address must exist.
     cInclude('classes', 'class.form.validation.php'); # Needed for some plugins
     $ret = FormValidation::isValidEmailAddress($sEMail);
@@ -863,54 +863,54 @@ function htmldecode($string)
         $trans_tbl = array_flip($trans_tbl);
         $ret = strtr($string, $trans_tbl);
     }
-	return $ret;
+    return $ret;
 }
 
 function rereadClients()
 {
-	global $cfgClient;
-	global $errsite_idcat;
-	global $errsite_idart;
-	global $db;
-	global $cfg;
+    global $cfgClient;
+    global $errsite_idcat;
+    global $errsite_idart;
+    global $db;
+    global $cfg;
 
-	if (!is_object($db))
-	{
-		$db = new DB_Contenido;
-	}
+    if (!is_object($db))
+    {
+        $db = new DB_Contenido;
+    }
 
-	$sql = "SELECT
-	                idclient,
-	                frontendpath,
-	                htmlpath,
-	                errsite_cat,
-	                errsite_art
-	            FROM
-	            ".$cfg["tab"]["clients"];
+    $sql = "SELECT
+                    idclient,
+                    frontendpath,
+                    htmlpath,
+                    errsite_cat,
+                    errsite_art
+                FROM
+                ".$cfg["tab"]["clients"];
 
-	$db->query($sql);
+    $db->query($sql);
 
-	while ($db->next_record())
-	{
+    while ($db->next_record())
+    {
 
-		$cfgClient["set"] = "set";
-		$cfgClient[$db->f("idclient")]["path"]["frontend"] = $db->f("frontendpath");
-		$cfgClient[$db->f("idclient")]["path"]["htmlpath"] = $db->f("htmlpath");
-		$errsite_idcat[$db->f("idclient")] = $db->f("errsite_cat");
-		$errsite_idart[$db->f("idclient")] = $db->f("errsite_art");
+        $cfgClient["set"] = "set";
+        $cfgClient[$db->f("idclient")]["path"]["frontend"] = $db->f("frontendpath");
+        $cfgClient[$db->f("idclient")]["path"]["htmlpath"] = $db->f("htmlpath");
+        $errsite_idcat[$db->f("idclient")] = $db->f("errsite_cat");
+        $errsite_idart[$db->f("idclient")] = $db->f("errsite_art");
 
-		$cfgClient[$db->f("idclient")]["images"] = $db->f("htmlpath")."images/";
-		$cfgClient[$db->f("idclient")]["upload"] = "upload/";
+        $cfgClient[$db->f("idclient")]["images"] = $db->f("htmlpath")."images/";
+        $cfgClient[$db->f("idclient")]["upload"] = "upload/";
 
-		$cfgClient[$db->f("idclient")]["htmlpath"]["frontend"] = $cfgClient[$db->f("idclient")]["path"]["htmlpath"];
-		$cfgClient[$db->f("idclient")]["upl"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."upload/";
-		$cfgClient[$db->f("idclient")]["upl"]["htmlpath"] = $cfgClient[$db->f("idclient")]["htmlpath"]["frontend"]."upload/";
-		$cfgClient[$db->f("idclient")]["upl"]["frontendpath"] = "upload/";
-		$cfgClient[$db->f("idclient")]["css"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."css/";
-		$cfgClient[$db->f("idclient")]["js"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."js/";
-		$cfgClient[$db->f("idclient")]["tpl"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."templates/";
+        $cfgClient[$db->f("idclient")]["htmlpath"]["frontend"] = $cfgClient[$db->f("idclient")]["path"]["htmlpath"];
+        $cfgClient[$db->f("idclient")]["upl"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."upload/";
+        $cfgClient[$db->f("idclient")]["upl"]["htmlpath"] = $cfgClient[$db->f("idclient")]["htmlpath"]["frontend"]."upload/";
+        $cfgClient[$db->f("idclient")]["upl"]["frontendpath"] = "upload/";
+        $cfgClient[$db->f("idclient")]["css"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."css/";
+        $cfgClient[$db->f("idclient")]["js"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."js/";
+        $cfgClient[$db->f("idclient")]["tpl"]["path"] = $cfgClient[$db->f("idclient")]["path"]["frontend"]."templates/";
 
-	}
+    }
 }
 
 /**
@@ -924,16 +924,16 @@ function rereadClients()
  * @param int $idsystemprop The sysprop id, use optional. If set it allows to modify type name and value
  */
 function setSystemProperty($type, $name, $value, $idsystemprop = 0)
-{	
-	global $cfg;
-	if ($type == "" || $name == "")
-	{
-		return false;
-	}
+{    
+    global $cfg;
+    if ($type == "" || $name == "")
+    {
+        return false;
+    }
     
     $idsystemprop = Contenido_Security::toInteger($idsystemprop);
     
-	$db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB_Contenido;
     
     if ($idsystemprop == 0) {
         $sql = "SELECT idsystemprop FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
@@ -941,10 +941,10 @@ function setSystemProperty($type, $name, $value, $idsystemprop = 0)
         $sql = "SELECT idsystemprop FROM ".$cfg["tab"]["system_prop"]." WHERE idsystemprop='$idsystemprop'";
     }
     
-	$db_systemprop->query($sql);
+    $db_systemprop->query($sql);
 
-	if ($db_systemprop->num_rows() > 0)
-	{
+    if ($db_systemprop->num_rows() > 0)
+    {
         if ($idsystemprop == 0) {
             $sql = "UPDATE ".$cfg["tab"]["system_prop"]." SET value='".Contenido_Security::filter($value, $db_systemprop)."' WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."'
                     AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
@@ -952,14 +952,14 @@ function setSystemProperty($type, $name, $value, $idsystemprop = 0)
             $sql = "UPDATE ".$cfg["tab"]["system_prop"]." SET value='".Contenido_Security::filter($value, $db_systemprop)."', type='".Contenido_Security::escapeDB($type, $db_systemprop)."',
                     name='".Contenido_Security::escapeDB($name, $db_systemprop)."' WHERE idsystemprop='$idsystemprop'";
         }
-	} else
-	{
-		$idsystemprop = $db_systemprop->nextid($cfg["tab"]["system_prop"]);
-		$sql = "INSERT INTO ".$cfg["tab"]["system_prop"]." (idsystemprop, value, type, name) VALUES ('$idsystemprop', '".Contenido_Security::filter($value, $db_systemprop)."',
+    } else
+    {
+        $idsystemprop = $db_systemprop->nextid($cfg["tab"]["system_prop"]);
+        $sql = "INSERT INTO ".$cfg["tab"]["system_prop"]." (idsystemprop, value, type, name) VALUES ('$idsystemprop', '".Contenido_Security::filter($value, $db_systemprop)."',
                 '".Contenido_Security::escapeDB($type, $db_systemprop)."', '".Contenido_Security::escapeDB($name, $db_systemprop)."')";
-	}
+    }
 
-	$db_systemprop->query($sql);
+    $db_systemprop->query($sql);
     $db_systemprop->disconnect();
 }
 
@@ -971,13 +971,13 @@ function setSystemProperty($type, $name, $value, $idsystemprop = 0)
  */
 function deleteSystemProperty($type, $name)
 {
-	global $cfg;
+    global $cfg;
 
-	$db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB_Contenido;
     $type = Contenido_Security::escapeDB($type, $db_systemprop);
     $name = Contenido_Security::escapeDB($name, $db_systemprop);
-	$sql = "DELETE FROM ".$cfg["tab"]["system_prop"]." WHERE type='".$type."' AND name='".$name."'";
-	$db_systemprop->query($sql);
+    $sql = "DELETE FROM ".$cfg["tab"]["system_prop"]." WHERE type='".$type."' AND name='".$name."'";
+    $db_systemprop->query($sql);
     $db_systemprop->disconnect();
 }
 
@@ -997,28 +997,28 @@ function deleteSystemProperty($type, $name)
  */
 function getSystemProperties($bGetPropId = 0)
 {
-	global $cfg;
+    global $cfg;
 
-	$db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB_Contenido;
 
-	$sql = "SELECT idsystemprop, type, name, value FROM ".$cfg["tab"]["system_prop"]." ORDER BY type ASC, name ASC, value ASC";
-	$db_systemprop->query($sql);
+    $sql = "SELECT idsystemprop, type, name, value FROM ".$cfg["tab"]["system_prop"]." ORDER BY type ASC, name ASC, value ASC";
+    $db_systemprop->query($sql);
     $results = array();
     
     if ($bGetPropId) {
-    	while ($db_systemprop->next_record())
-    	{
-    		$results[$db_systemprop->f("type")][$db_systemprop->f("name")]['value'] = urldecode($db_systemprop->f("value"));
+        while ($db_systemprop->next_record())
+        {
+            $results[$db_systemprop->f("type")][$db_systemprop->f("name")]['value'] = urldecode($db_systemprop->f("value"));
             $results[$db_systemprop->f("type")][$db_systemprop->f("name")]['idsystemprop'] = urldecode($db_systemprop->f("idsystemprop"));
-    	}
+        }
     } else {
         while ($db_systemprop->next_record())
-    	{
-    		$results[$db_systemprop->f("type")][$db_systemprop->f("name")] = urldecode($db_systemprop->f("value"));
-    	}
+        {
+            $results[$db_systemprop->f("type")][$db_systemprop->f("name")] = urldecode($db_systemprop->f("value"));
+        }
     }
 
-	return ($results);
+    return ($results);
 }
 
 /**
@@ -1030,20 +1030,20 @@ function getSystemProperties($bGetPropId = 0)
  */
 function getSystemProperty($type, $name)
 {
-	global $cfg;
+    global $cfg;
 
-	$db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB_Contenido;
 
-	$sql = "SELECT value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
-	$db_systemprop->query($sql);
+    $sql = "SELECT value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
+    $db_systemprop->query($sql);
 
-	if ($db_systemprop->next_record())
-	{
-		return urldecode($db_systemprop->f("value"));
-	} else
-	{
-		return false;
-	}
+    if ($db_systemprop->next_record())
+    {
+        return urldecode($db_systemprop->f("value"));
+    } else
+    {
+        return false;
+    }
 }
 
 /** 
@@ -1054,22 +1054,37 @@ function getSystemProperty($type, $name)
  */ 
 function getSystemPropertiesByType($sType) 
 {
-	global $cfg;
-	
-	$aResult = array();
-	
-	$db_systemprop = new DB_Contenido;
-	
-	$sSQL = "SELECT name, value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($sType, $db_systemprop)."' ORDER BY name";
-	$db_systemprop->query($sSQL);
-	
-	while ($db_systemprop->next_record())
-	{
-		$aResult[$db_systemprop->f("name")] = urldecode($db_systemprop->f("value")); 
-	}
+    global $cfg;
+    
+    $aResult = array();
+    
+    $db_systemprop = new DB_Contenido;
+    
+    $sSQL = "SELECT name, value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($sType, $db_systemprop)."' ORDER BY name";
+    $db_systemprop->query($sSQL);
+    
+    while ($db_systemprop->next_record())
+    {
+        $aResult[$db_systemprop->f("name")] = urldecode($db_systemprop->f("value")); 
+    }
 
-	return $aResult; 
+    return $aResult; 
 } 
+
+/**
+ * Gets a client property entry
+ * 
+ * @param int $client The id of the client
+ * @param string $type The type of the item
+ * @param string $name The name of the item
+ * @return string The value of the item
+ */
+function getClientProperty($client, $type, $name) {    
+    $oClient = new cApiClient($client);
+    $value = $oClient->getProperty($type, $name);
+    unset($oClient);
+    return $value;
+}
 
 /**
  * Sets a client property entry
@@ -1078,10 +1093,10 @@ function getSystemPropertiesByType($sType)
  * @param string $name The name of the item
  * @param string $value The value of the item
  */
-function setClientProperty($type, $name, $value) {	
-	global $client, $cfg, $auth;
+function setClientProperty($type, $name, $value) {    
+    global $client, $cfg, $auth;
     
-	if ((strlen($type)) && (strlen($name))) {
+    if ((strlen($type)) && (strlen($name))) {
         $db_clientprop = new DB_Contenido();
         $type = Contenido_Security::escapeDB($type, $db_clientprop);
         $name = Contenido_Security::escapeDB($name, $db_clientprop);
@@ -1109,7 +1124,7 @@ function setClientProperty($type, $name, $value) {
         $db_clientprop->query($sql);
         $db_clientprop->disconnect();
         return true;
-	} else {
+    } else {
         return false;
     }
 }
@@ -1121,18 +1136,18 @@ function setClientProperty($type, $name, $value) {
  * @param string $name The name of the item
  */
 function deleteClientProperty($type, $name) {
-	global $client, $cfg;
+    global $client, $cfg;
 
-	$db_clientprop = new DB_Contenido();
+    $db_clientprop = new DB_Contenido();
     $type = Contenido_Security::escapeDB($type, $db_clientprop);
     $name = Contenido_Security::escapeDB($name, $db_clientprop);
-	$sql = 'DELETE FROM ' . $cfg['tab']['properties'] . '
+    $sql = 'DELETE FROM ' . $cfg['tab']['properties'] . '
             WHERE ((idclient=' . $client . ')
                AND (itemtype="clientsetting")
                AND (itemid=1)
                AND (type="' . $type . '")
                AND (name="' . $name . '"))';
-	$db_clientprop->query($sql);
+    $db_clientprop->query($sql);
     $db_clientprop->disconnect();
 }
 
@@ -1140,54 +1155,91 @@ function deleteClientProperty($type, $name) {
  * Returns the current effective setting for a property.
  *
  * The order is:
- * System => Client => Group => User
+ * System => Client => Language => Group => User
+ * (where User is the most important)
  *
- * System properties can be overridden by the group, and group
- * properties can be overridden by the user.
+ * System properties can be overridden by the client, client properties
+ * by the language, language properties by the group, and group properties
+ * by the user.
  * 
  * @param string $type The type of the item
  * @param string $name The name of the item
  * @param string $default Optional default value
- * @return mixed boolean false if nothing was found 
+ * @param string $shortDescription Optional short description for backend overview
+ * @param string $longDescription Optional long description for backend overview
+ * @param array $possibleValues Optional array of possible values for backend overview (leave empty if anything goes)
+ * @return mixed boolean false if nothing was found and no default value was specified
  */
-function getEffectiveSetting($type, $name, $default = "")
-{
-	global $auth, $client, $lang;
-
-	if ($auth->auth["uid"] != "nobody")
-	{
-		$user = new User;
-		$user->loadUserByUserID($auth->auth["uid"]);
-		$value = $user->getUserProperty($type, $name, true);
+function getEffectiveSetting($type, $name, $default = '', $shortDescription = '', $longDescription = '', $possibleValues = array()) {
+    global $auth, $client, $lang, $cfg;
+    
+    if ((strlen($default)) || (strlen($shortDescription)) || (strlen($longDescription)) || (count($possibleValues))) {
+        # Enter or update the setting in the database for system and client setting selection
+        $db = new DB();
+        $sql = 'SELECT `setting_id`
+                FROM `' . $cfg['tab']['effective_settings'] . '`
+                WHERE ((`type`="' . Contenido_Security::escapeDB($type) . '")
+                   AND (`name`="' . Contenido_Security::escapeDB($name) . '"))';
+        $db->query($sql);
+        if ($db->next_record()) {
+            $aUpdates = array();
+            if (strlen($default)) {
+                $aUpdates[] = '`default_value`="' . Contenido_Security::escapeDB($default) . '"';
+            }
+            if (strlen($shortDescription)) {
+                $aUpdates[] = '`short_description`="' . Contenido_Security::escapeDB($shortDescription) . '"';
+            }
+            if (strlen($longDescription)) {
+                $aUpdates[] = '`long_description`="' . Contenido_Security::escapeDB($longDescription) . '"';
+            }
+            if (strlen($possibleValues)) {
+                $aUpdates[] = '`possible_values`="' . json_encode($possibleValues) . '"';
+            }
+            $sql = 'UPDATE `' . $cfg['tab']['effective_settings'] . '`
+                    SET ' . implode(', ', $aUpdates) . '
+                    WHERE (`setting_id`=' . $db->f('setting_id') . ')';
+            $db->query($sql);
+        }
+        else {
+            $sql = 'INSERT INTO `' . $cfg['tab']['effective_settings'] . '` (`setting_id`, `type`, `name`, `default_value`, `short_description`, `long_description`, `possible_values`)
+                    VALUES (' . $db->nextid($cfg['tab']['effective_settings']) . ', "' . Contenido_Security::escapeDB($type) . '", "' . Contenido_Security::escapeDB($name) . '", "' . Contenido_Security::escapeDB($default) . '", "' . Contenido_Security::escapeDB($shortDescription) . '", "' . Contenido_Security::escapeDB($longDescription) . '", "' . json_encode($possibleValues) . '")';
+            $db->query($sql);
+        }
+        unset($sql);
+        unset($db);
+    }
+    
+    # Get the value for the given setting
+    if ($auth->auth["uid"] != "nobody") {
+        $user = new User;
+        $user->loadUserByUserID($auth->auth["uid"]);
+        $value = $user->getUserProperty($type, $name, true); # true also respects the group properties
         unset($user);
-	} else {
-		$value = false;	
-	}
-
+    }
+    else {
+        $value = false;    
+    }
+    
     if ($value === false) {
         $oClient = new cApiClientLanguage(false, $client, $lang);
         $value = $oClient->getProperty($type, $name);
         unset ($oClient);
     }
     
-	if ($value === false)
-	{
-		$oClient = new cApiClient($client);
-		$value = $oClient->getProperty($type, $name);
-        unset ($oClient);
-	}
+    if ($value === false) {
+        $value = getClientProperty($client, $type, $name);
+    }
     
-	if ($value === false)
-	{
-		$value = getSystemProperty($type, $name);
-	}
-	
-	if ($value === false)
-	{
-		return $default;
-	} else {
-		return $value;
-	}
+    if ($value === false) {
+        $value = getSystemProperty($type, $name);
+    }
+    
+    if ($value === false) {
+        return $default;
+    }
+    else {
+        return $value;
+    }
 }
 
 /** 
@@ -1204,28 +1256,28 @@ function getEffectiveSetting($type, $name, $default = "")
  */ 
 function getEffectiveSettingsByType($sType) 
 {
-	global $auth, $client, $cfg, $lang;
-	
-	$aResult = getSystemPropertiesByType($sType);
-	
-	$oClient = new cApiClient($client);
-	$aResult = array_merge($aResult, $oClient->getPropertiesByType($sType));
+    global $auth, $client, $cfg, $lang;
+    
+    $aResult = getSystemPropertiesByType($sType);
+    
+    $oClient = new cApiClient($client);
+    $aResult = array_merge($aResult, $oClient->getPropertiesByType($sType));
     unset ($oClient);
     
     $oClient = new cApiClientLanguage(false, $client, $lang);
     $aResult = array_merge($aResult, $oClient->getPropertiesByType($sType));
     
-	unset ($oClient);
-	
-	if ($auth->auth["uid"] != "nobody")
-	{
-		$oUser = new User;
-		$oUser->loadUserByUserID($auth->auth["uid"]);
-		
-		$aResult = array_merge($aResult, $oUser->getUserPropertiesByType($sType, true));
-	}
-	
-	return $aResult; 
+    unset ($oClient);
+    
+    if ($auth->auth["uid"] != "nobody")
+    {
+        $oUser = new User;
+        $oUser->loadUserByUserID($auth->auth["uid"]);
+        
+        $aResult = array_merge($aResult, $oUser->getUserPropertiesByType($sType, true));
+    }
+    
+    return $aResult; 
 }
 
 /**
@@ -1239,8 +1291,8 @@ function getEffectiveSettingsByType($sType)
  * @param string $value The value of the item
  */
 function setProperty($idclient, $itemtype, $itemid, $type, $name, $value, $idproperty = 0) {
-	global $cfg;
-	
+    global $cfg;
+    
     $db = new DB_Contenido();
     if ($idproperty) {
         $sql = 'UPDATE `' . $cfg['tab']['properties'] . '`
@@ -1272,8 +1324,8 @@ function setProperty($idclient, $itemtype, $itemid, $type, $name, $value, $idpro
  * @param bool $bGetPropertyId Also get the idproperty of the entrie
  */
 function getProperty($idclient, $itemtype, $itemid, $type, $name, $bGetPropertyId = false) {
-	global $cfg;
-	
+    global $cfg;
+    
     $db = new DB_Contenido();
     $sql = 'SELECT `idproperty`, `value`
             FROM `' . $cfg['tab']['properties'] . '`
@@ -1302,8 +1354,8 @@ function getProperty($idclient, $itemtype, $itemid, $type, $name, $bGetPropertyI
  * @param bool $bGetPropertyId Also get the idproperties of the entries
  */
 function getPropertiesByItemtype($itemtype, $sortby = '', $idclient = -1, $bGetPropertyId = false) {
-	global $cfg;
-	
+    global $cfg;
+    
     $aProperties = array();
     $db = new DB_Contenido();
     $sql = 'SELECT `idproperty`, `itemid`, `type`, `name`, `value`
@@ -1331,20 +1383,20 @@ function getPropertiesByItemtype($itemtype, $sortby = '', $idclient = -1, $bGetP
  */
 function getArtspec()
 {
-	global $db, $cfg, $lang, $client;
-	$sql = "SELECT artspec, idartspec, online, artspecdefault FROM ".$cfg['tab']['art_spec']."
-			WHERE client='".Contenido_Security::toInteger($client)."' AND lang='".Contenido_Security::toInteger($lang)."' ORDER BY artspec ASC";
-	$db->query($sql);
+    global $db, $cfg, $lang, $client;
+    $sql = "SELECT artspec, idartspec, online, artspecdefault FROM ".$cfg['tab']['art_spec']."
+            WHERE client='".Contenido_Security::toInteger($client)."' AND lang='".Contenido_Security::toInteger($lang)."' ORDER BY artspec ASC";
+    $db->query($sql);
 
-	$artspec = array ();
+    $artspec = array ();
 
-	while ($db->next_record())
-	{
-		$artspec[$db->f("idartspec")]['artspec'] = $db->f("artspec");
-		$artspec[$db->f("idartspec")]['online'] = $db->f("online");
-		$artspec[$db->f("idartspec")]['default'] = $db->f("artspecdefault");
-	}
-	return $artspec;
+    while ($db->next_record())
+    {
+        $artspec[$db->f("idartspec")]['artspec'] = $db->f("artspec");
+        $artspec[$db->f("idartspec")]['online'] = $db->f("online");
+        $artspec[$db->f("idartspec")]['default'] = $db->f("artspecdefault");
+    }
+    return $artspec;
 }
 
 /**
@@ -1356,24 +1408,24 @@ function getArtspec()
  */
 function addArtspec($artspectext, $online)
 {
-	global $db, $cfg, $lang, $client;
+    global $db, $cfg, $lang, $client;
 
-	if (isset ($_POST['idartspec']))
-	{ //update
-		$sql = "UPDATE ".$cfg['tab']['art_spec']." SET 
-						artspec='".Contenido_Security::escapeDB(urldecode($artspectext), $db)."',
-						online='".Contenido_Security::toInteger($online)."'
-					WHERE idartspec=".Contenido_Security::toInteger($_POST['idartspec'])."";
-		$db->query($sql);
-	} else
-	{
-		$sql = "INSERT INTO ".$cfg['tab']['art_spec']."
-					(idartspec, client, lang, artspec, online, artspecdefault)
-					VALUES
-					(".Contenido_Security::toInteger($db->nextid($cfg['tab']['art_spec'])).", '".Contenido_Security::toInteger($client)."', '".Contenido_Security::toInteger($lang)."',
-					'".Contenido_Security::escapeDB(urldecode($artspectext), $db)."', 0, 0)";
-		$db->query($sql);
-	}
+    if (isset ($_POST['idartspec']))
+    { //update
+        $sql = "UPDATE ".$cfg['tab']['art_spec']." SET 
+                        artspec='".Contenido_Security::escapeDB(urldecode($artspectext), $db)."',
+                        online='".Contenido_Security::toInteger($online)."'
+                    WHERE idartspec=".Contenido_Security::toInteger($_POST['idartspec'])."";
+        $db->query($sql);
+    } else
+    {
+        $sql = "INSERT INTO ".$cfg['tab']['art_spec']."
+                    (idartspec, client, lang, artspec, online, artspecdefault)
+                    VALUES
+                    (".Contenido_Security::toInteger($db->nextid($cfg['tab']['art_spec'])).", '".Contenido_Security::toInteger($client)."', '".Contenido_Security::toInteger($lang)."',
+                    '".Contenido_Security::escapeDB(urldecode($artspectext), $db)."', 0, 0)";
+        $db->query($sql);
+    }
 }
 
 /**
@@ -1385,12 +1437,12 @@ function addArtspec($artspectext, $online)
  */
 function deleteArtspec($idartspec)
 {
-	global $db, $cfg;
-	$sql = "DELETE FROM ".$cfg['tab']['art_spec']." WHERE idartspec = '".Contenido_Security::toInteger($idartspec)."'";
-	$db->query($sql);
+    global $db, $cfg;
+    $sql = "DELETE FROM ".$cfg['tab']['art_spec']." WHERE idartspec = '".Contenido_Security::toInteger($idartspec)."'";
+    $db->query($sql);
 
-	$sql = "UPDATE ".$cfg["tab"]["art_lang"]." set artspec = '0' WHERE artspec = '".Contenido_Security::toInteger($idartspec)."'";
-	$db->query($sql);
+    $sql = "UPDATE ".$cfg["tab"]["art_lang"]." set artspec = '0' WHERE artspec = '".Contenido_Security::toInteger($idartspec)."'";
+    $db->query($sql);
 }
 
 /**
@@ -1405,9 +1457,9 @@ function deleteArtspec($idartspec)
  */
 function setArtspecOnline($idartspec, $online)
 {
-	global $db, $cfg;
-	$sql = "UPDATE ".$cfg['tab']['art_spec']." SET online=".Contenido_Security::toInteger($online)." WHERE idartspec=".Contenido_Security::toInteger($idartspec)."";
-	$db->query($sql);
+    global $db, $cfg;
+    $sql = "UPDATE ".$cfg['tab']['art_spec']." SET online=".Contenido_Security::toInteger($online)." WHERE idartspec=".Contenido_Security::toInteger($idartspec)."";
+    $db->query($sql);
 }
 
 /**
@@ -1421,12 +1473,12 @@ function setArtspecOnline($idartspec, $online)
  */
 function setArtspecDefault($idartspec)
 {
-	global $db, $cfg, $lang, $client;
-	$sql = "UPDATE ".$cfg['tab']['art_spec']." SET artspecdefault=0 WHERE client='".Contenido_Security::toInteger($client)."' AND lang='".Contenido_Security::toInteger($lang)."'";
-	$db->query($sql);
+    global $db, $cfg, $lang, $client;
+    $sql = "UPDATE ".$cfg['tab']['art_spec']." SET artspecdefault=0 WHERE client='".Contenido_Security::toInteger($client)."' AND lang='".Contenido_Security::toInteger($lang)."'";
+    $db->query($sql);
 
-	$sql = "UPDATE ".$cfg['tab']['art_spec']." SET artspecdefault=1 WHERE idartspec='".Contenido_Security::toInteger($idartspec)."'";
-	$db->query($sql);
+    $sql = "UPDATE ".$cfg['tab']['art_spec']." SET artspecdefault=1 WHERE idartspec='".Contenido_Security::toInteger($idartspec)."'";
+    $db->query($sql);
 }
 
 /**
@@ -1438,34 +1490,34 @@ function setArtspecDefault($idartspec)
  * @return string HTML
  */
 function buildArticleSelect($sName, $iIdCat, $sValue) {
-	global $cfg, $client, $lang, $idcat;
-	$db = new DB_Contenido;
+    global $cfg, $client, $lang, $idcat;
+    $db = new DB_Contenido;
 
-	$html = '';
-	$html .= '<select id="'.$sName.'" name="'.$sName.'">';
-	$html .= '  <option value="">'.i18n("Please choose").'</option>';
-	
-	$sql = "SELECT b.title, b.idart FROM
-	    	   ".$cfg["tab"]["art"]." AS a, ".$cfg["tab"]["art_lang"]." AS b, ".$cfg["tab"]["cat_art"]." AS c
-			   WHERE c.idcat = '".Contenido_Security::toInteger($iIdCat)."'
-	    	   AND b.idlang = '".Contenido_Security::toInteger($lang)."' AND b.idart = a.idart and b.idart = c.idart
-	           ORDER BY b.title";
+    $html = '';
+    $html .= '<select id="'.$sName.'" name="'.$sName.'">';
+    $html .= '  <option value="">'.i18n("Please choose").'</option>';
+    
+    $sql = "SELECT b.title, b.idart FROM
+               ".$cfg["tab"]["art"]." AS a, ".$cfg["tab"]["art_lang"]." AS b, ".$cfg["tab"]["cat_art"]." AS c
+               WHERE c.idcat = '".Contenido_Security::toInteger($iIdCat)."'
+               AND b.idlang = '".Contenido_Security::toInteger($lang)."' AND b.idart = a.idart and b.idart = c.idart
+               ORDER BY b.title";
 
-	$db->query($sql);
-	
-	while ($db->next_record())
-	{
-		if ($sValue != $db->f('idart'))
-		{
-			$html .= '<option value="'.$db->f('idart').'" style="background-color:#EFEFEF">'.$db->f('title').'</option>';
-		} else{
-			$html .= '<option value="'.$db->f('idart').'" style="background-color:#EFEFEF" selected="selected">'.$db->f('title').'</option>';
-		}
-	}
-	
-	$html .= '</select>';
+    $db->query($sql);
+    
+    while ($db->next_record())
+    {
+        if ($sValue != $db->f('idart'))
+        {
+            $html .= '<option value="'.$db->f('idart').'" style="background-color:#EFEFEF">'.$db->f('title').'</option>';
+        } else{
+            $html .= '<option value="'.$db->f('idart').'" style="background-color:#EFEFEF" selected="selected">'.$db->f('title').'</option>';
+        }
+    }
+    
+    $html .= '</select>';
 
-	return $html;
+    return $html;
 }
 
 /**
@@ -1479,81 +1531,81 @@ function buildArticleSelect($sName, $iIdCat, $sValue) {
  */
 function buildCategorySelect($sName, $sValue, $iLevel = 0, $sStyle = "")
 {
-	global $cfg, $client, $lang, $idcat;
+    global $cfg, $client, $lang, $idcat;
 
-	$db = new DB_Contenido;
-	$db2 = new DB_Contenido;
+    $db = new DB_Contenido;
+    $db2 = new DB_Contenido;
 
-	$html = '';
-	$html .= '<select id="'.$sName.'" style="'.$sStyle.'" name="'.$sName.'">';
-	$html .= '  <option value="">'.i18n("Please choose").'</option>';
+    $html = '';
+    $html .= '<select id="'.$sName.'" style="'.$sStyle.'" name="'.$sName.'">';
+    $html .= '  <option value="">'.i18n("Please choose").'</option>';
 
-	if ($iLevel > 0)
-	{
-		$addString = "AND c.level<$iLevel";
-	}
+    if ($iLevel > 0)
+    {
+        $addString = "AND c.level<$iLevel";
+    }
 
-	$sql = "SELECT a.idcat AS idcat, b.name AS name, c.level FROM
-	    	   ".$cfg["tab"]["cat"]." AS a, ".$cfg["tab"]["cat_lang"]." AS b,
-	    	   ".$cfg["tab"]["cat_tree"]." AS c WHERE a.idclient = '".Contenido_Security::toInteger($client)."'
-	    	   AND b.idlang = '".Contenido_Security::toInteger($lang)."' AND b.idcat = a.idcat AND c.idcat = a.idcat ".Contenido_Security::escapeDB($addString, $db)."
-	           ORDER BY c.idtree";
+    $sql = "SELECT a.idcat AS idcat, b.name AS name, c.level FROM
+               ".$cfg["tab"]["cat"]." AS a, ".$cfg["tab"]["cat_lang"]." AS b,
+               ".$cfg["tab"]["cat_tree"]." AS c WHERE a.idclient = '".Contenido_Security::toInteger($client)."'
+               AND b.idlang = '".Contenido_Security::toInteger($lang)."' AND b.idcat = a.idcat AND c.idcat = a.idcat ".Contenido_Security::escapeDB($addString, $db)."
+               ORDER BY c.idtree";
 
-	$db->query($sql);
+    $db->query($sql);
 
-	$categories = array ();
+    $categories = array ();
 
-	while ($db->next_record())
-	{
-		$categories[$db->f("idcat")]["name"] = $db->f("name");
+    while ($db->next_record())
+    {
+        $categories[$db->f("idcat")]["name"] = $db->f("name");
 
-		$sql2 = "SELECT level FROM ".$cfg["tab"]["cat_tree"]." WHERE idcat = '".Contenido_Security::toInteger($db->f("idcat"))."'";
-		$db2->query($sql2);
+        $sql2 = "SELECT level FROM ".$cfg["tab"]["cat_tree"]." WHERE idcat = '".Contenido_Security::toInteger($db->f("idcat"))."'";
+        $db2->query($sql2);
 
-		if ($db2->next_record())
-		{
-			$categories[$db->f("idcat")]["level"] = $db2->f("level");
-		}
+        if ($db2->next_record())
+        {
+            $categories[$db->f("idcat")]["level"] = $db2->f("level");
+        }
 
-		$sql2 = "SELECT a.title AS title, b.idcatart AS idcatart FROM
-		                ".$cfg["tab"]["art_lang"]." AS a,  ".$cfg["tab"]["cat_art"]." AS b
-		    			WHERE b.idcat = '".$db->f("idcat")."' AND a.idart = b.idart AND
-		    			a.idlang = '".Contenido_Security::toInteger($lang)."'";
+        $sql2 = "SELECT a.title AS title, b.idcatart AS idcatart FROM
+                        ".$cfg["tab"]["art_lang"]." AS a,  ".$cfg["tab"]["cat_art"]." AS b
+                        WHERE b.idcat = '".$db->f("idcat")."' AND a.idart = b.idart AND
+                        a.idlang = '".Contenido_Security::toInteger($lang)."'";
 
-		$db2->query($sql2);
+        $db2->query($sql2);
 
-		while ($db2->next_record())
-		{
-			$categories[$db->f("idcat")]["articles"][$db2->f("idcatart")] = $db2->f("title");
-		}
+        while ($db2->next_record())
+        {
+            $categories[$db->f("idcat")]["articles"][$db2->f("idcatart")] = $db2->f("title");
+        }
 
-	}
+    }
 
-	foreach ($categories as $tmpidcat => $props)
-	{
-		$spaces = "&nbsp;&nbsp;";
+    foreach ($categories as $tmpidcat => $props)
+    {
+        $spaces = "&nbsp;&nbsp;";
 
-		for ($i = 0; $i < $props["level"]; $i ++)
-		{
-			$spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-		}
+        for ($i = 0; $i < $props["level"]; $i ++)
+        {
+            $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
 
-		$tmp_val = $tmpidcat;
+        $tmp_val = $tmpidcat;
 
-		if ($sValue != $tmp_val)
-		{
-			$html .= '<option value="'.$tmp_val.'" style="background-color:#EFEFEF">'.$spaces.">".$props["name"].'</option>';
+        if ($sValue != $tmp_val)
+        {
+            $html .= '<option value="'.$tmp_val.'" style="background-color:#EFEFEF">'.$spaces.">".$props["name"].'</option>';
 
-		} else
-		{
+        } else
+        {
 
-			$html .= '<option value="'.$tmp_val.'" style="background-color:#EFEFEF" selected="selected">'.$spaces.">".$props["name"].'</option>';
-		}
-	}
+            $html .= '<option value="'.$tmp_val.'" style="background-color:#EFEFEF" selected="selected">'.$spaces.">".$props["name"].'</option>';
+        }
+    }
 
-	$html .= '</select>';
+    $html .= '</select>';
 
-	return $html;
+    return $html;
 }
 
 /**
@@ -1565,34 +1617,34 @@ function buildCategorySelect($sName, $sValue, $iLevel = 0, $sStyle = "")
  */
 function getFileExtension($filename)
 {
-	$dotposition = strrpos($filename, ".");
+    $dotposition = strrpos($filename, ".");
 
-	if ($dotposition !== false)
-	{
-		return (strtolower(substr($filename, $dotposition +1)));
-	} else
-	{
-		return false;
-	}
+    if ($dotposition !== false)
+    {
+        return (strtolower(substr($filename, $dotposition +1)));
+    } else
+    {
+        return false;
+    }
 }
 
 function human_readable_size($number)
 {
-	$base = 1024;
-	$suffixes = array (" B", " KB", " MB", " GB", " TB", " PB", " EB");
+    $base = 1024;
+    $suffixes = array (" B", " KB", " MB", " GB", " TB", " PB", " EB");
 
-	$usesuf = 0;
-	$n = (float) $number; //Appears to be necessary to avoid rounding
-	while ($n >= $base)
-	{
-		$n /= (float) $base;
-		$usesuf ++;
-	}
+    $usesuf = 0;
+    $n = (float) $number; //Appears to be necessary to avoid rounding
+    while ($n >= $base)
+    {
+        $n /= (float) $base;
+        $usesuf ++;
+    }
 
-	$places = 2 - floor(log10($n));
-	$places = max($places, 0);
-	$retval = number_format($n, $places, ".", "").$suffixes[$usesuf];
-	return $retval;
+    $places = 2 - floor(log10($n));
+    $places = max($places, 0);
+    $retval = number_format($n, $places, ".", "").$suffixes[$usesuf];
+    return $retval;
 }
 
 /**
@@ -1603,17 +1655,17 @@ function human_readable_size($number)
  */
 function trim_array($array)
 {
-	if (!is_array($array))
-	{
-		return $array;
-	}
+    if (!is_array($array))
+    {
+        return $array;
+    }
 
-	foreach ($array as $key => $value)
-	{
-		$array[$key] = trim($value);
-	}
+    foreach ($array as $key => $value)
+    {
+        $array[$key] = trim($value);
+    }
 
-	return $array;
+    return $array;
 }
 
 /**
@@ -1631,11 +1683,12 @@ function trim_array($array)
 function array_csort()
 {
     # originally coded by Ichier2003
-    # optimized by René Mansveld
+    # optimized by Ren Mansveld
     $args = func_get_args();
     $marray = array_shift($args);
     if (count($marray)) {
         $msortline = 'return(array_multisort(';
+        $i = 0;
         foreach ($args as $arg) {
             $i ++;
             if (is_string($arg)) {
@@ -1712,25 +1765,25 @@ function explodeLines($string) {
  * @param $replace string String to replace
  * @param $subject string String to process
  *
- * @return string Processed string		
+ * @return string Processed string        
  */
 function str_ireplace_once($find, $replace, $subject)
 {
-	$start = strpos(strtolower($subject), strtolower($find));
+    $start = strpos(strtolower($subject), strtolower($find));
 
-	if ($start === false)
-	{
-		return $subject;
-	}
+    if ($start === false)
+    {
+        return $subject;
+    }
 
-	$end = $start +strlen($find);
+    $end = $start +strlen($find);
 
-	$first = substr($subject, 0, $start);
-	$last = substr($subject, $end, strlen($subject) - $end);
+    $first = substr($subject, 0, $start);
+    $last = substr($subject, $end, strlen($subject) - $end);
 
-	$result = $first.$replace.$last;
+    $result = $first.$replace.$last;
 
-	return ($result);
+    return ($result);
 }
 
 /**
@@ -1742,139 +1795,139 @@ function str_ireplace_once($find, $replace, $subject)
  * @param $replace string String to replace
  * @param $subject string String to process
  *
- * @return string Processed string		
+ * @return string Processed string        
  */
 function str_ireplace_once_reverse($find, $replace, $subject)
 {
-	$start = str_rpos(strtolower($subject), strtolower($find));
+    $start = str_rpos(strtolower($subject), strtolower($find));
 
-	if ($start === false)
-	{
-		return $subject;
-	}
+    if ($start === false)
+    {
+        return $subject;
+    }
 
-	$end = $start +strlen($find);
+    $end = $start +strlen($find);
 
-	$first = substr($subject, 0, $start);
-	$last = substr($subject, $end, strlen($subject) - $end);
+    $first = substr($subject, 0, $start);
+    $last = substr($subject, $end, strlen($subject) - $end);
 
-	$result = $first.$replace.$last;
+    $result = $first.$replace.$last;
 
-	return ($result);
+    return ($result);
 }
 
 /**
  * str_rpos - Finds a string position in reverse direction
  *
  * NOTE: The original strrpos-Function of PHP4 only finds
- *		 a single character as needle.
+ *         a single character as needle.
  *
  * @param $haystack string  String to search in
  * @param $needle   string  String to search for
  * @param $start    integer Offset
  *
- * @return string Processed string		
+ * @return string Processed string        
  */
 function str_rpos($haystack, $needle, $start = 0)
 {
-	$tempPos = strpos($haystack, $needle, $start);
+    $tempPos = strpos($haystack, $needle, $start);
 
-	if ($tempPos === false)
-	{
-		if ($start == 0)
-		{
-			//Needle not in string at all
-			return false;
-		} else
-		{
-			//No more occurances found
-			return $start -strlen($needle);
-		}
-	} else
-	{
-		//Find the next occurance
-		return str_rpos($haystack, $needle, $tempPos +strlen($needle));
-	}
+    if ($tempPos === false)
+    {
+        if ($start == 0)
+        {
+            //Needle not in string at all
+            return false;
+        } else
+        {
+            //No more occurances found
+            return $start -strlen($needle);
+        }
+    } else
+    {
+        //Find the next occurance
+        return str_rpos($haystack, $needle, $tempPos +strlen($needle));
+    }
 }
 
 /**
  * isImageMagickAvailable - checks if ImageMagick is available
  *
- * @return boolean true if ImageMagick is available		
+ * @return boolean true if ImageMagick is available        
  */
 function isImageMagickAvailable()
 {
-	global $_imagemagickAvailable;
+    global $_imagemagickAvailable;
 
-	if (is_bool($_imagemagickAvailable))
-	{
-		if ($_imagemagickAvailable === true)
-		{
-			return true;
-		} else
-		{
-			return false;
-		}
-	}
+    if (is_bool($_imagemagickAvailable))
+    {
+        if ($_imagemagickAvailable === true)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
 
-	$output = array ();
-	$retval = 0;
-	
-	@exec("convert", $output, $retval);
+    $output = array ();
+    $retval = 0;
+    
+    @exec("convert", $output, $retval);
 
     if (!is_array($output) || count($output) == 0)
     {
         return false;
     }
     
-	if (strpos($output[0], "ImageMagick") !== false)
-	{
-		$_imagemagickAvailable = true;
-		return true;
-	} else
-	{
-		$_imagemagickAvailable = false;
-		return false;
-	}
+    if (strpos($output[0], "ImageMagick") !== false)
+    {
+        $_imagemagickAvailable = true;
+        return true;
+    } else
+    {
+        $_imagemagickAvailable = false;
+        return false;
+    }
 }
 
 /**
  * isRunningFromWeb - checks if the script is being runned from the web
  *
- * @return boolean true if the script is running from the web		
+ * @return boolean true if the script is running from the web        
  */
 function isRunningFromWeb()
 {
-	if ($_SERVER["PHP_SELF"] == "" || php_sapi_name() == "cgi" || php_sapi_name() == "cli")
-	{
-		return false;
-	}
+    if ($_SERVER["PHP_SELF"] == "" || php_sapi_name() == "cgi" || php_sapi_name() == "cli")
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 /**
  * getClientName: Returns the client name for a given ID
  *
- * @return string client name		
+ * @return string client name        
  */
 function getClientName($idclient)
 {
-	global $cfg;
+    global $cfg;
 
-	$db = new DB_Contenido;
+    $db = new DB_Contenido;
 
-	$sql = "SELECT name FROM ".$cfg["tab"]["clients"]." WHERE idclient='".Contenido_Security::toInteger($idclient)."'";
+    $sql = "SELECT name FROM ".$cfg["tab"]["clients"]." WHERE idclient='".Contenido_Security::toInteger($idclient)."'";
 
-	$db->query($sql);
+    $db->query($sql);
 
-	if ($db->next_record())
-	{
-		return $db->f("name");
-	} else
-	{
-		return false;
-	}
+    if ($db->next_record())
+    {
+        return $db->f("name");
+    } else
+    {
+        return false;
+    }
 }
 
 /**
@@ -1956,46 +2009,46 @@ function getSubdirs($dir, $levels = 1, $__dirs = array()) {
 
 function scanDirectory($sDirectory, $bRecursive = false)
 {
-	if (substr($sDirectory, strlen($sDirectory) - 1, 1) == "/")
-	{
-		$sDirectory = substr($sDirectory, 0, strlen($sDirectory) - 1);
-	}
+    if (substr($sDirectory, strlen($sDirectory) - 1, 1) == "/")
+    {
+        $sDirectory = substr($sDirectory, 0, strlen($sDirectory) - 1);
+    }
 
-	if (!is_dir($sDirectory))
-	{
-		return false;
-	}
+    if (!is_dir($sDirectory))
+    {
+        return false;
+    }
 
-	$aFiles = array ();
+    $aFiles = array ();
 
-	$hDirHandle = opendir($sDirectory);
+    $hDirHandle = opendir($sDirectory);
 
-	while ($sFile = readdir($hDirHandle))
-	{
-		$sFullpathFile = $sDirectory."/".$sFile;
+    while ($sFile = readdir($hDirHandle))
+    {
+        $sFullpathFile = $sDirectory."/".$sFile;
 
-		if (is_file($sFullpathFile) && is_readable($sFullpathFile))
-		{
-			$aFiles[] = $sFullpathFile;
-		}
+        if (is_file($sFullpathFile) && is_readable($sFullpathFile))
+        {
+            $aFiles[] = $sFullpathFile;
+        }
 
-		if (is_dir($sFullpathFile) && $sFile != "." && $sFile != ".." && $bRecursive == true)
-		{
-			$aSubFiles = scanDirectory($sFullpathFile, $bRecursive);
+        if (is_dir($sFullpathFile) && $sFile != "." && $sFile != ".." && $bRecursive == true)
+        {
+            $aSubFiles = scanDirectory($sFullpathFile, $bRecursive);
 
-			if (is_array($aSubFiles))
-			{
-				$aFiles = array_merge($aFiles, $aSubFiles);
-			}
-		}
-	}
+            if (is_array($aSubFiles))
+            {
+                $aFiles = array_merge($aFiles, $aSubFiles);
+            }
+        }
+    }
 
-	return $aFiles;
+    return $aFiles;
 }
 
 /**
  * scanPlugins: Scans a given plugin directory and places the
- * 				found plugins into the array $cfg['plugins']
+ *                 found plugins into the array $cfg['plugins']
  *
  *
  * Example:
@@ -2015,76 +2068,76 @@ function scanDirectory($sDirectory, $bRecursive = false)
  * same, otherwise the function won't find them!
  *
  * @param $entity Name of the directory to scan
- * @return string client name		
+ * @return string client name        
  */
 function scanPlugins($entity)
 {
-	global $cfg;
+    global $cfg;
 
-	$pluginorder = getSystemProperty("plugin", $entity."-pluginorder");
-	$lastscantime = getSystemProperty("plugin", $entity."-lastscantime");
+    $pluginorder = getSystemProperty("plugin", $entity."-pluginorder");
+    $lastscantime = getSystemProperty("plugin", $entity."-lastscantime");
 
-	$plugins = array ();
+    $plugins = array ();
 
-	/* Fetch and trim the plugin order */
-	if ($pluginorder != "")
-	{
-		$plugins = explode(",", $pluginorder);
+    /* Fetch and trim the plugin order */
+    if ($pluginorder != "")
+    {
+        $plugins = explode(",", $pluginorder);
 
-		foreach ($plugins as $key => $plugin)
-		{
-			$plugins[$key] = trim($plugin);
-		}
-	}
+        foreach ($plugins as $key => $plugin)
+        {
+            $plugins[$key] = trim($plugin);
+        }
+    }
 
-	$basedir = $cfg["path"]["contenido"].$cfg["path"]["plugins"]."$entity/";
+    $basedir = $cfg["path"]["contenido"].$cfg["path"]["plugins"]."$entity/";
 
-	/* Don't scan all the time, but each 60 seconds */
-	if ($lastscantime +60 < time())
-	{
-		setSystemProperty("plugin", $entity."-lastscantime", time());
+    /* Don't scan all the time, but each 60 seconds */
+    if ($lastscantime +60 < time())
+    {
+        setSystemProperty("plugin", $entity."-lastscantime", time());
 
-		$dh = opendir($basedir);
+        $dh = opendir($basedir);
 
-		while (($file = readdir($dh)) !== false)
-		{
+        while (($file = readdir($dh)) !== false)
+        {
 
-			if (is_dir($basedir.$file) && $file != "includes" && $file != "." && $file != "..")
-			{
-				if (!in_array($file, $plugins))
-				{
-					if (file_exists($basedir.$file."/".$file.".php"))
-					{
-						$plugins[] = $file;
-					}
-				}
-			}
-		}
+            if (is_dir($basedir.$file) && $file != "includes" && $file != "." && $file != "..")
+            {
+                if (!in_array($file, $plugins))
+                {
+                    if (file_exists($basedir.$file."/".$file.".php"))
+                    {
+                        $plugins[] = $file;
+                    }
+                }
+            }
+        }
 
-		foreach ($plugins as $key => $value)
-		{
-			if (!is_dir($basedir.$value) || !file_exists($basedir.$value."/".$value.".php"))
-			{
-				unset ($plugins[$key]);
-			}
-		}
+        foreach ($plugins as $key => $value)
+        {
+            if (!is_dir($basedir.$value) || !file_exists($basedir.$value."/".$value.".php"))
+            {
+                unset ($plugins[$key]);
+            }
+        }
 
-		$pluginorder = implode(",", $plugins);
-		setSystemProperty("plugin", $entity."-pluginorder", $pluginorder);
-	}
+        $pluginorder = implode(",", $plugins);
+        setSystemProperty("plugin", $entity."-pluginorder", $pluginorder);
+    }
 
-	foreach ($plugins as $key => $value)
-	{
-		if (!is_dir($basedir.$value) || !file_exists($basedir.$value."/".$value.".php"))
-		{
-			unset ($plugins[$key]);
-		} else
-		{
-			i18nRegisterDomain($entity . "_" . $value, $basedir.$value."/locale/");
-		}
-	}
+    foreach ($plugins as $key => $value)
+    {
+        if (!is_dir($basedir.$value) || !file_exists($basedir.$value."/".$value.".php"))
+        {
+            unset ($plugins[$key]);
+        } else
+        {
+            i18nRegisterDomain($entity . "_" . $value, $basedir.$value."/locale/");
+        }
+    }
 
-	$cfg['plugins'][$entity] = $plugins;
+    $cfg['plugins'][$entity] = $plugins;
 }
 
 /**
@@ -2097,15 +2150,15 @@ function scanPlugins($entity)
  */
 function includePlugins($entity)
 {
-	global $cfg;
+    global $cfg;
 
-	if (is_array($cfg['plugins'][$entity]))
-	{
-		foreach ($cfg['plugins'][$entity] as $plugin)
-		{
-			plugin_include($entity, $plugin."/".$plugin.".php");
-		}
-	}
+    if (is_array($cfg['plugins'][$entity]))
+    {
+        foreach ($cfg['plugins'][$entity] as $plugin)
+        {
+            plugin_include($entity, $plugin."/".$plugin.".php");
+        }
+    }
 }
 
 /**
@@ -2118,69 +2171,69 @@ function includePlugins($entity)
  */
 function callPluginStore($entity)
 {
-	global $cfg;
+    global $cfg;
 
-	/* Check out if there are any plugins */
-	if (is_array($cfg['plugins'][$entity]))
-	{
-		foreach ($cfg['plugins'][$entity] as $plugin)
-		{
-			if (function_exists($entity."_".$plugin."_wantedVariables") && function_exists($entity."_".$plugin."_store"))
-			{
-				$wantVariables = call_user_func($entity."_".$plugin."_wantedVariables");
+    /* Check out if there are any plugins */
+    if (is_array($cfg['plugins'][$entity]))
+    {
+        foreach ($cfg['plugins'][$entity] as $plugin)
+        {
+            if (function_exists($entity."_".$plugin."_wantedVariables") && function_exists($entity."_".$plugin."_store"))
+            {
+                $wantVariables = call_user_func($entity."_".$plugin."_wantedVariables");
 
-				if (is_array($wantVariables))
-				{
-					$varArray = array ();
+                if (is_array($wantVariables))
+                {
+                    $varArray = array ();
 
-					foreach ($wantVariables as $value)
-					{
-						$varArray[$value] = stripslashes($GLOBALS[$value]);
-					}
-				}
-				$store = call_user_func($entity."_".$plugin."_store", $varArray);
-			}
-		}
-	}
+                    foreach ($wantVariables as $value)
+                    {
+                        $varArray[$value] = stripslashes($GLOBALS[$value]);
+                    }
+                }
+                $store = call_user_func($entity."_".$plugin."_store", $varArray);
+            }
+        }
+    }
 }
 
 function displayPlugin($entity, & $form)
 {
-	/* TODO: Function can't work, as $feuser is not defined (see $display = 
-	 * call_user_func($entity."_".$plugin."_display", $feuser);) and plugins need
-	 * - if data has to be shown - global objects ...
-	 */
-	$pluginOrder = trim_array(explode(",", getSystemProperty("plugin", $entity."-pluginorder")));
+    /* TODO: Function can't work, as $feuser is not defined (see $display = 
+     * call_user_func($entity."_".$plugin."_display", $feuser);) and plugins need
+     * - if data has to be shown - global objects ...
+     */
+    $pluginOrder = trim_array(explode(",", getSystemProperty("plugin", $entity."-pluginorder")));
 
-	/* Check out if there are any plugins */
-	if (is_array($pluginOrder))
-	{
-		foreach ($pluginOrder as $plugin)
-		{
-			if (function_exists($entity."_".$plugin."_getTitle") && function_exists($entity."_".$plugin."_display"))
-			{
-				$plugTitle = call_user_func($entity."_".$plugin."_getTitle");
-				$display = call_user_func($entity."_".$plugin."_display", $feuser);
+    /* Check out if there are any plugins */
+    if (is_array($pluginOrder))
+    {
+        foreach ($pluginOrder as $plugin)
+        {
+            if (function_exists($entity."_".$plugin."_getTitle") && function_exists($entity."_".$plugin."_display"))
+            {
+                $plugTitle = call_user_func($entity."_".$plugin."_getTitle");
+                $display = call_user_func($entity."_".$plugin."_display", $feuser);
 
-				if (is_array($plugTitle) && is_array($display))
-				{
-					foreach ($plugTitle as $key => $value)
-					{
-						$form->add($value, $display[$key]);
-					}
-				} else
-				{
-					if (is_array($plugTitle) || is_array($display))
-					{
-						$form->add("WARNING", "The plugin $plugin delivered an array for the displayed titles, but did not return an array for the contents.");
-					} else
-					{
-						$form->add($plugTitle, $display);
-					}
-				}
-			}
-		}
-	}
+                if (is_array($plugTitle) && is_array($display))
+                {
+                    foreach ($plugTitle as $key => $value)
+                    {
+                        $form->add($value, $display[$key]);
+                    }
+                } else
+                {
+                    if (is_array($plugTitle) || is_array($display))
+                    {
+                        $form->add("WARNING", "The plugin $plugin delivered an array for the displayed titles, but did not return an array for the contents.");
+                    } else
+                    {
+                        $form->add($plugTitle, $display);
+                    }
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -2190,28 +2243,28 @@ function displayPlugin($entity, & $form)
  * echo createRandomName(8);
  *
  * @param $nameLength Length of the generated string
- * @return string random name		
+ * @return string random name        
  */
 function createRandomName($nameLength)
 {
-	$NameChars = 'abcdefghijklmnopqrstuvwxyz';
-	$Vouel = 'aeiou';
-	$Name = "";
+    $NameChars = 'abcdefghijklmnopqrstuvwxyz';
+    $Vouel = 'aeiou';
+    $Name = "";
 
-	for ($index = 1; $index <= $nameLength; $index ++)
-	{
-		if ($index % 3 == 0)
-		{
-			$randomNumber = rand(1, strlen($Vouel));
-			$Name .= substr($Vouel, $randomNumber -1, 1);
-		} else
-		{
-			$randomNumber = rand(1, strlen($NameChars));
-			$Name .= substr($NameChars, $randomNumber -1, 1);
-		}
-	}
+    for ($index = 1; $index <= $nameLength; $index ++)
+    {
+        if ($index % 3 == 0)
+        {
+            $randomNumber = rand(1, strlen($Vouel));
+            $Name .= substr($Vouel, $randomNumber -1, 1);
+        } else
+        {
+            $randomNumber = rand(1, strlen($NameChars));
+            $Name .= substr($NameChars, $randomNumber -1, 1);
+        }
+    }
 
-	return $Name;
+    return $Name;
 }
 
 /**
@@ -2220,63 +2273,63 @@ function createRandomName($nameLength)
  * Example:
  * sendPostRequest("hostname", "serverpath/test.php", $data);
  *
- * @param $host 	Hostname or domain
+ * @param $host     Hostname or domain
  * @param $pathhost Path on the host or domain
- * @param $data		Data to send
- * @param $referer	Referer (optional)
- * @param $port		Port (default: 80)
+ * @param $data        Data to send
+ * @param $referer    Referer (optional)
+ * @param $port        Port (default: 80)
  */
 function sendPostRequest($host, $path, $data, $referer = "", $port = 80)
 {
-	$fp = fsockopen($host, $port);
+    $fp = fsockopen($host, $port);
 
-	fputs($fp, "POST $path HTTP/1.1\n");
-	fputs($fp, "Host: $host\n");
-	fputs($fp, "Referer: $referer\n");
-	fputs($fp, "Content-type: application/x-www-form-urlencoded\n");
-	fputs($fp, "Content-length: ".strlen($data)."\n");
-	fputs($fp, "Connection: close\n\n");
-	fputs($fp, "$data\n");
+    fputs($fp, "POST $path HTTP/1.1\n");
+    fputs($fp, "Host: $host\n");
+    fputs($fp, "Referer: $referer\n");
+    fputs($fp, "Content-type: application/x-www-form-urlencoded\n");
+    fputs($fp, "Content-length: ".strlen($data)."\n");
+    fputs($fp, "Connection: close\n\n");
+    fputs($fp, "$data\n");
 
-	while (!feof($fp))
-	{
-		$res .= fgets($fp, 128);
-	}
+    while (!feof($fp))
+    {
+        $res .= fgets($fp, 128);
+    }
 
-	fclose($fp);
+    fclose($fp);
 
-	return $res;
+    return $res;
 }
 
 function is_dbfs($file)
 {
-	if (substr($file, 0, 5) == "dbfs:")
-	{
-		return true;
-	}
+    if (substr($file, 0, 5) == "dbfs:")
+    {
+        return true;
+    }
 }
 
 function setHelpContext($area)
 {
-	global $cfg;
+    global $cfg;
 
-	if ($cfg['help'] == true)
-	{
-		$hc = "parent.parent.parent.frames[0].document.getElementById('help').setAttribute('data', '$area');";
-	} else
-	{
-		$hc = "";
-	}
+    if ($cfg['help'] == true)
+    {
+        $hc = "parent.parent.parent.frames[0].document.getElementById('help').setAttribute('data', '$area');";
+    } else
+    {
+        $hc = "";
+    }
 
-	return $hc;
+    return $hc;
 }
 
 function define_if($constant, $value)
 {
-	if (!defined($constant))
-	{
-		define($constant, $value);
-	}
+    if (!defined($constant))
+    {
+        define($constant, $value);
+    }
 }
 
 /**
@@ -2285,24 +2338,24 @@ function define_if($constant, $value)
  */
 if (!defined('PHP_EOL')) 
 {
-	if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
-	{
-		define ('PHP_EOL', "\r\n"); // Windows
-	} else {
-		define ('PHP_EOL', "\n");   // *nix
-	}
+    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
+    {
+        define ('PHP_EOL', "\r\n"); // Windows
+    } else {
+        define ('PHP_EOL', "\n");   // *nix
+    }
 }
 
 function locale_arsort($locale, $array)
 {
-	$oldlocale = setlocale(LC_COLLATE, 0);
-	setlocale(LC_COLLATE, $locale);
+    $oldlocale = setlocale(LC_COLLATE, 0);
+    setlocale(LC_COLLATE, $locale);
 
-	uasort($array, "strcoll");
+    uasort($array, "strcoll");
 
-	setlocale(LC_COLLATE, $oldlocale);
+    setlocale(LC_COLLATE, $oldlocale);
 
-	return ($array);
+    return ($array);
 }
 
 /* TODO: Ask timo to document this. */
@@ -2310,44 +2363,44 @@ function locale_arsort($locale, $array)
    given by $array, and not from the subarrays (todo: add flag to allow this) */
 function array_search_recursive($search, $array, $partial = false, $strict = false)
 {
-	foreach ($array as $key => $value)
-	{
-		if (is_array($value))
-		{
-			$val = array_search_recursive($search, $value, $partial, $strict);
-			if ($val !== false)
-			{
-				return ($key);
-			}
-		} else
-		{
-			if ($partial == false)
-			{
-				if ($strict == true)
-				{
-					if ($value === $search)
-					{
-						return $key;
-					}
-				} else
-				{
-					if ($value == $search)
-					{
-						return $key;
-					}
-				}
-			} else
-			{
-				if (strpos($value, $search) !== FALSE)
-				{
-					return $key;
-				}
-			}
+    foreach ($array as $key => $value)
+    {
+        if (is_array($value))
+        {
+            $val = array_search_recursive($search, $value, $partial, $strict);
+            if ($val !== false)
+            {
+                return ($key);
+            }
+        } else
+        {
+            if ($partial == false)
+            {
+                if ($strict == true)
+                {
+                    if ($value === $search)
+                    {
+                        return $key;
+                    }
+                } else
+                {
+                    if ($value == $search)
+                    {
+                        return $key;
+                    }
+                }
+            } else
+            {
+                if (strpos($value, $search) !== FALSE)
+                {
+                    return $key;
+                }
+            }
 
-		}
-	}
+        }
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -2355,39 +2408,39 @@ function array_search_recursive($search, $array, $partial = false, $strict = fal
  * 
  * @author  unknown
  *
- * @param string $file	   File name   (use __FILE__)
+ * @param string $file       File name   (use __FILE__)
  * @param string $line    Line number (use __LINE__)
  * @param string $message Message to display
  * @return void
  */
 function cDie($file, $line, $message)
 {
-	cError($file, $line, $message);
-	die("$file $line: $message");
+    cError($file, $line, $message);
+    die("$file $line: $message");
 }
 
 /**
  * cWarning: Contenido warning
  *
- * @param $file	   File name   (use __FILE__)
+ * @param $file       File name   (use __FILE__)
  * @param $line    Line number (use __LINE__)
  * @param $message Message to display
  */
 function cWarning($file, $line, $message)
 {
-	trigger_error("$file $line: $message", E_USER_WARNING);
+    trigger_error("$file $line: $message", E_USER_WARNING);
 }
 
 /**
  * cError: Contenido error
  *
- * @param $file	   File name   (use __FILE__)
+ * @param $file       File name   (use __FILE__)
  * @param $line    Line number (use __LINE__)
  * @param $message Message to display
  */
 function cError($file, $line, $message)
 {
-	trigger_error("$file $line: $message", E_USER_ERROR);
+    trigger_error("$file $line: $message", E_USER_ERROR);
 }
 
 /**
@@ -2414,24 +2467,24 @@ function cDeprecated($file, $line, $message) {
  */
 function getNamedFrame($frame)
 {
-	switch ($frame)
-	{
-		case 1 :
-			return ("left_top");
-			break;
-		case 2 :
-			return ("left_bottom");
-			break;
-		case 3 :
-			return ("right_top");
-			break;
-		case 4 :
-			return ("right_bottom");
-			break;
-		default :
-			return ("");
-			break;
-	}
+    switch ($frame)
+    {
+        case 1 :
+            return ("left_top");
+            break;
+        case 2 :
+            return ("left_bottom");
+            break;
+        case 3 :
+            return ("right_top");
+            break;
+        case 4 :
+            return ("right_bottom");
+            break;
+        default :
+            return ("");
+            break;
+    }
 }
 
 /**
@@ -2444,28 +2497,28 @@ function getNamedFrame($frame)
  */
 function startTiming($function, $parameters = array ())
 {
-	global $_timings, $cfg;
+    global $_timings, $cfg;
 
-	if ($cfg["debug"]["functiontiming"] == false)
-	{
-		return;
-	}
+    if ($cfg["debug"]["functiontiming"] == false)
+    {
+        return;
+    }
 
-	/* Create (almost) unique ID */
-	$uuid = md5(uniqid(rand(), true));
+    /* Create (almost) unique ID */
+    $uuid = md5(uniqid(rand(), true));
 
-	if (!is_array($parameters))
-	{
-		cWarning(__FILE__, __LINE__, "Warning: startTiming's parameters parameter expects an array");
-		$parameters = array ();
-	}
+    if (!is_array($parameters))
+    {
+        cWarning(__FILE__, __LINE__, "Warning: startTiming's parameters parameter expects an array");
+        $parameters = array ();
+    }
 
-	$_timings[$uuid]["parameters"] = $parameters;
-	$_timings[$uuid]["function"] = $function;
+    $_timings[$uuid]["parameters"] = $parameters;
+    $_timings[$uuid]["function"] = $function;
 
-	$_timings[$uuid]["start"] = getmicrotime();
+    $_timings[$uuid]["start"] = getmicrotime();
 
-	return $uuid;
+    return $uuid;
 }
 
 /**
@@ -2475,217 +2528,217 @@ function startTiming($function, $parameters = array ())
  */
 function endAndLogTiming($uuid)
 {
-	global $_timings, $cfg;
+    global $_timings, $cfg;
 
-	if ($cfg["debug"]["functiontiming"] == false)
-	{
-		return;
-	}
+    if ($cfg["debug"]["functiontiming"] == false)
+    {
+        return;
+    }
 
-	$_timings[$uuid]["end"] = getmicrotime();
+    $_timings[$uuid]["end"] = getmicrotime();
 
-	$timeSpent = $_timings[$uuid]["end"] - $_timings[$uuid]["start"];
+    $timeSpent = $_timings[$uuid]["end"] - $_timings[$uuid]["start"];
 
-	$myparams = array ();
+    $myparams = array ();
 
-	/* Build nice representation of the function */
-	foreach ($_timings[$uuid]["parameters"] as $parameter)
-	{
+    /* Build nice representation of the function */
+    foreach ($_timings[$uuid]["parameters"] as $parameter)
+    {
 
-		switch (gettype($parameter))
-		{
-			case "string" :
-				$myparams[] = '"'.$parameter.'"';
-				break;
+        switch (gettype($parameter))
+        {
+            case "string" :
+                $myparams[] = '"'.$parameter.'"';
+                break;
 
-			case "boolean" :
-				if ($parameter == true)
-				{
-					$myparams[] = "true";
-				} else
-				{
-					$myparams[] = "false";
-				}
-				break;
+            case "boolean" :
+                if ($parameter == true)
+                {
+                    $myparams[] = "true";
+                } else
+                {
+                    $myparams[] = "false";
+                }
+                break;
 
-			default :
-				if ($parameter == "")
-				{
-					$myparams[] = '"'.$parameter.'"';
-				} else
-				{
-					$myparams[] = $parameter;
-				}
-		}
-	}
+            default :
+                if ($parameter == "")
+                {
+                    $myparams[] = '"'.$parameter.'"';
+                } else
+                {
+                    $myparams[] = $parameter;
+                }
+        }
+    }
 
-	$parameterString = implode(", ", $myparams);
+    $parameterString = implode(", ", $myparams);
 
-	trigger_error("calling function ".$_timings[$uuid]["function"]."(".$parameterString.") took ".$timeSpent." seconds", E_USER_NOTICE);
+    trigger_error("calling function ".$_timings[$uuid]["function"]."(".$parameterString.") took ".$timeSpent." seconds", E_USER_NOTICE);
 }
 
 // @TODO: it's better to create a instance of DB_Contenido class, the class constructor connects also to the database. 
 function checkMySQLConnectivity() {
-	global $contenido_host, $contenido_database, $contenido_user, $contenido_password, $cfg;
+    global $contenido_host, $contenido_database, $contenido_user, $contenido_password, $cfg;
     
-	if ($cfg["database_extension"] == "mysqli") {
-		if (($iPos = strpos($contenido_host, ":")) !== false) {
-			list($sHost, $sPort) = explode(":", $contenido_host);
-			
-			$res = @ mysqli_connect($sHost, $contenido_user, $contenido_password, "", $sPort);
-		} else {
-			$res = @ mysqli_connect($contenido_host, $contenido_user, $contenido_password);	
-		}
-	} else {
-		$res = @ mysql_connect($contenido_host, $contenido_user, $contenido_password);
-	}
-	
-	$selectDb = false;
-	if ( $res ) {
-		if ($cfg["database_extension"] == "mysqli") {
-			$selectDb = @mysqli_select_db($res, $contenido_database);
-		} else {
-			$selectDb = @mysql_select_db($contenido_database);
-		}
-	}
+    if ($cfg["database_extension"] == "mysqli") {
+        if (($iPos = strpos($contenido_host, ":")) !== false) {
+            list($sHost, $sPort) = explode(":", $contenido_host);
+            
+            $res = @ mysqli_connect($sHost, $contenido_user, $contenido_password, "", $sPort);
+        } else {
+            $res = @ mysqli_connect($contenido_host, $contenido_user, $contenido_password);    
+        }
+    } else {
+        $res = @ mysql_connect($contenido_host, $contenido_user, $contenido_password);
+    }
+    
+    $selectDb = false;
+    if ( $res ) {
+        if ($cfg["database_extension"] == "mysqli") {
+            $selectDb = @mysqli_select_db($res, $contenido_database);
+        } else {
+            $selectDb = @mysql_select_db($contenido_database);
+        }
+    }
 
-	if ( !$res || !$selectDb ) {
-		$errortitle = i18n("MySQL Database not reachable for installation %s");
-		$errortitle = sprintf($errortitle, $cfg["path"]["contenido_fullhtml"]);
+    if ( !$res || !$selectDb ) {
+        $errortitle = i18n("MySQL Database not reachable for installation %s");
+        $errortitle = sprintf($errortitle, $cfg["path"]["contenido_fullhtml"]);
 
-		$errormessage = i18n("The MySQL Database for the installation %s is not reachable. Please check if this is a temporary problem or if it is a real fault.");
-		$errormessage = sprintf($errormessage, $cfg["path"]["contenido_fullhtml"]);
+        $errormessage = i18n("The MySQL Database for the installation %s is not reachable. Please check if this is a temporary problem or if it is a real fault.");
+        $errormessage = sprintf($errormessage, $cfg["path"]["contenido_fullhtml"]);
 
-		notifyOnError($errortitle, $errormessage);
+        notifyOnError($errortitle, $errormessage);
 
-		if ($cfg["contenido"]["errorpage"] != "") {
-			header("Location: ".$cfg["contenido"]["errorpage"]);
-		} else {
-			die("Could not connect to the database server with this configuration!");
-		}
-		
-		exit;
-	} else {
-		if ($cfg["database_extension"] == "mysqli") {		
-			mysqli_close($res);
-		} else {
-			mysql_close($res);
-		}
-	}
+        if ($cfg["contenido"]["errorpage"] != "") {
+            header("Location: ".$cfg["contenido"]["errorpage"]);
+        } else {
+            die("Could not connect to the database server with this configuration!");
+        }
+        
+        exit;
+    } else {
+        if ($cfg["database_extension"] == "mysqli") {        
+            mysqli_close($res);
+        } else {
+            mysql_close($res);
+        }
+    }
 }
 
 function notifyOnError($errortitle, $errormessage)
 {
-	global $cfg, $encoding, $lang;
+    global $cfg, $encoding, $lang;
 
-	if (file_exists($cfg["path"]["contenido"]."logs/notify.txt"))
-	{
-		$notifytimestamp = file_get_contents($cfg["path"]["contenido"]."logs/notify.txt");
-	} else
-	{
-		$notifytimestamp = 0;
-	}
+    if (file_exists($cfg["path"]["contenido"]."logs/notify.txt"))
+    {
+        $notifytimestamp = file_get_contents($cfg["path"]["contenido"]."logs/notify.txt");
+    } else
+    {
+        $notifytimestamp = 0;
+    }
 
-	if ((time() - $notifytimestamp) > $cfg["contenido"]["notifyinterval"] * 60)
-	{
-		if ($cfg['contenido']['notifyonerror'] != "") {
-			$sMailhost = getSystemProperty('system', 'mail_host');
-			if ($sMailhost == '') {
-				$sMailhost = 'localhost';
-			} 
-		
-			$oMail = new PHPMailer();
+    if ((time() - $notifytimestamp) > $cfg["contenido"]["notifyinterval"] * 60)
+    {
+        if ($cfg['contenido']['notifyonerror'] != "") {
+            $sMailhost = getSystemProperty('system', 'mail_host');
+            if ($sMailhost == '') {
+                $sMailhost = 'localhost';
+            } 
+        
+            $oMail = new PHPMailer();
             $oMail->CharSet = ((isset($encoding[$lang])) ? $encoding[$lang] : 'UTF-8');
-			$oMail->Host = $sMailhost;
-			$oMail->IsHTML(0);
-			$oMail->WordWrap = 1000;
-			$oMail->IsMail();
+            $oMail->Host = $sMailhost;
+            $oMail->IsHTML(0);
+            $oMail->WordWrap = 1000;
+            $oMail->IsMail();
 
-			$oMail->AddAddress($cfg["contenido"]["notifyonerror"], "");
-			$oMail->Subject = $errortitle;
-			$oMail->Body = $errormessage;
-		
-			/* Notify configured email */
-			$oMail->Send();
-		}
-		/* Write last notify log file */
-		file_put_contents($cfg["path"]["contenido"]."logs/notify.txt", time());
-	}
+            $oMail->AddAddress($cfg["contenido"]["notifyonerror"], "");
+            $oMail->Subject = $errortitle;
+            $oMail->Body = $errormessage;
+        
+            /* Notify configured email */
+            $oMail->Send();
+        }
+        /* Write last notify log file */
+        file_put_contents($cfg["path"]["contenido"]."logs/notify.txt", time());
+    }
 }
 
 function cIDNAEncode($sourceEncoding, $string)
 {
-	if (extension_loaded("iconv"))
-	{
+    if (extension_loaded("iconv"))
+    {
         cInclude('pear', 'Net/IDNA.php');
 
         $idn = Net_IDNA :: getInstance();
 
-		$string = iconv("UTF-8", $sourceEncoding, $string);
-		$string = $idn->encode($string);
+        $string = iconv("UTF-8", $sourceEncoding, $string);
+        $string = $idn->encode($string);
 
-		return ($string);
-	}
+        return ($string);
+    }
 
-	if (extension_loaded("recode"))
-	{
+    if (extension_loaded("recode"))
+    {
         cInclude('pear', 'Net/IDNA.php');
 
-		$idn = Net_IDNA :: getInstance();
+        $idn = Net_IDNA :: getInstance();
 
-		$string = $idn->decode($string);
-		$string = recode_string("UTF-8..".$sourceEncoding, $string);
-		return $string;
-	}
+        $string = $idn->decode($string);
+        $string = recode_string("UTF-8..".$sourceEncoding, $string);
+        return $string;
+    }
 
-	return $string;
+    return $string;
 }
 
 function cIDNADecode($targetEncoding, $string)
 {
-	if (extension_loaded("iconv"))
-	{
+    if (extension_loaded("iconv"))
+    {
         cInclude('pear', 'Net/IDNA.php');
 
-		$idn = Net_IDNA :: getInstance();
+        $idn = Net_IDNA :: getInstance();
 
-		$string = $idn->decode($string);
-		$string = iconv($targetEncoding, "UTF-8", $string);
+        $string = $idn->decode($string);
+        $string = iconv($targetEncoding, "UTF-8", $string);
 
-		return ($string);
-	}
+        return ($string);
+    }
 
-	if (extension_loaded("recode"))
-	{
+    if (extension_loaded("recode"))
+    {
         cInclude('pear', 'Net/IDNA.php');
 
-		$idn = Net_IDNA :: getInstance();
+        $idn = Net_IDNA :: getInstance();
 
-		$string = recode_string($targetEncoding."..UTF-8", $string);
-		$string = $idn->decode($string);
+        $string = recode_string($targetEncoding."..UTF-8", $string);
+        $string = $idn->decode($string);
 
-		return $string;
-	}
+        return $string;
+    }
 
-	return $string;
+    return $string;
 }
 
 function cInitializeArrayKey (&$aArray, $sKey, $mDefault = "")
 {
-	if (!is_array($aArray))
-	{
-		if (isset($aArray))
-		{
-			return false;	
-		}
-		
-		$aArray = array();
-	}
-	
-	if (!array_key_exists($sKey, $aArray))
-	{
-		$aArray[$sKey] = $mDefault;	
-	}
+    if (!is_array($aArray))
+    {
+        if (isset($aArray))
+        {
+            return false;    
+        }
+        
+        $aArray = array();
+    }
+    
+    if (!array_key_exists($sKey, $aArray))
+    {
+        $aArray[$sKey] = $mDefault;    
+    }
 }
 
 /**
@@ -2862,7 +2915,7 @@ function sendHtmlMail($html, $subject, $recipients, $attachments = '', $sname = 
         }
     }
     
-    # Prüfen, ob genügend Angaben vorliegen
+    # Prfen, ob gengend Angaben vorliegen
     $bOK = true;
     if (strlen($html) == 0) {
         echo '<pre>No message specified</pre>';

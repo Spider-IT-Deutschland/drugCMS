@@ -2354,7 +2354,7 @@ class DB extends DB_Sql {
      * @param   bool $field_exists
      * @return  string
      */
-    public function protect_identifiers($item, $prefix_single = false, $protect_identifiers = null, $field_exists = true) {
+    protected function protect_identifiers($item, $prefix_single = false, $protect_identifiers = null, $field_exists = true) {
         if (!is_bool($protect_identifiers)) {
             $protect_identifiers = $this->_protect_identifiers;
         }
@@ -2500,7 +2500,7 @@ class DB extends DB_Sql {
      * @param   mixed $item
      * @return  mixed
      */
-    public function escape_identifiers($item) {
+    protected function escape_identifiers($item) {
         if (($this->_escape_char === '') || (empty($item)) || (in_array($item, $this->_reserved_identifiers))) {
             return $item;
         }
@@ -2540,5 +2540,51 @@ class DB extends DB_Sql {
         }
         
         return preg_replace('/' . $preg_ec[0] . '?([^' . $preg_ec[1] . '\.]+)' . $preg_ec[1] . '?(\.)?/i', $preg_ec[2] . '$1' . $preg_ec[3] . '$2', $item);
+    }
+    
+    /**
+     * Tests whether the string has an SQL operator
+     *
+     * @param   string
+     * @return  bool
+     */
+    protected function _has_operator($str) {
+        return (bool) preg_match('/(<|>|!|=|\sIS NULL|\sIS NOT NULL|\sEXISTS|\sBETWEEN|\sLIKE|\sIN\s*\(|\s)/i', trim($str));
+    }
+    
+    /**
+     * Returns the SQL string operator
+     *
+     * @param   string
+     * @return  string
+     */
+    protected function _get_operator($str) {
+        static $_operators;
+        
+        if (empty($_operators)) {
+            $_les = (($this->_like_escape_str !== '')
+                        ? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)), '/')
+                        : ''
+                    );
+            $_operators = array(
+                '\s*(?:<|>|!)?=\s*',                // =, <=, >=, !=
+                '\s*<>?\s*',                        // <, <>
+                '\s*>\s*',                          // >
+                '\s+IS NULL',                       // IS NULL
+                '\s+IS NOT NULL',                   // IS NOT NULL
+                '\s+EXISTS\s*\(.*\)',               // EXISTS(sql)
+                '\s+NOT EXISTS\s*\(.*\)',           // NOT EXISTS(sql)
+                '\s+BETWEEN\s+',                    // BETWEEN value AND value
+                '\s+IN\s*\(.*\)',                   // IN(list)
+                '\s+NOT IN\s*\(.*\)',               // NOT IN (list)
+                '\s+LIKE\s+\S.*('.$_les.')?',       // LIKE 'expr'[ ESCAPE '%s']
+                '\s+NOT LIKE\s+\S.*('.$_les.')?'    // NOT LIKE 'expr'[ ESCAPE '%s']
+            );
+        }
+        
+        return ((preg_match('/'.implode('|', $_operators).'/i', $str, $match))
+                    ? $match[0]
+                    : false
+                );
     }
 }

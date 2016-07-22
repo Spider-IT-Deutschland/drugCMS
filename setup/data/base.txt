@@ -1,4 +1,3 @@
-db_functions.sql
 base/base_actions1.sql
 base/base_area1.sql
 base/base_chartable1.sql

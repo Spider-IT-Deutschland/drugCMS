@@ -1,7 +1,10 @@
+
 					<div id="search">
-						<form action="{form_action}" method="post">
-							<label for="searchterm">{label_search}</label>
-							<input type="text" id="searchterm" name="searchterm" />
-							<input type="image" id="search_send" name="search_send" src="images/navi_pfeil_zu.gif" class="sbmt" />
+						<form action="{form_action}" method="get">
+							<div>
+                                <label for="searchterm">{label_search}</label>
+                                <input type="text" id="searchterm" name="searchterm" placeholder="{label_search}" />
+                                <input type="image" id="search_send" name="search_send" src="images/navi_pfeil_zu.gif" alt="Go" class="sbmt" />
+                            </div>
 						</form>
 					</div>

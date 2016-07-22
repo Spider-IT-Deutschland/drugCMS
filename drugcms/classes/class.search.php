@@ -102,7 +102,7 @@ abstract class SearchBaseAbstract
         if (is_object($oDB)) {
             $this->db = $oDB;
         } else {
-            $this->db = new DB_Contenido();
+            $this->db = new DB();
         }
     }
 
@@ -485,11 +485,7 @@ class Index extends SearchBaseAbstract
 
         $key = mb_convert_encoding($key, $sEncoding, 'auto,ISO-8859-1,UTF-8');
         
-#        if (strtolower($sEncoding) != 'iso-8859-2') {
-            $key = htmlentities($key, NULL, $sEncoding);
-#        } else {
-#            $key = htmlentities_iso88592($key);
-#        }
+        $key = htmlentities($key, NULL, $sEncoding);
 
         $aUmlautMap = array (
             '&Uuml;'   => 'Ue',
@@ -531,8 +527,7 @@ class Index extends SearchBaseAbstract
             'ae'    => '&auml;',
             'Oe'    => '&Ouml;',
             'oe'    => '&ouml;',
-            'ss'    => '&szlig;',
-            'e'     => '&eacute;'
+            'ss'    => '&szlig;'
         );
 
         foreach ($aUmlautMap as $sUmlaut => $sMapped) {
@@ -840,7 +835,7 @@ class Search extends SearchBaseAbstract
             $this->searchable_arts = $this->getSearchableArticles($options);
         }
 
-        $this->intMinimumSimilarity = 50; # minimum similarity between searchword and keyword in percent
+        $this->intMinimumSimilarity = 75; # minimum similarity between searchword and keyword in percent
     }
 
     /**
@@ -853,7 +848,6 @@ class Search extends SearchBaseAbstract
     {
         if (strlen(trim($searchwords)) > 0) {
             $this->search_words = $this->stripWords($searchwords);
-#            $this->search_words = explode(' ', $searchwords);
         } else {
             return false;
         }
@@ -865,9 +859,7 @@ class Search extends SearchBaseAbstract
         $tmp_searchwords = array();
         foreach ($this->search_words as $word) {
             if ($this->search_option == 'like') {
-                $word = "'%" . $word . "%'";
-            } elseif ($this->search_option == 'exact') {
-                $word = "'" . $word . "'";
+                $word = "%" . $word . "%";
             }
             array_push($tmp_searchwords, $word);
         }
@@ -875,9 +867,7 @@ class Search extends SearchBaseAbstract
         if (count($this->search_words_exclude) > 0) {
             foreach($this->search_words_exclude as $word) {
                 if ($this->search_option == 'like') {
-                    $word = "'%" . $word . "%'";
-                } elseif ($this->search_option == 'exact') {
-                    $word = "'" . $word . "'";
+                    $word = "%" . $word . "%";
                 }
                 array_push($tmp_searchwords, $word);
                 array_push($this->search_words, $word);
@@ -885,22 +875,114 @@ class Search extends SearchBaseAbstract
         }
         
         if(count($tmp_searchwords) == 0) return false;
+        
+# Spider IT Deutschland 2016-07-13 :: New search algorythm "Jaro Winkler Similarity" -->
+        # Rate all keywords available
+        $this->db->select('keyword, auto')->from($this->cfg['tab']['keywords'])->where('idlang', Contenido_Security::toInteger($this->lang));
+        $this->_debug('sql', $this->db->get_compiled_select());
+        $aKeywords = array();
+        $result = $this->db->get()->result_array();
+        foreach ($result as $row) {
+            if (strlen($row['keyword'])) {
+                foreach ($this->search_words as $word) {
+                    $fSimilarity = ($this->JaroWinklerSimilarity($word, $row['keyword']) * 100);
+                    if ($fSimilarity > 0.0) {
+                        $aKeywords[] = array('word' => $word, 'keyword' => $row['keyword'], 'auto' => $row['auto'], 'similarity' => $fSimilarity);
+                    }
+                }
+            }
+        }
+        # Sort the result array by similarity descending
+        $aKeywords = array_csort($aKeywords, 'similarity', SORT_NUMERIC, SORT_DESC);
+        # Convert the result to a rating per article
+        $aResult = array();
+        foreach ($aKeywords as $aKeyword) {
+            if ($aKeyword['similarity'] >= $this->intMinimumSimilarity) {
+                $tmp_index_string = preg_split('/&/', $aKeyword['auto'], -1, PREG_SPLIT_NO_EMPTY);
+                
+                $this->_debug('index', $aKeyword['auto']);
+                
+                $tmp_index = array();
+                foreach ($tmp_index_string as $string) {
+                    $tmp_string  = preg_replace('/[=\(\)]/', ' ', $string);
+                    $tmp_index[] = preg_split('/\s/', $tmp_string, -1, PREG_SPLIT_NO_EMPTY);
+                }
+                $this->_debug('tmp_index', $tmp_index);
+                
+                foreach ($tmp_index as $string) {
+                    $artid = $string[0];
+                    
+                    // filter nonsearchable articles
+                    if (in_array($artid, $this->searchable_arts)) {
+                        
+                        $cms_place  = $string[2];
+                        $tmp_cmstype = preg_split('/[,]/', $cms_place, -1, PREG_SPLIT_NO_EMPTY);
+                        $this->_debug('tmp_cmstype', $tmp_cmstype);
+                        
+                        $tmp_cmstype2 = array();
+                        foreach ($tmp_cmstype as $type) {
+                            $tmp_cmstype2[] = preg_split('/-/', $type, -1, PREG_SPLIT_NO_EMPTY);
+                        }
+                        $this->_debug('tmp_cmstype2', $tmp_cmstype2);
+                        
+                        foreach ($tmp_cmstype2 as $type) {
+                            // search for specified cms-types
+                            if (!$this->index->checkCmsType($type[0])) {
+                                # upcount the similarity for each hit
+                                if (isset($aResult['a' . $artid]['similarity'])) {
+                                    $aResult['a' . $artid][$type[0]][] = $type[1];
+                                    $aResult['a' . $artid]['keyword'][] = $aKeyword['keyword'];
+                                    $aResult['a' . $artid]['search'][] = $aKeyword['word'];
+                                    $aResult['a' . $artid]['occurence'][] = $string[1];
+                                    $aResult['a' . $artid]['debug_similarity'][] = $aKeyword['similarity'];
+                                    if ($aKeyword['similarity'] > $aResult['a' . $artid]['similarity']) {
+                                        $aResult['a' . $artid]['similarity'] = $aKeyword['similarity'];
+                                    }
+                                }
+                                else {
+                                    $aResult['a' . $artid] = array('artid' => $artid, 'similarity' => $aKeyword['similarity'], $type[0] => array($type[1]), 'keyword' => array($aKeyword['keyword']), 'search' => array($aKeyword['word']), 'occurence' => array($string[1]), 'debug_similarity' => array($aKeyword['similarity']));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        unset($aKeywords);
+        unset($aKeyword);
+        # Sort the result array by similarity descending
+        $aResult = array_csort($aResult, 'similarity', SORT_NUMERIC, SORT_DESC, 'artid', SORT_NUMERIC, SORT_ASC);
+        # Sort the keywords and searchwords in the result array by length descending
+        foreach ($aResult as $artid => $array) {
+            $aResult[$artid]['keyword'] = $this->sortByLength($array['keyword'], true);
+            $aResult[$artid]['search'] = $this->sortByLength($array['search'], true);
+        }
+        # Clean the array keys (remove the 'a' in front)
+        foreach ($aResult as $key => $val) {
+            $this->search_result[(int)substr($key, 1)] = $val;
+        }
+        unset($aResult);
+        
+        return $this->search_result;
+# Spider IT Deutschland 2016-07-13 :: <-- New search algorythm "Jaro Winkler Similarity"
 
+        $this->search_result = array();
         if ($this->search_option == 'regexp') {
             // regexp search
-            $kwSql = "keyword REGEXP '" . implode('|', $tmp_searchwords) . "'";
+            $kwSql = "(keyword REGEXP '" . implode('|', $tmp_searchwords) . "')";
         } elseif ($this->search_option == 'like') {
             // like search
-            $search_like = implode(" OR keyword LIKE ", Contenido_Security::escapeDB($tmp_searchwords, $this->db));
-            $kwSql = "keyword LIKE '" . $search_like;
+            $search_like = implode("') OR (keyword LIKE '", Contenido_Security::escapeDB($tmp_searchwords, $this->db));
+            $kwSql = "(keyword LIKE '" . $search_like . "')";
         } elseif ($this->search_option == 'exact') {
             // exact match
-            $search_exact = implode(" OR keyword = ", Contenido_Security::escapeDB($tmp_searchwords, $this->db));
-            $kwSql = "keyword LIKE '" . $search_exact;
+            $search_exact = implode("') OR (keyword='", Contenido_Security::escapeDB($tmp_searchwords, $this->db));
+            $kwSql = "(keyword='" . $search_exact . "')";
         }
 
-        $sql = "SELECT keyword, auto FROM " . $this->cfg['tab']['keywords'] 
-             . " WHERE idlang=" . Contenido_Security::toInteger($this->lang) . " AND " . $kwSql . " ";
+        $sql = "SELECT keyword, auto
+                FROM " . $this->cfg['tab']['keywords'] . "
+                WHERE ((idlang=" . Contenido_Security::toInteger($this->lang) . ") AND (" . $kwSql . "))";
         $this->_debug('sql', $sql);
         $this->db->query($sql);
 
@@ -950,13 +1032,14 @@ class Search extends SearchBaseAbstract
                             if ($similarity >= $this->intMinimumSimilarity) {
                                 // include article into searchresult set only if 
                                 // similarity between searchword and keyword is big enough
-                                $this->search_result[$artid][$type[0]][] = $type[1];
-                                $this->search_result[$artid]['keyword'][] = $this->db->f('keyword');
-                                $this->search_result[$artid]['search'][] = $searchword;
-                                $this->search_result[$artid]['occurence'][] = $string[1];
-                                $this->search_result[$artid]['debug_similarity'][] = $percent;
-                                if ($similarity > $this->search_result[$artid]['similarity']) {
-                                    $this->search_result[$artid]['similarity'] = $similarity;
+                                $aResult['a' . $artid]['artid'] = $artid;
+                                $aResult['a' . $artid][$type[0]][] = $type[1];
+                                $aResult['a' . $artid]['keyword'][] = $this->db->f('keyword');
+                                $aResult['a' . $artid]['search'][] = $searchword;
+                                $aResult['a' . $artid]['occurence'][] = $string[1];
+                                $aResult['a' . $artid]['debug_similarity'][] = $percent;
+                                if ($similarity > (float)$aResult['a' . $artid]['similarity']) {
+                                    $aResult['a' . $artid]['similarity'] = $similarity;
                                 }
                             }
                         }
@@ -968,28 +1051,147 @@ class Search extends SearchBaseAbstract
 
         if ($this->search_combination == 'and') {
             // all search words must appear in the article
-            foreach ($this->search_result as $article => $val) {
+            foreach ($aResult as $article => $val) {
                 if (!count(array_diff($this->search_words, $val['search'])) == 0) {
                     //$this->rank_structure[$article] = $rank[$article];
-                    unset($this->search_result[$article]);
+                    unset($aResult[$article]);
                 }
             }
         }
 
         if (count($this->search_words_exclude) > 0) {
             // search words to be excluded must not appear in article
-            foreach ($this->search_result as $article => $val) {
+            foreach ($aResult as $article => $val) {
                 if (!count(array_intersect($this->search_words_exclude, $val['search'])) == 0) {
                     //$this->rank_structure[$article] = $rank[$article];
-                    unset($this->search_result[$article]);
+                    unset($aResult[$article]);
                 }
             }
         }
 
+        # Sort the result array by similarity descending
+        $aResult = array_csort($aResult, 'similarity', SORT_NUMERIC, SORT_DESC, 'artid', SORT_NUMERIC, SORT_ASC);
+        # Clean the array keys (remove the 'a' in front)
+        foreach ($aResult as $key => $val) {
+            $this->search_result[(int)substr($key, 1)] = $val;
+        }
+        unset($aResult);
+
         $this->_debug('$this->search_result', $this->search_result);
         $this->_debug('$this->searchable_arts', $this->searchable_arts);
-
+        
         return $this->search_result;
+    }
+
+    /**
+     * JaroWinklerSimilarity (based on http://dannykopping.com/blog/fuzzy-text-search-mysql-jaro-winkler)
+     *
+     * @param   string $sSearchWord     The word to search for
+     * @param   string $sCompareWord    The word to compare it with
+     * @result  float                   Similarity in percent
+     */
+    protected function JaroWinklerSimilarity($sSearchWord, $sCompareWord) {
+        # finestra:= search window, curString:= scanning cursor for the original string, curSub:= scanning cursor for the compared string
+        $maxPrefix  = 6;
+        $common1    = '';
+        $common2    = '';
+        $finestra   = (floor((strlen($sSearchWord) + strlen($sCompareWord) - abs(strlen($sSearchWord) - strlen($sCompareWord))) / 4) + (((strlen($sSearchWord) + strlen($sCompareWord) - abs(strlen($sSearchWord) - strlen($sCompareWord))) / 2) % 2));
+        $old1       = $sSearchWord;
+        $old2       = $sCompareWord;
+        # calculating common letters vectors
+        $curString  = 0;
+        while (($curString <= strlen($sSearchWord)) && ($curString <= (strlen($sCompareWord) + $finestra))) {
+            $curSub = ($curString - $finestra);
+            if ($curSub < 0) {
+                $curSub = 0;
+            }
+            $maxSub = ($curString + $finestra);
+            if ($maxSub > strlen($sCompareWord)) {
+                $maxSub = strlen($sCompareWord);
+            }
+            $trovato = false;
+            while (($curSub <= $maxSub) && ($trovato === false)) {
+                if (substr($sSearchWord, $curString, 1) == substr($sCompareWord, $curSub, 1)) {
+                    $common1 .= substr($sSearchWord, $curString, 1);
+                    $sCompareWord = substr($sCompareWord, 0, $curSub) . '0' . substr($sCompareWord, ($curSub + 1), (strlen($sCompareWord) - $curSub + 1));
+                    $trovato = true;
+                }
+                $curSub ++;
+            }
+            $curString ++;
+        }
+        # back to the original string
+        $sCompareWord = $old2;
+        $curString = 0;
+        while (($curString <= strlen($sCompareWord)) && ($curString <= (strlen($sSearchWord) + $finestra))) {
+            $curSub = ($curString - $finestra);
+            if ($curSub < 0) {
+                $curSub = 0;
+            }
+            $maxSub = ($curString + $finestra);
+            if ($maxSub > strlen($sSearchWord)) {
+                $maxSub = strlen($sSearchWord);
+            }
+            $trovato = false;
+            while (($curSub <= $maxSub) && ($trovato == false)) {
+                if (substr($sCompareWord, $curString, 1) == substr($sSearchWord, $curSub, 1)) {
+                    $common2 .= substr($sCompareWord, $curString, 1);
+                    $sSearchWord = substr($sSearchWord, 0, $curSub) . '0' . substr($sSearchWord, ($curSub + 1), (strlen($sSearchWord) - $curSub + 1));
+                    $trovato = true;
+                }
+                $curSub ++;
+            }
+            $curString ++;
+        }
+        # back to the original string
+        $sSearchWord = $old1;
+        # calculating jaro metric
+        if (strlen($common1) <> strlen($common2)) {
+            $jaro = 0;
+        }
+        elseif ((strlen($common1) == 0) || (strlen($common2) == 0)) {
+            $jaro = 0;
+        }
+        else {
+            # calcolo la distanza di winkler
+            # passo 1: calcolo le trasposizioni
+            $trasposizioni = 0;
+            $curString = 0;
+            while ($curString <= strlen($common1)) {
+                if (substr($common1, $curString, 1) <> substr($common2, $curString, 1)) {
+                    $trasposizioni ++;
+                }
+                $curString ++;
+            }
+            $jaro = ((
+                        strlen($common1) / strlen($sSearchWord) +
+                        strlen($common2) / strlen($sCompareWord) +
+                        (strlen($common1) - $trasposizioni / 2) / strlen($common1)
+                    ) / 3);
+        }
+        # calculating common prefix for winkler metric
+        $prefixlen = 0;
+        while ((substr($sSearchWord, $prefixlen, 1) == substr($sCompareWord, $prefixlen, 1)) && ($prefixlen < $maxPrefix)) {
+            $prefixlen ++;
+        }
+        # calculate jaro-winkler metric
+        return ($jaro + ($prefixlen * 0.1 * (1 - $jaro)));
+    }
+
+    /**
+     * sortByLength
+     *
+     * @param   array $array    The array that must be sorted by length
+     * @param   bool $desc      Sort descending (true / false)
+     */
+    protected function sortByLength($array, $desc = false) {
+        usort($array, function($a, $b) {
+            return (mb_strlen($a) - mb_strlen($b));
+        });
+        if ($desc) {
+            $array = array_reverse($array);
+        }
+        return $array;
     }
 
     /**
@@ -1339,7 +1541,8 @@ class SearchResult extends SearchBaseAbstract
 
         # compute ranking factor for each search result
         foreach ($this->search_result as $article => $val) {
-            $this->rank_structure[$article] = $this->getOccurrence($article) * ( $this->getSimilarity($article) / 100);
+#            $this->rank_structure[$article] = ($this->getOccurrence($article) * $this->getSimilarity($article) / 100);
+            $this->rank_structure[$article] = $this->getSimilarity($article);
         }
         $this->_debug('$this->rank_structure', $this->rank_structure);
 
@@ -1386,6 +1589,8 @@ class SearchResult extends SearchBaseAbstract
      */
     function getSearchContent($art_id, $cms_type, $cms_nr = NULL)
     {
+        global $encoding;
+        
         $cms_type = strtoupper($cms_type);
         if (strlen($cms_type) > 0) {
             if (!stristr($cms_type, 'cms_')) {
@@ -1403,8 +1608,13 @@ class SearchResult extends SearchBaseAbstract
         $content = array();
         if (isset($this->search_result[$art_id][$cms_type])) {
             // if searchword occurs in cms_type
-            $search_words = $this->search_result[$art_id]['search'];
-            $search_words = array_unique($search_words);
+            $search_words   = $this->search_result[$art_id]['search'];
+            $search_words   = array_unique($search_words);
+            $search_words   = $this->sortByLength($search_words, true);
+            $key_words      = $this->search_result[$art_id]['keyword'];
+            $key_words      = array_unique($key_words);
+            $key_words      = $this->sortByLength($key_words, true);
+            $mark_words     = $this->sortByLength(array_unique(array_merge($search_words, $key_words)), true);
 
             $id_type = $this->search_result[$art_id][$cms_type];
             $id_type = array_unique($id_type);
@@ -1414,9 +1624,9 @@ class SearchResult extends SearchBaseAbstract
                 //build consistent escaped string(Timo Trautmann) 2008-04-17
                 $cms_content = htmlentities(html_entity_decode(strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $article->getContent($cms_type, $cms_nr)))));
                 if (count($this->replacement) == 2) {
-                    foreach($search_words as $word) {
+                    foreach($mark_words as $word) {
                         //build consistent escaped string, replace ae ue .. with original html entities (Timo Trautmann) 2008-04-17
-                        $word = htmlentities(html_entity_decode($this->index->addSpecialUmlauts($word)));
+                        $word = htmlentities(html_entity_decode($this->index->addSpecialUmlauts($word), ENT_COMPAT, $encoding[$this->lang]), ENT_COMPAT, $encoding[$this->lang]);
                         $match = array();
                         preg_match("/$word/i", $cms_content, $match);
                         if (isset($match[0])) {
@@ -1435,9 +1645,8 @@ class SearchResult extends SearchBaseAbstract
                 // get content of cms_type[$id], where $id are the cms_type numbers found in search
                 foreach ($id_type as $id) {
                     $cms_content = strip_tags(str_replace(array('<br>', '<br />', '</p>'), array(' ', ' ', '</p> '), $article->getContent($cms_type, $id)));
-
                     if (count($this->replacement) == 2) {
-                        foreach($search_words as $word) {
+                        foreach($mark_words as $word) {
                             preg_match("/$word/i", $cms_content, $match);
                             if (isset($match[0])) {
                                 $pattern = $match[0];
@@ -1468,6 +1677,39 @@ class SearchResult extends SearchBaseAbstract
             }
         }
         return $content;
+    }
+    
+    /**
+     * Emphasizes found words in text
+     *
+     * @param   string $text    The text including the found words
+     * @param   array $words    The found words
+     * @param   array $tags     The start an end tag to emphasize with
+     * @return  string          The emphasized text
+     */
+    public function emphasize($text, $words, $tags = array('<strong>', '</strong>')) {
+        global $encoding;
+        
+        if ((is_array($tags)) && (count($tags) == 2)) {
+            $replacements = array();
+            $n = 0;
+            foreach ($words as $word) {
+                //build consistent escaped string, replace ae ue .. with original html entities (Timo Trautmann) 2008-04-17
+                $word = htmlentities(html_entity_decode($this->index->addSpecialUmlauts($word), ENT_COMPAT, $encoding[$this->lang]), ENT_COMPAT, $encoding[$this->lang]);
+                $match = array();
+                preg_match('/' . $word . '/i', $text, $match);
+                if (isset($match[0])) {
+                    $pattern = $match[0];
+                    $replacements[$n] = $tags[0] . $pattern . $tags[1];
+                    $text = preg_replace('/\b' . $pattern . '\b/ui', '|' . $n, $text); // emphasize located searchwords
+                    $n ++;
+                }
+            }
+            foreach ($replacements as $key => $val) {
+                $text = preg_replace('/\|' . $key . '/i', $val, $text);
+            }
+        }
+        return $text;
     }
 
     /**
@@ -1551,6 +1793,22 @@ class SearchResult extends SearchBaseAbstract
         if ($this->db->next_record()) {
             return $this->db->f('idcat');
         }
+    }
+
+    /**
+     * sortByLength
+     *
+     * @param   array $array    The array that must be sorted by length
+     * @param   bool $desc      Sort descending (true / false)
+     */
+    public function sortByLength($array, $desc = false) {
+        usort($array, function($a, $b) {
+            return (mb_strlen($a) - mb_strlen($b));
+        });
+        if ($desc) {
+            $array = array_reverse($array);
+        }
+        return $array;
     }
 
 }

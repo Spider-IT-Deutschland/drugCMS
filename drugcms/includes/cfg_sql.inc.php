@@ -101,4 +101,5 @@ $cfg["tab"]["chartable"]					   = $cfg['sql']['sqlprefix']."_chartable";
 $cfg["tab"]["upl_meta"]					       = $cfg['sql']['sqlprefix']."_upl_meta";
 $cfg["tab"]["online_user"]					   = $cfg['sql']['sqlprefix']."_online_user";
 $cfg["tab"]["file_information"]                = $cfg['sql']['sqlprefix']."_file_information";
+$cfg["tab"]["effective_settings"]              = $cfg['sql']['sqlprefix']."_effective_settings";
 ?>
