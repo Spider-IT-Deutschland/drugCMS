@@ -11,3 +11,15 @@
 	<!-- END:BLOCK -->
 	<p class="result">{result_page}&nbsp;&nbsp;{PREV}{PAGES}{NEXT}</p>
 </div>
+<script>
+    $(document).ready(function() {
+        var isClick = false;
+        $('.searchResultItem').click(function(e) {
+            if (isClick == false) {
+                isClick = true;
+                $(this).find('a')[0].click();
+                isClick = false;
+            }
+        }).css('cursor', 'pointer');
+    });
+</script>

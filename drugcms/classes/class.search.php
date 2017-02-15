@@ -879,7 +879,7 @@ class Search extends SearchBaseAbstract
 # Spider IT Deutschland 2016-07-13 :: New search algorythm "Jaro Winkler Similarity" -->
         # Rate all keywords available
         $this->db->select('keyword, auto')->from($this->cfg['tab']['keywords'])->where('idlang', Contenido_Security::toInteger($this->lang));
-        $this->_debug('sql', $this->db->get_compiled_select());
+        #$this->_debug('sql', $this->db->get_compiled_select());
         $aKeywords = array();
         $result = $this->db->get()->result_array();
         foreach ($result as $row) {
@@ -1330,7 +1330,7 @@ class Search extends SearchBaseAbstract
             // include searchrange
             if (strlen($sArtRange) > 0) {
                 $sSearchRange = " A.idcat IN  ('".$sCatRange."') AND B.idart IN  ('".$sArtRange."') AND ";
-            } else {
+            } elseif (strlen($sCatRange) > 0) {
                 $sSearchRange = " A.idcat IN  ('".$sCatRange."') AND ";
             }
         }
