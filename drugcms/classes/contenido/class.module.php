@@ -293,7 +293,7 @@ class cApiModule extends Item
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     c.idmod, c.idtpl, t.name

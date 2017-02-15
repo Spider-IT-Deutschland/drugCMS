@@ -48,7 +48,7 @@ class Contenido_Perm
         global $cfg;
         
         if (!is_object($this->db)) {
-            $this->db = new DB_Contenido;
+            $this->db = new DB;
         }
 
         $sql = "SELECT group_id FROM
@@ -71,7 +71,7 @@ class Contenido_Perm
         global $cfg;
 
         if (!is_object($this->db_perm)) {
-            $this->db_perm = new DB_Contenido;
+            $this->db_perm = new DB;
         }
 
         if (!is_numeric($area))
@@ -106,7 +106,7 @@ class Contenido_Perm
         global $cfg;
 
         if (!is_object($this->db_perm)) {
-            $this->db_perm = new DB_Contenido;
+            $this->db_perm = new DB;
         }
 
         if (!is_numeric($action))
@@ -247,7 +247,7 @@ class Contenido_Perm
         global $item_rights, $auth, $client, $lang, $cfg;
         
         if (!is_object($this->db)) {
-            $this->db = new DB_Contenido;
+            $this->db = new DB;
         }
 
         $area = $this->getIDForArea($area);
@@ -312,7 +312,7 @@ class Contenido_Perm
         global $client, $lang, $cfg, $sess;
 
         if (!is_object($this->db)) {
-            $this->db = new DB_Contenido;
+            $this->db = new DB;
         }
 
         if (is_numeric($area))
@@ -355,7 +355,7 @@ class Contenido_Perm
         global $area_rights, $client, $lang, $cfg;
         //if not admin or sysadmin
         if (!is_object($this->db_perm)) {
-            $this->db_perm = new DB_Contenido;
+            $this->db_perm = new DB;
         }
 
         $area = $this->getIDForArea($area);
@@ -656,7 +656,7 @@ class Contenido_Perm
         {
 
             if (!is_object($this->db)) {
-                $this->db = new DB_Contenido;
+                $this->db = new DB;
             }
 
             $this->showareas($mainarea);
@@ -732,7 +732,7 @@ class Contenido_Perm
 
         global $area_tree, $sess, $perm, $cfg;
 
-        $this->db = new DB_Contenido;
+        $this->db = new DB;
 
         $mainarea = $this->getIDForArea($mainarea);
 

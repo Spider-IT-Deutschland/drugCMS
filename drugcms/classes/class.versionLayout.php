@@ -101,7 +101,7 @@ if(!defined('CON_FRAMEWORK')) {
  	private function setLayoutTable(){
 
      	if(!is_object($this->oDB))
-     	 $this->oDB = new DB_Contenido;	
+     	 $this->oDB = new DB();	
      	 
 		$sSql = "";
 		$aLayout = array();

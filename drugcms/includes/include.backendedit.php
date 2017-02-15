@@ -53,7 +53,7 @@ cInclude ("includes", 'cfg_language_de.inc.php');
 
 
 # Create Contenido classes
-$db = new DB_Contenido;
+$db = new DB();
 $notification = new Contenido_Notification;
 $classarea = new Area();
 $classlayout = new Layout();

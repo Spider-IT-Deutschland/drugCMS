@@ -50,7 +50,7 @@ class Client {
     function getAvailableClients() {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idclient,
@@ -78,7 +78,7 @@ class Client {
     function getAccessibleClients() {
         global $cfg, $perm;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idclient,
@@ -114,7 +114,7 @@ class Client {
         global $cfg;
 		$clientid = Contenido_Security::toInteger($clientid);
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     name
@@ -143,7 +143,7 @@ class Client {
         global $cfg;
 		$clientid = Contenido_Security::toInteger($clientid);
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idlang

@@ -126,7 +126,7 @@ else
  */
 require_once $cfg['path']['contenido'] . $cfg['path']['includes'] . 'functions.includePluginConf.php';
 
-$db = new DB_Contenido;
+$db = new DB();
 
 $sess->register("cfgClient");
 $sess->register("errsite_idcat");
@@ -769,7 +769,7 @@ else
                              WHERE B.name = 'front_allow' AND C.name = 'str' AND A.user_id = '".Contenido_Security::escapeDB($user_id, $db2)."' AND A.idcat = '".Contenido_Security::toInteger($idcat)."'
                                     AND A.idarea = C.idarea AND B.idaction = A.idaction";
 
-                    $db2 = new DB_Contenido;
+                    $db2 = new DB();
                     $db2->query($sql);
 
                     if ($db2->num_rows() > 0)

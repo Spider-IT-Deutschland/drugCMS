@@ -91,7 +91,7 @@ function keywordDensity($sHeadline, $sText, $sEncoding = "UTF-8", $iMinLen = 5) 
         mb_convert_encoding($sAll, 'UTF-8', $sEncoding);
     }
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sql = 'SELECT value
             FROM ' . $cfg['tab']['properties'] . '
             WHERE ((itemtype="idlang")

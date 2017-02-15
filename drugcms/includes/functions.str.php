@@ -72,9 +72,9 @@ cInclude("includes", "functions.database.php");
 global $db_str;
 global $db_str2;
 
-if (class_exists("DB_Contenido")) {
-    $db_str = new DB_Contenido();
-    $db_str2 = new DB_Contenido();
+if (class_exists("DB")) {
+    $db_str = new DB();
+    $db_str2 = new DB();
 }
 
 
@@ -107,7 +107,7 @@ function strNewTree($catname, $catalias = '', $bVisible = 0, $bPublic = 1, $iIdt
     $remakeCatTable = true;
     $remakeStrTable = true;
 
-    $db2= new DB_Contenido;
+    $db2= new DB();
 
     if (trim($catname) == "") {
         return;
@@ -278,7 +278,7 @@ function strNewCategory($tmp_parentid, $catname, $remakeTree = true, $catalias =
     global $auth;
     global $tmp_area;
 
-    $db2= new DB_Contenido;
+    $db2= new DB();
 
     if (trim($catname) == "") {
         return;
@@ -920,7 +920,7 @@ function strDeleteCategory($idcat) {
     $remakeCatTable = true;
     $remakeStrTable = true;
 
-    $db2 = new DB_Contenido;
+    $db2 = new DB();
 
     if (strNextDeeper($idcat)) {
         return "0201";        // category has subcategories
@@ -1256,7 +1256,7 @@ function strMoveCatTargetallowed($idcat, $source) {
 function strSyncCategory($idcatParam, $sourcelang, $targetlang, $bMultiple = false) {
     global $cfg;
 
-    $tmpdb = new DB_Contenido;
+    $tmpdb = new DB();
     $bMultiple = (bool) $bMultiple;
 
     $aCatArray = array();
@@ -1441,8 +1441,8 @@ function strCopyCategory($idcat, $destidcat, $remakeTree = true, $bUseCopyLabel 
         }
     }
 
-    $db = new DB_Contenido;
-    $db2 = new DB_Contenido;
+    $db = new DB();
+    $db2 = new DB();
 
     /* Copy all articles */
     $sql = "SELECT A.idart, B.idartlang FROM ".$cfg["tab"]["cat_art"]." AS A, ".$cfg["tab"]["art_lang"]." AS B WHERE A.idcat = '".Contenido_Security::toInteger($idcat)."' AND B.idart = A.idart AND B.idlang = '".Contenido_Security::toInteger($lang)."'";
@@ -1477,7 +1477,7 @@ function strCopyTree($idcat, $destcat, $remakeTree = true, $bUseCopyLabel = true
 
     $newidcat = strCopyCategory($idcat, $destcat, false, $bUseCopyLabel);
 
-    $db = new DB_Contenido;
+    $db = new DB();
     $db->query("SELECT idcat FROM ".$cfg["tab"]["cat"]." WHERE parentid = '".Contenido_Security::toInteger($idcat)."'");
     while ($db->next_record()) {
         strCopyTree($db->f("idcat"), $newidcat, false, $bUseCopyLabel);

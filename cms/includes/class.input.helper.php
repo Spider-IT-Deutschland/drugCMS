@@ -66,7 +66,7 @@ class cHTMLInputSelectElement extends cHTMLSelectElement
 	{
 		global $cfg, $lang;
 
-		$oDB = new DB_Contenido;
+		$oDB = new DB();
 
 		if (is_numeric($iIDCat) && $iIDCat > 0)
 		{
@@ -156,7 +156,7 @@ class cHTMLInputSelectElement extends cHTMLSelectElement
 	{
 		global $cfg, $client, $lang;
 
-		$oDB   = new DB_Contenido;
+		$oDB   = new DB();
 
 		$sSQL  = "SELECT tblCat.idcat AS idcat, tblCatLang.name AS name, ";
 		$sSQL .= "tblCatLang.visible AS visible, tblCatLang.public AS public, tblCatTree.level AS level ";
@@ -232,7 +232,7 @@ class cHTMLInputSelectElement extends cHTMLSelectElement
 	{
 		global $cfg, $lang;
 
-		$oDB = new DB_Contenido;
+		$oDB = new DB();
 
 		if (is_numeric($iIDCatArt) && $iIDCatArt > 0)
 		{

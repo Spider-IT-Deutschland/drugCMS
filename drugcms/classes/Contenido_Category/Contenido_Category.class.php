@@ -108,7 +108,7 @@ class Contenido_Category extends Contenido_Category_Base {
     protected $iSubCategoriesLoadDepth; // up to which level should SubCategories be loaded
     
     /**
-     * @var obj DB_Contenido
+     * @var obj DB
      * @access private
      */
     private $_oDb;
@@ -117,12 +117,12 @@ class Contenido_Category extends Contenido_Category_Base {
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg) {
+    public function __construct(DB $oDb, array $aCfg) {
         parent::__construct($oDb, $aCfg);
         $this->oSubCategories = null;
         $this->bHasSubCategories = false;
@@ -210,7 +210,7 @@ class Contenido_Category extends Contenido_Category_Base {
         // if we don't have a Contenido_Categories object created yet, do it now
         if (is_null($this->oSubCategories)) {
             $this->oSubCategories = new Contenido_Categories($this->oDb, $this->aCfg);
-            $this->_oDb = new DB_Contenido();
+            $this->_oDb = new DB();
         }
         $aSubCategories = $this->_getSubCategoriesAsArray($iIdcat);
         // current load depth: $this->iCurrentSubCategoriesLoadDepth
@@ -417,12 +417,12 @@ class Contenido_Categories extends Contenido_Category_Base implements IteratorAg
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg) {
+    public function __construct(DB $oDb, array $aCfg) {
         parent::__construct($oDb, $aCfg);
         $this->aContenidoCategories = array();
         $this->bLoadSubCategories = false;
@@ -659,12 +659,12 @@ class Contenido_Category_Language extends Contenido_Category_Base {
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg) {
+    public function __construct(DB $oDb, array $aCfg) {
         parent::__construct($oDb, $aCfg);
     }
     
@@ -862,12 +862,12 @@ class Contenido_Category_Base {
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg) {
+    public function __construct(DB $oDb, array $aCfg) {
         $this->oDb = $oDb;
         $this->aCfg = $aCfg;
         $this->bDbg = false;

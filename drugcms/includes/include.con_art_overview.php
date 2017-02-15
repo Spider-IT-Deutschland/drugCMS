@@ -38,7 +38,7 @@ cInclude("includes","functions.tpl.php");
 cInclude("includes","functions.str.php");
 cInclude("includes", "functions.pathresolver.php");
 $firstMark = false;
-$db2 = new DB_Contenido;
+$db2 = new DB();
 
 $idcat	= ( isset($_GET['idcat']) && is_numeric($_GET['idcat'])) ? $_GET['idcat'] : -1;
 $next	= ( isset($_GET['next']) && is_numeric($_GET['next']) && $_GET['next'] > 0) ? $_GET['next'] : 0;
@@ -343,7 +343,7 @@ if ( is_numeric($idcat) && ($idcat >= 0)) {
 			$idcatart   = $sart["idcatart"];
 			$created    = $sart["created"];
 			$modified   = $sart["lastmodified"];
-			$title      = htmlspecialchars($sart["title"]);
+			$title      = htmlspecialchars($sart["title"], ENT_COMPAT, $encoding[$lang]);
 			$timemgmt   = $sart["timemgmt"];
 			$datestart  = $sart["datestart"];
 			$dateend    = $sart["dateend"];
@@ -407,7 +407,7 @@ if ( is_numeric($idcat) && ($idcat >= 0)) {
 			{
 				$sql = "SELECT NOW() AS TIME";
 				 
-				$db3 = new DB_Contenido;
+				$db3 = new DB();
 				 
 				$db3->query($sql);
 				$db3->next_record();
@@ -493,7 +493,7 @@ if ( is_numeric($idcat) && ($idcat >= 0)) {
 			# Article Template
 			if ( !is_object($db2) )
 			{
-				$db2 = new DB_Contenido;
+				$db2 = new DB();
 			}
 
 			$sql2 = 

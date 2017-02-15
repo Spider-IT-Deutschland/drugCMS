@@ -57,13 +57,13 @@ class Contenido_Category_Articles extends Contenido_Category_Base {
     /**
      * Constructor
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @param int $iClient
      * @param int $iLang
      * @return void
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg, $iClient, $iLang) {
+    public function __construct(DB $oDb, array $aCfg, $iClient, $iLang) {
         parent::__construct($oDb, $aCfg);
         $this->setClient($iClient);
         $this->setLang($iLang);

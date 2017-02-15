@@ -315,7 +315,7 @@ function writeSystemValuesOutput($usage)
 	$db->query($sql);
 
 	// create 'value' output
-	$db2 = new DB_Contenido;
+	$db2 = new DB();
 	$clientInformation = "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"2\" border=\"0\">
 	        <tr class=\"textw_medium\" style=\"background-color: #E2E2E2\">
 					<td width=\"20%\" class=\"textg_medium\" style=\"border:1px; border-color:#B3B3B3; border-style:solid;; border-bottom: none;\" nowrap=\"nowrap\">".i18n("client settings")."</td>

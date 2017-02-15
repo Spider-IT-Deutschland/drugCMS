@@ -51,7 +51,7 @@ class frontendlogic_category extends FrontendLogic
 		global $lang, $db, $cfg;
 		
 		if (!is_object($db)) {
-            $db = new DB_Contenido;
+            $db = new DB();
         }
         
         $sSQL = "SELECT

@@ -50,7 +50,7 @@ class Structure {
     function getStructureName( $structure, $idlang) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     name
@@ -77,7 +77,7 @@ class Structure {
     {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idcat

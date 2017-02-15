@@ -186,7 +186,7 @@ $debug = false;
             } else { # Has own Template
 
                 if ( !isset($db2) || !is_object($db2) ) {
-                    $db2 = new DB_Contenido;
+                    $db2 = new DB();
                 }
 
                 $sql2 = "SELECT

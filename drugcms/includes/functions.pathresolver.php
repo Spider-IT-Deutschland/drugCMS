@@ -56,7 +56,7 @@ function prResolvePathViaURLNames($path) {
     global $cfg, $lang, $client;
 
     /* Initialize variables */
-    $db = new DB_Contenido;
+    $db = new DB();
     $categories = array();
     $results = array();
 
@@ -181,7 +181,7 @@ function prResolvePathViaCategoryNames($path, &$iLangCheck) {
     global $cfg, $lang, $client;
 
     /* Initialize variables */
-    $db = new DB_Contenido;
+    $db = new DB();
     $categories = array ();
     $results = array();
     $iLangCheckOrg = $iLangCheck;
@@ -343,7 +343,7 @@ function prCreateURLNameLocationString($idcat, $seperator, & $cat_str, $makeLink
         }
     }
 
-    $db = new DB_Contenido;
+    $db = new DB();
 
     $sql = "SELECT
                     a.urlname AS urlname,

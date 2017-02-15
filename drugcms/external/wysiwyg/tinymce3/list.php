@@ -43,7 +43,7 @@ include_once ('../../../includes/startup.php');
 // include editor config/combat file
 @include (dirname(__FILE__).DIRECTORY_SEPARATOR."config.php"); // CONTENIDO
 
-$db2 = new DB_Contenido();
+$db2 = new DB();
 
 $arg_seperator = "&amp;";
 

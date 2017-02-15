@@ -437,7 +437,7 @@ class ConUser extends ConUser_Abstract {
 	 * Calls constructor in base class.
 	 *
 	 * @param array $aCfg
-	 * @param DB_Contenido $oDB
+	 * @param DB $oDB
 	 * @param string $sIdUser User ID the instnace of this class represents
 	 *
 	 * @return ConUser

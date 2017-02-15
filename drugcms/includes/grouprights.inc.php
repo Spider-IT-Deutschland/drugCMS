@@ -34,7 +34,7 @@ if(!defined('CON_FRAMEWORK')) {
 }
 
 if(!is_object($db2))
-$db2 = new DB_Contenido;
+$db2 = new DB();
 
 if(!is_object($oTpl))
 $oTpl = new Template();

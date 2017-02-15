@@ -146,8 +146,8 @@ class Contenido_Navigation {
     function _buildHeaderData() {
         global $cfg, $perm, $belang;
 
-        $db  = new DB_Contenido();
-        $db2 = new DB_Contenido();
+        $db  = new DB();
+        $db2 = new DB();
 
         # Load main items
         $sql = "SELECT idnavm, location FROM ".$cfg['tab']['nav_main']." ORDER BY idnavm";
@@ -398,7 +398,7 @@ class Contenido_Navigation {
             $availableLanguages->select('', '', 'idlang ASC');
         }
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         if ($availableLanguages->count() > 0) {
             while ($myLang = $availableLanguages->nextAccessible()) {

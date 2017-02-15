@@ -69,7 +69,7 @@ function isArtInMultipleUse($idart)
 {
     global $cfg, $client;
 
-    $db = new DB_Contenido;
+    $db = new DB();
     $sql = "SELECT idart FROM ".$cfg["tab"]["cat_art"]." WHERE idart = '".Contenido_Security::toInteger($idart)."'";
     $db->query($sql);
 
@@ -192,7 +192,7 @@ function getIDForArea($area)
 {
     global $client, $lang, $cfg, $sess;
 
-    $db = new DB_Contenido;
+    $db = new DB();
 
     if (!is_numeric($area))
     {
@@ -223,7 +223,7 @@ function getParentAreaId($area)
 {
     global $client, $lang, $cfg, $sess;
 
-    $db = new DB_Contenido;
+    $db = new DB();
 
     if (is_numeric($area))
     {
@@ -567,8 +567,8 @@ function cleanupSessions()
 {
     global $cfg;
 
-    $db = new DB_Contenido;
-    $db2 = new DB_Contenido;
+    $db = new DB();
+    $db2 = new DB();
 
     $col = new InUseCollection;
 
@@ -876,7 +876,7 @@ function rereadClients()
 
     if (!is_object($db))
     {
-        $db = new DB_Contenido;
+        $db = new DB();
     }
 
     $sql = "SELECT
@@ -933,7 +933,7 @@ function setSystemProperty($type, $name, $value, $idsystemprop = 0)
     
     $idsystemprop = Contenido_Security::toInteger($idsystemprop);
     
-    $db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB();
     
     if ($idsystemprop == 0) {
         $sql = "SELECT idsystemprop FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
@@ -973,7 +973,7 @@ function deleteSystemProperty($type, $name)
 {
     global $cfg;
 
-    $db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB();
     $type = Contenido_Security::escapeDB($type, $db_systemprop);
     $name = Contenido_Security::escapeDB($name, $db_systemprop);
     $sql = "DELETE FROM ".$cfg["tab"]["system_prop"]." WHERE type='".$type."' AND name='".$name."'";
@@ -999,7 +999,7 @@ function getSystemProperties($bGetPropId = 0)
 {
     global $cfg;
 
-    $db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB();
 
     $sql = "SELECT idsystemprop, type, name, value FROM ".$cfg["tab"]["system_prop"]." ORDER BY type ASC, name ASC, value ASC";
     $db_systemprop->query($sql);
@@ -1032,7 +1032,7 @@ function getSystemProperty($type, $name)
 {
     global $cfg;
 
-    $db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB();
 
     $sql = "SELECT value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($type, $db_systemprop)."' AND name='".Contenido_Security::escapeDB($name, $db_systemprop)."'";
     $db_systemprop->query($sql);
@@ -1058,7 +1058,7 @@ function getSystemPropertiesByType($sType)
     
     $aResult = array();
     
-    $db_systemprop = new DB_Contenido;
+    $db_systemprop = new DB();
     
     $sSQL = "SELECT name, value FROM ".$cfg["tab"]["system_prop"]." WHERE type='".Contenido_Security::escapeDB($sType, $db_systemprop)."' ORDER BY name";
     $db_systemprop->query($sSQL);
@@ -1097,7 +1097,7 @@ function setClientProperty($type, $name, $value) {
     global $client, $cfg, $auth;
     
     if ((strlen($type)) && (strlen($name))) {
-        $db_clientprop = new DB_Contenido();
+        $db_clientprop = new DB();
         $type = Contenido_Security::escapeDB($type, $db_clientprop);
         $name = Contenido_Security::escapeDB($name, $db_clientprop);
         $value = Contenido_Security::escapeDB($value, $db_clientprop);
@@ -1138,7 +1138,7 @@ function setClientProperty($type, $name, $value) {
 function deleteClientProperty($type, $name) {
     global $client, $cfg;
 
-    $db_clientprop = new DB_Contenido();
+    $db_clientprop = new DB();
     $type = Contenido_Security::escapeDB($type, $db_clientprop);
     $name = Contenido_Security::escapeDB($name, $db_clientprop);
     $sql = 'DELETE FROM ' . $cfg['tab']['properties'] . '
@@ -1192,7 +1192,7 @@ function getEffectiveSetting($type, $name, $default = '', $shortDescription = ''
             if (strlen($longDescription)) {
                 $aUpdates[] = '`long_description`="' . Contenido_Security::escapeDB($longDescription) . '"';
             }
-            if (strlen($possibleValues)) {
+            if (is_array($possibleValues)) {
                 $aUpdates[] = '`possible_values`="' . json_encode($possibleValues) . '"';
             }
             $sql = 'UPDATE `' . $cfg['tab']['effective_settings'] . '`
@@ -1210,7 +1210,7 @@ function getEffectiveSetting($type, $name, $default = '', $shortDescription = ''
     }
     
     # Get the value for the given setting
-    if ($auth->auth["uid"] != "nobody") {
+    if ((is_object($auth)) && ($auth->auth["uid"] != "nobody")) {
         $user = new User;
         $user->loadUserByUserID($auth->auth["uid"]);
         $value = $user->getUserProperty($type, $name, true); # true also respects the group properties
@@ -1293,7 +1293,7 @@ function getEffectiveSettingsByType($sType)
 function setProperty($idclient, $itemtype, $itemid, $type, $name, $value, $idproperty = 0) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     if ($idproperty) {
         $sql = 'UPDATE `' . $cfg['tab']['properties'] . '`
                 SET `idclient` = ' . intval($idclient) . ',
@@ -1326,7 +1326,7 @@ function setProperty($idclient, $itemtype, $itemid, $type, $name, $value, $idpro
 function getProperty($idclient, $itemtype, $itemid, $type, $name, $bGetPropertyId = false) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sql = 'SELECT `idproperty`, `value`
             FROM `' . $cfg['tab']['properties'] . '`
             WHERE ((`idclient`=' . intval($idclient) . ')
@@ -1357,7 +1357,7 @@ function getPropertiesByItemtype($itemtype, $sortby = '', $idclient = -1, $bGetP
     global $cfg;
     
     $aProperties = array();
-    $db = new DB_Contenido();
+    $db = new DB();
     $sql = 'SELECT `idproperty`, `itemid`, `type`, `name`, `value`
             FROM `' . $cfg['tab']['properties'] . '`
             WHERE (' . ((intval($idclient) == -1) ? '' : '(`idclient`=' . intval($idclient) . ')
@@ -1491,7 +1491,7 @@ function setArtspecDefault($idartspec)
  */
 function buildArticleSelect($sName, $iIdCat, $sValue) {
     global $cfg, $client, $lang, $idcat;
-    $db = new DB_Contenido;
+    $db = new DB();
 
     $html = '';
     $html .= '<select id="'.$sName.'" name="'.$sName.'">';
@@ -1533,8 +1533,8 @@ function buildCategorySelect($sName, $sValue, $iLevel = 0, $sStyle = "")
 {
     global $cfg, $client, $lang, $idcat;
 
-    $db = new DB_Contenido;
-    $db2 = new DB_Contenido;
+    $db = new DB();
+    $db2 = new DB();
 
     $html = '';
     $html .= '<select id="'.$sName.'" style="'.$sStyle.'" name="'.$sName.'">';
@@ -1683,7 +1683,7 @@ function trim_array($array)
 function array_csort()
 {
     # originally coded by Ichier2003
-    # optimized by Ren Mansveld
+    # optimized by René Mansveld
     $args = func_get_args();
     $marray = array_shift($args);
     if (count($marray)) {
@@ -1915,7 +1915,7 @@ function getClientName($idclient)
 {
     global $cfg;
 
-    $db = new DB_Contenido;
+    $db = new DB();
 
     $sql = "SELECT name FROM ".$cfg["tab"]["clients"]." WHERE idclient='".Contenido_Security::toInteger($idclient)."'";
 
@@ -2577,7 +2577,7 @@ function endAndLogTiming($uuid)
     trigger_error("calling function ".$_timings[$uuid]["function"]."(".$parameterString.") took ".$timeSpent." seconds", E_USER_NOTICE);
 }
 
-// @TODO: it's better to create a instance of DB_Contenido class, the class constructor connects also to the database. 
+// @TODO: it's better to create a instance of DB class, the class constructor connects also to the database. 
 function checkMySQLConnectivity() {
     global $contenido_host, $contenido_database, $contenido_user, $contenido_password, $cfg;
     
@@ -2748,7 +2748,7 @@ function cInitializeArrayKey (&$aArray, $sKey, $mDefault = "")
  * informations it will send an HTTP
  * header for right encoding.
  *
- * @param DB_Contenido $db
+ * @param DB $db
  * @param array $cfg global cfg-array
  * @param int $lang global language id
  * 
@@ -3060,7 +3060,7 @@ function debug($value, $type = '') {
 function getImageDescription($idupl) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sDesc = '';
     $sql = 'SELECT description
             FROM ' . $cfg['tab']['upl_meta'] . '
@@ -3093,7 +3093,7 @@ function getImageDescription($idupl) {
 function getInternalNotice($idupl) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sNotice = '';
     $sql = 'SELECT internal_notice
             FROM ' . $cfg['tab']['upl_meta'] . '
@@ -3117,7 +3117,7 @@ function getInternalNotice($idupl) {
 function getMedianame($idupl) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sMedianame = '';
     $sql = 'SELECT medianame
             FROM ' . $cfg['tab']['upl_meta'] . '
@@ -3141,7 +3141,7 @@ function getMedianame($idupl) {
 function getCopyright($idupl) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sCopyright = '';
     $sql = 'SELECT copyright
             FROM ' . $cfg['tab']['upl_meta'] . '
@@ -3165,7 +3165,7 @@ function getCopyright($idupl) {
 function getKeywords($idupl) {
     global $cfg;
     
-    $db = new DB_Contenido();
+    $db = new DB();
     $sKeywords = '';
     $sql = 'SELECT keywords
             FROM ' . $cfg['tab']['upl_meta'] . '
@@ -3199,7 +3199,7 @@ function getRemoteContent($url, &$errno, &$errmsg, $login = '', $password = '') 
         CURLOPT_USERAGENT      => "spider", // who am i
         CURLOPT_AUTOREFERER    => true,     // set referer on redirect
         CURLOPT_CONNECTTIMEOUT => 10,       // timeout on connect
-        CURLOPT_TIMEOUT        => 10,       // timeout on response
+        CURLOPT_TIMEOUT        => 15,       // timeout on response
         CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
     );
     if ((strlen($login) > 0) && (strlen($password) > 0)) {

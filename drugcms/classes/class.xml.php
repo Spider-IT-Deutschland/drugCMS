@@ -164,7 +164,7 @@ class XML_doc {
         if (strlen($this->sys_encoding) == 0) {
             if (intval($lang)) {
                 # Get the client encoding
-                $db = new DB_Contenido();
+                $db = new DB();
                 $sql = 'SELECT encoding
                         FROM ' . $cfg['tab']['lang'] . '
                         WHERE (idlang=' . $lang . ')';

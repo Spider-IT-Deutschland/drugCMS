@@ -50,7 +50,7 @@ class Area {
     function getAvailableAreas() {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idarea,
@@ -79,7 +79,7 @@ class Area {
     function getAreaName( $area ) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     name
@@ -102,7 +102,7 @@ class Area {
     function getAreaID( $area ) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idarea

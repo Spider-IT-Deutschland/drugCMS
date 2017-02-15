@@ -46,7 +46,7 @@ class ActiveUsers {
 
 		// init db object
 		if (!is_object($this->oDb) || (is_null($this->oDb))) {
-			$this->oDb= new DB_Contenido;
+			$this->oDb= new DB();
 		}
 
 		if (!is_resource($this->oDb->Link_ID)) {

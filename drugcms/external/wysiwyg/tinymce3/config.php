@@ -48,7 +48,7 @@ cInclude ("includes", 'functions.general.php');
 cInclude ("includes", 'functions.i18n.php');
 cInclude ("includes", 'functions.api.php');
 
-$db = new DB_Contenido;
+$db = new DB();
 
 if ($cfgClient["set"] != "set") // CONTENIDO
 {

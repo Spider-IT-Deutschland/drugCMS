@@ -75,8 +75,8 @@ function copyRightsForElement($area, $iditem, $newiditem, $idlang = false)
 {
     global $cfg, $perm, $auth, $area_tree;
 
-    $db = new DB_Contenido();
-    $db2 = new DB_Contenido();
+    $db = new DB();
+    $db2 = new DB();
 
     // get all user_id values for con_rights
 
@@ -162,8 +162,8 @@ function createRightsForElement($area, $iditem, $idlang = false)
         return false;
     }
 
-    $db = new DB_Contenido();
-    $db2 = new DB_Contenido();
+    $db = new DB();
+    $db2 = new DB();
 
     // get all user_id values for con_rights
 
@@ -240,7 +240,7 @@ function deleteRightsForElement($area, $iditem, $idlang = false)
 {
     global $cfg, $perm, $area_tree, $client;
 
-    $db = new DB_Contenido();
+    $db = new DB();
 
     // get all idarea values for $area
     $AreaContainer = $area_tree[$perm->showareas(Contenido_Security::escapeDB($area, $db))];
@@ -324,7 +324,7 @@ function buildUserOrGroupPermsFromRequest($bAddUserToClient = false)
 
     if (count($aLang) > 0 && count($aClient) > 0) {
         // adding language perms makes sense if we have also at least one selected client
-        $db = new DB_Contenido();
+        $db = new DB();
         foreach ($aLang as $value) {
             if (checkLangInClients($aClient, $value, $cfg, $db)) {
                 $aPerms[] = sprintf('lang[%s]', $value);

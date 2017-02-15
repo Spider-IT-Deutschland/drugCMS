@@ -306,7 +306,7 @@ class Contenido_Backend {
     function log($idcat, $idart, $client, $lang, $idaction) {
         global $perm, $auth, $cfg, $classarea, $area;
 
-        $db_log = new DB_Contenido;
+        $db_log = new DB();
 
         $lastentry = $db_log->nextid($cfg["tab"]["actionlog"]);
 

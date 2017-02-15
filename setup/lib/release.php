@@ -117,7 +117,7 @@ $sSourcePrefix =  $aReleaseInfo["release"]["sqlfiles"][0]["@sourceprefix"];
 $sTargetPrefix =  $aReleaseInfo["release"]["sqlfiles"][0]["@targetprefix"];
 $sLinesPerFile =  $aReleaseInfo["release"]["sqlfiles"][0]["@linesperfile"];
 
-$db = new DB_Contenido;
+$db = new DB();
 
 echo "<h2>Execute scripts and prepare file contents</h2>\n";
 
@@ -224,7 +224,7 @@ foreach ($groupfiles as $group => $files)
 
 echo "<h2>Exporting table structures</h2>\n";
 
-$dbexport = new DB_Contenido;
+$dbexport = new DB();
 $rawtext = true;
 
 foreach ($cfg["tab"] as $key => $value)

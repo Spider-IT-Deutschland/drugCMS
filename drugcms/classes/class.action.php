@@ -53,7 +53,7 @@ class Action {
     function getAvailableActions() {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     action.idaction,
@@ -94,7 +94,7 @@ class Action {
     function getActionName( $action ) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     name
@@ -118,7 +118,7 @@ class Action {
     function getAreaForAction( $action ) {
         global $cfg;
         
-        $db = new DB_Contenido;
+        $db = new DB();
         
         if (!is_numeric($action))
         {

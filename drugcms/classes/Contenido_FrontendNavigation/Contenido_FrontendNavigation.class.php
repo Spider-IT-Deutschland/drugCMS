@@ -61,14 +61,14 @@ class Contenido_FrontendNavigation extends Contenido_FrontendNavigation_Base {
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @param int $iClient
      * @param int $iLang
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg, $iClient, $iLang, array $aCfgClient) {
+    public function __construct(DB $oDb, array $aCfg, $iClient, $iLang, array $aCfgClient) {
         parent::__construct($oDb, $aCfg, $iClient, $iLang, $aCfgClient);
         $this->iRootCat = -1;
     }
@@ -160,7 +160,7 @@ class Contenido_FrontendNavigation extends Contenido_FrontendNavigation_Base {
 	        }
 	    }
 	    if ($bAsObjects === true) {
-		    $oCategories = new Contenido_Categories(new DB_Contenido(), $this->aCfg);
+		    $oCategories = new Contenido_Categories(new DB(), $this->aCfg);
 		    $oCategories->setDebug($this->bDbg, $this->sDbgMode);
 	        $oCategories->setIdLang($this->iLang);
 	        $oCategories->setloadSubCategories($bWithSubCategories, $iSubCategoriesLoadDepth);

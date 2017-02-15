@@ -83,7 +83,7 @@ function checkExistingPlugin($db, $sPluginname) {
 
 /**
  *
- * @param DB_Contenido $db
+ * @param DB $db
  * @param string $table db-table name
  */
 function updateSystemProperties($db, $table) {
@@ -286,7 +286,7 @@ function rereadClients_Setup()
 
 	if (!is_object($db))
 	{
-		$db = new DB_Contenido;
+		$db = new DB();
 	}
 
 	$sql = "SELECT

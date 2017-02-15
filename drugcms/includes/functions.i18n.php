@@ -152,7 +152,7 @@ function i18nEmulateGettext($string, $domain = "drugcms") {
     if ((!isset($encoding)) || (!is_array($encoding)) || (count($encoding) == 0)) {
         // get encodings of all languages
         $encoding = array();
-        $db = new DB_Contenido();
+        $db = new DB();
         $sql = "SELECT idlang, encoding FROM " . $cfg["tab"]["lang"];
         $db->query($sql);
         while ($db->next_record()) {

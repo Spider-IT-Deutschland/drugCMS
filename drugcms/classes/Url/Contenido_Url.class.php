@@ -117,7 +117,7 @@ final class Contenido_Url {
 
         # Check if the url is set to a start article
         if (($param['idart']) && ($param['idcat'] == 0)) {
-            $db = new DB_Contenido();
+            $db = new DB();
             $sql = 'SELECT DISTINCT ca.idcat, cl.startidartlang
                     FROM ' . $cfg['tab']['cat_art'] . ' AS ca INNER JOIN ' . $cfg['tab']['cat_lang'] . ' AS cl ON ca.idcat = cl.idcat
                     WHERE ((ca.idart=' . $param['idart'] . ')

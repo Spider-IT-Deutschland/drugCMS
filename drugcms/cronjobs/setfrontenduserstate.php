@@ -45,7 +45,7 @@ require_once($cfg['path']['contenido'].$cfg["path"]["includes"] . 'pseudo-cron.i
 
 if (!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs")
 {
-	$db = new DB_Contenido();
+	$db = new DB();
 
 	$sSql = "UPDATE " . $cfg['tab']['frontendusers'] . "
 				SET active = 0

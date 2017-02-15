@@ -54,7 +54,7 @@ function tplEditTemplate($changelayout, $idtpl, $name, $description, $idlay, $c,
         global $area_tree;
         global $perm;
         
-        $db2= new DB_Contenido;
+        $db2= new DB();
 
         $date = date("YmdHis");
         $author = "".$auth->auth["uname"]."";
@@ -422,7 +422,7 @@ function tplDuplicateTemplate($idtpl) {
 
     global $db, $client, $lang, $cfg, $sess, $auth;
 
-    $db2 = new DB_Contenido;
+    $db2 = new DB();
 
     $sql = "SELECT
                 *
@@ -540,7 +540,7 @@ function tplIsTemplateInUse($idtpl) {
 
     global $cfg, $client, $lang;
 
-    $db = new DB_Contenido;
+    $db = new DB();
     // Check categorys 
     $sql = "SELECT
                	b.idcatlang, b.name, b.idlang, b.idcat   
@@ -593,7 +593,7 @@ function tplGetInUsedData($idtpl) {
 
     global $cfg, $client, $lang;
 
-    $db = new DB_Contenido;
+    $db = new DB();
     
     $aUsedData = array();
 
@@ -659,8 +659,8 @@ function tplcfgDuplicate ($idtplcfg)
 {
 	global $cfg;
 	
-	$db = new DB_Contenido;
-	$db2 = new DB_Contenido;
+	$db = new DB();
+	$db2 = new DB();
 	
 	$sql = "SELECT
 				idtpl, status, author, created, lastmodified
@@ -738,7 +738,7 @@ function tplAutoFillModules ($idtpl)
 
 	if (!is_object($db_autofill))
 	{
-		$db_autofill = new DB_Contenido;
+		$db_autofill = new DB();
 	}
 	
 	$sql = "SELECT idlay FROM ".$cfg["tab"]["tpl"]." WHERE idtpl = '".Contenido_Security::toInteger($idtpl)."'";

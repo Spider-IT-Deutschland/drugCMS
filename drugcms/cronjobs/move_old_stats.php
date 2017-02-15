@@ -43,7 +43,7 @@ include_once ($cfg['path']['contenido'].$cfg["path"]["includes"] . 'functions.st
 if (!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs")
 {
 
-    $db = new DB_Contenido;
+    $db = new DB;
     $year = date("Y");
     $month = date("m");
 

@@ -39,7 +39,7 @@ if (!defined('CON_FRAMEWORK')) {
 
 $clientclass = new Client;
 
-$db2 = new DB_Contenido;
+$db2 = new DB();
 
 if(!$perm->have_perm_area_action($area))
 {

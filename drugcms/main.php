@@ -100,7 +100,7 @@ if (isset($overrideid) && isset($overridetype))
 }
 
 # Create Contenido classes
-$db = new DB_Contenido();
+$db = new DB();
 $oDb = &$db;
 $notification = new Contenido_Notification;
 $classarea = new Area();

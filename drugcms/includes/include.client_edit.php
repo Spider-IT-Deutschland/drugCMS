@@ -35,7 +35,7 @@ if(!defined('CON_FRAMEWORK')) {
 
 $properties = new PropertyCollection;
 
-$db2 = new DB_Contenido;
+$db2 = new DB();
 
 if ($action == "client_new")
 {

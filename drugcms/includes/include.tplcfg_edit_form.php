@@ -86,8 +86,8 @@ if ( isset($idart) ) {
 
 if ( !isset($idart) ) $idart = 0;
 if ( !isset($idlay) ) $idlay = 0;
-if ( !isset($db2) || !is_object($db2) ) $db2 = new DB_Contenido;
-if ( !isset($db3) || !is_object($db3) ) $db3 = new DB_Contenido;
+if ( !isset($db2) || !is_object($db2) ) $db2 = new DB();
+if ( !isset($db3) || !is_object($db3) ) $db3 = new DB();
 
 $tpl->reset();
 

@@ -73,7 +73,7 @@ if(isset($_POST['newcategoryalias']) && isset($_POST['action']) && $_POST['actio
 }
 
 
-$oDirectionDb = new DB_Contenido();
+$oDirectionDb = new DB();
 
 /**
  * Build a Category select Box containg all categories which user is allowed to create new categories
@@ -83,7 +83,7 @@ $oDirectionDb = new DB_Contenido();
 function buildCategorySelectRights() {
 	global $cfg, $client, $lang, $idcat, $perm, $tmp_area;
 
-	$db = new DB_Contenido();
+	$db = new DB();
     
     $oHtmlSelect = new 	cHTMLSelectElement ('idcat', "", "new_idcat");
     

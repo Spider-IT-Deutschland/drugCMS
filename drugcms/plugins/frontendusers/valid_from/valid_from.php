@@ -2,7 +2,7 @@
 
 
 /* @var $feuser FrontendUser */
-/* @var $db DB_Contenido */
+/* @var $db DB */
 function frontendusers_valid_from_getTitle ()
 {
 	return i18n("Valid from");	

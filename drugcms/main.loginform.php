@@ -99,7 +99,7 @@ if ((isset($_POST['belang'])) && (strlen($_POST['belang']))) {
     }
 }
 
-$db   = new DB_Contenido();
+$db   = new DB();
 
 $noti = "";
 if (getenv('CONTENIDO_IGNORE_SETUP') != "true")

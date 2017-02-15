@@ -188,7 +188,7 @@ class Cms_FileList {
 		$this->oSess 		= $oSess;
 				
 		//init other variables with default values
-		$this->oDb 			= new DB_Contenido();
+		$this->oDb 			= new DB();
 		$this->sUploadPath 	= $this->aCfgClient[$this->iClient]['upl']['path'];
 		
 		//define class array which contains all names of the filelist properties. They were also base for generating dynamic javascripts for

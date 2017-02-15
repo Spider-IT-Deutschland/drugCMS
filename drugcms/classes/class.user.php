@@ -48,7 +48,7 @@ class Users
     var $table;
 
     /**
-     * DB_Contenido instance
+     * DB instance
      * @var object Contains the database object
      * @access private
      */
@@ -67,7 +67,7 @@ class Users
             $this->table = $table;
         }
 
-        $this->db = new DB_Contenido();
+        $this->db = new DB();
     }
 
 
@@ -158,7 +158,7 @@ class Users
             $limit[] = 'perms LIKE "%sysadmin%"';
         }
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         if (count($limit) > 0) {
             $limitSQL = implode(' OR ', $limit);
@@ -207,7 +207,7 @@ class User
     var $table;
 
     /**
-     * DB_Contenido instance
+     * DB instance
      * @var object Contains the database object
      * @access private
      */
@@ -241,7 +241,7 @@ class User
             $this->table = $table;
         }
 
-        $this->db = new DB_Contenido();
+        $this->db = new DB();
     }
 
 
@@ -414,10 +414,11 @@ class User
 
             if (is_array($groups)) {
                 foreach ($groups as $value) {
-                    $sql = "SELECT value FROM " .$cfg['tab']['group_prop']."
-                    WHERE group_id = '".Contenido_Security::escapeDB($value, $this->db)."'
-                      AND type = '".Contenido_Security::escapeDB($type, $this->db)."'
-                      AND name = '".Contenido_Security::escapeDB($name, $this->db)."'";
+                    $sql = "SELECT value
+                            FROM " .$cfg['tab']['group_prop']."
+                            WHERE ((group_id = '".Contenido_Security::escapeDB($value, $this->db)."')
+                               AND (type = '".Contenido_Security::escapeDB($type, $this->db)."')
+                               AND (name = '".Contenido_Security::escapeDB($name, $this->db)."'))";
                     $this->db->query($sql);
 
                     if ($this->db->next_record()) {
@@ -427,10 +428,11 @@ class User
             }
         }
 
-        $sql = "SELECT value FROM " .$cfg['tab']['user_prop']."
-                WHERE user_id = '".Contenido_Security::escapeDB($this->values['user_id'], $this->db)."'
-                  AND type = '".Contenido_Security::escapeDB($type, $this->db)."'
-                  AND name = '".Contenido_Security::escapeDB($name, $this->db)."'";
+        $sql = "SELECT value
+                FROM " .$cfg['tab']['user_prop']."
+                WHERE ((user_id = '".Contenido_Security::escapeDB($this->values['user_id'], $this->db)."')
+                   AND (type = '".Contenido_Security::escapeDB($type, $this->db)."')
+                   AND (name = '".Contenido_Security::escapeDB($name, $this->db)."'))";
         $this->db->query($sql);
 
         if ($this->db->next_record()) {
@@ -585,7 +587,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     user_id, username, realname
@@ -616,7 +618,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     user_id, username, realname, email
@@ -655,7 +657,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $client = Contenido_Security::escapeDB($client, $db);
 
@@ -691,7 +693,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     username
@@ -716,7 +718,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     realname
@@ -745,7 +747,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     realname
@@ -769,7 +771,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     a.group_id
@@ -814,7 +816,7 @@ class User
     {
         global $cfg;
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         $sql = "SELECT
                     a.group_id

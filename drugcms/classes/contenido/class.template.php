@@ -56,7 +56,7 @@ class cApiTemplateCollection extends ItemCollection
     {
         global $cfg, $client;
 
-        $db = new DB_Contenido();
+        $db = new DB();
         $sql = "UPDATE ".$cfg["tab"]["tpl"]." SET defaulttemplate = 0 WHERE idclient = '" . Contenido_Security::toInteger($client) . "'";
         $db->query($sql);
 

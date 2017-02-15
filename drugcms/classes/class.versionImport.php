@@ -135,7 +135,7 @@ if(!defined('CON_FRAMEWORK')) {
         $this->oDB = $oDB;
         
 		if(!is_object($this->oDB))
-            $this->oDB = new DB_Contenido;	
+            $this->oDB = new DB();	
            
 // 		folder layout
  		$this->sType = "module";

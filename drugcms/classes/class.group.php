@@ -52,8 +52,8 @@ class Groups
     var $table;
 
     /**
-     * DB_Contenido instance
-     * @var  DB_Contenido  Contains the database object
+     * DB instance
+     * @var  DB  Contains the database object
      * @access private
      */
     var $db;
@@ -72,7 +72,7 @@ class Groups
             $this->table = $table;
         }
 
-        $this->db = new DB_Contenido();
+        $this->db = new DB();
     }
 
 
@@ -124,7 +124,7 @@ class Groups
 
         $allClients = $clientclass->getAvailableClients();
 
-        $db = new DB_Contenido();
+        $db = new DB();
 
         foreach ($allClients as $key => $value) {
             if (in_array("client[".$key."]", $perms) || in_array("admin[".$key."]", $perms)) {
@@ -184,7 +184,7 @@ class Group
     var $table;
 
     /**
-     * DB_Contenido instance
+     * DB instance
      * @var object Contains the database object
      * @access private
      */
@@ -218,7 +218,7 @@ class Group
             $this->table = $table;
         }
 
-        $this->db = new DB_Contenido();
+        $this->db = new DB();
     }
 
 

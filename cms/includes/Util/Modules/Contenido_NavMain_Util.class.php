@@ -31,7 +31,7 @@ class Contenido_NavMain_Util {
      * @return void
      */
     public static function loopCats(Contenido_Category $oCategory, Contenido_FrontendNavigation $oFrontendNavigation, Template $oTpl, array $aCfg, $iLang, array $aLevelInfo, $iCurrentPageIdcat, array $aDepthInfo = array()) {
-    	$db = new DB_Contenido();
+    	$db = new DB();
         
         $aDepthInfo[0] = isset($aDepthInfo[0]) ? $aDepthInfo[0] + 1 : 1;
     	$aDepthInfo[1] = isset($aDepthInfo[1]) ? $aDepthInfo[1] : 1;

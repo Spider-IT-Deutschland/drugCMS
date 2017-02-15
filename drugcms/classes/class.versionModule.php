@@ -150,7 +150,7 @@ if(!defined('CON_FRAMEWORK')) {
  	private function getModuleTable(){
      	
      	if(!is_object($this->oDB)) {
-     	 $this->oDB = new DB_Contenido;	
+     	 $this->oDB = new DB();	
      	}
 		$sSql = "";
 		$sSql = "SELECT *

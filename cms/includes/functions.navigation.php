@@ -543,7 +543,7 @@ function checkCatPermission($idcatlang, $public) {
 
 	global $auth;
 	
-	$oDB = new DB_Contenido;
+	$oDB = new DB();
 	
 	$FrontendPermissionCollection = new FrontendPermissionCollection;
 	$visible=false;

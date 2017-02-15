@@ -82,7 +82,7 @@ function cecCreateMetatags($metatags) {
 
     if ($reload) {
         //(Re)build metatags
-        $db = new DB_Contenido();
+        $db = new DB();
 
         #Get encoding
         $sql = "SELECT * FROM ".$cfg['tab']['lang']." WHERE idlang=".(int)$lang;

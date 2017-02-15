@@ -116,7 +116,7 @@ class cApiClientCollection extends ItemCollection
     public function hasLanguageAssigned($iIdClient)
     {
         global $cfg;
-        $db = new DB_Contenido();
+        $db = new DB();
         $sql = 'SELECT idlang FROM ' . $cfg['tab']['clients_lang'] . ' WHERE idclient = "' . (int) $iIdClient . '"';
         $db->query($sql);
         if ($db->next_record()) {

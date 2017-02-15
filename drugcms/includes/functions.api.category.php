@@ -74,7 +74,7 @@ function capi_cat_getlevelnode($idcat, $minLevel = 0)
 {
     global $cfg, $client, $lang;
 
-    $db = new DB_Contenido;
+    $db = new DB();
     
     $sql = "SELECT
                 a.name AS name,

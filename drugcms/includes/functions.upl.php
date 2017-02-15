@@ -440,7 +440,7 @@ function uplRenameDirectory ($oldpath, $newpath, $parent)
 {
 	global $cfgClient, $client, $cfg, $db;
 	
-	$db2 = new DB_Contenido;
+	$db2 = new DB();
 	
 	rename($cfgClient[$client]['upl']['path'].$parent.$oldpath, $cfgClient[$client]['upl']['path'].$parent.$newpath."/");
 	

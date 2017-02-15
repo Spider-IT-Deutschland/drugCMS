@@ -11,7 +11,7 @@
  *
  * @package     drugCMS core
  * @version     1.0
- * @author      Ren Mansveld
+ * @author      René Mansveld
  * @copyright   Spider IT Deutschland
  * @license     http://www.drugcms.org/license/LICENSE.txt
  * @link        http://www.drugcms.org

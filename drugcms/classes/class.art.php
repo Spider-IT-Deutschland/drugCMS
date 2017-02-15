@@ -50,7 +50,7 @@ class Art {
     function getArtName($article, $idlang) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 		$idlang 	= Contenido_Security::toInteger($idlang);
 		$article 	= Contenido_Security::toInteger($article);
 
@@ -79,7 +79,7 @@ class Art {
     {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 		
 		$idcatart = Contenido_Security::toInteger($idcatart);
 

@@ -58,7 +58,7 @@ function doMySQLConnect($host, $username, $password) {
             'password' => $password,
         ),
     );
-	$db = new DB_Contenido($aOptions);
+	$db = new DB($aOptions);
 	
 	if ($db->connect() == 0) {
 		return array($db, false);
@@ -90,7 +90,7 @@ function getSetupMySQLDBConnection($full = true) {
             'sequenceTable'  => $_SESSION['dbprefix'].'_sequence'
         );
     }
-    $db = new DB_Contenido($aOptions);
+    $db = new DB($aOptions);
     return $db;
 }
 

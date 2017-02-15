@@ -87,14 +87,14 @@ class Contenido_FrontendNavigation_Base {
     /**
      * Constructor.
      * @access public
-     * @param DB_Contenido $oDb
+     * @param DB $oDb
      * @param array $aCfg
      * @param int $iClient
      * @param int $iLang
      * @return void
      * @author Rudi Bieller
      */
-    public function __construct(DB_Contenido $oDb, array $aCfg, $iClient, $iLang, array $aCfgClient) {
+    public function __construct(DB $oDb, array $aCfg, $iClient, $iLang, array $aCfgClient) {
         $this->oDb = $oDb;
         $this->aCfg = $aCfg;
         $this->iClient = (int) $iClient;

@@ -41,7 +41,7 @@ abstract class ConUser_Abstract implements iConUser {
 	/**
 	 * Referemces database abstraction instance
 	 *
-	 * @var DB_Contenido
+	 * @var DB
 	 */
 	protected $oDb = null;
 
@@ -88,13 +88,13 @@ abstract class ConUser_Abstract implements iConUser {
         }
 
         if (is_null($oDb)) {
-        	$this->oDb = new DB_Contenido();
+        	$this->oDb = new DB();
         } else {
         	// is it a contenido DB instance?
-        	if ($oDb instanceof DB_Contenido) {
+        	if ($oDb instanceof DB) {
         	   $this->oDb = $oDb;
         	} else {
-        		throw new ConUserException("Given value for \$oDb is not a valid DB_Contenido instance!");
+        		throw new ConUserException("Given value for \$oDb is not a valid DB instance!");
         	}
         }
 

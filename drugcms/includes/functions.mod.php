@@ -114,7 +114,7 @@ function modTestModule ($code, $id, $output = false)
 
 	$magicvalue = 0;
 
-    $db = new DB_Contenido;
+    $db = new DB();
 
 	/* Put a $ in front of all CMS variables
 	   to prevent PHP error messages */

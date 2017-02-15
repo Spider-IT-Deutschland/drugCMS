@@ -54,7 +54,7 @@ function conGenerateCode($idcat, $idart, $lang, $client, $layout = false)
 	global $db, $db2, $sess, $cfg, $code, $cfgClient, $client, $lang, $encoding;
 
 	if (!is_object($db2))
-		$db2 = new DB_Contenido;
+		$db2 = new DB();
 
 	/* extract IDCATART */
 	$sql = "SELECT
@@ -664,7 +664,7 @@ function conSetMetaValue($idartlang, $idmetatype, $value)
 {
 	global $cfg;
 
-	$db = new DB_Contenido;
+	$db = new DB();
 	$sql = "DELETE FROM ".$cfg["tab"]["meta_tag"]."
 			WHERE idartlang = '".Contenido_Security::toInteger($idartlang)."'
 			AND idmetatype = '".Contenido_Security::toInteger($idmetatype)."'";
@@ -696,7 +696,7 @@ function conSetMetaValue($idartlang, $idmetatype, $value)
 function conGenerateKeywords($client, $lang)
 {
 	global $cfg;
-	$db_art = new DB_Contenido;
+	$db_art = new DB();
 
 	$options = array ("img", "link", "linktarget", "swf"); // cms types to be excluded from indexing
 
@@ -751,7 +751,7 @@ function conGetContentFromArticle($article_lang)
 {
 
 	global $cfg;
-	$db_con = new DB_Contenido;
+	$db_con = new DB();
 
 	$sql = "SELECT
 					*

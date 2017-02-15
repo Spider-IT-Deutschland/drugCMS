@@ -38,7 +38,7 @@ if (!defined('CON_FRAMEWORK')) {
 
 $edit 		= "true";
 
-$db2 		= new DB_Contenido;
+$db2 		= new DB();
 $scripts	= "";
 
 if ( isset($idcat) )

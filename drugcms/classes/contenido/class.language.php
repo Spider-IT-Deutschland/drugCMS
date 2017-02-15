@@ -45,7 +45,7 @@ class cApiLanguageCollection extends ItemCollection {
 
         $item = parent::next();
 
-        $db = new DB_Contenido();
+        $db = new DB();
         $lang   = Contenido_Security::toInteger($lang);
         $client = Contenido_Security::toInteger($client);
 

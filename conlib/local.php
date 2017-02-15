@@ -151,7 +151,7 @@ class Contenido_CT_Sql extends CT_Sql
      * Database class name
      * @var  string
      */
-    public $database_class = 'DB_Contenido';
+    public $database_class = 'DB';
 
     /**
      * And find our session data in this table.
@@ -376,7 +376,7 @@ class Contenido_Auth extends Auth
 {
     public $classname      = 'Contenido_Auth';
     public $lifetime       =  60;
-    public $database_class = 'DB_Contenido';
+    public $database_class = 'DB';
     public $database_table = 'con_phplib_auth_user';
 
     public function auth_loginform()
@@ -434,7 +434,7 @@ class Contenido_Challenge_Auth extends Auth
     public $classname      = 'Contenido_Challenge_Auth';
     public $lifetime       =  1;
     public $magic          = 'Simsalabim';  ## Challenge seed
-    public $database_class = 'DB_Contenido';
+    public $database_class = 'DB';
     public $database_table = 'con_phplib_auth_user';
 
     public function auth_loginform()
@@ -507,7 +507,7 @@ class Contenido_Challenge_Crypt_Auth extends Auth
     public $classname      = 'Contenido_Challenge_Crypt_Auth';
     public $lifetime       =  60;
     public $magic          = 'Frrobo123xxica';  ## Challenge seed
-    public $database_class = 'DB_Contenido';
+    public $database_class = 'DB';
     public $database_table = '';
     public $group_table    = '';
     public $member_table   = '';
@@ -735,7 +735,7 @@ class Contenido_Frontend_Challenge_Crypt_Auth extends Auth
     public $classname      = 'Contenido_Frontend_Challenge_Crypt_Auth';
     public $lifetime       =  60;
     public $magic          = 'Frrobo123xxica';  ## Challenge seed
-    public $database_class = 'DB_Contenido';
+    public $database_class = 'DB';
     public $database_table = '';
     public $fe_database_table = '';
     public $group_table    = '';

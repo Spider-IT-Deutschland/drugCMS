@@ -128,7 +128,7 @@ class Contenido_Security
      * @static
      *
      * @param   string        $sString  Input string
-     * @param   DB_Contenido  $oDb      Contenido database object
+     * @param   DB  $oDb      Contenido database object
      * @return  string   Filtered string
      */
     public static function filter($sString, $oDb)
@@ -454,7 +454,7 @@ class Contenido_Security
      * @static
      *
      * @param   string        $sString          Input string
-     * @param   DB_Contenido  $oDB              Contenido database object
+     * @param   DB  $oDB              Contenido database object
      * @param   boolean       $bUndoAddSlashes  Flag for undo addslashes (optional, default: true)
      * @return  string  Converted string
      */

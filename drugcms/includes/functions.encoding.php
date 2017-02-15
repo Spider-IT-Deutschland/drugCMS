@@ -35,13 +35,13 @@ if(!defined('CON_FRAMEWORK')) {
 
 /**
  * Returns encoding for language with ID $iLang (global $lang in contenido style).
- * The parameter $oDb has to be an instance of DB_Contenido (global $db in con) and
+ * The parameter $oDb has to be an instance of DB (global $db in con) and
  * $cfg is the equivalent to global $cfg array in contenido.
  * If no encoding is found or any parameter is not valid, the function will return
  * false, otherwise the encoding as string like it is stored in database.
  * modified 18.03.2008 - Removed special mySQl behaviour (using db object instead) Timo Trautmann
  * 
- * @param DB_Contenido $oDb
+ * @param DB $oDb
  * @param int $iLang
  * @param array $cfg
  * @return string
@@ -50,7 +50,7 @@ function getEncodingByLanguage (&$oDb, $iLang, $cfg) {
 	$sResult = false;
 
 	if (!is_object($oDb)) {
-		$oDb = new DB_Contenido();
+		$oDb = new DB();
 	}
 
 	$iLang = (int) $iLang;

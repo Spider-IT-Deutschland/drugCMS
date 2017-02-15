@@ -61,7 +61,7 @@ class Layout {
     {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idlay,
@@ -94,7 +94,7 @@ class Layout {
     {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     name
@@ -119,7 +119,7 @@ class Layout {
     {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idlay
@@ -150,7 +150,7 @@ class Layout {
             $layout = $this->getLayoutID($layout);
         }
         
-        $db = new DB_Contenido;
+        $db = new DB();
 
         $sql = "SELECT
                     idtpl, name 

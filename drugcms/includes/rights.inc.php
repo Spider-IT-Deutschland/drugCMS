@@ -154,7 +154,7 @@ if (!is_object($oTpl)) {
 $oTpl->reset();
 
 if(!is_object($db2))
-$db2 = new DB_Contenido;
+$db2 = new DB();
 
 if(!isset($rights_client)){
       $rights_client=$client;

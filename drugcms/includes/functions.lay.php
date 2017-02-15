@@ -51,8 +51,8 @@ function layEditLayout($idlay, $name, $description, $code) {
 
     global $client, $auth, $cfg, $sess, $area_tree, $perm, $cfgClient;
 
-    $db2= new DB_Contenido;
-    $db = new DB_Contenido;
+    $db2= new DB();
+    $db = new DB();
 
     $date = date("Y-m-d H:i:s");
     $author = "".$auth->auth["uname"]."";

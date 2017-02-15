@@ -287,14 +287,14 @@ abstract class Contenido_ItemBaseAbstract
 {
     /**
      * Database instance, contains the database object
-     * @var  DB_Contenido
+     * @var  DB
      */
     protected $db;
 
     /**
      * Second DB instance, is required for some additional queries without
      * losing an current existing query result.
-     * @var  DB_Contenido
+     * @var  DB
      */
     protected $secondDb;
 
@@ -377,7 +377,7 @@ abstract class Contenido_ItemBaseAbstract
     {
         global $cfg;
 
-        $this->db = new DB_Contenido();
+        $this->db = new DB();
 
         if ($sTable == '') {
             $sMsg = "$sClassName: No table specified. Inherited classes *need* to set a table";
@@ -416,12 +416,12 @@ abstract class Contenido_ItemBaseAbstract
      * Returns the second database instance, usable to run additional statements
      * without losing current query results.
      *
-     * @return  DB_Contenido
+     * @return  DB
      */
     protected function _getSecondDBInstance()
     {
-        if (!isset($this->secondDb) || !($this->secondDb instanceof DB_Contenido)) {
-            $this->secondDb = new DB_Contenido();
+        if (!isset($this->secondDb) || !($this->secondDb instanceof DB)) {
+            $this->secondDb = new DB();
         }
         return $this->secondDb;
     }
@@ -1334,7 +1334,7 @@ abstract class ItemCollection extends Contenido_ItemBaseAbstract
     {
         if ($this->db->next_record()) {
             if ($this->_bAllMode) {
-                $aRs = $this->db->toArray(DB_Contenido::FETCH_BOTH);
+                $aRs = $this->db->toArray(DB::FETCH_BOTH);
                 return $this->loadItem($aRs);
             } else {
                 return $this->loadItem($this->db->f($this->primaryKey));
@@ -1523,7 +1523,7 @@ abstract class ItemCollection extends Contenido_ItemBaseAbstract
      * @return  Item  The newly created object
      */
     public function create()
-    {   /* @var $oDb DB_Contenido */
+    {   /* @var $oDb DB */
         $oDb     = $this->_getSecondDBInstance();
         $iNextId = $oDb->nextid($this->table);
         $sql     = 'INSERT INTO `%s` (%s) VALUES (%d)';

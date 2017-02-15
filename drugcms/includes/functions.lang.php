@@ -151,7 +151,7 @@ function langDuplicateFromFirstLanguage($client, $idlang) {
 
     global $db, $sess, $cfg;
 
-    $db2 = new DB_Contenido();
+    $db2 = new DB();
 
     $sql = "SELECT * FROM ".$cfg["tab"]["clients_lang"]." WHERE idclient='".Contenido_Security::toInteger($client)."' ORDER BY idlang ASC";
 
@@ -221,7 +221,7 @@ function langDuplicateFromFirstLanguage($client, $idlang) {
                 $valuestring = preg_replace('/^,/', '', $valuestring);
                 $valuestring = $valuestring.",$tmp_idartlang_neu";
 
-                $db3 = new DB_Contenido();
+                $db3 = new DB();
                 //********* duplicates entry in DB ****************
                 $sql = "INSERT INTO ".$cfg["tab"]["content"]." (idcontent, ".Contenido_Security::escapeDB($keystring, $db3).") VALUES ('".Contenido_Security::toInteger($db3->nextid($cfg["tab"]["content"]))."',
                         ".Contenido_Security::escapeDB($valuestring, $db3).")";
@@ -325,7 +325,7 @@ function langDuplicateFromFirstLanguage($client, $idlang) {
             $valuestring = preg_replace('/^,/', '', $valuestring);
             $valuestring = $valuestring.",$idlang";
 
-            $db2 = new DB_Contenido();
+            $db2 = new DB();
             //********* duplicates entry in DB ****************
             $sql = "INSERT INTO ".$cfg["tab"]["stat"]." (idstat, ".Contenido_Security::escapeDB($keystring, $db2).") VALUES ('".Contenido_Security::toInteger($db->nextid($cfg["tab"]["stat"]))."', ".Contenido_Security::escapeDB($valuestring, $db2).")";
             $db2->query($sql);
@@ -616,7 +616,7 @@ function langGetTextDirection ($idlang, $db = null) {
     global $cfg;
 
     if ($db == null || !is_object($db)) {
-        $db = new DB_Contenido;
+        $db = new DB();
     }
 
     $sql = "SELECT direction FROM ".$cfg["tab"]["lang"] ." WHERE idlang='".Contenido_Security::toInteger($idlang)."'";

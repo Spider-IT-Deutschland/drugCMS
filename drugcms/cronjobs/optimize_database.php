@@ -43,7 +43,7 @@ include_once ($cfg['path']['contenido'].$cfg["path"]["includes"] . 'functions.st
 global $cfg;
 
 if(!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs") {
-    $db = new DB_Contenido;
+    $db = new DB;
 
     foreach ($cfg["tab"] as $key => $value)
     {

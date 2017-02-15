@@ -42,7 +42,7 @@ include_once ($cfg['path']['contenido'].$cfg["path"]["includes"] . 'functions.co
 
 if(!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs") {
 
-	$db = new DB_Contenido;
+	$db = new DB;
 
 	conFlagOnOffline();
 

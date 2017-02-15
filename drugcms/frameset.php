@@ -51,7 +51,7 @@ cInclude ("includes", 'cfg_language_de.inc.php');
 cInclude ("includes", 'functions.forms.php');
 
 # Create Contenido classes
-$db  = new DB_Contenido;
+$db  = new DB();
 $tpl = new Template;
 
 # Build the Contenido

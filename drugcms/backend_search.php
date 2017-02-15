@@ -54,8 +54,8 @@ page_open(array('sess' => 'Contenido_Session',
 i18nInit($cfg["path"]["contenido"].$cfg["path"]["locale"], $belang);
 
 # Variablen initialisieren
-$db = new DB_Contenido;
-$db2 = new DB_Contenido;
+$db = new DB();
+$db2 = new DB();
 
 // Session
 $sSession = '';

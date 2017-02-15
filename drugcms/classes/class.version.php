@@ -169,7 +169,7 @@ class Version {
 	 * 
 	 * @return void 
 	 */	
-	public function __construct($aCfg, $aCfgClient, DB_Contenido $oDB, $iClient, $sArea, $iFrame) {
+	public function __construct($aCfg, $aCfgClient, DB $oDB, $iClient, $sArea, $iFrame) {
      $this->aCfg = $aCfg;
      $this->aCfgClient = $aCfgClient;
      $this->oDB = $oDB;

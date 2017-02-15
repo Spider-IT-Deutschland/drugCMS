@@ -50,7 +50,7 @@ class Cat {
     function getCatName($category, $idlang) {
         global $cfg;
 
-        $db = new DB_Contenido;
+        $db = new DB();
 		$idlang 	= Contenido_Security::toInteger($idlang);
 		$category 	= Contenido_Security::toInteger($category);
 

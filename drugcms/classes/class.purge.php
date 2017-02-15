@@ -27,7 +27,7 @@ if(!defined('CON_FRAMEWORK')) {
 class Purge {
 
 	/**
-	* @var DB_Contenido $oDb
+	* @var DB $oDb
 	*/
 	private $oDb;
 	

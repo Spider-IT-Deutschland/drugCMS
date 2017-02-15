@@ -338,7 +338,7 @@ function insertTab(event, obj) {
     	// Prepare type select box
     	$typeselect = new cHTMLSelectElement("type");
     	
-    	$db2 = new DB_Contenido;
+    	$db2 = new DB();
     	$sql = "SELECT type FROM ".$cfg["tab"]["mod"]." ".
 			   "WHERE idclient = '".$client."' GROUP BY type"; // This query can't be designed using GenericDB...
     	$db2->query($sql);

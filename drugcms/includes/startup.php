@@ -134,7 +134,7 @@ if(!isset($cfg['db']) || !is_array($cfg['db'])) {
 }
 // Set default database connection parameter
 $cfg['db']['sequenceTable'] = $cfg['tab']['sequence'];
-DB_Contenido::setDefaultConfiguration($cfg['db']);
+DB::setDefaultConfiguration($cfg['db']);
 
 // Error reporting - respect system and client settings
 $bErrors = getEffectiveSetting('debug', 'log_errors', 'false');
@@ -149,7 +149,7 @@ if ((strtolower($bErrors) == 'true') || (strtolower($bErrors) == 'full') || (str
 $_cecRegistry = cApiCECRegistry::getInstance();
 cInclude('includes', 'config.chains.php');
 
-// @TODO: This should be done by instantiating a DB_Contenido class, creation of DB_Contenido object
+// @TODO: This should be done by instantiating a DB class, creation of DB object
 checkMySQLConnectivity();
 
 

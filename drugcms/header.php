@@ -37,7 +37,7 @@ if (!defined("CON_FRAMEWORK")) {
 // Contenido startup process
 include_once ('./includes/startup.php');
 
-$db = new DB_Contenido;
+$db = new DB();
 
 
 page_open(

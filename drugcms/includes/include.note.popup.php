@@ -69,7 +69,7 @@ if ($action == "note_save_item")
     $ui->setVar("itemid", $itemid);
     
     /* Fetch all note categors */
-    $dbprop = new DB_Contenido;
+    $dbprop = new DB();
     $dbprop->query("SELECT DISTINCT value FROM ".$cfg["tab"]["properties"] .' where type="note" AND name="category"');
     
     $categories = array("" => i18n("No category"));

@@ -55,7 +55,7 @@ global $cfg;
 if (!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs") {
 
     // Create Contenido DB_class
-    $db = new DB_Contenido;
+    $db = new DB;
 
     // Start linkchecker
     $cronjob = true;

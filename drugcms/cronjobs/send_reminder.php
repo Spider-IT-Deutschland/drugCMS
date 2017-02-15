@@ -32,7 +32,7 @@ $oldclient = $client;
 
 if(!isRunningFromWeb() || function_exists("runJob") || $area == "cronjobs")
 {
-	$db = new DB_Contenido;
+	$db = new DB();
 
 	$sql = "SELECT idclient FROM ".$cfg["tab"]["clients"];
 	$db->query($sql);
