@@ -12,7 +12,7 @@
  *
  * @package    drugCMS Backend plugins
  * @version    1.0
- * @author     Ren Mansveld
+ * @author     René Mansveld
  * @copyright  Spider IT Deutschland
  * @license    http://www.drugcms.org/license/LICENCE.txt
  * @link       http://www.drugcms.de
@@ -21,6 +21,7 @@
  *
  * {@internal
  *   created  2015-11-23
+ *   updated  2017-12-09 René Mansveld: Correction in installing additional system files
  * }}
  *
  */
@@ -737,12 +738,12 @@ switch ($sWhat) {
                                         if (substr($entry, -1) == '/') {
                                             
                                             # Entry is a folder, create it
-                                            $ftp->mkdir($sFrontendFTPPath . '/' . $entry);
+                                            $ftp->mkdir($sBackendFTPPath . $entry);
                                         }
                                         else {
                                             
                                             # Entry is a file, copy it
-                                            if (!$ftp->put($sFrontendFTPPath . $entry, $cfg['path']['contenido'] . 'plugins/' . $sPlugin . '/system/' . $entry)) {
+                                            if (!$ftp->put($sBackendFTPPath . $entry, $cfg['path']['contenido'] . 'plugins/' . $sPlugin . '/system/' . $entry)) {
                                                 echo $notification->returnNotification("error", sprintf(i18n("Unable to write file %s per FTP, please copy system files from the plugin's system folder yourself.", $plugin_name), $aFoldersAndFiles[$i]));
                                                 flush();
                                                 $bOK = false;
@@ -854,12 +855,12 @@ switch ($sWhat) {
                                             if (substr($entry, -1) == '/') {
                                                 
                                                 # Entry is a folder, create it
-                                                mkdir($cfg['path']['frontend'] . '/' . $entry, 0750);
+                                                mkdir($cfg['path']['contenido'] . '/' . $entry, 0750);
                                             }
                                             else {
                                                 
                                                 # Entry is a file, copy it
-                                                copy($sPath . 'system/' . $entry, $cfg['path']['frontend'] . '/' . $entry);
+                                                copy($sPath . 'system/' . $entry, $cfg['path']['contenido'] . '/' . $entry);
                                             }
                                         }
                                     }
